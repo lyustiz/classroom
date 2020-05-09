@@ -4,152 +4,137 @@
     <!-- Contenido -->
     <v-container fluid>
 
-        <v-btn x-small fab top  absolute left dark color="#7c4fbc" class="mt-6" @click="showBarrio = !showBarrio">
-            <v-icon>{{ (showBarrio) ? "mdi-card-bulleted-off" : "mdi-card-bulleted"}}</v-icon>
-        </v-btn>
+        <v-row>
 
-        <div v-if="showBarrio" transition="scale-transition" >
-        
-        <v-row no-gutters class="mb-4 mt-4" >
-            <!-- Logo -->
-            <v-col md="2"  class=" d-none d-xs-none d-sm-none d-md-flex d-lg-flex">  
-                <img :src="logo" alt="" srcset="" class="logo-ppal">
-            </v-col>
+            <v-col cols="8">
 
-            <!-- Publicidad-->
-            <v-col md="10" sm="12" xs="12" class="">  
-                <list-publicidad></list-publicidad>
+                <v-row>
+                    <v-col cols="12">
+                    <v-calendar
+                    type="week" 
+                    :weekdays="[1,2,3,4,5]"
+                    :interval-count="8"
+                    :first-interval="14"
+                    :interval-format="intervalFormat"
+                    :events="events"
+                    interval-minutes="30"
+                    interval-width="65"
+                    :today="today"
+                    ></v-calendar>
+                    </v-col>
+               </v-row>
+               
+               <v-row no-gutters>
+                   <v-col>
+                <v-list three-line>
+                        <v-subheader> Comentarios</v-subheader>
+
+                        <v-list-item>
+
+                            <v-list-item-avatar>
+                                <v-icon size="38">mdi-account-circle</v-icon>
+                            </v-list-item-avatar>
+
+                            <v-list-item-content>
+                                <v-list-item-title>Jose Pedroza</v-list-item-title>
+                                <v-list-item-subtitle >Existe la posibilidad de cambiar la fecha del examen</v-list-item-subtitle>
+                            </v-list-item-content>
+                        </v-list-item>
+
+                        <v-list-item>
+
+                            <v-list-item-avatar>
+                                <v-icon size="38">mdi-account-circle</v-icon>
+                            </v-list-item-avatar>
+
+                            <v-list-item-content>
+                                <v-list-item-title>Luis Yustiz</v-list-item-title>
+                                <v-list-item-subtitle >Tengo dudas con la formula de despeje</v-list-item-subtitle>
+                            </v-list-item-content>
+                        </v-list-item>
+
+                    </v-list>
+                    </v-col>
+                </v-row>
+
             </v-col>
-        </v-row>
-        </div>
+            <v-col cols="4">
+                <v-card>
+                    <v-card-title >
+                            Tareas
+                    </v-card-title>
+                    <v-card-text>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. At a ipsa, quod recusandae consectetur tenetur modi deserunt ab animi nesciunt sit libero odit quasi eos veniam reiciendis nulla. Suscipit, odio.
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn fab small color="success">
+                            <v-icon>mdi-save</v-icon>
+                        </v-btn>
+                    </v-card-actions>
+                </v-card>
+                <v-card class="mt-5">
+                    <v-card-title >
+                            Informacion 
+                    </v-card-title>
+                    <v-card-text>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. At a ipsa, quod recusandae consectetur tenetur modi deserunt ab animi nesciunt sit libero odit quasi eos veniam reiciendis nulla. Suscipit, odio.
+                    </v-card-text>
     
-        <!-- Title Despachos Barrio -->
-        <v-row no-gutters class="mt-9">
-             <v-col cols="12" class="d-flex justify-center">
-                 <img :src="barrio" alt="" srcset="" class="banner-image align-self-center">
-             </v-col>
-         </v-row>
+                </v-card>
 
-        <!-- Categorias | Comercios -->
-        <v-row class="mt-n1">
-            <v-col>
-                <list-categoria></list-categoria>
             </v-col>
         </v-row>
-
-        <!-- Title Despachos Cali -->
-        <v-row no-gutters class="mt-6">
-             <v-col cols="12" class="d-flex justify-center">
-                 <img :src="cali" alt="" srcset="" class="banner-image align-self-center">
-             </v-col>
-         </v-row>
-        
-        <!-- Comercios Despacho todo Cali -->
-        <v-row class="mt-2">
-            <v-col>
-                <list-comercios-cali></list-comercios-cali>
-            </v-col>
-        </v-row>
-
+            
     </v-container>
-
-    <!-- Contenedor de  Filtros -->
-    <v-navigation-drawer :value="showFilter" app clipped right class="grey lighten-5">
-        <app-filters></app-filters> 
-    </v-navigation-drawer>
 
 </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import ListCategoria from '@components/categoria/ListCategoria';
-import ListComerciosCali from '@components/comercio/ListComerciosCali';
-import ListPublicidad from '@components/publicidad/ListPublicidad';
 
 import AppData from '@mixins/AppData';
 import AppMessage from '@mixins/AppMessage';
 
 export default {
-    mixins: [AppData, AppMessage],
+    mixins: [AppMessage],
     components: 
     { 
-        'list-categoria':     ListCategoria,
-        'list-publicidad':    ListPublicidad,
-        'list-comercios-cali': ListComerciosCali
+
     },
     computed: 
     { 
-        ...mapGetters(['showFilter']),
-        small()
-        {
-            return this.$vuetify.breakpoint.xsOnly
-        },
+    
     },
     data () 
 	{
         return {
-            logo:   require('~/assets/img/logo.png'),
-            barrio: require('~/assets/img/welcome/despacho-barrio.png'), 
-            cali:   require('~/assets/img/welcome/despacho-cali.png'),
-            showBarrio: true
+            
+            today: '2020-05-04',
+            events: [
+                {
+                name:   'Matematica',
+                start:  '2020-05-04 07:00',
+                end:    '2020-05-04 08:00',
+                },
+                {
+                name:   'Castellano',
+                start:  '2020-05-04 08:00',
+                end:    '2020-05-04 09:00',
+                },
+            ],
         }
     },
+    methods: {
+        intervalFormat(interval) {
+            return interval.time
+        }
+    }
     
 }
 </script>
 
 <style>
-
-.title-banner {
-    background-repeat: no-repeat;
-    background-size: 26% 100%; 
-    height: 5vh;
-    width: 75vw;
-    z-index: 99;
-    position: absolute;
-    left: auto;
-    right: auto;
-}
-.banner-image
-{
-    height: auto;
-    width: 15rem;
-    z-index: 4;
-    position: absolute;
-
-}
-
-.title-banner-m {
-    background-repeat: no-repeat;
-    background-color: white;
-    background-size: 100% 100%; 
-    min-height: 2.9rem;
-}
-
-.despacho-barrio-m {
-    background-image: url('/images/despacho-barrio-m.jpg'); 
-}
-
-.despacho-cali-m {
-    background-image: url('/images/despacho-barrio-m.jpg'); 
-}
-
-.logo-ppal{
-    position: absolute; 
-    z-index: 4;
-    width: 29vw;
-    height: auto;
-}
-
-.welcome-holder{
-    min-height: 100vh;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-color: rgba(255, 255, 255, 0.5);
-    background: url('/images/welcome.jpg');
-}
 
 </style>

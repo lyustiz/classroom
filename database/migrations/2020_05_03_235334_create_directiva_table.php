@@ -14,7 +14,15 @@ class CreateDirectivaTable extends Migration
     public function up()
     {
         Schema::create('directiva', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('id_colegio');
+            $table->string('id_cargo');
+            $table->string('nb_directiva', 80)->nullable();
+            $table->integer('id_tipo_directiva');
+            $table->string('tx_documento', 100)->nullable();
+            $table->string('tx_observaciones', 100)->nullable();
+            $table->integer('id_status');
+            $table->integer('id_usuario');
             $table->timestamps();
         });
     }

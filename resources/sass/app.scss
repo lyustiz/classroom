@@ -5,6 +5,10 @@
 // Material Desing Icons
 @import '~@mdi/font/scss/materialdesignicons' ;
 
+body{
+  font-size: 1.2em !important;
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

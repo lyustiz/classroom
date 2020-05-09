@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Calificacion;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CalificacionController extends Controller
 {
@@ -14,7 +15,10 @@ class CalificacionController extends Controller
      */
     public function index()
     {
-        //
+        $calificacion = Calificacion::with([])
+                    ->get();
+        
+        return $calificacion;
     }
 
     /**
@@ -25,7 +29,21 @@ class CalificacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = request()->validate([
+            'id_alumno'         => 	'required|integer',
+			'id_grupo_materia'  => 	'required|integer',
+			'nu_calificacion'   => 	'required|numeric|max:8',
+			'id_nivel_aprobacion'=> 	'required|integer',
+			'nu_inasistencia'   => 	'required|integer',
+			'tx_objetivo'       => 	'required|string|max:100',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $calificacion = calificacion::create($request->all());
+
+        return [ 'msj' => 'Calificacion Agregado Correctamente', compact('calificacion') ];
     }
 
     /**
@@ -36,7 +54,7 @@ class CalificacionController extends Controller
      */
     public function show(Calificacion $calificacion)
     {
-        //
+        return $calificacion;
     }
 
     /**
@@ -48,7 +66,21 @@ class CalificacionController extends Controller
      */
     public function update(Request $request, Calificacion $calificacion)
     {
-        //
+        $validate = request()->validate([
+            'id_alumno'         => 	'required|integer',
+			'id_grupo_materia'  => 	'required|integer',
+			'nu_calificacion'   => 	'required|numeric|max:8',
+			'id_nivel_aprobacion'=> 	'required|integer',
+			'nu_inasistencia'   => 	'required|integer',
+			'tx_objetivo'       => 	'required|string|max:100',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $calificacion = $calificacion->update($request->all());
+
+        return [ 'msj' => 'Calificacion Editado' , compact('calificacion')];
     }
 
     /**
@@ -59,6 +91,8 @@ class CalificacionController extends Controller
      */
     public function destroy(Calificacion $calificacion)
     {
-        //
+        $calificacion = $calificacion->delete();
+ 
+        return [ 'msj' => 'Calificacion Eliminado' , compact('calificacion')];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TipoPago;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TipoPagoController extends Controller
 {
@@ -14,11 +15,10 @@ class TipoPagoController extends Controller
      */
     public function index()
     {
-        $tipoPagos = TipoPago::with(['status'])
-                               ->get();
+        $tipoPago = TipoPago::with([])
+                    ->get();
         
-        return $tipoPagos;
-
+        return $tipoPago;
     }
 
     /**
@@ -30,20 +30,17 @@ class TipoPagoController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-            
-            'nb_tipo_pago'     => 'required',
-            'id_comercio'      => 'required',
-            'tx_icono'         => 'required',
-            'tx_observaciones' => 'required',
-            'id_status'        => 'required',
-            'id_usuario'       => 'required',
-            
+            'nb_tipo_pago'      => 	'required|string|max:30',
+			'id_comercio'       => 	'required|integer',
+			'tx_icono'          => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
 
-        $tipoPago = TipoPago::create($request->all());
+        $tipoPago = tipoPago::create($request->all());
 
-        return [ 'msj' => 'Registro Agregado Correctamente', compact('tipoPago') ];
-    
+        return [ 'msj' => 'TipoPago Agregado Correctamente', compact('tipoPago') ];
     }
 
     /**
@@ -55,7 +52,6 @@ class TipoPagoController extends Controller
     public function show(TipoPago $tipoPago)
     {
         return $tipoPago;
-
     }
 
     /**
@@ -68,20 +64,17 @@ class TipoPagoController extends Controller
     public function update(Request $request, TipoPago $tipoPago)
     {
         $validate = request()->validate([
-            
-            'nb_tipo_pago'     => 'required',
-            'id_comercio'      => 'required',
-            'tx_icono'         => 'required',
-            'tx_observaciones' => 'required',
-            'id_status'        => 'required',
-            'id_usuario'       => 'required',
-            
+            'nb_tipo_pago'      => 	'required|string|max:30',
+			'id_comercio'       => 	'required|integer',
+			'tx_icono'          => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
-        
+
         $tipoPago = $tipoPago->update($request->all());
 
-        return [ 'msj' => 'Registro Editado' , compact('tipoPago')];
-    
+        return [ 'msj' => 'TipoPago Editado' , compact('tipoPago')];
     }
 
     /**
@@ -94,7 +87,6 @@ class TipoPagoController extends Controller
     {
         $tipoPago = $tipoPago->delete();
  
-        return [ 'msj' => 'Registro Eliminado' , compact('tipoPago')];
-
+        return [ 'msj' => 'TipoPago Eliminado' , compact('tipoPago')];
     }
 }

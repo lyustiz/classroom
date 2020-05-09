@@ -14,7 +14,11 @@ class CreateTipoDirectivaTable extends Migration
     public function up()
     {
         Schema::create('tipo_directiva', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('nb_tipo_directiva', 20);
+            $table->string('tx_observaciones', 100)->nullable();
+            $table->integer('id_status');
+            $table->integer('id_usuario');
             $table->timestamps();
         });
     }

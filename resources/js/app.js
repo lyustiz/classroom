@@ -24,31 +24,31 @@ Vue.prototype.$App = Object.freeze({
     title:    process.env.MIX_APP_NAME,
     version:  '0.1',
     baseUrl:  '/api/',
-    ApiUrl:   '/api/v1/',
-    debug:    true,
+    apiUrl:   '/api/v1/',
+    debug:    false,
     isMobile: (isMobile.any()) ? true : false,
     device:   isMobile.any(), 
     theme:{
-            headApp:   'cyan darken-2',
-            textTitle: 'white--text',
-            headForm:  'red',
-            titleForm: 'white--text',
-            headList:  'blue darken-3',
-            titleList: 'white--text',
-            headModal: 'blue darken-2',
+            headApp:    'indigo',
+            textTitle:  'white--text',
+            headForm:   'red',
+            titleForm:  'red lighten-4',
+            headList:   'grey lighten-3',
+            titleList:  'black--text',
+            headModal:  'indigo',
             titleModal: 'white--text',
             button: {
-                        insert: 'success',
-                        update: 'warning',
-                        delete: 'error',
-                        reset:  'info',
-                        cancel: 'error',
-                        new:    'primary',
-                        actions:'primary'
+                        insert:  'success',
+                        update:  'warning',
+                        delete:  'error',
+                        reset:   'info',
+                        cancel:  'error',
+                        new:     'primary',
+                        actions: 'primary'
                     }
         }
-    })
-
+})
+console.log('lo', window.location.host)
 /** Components Autoload **/
 import './components/components'
 

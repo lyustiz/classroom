@@ -1,1 +1,1 @@
-npm run watch
+npm run hot

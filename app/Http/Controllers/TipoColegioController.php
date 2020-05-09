@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TipoColegio;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TipoColegioController extends Controller
 {
@@ -14,7 +15,10 @@ class TipoColegioController extends Controller
      */
     public function index()
     {
-        //
+        $tipoColegio = TipoColegio::with([])
+                    ->get();
+        
+        return $tipoColegio;
     }
 
     /**
@@ -25,7 +29,16 @@ class TipoColegioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = request()->validate([
+            'nb_tipo_colegio'   => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $tipoColegio = tipoColegio::create($request->all());
+
+        return [ 'msj' => 'TipoColegio Agregado Correctamente', compact('tipoColegio') ];
     }
 
     /**
@@ -36,7 +49,7 @@ class TipoColegioController extends Controller
      */
     public function show(TipoColegio $tipoColegio)
     {
-        //
+        return $tipoColegio;
     }
 
     /**
@@ -48,7 +61,16 @@ class TipoColegioController extends Controller
      */
     public function update(Request $request, TipoColegio $tipoColegio)
     {
-        //
+        $validate = request()->validate([
+            'nb_tipo_colegio'   => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $tipoColegio = $tipoColegio->update($request->all());
+
+        return [ 'msj' => 'TipoColegio Editado' , compact('tipoColegio')];
     }
 
     /**
@@ -59,6 +81,8 @@ class TipoColegioController extends Controller
      */
     public function destroy(TipoColegio $tipoColegio)
     {
-        //
+        $tipoColegio = $tipoColegio->delete();
+ 
+        return [ 'msj' => 'TipoColegio Eliminado' , compact('tipoColegio')];
     }
 }

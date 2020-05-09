@@ -111,22 +111,6 @@ export default
 			})
 		},
 		
-		registerCommerce( { commit }, form )
-		{
-			return new Promise((resolve, reject) => 
-			{
-				axios.post('/api/' + 'register-commerce', form)
-				.then(response => 
-				{
-					resolve(response)
-				})
-				.catch(error => 
-				{
-					reject(error)
-				})
-			})
-		},
-		
 		verify( { commit }, form )
 		{
 			return new Promise((resolve, reject) => 
@@ -218,7 +202,6 @@ export default
 			commit('setToken' , data.token);
 			commit('setExpire', data.expire);
 
-			dispatch('apiComercioUsuario', data.user.id)
 		},
 
 		unatenticate({ commit })
@@ -233,7 +216,6 @@ export default
 			localStorage.removeItem("expire")
 			localStorage.setItem("auth", 	false)
 
-			commit('setComercio', null)
 		}
 
     }

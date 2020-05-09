@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Zona;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ZonaController extends Controller
 {
@@ -14,12 +15,10 @@ class ZonaController extends Controller
      */
     public function index()
     {
-        $zonas = Zona::with(['status'])
-                     ->select('id', 'nb_zona', 'tx_latitud', 'tx_longitud') 
-                     ->where('id_status', 1)      
-                     ->get();
+        $zona = Zona::with([])
+                    ->get();
         
-        return $zonas;
+        return $zona;
     }
 
     /**
@@ -31,21 +30,19 @@ class ZonaController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-
-            'co_zona'           => 'required',
-            'nb_zona'           => 'required',
-            'id_ciudad'         => 'required',
-            'tx_latitud'        => 'required',
-            'tx_longitud'       => 'required',
-            'tx_observaciones'  => 'required',
-            'id_status'         => 'required',
-            'id_usuario'        => 'required',
-            
+            'co_zona'           => 	'required|integer',
+			'nb_zona'           => 	'required|string|max:30',
+			'id_ciudad'         => 	'required|integer',
+			'tx_latitud'        => 	'required|string|max:20',
+			'tx_longitud'       => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
 
-        $zona = Zona::create($request->all());
+        $zona = zona::create($request->all());
 
-        return [ 'msj' => 'Registro Agregado Correctamente', compact('zona') ];    
+        return [ 'msj' => 'Zona Agregado Correctamente', compact('zona') ];
     }
 
     /**
@@ -57,7 +54,6 @@ class ZonaController extends Controller
     public function show(Zona $zona)
     {
         return $zona;
-
     }
 
     /**
@@ -70,21 +66,19 @@ class ZonaController extends Controller
     public function update(Request $request, Zona $zona)
     {
         $validate = request()->validate([
-            
-            'co_zona'           => 'required',
-            'nb_zona'           => 'required',
-            'id_ciudad'         => 'required',
-            'tx_latitud'        => 'required',
-            'tx_longitud'       => 'required',
-            'tx_observaciones'  => 'required',
-            'id_status'         => 'required',
-            'id_usuario'        => 'required',
-
+            'co_zona'           => 	'required|integer',
+			'nb_zona'           => 	'required|string|max:30',
+			'id_ciudad'         => 	'required|integer',
+			'tx_latitud'        => 	'required|string|max:20',
+			'tx_longitud'       => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
-        
+
         $zona = $zona->update($request->all());
 
-        return [ 'msj' => 'Registro Editado' , compact('zona')];    
+        return [ 'msj' => 'Zona Editado' , compact('zona')];
     }
 
     /**
@@ -97,6 +91,6 @@ class ZonaController extends Controller
     {
         $zona = $zona->delete();
  
-        return [ 'msj' => 'Registro Eliminado' , compact('zona')];
+        return [ 'msj' => 'Zona Eliminado' , compact('zona')];
     }
 }

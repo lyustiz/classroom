@@ -1,42 +1,68 @@
 import AppFormat  from './AppFormat';
 import AppRules   from './AppRules'
+import AppSelect  from './AppSelect'
 import AppMessage from './AppMessage'
 
 export default 
 {
-    mixins: [AppFormat, AppRules, AppMessage],
+    mixins: [AppFormat, AppRules, AppSelect, AppMessage],
+
+    props: {
+        item: {
+            type: Object,
+            default: null
+        },
+        action: {
+            type: String,
+            default: null
+        },
+		title: {
+            type: String,
+            default: null
+        },
+        clear:{
+            type: Boolean,
+            default: false
+        },
+	},
 
     data() 
     {
         return {
-            idUser:     this.$store.getters.idUser,
+            idUser:     1,//this.$store.getters.idUser,
             valid:      true,
             calendar:   false,
             dates:      {},
-            picker:     false,
             loading:    true,
-            item:       null,
-            modal:      false
+            default:    {}
         }
     },
 
     created()
     {
-        //this.fillSelects()
-       // this.mapForm();
-       //donde esta mi hogar
+        this.fillSelects()
+
+        this.setDataForm(this.action)
+    },
+
+    watch: 
+    {
+        action (value)
+        {
+            this.setDataForm(value)
+        },
     },
 
 	computed: 
 	{
         fullUrl() 
 		{
-            return this.$App.baseUrl + 'v1/' + this.resource;
+            return this.$App.apiUrl + this.resource;
         },
 		
         fullUrlId() 
 		{
-            return this.fullUrl + '/' + this.item['id']
+            return this.fullUrl + '/' + this.item.id
         },
     },
 
@@ -46,44 +72,48 @@ export default
         {
             if(this.item)
             {
-                this.mapData(this.item)
-            }else
-            {
-               this.clear()
-            }
-        },
-
-        mapData(data)
-        {
-            if(data)
-            {
-                for(var key in data)
+                for(var key in this.item)
                 {
                     if(this.form.hasOwnProperty(key))
                     {
-                        if(key.includes('fe_'))
+                        if(key.includes('fe_') && this.item[key].length > 10)
                         {
-                            this.dates[key] =  this.formatDate(data[key]);
+                            this.dates[key] =  this.formatDate(this.item[key]);
 							
-                            if(data[key])
-                            {
-                                this.form[key]  = data[key].substr(0, 10);
-                            }
+							this.form[key] = this.item[key].substr(0, 10);
 							
                         } else {
 							
-							this.form[key]  =  data[key];
+							this.form[key]  =  this.item[key];
 						}
                     }
                 }
+            }else
+            {
+               this.reset()
+            }
+        },
+        
+        setDataForm(action)
+        {
+            if(this.action == 'upd')
+            {
+                this.mapForm()
+            }
+            else if(this.action == 'ins')
+            {
+                this.reset()
             }
         },
 
 		store() 
 		{
             if (!this.$refs.form.validate())  return 
+
+            this.setDefaults()
 			
             this.loading = true;
+            this.form.id_usuario = this.idUser 
 				
             axios.post(this.fullUrl, this.form)
             .then(response => 
@@ -104,8 +134,10 @@ export default
 		{
             if (!this.$refs.form.validate())  return 
 
+            this.setDefaults()
+
             this.loading = true;
-            this.form.id_usuario = 0;
+            this.form.id_usuario = this.idUser
             
             axios.put(this.fullUrlId, this.form)
             .then(response => 
@@ -124,37 +156,47 @@ export default
         
         reset()
         {
-
-            for(var key in this.dates)
+            if(this.action == 'upd')
             {
-                this.dates[key] = '';
+                this.mapForm()
             }
-            
-            if(this.$refs.form)
+            else
             {
-                this.$refs.form.reset();
-            }
-            
-            this.mapForm();
+                for(var key in this.form)
+                {
+                    this.form[key] = null;
+                }
 
+                for(var key in this.dates)
+                {
+                    this.dates[key] = null;
+                }
+                
+                if(this.$refs.form)
+                {
+                    this.$refs.form.reset();
+                }
+            }
             this.form.id_usuario = this.idUser
+            
         },
 		
-        clear()
+        cancel()
         {
-            for(var key in this.dates)
-            {
-                this.dates[key] = '';
-            }
-
-            for(var key in this.form)
-            {
-                this.form[key] = '';
-            }
-
-            this.$refs.form.resetValidation();
-
-            this.form.id_usuario = this.idUser
+            this.$emit('closeModal');
+            this.reset();
         },
+
+        setDefaults()
+        {
+            for(var key in this.default)
+            {
+                if(this.form.hasOwnProperty(key))
+                {
+                    this.form[key]  =  this.default[key];
+                }
+            }
+           
+        }
     }
 }

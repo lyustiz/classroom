@@ -47,24 +47,6 @@
                 </v-list-item-action>
             </v-list-item>
 
-            <v-list-item v-if="user.id_tipo_usuario == 3">
-                <v-list-item-avatar>
-                    <v-icon 
-                    :color="(getComercioOpen) ? 'green': 'red' " 
-                    size="38">
-                        {{(getComercioOpen) ? 'mdi-garage-open': 'mdi-garage' }}
-                    </v-icon> 
-                </v-list-item-avatar>
-
-                <v-list-item-content>
-                    <v-list-item-title>Abrir/Cerrar Comercio </v-list-item-title>
-                </v-list-item-content>
-
-                <v-list-item-action>
-                    <v-switch v-model="getComercioOpen" inset :loading="loading" color="green"></v-switch>
-                </v-list-item-action>
-            </v-list-item>
-
         </v-list-item-group>
         </v-list>
 
@@ -102,20 +84,6 @@
                 return this.$store.getters['getUser']
             },
             
-            getComercioOpen:
-            {
-                get(){
-                    return (this.$store.getters['getComercioOpen'] == 1) ? true : false;
-                },
-                set(openclose) {
-                    this.openCloseComercio(openclose)
-                }
-            },
-
-            getComercioId()
-            {
-                return this.$store.getters['getComercioId'] 
-            }
         },
 
         methods: 
@@ -148,32 +116,6 @@
                 this.showDialog = false
             },
 
-            openCloseComercio(open)
-            {
-                if(this.loading) return                
-                
-                const openclose = {
-                    id_comercio: this.getComercioId,
-                    bo_abierto: (open) ? 1 : 0,
-                }
-
-                this.loading = true;
-
-                this.$store.dispatch('apiOpenCloseComercio', openclose)
-                .then(response => {
-                
-                    if(response.status == 200)
-                    {
-                        this.showMessage(response.data.msj)
-                    }
-
-                }).catch(error =>
-                {
-                    console.log(error);
-                })
-                .finally(() => (this.loading = false))
-  
-            }
         }
     }
 </script>

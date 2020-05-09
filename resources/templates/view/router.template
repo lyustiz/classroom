@@ -1,0 +1,14 @@
+{
+    path: '/banco',
+    name: 'banco',
+    icon: 'bubble_chart',
+    component: Banco,
+    children:
+    [
+        {
+            path: 'form',
+            name: 'bancoForm',
+            component: BancoForm
+        }
+    ]
+},

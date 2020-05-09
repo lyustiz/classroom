@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProfesorMateria;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProfesorMateriaController extends Controller
 {
@@ -14,7 +15,10 @@ class ProfesorMateriaController extends Controller
      */
     public function index()
     {
-        //
+        $profesorMateria = ProfesorMateria::with([])
+                    ->get();
+        
+        return $profesorMateria;
     }
 
     /**
@@ -25,7 +29,19 @@ class ProfesorMateriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = request()->validate([
+            'id_profesor'       => 	'required|integer',
+			'id_materia'        => 	'required|integer',
+			'id_grado'          => 	'required|integer',
+			'id_grupo'          => 	'required|integer',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $profesorMateria = profesorMateria::create($request->all());
+
+        return [ 'msj' => 'ProfesorMateria Agregado Correctamente', compact('profesorMateria') ];
     }
 
     /**
@@ -36,7 +52,7 @@ class ProfesorMateriaController extends Controller
      */
     public function show(ProfesorMateria $profesorMateria)
     {
-        //
+        return $profesorMateria;
     }
 
     /**
@@ -48,7 +64,19 @@ class ProfesorMateriaController extends Controller
      */
     public function update(Request $request, ProfesorMateria $profesorMateria)
     {
-        //
+        $validate = request()->validate([
+            'id_profesor'       => 	'required|integer',
+			'id_materia'        => 	'required|integer',
+			'id_grado'          => 	'required|integer',
+			'id_grupo'          => 	'required|integer',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $profesorMateria = $profesorMateria->update($request->all());
+
+        return [ 'msj' => 'ProfesorMateria Editado' , compact('profesorMateria')];
     }
 
     /**
@@ -59,6 +87,8 @@ class ProfesorMateriaController extends Controller
      */
     public function destroy(ProfesorMateria $profesorMateria)
     {
-        //
+        $profesorMateria = $profesorMateria->delete();
+ 
+        return [ 'msj' => 'ProfesorMateria Eliminado' , compact('profesorMateria')];
     }
 }

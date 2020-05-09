@@ -9,15 +9,15 @@ export default
     {
         return {
 
-            baseUrl:  this.$App.baseUrl,
-            idUser:   this.$store.getters.idUser,
-            loading:  true,
-            modal:    false,
-            items:    [],
-            item:     {},
-            search:   '',
-            action:   '',
-            dialog:   false,
+            apiUrl:    this.$App.apiUrl,
+            idUser:    this.$store.getters.idUser,
+            loading:   true,
+            modal:     false,
+            items:     [],
+            item:      {},
+            search:    '',
+            action:    '',
+            dialog:    false,
         }
     },
 
@@ -30,11 +30,11 @@ export default
     {
         fullUrl() 
         {
-            return this.baseUrl + this.resource;
+            return this.apiUrl + this.resource;
         },
         fullUrlId() 
         {
-            return this.fullUrl + '/' + this.item['id_' + this.resource]
+            return this.fullUrl + '/' + this.item.id
         }
     },
     
@@ -69,24 +69,24 @@ export default
             this.dialog = false;
             this.item   = {};
         },
-        deleteConfirm ()
+        deleteItem ()
         {
             this.loading = true
             axios.delete(this.fullUrlId)
-            .then(respuesta => 
+            .then(response => 
             {
-                this.showMensaje(respuesta.data.msj)
+                this.showMessage(response.data.msj)
                 this.item = {};
-                this.dialog = false;
                 this.list();
             })
             .catch(error => 
             {
-                this.eliminar = error
+                this.showError(error)
             })
             .finally( () => 
             {
                 this.loading = false
+                this.dialog  = false;
             });
         },
         list()
@@ -106,6 +106,15 @@ export default
             {
                 this.loading = false
             });
+        },
+        changeStatus(payload)
+        {
+            this.loading = true
+            setInterval(() => { 
+                    this.loading = false
+                
+            }, 3000);
+            console.log('changeStatus', payload)
         }
     }
 }

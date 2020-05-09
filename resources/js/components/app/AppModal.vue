@@ -1,21 +1,26 @@
 <template>
 
-<v-dialog v-model="modal" persistent width="500">
-    <v-card>
+<v-dialog v-model="modal" persistent width="600" min-width="700">
 
-        <v-card-title dark :color="(HeadColor) ? HeadColor : $App.theme.headModal">
+    <v-card >
 
-            <v-btn icon x-small dark @click.native="$emit('closeModal')">
-                <v-icon>close</v-icon>
+        <v-toolbar dark flat dense :color="(HeadColor) ? HeadColor : $App.theme.headModal">
+
+            <v-btn icon x-small dark class="mx-1" @click.native="$emit('closeModal')">
+                <v-icon>mdi-close-circle</v-icon>
             </v-btn>
 
-            <v-toolbar-title>
-                {{ nbAction }}
-            </v-toolbar-title>
+            <v-toolbar-title>{{ title }}</v-toolbar-title>
 
-        </v-card-title>
+            <v-spacer></v-spacer>
 
-        <v-card-text>
+            <v-btn icon>
+                <v-icon>mdi-dots-vertical</v-icon>
+            </v-btn>
+        
+        </v-toolbar>
+
+        <v-card-text class="py-1 px-1">
 
             <slot></slot>
 
@@ -33,7 +38,7 @@ export default {
     name: 'app-modal',
     props:
     {
-        nbAction:{
+        title:{
             type:       String,
             default:    ''
         },

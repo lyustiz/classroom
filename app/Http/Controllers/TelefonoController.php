@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Telefono;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TelefonoController extends Controller
 {
@@ -14,11 +15,10 @@ class TelefonoController extends Controller
      */
     public function index()
     {
-        $telefonos = Telefono::with(['status'])
-                             ->get();
+        $telefono = Telefono::with([])
+                    ->get();
         
-        return $telefonos;
-
+        return $telefono;
     }
 
     /**
@@ -30,20 +30,18 @@ class TelefonoController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-
-            'tx_telefono'       => 'required|max:12',
-            'id_comercio'       => 'required',
-            'id_tipo_telefono'  => 'required',
-            'bo_whatsapp'       => 'required',
-            'id_usuario'        => 'required',
+            'tx_telefono'       => 	'required|string|max:20',
+			'id_tipo_telefono'  => 	'required|integer',
+			'id_entidad'        => 	'required|integer',
+			'bo_whatsapp'       => 	'required|boolean',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
 
-        $request->merge(['id_status' => 1]);
-        
-        $telefono = Telefono::create($request->all());
+        $telefono = telefono::create($request->all());
 
-        return [ 'msj' => 'Telefono Agregado Correctamente', 'telefono' => $telefono ];
-    
+        return [ 'msj' => 'Telefono Agregado Correctamente', compact('telefono') ];
     }
 
     /**
@@ -67,21 +65,18 @@ class TelefonoController extends Controller
     public function update(Request $request, Telefono $telefono)
     {
         $validate = request()->validate([
-
-            'tx_telefono'       => 'required|max:12',
-            'id_comercio'       => 'required',
-            'id_tipo_telefono'  => 'required',
-            'bo_whatsapp'      => 'required',
-            'tx_observaciones'  => 'required',
-            'id_status'         => 'required',
-            'id_usuario'        => 'required'
-            
+            'tx_telefono'       => 	'required|string|max:20',
+			'id_tipo_telefono'  => 	'required|integer',
+			'id_entidad'        => 	'required|integer',
+			'bo_whatsapp'       => 	'required|boolean',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
-        
+
         $telefono = $telefono->update($request->all());
 
-        return [ 'msj' => 'Registro Editado' , compact('telefono')];
-    
+        return [ 'msj' => 'Telefono Editado' , compact('telefono')];
     }
 
     /**
@@ -95,6 +90,5 @@ class TelefonoController extends Controller
         $telefono = $telefono->delete();
  
         return [ 'msj' => 'Telefono Eliminado' , compact('telefono')];
-
     }
 }

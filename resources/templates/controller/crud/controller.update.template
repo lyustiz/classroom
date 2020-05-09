@@ -1,0 +1,7 @@
+$validate = request()->validate([
+            {{validateFields}}
+        ]);
+
+        ${{modelInstance}} = ${{modelInstance}}->update($request->all());
+
+        return [ 'msj' => '{{modelName}} Editado' , compact('{{modelInstance}}')];

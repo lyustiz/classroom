@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Subcripcion;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SubcripcionController extends Controller
 {
@@ -14,11 +15,10 @@ class SubcripcionController extends Controller
      */
     public function index()
     {
-        $subcripcions = Subcripcion::with(['status'])
-                                   ->get();
+        $subcripcion = Subcripcion::with([])
+                    ->get();
         
-        return $subcripcions;
-
+        return $subcripcion;
     }
 
     /**
@@ -30,17 +30,19 @@ class SubcripcionController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-
-            'tx_observaciones' => 'required',
-            'id_status' => 'required',
-            'id_usuario' => 'required',
-            
+            'id_colegio'        => 	'required|integer',
+			'aa_lectivo'        => 	'required|integer',
+			'mo_cobro'          => 	'required|numeric|max:9',
+			'mo_pagado'         => 	'required|numeric|max:9',
+			'mo_saldo'          => 	'required|numeric|max:9',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
 
-        $subcripcion = Subcripcion::create($request->all());
+        $subcripcion = subcripcion::create($request->all());
 
-        return [ 'msj' => 'Registro Agregado Correctamente', compact('subcripcion') ];
-    
+        return [ 'msj' => 'Subcripcion Agregado Correctamente', compact('subcripcion') ];
     }
 
     /**
@@ -52,7 +54,6 @@ class SubcripcionController extends Controller
     public function show(Subcripcion $subcripcion)
     {
         return $subcripcion;
-
     }
 
     /**
@@ -65,17 +66,19 @@ class SubcripcionController extends Controller
     public function update(Request $request, Subcripcion $subcripcion)
     {
         $validate = request()->validate([
-            
-            'tx_observaciones' => 'required',
-            'id_status' => 'required',
-            'id_usuario' => 'required',
-
+            'id_colegio'        => 	'required|integer',
+			'aa_lectivo'        => 	'required|integer',
+			'mo_cobro'          => 	'required|numeric|max:9',
+			'mo_pagado'         => 	'required|numeric|max:9',
+			'mo_saldo'          => 	'required|numeric|max:9',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
-        
+
         $subcripcion = $subcripcion->update($request->all());
 
-        return [ 'msj' => 'Registro Editado' , compact('subcripcion')];
-    
+        return [ 'msj' => 'Subcripcion Editado' , compact('subcripcion')];
     }
 
     /**
@@ -88,7 +91,6 @@ class SubcripcionController extends Controller
     {
         $subcripcion = $subcripcion->delete();
  
-        return [ 'msj' => 'Registro Eliminado' , compact('subcripcion')];
-
+        return [ 'msj' => 'Subcripcion Eliminado' , compact('subcripcion')];
     }
 }

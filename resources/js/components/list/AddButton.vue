@@ -2,8 +2,8 @@
 
     <v-tooltip bottom>
         <template v-slot:activator="{ on }">
-            <v-btn fab dark small color="success" v-on="on" @click="insItem()" >
-                <v-icon>add</v-icon>
+            <v-btn icon dark small v-on="on" @click="insItem()" class="elevation-5">
+                <v-icon size="38" color="success" >mdi-plus-circle</v-icon>
             </v-btn>
         </template>
         <span>{{ mensaje }}</span>

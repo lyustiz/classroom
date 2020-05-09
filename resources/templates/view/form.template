@@ -1,0 +1,74 @@
+<template>
+
+    <v-form ref="form" v-model="valid" lazy-validation>
+
+    <v-card :loading="loading" >
+
+        <v-card-text>
+
+        <v-row>
+
+                {{formFields}}
+
+        </v-row>
+
+        </v-card-text>
+
+        <v-card-actions>
+            <v-spacer></v-spacer>
+            <form-buttons
+                @update="update()"
+                @store="store()"
+                @clear="clear()"
+                @cancel="cancel()"
+                :action="action"
+                :valid="valid"
+                :loading:="loading"
+            ></form-buttons>
+        </v-card-actions>
+
+        <pre v-if="$App.debug">{{ $data }}</pre>
+
+    </v-card>
+    
+    </v-form>
+
+</template>
+
+<script>
+
+import Appform from '@mixins/Appform';
+
+export default {
+    mixins: [Appform],
+    data() {
+        return {
+            resource: '{{tableName}}',
+            dates:
+            {
+                {{pickers}}
+            },
+            pickers:
+            {
+                {{pickers}}
+            },
+            form:
+            {
+                {{tableField}}
+            },
+            selects:
+            {
+                {{foreignTables}}
+            },
+        }
+    },
+
+    methods:
+    {
+
+    }
+}
+</script>
+
+<style>
+</style>

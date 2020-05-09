@@ -1,0 +1,7 @@
+$validate = request()->validate([
+            {{validateFields}}
+        ]);
+
+        ${{modelInstance}} = {{modelInstance}}::create($request->all());
+
+        return [ 'msj' => '{{modelName}} Agregado Correctamente', compact('{{modelInstance}}') ];

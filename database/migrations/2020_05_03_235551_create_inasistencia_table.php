@@ -14,8 +14,17 @@ class CreateInasistenciaTable extends Migration
     public function up()
     {
         Schema::create('inasistencia', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('id_estudiante');
+            $table->integer('id_grado_materia');
+            $table->integer('id_grupo');
+            $table->date('fe_inasistencia');
+            $table->boolean('bo_justificado');
+            $table->string('tx_observaciones', 100)->nullable();
+            $table->integer('id_status');
+            $table->integer('id_usuario');
             $table->timestamps();
+
         });
     }
 

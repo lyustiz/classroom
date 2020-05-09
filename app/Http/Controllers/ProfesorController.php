@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Profesor;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProfesorController extends Controller
 {
@@ -14,7 +15,10 @@ class ProfesorController extends Controller
      */
     public function index()
     {
-        //
+        $profesor = Profesor::with([])
+                    ->get();
+        
+        return $profesor;
     }
 
     /**
@@ -25,7 +29,23 @@ class ProfesorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = request()->validate([
+            'nb_nombre'         => 	'required|string|max:30',
+			'nb_apellido'       => 	'required|string|max:30',
+			'tx_documento'      => 	'required|string|max:30',
+			'tx_tarjeta_prof'   => 	'required|string|max:30',
+			'tx_direccion'      => 	'required|string|max:50',
+			'tx_telefono'       => 	'required|string|max:20',
+			'tx_telefono2'      => 	'required|string|max:20',
+			'tx_foto'           => 	'required|string|max:30',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $profesor = profesor::create($request->all());
+
+        return [ 'msj' => 'Profesor Agregado Correctamente', compact('profesor') ];
     }
 
     /**
@@ -36,7 +56,7 @@ class ProfesorController extends Controller
      */
     public function show(Profesor $profesor)
     {
-        //
+        return $profesor;
     }
 
     /**
@@ -48,7 +68,23 @@ class ProfesorController extends Controller
      */
     public function update(Request $request, Profesor $profesor)
     {
-        //
+        $validate = request()->validate([
+            'nb_nombre'         => 	'required|string|max:30',
+			'nb_apellido'       => 	'required|string|max:30',
+			'tx_documento'      => 	'required|string|max:30',
+			'tx_tarjeta_prof'   => 	'required|string|max:30',
+			'tx_direccion'      => 	'required|string|max:50',
+			'tx_telefono'       => 	'required|string|max:20',
+			'tx_telefono2'      => 	'required|string|max:20',
+			'tx_foto'           => 	'required|string|max:30',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $profesor = $profesor->update($request->all());
+
+        return [ 'msj' => 'Profesor Editado' , compact('profesor')];
     }
 
     /**
@@ -59,6 +95,8 @@ class ProfesorController extends Controller
      */
     public function destroy(Profesor $profesor)
     {
-        //
+        $profesor = $profesor->delete();
+ 
+        return [ 'msj' => 'Profesor Eliminado' , compact('profesor')];
     }
 }

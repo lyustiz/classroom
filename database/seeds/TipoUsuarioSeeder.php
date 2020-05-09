@@ -16,19 +16,31 @@ class TipoUsuarioSeeder extends Seeder
                 'nb_tipo_usuario'    => 'Administrador',
                 'tx_observaciones'   => '',
                 'id_status'          => '1',
-                'id_usuario'         => '0',
+                'id_usuario'         => '1',
             ],
             [
-                'nb_tipo_usuario'    => 'Usuario',
+                'nb_tipo_usuario'    => 'Profesor',
                 'tx_observaciones'   => '',
                 'id_status'          => '1',
-                'id_usuario'         => '0',
+                'id_usuario'         => '1',
             ],
             [
-                'nb_tipo_usuario'    => 'Comercio',
+                'nb_tipo_usuario'    => 'Estudiante',
                 'tx_observaciones'   => '',
                 'id_status'          => '1',
-                'id_usuario'         => '0',
+                'id_usuario'         => '1',
+            ],
+            [
+                'nb_tipo_usuario'    => 'Representante',
+                'tx_observaciones'   => '',
+                'id_status'          => '1',
+                'id_usuario'         => '1',
+            ],
+            [
+                'nb_tipo_usuario'    => 'Trabajador',
+                'tx_observaciones'   => '',
+                'id_status'          => '1',
+                'id_usuario'         => '1',
             ],
 
         ]);

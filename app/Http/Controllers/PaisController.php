@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pais;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PaisController extends Controller
 {
@@ -14,11 +15,10 @@ class PaisController extends Controller
      */
     public function index()
     {
-        $paises = Pais::with(['status'])
-                      ->get();
+        $pais = Pais::with([])
+                    ->get();
         
-        return $paises;
-
+        return $pais;
     }
 
     /**
@@ -30,20 +30,17 @@ class PaisController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-
-           'nb_pais'            => 'required',
-           'co_pais'            => 'required',
-           'tx_iso'             => 'required',
-           'tx_observaciones'   => 'required',
-           'id_status'          => 'required',
-           'id_usuario'         => 'required',
-            
+            'nb_pais'           => 	'required|string|max:30',
+			'co_pais'           => 	'required|integer|max:200',
+			'tx_iso'            => 	'required|string|max:3',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
 
-        $pais = Pais::create($request->all());
+        $pais = pais::create($request->all());
 
-        return [ 'msj' => 'Registro Agregado Correctamente', compact('pais') ];
-    
+        return [ 'msj' => 'Pais Agregado Correctamente', compact('pais') ];
     }
 
     /**
@@ -55,7 +52,6 @@ class PaisController extends Controller
     public function show(Pais $pais)
     {
         return $pais;
-
     }
 
     /**
@@ -68,20 +64,17 @@ class PaisController extends Controller
     public function update(Request $request, Pais $pais)
     {
         $validate = request()->validate([
-
-           'nb_pais'            => 'required',
-           'co_pais'            => 'required',
-           'tx_iso'             => 'required',
-           'tx_observaciones'   => 'required',
-           'id_status'          => 'required',
-           'id_usuario'         => 'required',
-
+            'nb_pais'           => 	'required|string|max:30',
+			'co_pais'           => 	'required|integer',
+			'tx_iso'            => 	'required|string|max:3',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
-        
+
         $pais = $pais->update($request->all());
 
-        return [ 'msj' => 'Registro Editado' , compact('pais')];
-    
+        return [ 'msj' => 'Pais Editado' , compact('pais')];
     }
 
     /**
@@ -94,7 +87,6 @@ class PaisController extends Controller
     {
         $pais = $pais->delete();
  
-        return [ 'msj' => 'Registro Eliminado' , compact('pais')];
-
+        return [ 'msj' => 'Pais Eliminado' , compact('pais')];
     }
 }

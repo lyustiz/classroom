@@ -15,7 +15,8 @@ class CreateContactoTable extends Migration
     {
         Schema::create('contacto', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_comercio')->unsigned();
+            $table->integer('id_tipo_contacto')->unsigned();
+            $table->integer('id_entidad')->unsigned();
             $table->string('tx_email', 80);
 			$table->string('tx_sitio_web', 80)->nullable();
 			$table->string('tx_facebook', 30)->nullable();

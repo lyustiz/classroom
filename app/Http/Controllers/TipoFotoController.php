@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TipoFoto;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TipoFotoController extends Controller
 {
@@ -14,11 +15,10 @@ class TipoFotoController extends Controller
      */
     public function index()
     {
-        $tipoFotos = TipoFoto::with(['status'])
-                             ->get();
+        $tipoFoto = TipoFoto::with([])
+                    ->get();
         
-        return $tipoFotos;
-
+        return $tipoFoto;
     }
 
     /**
@@ -30,20 +30,17 @@ class TipoFotoController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-            
-            'nb_tipo_foto'     => 'required',
-            'tx_icono'         => 'required',
-            'tx_path'          => 'required',
-            'tx_observaciones' => 'required',
-            'id_status'        => 'required',
-            'id_usuario'       => 'required',
-            
+            'nb_tipo_foto'      => 	'required|string|max:30',
+			'tx_icono'          => 	'required|string|max:20',
+			'tx_path'           => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
 
-        $tipoFoto = TipoFoto::create($request->all());
+        $tipoFoto = tipoFoto::create($request->all());
 
-        return [ 'msj' => 'Registro Agregado Correctamente', compact('tipoFoto') ];
-    
+        return [ 'msj' => 'TipoFoto Agregado Correctamente', compact('tipoFoto') ];
     }
 
     /**
@@ -55,7 +52,6 @@ class TipoFotoController extends Controller
     public function show(TipoFoto $tipoFoto)
     {
         return $tipoFoto;
-
     }
 
     /**
@@ -68,20 +64,17 @@ class TipoFotoController extends Controller
     public function update(Request $request, TipoFoto $tipoFoto)
     {
         $validate = request()->validate([
-            
-            'nb_tipo_foto'     => 'required',
-            'tx_icono'         => 'required',
-            'tx_path'          => 'required',
-            'tx_observaciones' => 'required',
-            'id_status'        => 'required',
-            'id_usuario'       => 'required',
-
+            'nb_tipo_foto'      => 	'required|string|max:30',
+			'tx_icono'          => 	'required|string|max:20',
+			'tx_path'           => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
-        
+
         $tipoFoto = $tipoFoto->update($request->all());
 
-        return [ 'msj' => 'Registro Editado' , compact('tipoFoto')];
-    
+        return [ 'msj' => 'TipoFoto Editado' , compact('tipoFoto')];
     }
 
     /**
@@ -94,7 +87,6 @@ class TipoFotoController extends Controller
     {
         $tipoFoto = $tipoFoto->delete();
  
-        return [ 'msj' => 'Registro Eliminado' , compact('tipoFoto')];
-
+        return [ 'msj' => 'TipoFoto Eliminado' , compact('tipoFoto')];
     }
 }

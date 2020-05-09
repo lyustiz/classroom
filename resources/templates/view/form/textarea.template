@@ -1,0 +1,9 @@
+
+        <v-col cols="12" md="6">
+            <v-textarea
+                v-model="form.{{columnName}}"
+                label="{{labelName}}"
+                placeholder="Indique {{labelName}}"
+                dense
+            ></v-textarea>
+        </v-col>

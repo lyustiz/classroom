@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Departamento;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DepartamentoController extends Controller
 {
@@ -14,11 +15,10 @@ class DepartamentoController extends Controller
      */
     public function index()
     {
-        $departamentos = Departamento::with(['status'])
-                        ->get();
+        $departamento = Departamento::with([])
+                    ->get();
         
-        return $departamentos;
-
+        return $departamento;
     }
 
     /**
@@ -30,22 +30,19 @@ class DepartamentoController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-            
-            'co_departamento'   => 'required',
-            'nb_departamento'   => 'required',
-            'id_pais'           => 'required',
-            'tx_latitud'        => 'required',
-            'tx_longitud'       => 'required',
-            'tx_observaciones'  => 'required',
-            'id_status'         => 'required',
-            'id_usuario'        => 'required',
-            
+            'co_departamento'   => 	'required|integer',
+			'nb_departamento'   => 	'required|string|max:30',
+			'id_pais'           => 	'required|integer',
+			'tx_latitud'        => 	'required|string|max:20',
+			'tx_longitud'       => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
 
-        $departamento = Departamento::create($request->all());
+        $departamento = departamento::create($request->all());
 
-        return [ 'msj' => 'Registro Agregado Correctamente', compact('departamento') ];
-    
+        return [ 'msj' => 'Departamento Agregado Correctamente', compact('departamento') ];
     }
 
     /**
@@ -69,22 +66,19 @@ class DepartamentoController extends Controller
     public function update(Request $request, Departamento $departamento)
     {
         $validate = request()->validate([
-
-            'co_departamento'   => 'required',
-            'nb_departamento'   => 'required',
-            'id_pais'           => 'required',
-            'tx_latitud'        => 'required',
-            'tx_longitud'       => 'required',
-            'tx_observaciones'  => 'required',
-            'id_status'         => 'required',
-            'id_usuario'        => 'required',
-
+            'co_departamento'   => 	'required|integer',
+			'nb_departamento'   => 	'required|string|max:30',
+			'id_pais'           => 	'required|integer',
+			'tx_latitud'        => 	'required|string|max:20',
+			'tx_longitud'       => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
-        
+
         $departamento = $departamento->update($request->all());
 
-        return [ 'msj' => 'Registro Editado' , compact('departamento')];
-    
+        return [ 'msj' => 'Departamento Editado' , compact('departamento')];
     }
 
     /**
@@ -97,7 +91,6 @@ class DepartamentoController extends Controller
     {
         $departamento = $departamento->delete();
  
-        return [ 'msj' => 'Registro Eliminado' , compact('departamento')];
-
+        return [ 'msj' => 'Departamento Eliminado' , compact('departamento')];
     }
 }

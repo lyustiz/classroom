@@ -6,33 +6,38 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subcripcion extends Model
 {
-    protected $table 	= 'subcripcion';
+    protected $table 	  = 'subcripcion';
+
+    protected $fillable   = [
+                            'id_colegio',
+	 	 	 	 	 	 	'aa_lectivo',
+	 	 	 	 	 	 	'mo_cobro',
+	 	 	 	 	 	 	'mo_pagado',
+	 	 	 	 	 	 	'mo_saldo',
+	 	 	 	 	 	 	'tx_observaciones',
+	 	 	 	 	 	 	'id_status',
+	 	 	 	 	 	 	'id_usuario'
+                            ]; 
     
-    protected $fillable =   [
-                            'tx_observaciones',
-                            'bo_activo',
-                            'id_usuario',
+    protected $hidden     = [
                             'created_at',
-                            'updated_at'
-                            ];
-
-    protected $hidden   = [ 'created_at', 'updated_at'];
-
-    public function comercio(){
-
-        return $this->BelongsTo('App\Models\Comercio', 'id_comercio');
-
-    }
-    
+	 	 	 	 	 	 	'updated_at'
+                            ]; 
+                           
     public function status(){
-    
+
         return $this->BelongsTo('App\Models\Status', 'id_status');
-    
+
+    }
+                           
+    public function usuario(){
+
+        return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
+
     }
 
-    public function usuario(){
-    
-        return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
-    
-    }
+                           
+    //
+
+
 }

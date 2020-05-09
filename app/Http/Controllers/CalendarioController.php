@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Calendario;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CalendarioController extends Controller
 {
@@ -14,7 +15,10 @@ class CalendarioController extends Controller
      */
     public function index()
     {
-        //
+        $calendario = Calendario::with([])
+                    ->get();
+        
+        return $calendario;
     }
 
     /**
@@ -25,7 +29,17 @@ class CalendarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = request()->validate([
+            'nb_calendario'     => 	'required|string|max:30',
+			'aa_escolar'        => 	'required|integer',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $calendario = calendario::create($request->all());
+
+        return [ 'msj' => 'Calendario Agregado Correctamente', compact('calendario') ];
     }
 
     /**
@@ -36,7 +50,7 @@ class CalendarioController extends Controller
      */
     public function show(Calendario $calendario)
     {
-        //
+        return $calendario;
     }
 
     /**
@@ -48,7 +62,17 @@ class CalendarioController extends Controller
      */
     public function update(Request $request, Calendario $calendario)
     {
-        //
+        $validate = request()->validate([
+            'nb_calendario'     => 	'required|string|max:30',
+			'aa_escolar'        => 	'required|integer',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $calendario = $calendario->update($request->all());
+
+        return [ 'msj' => 'Calendario Editado' , compact('calendario')];
     }
 
     /**
@@ -59,6 +83,8 @@ class CalendarioController extends Controller
      */
     public function destroy(Calendario $calendario)
     {
-        //
+        $calendario = $calendario->delete();
+ 
+        return [ 'msj' => 'Calendario Eliminado' , compact('calendario')];
     }
 }

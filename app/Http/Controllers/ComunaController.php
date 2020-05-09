@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comuna;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ComunaController extends Controller
 {
@@ -14,11 +15,10 @@ class ComunaController extends Controller
      */
     public function index()
     {
-        $comunas = Comuna::with(['status'])
-                         ->get();
+        $comuna = Comuna::with([])
+                    ->get();
         
-        return $comunas;
-
+        return $comuna;
     }
 
     /**
@@ -30,22 +30,19 @@ class ComunaController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-
-            'co_comuna'         => 'required',
-            'nb_comuna'         => 'required',
-            'id_zona'           => 'required',
-            'tx_latitud'        => 'required',
-            'tx_longitud'       => 'required',
-            'tx_observaciones'  => 'required',
-            'id_status'         => 'required',
-            'id_usuario'        => 'required',
-            
+            'co_comuna'         => 	'required|integer',
+			'nb_comuna'         => 	'required|string|max:30',
+			'id_zona'           => 	'required|integer',
+			'tx_latitud'        => 	'required|string|max:20',
+			'tx_longitud'       => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
 
-        $comuna = Comuna::create($request->all());
+        $comuna = comuna::create($request->all());
 
-        return [ 'msj' => 'Registro Agregado Correctamente', compact('comuna') ];
-    
+        return [ 'msj' => 'Comuna Agregado Correctamente', compact('comuna') ];
     }
 
     /**
@@ -60,21 +57,6 @@ class ComunaController extends Controller
     }
 
     /**
-     * Listar Barrio por COmuna     
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function comunaZona($id_zona)
-    {
-        $barrios =  Comuna::select('id', 'nb_comuna', 'tx_latitud', 'tx_longitud')
-                          ->where('id_zona', $id_zona)
-                          ->where('id_status', 1)
-                          ->get();
-
-        return $barrios;
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -84,22 +66,19 @@ class ComunaController extends Controller
     public function update(Request $request, Comuna $comuna)
     {
         $validate = request()->validate([
-
-            'co_comuna'         => 'required',
-            'nb_comuna'         => 'required',
-            'id_zona'           => 'required',
-            'tx_latitud'        => 'required',
-            'tx_longitud'       => 'required',
-            'tx_observaciones'  => 'required',
-            'id_status'         => 'required',
-            'id_usuario'        => 'required',
-
+            'co_comuna'         => 	'required|integer',
+			'nb_comuna'         => 	'required|string|max:30',
+			'id_zona'           => 	'required|integer',
+			'tx_latitud'        => 	'required|string|max:20',
+			'tx_longitud'       => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
-        
+
         $comuna = $comuna->update($request->all());
 
-        return [ 'msj' => 'Registro Editado' , compact('comuna')];
-    
+        return [ 'msj' => 'Comuna Editado' , compact('comuna')];
     }
 
     /**
@@ -112,7 +91,6 @@ class ComunaController extends Controller
     {
         $comuna = $comuna->delete();
  
-        return [ 'msj' => 'Registro Eliminado' , compact('comuna')];
-
+        return [ 'msj' => 'Comuna Eliminado' , compact('comuna')];
     }
 }

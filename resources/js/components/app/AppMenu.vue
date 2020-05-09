@@ -1,33 +1,36 @@
 <template>
 
     <!--menu-->
-   <v-list>
+   <v-list nav>
         <v-list-group
-            v-for="(paths,menu) in menus"
-            :key="menu"
+            v-for="(menu, idx) in menus"
+            :key="idx"
             ripple
             active-class="menu-active"
-            prepend-icon="more_vert"
+            :prepend-icon="menu.icon"
+            @click="navegateTo(menu.path)"
         >
             <template v-slot:activator>
                 <v-list-item-content>
-                    <v-list-item-title>{{ capitalize(menu) }}</v-list-item-title>
+                    <v-list-item-title>{{ menu.label }}</v-list-item-title>
+                    
                 </v-list-item-content>
             </template>
 
                 <v-list-item
-                    v-for="(path, submenu) in paths"
-                    :key="submenu"
+                    v-for="(submenu, idx) in menu.children"
+                    :key="idx"
                     link
                     dense
+                    @click="navegateTo({name: submenu.name})"
                 >
                     <v-list-item-icon>
-                        <v-icon>navigate_next</v-icon>
+                        <v-icon>{{submenu.icon}}</v-icon>
                     </v-list-item-icon>
                     
                     <v-list-item-title 
-                        v-text="actionName(path)"
-                        @click="$router.push(path)"
+                        v-text="submenu.label"
+                        
                     ></v-list-item-title>
  
                 </v-list-item>
@@ -39,62 +42,45 @@
 
 <script>
 
-import AppFormat  from '~/mixins/AppFormat'
 import AppMessage from '~/mixins/AppMessage'
 
 export default {
-    mixins:[ AppFormat, AppMessage ],
-    props:
-    {
-        items:{
-            type: Array,
-        },
-    },
+    mixins:[ AppMessage ],
     data()
     {
         return{
-            url : 'api/ldap/',
-            menus : {},
+            menus: []
+            ,
         }
     },
     created ()
     {
             let url = this.url + this.$store.getters.username
-
-            axios.get(url).then( response => 
-            {
-                if(response.status==200)
-                {
-                    this.menus=response.data
-                }
-            })
-            .catch(error => 
-            {
-                this.showError(error)
-            })
-            
+     
+            this.menus = this.$router.options.routes.filter((menu) =>  !['welcome', 'notfound'].includes(menu.name) )
+           
         },  
         methods:
         {
-            actionName(value)
+            navegateTo(route)
             {
-                let elements = value.split('/')
-                return this.capitalize(elements[elements.length-1])
-            },
+               this.$router.push(route).catch(err => {})
+            }
+
         },
 }
 </script>
 
 <style scoped>
     .menu-active{
-        color:#f44336 !important;
-        caret-color: #f44336 !important;
+        color:#3f51b5 !important;
+        caret-color: #3f51b5 !important;
     }
     .v-list-item--link::before{
         background-color: rgb(134, 133, 133) !important;
     }
     .menu-active.v-list-item__content{
-        color:#f44336 !important;
-        caret-color: #f44336 !important;
+        color:#3f51b5 !important;
+        caret-color: #3f51b5 !important;
     }
 </style>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Nivel;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class NivelController extends Controller
 {
@@ -14,7 +15,20 @@ class NivelController extends Controller
      */
     public function index()
     {
-        //
+        $nivel = Nivel::with([])
+                    ->get();
+        
+        return $nivel;
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //create
     }
 
     /**
@@ -25,7 +39,16 @@ class NivelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = request()->validate([
+            'nb_nivel'          => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $nivel = nivel::create($request->all());
+
+        return [ 'msj' => 'Nivel Agregado Correctamente', compact('nivel') ];
     }
 
     /**
@@ -36,7 +59,18 @@ class NivelController extends Controller
      */
     public function show(Nivel $nivel)
     {
-        //
+        return $nivel;
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Nivel  $nivel
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Nivel $nivel)
+    {
+        
     }
 
     /**
@@ -48,7 +82,16 @@ class NivelController extends Controller
      */
     public function update(Request $request, Nivel $nivel)
     {
-        //
+        $validate = request()->validate([
+            'nb_nivel'          => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $nivel = $nivel->update($request->all());
+
+        return [ 'msj' => 'Nivel Editado' , compact('nivel')];
     }
 
     /**
@@ -59,6 +102,8 @@ class NivelController extends Controller
      */
     public function destroy(Nivel $nivel)
     {
-        //
+        $nivel = $nivel->delete();
+ 
+        return [ 'msj' => 'Nivel Eliminado' , compact('nivel')];
     }
 }

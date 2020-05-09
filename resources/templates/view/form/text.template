@@ -1,0 +1,11 @@
+ 
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.{{columnName}}"
+                label="{{labelName}}"
+                placeholder="Indique {{labelName}}"
+                dense
+            ></v-text-field>
+        </v-col>
+                 

@@ -18,10 +18,8 @@ class CreateUsuarioTable extends Migration
 			$table->string('nb_nombres', 50)->nullable();
 			$table->string('nb_usuario', 50)->unique(); 
 			$table->string('password', 64);
-			$table->string('tx_email', 80)->unique();
-            $table->date('fe_nacimiento')->nullable();
-            $table->string('tx_sexo')->nullable();
-            $table->integer('tx_foto', 100)->nullable();
+            $table->string('tx_email', 80)->unique();
+            $table->string('tx_foto', 100)->nullable();
             $table->integer('id_tipo_usuario')->unsigned();
             $table->string('tx_observaciones', 100)->nullable();
             $table->string('verification', 64)->nullable();

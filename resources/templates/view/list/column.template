@@ -1,0 +1,1 @@
+<td class="text-xs-left">{{ item.{{columnName}} }}</td>

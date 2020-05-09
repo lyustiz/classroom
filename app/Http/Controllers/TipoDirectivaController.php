@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TipoDirectiva;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TipoDirectivaController extends Controller
 {
@@ -14,7 +15,10 @@ class TipoDirectivaController extends Controller
      */
     public function index()
     {
-        //
+        $tipoDirectiva = TipoDirectiva::with([])
+                    ->get();
+        
+        return $tipoDirectiva;
     }
 
     /**
@@ -25,7 +29,16 @@ class TipoDirectivaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = request()->validate([
+            'nb_tipo_directiva' => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $tipoDirectiva = tipoDirectiva::create($request->all());
+
+        return [ 'msj' => 'TipoDirectiva Agregado Correctamente', compact('tipoDirectiva') ];
     }
 
     /**
@@ -36,7 +49,7 @@ class TipoDirectivaController extends Controller
      */
     public function show(TipoDirectiva $tipoDirectiva)
     {
-        //
+        return $tipoDirectiva;
     }
 
     /**
@@ -48,7 +61,16 @@ class TipoDirectivaController extends Controller
      */
     public function update(Request $request, TipoDirectiva $tipoDirectiva)
     {
-        //
+        $validate = request()->validate([
+            'nb_tipo_directiva' => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $tipoDirectiva = $tipoDirectiva->update($request->all());
+
+        return [ 'msj' => 'TipoDirectiva Editado' , compact('tipoDirectiva')];
     }
 
     /**
@@ -59,6 +81,8 @@ class TipoDirectivaController extends Controller
      */
     public function destroy(TipoDirectiva $tipoDirectiva)
     {
-        //
+        $tipoDirectiva = $tipoDirectiva->delete();
+ 
+        return [ 'msj' => 'TipoDirectiva Eliminado' , compact('tipoDirectiva')];
     }
 }

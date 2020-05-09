@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ciudad;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CiudadController extends Controller
 {
@@ -14,11 +15,10 @@ class CiudadController extends Controller
      */
     public function index()
     {
-        $ciudads = Ciudad::with(['status'])
-                        ->get();
+        $ciudad = Ciudad::with([])
+                    ->get();
         
-        return $ciudads;
-
+        return $ciudad;
     }
 
     /**
@@ -30,22 +30,19 @@ class CiudadController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-
-            'co_ciudad'         => 'required',
-            'nb_ciudad'         => 'required',
-            'id_departamento'   => 'required',
-            'tx_latitud'        => 'required',
-            'tx_longitud'       => 'required',
-            'tx_observaciones'  => 'required',
-            'id_status'         => 'required',
-            'id_usuario'        => 'required',
-
+            'co_ciudad'         => 	'required|integer',
+			'nb_ciudad'         => 	'required|string|max:30',
+			'id_departamento'   => 	'required|integer',
+			'tx_latitud'        => 	'required|string|max:20',
+			'tx_longitud'       => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
 
-        $ciudad = Ciudad::create($request->all());
+        $ciudad = ciudad::create($request->all());
 
-        return [ 'msj' => 'Registro Agregado Correctamente', compact('ciudad') ];
-    
+        return [ 'msj' => 'Ciudad Agregado Correctamente', compact('ciudad') ];
     }
 
     /**
@@ -57,7 +54,6 @@ class CiudadController extends Controller
     public function show(Ciudad $ciudad)
     {
         return $ciudad;
-
     }
 
     /**
@@ -70,22 +66,19 @@ class CiudadController extends Controller
     public function update(Request $request, Ciudad $ciudad)
     {
         $validate = request()->validate([
-
-            'co_ciudad'         => 'required',
-            'nb_ciudad'         => 'required',
-            'id_departamento'   => 'required',
-            'tx_latitud'        => 'required',
-            'tx_longitud'       => 'required',
-            'tx_observaciones'  => 'required',
-            'id_status'         => 'required',
-            'id_usuario'        => 'required',
-
+            'co_ciudad'         => 	'required|integer',
+			'nb_ciudad'         => 	'required|string|max:30',
+			'id_departamento'   => 	'required|integer',
+			'tx_latitud'        => 	'required|string|max:20',
+			'tx_longitud'       => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
-        
+
         $ciudad = $ciudad->update($request->all());
 
-        return [ 'msj' => 'Registro Editado' , compact('ciudad')];
-    
+        return [ 'msj' => 'Ciudad Editado' , compact('ciudad')];
     }
 
     /**
@@ -98,7 +91,6 @@ class CiudadController extends Controller
     {
         $ciudad = $ciudad->delete();
  
-        return [ 'msj' => 'Registro Eliminado' , compact('ciudad')];
-
+        return [ 'msj' => 'Ciudad Eliminado' , compact('ciudad')];
     }
 }

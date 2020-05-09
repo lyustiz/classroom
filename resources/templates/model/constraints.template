@@ -1,0 +1,4 @@
+    public function {{functionTableName}}()
+    {
+        return $this->belongsTo('App\Models\{{modelTableName}}', '{{foreingColumn}}');
+    } 

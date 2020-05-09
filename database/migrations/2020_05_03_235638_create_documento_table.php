@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDocumentosTable extends Migration
+class CreateDocumentoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,15 @@ class CreateDocumentosTable extends Migration
     public function up()
     {
         Schema::create('documento', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('id_tipo_documento');
+            $table->string('nb_documento', 30)->nullable();
+            $table->string('tx_archivo', 30)->nullable();
+            $table->string('tx_observaciones', 100)->nullable();
+            $table->integer('id_status');
+            $table->integer('id_usuario');
             $table->timestamps();
+
         });
     }
 

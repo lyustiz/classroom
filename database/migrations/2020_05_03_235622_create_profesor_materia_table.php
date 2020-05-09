@@ -14,7 +14,14 @@ class CreateProfesorMateriaTable extends Migration
     public function up()
     {
         Schema::create('profesor_materia', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('id_profesor');
+            $table->integer('id_materia');
+            $table->integer('id_grado');
+            $table->integer('id_grupo');
+            $table->string('tx_observaciones', 100)->nullable();
+            $table->integer('id_status');
+            $table->integer('id_usuario');
             $table->timestamps();
         });
     }

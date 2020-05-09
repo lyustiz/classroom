@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Periodo;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PeriodoController extends Controller
 {
@@ -14,7 +15,10 @@ class PeriodoController extends Controller
      */
     public function index()
     {
-        //
+        $periodo = Periodo::with([])
+                    ->get();
+        
+        return $periodo;
     }
 
     /**
@@ -25,7 +29,18 @@ class PeriodoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = request()->validate([
+            'nb_periodo'        => 	'required|string|max:30',
+			'fe_inicio'         => 	'required|string|max:0',
+			'fe_fin'            => 	'required|string|max:0',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $periodo = periodo::create($request->all());
+
+        return [ 'msj' => 'Periodo Agregado Correctamente', compact('periodo') ];
     }
 
     /**
@@ -36,7 +51,7 @@ class PeriodoController extends Controller
      */
     public function show(Periodo $periodo)
     {
-        //
+        return $periodo;
     }
 
     /**
@@ -48,7 +63,18 @@ class PeriodoController extends Controller
      */
     public function update(Request $request, Periodo $periodo)
     {
-        //
+        $validate = request()->validate([
+            'nb_periodo'        => 	'required|string|max:30',
+			'fe_inicio'         => 	'required|string|max:0',
+			'fe_fin'            => 	'required|string|max:0',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $periodo = $periodo->update($request->all());
+
+        return [ 'msj' => 'Periodo Editado' , compact('periodo')];
     }
 
     /**
@@ -59,6 +85,8 @@ class PeriodoController extends Controller
      */
     public function destroy(Periodo $periodo)
     {
-        //
+        $periodo = $periodo->delete();
+ 
+        return [ 'msj' => 'Periodo Eliminado' , compact('periodo')];
     }
 }

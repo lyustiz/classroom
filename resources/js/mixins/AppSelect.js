@@ -1,9 +1,5 @@
 
 export default {
-    created()
-    {
-        this.fillSelects()
-    },
     data() 
     {
         return{
@@ -16,45 +12,41 @@ export default {
         {
             this.selectRequests(this.selects)
             .then(
-                axios.spread( (...dataSelects) => 
+                
+                axios.spread( (...dataLists) => 
                 {
                     let i = 0;
                     for(var key in this.selects) 
                     {
-                        if(typeof dataSelects[i].data == "object")
-						{
-                            this.selects[key].items = dataSelects[i].data
-                        }else
-                        {
-                            this.selects[key].items = []
-                        }
+                        this.selects[key] = dataLists[i].data
                         i++;
                     }
                 })
             )
-            .catch(error =>
-            {
+            .catch(error =>{
+            
                 this.showError(error);
+
             })
             .finally( () =>
             {
                 this.loading = false;
-            });;
+            });
         },
+
         selectRequests(selects) 
         {
             let requests = [];
 
             for(var select in selects) 
             {
-                requests.push(
-                    axios.get(
-                        this.$App.baseUrl + select + selects[select].group
-                    )
-                ); 
+                let param = (selects[select]) ? selects[select] : '';
+
+                requests.push(axios.get(this.$App.apiUrl + select + param));
             }
+
             return axios.all(requests)
-                    
+            
         },
     } 
 }

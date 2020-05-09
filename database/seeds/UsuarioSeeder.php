@@ -16,8 +16,6 @@ class UsuarioSeeder extends Seeder
             'nb_usuario'       => 'admin',
             'password'         => '123456',
             'tx_email'         => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-            'fe_nacimiento'    => '',
-            'tx_sexo'          => '',
             'tx_foto'          => '',
             'id_tipo_usuario'  => 1, //administrador 
             'tx_observaciones' => null,

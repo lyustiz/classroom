@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pago;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PagoController extends Controller
 {
@@ -14,11 +15,10 @@ class PagoController extends Controller
      */
     public function index()
     {
-        $pagos = Pago::with(['status'])
-                     ->get();
+        $pago = Pago::with([])
+                    ->get();
         
-        return $pagos;
-
+        return $pago;
     }
 
     /**
@@ -30,17 +30,17 @@ class PagoController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-
-            'tx_observaciones' => 'required',
-            'id_status'        => 'required',
-            'id_usuario'       => 'required',
-            
+            'id_subcripcion'    => 	'required|integer',
+			'mo_pago'           => 	'required|numeric|max:9',
+			'id_tipo_pago'      => 	'required|integer',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
 
-        $pago = Pago::create($request->all());
+        $pago = pago::create($request->all());
 
-        return [ 'msj' => 'Registro Agregado Correctamente', compact('pago') ];
-    
+        return [ 'msj' => 'Pago Agregado Correctamente', compact('pago') ];
     }
 
     /**
@@ -52,7 +52,6 @@ class PagoController extends Controller
     public function show(Pago $pago)
     {
         return $pago;
-
     }
 
     /**
@@ -65,17 +64,17 @@ class PagoController extends Controller
     public function update(Request $request, Pago $pago)
     {
         $validate = request()->validate([
-
-            'tx_observaciones' => 'required',
-            'id_status'        => 'required',
-            'id_usuario'       => 'required',
-                        
+            'id_subcripcion'    => 	'required|integer',
+			'mo_pago'           => 	'required|numeric|max:9',
+			'id_tipo_pago'      => 	'required|integer',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
-        
+
         $pago = $pago->update($request->all());
 
-        return [ 'msj' => 'Registro Editado' , compact('pago')];
-    
+        return [ 'msj' => 'Pago Editado' , compact('pago')];
     }
 
     /**
@@ -88,7 +87,6 @@ class PagoController extends Controller
     {
         $pago = $pago->delete();
  
-        return [ 'msj' => 'Registro Eliminado' , compact('pago')];
-
+        return [ 'msj' => 'Pago Eliminado' , compact('pago')];
     }
 }

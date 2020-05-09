@@ -1,0 +1,7 @@
+
+            <v-checkbox
+                  :rules="[rules.required]"
+                  v-model="form.{{columnName}}"
+                  label="{{labelName}}"
+                  dense
+            ></v-checkbox>

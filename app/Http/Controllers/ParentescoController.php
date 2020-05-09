@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Parentesco;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ParentescoController extends Controller
 {
@@ -14,7 +15,10 @@ class ParentescoController extends Controller
      */
     public function index()
     {
-        //
+        $parentesco = Parentesco::with([])
+                    ->get();
+        
+        return $parentesco;
     }
 
     /**
@@ -25,7 +29,16 @@ class ParentescoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = request()->validate([
+            'nb_parentesco'     => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $parentesco = parentesco::create($request->all());
+
+        return [ 'msj' => 'Parentesco Agregado Correctamente', compact('parentesco') ];
     }
 
     /**
@@ -36,7 +49,7 @@ class ParentescoController extends Controller
      */
     public function show(Parentesco $parentesco)
     {
-        //
+        return $parentesco;
     }
 
     /**
@@ -48,7 +61,16 @@ class ParentescoController extends Controller
      */
     public function update(Request $request, Parentesco $parentesco)
     {
-        //
+        $validate = request()->validate([
+            'nb_parentesco'     => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $parentesco = $parentesco->update($request->all());
+
+        return [ 'msj' => 'Parentesco Editado' , compact('parentesco')];
     }
 
     /**
@@ -59,6 +81,8 @@ class ParentescoController extends Controller
      */
     public function destroy(Parentesco $parentesco)
     {
-        //
+        $parentesco = $parentesco->delete();
+ 
+        return [ 'msj' => 'Parentesco Eliminado' , compact('parentesco')];
     }
 }

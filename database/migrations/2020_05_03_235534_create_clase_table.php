@@ -14,8 +14,16 @@ class CreateClaseTable extends Migration
     public function up()
     {
         Schema::create('clase', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('id_grado_materia');
+            $table->integer('id_grupo');
+            $table->integer('id_profesor');
+            $table->date('fe_clase');
+            $table->string('tx_observaciones', 100)->nullable();
+            $table->integer('id_status');
+            $table->integer('id_usuario');
             $table->timestamps();
+
         });
     }
 

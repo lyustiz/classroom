@@ -15,9 +15,9 @@ class CreateTelefonoTable extends Migration
     {
         Schema::create('telefono', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('tx_telefono', 20);
-			$table->integer('id_comercio');
-			$table->integer('id_tipo_telefono');
+            $table->string('tx_telefono', 20);
+            $table->integer('id_tipo_telefono');
+			$table->integer('id_entidad');
 			$table->boolean('bo_whatsapp')->default(false);
 			$table->string('tx_observaciones', 100)->nullable();
 			$table->integer('id_status');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Foto;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class FotoController extends Controller
 {
@@ -14,11 +15,10 @@ class FotoController extends Controller
      */
     public function index()
     {
-        $fotos = Foto::with(['status'])
-                     ->get();
+        $foto = Foto::with([])
+                    ->get();
         
-        return $fotos;
-
+        return $foto;
     }
 
     /**
@@ -30,21 +30,18 @@ class FotoController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-
-            'nb_foto'           => 'required',
-            'tx_src'            => 'required',
-            'id_tipo_foto'      => 'required',
-            'id_comercio'       => 'required',
-            'tx_observaciones'  => 'required',
-            'id_status'         => 'required',
-            'id_usuario'        => 'required',
-            
+            'nb_foto'           => 	'required|string|max:100',
+			'tx_src'            => 	'required|string|max:100',
+			'id_tipo_foto'      => 	'required|integer',
+			'id_entidad'        => 	'required|integer',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
 
-        $foto = Foto::create($request->all());
+        $foto = foto::create($request->all());
 
-        return [ 'msj' => 'Registro Agregado Correctamente', compact('foto') ];
-    
+        return [ 'msj' => 'Foto Agregado Correctamente', compact('foto') ];
     }
 
     /**
@@ -68,21 +65,18 @@ class FotoController extends Controller
     public function update(Request $request, Foto $foto)
     {
         $validate = request()->validate([
-
-            'nb_foto'           => 'required',
-            'tx_src'            => 'required',
-            'id_tipo_foto'      => 'required',
-            'id_comercio'       => 'required',
-            'tx_observaciones'  => 'required',
-            'id_status'         => 'required',
-            'id_usuario'        => 'required',
-
+            'nb_foto'           => 	'required|string|max:100',
+			'tx_src'            => 	'required|string|max:100',
+			'id_tipo_foto'      => 	'required|integer',
+			'id_entidad'        => 	'required|integer',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
-        
+
         $foto = $foto->update($request->all());
 
-        return [ 'msj' => 'Registro Editado' , compact('foto')];
-    
+        return [ 'msj' => 'Foto Editado' , compact('foto')];
     }
 
     /**
@@ -95,7 +89,6 @@ class FotoController extends Controller
     {
         $foto = $foto->delete();
  
-        return [ 'msj' => 'Registro Eliminado' , compact('foto')];
-
+        return [ 'msj' => 'Foto Eliminado' , compact('foto')];
     }
 }

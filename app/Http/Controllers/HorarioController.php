@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Horario;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HorarioController extends Controller
 {
@@ -14,11 +15,10 @@ class HorarioController extends Controller
      */
     public function index()
     {
-        $horarios = Horario::with(['status'])
-                           ->get();
+        $horario = Horario::with([])
+                    ->get();
         
-        return $horarios;
-
+        return $horario;
     }
 
     /**
@@ -30,20 +30,20 @@ class HorarioController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-
-            'nb_horario'        => 'required|60',
-            'id_comercio'       => 'required',
-            'tx_entrada'        => 'required',
-            'tx_salida'         => 'required',
-            'tx_observaciones'  => 'required',
-            'id_status'         => 'required',
-            'id_usuario'        => 'required',
-            
+            'co_horario'        => 	'required|string|max:100',
+			'id_grado_materia'  => 	'required|integer',
+			'id_grupo'          => 	'required|integer',
+			'id_dia_semana'     => 	'required|integer',
+			'hh_inicio'         => 	'required|date',
+			'hh_fin'            => 	'required|date',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
 
-        $horario = Horario::create($request->all());
+        $horario = horario::create($request->all());
 
-        return [ 'msj' => 'Registro Agregado Correctamente', compact('horario') ];
+        return [ 'msj' => 'Horario Agregado Correctamente', compact('horario') ];
     }
 
     /**
@@ -55,7 +55,6 @@ class HorarioController extends Controller
     public function show(Horario $horario)
     {
         return $horario;
-
     }
 
     /**
@@ -68,21 +67,20 @@ class HorarioController extends Controller
     public function update(Request $request, Horario $horario)
     {
         $validate = request()->validate([
-
-            'nb_horario'        => 'required',
-            'id_comercio'       => 'required',
-            'tx_entrada'        => 'required',
-            'tx_salida'         => 'required',
-            'tx_observaciones'  => 'required',
-            'id_status'         => 'required',
-            'id_usuario'        => 'required',
-            
+            'co_horario'        => 	'required|string|max:100',
+			'id_grado_materia'  => 	'required|integer',
+			'id_grupo'          => 	'required|integer',
+			'id_dia_semana'     => 	'required|integer',
+			'hh_inicio'         => 	'required|date',
+			'hh_fin'            => 	'required|date',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
-        
+
         $horario = $horario->update($request->all());
 
-        return [ 'msj' => 'Registro Editado' , compact('horario')];
-    
+        return [ 'msj' => 'Horario Editado' , compact('horario')];
     }
 
     /**
@@ -95,7 +93,6 @@ class HorarioController extends Controller
     {
         $horario = $horario->delete();
  
-        return [ 'msj' => 'Registro Eliminado' , compact('horario')];
-
+        return [ 'msj' => 'Horario Eliminado' , compact('horario')];
     }
 }

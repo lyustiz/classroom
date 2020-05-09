@@ -2,19 +2,23 @@ export default
 {
 	state(){
 		return{
-			layout: 'principal-layout',
-            isMobile: false, //movile
-			size:   'xs', //xs, sm, md, lg, xl
-			resize: false
+			layout: 	'main-layout',
+			size:   	'xs', //xs, sm, md, lg, xl
+			isMobile: 	false, 
+			resize: 	false,
+			iconMenu: 	false,
+			toggleMenu: true
 		}
 	},
 
 	getters:
 	{
-		getLayout:  state => state.layout,
-		getIsMobile:  state => state.isMobile,
-		getSize:    state => state.size,
-		getResize:  state => state.resize,
+		getLayout:  	state => state.layout,
+		getIsMobile:  	state => state.isMobile,
+		getSize:    	state => state.size,
+		getResize:  	state => state.resize,
+		getIconMenu:	state => state.iconMenu,
+		getToggleMenu:	state => state.toggleMenu,
 	},
 
 	mutations:
@@ -34,6 +38,13 @@ export default
 		setResize(state, resize) {
 			state.resize = resize
 		},
-		
+
+		setIconMenu(state, active) {
+			state.iconMenu = active
+		}, 
+
+		setToggleMenu(state, active) {
+			state.toggleMenu = active
+		} 
 	}
 }

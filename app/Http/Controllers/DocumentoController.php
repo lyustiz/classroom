@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Documento;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DocumentoController extends Controller
 {
@@ -14,7 +15,10 @@ class DocumentoController extends Controller
      */
     public function index()
     {
-        //
+        $documento = Documento::with([])
+                    ->get();
+        
+        return $documento;
     }
 
     /**
@@ -25,7 +29,18 @@ class DocumentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = request()->validate([
+            'id_tipo_documento' => 	'required|integer',
+			'nb_documento'      => 	'required|string|max:30',
+			'tx_archivo'        => 	'required|string|max:30',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $documento = documento::create($request->all());
+
+        return [ 'msj' => 'Documento Agregado Correctamente', compact('documento') ];
     }
 
     /**
@@ -36,7 +51,7 @@ class DocumentoController extends Controller
      */
     public function show(Documento $documento)
     {
-        //
+        return $documento;
     }
 
     /**
@@ -48,7 +63,18 @@ class DocumentoController extends Controller
      */
     public function update(Request $request, Documento $documento)
     {
-        //
+        $validate = request()->validate([
+            'id_tipo_documento' => 	'required|integer',
+			'nb_documento'      => 	'required|string|max:30',
+			'tx_archivo'        => 	'required|string|max:30',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $documento = $documento->update($request->all());
+
+        return [ 'msj' => 'Documento Editado' , compact('documento')];
     }
 
     /**
@@ -59,6 +85,8 @@ class DocumentoController extends Controller
      */
     public function destroy(Documento $documento)
     {
-        //
+        $documento = $documento->delete();
+ 
+        return [ 'msj' => 'Documento Eliminado' , compact('documento')];
     }
 }

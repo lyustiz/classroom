@@ -14,8 +14,16 @@ class CreateGradoMateriaTable extends Migration
     public function up()
     {
         Schema::create('grado_materia', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('id_materia');
+            $table->string('nb_director', 30)->nullable();
+            $table->string('tx_libro', 30)->nullable();
+            $table->integer('id_profesor');
+            $table->string('tx_observaciones', 100)->nullable();
+            $table->integer('id_status');
+            $table->integer('id_usuario');
             $table->timestamps();
+
         });
     }
 

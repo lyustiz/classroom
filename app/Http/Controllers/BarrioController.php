@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barrio;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Builder;
+use App\Http\Controllers\Controller;
 
 class BarrioController extends Controller
 {
@@ -15,47 +15,11 @@ class BarrioController extends Controller
      */
     public function index()
     {
-        $barrios = Barrio::with(['status'])
-                        ->get();
+        $barrio = Barrio::with([])
+                    ->get();
         
         return $barrio;
-
     }
-
-    /**
-     * Listar Barrio por COmuna     
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function barrioComuna($id_comuna)
-    {
-        $barrios =  Barrio::select('id', 'nb_barrio', 'tx_latitud', 'tx_longitud')
-                          ->where('id_comuna', $id_comuna)
-                          ->where('id_status', 1)
-                          ->orderby('nb_barrio')
-                          ->get();
-
-        return $barrios;
-    }
-
-    /**
-     * Listar Barrio por Zona     
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function barrioZona($id_zona)
-    {
-        $barrios =  Barrio::whereHas('comuna', function (Builder $query) use ( $id_zona ){
-                        $query->where('id_zona', $id_zona);
-                    })
-                    ->select('id', 'nb_barrio')
-                    ->where('id_status', 1)
-                    ->orderby('nb_barrio')
-                    ->get();
-
-        return $barrios;
-    }
-
 
     /**
      * Store a newly created resource in storage.
@@ -66,20 +30,19 @@ class BarrioController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-            'co_barrio'         => 'required',
-            'nb_barrio'         => 'required',
-            'id_comuna'         => 'required',
-            'tx_latitud'        => 'required',
-            'tx_longitud'       => 'required',
-            'tx_observaciones'  => 'required',
-            'id_status'         => 'required',
-            'id_usuario'        => 'required',
+            'co_barrio'         => 	'required|integer',
+			'nb_barrio'         => 	'required|string|max:30',
+			'id_comuna'         => 	'required|integer',
+			'tx_latitud'        => 	'required|string|max:20',
+			'tx_longitud'       => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
-    
-        $barrio = Barrio::create($request->all());
 
-        return [ 'msj' => 'Registro Agregado Correctamente', compact('barrio') ];
-    
+        $barrio = barrio::create($request->all());
+
+        return [ 'msj' => 'Barrio Agregado Correctamente', compact('barrio') ];
     }
 
     /**
@@ -91,7 +54,6 @@ class BarrioController extends Controller
     public function show(Barrio $barrio)
     {
         return $barrio;
-
     }
 
     /**
@@ -104,22 +66,19 @@ class BarrioController extends Controller
     public function update(Request $request, Barrio $barrio)
     {
         $validate = request()->validate([
-
-            'co_barrio'         => 'required',
-            'nb_barrio'         => 'required',
-            'id_comuna'         => 'required',
-            'tx_latitud'        => 'required',
-            'tx_longitud'       => 'required',
-            'tx_observaciones'  => 'required',
-            'id_status'         => 'required',
-            'id_usuario'        => 'required',
-
+            'co_barrio'         => 	'required|integer',
+			'nb_barrio'         => 	'required|string|max:30',
+			'id_comuna'         => 	'required|integer',
+			'tx_latitud'        => 	'required|string|max:20',
+			'tx_longitud'       => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
-            
+
         $barrio = $barrio->update($request->all());
 
-        return [ 'msj' => 'Registro Editado' , compact('barrio')];
-    
+        return [ 'msj' => 'Barrio Editado' , compact('barrio')];
     }
 
     /**
@@ -132,7 +91,6 @@ class BarrioController extends Controller
     {
         $barrio = $barrio->delete();
  
-        return [ 'msj' => 'Registro Eliminado' , compact('barrio')];
-
+        return [ 'msj' => 'Barrio Eliminado' , compact('barrio')];
     }
 }

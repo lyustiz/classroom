@@ -1,0 +1,27 @@
+
+        <v-col cols="12" md="3">
+            <v-menu
+                ref="picker"
+                v-model="pickers.{{columnName}}"
+                min-width="290px"
+                readonly
+            >
+                <template v-slot:activator="{ on }">
+                    <v-text-field
+                        v-on="on"
+                        v-model="dates.{{columnName}}"
+                        :rules="rules.etapaCo"
+                        label="{{labelName}}"
+                        prepend-icon="event"
+                        readonly
+                        dense
+                    ></v-text-field>
+                </template>
+
+                <v-date-picker 
+                    v-model="form.{{columnName}}" 
+                    locale="es"
+                    @input="dates.{{columnName}} = formatDate( form.{{columnName}} )"
+                ></v-date-picker>
+            </v-menu>
+        </v-col>

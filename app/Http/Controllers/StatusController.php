@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Status;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class StatusController extends Controller
 {
@@ -14,11 +15,10 @@ class StatusController extends Controller
      */
     public function index()
     {
-        $statuss = Status::with(['usuario:id,nb_usuario'])
-                        ->get();
+        $status = Status::with([])
+                    ->get();
         
-        return $statuss;
-
+        return $status;
     }
 
     /**
@@ -30,22 +30,19 @@ class StatusController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-
-            'nb_status'         => 'required',
-            'nb_secundario'     => 'required',
-            'co_status'         => 'required',
-            'co_grupo'          => 'required',
-            'id_padre'          => 'required',
-            'tx_observaciones'  => 'required',
-            'bo_activo'         => 'required',
-            'id_usuario'        => 'required',
-            
+            'nb_status'         => 	'required|string|max:20',
+			'nb_secundario'     => 	'required|string|max:20',
+			'co_status'         => 	'required|string|max:6',
+			'co_grupo'          => 	'required|string|max:10',
+			'id_padre'          => 	'required|integer',
+			'tx_observaciones'  => 	'nullable|string|max:200',
+			'bo_activo'         => 	'required|boolean',
+			'id_usuario'        => 	'required|integer',
         ]);
 
-        $status = Status::create($request->all());
+        $status = status::create($request->all());
 
-        return [ 'msj' => 'Registro Agregado Correctamente', compact('status') ];
-    
+        return [ 'msj' => 'Status Agregado Correctamente', compact('status') ];
     }
 
     /**
@@ -57,7 +54,6 @@ class StatusController extends Controller
     public function show(Status $status)
     {
         return $status;
-
     }
 
     /**
@@ -70,22 +66,19 @@ class StatusController extends Controller
     public function update(Request $request, Status $status)
     {
         $validate = request()->validate([
-            
-            'nb_status'         => 'required',
-            'nb_secundario'     => 'required',
-            'co_status'         => 'required',
-            'co_grupo'          => 'required',
-            'id_padre'          => 'required',
-            'tx_observaciones'  => 'required',
-            'bo_activo'         => 'required',
-            'id_usuario'        => 'required',
-
+            'nb_status'         => 	'required|string|max:20',
+			'nb_secundario'     => 	'required|string|max:20',
+			'co_status'         => 	'required|string|max:6',
+			'co_grupo'          => 	'required|string|max:10',
+			'id_padre'          => 	'required|integer',
+			'tx_observaciones'  => 	'nullable|string|max:200',
+			'bo_activo'         => 	'required|boolean',
+			'id_usuario'        => 	'required|integer',
         ]);
-        
+
         $status = $status->update($request->all());
 
-        return [ 'msj' => 'Registro Editado' , compact('status')];
-    
+        return [ 'msj' => 'Status Editado' , compact('status')];
     }
 
     /**
@@ -98,7 +91,6 @@ class StatusController extends Controller
     {
         $status = $status->delete();
  
-        return [ 'msj' => 'Registro Eliminado' , compact('status')];
-
+        return [ 'msj' => 'Status Eliminado' , compact('status')];
     }
 }

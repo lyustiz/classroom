@@ -1,0 +1,4 @@
+public function scopeGrupo($query, $grupo)
+{
+    return $query->where('id_grupo_banco', $grupo);
+}

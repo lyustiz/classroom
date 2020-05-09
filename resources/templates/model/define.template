@@ -1,0 +1,11 @@
+protected $table 	  = '{{tableName}}';
+
+    protected $fillable   = [
+                            {{showCols}}
+                            ]; 
+    
+    protected $hidden     = [
+                            {{hiddenCols}}
+                            ];
+
+{{Constraints}}

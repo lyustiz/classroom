@@ -8,17 +8,49 @@
         transition="dialog-transition"
         >
         <v-card>
-            <v-card-title>
-                <h3 >{{ title }}</h3>
-            </v-card-title>
 
-            <v-card-text>
-                <v-icon class="yellow--text">{{ icon }}</v-icon> {{ message }} 
+            <v-toolbar dark flat dense color="red">
+
+                <v-btn icon x-small dark class="mx-1" @click.native="$emit('deleteCancel')">
+                    <v-icon>mdi-close-circle</v-icon>
+                </v-btn>
+
+                <v-toolbar-title>Atencion</v-toolbar-title>
+
+                <v-spacer></v-spacer>
+        
+            </v-toolbar>
+
+            <v-card-text class="pt-4">
+
+                <v-alert border="left" colored-border type="warning" elevation="2" :icon="icon">
+                    {{ message }}
+                </v-alert>
+
             </v-card-text>
 
             <v-card-actions>
-                <v-btn color="success" @click="$emit('confirm')">confirmar</v-btn>
-                <v-btn color="error" @click="$emit('cancel')">cancelar</v-btn>
+
+                <v-spacer></v-spacer>
+                
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                        <v-btn fab small class="error mx-1" :loadin="loading" v-on="on" @click="$emit('deleteItem')" >
+                            <v-icon>delete</v-icon>
+                        </v-btn>
+                    </template>
+                    <span>Eliminar</span>
+                </v-tooltip>
+
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                        <v-btn fab small class="warning mx-1" :loadin="loading" v-on="on" @click="$emit('deleteCancel')">
+                            <v-icon>reply</v-icon>
+                        </v-btn>
+                    </template>
+                    <span>Regresar</span>
+                </v-tooltip>
+
             </v-card-actions>
 
         </v-card>
@@ -41,13 +73,18 @@ export default {
         },
 		message: {
             type: String,
-            default: null
+            default: ''
         },
         dialog:{
             type: Boolean,
             default: false
         },
-	},
+        loading:{
+            type: Boolean,
+            default: false
+        },
+    },
+ 
 
 }
 </script>

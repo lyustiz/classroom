@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contacto;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ContactoController extends Controller
 {
@@ -14,10 +15,10 @@ class ContactoController extends Controller
      */
     public function index()
     {
-        $contactos = Contacto::with(['status'])
-                             ->get();
+        $contacto = Contacto::with([])
+                    ->get();
         
-        return $contactos;
+        return $contacto;
     }
 
     /**
@@ -29,25 +30,22 @@ class ContactoController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-            
-            'id_comercio'       => 'required|integer',
-            'tx_email'          => 'bail|email|required|max:80',
-            'tx_sitio_web'      => 'nullable|max:80',
-            'tx_facebook'       => 'nullable|max:30',
-            'tx_twitter'        => 'nullable|max:30',
-            'tx_instagram'      => 'nullable|max:30',
-            'tx_youtube'        => 'nullable|max:30',
-            'tx_observaciones'  => 'nullable|max:30',
-            'id_usuario'        => 'required|integer',
-            
+            'id_tipo_contacto'  => 	'required|integer',
+			'id_entidad'        => 	'required|integer',
+			'tx_email'          => 	'required|string|max:80',
+			'tx_sitio_web'      => 	'required|string|max:80',
+			'tx_facebook'       => 	'required|string|max:30',
+			'tx_twitter'        => 	'required|string|max:30',
+			'tx_instagram'      => 	'required|string|max:30',
+			'tx_youtube'        => 	'required|string|max:30',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
 
-        $request->merge(['id_status' => 1]);
+        $contacto = contacto::create($request->all());
 
-        $contacto = Contacto::create($request->all());
-
-        return [ 'msj' => 'Registro Agregado Correctamente', 'contacto' =>  $contacto];
-    
+        return [ 'msj' => 'Contacto Agregado Correctamente', compact('contacto') ];
     }
 
     /**
@@ -71,23 +69,22 @@ class ContactoController extends Controller
     public function update(Request $request, Contacto $contacto)
     {
         $validate = request()->validate([
-
-            'id_comercio'       => 'required',
-            'tx_email'          => 'bail|email|required',
-            'tx_sitio_web'      => 'nullable',
-            'tx_facebook'       => 'nullable',
-            'tx_twitter'        => 'nullable',
-            'tx_instagram'      => 'nullable',
-            'tx_youtube'        => 'nullable',
-            'tx_observaciones'  => 'nullable',
-            'id_usuario'        => 'required',
-
+            'id_tipo_contacto'  => 	'required|integer',
+			'id_entidad'        => 	'required|integer',
+			'tx_email'          => 	'required|string|max:80',
+			'tx_sitio_web'      => 	'required|string|max:80',
+			'tx_facebook'       => 	'required|string|max:30',
+			'tx_twitter'        => 	'required|string|max:30',
+			'tx_instagram'      => 	'required|string|max:30',
+			'tx_youtube'        => 	'required|string|max:30',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
-        
+
         $contacto = $contacto->update($request->all());
 
-        return [ 'msj' => 'Informacion de Contacto Actualizada' , compact('contacto')];
-    
+        return [ 'msj' => 'Contacto Editado' , compact('contacto')];
     }
 
     /**
@@ -100,7 +97,6 @@ class ContactoController extends Controller
     {
         $contacto = $contacto->delete();
  
-        return [ 'msj' => 'Registro Eliminado' , compact('contacto')];
-
+        return [ 'msj' => 'Contacto Eliminado' , compact('contacto')];
     }
 }

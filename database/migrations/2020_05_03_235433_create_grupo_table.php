@@ -14,8 +14,16 @@ class CreateGrupoTable extends Migration
     public function up()
     {
         Schema::create('grupo', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('nb_grupo', 30)->nullable();
+            $table->integer('id_grado');
+            $table->string('tx_director', 30)->nullable();
+            $table->integer('nu_alumnos');
+            $table->string('tx_observaciones', 100)->nullable();
+            $table->integer('id_status');
+            $table->integer('id_usuario');
             $table->timestamps();
+
         });
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Grupo;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class GrupoController extends Controller
 {
@@ -14,7 +15,10 @@ class GrupoController extends Controller
      */
     public function index()
     {
-        //
+        $grupo = Grupo::with([])
+                    ->get();
+        
+        return $grupo;
     }
 
     /**
@@ -25,7 +29,19 @@ class GrupoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = request()->validate([
+            'nb_grupo'          => 	'required|string|max:30',
+			'id_grado'          => 	'required|integer',
+			'tx_director'       => 	'required|string|max:30',
+			'nu_alumnos'        => 	'required|integer',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $grupo = grupo::create($request->all());
+
+        return [ 'msj' => 'Grupo Agregado Correctamente', compact('grupo') ];
     }
 
     /**
@@ -36,7 +52,7 @@ class GrupoController extends Controller
      */
     public function show(Grupo $grupo)
     {
-        //
+        return $grupo;
     }
 
     /**
@@ -48,7 +64,19 @@ class GrupoController extends Controller
      */
     public function update(Request $request, Grupo $grupo)
     {
-        //
+        $validate = request()->validate([
+            'nb_grupo'          => 	'required|string|max:30',
+			'id_grado'          => 	'required|integer',
+			'tx_director'       => 	'required|string|max:30',
+			'nu_alumnos'        => 	'required|integer',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $grupo = $grupo->update($request->all());
+
+        return [ 'msj' => 'Grupo Editado' , compact('grupo')];
     }
 
     /**
@@ -59,6 +87,8 @@ class GrupoController extends Controller
      */
     public function destroy(Grupo $grupo)
     {
-        //
+        $grupo = $grupo->delete();
+ 
+        return [ 'msj' => 'Grupo Eliminado' , compact('grupo')];
     }
 }

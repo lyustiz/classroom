@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TipoUsuario;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TipoUsuarioController extends Controller
 {
@@ -14,11 +15,10 @@ class TipoUsuarioController extends Controller
      */
     public function index()
     {
-        $tipoUsuarios = TipoUsuario::with(['status'])
-                        ->get();
+        $tipoUsuario = TipoUsuario::with([])
+                    ->get();
         
-        return $tipoUsuarios;
-
+        return $tipoUsuario;
     }
 
     /**
@@ -29,40 +29,60 @@ class TipoUsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = request()->validate([
+            'nb_tipo_usuario'   => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $tipoUsuario = tipoUsuario::create($request->all());
+
+        return [ 'msj' => 'TipoUsuario Agregado Correctamente', compact('tipoUsuario') ];
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TipoUsuario  $TipoUsuario
+     * @param  \App\Models\TipoUsuario  $tipoUsuario
      * @return \Illuminate\Http\Response
      */
-    public function show(TipoUsuario $TipoUsuario)
+    public function show(TipoUsuario $tipoUsuario)
     {
-        //
+        return $tipoUsuario;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TipoUsuario  $TipoUsuario
+     * @param  \App\Models\TipoUsuario  $tipoUsuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TipoUsuario $TipoUsuario)
+    public function update(Request $request, TipoUsuario $tipoUsuario)
     {
-        //
+        $validate = request()->validate([
+            'nb_tipo_usuario'   => 	'required|string|max:20',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
+        ]);
+
+        $tipoUsuario = $tipoUsuario->update($request->all());
+
+        return [ 'msj' => 'TipoUsuario Editado' , compact('tipoUsuario')];
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TipoUsuario  $TipoUsuario
+     * @param  \App\Models\TipoUsuario  $tipoUsuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TipoUsuario $TipoUsuario)
+    public function destroy(TipoUsuario $tipoUsuario)
     {
-        //
+        $tipoUsuario = $tipoUsuario->delete();
+ 
+        return [ 'msj' => 'TipoUsuario Eliminado' , compact('tipoUsuario')];
     }
 }

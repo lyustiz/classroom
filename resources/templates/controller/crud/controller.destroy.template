@@ -1,0 +1,3 @@
+${{modelInstance}} = ${{modelInstance}}->delete();
+ 
+        return [ 'msj' => '{{modelName}} Eliminado' , compact('{{modelInstance}}')];

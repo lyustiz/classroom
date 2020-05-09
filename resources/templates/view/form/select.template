@@ -1,0 +1,14 @@
+         
+        <v-col cols="12" md="6">
+            <v-select
+            :items="selects.{{fkTableName}}"
+            item-text="{{fkColTableName}}"
+            item-value="{{fkTableId}}"
+            v-model="form.{{columnName}}"
+            :rules="[rules.select]"
+            label="{{labelName}}"
+            autocomplete
+            dense
+            ></v-select>
+        </v-col>
+         

@@ -6,37 +6,39 @@ use Illuminate\Database\Eloquent\Model;
 
 class Horario extends Model
 {
-    protected $table 	= 'horario';
+    protected $table 	  = 'horario';
+
+    protected $fillable   = [
+                            'co_horario',
+	 	 	 	 	 	 	'id_grado_materia',
+	 	 	 	 	 	 	'id_grupo',
+	 	 	 	 	 	 	'id_dia_semana',
+	 	 	 	 	 	 	'hh_inicio',
+	 	 	 	 	 	 	'hh_fin',
+	 	 	 	 	 	 	'tx_observaciones',
+	 	 	 	 	 	 	'id_status',
+	 	 	 	 	 	 	'id_usuario'
+                            ]; 
     
-    protected $fillable =   [
-                            'nb_horario',
-                            'id_comercio',
-                            'tx_entrada',
-                            'tx_salida',
-                            'tx_observaciones',
-                            'id_status',
-                            'id_usuario',
+    protected $hidden     = [
                             'created_at',
-                            'updated_at'
-                            ];
-
-    protected $hidden   = [ 'created_at', 'updated_at'];
-
-    public function comercio(){
-
-        return $this->BelongsTo('App\Models\Comercio', 'id_comercio');
-
-    }
-    
+	 	 	 	 	 	 	'updated_at'
+                            ]; 
+                           
     public function status(){
-    
+
         return $this->BelongsTo('App\Models\Status', 'id_status');
-    
+
+    }
+                           
+    public function usuario(){
+
+        return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
+
     }
 
-    public function usuario(){
-    
-        return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
-    
-    }
+                           
+    //
+
+
 }

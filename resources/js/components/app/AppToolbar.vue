@@ -3,17 +3,17 @@
     <v-app-bar
         app
         :color="$App.theme.headApp"
-        clipped-right
+        clipped-left
         dark
         dense
     >
         <!--Titulo-->
 
-        <v-avatar size="32" v-if="resize" tile>
-            <v-icon color="white" size="30" @click="navegateTo('/')">icon-logo-simple</v-icon>
+        <v-avatar size="32" color="white" >
+            <v-icon :color="$App.theme.headApp" size="28" @click="navegateTo('/')">mdi-chair-school</v-icon>
         </v-avatar>
         
-        <v-toolbar-title v-else>
+        <v-toolbar-title >
             <v-btn
                 text 
                 :color="$App.theme.textTitle" 
@@ -21,34 +21,14 @@
                 @click="navegateTo('/')">
             </v-btn>
         </v-toolbar-title>
-
-
-        <!--Menu -->
-        <!--Menu Responsive -->
-        <template v-if="resize">
-            <v-menu bottom left>
-
-                <template v-slot:activator="{ on }">
-                    <v-btn dark icon v-on="on">
-                        <v-icon>mdi-dots-vertical</v-icon>
-                    </v-btn>
-                </template>
-
-                <v-list>
-                    <v-list-item v-for="(menu, i) in menus" :key="i" @click="navegateTo(menu.route)">
-                        <v-list-item-title>{{ menu.name }}</v-list-item-title>
-                    </v-list-item>
-                </v-list>
-
-            </v-menu>
-        </template>
         
-        <!--Menu Desktop -->
-        <template v-else>
-            <v-btn text v-for="(menu, i) in menus" :key="i" @click="navegateTo(menu.route)">
-                {{ menu.name }}
-            </v-btn>
-        </template>
+        <!--Toggle iconos/texto-->
+        <v-btn icon @click.stop=" iconMenu = ! iconMenu">
+            <v-icon v-html="iconMenu ? 'chevron_left' : 'chevron_right'"></v-icon>
+        </v-btn>
+        
+        <!--Toggle Menu Lateral-->
+        <v-app-bar-nav-icon @click.stop="toggleMenu =! toggleMenu"></v-app-bar-nav-icon>
 
         <div class="flex-grow-1"></div>
 
@@ -82,15 +62,7 @@
 
         <!-- UnLogged -->
         <template v-else>
-            <v-tooltip bottom>
-                <template v-slot:activator="{ on }">
-                    <v-btn small text v-on="on" @click="navegateTo('/tipocuenta')">
-                        <v-icon>mdi-account-edit</v-icon> Registro
-                    </v-btn>
-                </template>
-                <span>Registro</span>
-            </v-tooltip>
-
+ 
             <v-tooltip bottom>
                 <template v-slot:activator="{ on }">
                     <v-btn small text v-on="on" @click="navegateTo('/login')">
@@ -109,7 +81,6 @@
 <script>
     import { mapMutations } from 'vuex';
     export default {
-        props: ['drawer','miniVariant'],
         computed: {
             auth()
             {
@@ -121,15 +92,29 @@
                 return this.$store.getters['getResize']
             },
 
-            isFiltePage()
+            iconMenu:
             {
-                return ( ['welcome', 'mapview'].includes(this.$route.name) )
+                get() {
+                    return this.$store.getters['getIconMenu']
+                },
+                set(active) {
+                    this.$store.commit('setIconMenu', active)
+                }
             },
+
+            toggleMenu:
+            {
+                get(){
+                    return this.$store.getters['getToggleMenu']
+                },
+                set(active){
+                    this.$store.commit('setToggleMenu', active)
+                }
+            },
+
             menus()
             {
                 let menus = [
-                    { name: 'Conocenos', route: '/conocenos'},
-                    { name: 'Servicios', route: '/servicios'},
                 ];
                 
                 if (this.$store.getters['getAuth'])
@@ -143,13 +128,10 @@
         data(){
             return {
                 loading : false,
-                logo: require('~/assets/img/logo-mini.jpg'), 
             }
         },
         methods:{
             
-            ...mapMutations(['toggleFilter']),
-
             logout()
             {
                 this.loading = true;

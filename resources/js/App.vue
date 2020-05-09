@@ -6,14 +6,11 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
 
 export default {
     created()
     {
         this.$store.commit('setIsMobile', this.$App.isMobile)
-        this.apiCategorias();
-        this.apiZonas();
       
         let auth  = localStorage.getItem('auth');
         let token = localStorage.getItem('token');
@@ -28,7 +25,7 @@ export default {
                             expire
                         };
             
-            this.$store.dispatch('autenticate', data)
+            //this.$store.dispatch('autenticate', data)
         }
         else
         {
@@ -56,7 +53,6 @@ export default {
 
     methods: 
     {
-        ...mapActions(['apiCategorias', 'apiZonas'])
     }
   }
 

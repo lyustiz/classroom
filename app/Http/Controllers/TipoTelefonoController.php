@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TipoTelefono;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TipoTelefonoController extends Controller
 {
@@ -14,11 +15,10 @@ class TipoTelefonoController extends Controller
      */
     public function index()
     {
-        $tipoTelefonos = TipoTelefono::with(['status'])
-                        ->get();
+        $tipoTelefono = TipoTelefono::with([])
+                    ->get();
         
-        return $tipoTelefonos;
-
+        return $tipoTelefono;
     }
 
     /**
@@ -30,19 +30,16 @@ class TipoTelefonoController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-
-            'nb_tipo_telefono'  => 'required',
-            'tx_icono'          => 'required',
-            'tx_observaciones'  => 'required',
-            'id_status'         => 'required',
-            'id_usuario'        => 'required',
-            
+            'nb_tipo_telefono'  => 	'required|string|max:30',
+			'tx_icono'          => 	'required|string|max:30',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
 
-        $tipoTelefono = TipoTelefono::create($request->all());
+        $tipoTelefono = tipoTelefono::create($request->all());
 
-        return [ 'msj' => 'Registro Agregado Correctamente', compact('tipoTelefono') ];
-    
+        return [ 'msj' => 'TipoTelefono Agregado Correctamente', compact('tipoTelefono') ];
     }
 
     /**
@@ -54,7 +51,6 @@ class TipoTelefonoController extends Controller
     public function show(TipoTelefono $tipoTelefono)
     {
         return $tipoTelefono;
-
     }
 
     /**
@@ -67,19 +63,16 @@ class TipoTelefonoController extends Controller
     public function update(Request $request, TipoTelefono $tipoTelefono)
     {
         $validate = request()->validate([
-
-            'nb_tipo_telefono'  => 'required',
-            'tx_icono'          => 'required',
-            'tx_observaciones'  => 'required',
-            'id_status'         => 'required',
-            'id_usuario'        => 'required',
-
+            'nb_tipo_telefono'  => 	'required|string|max:30',
+			'tx_icono'          => 	'required|string|max:30',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer',
+			'id_usuario'        => 	'required|integer',
         ]);
-        
+
         $tipoTelefono = $tipoTelefono->update($request->all());
 
-        return [ 'msj' => 'Registro Editado' , compact('tipoTelefono')];
-    
+        return [ 'msj' => 'TipoTelefono Editado' , compact('tipoTelefono')];
     }
 
     /**
@@ -92,7 +85,6 @@ class TipoTelefonoController extends Controller
     {
         $tipoTelefono = $tipoTelefono->delete();
  
-        return [ 'msj' => 'Registro Eliminado' , compact('tipoTelefono')];
-
+        return [ 'msj' => 'TipoTelefono Eliminado' , compact('tipoTelefono')];
     }
 }
