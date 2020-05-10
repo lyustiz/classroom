@@ -5,18 +5,6 @@ Vue.use(Router)
 import Welcome          from  '@pages/welcome/Welcome.vue';
 //import Admin            from  '@pages/admin/Dashboard.vue';
 
-const Admin = {
-  template: `
-    <div class="admin">
-    <v-toolbar flat  dark dense class="info">
-    <v-toolbar-title>Admin</v-toolbar-title>
-    </v-toolbar >
-      <transition name="fade" mode="out-in" >
-        <router-view></router-view>
-      </transition>
-    </div>
-  `
-}
 /*
 import SelectCuenta     from  '@pages/registro/SelectCuenta.vue';
 import RegistroComercio from  '@pages/registro/RegistroComercio.vue';
@@ -42,9 +30,9 @@ import BandejaRepresentante  from '@pages/bandejaRepresentante/dashboard.vue';
 import Asistente        from '@pages/asistente/asistente.vue';
 import TipoColegio      from '@pages/tipoColegio/tipoColegio.vue';
 import Jornada          from '@pages/jornada/jornada.vue';
-import Calendario           from '@pages/calendario/calendario.vue';
-
-
+import Calendario       from '@pages/calendario/calendario.vue';
+import Turno            from '@pages/turno/turno.vue';
+import HoraAcademica    from '@pages/horaAcademica/horaAcademica.vue';
 import Cargos           from '@pages/cargo/cargo.vue';
 
 import Calificacion     from '@pages/calificacion/calificacion.vue';
@@ -193,6 +181,20 @@ export default new Router({
               label: 'Jornada',
               icon: 'mdi-calendar-clock',
               component: Jornada
+            },
+            { 
+              path: 'turno',
+              name: 'turno',
+              label: 'Turno',
+              icon: 'mdi-timelapse',
+              component: Turno
+            },
+            { 
+              path: 'hora-academica',
+              name: 'hora-academica',
+              label: 'Hora Academica',
+              icon: 'mdi-clock',
+              component: HoraAcademica
             },
             { 
               path: 'calificacion',

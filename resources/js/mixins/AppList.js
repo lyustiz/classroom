@@ -14,6 +14,7 @@ export default
             loading:   true,
             modal:     false,
             items:     [],
+            itemsMenu: [],
             item:      {},
             search:    '',
             action:    '',
@@ -71,7 +72,10 @@ export default
         },
         deleteItem ()
         {
+            if(!this.deleteValidation()) return
+            
             this.loading = true
+
             axios.delete(this.fullUrlId)
             .then(response => 
             {
@@ -89,6 +93,11 @@ export default
                 this.dialog  = false;
             });
         },
+        deleteValidation()
+        {
+            return true
+        }
+        ,
         list()
         {
             this.loading = true
@@ -115,6 +124,17 @@ export default
                 
             }, 3000);
             console.log('changeStatus', payload)
+        },
+        onMenu(payload)
+        {
+            switch (payload) {
+                case 'refresh':
+                    this.list()
+                    break;
+            
+                default:
+                    break;
+            }
         }
     }
 }

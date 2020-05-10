@@ -54,7 +54,9 @@ import './components/components'
 
 /** Minxins Autoload **/
 import AppMessage from '@mixins/AppMessage'
+import AppGlobals from '@mixins/AppGlobals'
 Vue.mixin(AppMessage)
+Vue.mixin(AppGlobals)
 
 /** Componente Principal */
 const app = new Vue({

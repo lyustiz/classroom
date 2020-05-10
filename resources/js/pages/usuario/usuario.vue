@@ -1,6 +1,6 @@
 <template>
 
-    <list-container :titulo="titulo" :head-color="$App.theme.headList">
+    <list-container :titulo="titulo" :head-color="$App.theme.headList" @onMenu="onMenu($event)">
 
         <template slot="HeadTools">
             <add-button @insItem="insItem()"></add-button>

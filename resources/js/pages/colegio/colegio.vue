@@ -2,11 +2,7 @@
 <div>
     <v-toolbar color="indigo" dark flat  dense
     >
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
-      
-      <v-toolbar-title>Colegio</v-toolbar-title>
+      <v-breadcrumbs large dark :items="items" divider=">"></v-breadcrumbs>
 
       <v-spacer></v-spacer>
 
@@ -67,6 +63,16 @@ export default {
                     label: 'Directiva',
                     icon: 'mdi-account-group',
                     component: 'directiva-list'
+                },
+            ],
+            items: [
+                {
+                    text: 'Configuracion General',
+                    disabled: false,
+                    href: '/admin',
+                },
+                {
+                    text: 'Colegio',
                 },
             ]
          

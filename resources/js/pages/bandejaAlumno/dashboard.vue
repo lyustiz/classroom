@@ -61,7 +61,7 @@
             <v-col cols="4">
                 <v-card>
                     <v-card-title >
-                            Actividades
+                            Actividades 
                     </v-card-title>
                     <v-card-text>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. At a ipsa, quod recusandae consectetur tenetur modi deserunt ab animi nesciunt sit libero odit quasi eos veniam reiciendis nulla. Suscipit, odio.
@@ -75,7 +75,7 @@
                 </v-card>
                 <v-card class="mt-5">
                     <v-card-title >
-                            Alumnos 
+                            Tareas 
                     </v-card-title>
                     <v-card-text>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. At a ipsa, quod recusandae consectetur tenetur modi deserunt ab animi nesciunt sit libero odit quasi eos veniam reiciendis nulla. Suscipit, odio.

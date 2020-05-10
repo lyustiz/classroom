@@ -24,6 +24,8 @@
 
 /*! ../../../util/colorUtils */
 
+/*! ../../../util/dateTimeUtils */
+
 /*! ../../../util/helpers */
 
 /*! ../../../util/mixins */
@@ -147,6 +149,8 @@
 /*! ../../util/colors */
 
 /*! ../../util/console */
+
+/*! ../../util/dateTimeUtils */
 
 /*! ../../util/dedupeModelListeners */
 
@@ -956,7 +960,7 @@
 
 /*! exports provided: Mutate, default */
 
-/*! exports provided: PARSE_REGEX, PARSE_TIME, DAYS_IN_MONTH, DAYS_IN_MONTH_LEAP, DAYS_IN_MONTH_MIN, DAYS_IN_MONTH_MAX, MONTH_MAX, MONTH_MIN, DAY_MIN, DAYS_IN_WEEK, MINUTES_IN_HOUR, HOURS_IN_DAY, FIRST_HOUR, getStartOfWeek, getEndOfWeek, getStartOfMonth, getEndOfMonth, parseTime, validateTimestamp, parseTimestamp, parseDate, getDayIdentifier, getTimeIdentifier, getTimestampIdentifier, updateRelative, updateMinutes, updateWeekday, updateFormatted, getWeekday, isLeapYear, daysInMonth, copyTimestamp, padNumber, getDate, getTime, nextMinutes, nextDay, prevDay, relativeDays, diffMinutes, findWeekday, getWeekdaySkips, createDayList, createIntervalList, createNativeLocaleFormatter */
+/*! exports provided: PARSE_REGEX, PARSE_TIME, DAYS_IN_MONTH, DAYS_IN_MONTH_LEAP, DAYS_IN_MONTH_MIN, DAYS_IN_MONTH_MAX, MONTH_MAX, MONTH_MIN, DAY_MIN, DAYS_IN_WEEK, MINUTES_IN_HOUR, HOURS_IN_DAY, FIRST_HOUR, OFFSET_YEAR, OFFSET_MONTH, OFFSET_HOUR, OFFSET_TIME, getStartOfWeek, getEndOfWeek, getStartOfMonth, getEndOfMonth, parseTime, validateTimestamp, parseTimestamp, parseDate, getDayIdentifier, getTimeIdentifier, getTimestampIdentifier, updateRelative, updateMinutes, updateWeekday, updateFormatted, getWeekday, daysInMonth, copyTimestamp, padNumber, getDate, getTime, nextMinutes, nextDay, prevDay, relativeDays, diffMinutes, findWeekday, getWeekdaySkips, createDayList, createIntervalList, createNativeLocaleFormatter */
 
 /*! exports provided: Presets */
 
@@ -1196,6 +1200,8 @@
 
 /*! exports provided: stack */
 
+/*! exports provided: weekNumber, isLeapYear */
+
 /*! no static exports found */
 
 /*! vue */
@@ -1394,6 +1400,10 @@
 
 /*!***********************************!*\
   !*** ./src/services/goto/util.ts ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/util/dateTimeUtils.ts ***!
   \***********************************/
 
 /*!************************************!*\
@@ -2993,7 +3003,7 @@
   \******************************************************************************/
 
 /**
- * vuex v3.1.3
+ * vuex v3.3.0
  * (c) 2020 Evan You
  * @license MIT
  */

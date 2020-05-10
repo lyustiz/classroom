@@ -92,6 +92,8 @@ Route::apiResource('/jornada',         'JornadaController');
 
 
 Route::apiResource('/cargo',     'CargoController');
+Route::apiResource('/turno',     'TurnoController');
+Route::apiResource('/horaAcademica',     'HoraAcademicaController');
 //newRoutes
 
 });

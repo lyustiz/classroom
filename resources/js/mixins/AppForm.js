@@ -72,6 +72,7 @@ export default
         {
             if(this.item)
             {
+                
                 for(var key in this.item)
                 {
                     if(this.form.hasOwnProperty(key))
