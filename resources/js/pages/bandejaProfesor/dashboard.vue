@@ -10,16 +10,31 @@
 
                 <v-row>
                     <v-col cols="12">
+
+                        <v-toolbar color="indigo" dense flat>
+                            <v-btn  icon dark v-if="type=='week'" @click="type = 'day'">
+                                <v-icon>mdi-calendar-today</v-icon>
+                            </v-btn>
+                            <v-btn  icon dark v-else @click="type = 'week'">
+                                <v-icon>mdi-calendar-week</v-icon>
+                            </v-btn>
+                            <v-spacer></v-spacer>
+                            <v-btn  icon dark>
+                                <v-icon>mdi-menu</v-icon>
+                            </v-btn>
+
+                        </v-toolbar>
+
                     <v-calendar
-                    type="week" 
-                    :weekdays="[1,2,3,4,5]"
-                    :interval-count="8"
-                    :first-interval="14"
-                    :interval-format="intervalFormat"
-                    :events="events"
-                    interval-minutes="30"
-                    interval-width="65"
-                    :today="today"
+                        :type="type" 
+                        :weekdays="[1,2,3,4,5]"
+                        :interval-count="8"
+                        :first-interval="14"
+                        :interval-format="intervalFormat"
+                        :events="events"
+                        interval-minutes="30"
+                        interval-width="65"
+                        :today="today"
                     ></v-calendar>
                     </v-col>
                </v-row>
@@ -110,17 +125,23 @@ export default {
     data () 
 	{
         return {
-            today: '2020-05-04',
+            type: 'week',
+            today: '2020-05-15',
             events: [
                 {
-                name:   'Matematica',
-                start:  '2020-05-04 07:00',
-                end:    '2020-05-04 08:00',
+                name:   '1ro - Grupo A',
+                start:  '2020-05-11 07:00',
+                end:    '2020-05-11 08:00',
                 },
                 {
-                name:   'Castellano',
-                start:  '2020-05-04 08:00',
-                end:    '2020-05-04 09:00',
+                name:   '1ro - Grupo B',
+                start:  '2020-05-11 08:00',
+                end:    '2020-05-11 09:00',
+                },
+                {
+                name:   '2do -Grupo A',
+                start:  '2020-05-11 09:00',
+                end:    '2020-05-11 10:00',
                 },
             ],
         }

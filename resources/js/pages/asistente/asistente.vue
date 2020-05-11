@@ -6,84 +6,76 @@
             <add-button @insItem="insertForm()"></add-button>
         </template>
 
-          <v-stepper v-model="e1">
-    <v-stepper-header>
-      <v-stepper-step :complete="e1 > 1" step="1">Name of step 1</v-stepper-step>
-
-      <v-divider></v-divider>
-
-      <v-stepper-step :complete="e1 > 2" step="2">Name of step 2</v-stepper-step>
-
-      <v-divider></v-divider>
-
-      <v-stepper-step step="3">Name of step 3</v-stepper-step>
-    </v-stepper-header>
-
-    <v-stepper-items>
-      <v-stepper-content step="1">
-        <v-card
-          class="mb-12"
-          color="grey lighten-1"
-          height="200px"
-        ></v-card>
-
-        <v-btn
-          color="primary"
-          @click="e1 = 2"
-        >
-          Continue
+        <v-btn color="primary" v-if="steep == 0 "  @click="steep = 1">
+            Iniciar
         </v-btn>
 
-        <v-btn text>Cancel</v-btn>
-      </v-stepper-content>
+        <v-stepper v-model="steep" vertical>
 
-      <v-stepper-content step="2">
-        <v-card
-          class="mb-12"
-          color="grey lighten-1"
-          height="200px"
-        ></v-card>
+            <v-stepper-step :complete="steep > 1" step="1" color="green">
+                Colegio
+                <small>Informacion del Colegio</small>
+            </v-stepper-step>
 
-        <v-btn
-          color="primary"
-          @click="e1 = 3"
-        >
-          Continue
-        </v-btn>
+            <v-stepper-content step="1">
+                <info-form></info-form>
+                <v-btn color="primary" @click="steep = 2">Siguiente</v-btn>
+            </v-stepper-content>
 
-        <v-btn text>Cancel</v-btn>
-      </v-stepper-content>
+            <v-stepper-step :complete="steep > 2" step="2" color="green">
+                Academico
+                <small>Datos para la configuracion del area Academica</small>
+            </v-stepper-step>
 
-      <v-stepper-content step="3">
-        <v-card
-          class="mb-12"
-          color="grey lighten-1"
-          height="200px"
-        ></v-card>
+            <v-stepper-content step="2">
+            <v-card flat=""> 
+                <v-card-text>
+                    <h1>Configuracion Academico</h1>
+                </v-card-text>
+                <v-card-actions>
+                    <v-btn color="primary" @click="steep = 3">Siguiente</v-btn>
+                </v-card-actions>
+            </v-card>
+            </v-stepper-content>
 
-        <v-btn
-          color="primary"
-          @click="e1 = 1"
-        >
-          Continue
-        </v-btn>
+            <v-stepper-step step="3" :complete="steep > 3" color="green">
+                Profesores
+                <small>Carga de la Plantilla de Profesores</small>
+            </v-stepper-step>
 
-        <v-btn text>Cancel</v-btn>
-      </v-stepper-content>
-    </v-stepper-items>
-  </v-stepper>
+            <v-stepper-content step="3">
+            <v-card flat=""> 
+                <v-card-text>
+                    <h1>Configuracion Profesores</h1>
+                </v-card-text>
+                <v-card-actions>
+                    <v-btn color="primary" @click="steep = 4">Finalizar</v-btn>
+                </v-card-actions>
+                </v-card>
+            </v-stepper-content>
+
+        </v-stepper>
+
+        <v-alert v-if="steep == 4" type="success" icon="mdi-check-circle" :value="true" class="mt-3" >
+            Felicitaciones ha culminado la configuracion! <v-btn x-small color="info" @click="steep = 1">Reiniciar</v-btn>
+        </v-alert>
 
     </list-container>
 
 </template>
 
 <script>
+import InfoForm from '@pages/colegio/infoForm'
+
 export default {
+    components: {
+        'info-form': InfoForm
+    },
+
     data () {
     return {
-        title:    'Colegio',
-        resource: 'colegio',
-        e1: true,
+        title:    'Asistente',
+        steep: 0,
 
     }
     },
