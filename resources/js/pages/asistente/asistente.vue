@@ -81,33 +81,7 @@ export default {
     },
     methods:
     {
-        list () {
-
-            this.loading = false
-            
-            axios.get(this.apiUrl  +'colegio')
-            .then(response => {
-                this.items = response.data;
-                this.loading = false
-            })
-            .catch(error => {
-                this.showError(error)
-                this.loading = false
-            })
-        },
-        delItem()
-        {
-            axios.delete(this.apiUrl    + 'colegio/'+this.item.id)
-            .then(response => {
-                this.verMsj(response.data.msj)
-                this.list();
-                this.item = '';
-                this.dialogo = false;
-            })
-            .catch(error => {
-                this.showError(error)
-            })
-        }
+        
     }
 }
 </script>

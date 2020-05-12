@@ -23,8 +23,9 @@
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.aa_escolar"
-                label="Escolar"
-                placeholder="Indique Escolar"
+                label="Año Escolar"
+                placeholder="Indique Año Escolar"
+                type="number"
                 dense
             ></v-text-field>
         </v-col>

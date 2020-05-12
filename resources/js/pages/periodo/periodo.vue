@@ -28,9 +28,10 @@
                 <template v-slot:item="{ item }">
                     <tr>
                         <td class="text-xs-left">{{ item.nb_periodo }}</td>
-						<td class="text-xs-left">{{ item.fe_inicio }}</td>
-						<td class="text-xs-left">{{ item.fe_fin }}</td>
-						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
+                        <td class="text-xs-left">{{ item.nu_periodo }}</td>
+                        <td class="text-xs-left">{{ item.calendario.nb_calendario }}</td>
+						<td class="text-xs-left">{{ item.fe_inicio | formatDate }}</td>
+						<td class="text-xs-left">{{ item.fe_fin | formatDate }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -92,43 +93,18 @@ export default {
         resource: 'periodo',
         headers: [
             { text: 'Periodo',   value: 'nb_periodo' },
+            { text: 'Numero',   value: 'nu_periodo' },
+            { text: 'Calendario',  value: 'calendario.nb_calendario' },
 			{ text: 'Inicio',   value: 'fe_inicio' },
-			{ text: 'Fin',   value: 'fe_fin' },
-			{ text: 'Observaciones',   value: 'tx_observaciones' },
+			{ text: 'Fin',      value: 'fe_fin' },
 			{ text: 'Status',   value: 'id_status' },
-            { text: 'Acciones', value: 'actions' },
+            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
     }
     },
     methods:
     {
-        list () {
-
-            this.loading = false
-            
-            axios.get(this.apiUrl  +'periodo')
-            .then(response => {
-                this.items = response.data;
-                this.loading = false
-            })
-            .catch(error => {
-                this.showError(error)
-                this.loading = false
-            })
-        },
-        delItem()
-        {
-            axios.delete(this.apiUrl    + 'periodo/'+this.item.id)
-            .then(response => {
-                this.verMsj(response.data.msj)
-                this.list();
-                this.item = '';
-                this.dialogo = false;
-            })
-            .catch(error => {
-                this.showError(error)
-            })
-        }
+        
     }
 }
 </script>

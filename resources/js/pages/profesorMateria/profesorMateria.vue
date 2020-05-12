@@ -96,41 +96,15 @@ export default {
 			{ text: 'Materia',   value: 'id_materia' },
 			{ text: 'Grado',   value: 'id_grado' },
 			{ text: 'Grupo',   value: 'id_grupo' },
-			{ text: 'Observaciones',   value: 'tx_observaciones' },
+			{ text: 'Observaciones',   value: 'tx_observaciones', sortable: false, filterable: false },
 			{ text: 'Status',   value: 'id_status' },
-            { text: 'Acciones', value: 'actions' },
+            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
     }
     },
     methods:
     {
-        list () {
-
-            this.loading = false
-            
-            axios.get(this.apiUrl  +'profesorMateria')
-            .then(response => {
-                this.items = response.data;
-                this.loading = false
-            })
-            .catch(error => {
-                this.showError(error)
-                this.loading = false
-            })
-        },
-        delItem()
-        {
-            axios.delete(this.apiUrl    + 'profesorMateria/'+this.item.id)
-            .then(response => {
-                this.verMsj(response.data.msj)
-                this.list();
-                this.item = '';
-                this.dialogo = false;
-            })
-            .catch(error => {
-                this.showError(error)
-            })
-        }
+        
     }
 }
 </script>

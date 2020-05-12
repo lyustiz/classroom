@@ -82,39 +82,13 @@ export default {
         resource: '{{tableName}}',
         headers: [
             {{headers}}
-            { text: 'Acciones', value: 'actions' },
+            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
     }
     },
     methods:
     {
-        list () {
-
-            this.loading = false
-            
-            axios.get(this.apiUrl + '{{instanceName}}')
-            .then(response => {
-                this.items = response.data;
-                this.loading = false
-            })
-            .catch(error => {
-                this.showError(error)
-                this.loading = false
-            })
-        },
-        delItem()
-        {
-            axios.delete(this.apiUrl + '{{instanceName}}/'+this.item.{{primaryKey}})
-            .then(response => {
-                this.verMsj(response.data.msj)
-                this.list();
-                this.item = '';
-                this.dialogo = false;
-            })
-            .catch(error => {
-                this.showError(error)
-            })
-        }
+   
     }
 }
 </script>

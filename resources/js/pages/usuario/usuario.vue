@@ -101,7 +101,7 @@ export default {
 			{ text: 'Email',   value: 'tx_email' },
 			{ text: 'Foto',   value: 'tx_foto' },
 			{ text: 'Tipo Usuario',   value: 'id_tipo_usuario' },
-			{ text: 'Observaciones',   value: 'tx_observaciones' },
+			{ text: 'Observaciones',   value: 'tx_observaciones', sortable: false, filterable: false },
 			{ text: 'Verification',   value: 'verification' },
 			{ text: 'Email Verified At',   value: 'email_verified_at' },
 			{ text: 'Remember Token',   value: 'remember_token' },

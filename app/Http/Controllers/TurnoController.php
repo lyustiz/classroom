@@ -32,8 +32,8 @@ class TurnoController extends Controller
         $validate = request()->validate([
             'nb_turno'          => 	'required|string|max:30',
 			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer|max:10',
-			'id_usuario'        => 	'required|integer|max:10',
+			'id_status'         => 	'required|integer|max:999999999',
+			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
         $turno = turno::create($request->all());
@@ -64,8 +64,8 @@ class TurnoController extends Controller
         $validate = request()->validate([
             'nb_turno'          => 	'required|string|max:30',
 			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer|max:10',
-			'id_usuario'        => 	'required|integer|max:10',
+			'id_status'         => 	'required|integer|max:999999999',
+			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
         $turno = $turno->update($request->all());

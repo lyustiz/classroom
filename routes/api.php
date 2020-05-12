@@ -94,6 +94,13 @@ Route::apiResource('/jornada',         'JornadaController');
 Route::apiResource('/cargo',     'CargoController');
 Route::apiResource('/turno',     'TurnoController');
 Route::apiResource('/horaAcademica',     'HoraAcademicaController');
+Route::apiResource('/grado',     'GradoController');
+
+
+Route::apiResource('/grupoCalificacion',     'GrupoCalificacionController');
+Route::apiResource('/calificacion',     'CalificacionController');
+Route::apiResource('/tipoCalificacion',     'TipoCalificacionController');
+Route::apiResource('/nivelCalificacion',     'NivelCalificacionController');
 //newRoutes
 
 });

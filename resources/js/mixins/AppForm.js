@@ -77,7 +77,7 @@ export default
                 {
                     if(this.form.hasOwnProperty(key))
                     {
-                        if(key.includes('fe_') && this.item[key].length > 10)
+                        if(key.includes('fe_') && this.item[key].length > 9)
                         {
                             this.dates[key] =  this.formatDate(this.item[key]);
 							
@@ -198,6 +198,12 @@ export default
                 }
             }
            
-        }
+        },
+
+        formatPicker(date, picker)
+        {
+            this.pickers[picker] = false;
+            return this.formatDate(date)
+        },
     }
 }

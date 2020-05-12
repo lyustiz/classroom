@@ -139,7 +139,7 @@ export default {
                 end:    '2020-05-11 09:00',
                 },
                 {
-                name:   '2do -Grupo A',
+                name:   '2do - Grupo A',
                 start:  '2020-05-11 09:00',
                 end:    '2020-05-11 10:00',
                 },

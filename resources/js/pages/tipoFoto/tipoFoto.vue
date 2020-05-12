@@ -94,41 +94,15 @@ export default {
             { text: 'Tipo Foto',   value: 'nb_tipo_foto' },
 			{ text: 'Icono',   value: 'tx_icono' },
 			{ text: 'Path',   value: 'tx_path' },
-			{ text: 'Observaciones',   value: 'tx_observaciones' },
+			{ text: 'Observaciones',   value: 'tx_observaciones', sortable: false, filterable: false },
 			{ text: 'Status',   value: 'id_status' },
-            { text: 'Acciones', value: 'actions' },
+            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
     }
     },
     methods:
     {
-        list () {
-
-            this.loading = false
-            
-            axios.get(this.apiUrl  +'tipoFoto')
-            .then(response => {
-                this.items = response.data;
-                this.loading = false
-            })
-            .catch(error => {
-                this.showError(error)
-                this.loading = false
-            })
-        },
-        delItem()
-        {
-            axios.delete(this.apiUrl    + 'tipoFoto/'+this.item.id)
-            .then(response => {
-                this.verMsj(response.data.msj)
-                this.list();
-                this.item = '';
-                this.dialogo = false;
-            })
-            .catch(error => {
-                this.showError(error)
-            })
-        }
+        
     }
 }
 </script>

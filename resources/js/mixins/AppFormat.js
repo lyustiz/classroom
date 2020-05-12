@@ -1,7 +1,7 @@
 export default {
     filters:
     {
-        formDate: function (value)
+        formatDate: function (date)
         {
             if (!date) return null
             const [year, month, day] = date.split('-')
@@ -39,6 +39,7 @@ export default {
                    .split(' ')
                    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
                    .join(' ');
-        }
+        },
+        
     }
 }

@@ -10,6 +10,8 @@ class Periodo extends Model
 
     protected $fillable   = [
                             'nb_periodo',
+                            'nu_periodo',
+                            'id_calendario',
 	 	 	 	 	 	 	'fe_inicio',
 	 	 	 	 	 	 	'fe_fin',
 	 	 	 	 	 	 	'tx_observaciones',
@@ -31,6 +33,12 @@ class Periodo extends Model
     public function usuario(){
 
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
+
+    }
+
+    public function calendario(){
+
+        return $this->BelongsTo('App\Models\Calendario', 'id_calendario');
 
     }
 

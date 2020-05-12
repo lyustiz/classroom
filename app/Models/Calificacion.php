@@ -9,12 +9,13 @@ class Calificacion extends Model
     protected $table 	  = 'calificacion';
 
     protected $fillable   = [
-                            'id_alumno',
-	 	 	 	 	 	 	'id_grupo_materia',
+                            'nb_calificacion',
 	 	 	 	 	 	 	'nu_calificacion',
-	 	 	 	 	 	 	'id_nivel_aprobacion',
-	 	 	 	 	 	 	'nu_inasistencia',
-	 	 	 	 	 	 	'tx_objetivo',
+	 	 	 	 	 	 	'co_calificacion',
+	 	 	 	 	 	 	'bo_aprobado',
+	 	 	 	 	 	 	'nu_orden',
+	 	 	 	 	 	 	'id_grupo_calificacion',
+	 	 	 	 	 	 	'id_tipo_calificacion',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'
@@ -23,22 +24,7 @@ class Calificacion extends Model
     protected $hidden     = [
                             'created_at',
 	 	 	 	 	 	 	'updated_at'
-                            ]; 
-                           
-    public function status(){
-
-        return $this->BelongsTo('App\Models\Status', 'id_status');
-
-    }
-                           
-    public function usuario(){
-
-        return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
-
-    }
-
-                           
-    //
+                            ];
 
 
 }

@@ -15,12 +15,14 @@ class CreateCalificacionTable extends Migration
     {
         Schema::create('calificacion', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_alumno');
-            $table->integer('id_grupo_materia');
-            $table->decimal('nu_calificacion', 8, 2 );
-            $table->integer('id_nivel_aprobacion');
-            $table->integer('nu_inasistencia');
-            $table->string('tx_objetivo', 100)->nullable();
+            $table->string('nb_calificacion', 100)->nullable();
+            $table->decimal('nu_calificacion', 8, 2)->nullable();
+            $table->string('co_calificacion', 20) ->nullable();
+            $table->integer('bo_aprobado');
+            $table->integer('nu_orden');
+            $table->integer('id_grupo_calificacion');
+            $table->integer('id_tipo_calificacion');
+            $table->integer('id_nivel_calificacion');
             $table->string('tx_observaciones', 100)->nullable();
             $table->integer('id_status');
             $table->integer('id_usuario');

@@ -8,7 +8,6 @@
 
         <v-row>
 
-                 
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
@@ -18,58 +17,76 @@
                 dense
             ></v-text-field>
         </v-col>
+
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.nu_periodo"
+                label="Numero de Periodo"
+                type="number"
+                placeholder="Indique Numero de Periodo"
+                dense
+            ></v-text-field>
+        </v-col>
+
+        <v-col cols="12" md="12">
+            <v-select
+            :items="selects.calendario"
+            item-text="nb_calendario"
+            item-value="id"
+            v-model="form.id_calendario"
+            :rules="[rules.select]"
+            label="Calendario"
+            autocomplete
+            dense
+            ></v-select>
+        </v-col>
                  
-        <v-col cols="12" md="3">
+        <v-col cols="12" md="6">
             <v-menu
-                ref="picker"
                 v-model="pickers.fe_inicio"
+                :close-on-content-click="false"
                 min-width="290px"
-                readonly
             >
                 <template v-slot:activator="{ on }">
                     <v-text-field
-                        v-on="on"
                         v-model="dates.fe_inicio"
-                        :rules="rules.etapaCo"
-                        label="Inicio"
+                        :rules="[rules.fecha]"
+                        label="Fecha Inicio"
                         prepend-icon="event"
                         readonly
+                        v-on="on"
                         dense
                     ></v-text-field>
                 </template>
-
                 <v-date-picker 
                     v-model="form.fe_inicio" 
-                    locale="es"
-                    @input="dates.fe_inicio = formatDate( form.fe_inicio )"
-                ></v-date-picker>
+                    @input="dates.fe_inicio = formatPicker(form.fe_inicio, 'fe_inicio')">
+                </v-date-picker>
             </v-menu>
         </v-col>
 
-        <v-col cols="12" md="3">
+        <v-col cols="12" md="6">
             <v-menu
-                ref="picker"
                 v-model="pickers.fe_fin"
+                :close-on-content-click="false"
                 min-width="290px"
-                readonly
             >
                 <template v-slot:activator="{ on }">
                     <v-text-field
-                        v-on="on"
                         v-model="dates.fe_fin"
-                        :rules="rules.etapaCo"
-                        label="Fin"
+                        :rules="[rules.fecha]"
+                        label="Fecha Fin"
                         prepend-icon="event"
                         readonly
+                        v-on="on"
                         dense
                     ></v-text-field>
                 </template>
-
                 <v-date-picker 
                     v-model="form.fe_fin" 
-                    locale="es"
-                    @input="dates.fe_fin = formatDate( form.fe_fin )"
-                ></v-date-picker>
+                    @input="dates.fe_fin = formatPicker(form.fe_fin, 'fe_fin')">
+                </v-date-picker>
             </v-menu>
         </v-col>
  
@@ -96,7 +113,6 @@
             ></v-select>
         </v-col>
          
-
         </v-row>
 
         </v-card-text>
@@ -143,17 +159,20 @@ export default {
             },
             form:
             {
-                id: 	null,
-				nb_periodo: 	null,
-				fe_inicio: 	null,
-				fe_fin: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
+                id: 	          null,
+                nb_periodo: 	  null,
+                nu_periodo: 	  null,
+                id_calendario:    null,
+				fe_inicio: 	      null,
+				fe_fin: 	      null,
+				tx_observaciones: null,
+				id_status: 	      null,
+				id_usuario: 	  null,
             },
             selects:
             {
                 status: 	 [],
+                calendario:  []
             },
         }
     },

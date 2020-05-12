@@ -32,8 +32,8 @@ class CargoController extends Controller
         $validate = request()->validate([
             'nb_cargo'          => 	'required|string|max:30',
 			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer|max:10',
-			'id_usuario'        => 	'required|integer|max:10',
+			'id_status'         => 	'required|integer|max:999999999',
+			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
         $cargo = cargo::create($request->all());
@@ -64,8 +64,8 @@ class CargoController extends Controller
         $validate = request()->validate([
             'nb_cargo'          => 	'required|string|max:30',
 			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer|max:10',
-			'id_usuario'        => 	'required|integer|max:10',
+			'id_status'         => 	'required|integer|max:999999999',
+			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
         $cargo = $cargo->update($request->all());

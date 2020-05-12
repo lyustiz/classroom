@@ -96,41 +96,15 @@ export default {
 			{ text: 'Src',   value: 'tx_src' },
 			{ text: 'Tipo Foto',   value: 'id_tipo_foto' },
 			{ text: 'Entidad',   value: 'id_entidad' },
-			{ text: 'Observaciones',   value: 'tx_observaciones' },
+			{ text: 'Observaciones',   value: 'tx_observaciones', sortable: false, filterable: false },
 			{ text: 'Status',   value: 'id_status' },
-            { text: 'Acciones', value: 'actions' },
+            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
     }
     },
     methods:
     {
-        list () {
-
-            this.loading = false
-            
-            axios.get(this.apiUrl  +'foto')
-            .then(response => {
-                this.items = response.data;
-                this.loading = false
-            })
-            .catch(error => {
-                this.showError(error)
-                this.loading = false
-            })
-        },
-        delItem()
-        {
-            axios.delete(this.apiUrl    + 'foto/'+this.item.id)
-            .then(response => {
-                this.verMsj(response.data.msj)
-                this.list();
-                this.item = '';
-                this.dialogo = false;
-            })
-            .catch(error => {
-                this.showError(error)
-            })
-        }
+        
     }
 }
 </script>

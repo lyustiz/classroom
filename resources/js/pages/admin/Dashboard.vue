@@ -8,7 +8,7 @@
   </div>
 
       <v-row>
-          <v-col v-for="(menu, idx) in menus" :key="idx" cols="4" md="3" lg="2" @click="navegateTo(menu.name)">
+          <v-col v-for="(menu, idx) in menus" :key="idx" cols="6" md="4" lg="3" @click="navegateTo(menu.name)">
 
               <v-card dark color="orange card-menu" ripple>
 

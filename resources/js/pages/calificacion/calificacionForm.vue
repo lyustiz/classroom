@@ -8,15 +8,14 @@
 
         <v-row>
 
-                         
-        <v-col cols="12" md="6">
+            <v-col cols="12" md="6">
             <v-select
-            :items="selects.alumno"
-            item-text="nb_alumno"
+            :items="selects.grupoCalificacion"
+            item-text="nb_grupo_calificacion"
             item-value="id"
-            v-model="form.id_alumno"
+            v-model="form.id_grupo_calificacion"
             :rules="[rules.select]"
-            label="Alumno"
+            label="Grupo Calificacion"
             autocomplete
             dense
             ></v-select>
@@ -24,63 +23,72 @@
                   
         <v-col cols="12" md="6">
             <v-select
-            :items="selects.grupo_materia"
-            item-text="nb_grupo_materia"
+            :items="selects.tipoCalificacion"
+            item-text="nb_tipo_calificacion"
             item-value="id"
-            v-model="form.id_grupo_materia"
+            v-model="form.id_tipo_calificacion"
             :rules="[rules.select]"
-            label="Grupo Materia"
+            label="Tipo Calificacion"
             autocomplete
             dense
             ></v-select>
         </v-col>
-          
+
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
-                v-model="form.nu_calificacion"
+                v-model="form.nb_calificacion"
                 label="Calificacion"
                 placeholder="Indique Calificacion"
                 dense
             ></v-text-field>
         </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.nu_calificacion"
+                label="Valor Calificacion"
+                placeholder="Indique Calificacion"
+                dense
+            ></v-text-field>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.co_calificacion"
+                label="Codigo Calificacion"
+                placeholder="Indique Calificacion"
+                dense
+            ></v-text-field>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.bo_aprobado"
+                label="Aprobado"
+                placeholder="Indica aprobacion?"
+                dense
+            ></v-text-field>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.nu_orden"
+                label="Orden"
+                placeholder="Indique Orden"
+                dense
+            ></v-text-field>
+        </v-col>
                           
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.nivel_aprobacion"
-            item-text="nb_nivel_aprobacion"
-            item-value="id"
-            v-model="form.id_nivel_aprobacion"
-            :rules="[rules.select]"
-            label="Nivel Aprobacion"
-            autocomplete
-            dense
-            ></v-select>
-        </v-col>
-          
-        <v-col cols="12" md="6">
-            <v-text-field
-                :rules="[rules.required]"
-                v-model="form.nu_inasistencia"
-                label="Inasistencia"
-                placeholder="Indique Inasistencia"
-                dense
-            ></v-text-field>
-        </v-col>
+        
                   
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
-                v-model="form.tx_objetivo"
-                label="Objetivo"
-                placeholder="Indique Objetivo"
-                dense
-            ></v-text-field>
-        </v-col>
-                  
-        <v-col cols="12" md="6">
-            <v-text-field
-                :rules="[]"
                 v-model="form.tx_observaciones"
                 label="Observaciones"
                 placeholder="Indique Observaciones"
@@ -147,21 +155,21 @@ export default {
             form:
             {
                 id: 	null,
-				id_alumno: 	null,
-				id_grupo_materia: 	null,
+				nb_calificacion: 	null,
 				nu_calificacion: 	null,
-				id_nivel_aprobacion: 	null,
-				nu_inasistencia: 	null,
-				tx_objetivo: 	null,
+				co_calificacion: 	null,
+				bo_aprobado: 	null,
+				nu_orden: 	null,
+				id_grupo_calificacion: 	null,
+				id_tipo_calificacion: 	null,
 				tx_observaciones: 	null,
 				id_status: 	null,
 				id_usuario: 	null,
             },
             selects:
             {
-                alumno: 	 [],
-	 	 	 	grupo_materia: 	 [],
-	 	 	 	nivel_aprobacion: 	 [],
+                grupoCalificacion: 	 [],
+	 	 	 	tipoCalificacion: 	 [],
 	 	 	 	status: 	 [],
             },
         }

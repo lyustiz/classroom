@@ -30,13 +30,13 @@ class HoraAcademicaController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-            'nu_orden'          => 	'required|integer|max:10',
+            'nu_orden'          => 	'required|integer|max:999999999',
 			'hh_inicio'         => 	'required|date_format:"H:i"|before:hh_fin',
 			'hh_fin'            => 	'required|date_format:"H:i"',
-			'id_turno'          => 	'required|integer|max:10',
+			'id_turno'          => 	'required|integer|max:999999999',
 			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer|max:10',
-			'id_usuario'        => 	'required|integer|max:10',
+			'id_status'         => 	'required|integer|max:999999999',
+			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
         $horaAcademica = horaAcademica::create($request->all());
@@ -65,13 +65,13 @@ class HoraAcademicaController extends Controller
     public function update(Request $request, HoraAcademica $horaAcademica)
     {
         $validate = request()->validate([
-            'nu_orden'          => 	'required|integer|max:10',
+            'nu_orden'          => 	'required|integer|max:999999999',
 			'hh_inicio'         => 	'required|date_format:"H:i"|before:hh_fin',
 			'hh_fin'            => 	'required|date_format:"H:i"',
-			'id_turno'          => 	'required|integer|max:10',
+			'id_turno'          => 	'required|integer|max:999999999',
 			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer|max:10',
-			'id_usuario'        => 	'required|integer|max:10',
+			'id_status'         => 	'required|integer|max:999999999',
+			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
         $horaAcademica = $horaAcademica->update($request->all());

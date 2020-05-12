@@ -27,46 +27,51 @@ import BandejaRepresentante  from '@pages/bandejaRepresentante/dashboard.vue';
 
 
 // loading on demand
-import Asistente        from '@pages/asistente/asistente.vue';
-import TipoColegio      from '@pages/tipoColegio/tipoColegio.vue';
-import Jornada          from '@pages/jornada/jornada.vue';
-import Calendario       from '@pages/calendario/calendario.vue';
-import Turno            from '@pages/turno/turno.vue';
-import HoraAcademica    from '@pages/horaAcademica/horaAcademica.vue';
-import Cargos           from '@pages/cargo/cargo.vue';
+import Asistente         from '@pages/asistente/asistente.vue';
+import TipoColegio       from '@pages/tipoColegio/tipoColegio.vue';
+import Jornada           from '@pages/jornada/jornada.vue';
+import Calendario        from '@pages/calendario/calendario.vue';
+import Turno             from '@pages/turno/turno.vue';
+import HoraAcademica     from '@pages/horaAcademica/horaAcademica.vue';
+import Grado             from '@pages/grado/grado.vue';
+ 
+import Cargos            from '@pages/cargo/cargo.vue';
 
-import Calificacion     from '@pages/calificacion/calificacion.vue';
-import Ciudad           from '@pages/ciudad/ciudad.vue';
-import Clase            from '@pages/clase/clase.vue';
-import Colegio          from '@pages/colegio/colegio.vue';
-import Comuna           from '@pages/comuna/comuna.vue';
-import Contacto         from '@pages/contacto/contacto.vue';
-import Departamento     from '@pages/departamento/departamento.vue';
-import Directiva        from '@pages/directiva/directiva.vue';
-import Documento        from '@pages/documento/documento.vue';
-import Foto             from '@pages/foto/foto.vue';
-import GradoMateria     from '@pages/gradoMateria/gradoMateria.vue';
-import Grupo            from '@pages/grupo/grupo.vue';
-import Horario          from '@pages/horario/horario.vue';
-import Inasistencia     from '@pages/inasistencia/inasistencia.vue';
-import Nivel            from '@pages/nivel/nivel.vue';
-import Pago             from '@pages/pago/pago.vue';
-import Pais             from '@pages/pais/pais.vue';
-import Pariente         from '@pages/pariente/pariente.vue';
-import Periodo          from '@pages/periodo/periodo.vue';
-import Profesor         from '@pages/profesor/profesor.vue';
-import ProfesorMateria  from '@pages/profesorMateria/profesorMateria.vue';
-import Status           from '@pages/status/status.vue';
-import Suscripcion      from '@pages/suscripcion/suscripcion.vue';
-import Telefono         from '@pages/telefono/telefono.vue';
-
-import TipoDirectiva    from '@pages/tipoDirectiva/tipoDirectiva.vue';
-import TipoFoto         from '@pages/tipoFoto/tipoFoto.vue';
-import TipoPago         from '@pages/tipoPago/tipoPago.vue';
-import TipoTelefono     from '@pages/tipoTelefono/tipoTelefono.vue';
-import TipoUsuario      from '@pages/tipoUsuario/tipoUsuario.vue';
-import Usuario          from '@pages/usuario/usuario.vue';
-import Zona             from '@pages/zona/zona.vue';
+import GrupoCalificacion from '@pages/grupoCalificacion/grupoCalificacion.vue';
+import NivelCalificacion from '@pages/nivelCalificacion/nivelCalificacion.vue';
+import Calificacion      from '@pages/calificacion/calificacion.vue';
+ 
+import Ciudad            from '@pages/ciudad/ciudad.vue';
+import Clase             from '@pages/clase/clase.vue';
+import Colegio           from '@pages/colegio/colegio.vue';
+import Comuna            from '@pages/comuna/comuna.vue';
+import Contacto          from '@pages/contacto/contacto.vue';
+import Departamento      from '@pages/departamento/departamento.vue';
+import Directiva         from '@pages/directiva/directiva.vue';
+import Documento         from '@pages/documento/documento.vue';
+import Foto              from '@pages/foto/foto.vue';
+import GradoMateria      from '@pages/gradoMateria/gradoMateria.vue';
+import Grupo             from '@pages/grupo/grupo.vue';
+import Horario           from '@pages/horario/horario.vue';
+import Inasistencia      from '@pages/inasistencia/inasistencia.vue';
+import Nivel             from '@pages/nivel/nivel.vue';
+import Pago              from '@pages/pago/pago.vue';
+import Pais              from '@pages/pais/pais.vue';
+import Pariente          from '@pages/pariente/pariente.vue';
+import Periodo           from '@pages/periodo/periodo.vue';
+import Profesor          from '@pages/profesor/profesor.vue';
+import ProfesorMateria   from '@pages/profesorMateria/profesorMateria.vue';
+import Status            from '@pages/status/status.vue';
+import Suscripcion       from '@pages/suscripcion/suscripcion.vue';
+import Telefono          from '@pages/telefono/telefono.vue';
+ 
+import TipoDirectiva     from '@pages/tipoDirectiva/tipoDirectiva.vue';
+import TipoFoto          from '@pages/tipoFoto/tipoFoto.vue';
+import TipoPago          from '@pages/tipoPago/tipoPago.vue';
+import TipoTelefono      from '@pages/tipoTelefono/tipoTelefono.vue';
+import TipoUsuario       from '@pages/tipoUsuario/tipoUsuario.vue';
+import Usuario           from '@pages/usuario/usuario.vue';
+import Zona              from '@pages/zona/zona.vue';
 const Parentesco       =  () => import('@pages/parentesco/parentesco.vue');
 
 
@@ -141,285 +146,306 @@ export default new Router({
           component: MenuAdmin,
           children: [
              { 
-              path: '/',
-              name: 'admin-dashboard',
-              label: 'Configuracion General',
-              icon: 'mdi-cog',
-              component: BandejaAdmin
+                path: '/',
+                name: 'admin-dashboard',
+                label: 'Configuracion General',
+                icon: 'mdi-cog',
+                component: BandejaAdmin
             }, 
             { 
-              path: 'asistente',
-              name: 'asistente',
-              label: 'Asistente',
-              icon: 'mdi-head-cog',
-              component: Asistente
+                path: 'asistente',
+                name: 'asistente',
+                label: 'Asistente',
+                icon: 'mdi-head-cog',
+                component: Asistente
             },
             { 
-              path: 'colegio',
-              name: 'colegio',
-              label: 'Colegio',
-              icon: 'mdi-store',
-              component: Colegio
+                path: 'colegio',
+                name: 'colegio',
+                label: 'Colegio',
+                icon: 'mdi-store',
+                component: Colegio
             },
             { 
-              path: 'tipoColegio',
-              name: 'tipoColegio',
-              label: 'Tipo Colegio',
-              icon: 'mdi-bookmark-multiple',
-              component: TipoColegio
+                path: 'tipoColegio',
+                name: 'tipoColegio',
+                label: 'Tipo Colegio',
+                icon: 'mdi-bookmark-multiple',
+                component: TipoColegio
             },
             { 
-              path: 'calendario',
-              name: 'calendario',
-              label: 'Calendario',
-              icon: 'mdi-calendar-blank',
-              component: Calendario
+                path: 'tipoDirectiva',
+                name: 'tipoDirectiva',
+                label: 'Tipo Directiva',
+                icon: 'mdi-account-group-outline',
+                component: TipoDirectiva
             },
             { 
-              path: 'jornada',
-              name: 'jornada',
-              label: 'Jornada',
-              icon: 'mdi-calendar-clock',
-              component: Jornada
+                path: 'directiva',
+                name: 'directiva',
+                label: 'Directiva',
+                icon: 'mdi-account-group',
+                component: Directiva
             },
             { 
-              path: 'turno',
-              name: 'turno',
-              label: 'Turno',
-              icon: 'mdi-timelapse',
-              component: Turno
+                path: 'calendario',
+                name: 'calendario',
+                label: 'Calendario',
+                icon: 'mdi-calendar-blank',
+                component: Calendario
             },
             { 
-              path: 'hora-academica',
-              name: 'hora-academica',
-              label: 'Hora Academica',
-              icon: 'mdi-clock',
-              component: HoraAcademica
+                path: 'jornada',
+                name: 'jornada',
+                label: 'Jornada',
+                icon: 'mdi-calendar-clock',
+                component: Jornada
             },
             { 
-              path: 'calificacion',
-              name: 'calificacion',
-              label: 'Calificacion',
-              icon: 'mdi-format-list-checks',
-              component: Calificacion
+                path: 'turno',
+                name: 'turno',
+                label: 'Turno',
+                icon: 'mdi-timelapse',
+                component: Turno
             },
             { 
-              path: 'ciudad',
-              name: 'ciudad',
-              label: 'Ciudad',
-              icon: 'mdi-city-variant',
-              component: Ciudad
+                path: 'hora-academica',
+                name: 'hora-academica',
+                label: 'Hora Academica',
+                icon: 'mdi-clock',
+                component: HoraAcademica
             },
             { 
-              path: 'clase',
-              name: 'clase',
-              label: 'Clase',
-              icon: 'mdi-google-classroom',
-              component: Clase
+                path: 'grupo-calificacion',
+                name: 'grupo-calificacion',
+                label: 'Grupo Calificaciones',
+                icon: 'mdi-check-box-multiple-outline',
+                component: GrupoCalificacion
             },
             { 
-              path: 'comuna',
-              name: 'comuna',
-              label: 'Comuna',
-              icon: 'mdi-map-marker-radius',
-              component: Comuna
+                path: 'nivel-calificacion',
+                name: 'nivel-calificacion',
+                label: 'Nivel Calificaciones',
+                icon: 'mdi-check-box-multiple-outline',
+                component: NivelCalificacion
             },
             { 
-              path: 'contacto',
-              name: 'contacto',
-              label: 'Contacto',
-              icon: 'mdi-contacts',
-              component: Contacto
+                path: 'calificacion',
+                name: 'calificacion',
+                label: 'Calificacion',
+                icon: 'mdi-check-box-outline',
+                component: Calificacion
             },
             { 
-              path: 'departamento',
-              name: 'departamento',
-              label: 'Departamento',
-              icon: 'mdi-map-search',
-              component: Departamento
+                path: 'grado',
+                name: 'grado',
+                label: 'Grado',
+                icon: 'mdi-numeric',
+                component: Grado
             },
             { 
-              path: 'cargos',
-              name: 'cargos',
-              label: 'Cargos',
-              icon: 'mdi-account-settings',
-              component: Cargos
+                path: 'periodo',
+                name: 'periodo',
+                label: 'Periodos',
+                icon: 'mdi-calendar-weekend',
+                component: Periodo
             },
             { 
-              path: 'directiva',
-              name: 'directiva',
-              label: 'Directiva',
-              icon: 'mdi-account-group',
-              component: Directiva
+                path: 'clase',
+                name: 'clase',
+                label: 'Clase',
+                icon: 'mdi-google-classroom',
+                component: Clase
             },
             { 
-              path: 'documento',
-              name: 'documento',
-              label: 'Documento',
-              icon: 'mdi-card-account-details',
-              component: Documento
+                path: 'contacto',
+                name: 'contacto',
+                label: 'Contacto',
+                icon: 'mdi-contacts',
+                component: Contacto
             },
             { 
-              path: 'foto',
-              name: 'foto',
-              label: 'Foto',
-              icon: 'mdi-image',
-              component: Foto
+                path: 'cargos',
+                name: 'cargos',
+                label: 'Cargos',
+                icon: 'mdi-account-settings',
+                component: Cargos
             },
             { 
-              path: 'gradoMateria',
-              name: 'gradoMateria',
-              label: 'Grado Materia',
-              icon: 'mdi-square-root',
-              component: GradoMateria
+                path: 'documento',
+                name: 'documento',
+                label: 'Documento',
+                icon: 'mdi-card-account-details',
+                component: Documento
             },
             { 
-              path: 'grupo',
-              name: 'grupo',
-              label: 'Grupo',
-              icon: 'mdi-account-multiple',
-              component: Grupo
+                path: 'foto',
+                name: 'foto',
+                label: 'Foto',
+                icon: 'mdi-image',
+                component: Foto
             },
             { 
-              path: 'horario',
-              name: 'horario',
-              label: 'Horario',
-              icon: 'mdi-calendar-multiselect',
-              component: Horario
+                path: 'gradoMateria',
+                name: 'gradoMateria',
+                label: 'Grado Materia',
+                icon: 'mdi-square-root',
+                component: GradoMateria
             },
             { 
-              path: 'inasistencia',
-              name: 'Inasistencia',
-              label: 'Inasistencia',
-              icon: 'mdi-playlist-remove',
-              component: Inasistencia
+                path: 'grupo',
+                name: 'grupo',
+                label: 'Grupo',
+                icon: 'mdi-account-multiple',
+                component: Grupo
             },
             { 
-              path: 'nivel',
-              name: 'nivel',
-              label: 'Nivel',
-              icon: 'mdi-stairs-up',
-              component: Nivel
+                path: 'horario',
+                name: 'horario',
+                label: 'Horario',
+                icon: 'mdi-calendar-multiselect',
+                component: Horario
             },
             { 
-              path: 'pago',
-              name: 'pago',
-              label: 'Pago',
-              icon: 'mdi-credit-card-settings',
-              component: Pago
+                path: 'inasistencia',
+                name: 'Inasistencia',
+                label: 'Inasistencia',
+                icon: 'mdi-playlist-remove',
+                component: Inasistencia
             },
             { 
-              path: 'pais',
-              name: 'pais',
-              label: 'Pais',
-              icon: 'mdi-earth',
-              component: Pais
+                path: 'nivel',
+                name: 'nivel',
+                label: 'Nivel',
+                icon: 'mdi-stairs-up',
+                component: Nivel
             },
             { 
-              path: 'pariente',
-              name: 'pariente',
-              label: 'Pariente',
-              icon: 'mdi-human-male-child',
-              component: Pariente
-            },
-            { 
-              path: 'periodo',
-              name: 'periodo',
-              label: 'Periodo',
-              icon: 'mdi-calendar-weekend',
-              component: Periodo
-            },
-            { 
-              path: 'profesor',
-              name: 'profesor',
-              label: 'Profesor',
-              icon: 'mdi-account-tie',
-              component: Profesor
-            },
-            { 
-              path: 'profesorMateria',
-              name: 'profesorMateria',
-              label: 'ProfesorMateria',
-              icon: 'mdi-account-tie-voice',
-              component: ProfesorMateria
-            },
-            { 
-              path: 'status',
-              name: 'status',
-              label: 'Status',
-              icon: 'mdi-playlist-check',
-              component: Status
-            },
-            { 
-              path: 'suscripcion',
-              name: 'suscripcion',
-              label: 'Suscripcion',
-              icon: 'mdi-file-document-edit',
-              component: Suscripcion
-            },
-            { 
-              path: 'telefono',
-              name: 'telefono',
-              label: 'Telefono',
-              icon: 'mdi-phone',
-              component: Telefono
+                path: 'pago',
+                name: 'pago',
+                label: 'Pago',
+                icon: 'mdi-credit-card-settings',
+                component: Pago
             },
             
             { 
-              path: 'tipoDirectiva',
-              name: 'tipoDirectiva',
-              label: 'Tipo Directiva',
-              icon: 'mdi-account-group-outline',
-              component: TipoDirectiva
+                path: 'pariente',
+                name: 'pariente',
+                label: 'Pariente',
+                icon: 'mdi-human-male-child',
+                component: Pariente
             },
             { 
-              path: 'tipoFoto',
-              name: 'tipoFoto',
-              label: 'Tipo Foto',
-              icon: 'mdi-image-album',
-              component: TipoFoto
+                path: 'profesor',
+                name: 'profesor',
+                label: 'Profesor',
+                icon: 'mdi-account-tie',
+                component: Profesor
             },
             { 
-              path: 'tipoPago',
-              name: 'tipoPago',
-              label: 'Tipo Pago',
-              icon: 'mdi-credit-card-multiple',
-              component: TipoPago
+                path: 'profesorMateria',
+                name: 'profesorMateria',
+                label: 'ProfesorMateria',
+                icon: 'mdi-account-tie-voice',
+                component: ProfesorMateria
             },
             { 
-              path: 'tipoTelefono',
-              name: 'tipoTelefono',
-              label: 'Tipo Telefono',
-              icon: 'mdi-phone-log',
-              component: TipoTelefono
+                path: 'status',
+                name: 'status',
+                label: 'Status',
+                icon: 'mdi-playlist-check',
+                component: Status
             },
             { 
-              path: 'tipoUsuario',
-              name: 'tipoUsuario',
-              label: 'Tipo Usuario',
-              icon: 'mdi-book-account',
-              component: TipoUsuario
+                path: 'suscripcion',
+                name: 'suscripcion',
+                label: 'Suscripcion',
+                icon: 'mdi-file-document-edit',
+                component: Suscripcion
             },
             { 
-              path: 'usuario',
-              name: 'usuario',
-              label: 'Usuario',
-              icon: 'mdi-account',
-              component: Usuario
+                path: 'telefono',
+                name: 'telefono',
+                label: 'Telefono',
+                icon: 'mdi-phone',
+                component: Telefono
             },
             { 
-              path: 'zona',
-              name: 'zona',
-              label: 'Zona',
-              icon: 'mdi-select-marker',
-              component: Zona
+                path: 'tipoFoto',
+                name: 'tipoFoto',
+                label: 'Tipo Foto',
+                icon: 'mdi-image-album',
+                component: TipoFoto
             },
             { 
-              path: 'parentesco',
-              name: 'parentesco',
-              label: 'Parentesco',
-              icon: 'mdi-account-supervisor-circle',
-              component: Parentesco
+                path: 'tipoPago',
+                name: 'tipoPago',
+                label: 'Tipo Pago',
+                icon: 'mdi-credit-card-multiple',
+                component: TipoPago
+            },
+            { 
+                path: 'tipoTelefono',
+                name: 'tipoTelefono',
+                label: 'Tipo Telefono',
+                icon: 'mdi-phone-log',
+                component: TipoTelefono
+            },
+            { 
+                path: 'tipoUsuario',
+                name: 'tipoUsuario',
+                label: 'Tipo Usuario',
+                icon: 'mdi-book-account',
+                component: TipoUsuario
+            },
+            { 
+                path: 'usuario',
+                name: 'usuario',
+                label: 'Usuario',
+                icon: 'mdi-account',
+                component: Usuario
+            },
+            { 
+                path: 'parentesco',
+                name: 'parentesco',
+                label: 'Parentesco',
+                icon: 'mdi-account-supervisor-circle',
+                component: Parentesco
+            },
+            { 
+                path: 'pais',
+                name: 'pais',
+                label: 'Pais',
+                icon: 'mdi-earth',
+                component: Pais
+            },
+            { 
+                path: 'departamento',
+                name: 'departamento',
+                label: 'Departamento',
+                icon: 'mdi-map-search',
+                component: Departamento
+            },
+            { 
+                path: 'ciudad',
+                name: 'ciudad',
+                label: 'Ciudad',
+                icon: 'mdi-city-variant',
+                component: Ciudad
+            },
+            { 
+                path: 'zona',
+                name: 'zona',
+                label: 'Zona',
+                icon: 'mdi-select-marker',
+                component: Zona
+            },
+            { 
+                path: 'comuna',
+                name: 'comuna',
+                label: 'Comuna',
+                icon: 'mdi-map-marker-radius',
+                component: Comuna
             },
           ]
         },

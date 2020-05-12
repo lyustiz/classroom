@@ -116,6 +116,12 @@ class ControllerGenerator
             {
                 case in_array( $column->type, [ 'string', 'text' ] ):
 
+                    if($column->name == 'tx_observaciones' )
+                    {
+                        $validators = [ 'nullable', 'string', 'max:' . $column->length ];
+                        break;
+                    }
+
                     $validators = [ 'required', 'string', 'max:' . $column->length ];
                     break;
 
@@ -126,7 +132,7 @@ class ControllerGenerator
         
                 case $column->type == 'integer':
 
-                    $validators = [ 'required', 'integer', 'max:' . $column->precision ];
+                    $validators = [ 'required', 'integer', 'max:' . '999999999' ];
                     break;
             
                 case $column->type == 'decimal':

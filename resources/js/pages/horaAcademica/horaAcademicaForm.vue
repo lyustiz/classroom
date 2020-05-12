@@ -9,7 +9,7 @@
         <v-row>
 
                  
-        <v-col cols="2" md="2">
+        <v-col cols="6" md="2">
             <v-text-field
                 v-model="form.nu_orden"
                 label="Orden"

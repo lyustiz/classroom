@@ -27,12 +27,13 @@
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.id_alumno }}</td>
-						<td class="text-xs-left">{{ item.id_grupo_materia }}</td>
+                        <td class="text-xs-left">{{ item.nb_calificacion }}</td>
 						<td class="text-xs-left">{{ item.nu_calificacion }}</td>
-						<td class="text-xs-left">{{ item.id_nivel_aprobacion }}</td>
-						<td class="text-xs-left">{{ item.nu_inasistencia }}</td>
-						<td class="text-xs-left">{{ item.tx_objetivo }}</td>
+						<td class="text-xs-left">{{ item.co_calificacion }}</td>
+						<td class="text-xs-left">{{ item.bo_aprobado }}</td>
+						<td class="text-xs-left">{{ item.nu_orden }}</td>
+						<td class="text-xs-left">{{ item.id_grupo_calificacion }}</td>
+						<td class="text-xs-left">{{ item.id_tipo_calificacion }}</td>
 						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">
                             <status-switch 
@@ -94,47 +95,31 @@ export default {
         title:    'Calificacion',
         resource: 'calificacion',
         headers: [
-            { text: 'Alumno',   value: 'id_alumno' },
-			{ text: 'Grupo Materia',   value: 'id_grupo_materia' },
+            { text: 'Calificacion',   value: 'nb_calificacion' },
 			{ text: 'Calificacion',   value: 'nu_calificacion' },
-			{ text: 'Nivel Aprobacion',   value: 'id_nivel_aprobacion' },
-			{ text: 'Inasistencia',   value: 'nu_inasistencia' },
-			{ text: 'Objetivo',   value: 'tx_objetivo' },
+			{ text: 'Calificacion',   value: 'co_calificacion' },
+			{ text: 'Aprobado',   value: 'bo_aprobado' },
+			{ text: 'Orden',   value: 'nu_orden' },
+			{ text: 'Grupo Calificacion',   value: 'id_grupo_calificacion' },
+			{ text: 'Tipo Calificacion',   value: 'id_tipo_calificacion' },
 			{ text: 'Observaciones',   value: 'tx_observaciones' },
 			{ text: 'Status',   value: 'id_status' },
-            { text: 'Acciones', value: 'actions' },
+            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
     }
     },
     methods:
     {
-        list () {
-
-            this.loading = false
-            
-            axios.get(this.apiUrl  +'calificacion')
-            .then(response => {
-                this.items = response.data;
-                this.loading = false
-            })
-            .catch(error => {
-                this.showError(error)
-                this.loading = false
-            })
-        },
-        delItem()
-        {
-            axios.delete(this.apiUrl    + 'calificacion/'+this.item.id)
-            .then(response => {
-                this.verMsj(response.data.msj)
-                this.list();
-                this.item = '';
-                this.dialogo = false;
-            })
-            .catch(error => {
-                this.showError(error)
-            })
-        }
+   /**
+    * 
+    * 
+    * - Sobresaliente         - Excelente
+            - Distinguido             - Muy bueno
+            - Bueno                      - Bueno
+            - Aprobado                - Regular
+            - Insuficiente             - Insuficiente
+            - Reprobado              - Reprobado
+    */
     }
 }
 </script>

@@ -15,7 +15,7 @@ class PeriodoController extends Controller
      */
     public function index()
     {
-        $periodo = Periodo::with([])
+        $periodo = Periodo::with(['calendario:id,nb_calendario'])
                     ->get();
         
         return $periodo;
@@ -31,11 +31,13 @@ class PeriodoController extends Controller
     {
         $validate = request()->validate([
             'nb_periodo'        => 	'required|string|max:30',
-			'fe_inicio'         => 	'required|string|max:0',
-			'fe_fin'            => 	'required|string|max:0',
+            'nu_periodo'        => 	'required|integer|max:999999999',
+            'id_calendario'     => 	'required|integer|max:999999999',
+			'fe_inicio'         => 	'required|date|before:fe_fin',
+		    'fe_fin'            => 	'required|date',
 			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer',
-			'id_usuario'        => 	'required|integer',
+			'id_status'         => 	'required|integer|max:999999999',
+			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
         $periodo = periodo::create($request->all());
@@ -65,11 +67,12 @@ class PeriodoController extends Controller
     {
         $validate = request()->validate([
             'nb_periodo'        => 	'required|string|max:30',
-			'fe_inicio'         => 	'required|string|max:0',
-			'fe_fin'            => 	'required|string|max:0',
+            'nu_periodo'        => 	'required|integer|max:999999999',
+			'fe_inicio'         => 	'required|date|before:fe_fin',
+		    'fe_fin'            => 	'required|date',
 			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer',
-			'id_usuario'        => 	'required|integer',
+			'id_status'         => 	'required|integer|max:999999999',
+			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
         $periodo = $periodo->update($request->all());
