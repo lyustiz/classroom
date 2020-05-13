@@ -23,27 +23,12 @@
                 item-key="id"
                 :loading="loading"
                 sort-by=""
-                dense
             >
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.nu_orden }}</td>
-                        <td class="text-xs-left">{{ item.grupo_calificacion.nb_grupo_calificacion }}</td>
-						<td class="text-xs-left">{{ item.tipo_calificacion.nb_tipo_calificacion }}</td>
-                        <td class="text-xs-left">{{ item.nb_calificacion }}</td>
-						<td class="text-xs-left">{{ item.nu_calificacion }}</td>
-						<td class="text-xs-left">{{ item.co_calificacion }}</td>
-                        <td class="text-xs-center">
-                            <v-simple-checkbox
-                                :value="item.bo_aprobado | toBoolean"
-                                color="success"
-                                hide-details
-                                dense
-                            ></v-simple-checkbox> 
-                        </td>
-                        <td class="text-xs-left">{{ item.nivel_calificacion.nb_nivel_calificacion }}</td>
-						<td class="text-xs-center">
+                        <td class="text-xs-left">{{ item.nb_estado_civil }}</td>
+						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
                                 :item="item" 
@@ -68,11 +53,11 @@
                 :head-color="$App.theme.headModal"
                 :title="title"
             >
-                <calificacion-form
+                <estado-civil-form
                     :action="action"
                     :item="item"
                     @closeModal="closeModal()"
-                ></calificacion-form>
+                ></estado-civil-form>
 
             </app-modal>
 
@@ -94,31 +79,24 @@
 
 <script>
 import listHelper from '@mixins/Applist';
-import calificacionForm  from './calificacionForm';
+import estadoCivilForm  from './estadoCivilForm';
 export default {
     mixins:     [ listHelper],
-    components: { 'calificacion-form': calificacionForm },
+    components: { 'estado-civil-form': estadoCivilForm },
     data () {
     return {
-        title:    'Calificacion',
-        resource: 'calificacion',
+        title:    'EstadoCivil',
+        resource: 'estadoCivil',
         headers: [
-            { text: 'Orden',        value: 'nu_orden' },
-            { text: 'Grupo',        value: 'grupo_calificacion.nb_grupo_calificacion' },
-            { text: 'Tipo Calculo', value: 'tipo_calificacion.nb_tipo_calificacion' },
-            { text: 'Letra',        value: 'nb_calificacion' },
-			{ text: 'Valor',        value: 'nu_calificacion' },
-			{ text: 'Codigo',       value: 'co_calificacion' },
-            { text: 'Aprobado?',    value: 'bo_aprobado' },
-            { text: 'Nivel',        value: 'nivel_calificacion.nb_nivel_calificacion' },
-			{ text: 'Status',       value: 'id_status' },
-            { text: 'Acciones',     value: 'actions', sortable: false, filterable: false },
+            { text: 'Estado Civil',   value: 'nb_estado_civil' },
+			{ text: 'Status',   value: 'id_status' },
+            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
     }
     },
     methods:
     {
-
+   
     }
 }
 </script>

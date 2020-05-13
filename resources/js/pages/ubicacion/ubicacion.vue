@@ -23,27 +23,15 @@
                 item-key="id"
                 :loading="loading"
                 sort-by=""
-                dense
             >
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.nu_orden }}</td>
-                        <td class="text-xs-left">{{ item.grupo_calificacion.nb_grupo_calificacion }}</td>
-						<td class="text-xs-left">{{ item.tipo_calificacion.nb_tipo_calificacion }}</td>
-                        <td class="text-xs-left">{{ item.nb_calificacion }}</td>
-						<td class="text-xs-left">{{ item.nu_calificacion }}</td>
-						<td class="text-xs-left">{{ item.co_calificacion }}</td>
-                        <td class="text-xs-center">
-                            <v-simple-checkbox
-                                :value="item.bo_aprobado | toBoolean"
-                                color="success"
-                                hide-details
-                                dense
-                            ></v-simple-checkbox> 
-                        </td>
-                        <td class="text-xs-left">{{ item.nivel_calificacion.nb_nivel_calificacion }}</td>
-						<td class="text-xs-center">
+                        <td class="text-xs-left">{{ item.nb_ubicacion }}</td>
+						<td class="text-xs-left">{{ item.id_colegio }}</td>
+						<td class="text-xs-left">{{ item.id_padre }}</td>
+						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
+						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
                                 :item="item" 
@@ -68,11 +56,11 @@
                 :head-color="$App.theme.headModal"
                 :title="title"
             >
-                <calificacion-form
+                <ubicacion-form
                     :action="action"
                     :item="item"
                     @closeModal="closeModal()"
-                ></calificacion-form>
+                ></ubicacion-form>
 
             </app-modal>
 
@@ -94,31 +82,27 @@
 
 <script>
 import listHelper from '@mixins/Applist';
-import calificacionForm  from './calificacionForm';
+import ubicacionForm  from './ubicacionForm';
 export default {
     mixins:     [ listHelper],
-    components: { 'calificacion-form': calificacionForm },
+    components: { 'ubicacion-form': ubicacionForm },
     data () {
     return {
-        title:    'Calificacion',
-        resource: 'calificacion',
+        title:    'Ubicacion',
+        resource: 'ubicacion',
         headers: [
-            { text: 'Orden',        value: 'nu_orden' },
-            { text: 'Grupo',        value: 'grupo_calificacion.nb_grupo_calificacion' },
-            { text: 'Tipo Calculo', value: 'tipo_calificacion.nb_tipo_calificacion' },
-            { text: 'Letra',        value: 'nb_calificacion' },
-			{ text: 'Valor',        value: 'nu_calificacion' },
-			{ text: 'Codigo',       value: 'co_calificacion' },
-            { text: 'Aprobado?',    value: 'bo_aprobado' },
-            { text: 'Nivel',        value: 'nivel_calificacion.nb_nivel_calificacion' },
-			{ text: 'Status',       value: 'id_status' },
-            { text: 'Acciones',     value: 'actions', sortable: false, filterable: false },
+            { text: 'Ubicacion',   value: 'nb_ubicacion' },
+			{ text: 'Colegio',   value: 'id_colegio' },
+			{ text: 'Padre',   value: 'id_padre' },
+			{ text: 'Observaciones',   value: 'tx_observaciones' },
+			{ text: 'Status',   value: 'id_status' },
+            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
     }
     },
     methods:
     {
-
+   
     }
 }
 </script>

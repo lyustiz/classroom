@@ -15,8 +15,12 @@ class CalificacionController extends Controller
      */
     public function index()
     {
-        $calificacion = Calificacion::with([])
-                    ->get();
+        $calificacion = Calificacion::with(['grupoCalificacion:id,nb_grupo_calificacion', 
+                                            'tipoCalificacion:id,nb_tipo_calificacion', 
+                                            'nivelCalificacion:id,nb_nivel_calificacion'
+                                            ])
+                                            ->orderBy('nu_orden', 'asc')
+                                        ->get();
         
         return $calificacion;
     }
@@ -30,14 +34,17 @@ class CalificacionController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-            'id_alumno'         => 	'required|integer',
-			'id_grupo_materia'  => 	'required|integer',
-			'nu_calificacion'   => 	'required|numeric|max:8',
-			'id_nivel_aprobacion'=> 	'required|integer',
-			'nu_inasistencia'   => 	'required|integer',
-			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer',
-			'id_usuario'        => 	'required|integer',
+            'nb_calificacion'       => 'nullable|string|max:30',
+            'nu_calificacion'       => 'required|numeric',
+            'co_calificacion'       => 'nullable|string|max:20',
+            'bo_aprobado'           => 'required|boolean',
+            'nu_orden'              => 'required|integer',
+            'id_grupo_calificacion' => 'required|integer',
+            'id_tipo_calificacion'  => 'required|integer',
+            'id_nivel_calificacion' => 'required|integer',
+            'tx_observaciones'      => 'nullable|string|max:100',
+            'id_status'             => 'required|integer',
+            'id_usuario'            => 'required|integer',
         ]);
 
         $calificacion = calificacion::create($request->all());
@@ -66,14 +73,17 @@ class CalificacionController extends Controller
     public function update(Request $request, Calificacion $calificacion)
     {
         $validate = request()->validate([
-            'id_alumno'         => 	'required|integer',
-			'id_grupo_materia'  => 	'required|integer',
-			'nu_calificacion'   => 	'required|numeric|max:8',
-			'id_nivel_aprobacion'=> 	'required|integer',
-			'nu_inasistencia'   => 	'required|integer',
-			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer',
-			'id_usuario'        => 	'required|integer',
+            'nb_calificacion'       => 'nullable|string|max:30',
+            'nu_calificacion'       => 'required|numeric',
+            'co_calificacion'       => 'nullable|string|max:20',
+            'bo_aprobado'           => 'required|boolean',
+            'nu_orden'              => 'required|integer',
+            'id_grupo_calificacion' => 'required|integer',
+            'id_tipo_calificacion'  => 'required|integer',
+            'id_nivel_calificacion' => 'required|integer',
+            'tx_observaciones'      => 'nullable|string|max:100',
+            'id_status'             => 'required|integer',
+            'id_usuario'            => 'required|integer',
         ]);
 
         $calificacion = $calificacion->update($request->all());

@@ -18,6 +18,8 @@ export default
                 required: v => (!!v) || 'Dato Requerido',
                 
                 radio: v => !!v || 'Seleccione una Opcion (Requerido)',
+
+                check: v => [0, 1, true, false].includes(v) || 'Seleccione una Opcion (Requerido)',
                 
                 monto: v => !!v || 'Monto Requerido',
                 

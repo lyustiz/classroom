@@ -28,22 +28,8 @@
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.nu_orden }}</td>
-                        <td class="text-xs-left">{{ item.grupo_calificacion.nb_grupo_calificacion }}</td>
-						<td class="text-xs-left">{{ item.tipo_calificacion.nb_tipo_calificacion }}</td>
-                        <td class="text-xs-left">{{ item.nb_calificacion }}</td>
-						<td class="text-xs-left">{{ item.nu_calificacion }}</td>
-						<td class="text-xs-left">{{ item.co_calificacion }}</td>
-                        <td class="text-xs-center">
-                            <v-simple-checkbox
-                                :value="item.bo_aprobado | toBoolean"
-                                color="success"
-                                hide-details
-                                dense
-                            ></v-simple-checkbox> 
-                        </td>
-                        <td class="text-xs-left">{{ item.nivel_calificacion.nb_nivel_calificacion }}</td>
-						<td class="text-xs-center">
+                        <td class="text-xs-left">{{ getEstructuraPadre(item) }} {{ item.nb_estructura }}</td>
+						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
                                 :item="item" 
@@ -68,11 +54,11 @@
                 :head-color="$App.theme.headModal"
                 :title="title"
             >
-                <calificacion-form
+                <estructura-form
                     :action="action"
                     :item="item"
                     @closeModal="closeModal()"
-                ></calificacion-form>
+                ></estructura-form>
 
             </app-modal>
 
@@ -94,31 +80,31 @@
 
 <script>
 import listHelper from '@mixins/Applist';
-import calificacionForm  from './calificacionForm';
+import estructuraForm  from './estructuraForm';
 export default {
+    
     mixins:     [ listHelper],
-    components: { 'calificacion-form': calificacionForm },
+    
+    components: { 'estructura-form': estructuraForm },
+    
     data () {
     return {
-        title:    'Calificacion',
-        resource: 'calificacion',
+        title:    'Estructura',
+        resource: 'estructura',
         headers: [
-            { text: 'Orden',        value: 'nu_orden' },
-            { text: 'Grupo',        value: 'grupo_calificacion.nb_grupo_calificacion' },
-            { text: 'Tipo Calculo', value: 'tipo_calificacion.nb_tipo_calificacion' },
-            { text: 'Letra',        value: 'nb_calificacion' },
-			{ text: 'Valor',        value: 'nu_calificacion' },
-			{ text: 'Codigo',       value: 'co_calificacion' },
-            { text: 'Aprobado?',    value: 'bo_aprobado' },
-            { text: 'Nivel',        value: 'nivel_calificacion.nb_nivel_calificacion' },
-			{ text: 'Status',       value: 'id_status' },
-            { text: 'Acciones',     value: 'actions', sortable: false, filterable: false },
+            { text: 'Estructura',   value: 'nb_estructura' },
+			{ text: 'Status',   value: 'id_status' },
+            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
     }
     },
     methods:
     {
-
+        getEstructuraPadre(item)
+        {
+            return(item.id_padre == 0) ? null : item.estructura_padre.nb_estructura + ' > '
+        }
+   
     }
 }
 </script>

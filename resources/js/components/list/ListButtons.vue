@@ -1,5 +1,6 @@
 <template>
-    <v-speed-dial 
+<div>
+   <!--  <v-speed-dial 
         v-model="fab"
         direction="left" 
         :open-on-hover="!isAutoOpen"
@@ -11,19 +12,22 @@
                 <v-icon v-if="!fab">{{ icon }}</v-icon>
                 <v-icon v-else>close</v-icon>
             </v-btn>
-        </template>
+        </template> -->
 
-        <v-btn fab dark small :color="$App.theme.button.delete" @click="deleter">
-            <v-icon>delete</v-icon>
-        </v-btn>
-
-        <v-btn fab dark small :color="$App.theme.button.update" @click="update">
+        <v-btn fab dark x-small :color="$App.theme.button.update" @click="update" class="my-1 mr-1" :loading="loading">
             <v-icon>mdi-lead-pencil</v-icon>
         </v-btn>
 
+        <v-btn fab dark x-small :color="$App.theme.button.delete" @click="deleter" class="my-1 mr-1" :loading="loading">
+            <v-icon>delete</v-icon>
+        </v-btn>
+
+        
+
         <slot></slot>
 
-    </v-speed-dial>
+  <!--   </v-speed-dial> -->
+  </div>
 </template>
 
 <script>
@@ -71,6 +75,10 @@ export default {
         auto:{
             type: Boolean,
             default: true
+        },
+        loading:{
+            type: Boolean,
+            default: false
         }
     }
 }

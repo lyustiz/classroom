@@ -101,6 +101,15 @@ Route::apiResource('/grupoCalificacion',     'GrupoCalificacionController');
 Route::apiResource('/calificacion',     'CalificacionController');
 Route::apiResource('/tipoCalificacion',     'TipoCalificacionController');
 Route::apiResource('/nivelCalificacion',     'NivelCalificacionController');
+Route::apiResource('/ubicacion',     'UbicacionController');
+Route::apiResource('/ubicacion',     'UbicacionController');
+Route::apiResource('/estructura',     'EstructuraController');
+Route::apiResource('/aula',     'AulaController');
+Route::apiResource('/empleado',     'EmpleadoController');
+Route::apiResource('/empleado',     'EmpleadoController');
+Route::apiResource('/empleado',     'EmpleadoController');
+Route::apiResource('/empleado',     'EmpleadoController');
+Route::apiResource('/estadoCivil',     'EstadoCivilController');
 //newRoutes
 
 });

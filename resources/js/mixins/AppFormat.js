@@ -1,16 +1,20 @@
 export default {
     filters:
     {
-        formatDate: function (date)
+        formatDate(date)
         {
             if (!date) return null
             const [year, month, day] = date.split('-')
             return `${day}/${month}/${year}`
         },
-        formatNumber: function (value)
+        formatNumber(value)
         {
             let val = (value/1).toFixed(2).replace('.', ',')
             return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+        },
+        toBoolean(value)
+        {
+            return (value == 1) ? true : false 
         }
 
     },

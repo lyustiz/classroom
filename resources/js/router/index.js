@@ -34,8 +34,11 @@ import Calendario        from '@pages/calendario/calendario.vue';
 import Turno             from '@pages/turno/turno.vue';
 import HoraAcademica     from '@pages/horaAcademica/horaAcademica.vue';
 import Grado             from '@pages/grado/grado.vue';
- 
 import Cargos            from '@pages/cargo/cargo.vue';
+import Empleado          from '@pages/empleado/empleado.vue';
+
+import Estructura        from '@pages/estructura/estructura.vue';
+import Aula              from '@pages/aula/aula.vue';
 
 import GrupoCalificacion from '@pages/grupoCalificacion/grupoCalificacion.vue';
 import NivelCalificacion from '@pages/nivelCalificacion/nivelCalificacion.vue';
@@ -72,12 +75,14 @@ import TipoTelefono      from '@pages/tipoTelefono/tipoTelefono.vue';
 import TipoUsuario       from '@pages/tipoUsuario/tipoUsuario.vue';
 import Usuario           from '@pages/usuario/usuario.vue';
 import Zona              from '@pages/zona/zona.vue';
-const Parentesco       =  () => import('@pages/parentesco/parentesco.vue');
+
+import EstadoCivil       from '@pages/estadoCivil/estadoCivil.vue';
+const Parentesco         =  () => import('@pages/parentesco/parentesco.vue');
 
 
 //tools
 import PageNotFound     from  '@pages/404/NotFound.vue'
-import Crud     from  '@pages/crud/crud.vue'
+import Crud             from  '@pages/crud/crud.vue'
 
 let isAuthenticated = true;
 export default new Router({
@@ -188,6 +193,13 @@ export default new Router({
                 component: Directiva
             },
             { 
+                path: 'empleado',
+                name: 'empleado',
+                label: 'Empleados',
+                icon: 'mdi-badge-account',
+                component: Empleado
+            },
+            { 
                 path: 'calendario',
                 name: 'calendario',
                 label: 'Calendario',
@@ -207,6 +219,20 @@ export default new Router({
                 label: 'Turno',
                 icon: 'mdi-timelapse',
                 component: Turno
+            },
+            { 
+                path: 'estructura',
+                name: 'estructura',
+                label: 'Estructura',
+                icon: 'mdi-floor-plan',
+                component: Estructura
+            },
+            { 
+                path: 'aula',
+                name: 'aula',
+                label: 'Aulas',
+                icon: 'mdi-chair-school',
+                component: Aula
             },
             { 
                 path: 'hora-academica',
@@ -404,6 +430,13 @@ export default new Router({
                 label: 'Usuario',
                 icon: 'mdi-account',
                 component: Usuario
+            },
+            { 
+                path: 'estado-civil',
+                name: 'estado-civil',
+                label: 'Estado Civil',
+                icon: 'mdi-ring',
+                component: EstadoCivil
             },
             { 
                 path: 'parentesco',
