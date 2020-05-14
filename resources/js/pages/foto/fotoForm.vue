@@ -37,7 +37,7 @@
             v-model="form.id_tipo_foto"
             :rules="[rules.select]"
             label="Tipo Foto"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -50,7 +50,7 @@
             v-model="form.id_entidad"
             :rules="[rules.select]"
             label="Entidad"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -73,7 +73,7 @@
             v-model="form.id_status"
             :rules="[rules.select]"
             label="Status"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>

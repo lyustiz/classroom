@@ -57,7 +57,7 @@
             v-model="form.id_padre"
             :rules="[rules.select]"
             label="Padre"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>

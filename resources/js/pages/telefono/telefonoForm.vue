@@ -27,7 +27,7 @@
             v-model="form.id_tipo_telefono"
             :rules="[rules.select]"
             label="Tipo Telefono"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -40,7 +40,7 @@
             v-model="form.id_entidad"
             :rules="[rules.select]"
             label="Entidad"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -70,7 +70,7 @@
             v-model="form.id_status"
             :rules="[rules.select]"
             label="Status"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>

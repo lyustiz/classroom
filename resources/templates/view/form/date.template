@@ -1,5 +1,5 @@
 
-        <v-col cols="12" md="3">
+        <v-col cols="12" md="6">
             <v-menu
                 v-model="pickers.{{columnName}}"
                 :close-on-content-click="false"

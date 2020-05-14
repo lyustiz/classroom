@@ -17,7 +17,7 @@
             v-model="form.id_tipo_documento"
             :rules="[rules.select]"
             label="Tipo Documento"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -60,7 +60,7 @@
             v-model="form.id_status"
             :rules="[rules.select]"
             label="Status"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>

@@ -19,6 +19,6 @@ class EstadoCivilSeeder extends Seeder
             ['nb_estado_civil' => 'Divorciado(a)', 'id_status' => '1', 'id_usuario' => '1'],
             ['nb_estado_civil' => 'Viudo(a)',      'id_status' => '1', 'id_usuario' => '1'],
         ]);
-        //// php artisan db:seed --class=TipoCalificacionSeeder
+        //// php artisan db:seed --class=EstadoCivilSeeder
     }
 }

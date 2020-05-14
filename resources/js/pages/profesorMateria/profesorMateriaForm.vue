@@ -17,7 +17,7 @@
             v-model="form.id_profesor"
             :rules="[rules.select]"
             label="Profesor"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -30,7 +30,7 @@
             v-model="form.id_materia"
             :rules="[rules.select]"
             label="Materia"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -43,7 +43,7 @@
             v-model="form.id_grado"
             :rules="[rules.select]"
             label="Grado"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -56,7 +56,7 @@
             v-model="form.id_grupo"
             :rules="[rules.select]"
             label="Grupo"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -79,7 +79,7 @@
             v-model="form.id_status"
             :rules="[rules.select]"
             label="Status"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>

@@ -27,7 +27,7 @@
             v-model="form.id_grado_materia"
             :rules="[rules.select]"
             label="Grado Materia"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -40,7 +40,7 @@
             v-model="form.id_grupo"
             :rules="[rules.select]"
             label="Grupo"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -53,7 +53,7 @@
             v-model="form.id_dia_semana"
             :rules="[rules.select]"
             label="Dia Semana"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -130,7 +130,7 @@
             v-model="form.id_status"
             :rules="[rules.select]"
             label="Status"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>

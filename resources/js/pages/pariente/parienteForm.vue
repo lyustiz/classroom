@@ -47,7 +47,7 @@
             v-model="form.id_alumno"
             :rules="[rules.select]"
             label="Alumno"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -60,7 +60,7 @@
             v-model="form.id_parentesco"
             :rules="[rules.select]"
             label="Parentesco"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -143,7 +143,7 @@
             v-model="form.id_status"
             :rules="[rules.select]"
             label="Status"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>

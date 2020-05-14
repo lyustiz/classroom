@@ -51,28 +51,29 @@
                           
         <v-col cols="12" md="6">
             <v-select
-            :items="selects.estado_civil"
+            :items="selects.estadoCivil"
             item-text="nb_estado_civil"
             item-value="id"
             v-model="form.id_estado_civil"
             :rules="[rules.select]"
             label="Estado Civil"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
           
         <v-col cols="12" md="6">
-            <v-text-field
-                :rules="[rules.required]"
-                v-model="form.tx_sexo"
-                label="Sexo"
-                placeholder="Indique Sexo"
-                dense
-            ></v-text-field>
+            <v-radio-group v-model="form.tx_sexo" prepend-icon="mdi-human-male-female" :rules="[rules.radio]" row>
+                <v-radio
+                    v-for="(sexo, idx) in sexos"
+                    :key="idx"
+                    :label="sexo"
+                    :value="sexo"
+                ></v-radio>
+            </v-radio-group>
         </v-col>
                  
-        <v-col cols="12" md="3">
+        <v-col cols="12" md="6">
             <v-menu
                 v-model="pickers.fe_nacimiento"
                 :close-on-content-click="false"
@@ -97,13 +98,13 @@
         </v-col>         
         <v-col cols="12" md="6">
             <v-select
-            :items="selects.tipo_documento"
+            :items="selects.tipoDocumento"
             item-text="nb_tipo_documento"
             item-value="id"
             v-model="form.id_tipo_documento"
             :rules="[rules.select]"
             label="Tipo Documento"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -146,7 +147,7 @@
             v-model="form.id_departamento"
             :rules="[rules.select]"
             label="Departamento"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -159,14 +160,14 @@
             v-model="form.id_ciudad"
             :rules="[rules.select]"
             label="Ciudad"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
           
         <v-col cols="12" md="6">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="rules.email"
                 v-model="form.tx_email"
                 label="Email"
                 placeholder="Indique Email"
@@ -202,21 +203,26 @@
             v-model="form.id_cargo"
             :rules="[rules.select]"
             label="Cargo"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
          
+        <v-col cols="12" md="6"> 
             <v-checkbox
-                  :rules="[rules.required]"
+                  :rules="[rules.check]"
                   v-model="form.bo_profesor"
                   label="Profesor"
+                  :true-value="1"
+                  :false-value="0"
+                  :indeterminate="(form.bo_profesor== null)"
                   dense
             ></v-checkbox>
+        </v-col>
  
         <v-col cols="12" md="6">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[]"
                 v-model="form.tx_observaciones"
                 label="Observaciones"
                 placeholder="Indique Observaciones"
@@ -232,7 +238,7 @@
             v-model="form.id_status"
             :rules="[rules.select]"
             label="Status"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -307,13 +313,14 @@ export default {
             },
             selects:
             {
-                estado_civil: 	 [],
-	 	 	 	tipo_documento: 	 [],
+                estadoCivil: 	 [],
+	 	 	 	tipoDocumento: 	 [],
 	 	 	 	departamento: 	 [],
 	 	 	 	ciudad: 	 [],
 	 	 	 	cargo: 	 [],
 	 	 	 	status: 	 [],
             },
+            sexos: [ 'M', 'F']
         }
     },
 

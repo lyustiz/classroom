@@ -19,7 +19,7 @@
             v-model="form.id_tipo_directiva"
             :rules="[rules.select]"
             label="Tipo Directiva"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -32,7 +32,7 @@
             v-model="form.id_cargo"
             :rules="[rules.select]"
             label="Cargo"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -76,7 +76,7 @@
             v-model="form.id_status"
             :rules="[rules.select]"
             label="Status"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>

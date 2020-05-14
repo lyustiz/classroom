@@ -24,10 +24,16 @@ export default
                 monto: v => !!v || 'Monto Requerido',
                 
                 fecha: v => !!v || 'Fecha Requerida',
+
+                url:   v => /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})).?)(?::\d{2,5})?(?:[/?#]\S*)?$/i.test( v ) || 'url invalido',
                 
+                number: v => /^(?:-?\d+|-?\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/.test( v ) || 'numero no valido',
+
+                digits: v => /^\d+$/.test( v ) || 'solo se permiten digitos',
+
                 email: [
                     v => !!v || 'El Correo es Requerido',
-                    v => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'indicar un email válido',
+                    v => /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test( v ) || 'indicar un email válido',
                     v => (v || '').length <= 80 || 'Maximo de caracteres permitidos 80',
                 ],
                 
@@ -37,7 +43,7 @@ export default
                     v => (v || '').length <= 12 || 'Maximo de caracteres permitidos 12',
                 ],
 
-                email_confirmation: v => this.form.tx_new_email === v || 'Los correos no coinciden',
+                email_confirmation: v => this.form.tx_email === v || 'Los correos no coinciden',
                 
                 image:  v => !v || v.size < 2000000 || 'Imagen debe tener menos de 2 MB!',
             

@@ -20,14 +20,25 @@
                 :headers="headers"
                 :items  ="items"
                 :search ="search"
-                item-key="{{primaryKey}}"
+                item-key="id"
                 :loading="loading"
                 sort-by=""
             >
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        {{listColumns}}
+                        <td class="text-xs-left">{{ item.nb_tipo_documento }}</td>
+						<td class="text-xs-left">{{ item.tx_icono }}</td>
+						<td class="text-xs-left">{{ item.tx_path }}</td>
+						<td class="text-xs-left">{{ item.tx_grupo }}</td>
+						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
+						<td class="text-xs-left">
+                            <status-switch 
+                                :loading="loading" 
+                                :item="item" 
+                                @onChangeStatus="changeStatus($event)">
+                            </status-switch>
+                        </td>
                         
                         <td class="text-xs-left">
                             <list-buttons 
@@ -46,11 +57,11 @@
                 :head-color="$App.theme.headModal"
                 :title="title"
             >
-                <{{formName}}
+                <tipo-documento-form
                     :action="action"
                     :item="item"
                     @closeModal="closeModal()"
-                ></{{formName}}>
+                ></tipo-documento-form>
 
             </app-modal>
 
@@ -72,16 +83,21 @@
 
 <script>
 import listHelper from '@mixins/Applist';
-import {{instanceName}}Form  from './{{instanceName}}Form';
+import tipoDocumentoForm  from './tipoDocumentoForm';
 export default {
     mixins:     [ listHelper],
-    components: { '{{slugName}}-form': {{instanceName}}Form },
+    components: { 'tipo-documento-form': tipoDocumentoForm },
     data () {
     return {
-        title:    '{{className}}',
-        resource: '{{instanceName}}',
+        title:    'TipoDocumento',
+        resource: 'tipoDocumento',
         headers: [
-            {{headers}}
+            { text: 'Tipo Documento',   value: 'nb_tipo_documento' },
+			{ text: 'Icono',   value: 'tx_icono' },
+			{ text: 'Path',   value: 'tx_path' },
+			{ text: 'Grupo',   value: 'tx_grupo' },
+			{ text: 'Observaciones',   value: 'tx_observaciones' },
+			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
     }

@@ -98,7 +98,7 @@ class ControllerGenerator
         $validateFields = [];
 
         $validators     = null;
-        
+        dd($table->columns);
         foreach ($table->columns as $columnName => $column) {
 
             if( in_array($action, ['store', 'update'])  && $columnName == $table->primaryKey)
@@ -112,42 +112,39 @@ class ControllerGenerator
                 continue;
             }
 
+            $requireField = ($column->notnull) ? 'required' : 'nullable';
+
             switch ( true ) 
             {
                 case in_array( $column->type, [ 'string', 'text' ] ):
 
-                    if($column->name == 'tx_observaciones' )
-                    {
-                        $validators = [ 'nullable', 'string', 'max:' . $column->length ];
-                        break;
-                    }
-
-                    $validators = [ 'required', 'string', 'max:' . $column->length ];
+                    $validators = [ $requireField, 'string', 'max:' . $column->length ];
+                    
                     break;
 
                 case $column->type == 'datetime':
 
-                    $validators = [ 'required', 'date'];
+                    $validators = [ $requireField, 'date'];
                     break;
         
                 case $column->type == 'integer':
 
-                    $validators = [ 'required', 'integer', 'max:' . '999999999' ];
+                    $validators = [ $requireField, 'integer', 'max:' . '999999999' ];
                     break;
             
                 case $column->type == 'decimal':
 
-                    $validators = [ 'required', 'numeric', 'max:' . $column->precision ];
+                    $validators = [ $requireField, 'numeric', 'max:' . $column->precision ];
                     break;
 
                 case $column->type == 'boolean':
 
-                    $validators = [ 'required', 'boolean'];
+                    $validators = [ $requireField, 'boolean'];
                     break; 
                             
                 default:
 
-                    $validators = ['required', 'string', 'max:' . $column->length ];
+                    $validators = [$requireField, 'string', 'max:' . $column->length ];
                     break;
             }
 

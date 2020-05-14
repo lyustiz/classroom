@@ -12,9 +12,9 @@
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
-                v-model="form.co_barrio"
-                label="Barrio"
-                placeholder="Indique Barrio"
+                v-model="form.nb_tipo_documento"
+                label="Tipo Documento"
+                placeholder="Indique Tipo Documento"
                 dense
             ></v-text-field>
         </v-col>
@@ -22,32 +22,9 @@
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
-                v-model="form.nb_barrio"
-                label="Barrio"
-                placeholder="Indique Barrio"
-                dense
-            ></v-text-field>
-        </v-col>
-                          
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.comuna"
-            item-text="nb_comuna"
-            item-value="id"
-            v-model="form.id_comuna"
-            :rules="[rules.select]"
-            label="Comuna"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
-          
-        <v-col cols="12" md="6">
-            <v-text-field
-                :rules="[rules.required]"
-                v-model="form.tx_latitud"
-                label="Latitud"
-                placeholder="Indique Latitud"
+                v-model="form.tx_icono"
+                label="Icono"
+                placeholder="Indique Icono"
                 dense
             ></v-text-field>
         </v-col>
@@ -55,16 +32,26 @@
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
-                v-model="form.tx_longitud"
-                label="Longitud"
-                placeholder="Indique Longitud"
+                v-model="form.tx_path"
+                label="Path"
+                placeholder="Indique Path"
                 dense
             ></v-text-field>
         </v-col>
                   
         <v-col cols="12" md="6">
             <v-text-field
-                :rules="[]"
+                :rules="[rules.required]"
+                v-model="form.tx_grupo"
+                label="Grupo"
+                placeholder="Indique Grupo"
+                dense
+            ></v-text-field>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required]"
                 v-model="form.tx_observaciones"
                 label="Observaciones"
                 placeholder="Indique Observaciones"
@@ -119,7 +106,7 @@ export default {
     mixins: [Appform],
     data() {
         return {
-            resource: 'barrio',
+            resource: 'tipo_documento',
             dates:
             {
                 
@@ -131,19 +118,17 @@ export default {
             form:
             {
                 id: 	null,
-				co_barrio: 	null,
-				nb_barrio: 	null,
-				id_comuna: 	null,
-				tx_latitud: 	null,
-				tx_longitud: 	null,
+				nb_tipo_documento: 	null,
+				tx_icono: 	null,
+				tx_path: 	null,
+				tx_grupo: 	null,
 				tx_observaciones: 	null,
 				id_status: 	null,
 				id_usuario: 	null,
             },
             selects:
             {
-                comuna: 	 [],
-	 	 	 	status: 	 [],
+                status: 	 [],
             },
         }
     },

@@ -43,7 +43,7 @@
             v-model="form.id_tipo_colegio"
             :rules="[rules.select]"
             label="Tipo Colegio"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -56,7 +56,7 @@
             v-model="form.id_calendario"
             :rules="[rules.select]"
             label="Calendario"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -69,7 +69,7 @@
             v-model="form.id_calendario"
             :rules="[rules.select]"
             label="Jornada"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -152,7 +152,7 @@
             v-model="form.id_departamento"
             :rules="[rules.select]"
             label="Departamento"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -165,7 +165,7 @@
             v-model="form.id_ciudad"
             :rules="[rules.select]"
             label="Ciudad"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -178,7 +178,7 @@
             v-model="form.id_zona"
             :rules="[rules.select]"
             label="Zona"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -191,7 +191,7 @@
             v-model="form.id_comuna"
             :rules="[rules.select]"
             label="Comuna"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -204,7 +204,7 @@
             v-model="form.id_barrio"
             :rules="[rules.select]"
             label="Barrio"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -277,7 +277,7 @@
             v-model="form.id_status"
             :rules="[rules.select]"
             label="Status"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>

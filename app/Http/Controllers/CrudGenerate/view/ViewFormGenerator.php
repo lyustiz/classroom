@@ -152,10 +152,12 @@ class ViewFormGenerator
     protected function fieldTemplate( $columnType, $columnName, $labelName, $fkTableName = null, $fkColTableName = null, $fkTableId = null )
     {
         $fkColTableName = str_replace( 'id_', 'nb_', $fkColTableName );
+
+        $fkInstanceName = Str::camel($fkTableName); 
         
         return str_replace(
-            [ '{{columnName}}', '{{labelName}}', '{{fkTableName}}', '{{fkColTableName}}', '{{fkTableId}}' ],
-            [ $columnName, $labelName, $fkTableName, $fkColTableName, $fkTableId ],
+            [ '{{columnName}}', '{{labelName}}', '{{fkTableName}}', '{{fkColTableName}}', '{{fkTableId}}', '{{fkInstanceName}}' ],
+            [ $columnName, $labelName, $fkTableName, $fkColTableName, $fkTableId, $fkInstanceName ],
             file_get_contents($this->templatePath . 'form/' . $columnType. ".template")
         );
     }
@@ -215,7 +217,9 @@ class ViewFormGenerator
                 
                 if($column->prefix =='id' && $column->name != 'id' && $column->name != 'id_usuario')
                 {
-                    $foreignTable = str_replace( 'id_', '', $column->name );
+                    $foreignTable  = str_replace( 'id_', '', $column->name );
+
+                    $foreignTable  = Str::camel($foreignTable);
 
                     $formatTable[] = $foreignTable . ": \t [],";
                 }

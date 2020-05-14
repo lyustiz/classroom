@@ -16,7 +16,7 @@
             v-model="form.id_grupo_calificacion"
             :rules="[rules.select]"
             label="Grupo Calificacion"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -29,7 +29,7 @@
             v-model="form.id_tipo_calificacion"
             :rules="[rules.select]"
             label="Tipo Calificacion"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -87,7 +87,7 @@
             v-model="form.id_nivel_calificacion"
             :rules="[rules.select]"
             label="Nivel Aprobacion"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -121,7 +121,7 @@
             v-model="form.id_status"
             :rules="[rules.select]"
             label="Status"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>

@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TipoCalificacion extends Model
+class TipoDocumento extends Model
 {
-    protected $table 	  = 'tipo_calificacion';
+    protected $table 	  = 'tipo_documento';
 
     protected $fillable   = [
-                            'nb_tipo_calificacion',
+                            'nb_tipo_documento',
+	 	 	 	 	 	 	'tx_icono',
+	 	 	 	 	 	 	'tx_path',
+	 	 	 	 	 	 	'tx_grupo',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'

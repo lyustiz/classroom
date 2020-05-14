@@ -27,7 +27,7 @@
             v-model="form.id_estructura"
             :rules="[rules.select]"
             label="Estructura"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -50,7 +50,7 @@
             v-model="form.id_status"
             :rules="[rules.select]"
             label="Status"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>

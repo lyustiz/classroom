@@ -110,6 +110,7 @@ Route::apiResource('/empleado',     'EmpleadoController');
 Route::apiResource('/empleado',     'EmpleadoController');
 Route::apiResource('/empleado',     'EmpleadoController');
 Route::apiResource('/estadoCivil',     'EstadoCivilController');
+Route::apiResource('/tipoDocumento',     'TipoDocumentoController');
 //newRoutes
 
 });

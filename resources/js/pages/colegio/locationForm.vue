@@ -24,7 +24,7 @@
             v-model="form.id_departamento"
             :rules="[rules.select]"
             label="Departamento"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -37,7 +37,7 @@
             v-model="form.id_ciudad"
             :rules="[rules.select]"
             label="Ciudad"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -50,7 +50,7 @@
             v-model="form.id_zona"
             :rules="[rules.select]"
             label="Zona"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -63,7 +63,7 @@
             v-model="form.id_comuna"
             :rules="[rules.select]"
             label="Comuna"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
@@ -76,7 +76,7 @@
             v-model="form.id_barrio"
             :rules="[rules.select]"
             label="Barrio"
-            autocomplete
+            :loading="loading"
             dense
             ></v-select>
         </v-col>
