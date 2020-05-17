@@ -57,9 +57,14 @@ export default
 
                 password_confirmation: v => this.form.password === v || 'Las contraseñas no coinciden',
 
-                minlength: len => value => (value || '').length >= len || `Minimo de caracteres requeridos ${len}`,
+                minlength: len => value => (value || '').length >= len || `min caracteres requeridos ${len} actual ${value.length}`,
 
-                maxlength: len => value => (value || '').length <= len || `Maximo de caracteres permitidos ${len}`, 
+                maxlength: len => value => (value || '').length <= len || `max caracteres permitidos ${len} actual ${value.length}`,
+                
+                min: len => value => (value || '').length >= len || `min caracteres requeridos ${len} actual ${value.length}`,
+
+                max: len => value => (value || '').length <= len || `max caracteres permitidos ${len} actual ${value.length}`,
+
             }
         }
     },

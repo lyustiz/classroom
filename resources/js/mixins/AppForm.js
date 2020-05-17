@@ -29,12 +29,15 @@ export default
     data() 
     {
         return {
-            idUser:     1,//this.$store.getters.idUser,
-            valid:      true,
-            calendar:   false,
-            dates:      {},
-            loading:    true,
-            default:    {}
+            idUser:      1,//this.$store.getters.idUser,
+            valid:       true,
+            calendar:    false,
+            dates:       {},
+            loading:     true,
+            default:     {},
+            defaultForm: {
+                id_status: 1
+            }
         }
     },
 
@@ -88,11 +91,13 @@ export default
 							this.form[key]  =  this.item[key];
 						}
                     }
+
                 }
             }else
             {
                this.reset()
             }
+            
         },
         
         setDataForm(action)
@@ -104,7 +109,10 @@ export default
             else if(this.action == 'ins')
             {
                 this.reset()
+                this.setDefaultForm()
             }
+
+            
         },
 
 		store() 
@@ -179,6 +187,7 @@ export default
                 }
             }
             this.form.id_usuario = this.idUser
+            //this.setDefaultForm()
             
         },
 		
@@ -192,12 +201,15 @@ export default
         {
             for(var key in this.default)
             {
-                if(this.form.hasOwnProperty(key))
-                {
-                    this.form[key]  =  this.default[key];
-                }
+                this.form[key]  =  this.default[key];
             }
-           
+        },
+        setDefaultForm() 
+        {
+            for(var key in this.defaultForm)
+            {
+                this.form[key]  =  this.defaultForm[key];
+            }
         },
 
         formatPicker(date, picker)

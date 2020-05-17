@@ -7,57 +7,50 @@
         <v-card-text>
 
         <v-row>
-
                          
         <v-col cols="12" md="6">
             <v-select
-            :items="selects.materia"
+            :items="selects.grado"
+            item-text="nb_grado"
+            item-value="id"
+            v-model="form.id_grado"
+            :rules="[rules.select]"
+            label="Grado"
+            :loading="loading"
+            dense
+            ></v-select>
+        </v-col>
+
+        <v-col cols="12" md="6">
+            <v-select
+            :items="selects.areaEstudio"
+            item-text="nb_area_estudio"
+            item-value="id"
+            v-model="areaEstudio"
+            :rules="[rules.select]"
+            label="Area Estudio"
+            @input="getMaterias()"
+            :loading="loading"
+            dense
+            ></v-select>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-select
+            :items="materias"
             item-text="nb_materia"
             item-value="id"
             v-model="form.id_materia"
             :rules="[rules.select]"
             label="Materia"
-            :loading="loading"
+            :loading="loading || materiasLoading"
             dense
             ></v-select>
-        </v-col>
-          
-        <v-col cols="12" md="6">
-            <v-text-field
-                :rules="[rules.required]"
-                v-model="form.nb_director"
-                label="Director"
-                placeholder="Indique Director"
-                dense
-            ></v-text-field>
         </v-col>
                   
         <v-col cols="12" md="6">
             <v-text-field
-                :rules="[rules.required]"
-                v-model="form.tx_libro"
-                label="Libro"
-                placeholder="Indique Libro"
-                dense
-            ></v-text-field>
-        </v-col>
-                          
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.profesor"
-            item-text="nb_profesor"
-            item-value="id"
-            v-model="form.id_profesor"
-            :rules="[rules.select]"
-            label="Profesor"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
-          
-        <v-col cols="12" md="6">
-            <v-text-field
-                :rules="[]"
+                :rules="[rules.max(100)]"
                 v-model="form.tx_observaciones"
                 label="Observaciones"
                 placeholder="Indique Observaciones"
@@ -112,7 +105,10 @@ export default {
     mixins: [Appform],
     data() {
         return {
-            resource: 'grado_materia',
+            resource: 'gradoMateria',
+
+            areaEstudio: null,
+            materias:    [],
             dates:
             {
                 
@@ -123,19 +119,19 @@ export default {
             },
             form:
             {
-                id: 	null,
-				id_materia: 	null,
-				nb_director: 	null,
-				tx_libro: 	null,
-				id_profesor: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
+                id: 	          null,
+				id_grado: 	      null,
+				id_materia: 	  null,
+				id_calendario: 	  null,
+				tx_observaciones: null,
+				id_status: 	      null,
+				id_usuario: 	  null,
             },
             selects:
             {
-                materia: 	 [],
-	 	 	 	profesor: 	 [],
+                areaEstudio: [],
+                grado: 	     [],
+	 	 	 	calendario:  [],
 	 	 	 	status: 	 [],
             },
         }
@@ -143,7 +139,23 @@ export default {
 
     methods:
     {
+        getMaterias(){
 
+            this.materias = [];
+            this.materiasLoading  = true;
+
+            axios.get(this.$App.apiUrl + 'materia/areaEstudio/' + this.areaEstudio)
+			.then( response =>
+			{
+                this.materias = response.data;
+                this.materiasLoading = false;
+
+			})
+            .catch( error =>
+            {
+              console.log(error)
+            })
+        },
     }
 }
 </script>

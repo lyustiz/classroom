@@ -20,5 +20,15 @@ class EstadoCivil extends Model
 	 	 	 	 	 	 	'updated_at'
                             ];
 
+    public function status(){
 
+        return $this->BelongsTo('App\Models\Status', 'id_status');
+
+    }
+                            
+    public function usuario(){
+
+        return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
+
+    }
 }

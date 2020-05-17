@@ -23,19 +23,18 @@
                 item-key="id"
                 :loading="loading"
                 sort-by=""
+                dense
             >
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.nb_nombre }}</td>
-						<td class="text-xs-left">{{ item.nb_apellido }}</td>
+                        <td class="text-xs-left">{{ item.nb_alumno_corto }}</td>
+						<td class="text-xs-left">
+                            <list-icon :data="sexoIcons" :value="item.tx_sexo"></list-icon>
+                        </td>
+						<td class="text-xs-left">{{ item.fe_nacimiento | formatDate }}</td>
+                        <td class="text-xs-left">{{ item.nu_edad }}</td>
 						<td class="text-xs-left">{{ item.tx_documento }}</td>
-						<td class="text-xs-left">{{ item.tx_tarjeta_profesional }}</td>
-						<td class="text-xs-left">{{ item.tx_direccion }}</td>
-						<td class="text-xs-left">{{ item.tx_telefono }}</td>
-						<td class="text-xs-left">{{ item.tx_telefono2 }}</td>
-						<td class="text-xs-left">{{ item.tx_telefono3 }}</td>
-						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -96,23 +95,23 @@ export default {
         title:    'Alumno',
         resource: 'alumno',
         headers: [
-            { text: 'Nombre',   value: 'nb_nombre' },
-			{ text: 'Apellido',   value: 'nb_apellido' },
-			{ text: 'Documento',   value: 'tx_documento' },
-			{ text: 'Tarjeta Profesional',   value: 'tx_tarjeta_profesional' },
-			{ text: 'Direccion',   value: 'tx_direccion' },
-			{ text: 'Telefono',   value: 'tx_telefono' },
-			{ text: 'Telefono2',   value: 'tx_telefono2' },
-			{ text: 'Telefono3',   value: 'tx_telefono3' },
-			{ text: 'Observaciones',   value: 'tx_observaciones', sortable: false, filterable: false },
-			{ text: 'Status',   value: 'id_status' },
-            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
+            { text: 'Alumno',       value: 'nb_alumno' },
+			{ text: 'Sexo',         value: 'tx_sexo' },
+            { text: 'Nacimiento',   value: 'fe_nacimiento' },
+            { text: 'Edad',         value: 'nu_edad' },
+			{ text: 'Documento',    value: 'tx_documento' },
+			{ text: 'Status',       value: 'id_status' },
+            { text: 'Acciones',     value: 'actions', sortable: false, filterable: false },
         ],
+        sexoIcons: [
+            {value: 'M', icon: 'mdi-human-male',  color: 'blue', label: 'Masculino'},
+            {value: 'F', icon: 'mdi-human-female',  color: 'pink', label: 'Femenino'}
+        ]
     }
     },
     methods:
     {
-        
+   
     }
 }
 </script>

@@ -9,10 +9,8 @@ class GradoMateria extends Model
     protected $table 	  = 'grado_materia';
 
     protected $fillable   = [
-                            'id_materia',
-	 	 	 	 	 	 	'nb_director',
-	 	 	 	 	 	 	'tx_libro',
-	 	 	 	 	 	 	'id_profesor',
+                            'id_grado',
+	 	 	 	 	 	 	'id_materia',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'
@@ -21,8 +19,8 @@ class GradoMateria extends Model
     protected $hidden     = [
                             'created_at',
 	 	 	 	 	 	 	'updated_at'
-                            ]; 
-                           
+                            ];
+
     public function status(){
 
         return $this->BelongsTo('App\Models\Status', 'id_status');
@@ -35,8 +33,15 @@ class GradoMateria extends Model
 
     }
 
-                           
-    //
+    public function grado(){
 
+        return $this->BelongsTo('App\Models\Grado', 'id_grado');
 
+    }
+
+    public function materia(){
+
+        return $this->BelongsTo('App\Models\Materia', 'id_materia');
+
+    }
 }

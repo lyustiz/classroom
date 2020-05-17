@@ -91,26 +91,38 @@ Route::apiResource('/zona',            'ZonaController');
 Route::apiResource('/jornada',         'JornadaController');
 
 
-Route::apiResource('/cargo',     'CargoController');
-Route::apiResource('/turno',     'TurnoController');
-Route::apiResource('/horaAcademica',     'HoraAcademicaController');
-Route::apiResource('/grado',     'GradoController');
+Route::apiResource('/cargo',           'CargoController');
+Route::apiResource('/turno',           'TurnoController');
+Route::apiResource('/horaAcademica',   'HoraAcademicaController');
+Route::apiResource('/grado',           'GradoController');
 
 
-Route::apiResource('/grupoCalificacion',     'GrupoCalificacionController');
-Route::apiResource('/calificacion',     'CalificacionController');
-Route::apiResource('/tipoCalificacion',     'TipoCalificacionController');
-Route::apiResource('/nivelCalificacion',     'NivelCalificacionController');
-Route::apiResource('/ubicacion',     'UbicacionController');
-Route::apiResource('/ubicacion',     'UbicacionController');
-Route::apiResource('/estructura',     'EstructuraController');
-Route::apiResource('/aula',     'AulaController');
-Route::apiResource('/empleado',     'EmpleadoController');
-Route::apiResource('/empleado',     'EmpleadoController');
-Route::apiResource('/empleado',     'EmpleadoController');
-Route::apiResource('/empleado',     'EmpleadoController');
-Route::apiResource('/estadoCivil',     'EstadoCivilController');
+Route::apiResource('/grupoCalificacion', 'GrupoCalificacionController');
+Route::apiResource('/calificacion',      'CalificacionController');
+Route::apiResource('/tipoCalificacion',  'TipoCalificacionController');
+Route::apiResource('/nivelCalificacion', 'NivelCalificacionController');
+Route::apiResource('/ubicacion',         'UbicacionController');
+Route::apiResource('/ubicacion',         'UbicacionController');
+Route::apiResource('/estructura',        'EstructuraController');
+Route::apiResource('/aula',              'AulaController');
+Route::apiResource('/empleado',          'EmpleadoController');
+Route::apiResource('/empleado',          'EmpleadoController');
+Route::apiResource('/empleado',          'EmpleadoController');
+Route::apiResource('/empleado',          'EmpleadoController');
+Route::apiResource('/estadoCivil',       'EstadoCivilController');
 Route::apiResource('/tipoDocumento',     'TipoDocumentoController');
+Route::apiResource('/docente',           'DocenteController');
+
+
+Route::get('/materia/areaEstudio/{idAreaEstudio}',      'MateriaController@materiaAreaEstudio');
+Route::apiResource('/materia',           'MateriaController', ['parameters' => ['materia' => 'materia']]);
+
+
+Route::apiResource('/areaEstudio',       'AreaEstudioController');
+Route::apiResource('/gradoMateria',     'GradoMateriaController');
+Route::apiResource('/grupo',     'GrupoController');
+Route::apiResource('/grupo',     'GrupoController');
+Route::apiResource('/alumno',     'AlumnoController');
 //newRoutes
 
 });

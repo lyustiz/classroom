@@ -8,13 +8,26 @@
 
         <v-row>
 
+        <v-col cols="12" md="6">
+            <v-select
+            :items="selects.calendario"
+            item-text="nb_calendario"
+            item-value="id"
+            v-model="form.id_calendario"
+            :rules="[rules.select]"
+            label="Calendario"
+            :loading="loading"
+            dense
+            ></v-select>
+        </v-col>
+
                  
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.nb_grupo"
-                label="Grupo"
-                placeholder="Indique Grupo"
+                label="Nombre Grupo"
+                placeholder="Indique Nombre Grupo"
                 dense
             ></v-text-field>
         </v-col>
@@ -31,30 +44,47 @@
             dense
             ></v-select>
         </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-select
+            :items="selects.turno"
+            item-text="nb_turno"
+            item-value="id"
+            v-model="form.id_turno"
+            :rules="[rules.select]"
+            label="Turno"
+            :loading="loading"
+            dense
+            ></v-select>
+        </v-col>
+
+                  
+        <v-col cols="12" md="6">
+            <v-select
+            :items="selects.docente"
+            item-text="nb_docente"
+            item-value="id"
+            v-model="form.id_docente"
+            :rules="[rules.select]"
+            label="Docente"
+            :loading="loading"
+            dense
+            ></v-select>
+        </v-col>
           
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
-                v-model="form.tx_director"
-                label="Director"
-                placeholder="Indique Director"
+                v-model="form.nu_orden"
+                label="Orden"
+                placeholder="Indique Orden"
                 dense
             ></v-text-field>
         </v-col>
                   
         <v-col cols="12" md="6">
             <v-text-field
-                :rules="[rules.required]"
-                v-model="form.nu_alumnos"
-                label="Alumnos"
-                placeholder="Indique Alumnos"
-                dense
-            ></v-text-field>
-        </v-col>
-                  
-        <v-col cols="12" md="6">
-            <v-text-field
-                :rules="[]"
+                :rules="[rules.max(100)]"
                 v-model="form.tx_observaciones"
                 label="Observaciones"
                 placeholder="Indique Observaciones"
@@ -120,19 +150,24 @@ export default {
             },
             form:
             {
-                id: 	null,
-				nb_grupo: 	null,
-				id_grado: 	null,
-				tx_director: 	null,
-				nu_alumnos: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
+                id: 	          null,
+				nb_grupo: 	      null,
+				id_grado: 	      null,
+				id_turno: 	      null,
+				id_calendario: 	  null,
+				id_docente: 	  null,
+				nu_orden: 	      null,
+				tx_observaciones: null,
+				id_status: 	      null,
+				id_usuario: 	  null,
             },
             selects:
             {
-                grado: 	 [],
-	 	 	 	status: 	 [],
+                grado: 	    [],
+	 	 	 	turno: 	    [],
+	 	 	 	calendario: [],
+	 	 	 	docente: 	[],
+	 	 	 	status: 	[],
             },
         }
     },

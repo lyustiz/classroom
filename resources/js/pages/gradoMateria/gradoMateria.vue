@@ -23,15 +23,13 @@
                 item-key="id"
                 :loading="loading"
                 sort-by=""
+                dense
             >
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.id_materia }}</td>
-						<td class="text-xs-left">{{ item.nb_director }}</td>
-						<td class="text-xs-left">{{ item.tx_libro }}</td>
-						<td class="text-xs-left">{{ item.id_profesor }}</td>
-						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
+                        <td class="text-xs-left">{{ item.grado.nb_grado }}</td>
+						<td class="text-xs-left">{{ item.materia.nb_materia }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -89,14 +87,11 @@ export default {
     components: { 'grado-materia-form': gradoMateriaForm },
     data () {
     return {
-        title:    'GradoMateria',
-        resource: 'grado_materia',
+        title:    'Grado Materia', 
+        resource: 'gradoMateria',
         headers: [
-            { text: 'Materia',   value: 'id_materia' },
-			{ text: 'Director',   value: 'nb_director' },
-			{ text: 'Libro',   value: 'tx_libro' },
-			{ text: 'Profesor',   value: 'id_profesor' },
-			{ text: 'Observaciones',   value: 'tx_observaciones', sortable: false, filterable: false },
+            { text: 'Grado',   value: 'grado.nb_grado' },
+			{ text: 'Materia',   value: 'materia.nb_materia' },
 			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
@@ -104,7 +99,7 @@ export default {
     },
     methods:
     {
-        
+   
     }
 }
 </script>

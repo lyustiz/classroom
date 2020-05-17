@@ -24,6 +24,7 @@
                 item-key="id"
                 :loading="isLoading"
                 sort-by=""
+                dense
             >
 
                 <template slot="items" slot-scope="item">

@@ -43,7 +43,13 @@ import Aula              from '@pages/aula/aula.vue';
 import GrupoCalificacion from '@pages/grupoCalificacion/grupoCalificacion.vue';
 import NivelCalificacion from '@pages/nivelCalificacion/nivelCalificacion.vue';
 import Calificacion      from '@pages/calificacion/calificacion.vue';
- 
+
+import AreaEstudio       from '@pages/areaEstudio/areaEstudio.vue';
+import Materia           from '@pages/materia/materia.vue';
+
+import Docente           from '@pages/docente/docente.vue';
+import Alumno            from '@pages/alumno/alumno.vue';
+
 import Ciudad            from '@pages/ciudad/ciudad.vue';
 import Clase             from '@pages/clase/clase.vue';
 import Colegio           from '@pages/colegio/colegio.vue';
@@ -98,7 +104,7 @@ export default new Router({
         },
         {
             path: '/bandeja-profesor',
-            label: 'Profesor',
+            label: 'Docente',
             icon: 'mdi-account-tie',
             component: MenuProfesor,
 
@@ -115,7 +121,7 @@ export default new Router({
         {
             path: '/bandeja-alumno',
             label: 'Alumno',
-            icon: 'mdi-school',
+            icon: 'mdi-face',
             component: MenuAlumno,
             
             children: [
@@ -131,7 +137,7 @@ export default new Router({
         {
             path: '/bandeja-representante',
             label: 'Representante',
-            icon: 'mdi-account-supervisor',
+            icon: 'mdi-human-male-child',
             component: MenuRepresentante,
 
             children: [
@@ -179,6 +185,13 @@ export default new Router({
                 component: TipoColegio
             },
             { 
+                path: 'cargos',
+                name: 'cargos',
+                label: 'Cargos',
+                icon: 'mdi-account-settings',
+                component: Cargos
+            },
+            { 
                 path: 'tipoDirectiva',
                 name: 'tipoDirectiva',
                 label: 'Tipo Directiva',
@@ -191,34 +204,6 @@ export default new Router({
                 label: 'Directiva',
                 icon: 'mdi-account-group',
                 component: Directiva
-            },
-            { 
-                path: 'empleado',
-                name: 'empleado',
-                label: 'Empleados',
-                icon: 'mdi-badge-account',
-                component: Empleado
-            },
-            { 
-                path: 'calendario',
-                name: 'calendario',
-                label: 'Calendario',
-                icon: 'mdi-calendar-blank',
-                component: Calendario
-            },
-            { 
-                path: 'jornada',
-                name: 'jornada',
-                label: 'Jornada',
-                icon: 'mdi-calendar-clock',
-                component: Jornada
-            },
-            { 
-                path: 'turno',
-                name: 'turno',
-                label: 'Turno',
-                icon: 'mdi-timelapse',
-                component: Turno
             },
             { 
                 path: 'estructura',
@@ -235,11 +220,88 @@ export default new Router({
                 component: Aula
             },
             { 
+                path: 'empleado',
+                name: 'empleado',
+                label: 'Empleados',
+                icon: 'mdi-badge-account',
+                component: Empleado
+            },
+            { 
+                path: 'calendario',
+                name: 'calendario',
+                label: 'Calendario',
+                icon: 'mdi-calendar-blank',
+                component: Calendario
+            },
+            { 
+                path: 'periodo',
+                name: 'periodo',
+                label: 'Periodos',
+                icon: 'mdi-calendar-weekend',
+                component: Periodo
+            },
+            { 
+                path: 'jornada',
+                name: 'jornada',
+                label: 'Jornadas',
+                icon: 'mdi-calendar-clock',
+                component: Jornada
+            },
+            { 
+                path: 'turno',
+                name: 'turno',
+                label: 'Turnos',
+                icon: 'mdi-timelapse',
+                component: Turno
+            },
+            { 
                 path: 'hora-academica',
                 name: 'hora-academica',
-                label: 'Hora Academica',
+                label: 'Horas Academicas',
                 icon: 'mdi-clock',
                 component: HoraAcademica
+            },
+            { 
+                path: 'nivel',
+                name: 'nivel',
+                label: 'Niveles',
+                icon: 'mdi-stairs-up',
+                component: Nivel
+            },
+            { 
+                path: 'grado',
+                name: 'grado',
+                label: 'Grados',
+                icon: 'mdi-numeric',
+                component: Grado
+            },
+            { 
+                path: 'grupo',
+                name: 'grupo',
+                label: 'Grupos',
+                icon: 'mdi-alphabetical-variant',
+                component: Grupo
+            },
+            { 
+                path: 'area-estudio',
+                name: 'area-estudio',
+                label: 'Areas de Estudio',
+                icon: 'mdi-file-cad',
+                component: AreaEstudio
+            },
+            { 
+                path: 'materia',
+                name: 'materia',
+                label: 'Materias',
+                icon: 'mdi-file-cad-box',
+                component: Materia
+            },
+            { 
+                path: 'gradoMateria',
+                name: 'gradoMateria',
+                label: 'Grado Materias',
+                icon: 'mdi-square-root',
+                component: GradoMateria
             },
             { 
                 path: 'grupo-calificacion',
@@ -262,40 +324,24 @@ export default new Router({
                 icon: 'mdi-check-box-outline',
                 component: Calificacion
             },
+
+
+            /**************************** */
             { 
-                path: 'grado',
-                name: 'grado',
-                label: 'Grado',
-                icon: 'mdi-numeric',
-                component: Grado
+                path: 'alumno',
+                name: 'alumno',
+                label: 'Alumnos',
+                icon: 'mdi-face',
+                component: Alumno
             },
-            { 
-                path: 'periodo',
-                name: 'periodo',
-                label: 'Periodos',
-                icon: 'mdi-calendar-weekend',
-                component: Periodo
-            },
+
+
             { 
                 path: 'clase',
                 name: 'clase',
                 label: 'Clase',
                 icon: 'mdi-google-classroom',
                 component: Clase
-            },
-            { 
-                path: 'contacto',
-                name: 'contacto',
-                label: 'Contacto',
-                icon: 'mdi-contacts',
-                component: Contacto
-            },
-            { 
-                path: 'cargos',
-                name: 'cargos',
-                label: 'Cargos',
-                icon: 'mdi-account-settings',
-                component: Cargos
             },
             { 
                 path: 'documento',
@@ -312,20 +358,6 @@ export default new Router({
                 component: Foto
             },
             { 
-                path: 'gradoMateria',
-                name: 'gradoMateria',
-                label: 'Grado Materia',
-                icon: 'mdi-square-root',
-                component: GradoMateria
-            },
-            { 
-                path: 'grupo',
-                name: 'grupo',
-                label: 'Grupo',
-                icon: 'mdi-account-multiple',
-                component: Grupo
-            },
-            { 
                 path: 'horario',
                 name: 'horario',
                 label: 'Horario',
@@ -338,13 +370,6 @@ export default new Router({
                 label: 'Inasistencia',
                 icon: 'mdi-playlist-remove',
                 component: Inasistencia
-            },
-            { 
-                path: 'nivel',
-                name: 'nivel',
-                label: 'Nivel',
-                icon: 'mdi-stairs-up',
-                component: Nivel
             },
             { 
                 path: 'pago',
@@ -361,20 +386,34 @@ export default new Router({
                 icon: 'mdi-human-male-child',
                 component: Pariente
             },
-            { 
+/*             { 
                 path: 'profesor',
                 name: 'profesor',
                 label: 'Profesor',
                 icon: 'mdi-account-tie',
                 component: Profesor
+            }, */
+            { 
+                path: 'docente',
+                name: 'docente',
+                label: 'Docente',
+                icon: 'mdi-account-tie',
+                component: Docente
             },
             { 
+                path: 'contacto',
+                name: 'contacto',
+                label: 'Contacto',
+                icon: 'mdi-contacts',
+                component: Contacto
+            },
+      /*       { 
                 path: 'profesorMateria',
                 name: 'profesorMateria',
                 label: 'ProfesorMateria',
                 icon: 'mdi-account-tie-voice',
                 component: ProfesorMateria
-            },
+            }, */
             { 
                 path: 'status',
                 name: 'status',

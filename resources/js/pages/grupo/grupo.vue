@@ -23,15 +23,17 @@
                 item-key="id"
                 :loading="loading"
                 sort-by=""
+                dense
             >
 
                 <template v-slot:item="{ item }">
                     <tr>
                         <td class="text-xs-left">{{ item.nb_grupo }}</td>
-						<td class="text-xs-left">{{ item.id_grado }}</td>
-						<td class="text-xs-left">{{ item.tx_director }}</td>
-						<td class="text-xs-left">{{ item.nu_alumnos }}</td>
-						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
+						<td class="text-xs-left">{{ item.grado.nb_grado }}</td>
+						<td class="text-xs-left">{{ item.turno.nb_turno }}</td>
+						<td class="text-xs-left">{{ item.calendario.nb_calendario }}</td>
+						<td class="text-xs-left">{{ item.docente.nb_docente }}</td>
+						<td class="text-xs-left">{{ item.nu_orden }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -92,19 +94,20 @@ export default {
         title:    'Grupo',
         resource: 'grupo',
         headers: [
-            { text: 'Grupo',   value: 'nb_grupo' },
-			{ text: 'Grado',   value: 'id_grado' },
-			{ text: 'Director',   value: 'tx_director' },
-			{ text: 'Alumnos',   value: 'nu_alumnos' },
-			{ text: 'Observaciones',   value: 'tx_observaciones', sortable: false, filterable: false },
-			{ text: 'Status',   value: 'id_status' },
-            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
+            { text: 'Grupo',      value: 'nb_grupo' },
+			{ text: 'Grado',      value: 'grado.nb_grado' },
+			{ text: 'Turno',      value: 'turno.nb_turno' },
+			{ text: 'Calendario', value: 'calendario.nb_calendario' },
+			{ text: 'Docente',    value: 'docente.nb_docente' },
+			{ text: 'Orden',      value: 'nu_orden' },
+			{ text: 'Status',     value: 'id_status' },
+            { text: 'Acciones',   value: 'actions', sortable: false, filterable: false },
         ],
     }
     },
     methods:
     {
-        
+   
     }
 }
 </script>

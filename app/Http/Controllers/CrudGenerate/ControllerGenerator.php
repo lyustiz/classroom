@@ -98,7 +98,7 @@ class ControllerGenerator
         $validateFields = [];
 
         $validators     = null;
-        dd($table->columns);
+
         foreach ($table->columns as $columnName => $column) {
 
             if( in_array($action, ['store', 'update'])  && $columnName == $table->primaryKey)

@@ -15,7 +15,12 @@ class GradoMateriaController extends Controller
      */
     public function index()
     {
-        $gradoMateria = GradoMateria::with([])
+        $gradoMateria = GradoMateria::with([
+                                            'grado:id,nb_grado',
+                                            'materia:id,nb_materia',
+                                            ])
+                    ->orderBy('id_grado', 'asc')
+                    ->orderBy('id_materia', 'asc')
                     ->get();
         
         return $gradoMateria;
@@ -30,13 +35,11 @@ class GradoMateriaController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-            'id_materia'        => 	'required|integer',
-			'nb_director'       => 	'required|string|max:30',
-			'tx_libro'          => 	'required|string|max:30',
-			'id_profesor'       => 	'required|integer',
+            'id_grado'          => 	'required|integer|max:999999999',
+			'id_materia'        => 	'required|integer|max:999999999',
 			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer',
-			'id_usuario'        => 	'required|integer',
+			'id_status'         => 	'required|integer|max:999999999',
+			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
         $gradoMateria = gradoMateria::create($request->all());
@@ -65,13 +68,11 @@ class GradoMateriaController extends Controller
     public function update(Request $request, GradoMateria $gradoMateria)
     {
         $validate = request()->validate([
-            'id_materia'        => 	'required|integer',
-			'nb_director'       => 	'required|string|max:30',
-			'tx_libro'          => 	'required|string|max:30',
-			'id_profesor'       => 	'required|integer',
+            'id_grado'          => 	'required|integer|max:999999999',
+			'id_materia'        => 	'required|integer|max:999999999',
 			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer',
-			'id_usuario'        => 	'required|integer',
+			'id_status'         => 	'required|integer|max:999999999',
+			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
         $gradoMateria = $gradoMateria->update($request->all());

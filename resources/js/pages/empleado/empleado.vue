@@ -23,29 +23,27 @@
                 item-key="id"
                 :loading="loading"
                 sort-by=""
+                dense
             >
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.nb_apellido }}</td>
-						<td class="text-xs-left">{{ item.nb_apellido2 }}</td>
-						<td class="text-xs-left">{{ item.nb_nombre }}</td>
-						<td class="text-xs-left">{{ item.nb_nombre2 }}</td>
-						<td class="text-xs-left">{{ item.id_estado_civil }}</td>
+                        <td class="text-xs-left">{{ item.nb_empleado }}</td>
 						<td class="text-xs-left">{{ item.tx_sexo }}</td>
-						<td class="text-xs-left">{{ item.fe_nacimiento }}</td>
-						<td class="text-xs-left">{{ item.id_tipo_documento }}</td>
 						<td class="text-xs-left">{{ item.tx_documento }}</td>
-						<td class="text-xs-left">{{ item.tx_lugar_nacimiento }}</td>
-						<td class="text-xs-left">{{ item.tx_direccion }}</td>
-						<td class="text-xs-left">{{ item.id_departamento }}</td>
-						<td class="text-xs-left">{{ item.id_ciudad }}</td>
-						<td class="text-xs-left">{{ item.tx_email }}</td>
-						<td class="text-xs-left">{{ item.tx_telefono }}</td>
-						<td class="text-xs-left">{{ item.tx_telefono_movil }}</td>
-						<td class="text-xs-left">{{ item.id_cargo }}</td>
-						<td class="text-xs-left">{{ item.bo_profesor }}</td>
-						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
+						<td class="text-xs-left">{{ item.cargo.nb_cargo }}</td>
+						<td class="text-xs-left"> 
+                            <v-tooltip bottom>
+                                <template v-slot:activator="{ on }">
+                                   <v-icon v-on="on" 
+                                        :color="personColor(item.bo_profesor)" 
+                                        v-text="personIcon(item.bo_profesor)">
+                                    </v-icon>
+                                </template>
+                                <span v-text="personLabel(item.bo_profesor)"></span>
+                            </v-tooltip>
+                            
+                             </td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -106,25 +104,11 @@ export default {
         title:    'Empleado',
         resource: 'empleado',
         headers: [
-            { text: 'Apellido',   value: 'nb_apellido' },
-			{ text: 'Apellido2',   value: 'nb_apellido2' },
-			{ text: 'Nombre',   value: 'nb_nombre' },
-			{ text: 'Nombre2',   value: 'nb_nombre2' },
-			{ text: 'Estado Civil',   value: 'id_estado_civil' },
+            { text: 'Apellidos y Nombres',   value: 'nb_empleado' },
 			{ text: 'Sexo',   value: 'tx_sexo' },
-			{ text: 'Nacimiento',   value: 'fe_nacimiento' },
-			{ text: 'Tipo Documento',   value: 'id_tipo_documento' },
 			{ text: 'Documento',   value: 'tx_documento' },
-			{ text: 'Lugar Nacimiento',   value: 'tx_lugar_nacimiento' },
-			{ text: 'Direccion',   value: 'tx_direccion' },
-			{ text: 'Departamento',   value: 'id_departamento' },
-			{ text: 'Ciudad',   value: 'id_ciudad' },
-			{ text: 'Email',   value: 'tx_email' },
-			{ text: 'Telefono',   value: 'tx_telefono' },
-			{ text: 'Telefono Movil',   value: 'tx_telefono_movil' },
-			{ text: 'Cargo',   value: 'id_cargo' },
-			{ text: 'Profesor',   value: 'bo_profesor' },
-			{ text: 'Observaciones',   value: 'tx_observaciones' },
+			{ text: 'Cargo',   value: 'cargo.nb_cargo' },
+			{ text: 'Tipo',   value: 'bo_profesor' },
 			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
@@ -132,7 +116,18 @@ export default {
     },
     methods:
     {
-   
+        personIcon(isProfesor)
+        {
+            return (isProfesor == 1) ? 'mdi-account-tie' : 'mdi-badge-account' 
+        },
+        personColor(isProfesor)
+        {
+            return (isProfesor == 1) ? 'green' : 'cyan' 
+        },
+        personLabel(isProfesor)
+        {
+            return (isProfesor == 1) ? 'profesor' : 'empleado' 
+        }
     }
 }
 </script>

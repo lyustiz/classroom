@@ -1,0 +1,110 @@
+<template>
+
+    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)">
+
+        <template slot="HeadTools">
+            <add-button @insItem="insertForm()"></add-button>
+        </template>
+
+            <v-col cols="12" md="6">
+                <v-text-field
+                    v-model="search"
+                    append-icon="search"
+                    label="Buscar"
+                    hide-details
+                    clearable
+                ></v-text-field>
+            </v-col>
+
+            <v-data-table
+                :headers="headers"
+                :items  ="items"
+                :search ="search"
+                item-key="id"
+                :loading="loading"
+                sort-by=""
+                dense
+            >
+
+                <template v-slot:item="{ item }">
+                    <tr>
+                        <td class="text-xs-left">{{ item.nb_materia }}</td>
+						<td class="text-xs-left">{{ item.co_materia }}</td>
+						<td class="text-xs-left">{{ item.area_estudio.nb_area_estudio }}</td>
+						<td class="text-xs-left">
+                            <status-switch 
+                                :loading="loading" 
+                                :item="item" 
+                                @onChangeStatus="changeStatus($event)">
+                            </status-switch>
+                        </td>
+                        
+                        <td class="text-xs-left">
+                            <list-buttons 
+                                @update="updateForm(item)" 
+                                @delete="deleteForm(item)" >
+                            </list-buttons>
+                        </td>
+                    </tr>
+                </template>
+
+            </v-data-table>
+
+            <app-modal
+                :modal="modal"
+                @closeModal="closeModal()"
+                :head-color="$App.theme.headModal"
+                :title="title"
+            >
+                <materia-form
+                    :action="action"
+                    :item="item"
+                    @closeModal="closeModal()"
+                ></materia-form>
+
+            </app-modal>
+
+            <form-delete
+                :dialog="dialog"
+                :loading="loading"
+                message="Desea eliminar el Registro Seleccionado?"
+                @deleteItem="deleteItem()"
+                @deleteCancel="deleteCancel()"
+            ></form-delete>
+
+            <app-message></app-message>
+
+            <pre v-if="$App.debug">{{ $data }}</pre>
+
+    </list-container>
+
+</template>
+
+<script>
+import listHelper from '@mixins/Applist';
+import materiaForm  from './materiaForm';
+export default {
+    mixins:     [ listHelper],
+    components: { 'materia-form': materiaForm },
+    data () {
+    return {
+        title:    'Materia',
+        resource: 'materia',
+        headers: [
+            { text: 'Materia',   value: 'nb_materia' },
+			{ text: 'Codigo',   value: 'co_materia' },
+			{ text: 'Area Estudio',   value: 'area_estudio.nb_area_estudio' },
+			{ text: 'Status',   value: 'id_status' },
+            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
+        ],
+    }
+    },
+    methods:
+    {
+   
+    }
+}
+</script>
+
+<style>
+</style>

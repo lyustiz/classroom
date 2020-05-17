@@ -35,7 +35,47 @@ class Empleado extends Model
     protected $hidden     = [
                             'created_at',
 	 	 	 	 	 	 	'updated_at'
-                            ];
+							];
+							
+	protected $appends = ['nb_empleado'];
 
+	public function getNbEmpleadoAttribute()
+	{
+		return str_replace( '  ', null,  "{$this->nb_apellido} {$this->nb_apellido2} {$this->nb_nombre} {$this->nb_nombre2}") ;
+	}
 
+	public function status()
+	{
+        return $this->BelongsTo('App\Models\Status', 'id_status');
+    }
+                            
+	public function usuario()
+	{
+        return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
+	}
+	
+	public function cargo()
+	{
+        return $this->BelongsTo('App\Models\Cargo', 'id_cargo');
+	}
+	
+	public function estadoCivil()
+	{
+        return $this->BelongsTo('App\Models\EstadoCivil', 'id_estado_civil');
+	}
+	
+	public function tipoDocumento()
+	{
+        return $this->BelongsTo('App\Models\TipoDocumento', 'id_tipo_documento');
+	}
+	
+	public function departamento()
+	{
+        return $this->BelongsTo('App\Models\Departamento', 'id_departamento');
+	}
+	
+	public function ciudad()
+	{
+        return $this->BelongsTo('App\Models\Ciudad', 'id_ciudad');
+    }
 }

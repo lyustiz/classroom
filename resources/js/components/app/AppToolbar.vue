@@ -73,7 +73,7 @@
             </v-tooltip>
         </template>
 
-         <v-app-bar-nav-icon @click="toggleFilter()" v-show="resize && isFiltePage" ></v-app-bar-nav-icon>
+         <v-app-bar-nav-icon @click="toggleFilter()" v-show="resize" ></v-app-bar-nav-icon>
 
     </v-app-bar>
 

@@ -15,9 +15,14 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $empleado = Empleado::with([])
+        $empleado = Empleado::with(['cargo:id,nb_cargo',
+                                    'estadoCivil:id,nb_estado_civil',
+                                    'tipoDocumento:id,nb_tipo_documento',
+                                    'departamento:id,nb_departamento',
+                                    'ciudad:id,nb_ciudad'])
                     ->get();
         
+
         return $empleado;
     }
 
@@ -85,11 +90,11 @@ class EmpleadoController extends Controller
 			'nb_nombre'         => 	'required|string|max:30',
 			'nb_nombre2'        => 	'required|string|max:30',
 			'id_estado_civil'   => 	'required|integer|max:999999999',
-			'tx_sexo'           => 	'required|date|before:today',
-			'fe_nacimiento'     => 	'required|string|max:0',
+			'tx_sexo'           => 	'required|string|max:1',
+			'fe_nacimiento'     => 	'required|date|before:today',
 			'id_tipo_documento' => 	'required|integer|max:999999999',
 			'tx_documento'      => 	'required|string|max:12',
-			'tx_lugar_nacimiento'=> 	'required|string|max:30',
+			'tx_lugar_nacimiento'=> 'required|string|max:30',
 			'tx_direccion'      => 	'required|string|max:80',
 			'id_departamento'   => 	'required|integer|max:999999999',
 			'id_ciudad'         => 	'required|integer|max:999999999',

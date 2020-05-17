@@ -12,6 +12,7 @@ Vue.component('app-toolbar',      AppToolbar);
 Vue.component('app-login',        Login);
 
 //Global Componets
+import ListIcon      from '@components/list/ListIcon'
 import ListButtons   from '@components/list/ListButtons'
 import AddButton     from '@components/list/AddButton'
 import ListContainer from '@components/list/ListContainer'
@@ -24,6 +25,7 @@ import AppModal      from '@components/app/AppModal'
 import AppDialog     from '@components/app/AppDialog'
 import AppUser       from '@components/app/AppUser'
 
+Vue.component('list-icon',        ListIcon);
 Vue.component('list-buttons',     ListButtons);
 Vue.component('add-button',       AddButton);
 Vue.component('list-container',   ListContainer);

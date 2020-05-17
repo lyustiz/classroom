@@ -17,8 +17,10 @@ class CreateGrupoTable extends Migration
             $table->increments('id');
             $table->string('nb_grupo', 30)->nullable();
             $table->integer('id_grado');
-            $table->string('tx_director', 30)->nullable();
-            $table->integer('nu_alumnos');
+            $table->integer('id_turno');
+            $table->integer('id_calendario');
+            $table->integer('id_docente')->nullable();
+            $table->integer('nu_orden');
             $table->string('tx_observaciones', 100)->nullable();
             $table->integer('id_status');
             $table->integer('id_usuario');

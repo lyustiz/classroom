@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="table-cell">
    <!--  <v-speed-dial 
         v-model="fab"
         direction="left" 
@@ -21,8 +21,6 @@
         <v-btn fab dark x-small :color="$App.theme.button.delete" @click="deleter" class="my-1 mr-1" :loading="loading">
             <v-icon>delete</v-icon>
         </v-btn>
-
-        
 
         <slot></slot>
 
@@ -83,3 +81,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.buttonContainer {
+             
+}
+</style>
