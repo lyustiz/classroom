@@ -1,9 +1,8 @@
 import AppFormat  from './AppFormat';
-import AppMessage from './AppMessage';
 
 export default 
 {
-    mixins: [AppFormat, AppMessage],
+    mixins: [AppFormat],
 
     data() 
     {

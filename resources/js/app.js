@@ -48,7 +48,7 @@ Vue.prototype.$App = Object.freeze({
                     }
         }
 })
-console.log('lo', window.location.host)
+
 /** Components Autoload **/
 import './components/components'
 

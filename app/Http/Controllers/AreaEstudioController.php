@@ -31,6 +31,7 @@ class AreaEstudioController extends Controller
     {
         $validate = request()->validate([
             'nb_area_estudio'   => 	'required|string|max:50',
+            'tx_color'          => 	'nullable|string|max:30',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
@@ -63,6 +64,7 @@ class AreaEstudioController extends Controller
     {
         $validate = request()->validate([
             'nb_area_estudio'   => 	'required|string|max:50',
+            'tx_color'          => 	'nullable|string|max:30',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',

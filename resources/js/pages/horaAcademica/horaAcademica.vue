@@ -28,11 +28,8 @@
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.nu_orden }}</td>
-						<td class="text-xs-left">{{ item.hh_inicio }}</td>
-						<td class="text-xs-left">{{ item.hh_fin }}</td>
-						<td class="text-xs-left">{{ item.turno.nb_turno }}</td>
-						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
+                        <td class="text-xs-left">{{ item.nb_hora_academica }}</td>
+                        <td class="text-xs-left">{{ item.nivel.nb_nivel }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -93,13 +90,10 @@ export default {
         title:    'Hora Academica',
         resource: 'horaAcademica',
         headers: [
-            { text: 'Orden',   value: 'nu_orden' },
-			{ text: 'Inicio',   value: 'hh_inicio' },
-			{ text: 'Fin',   value: 'hh_fin' },
-			{ text: 'Turno',   value: 'turno.nb_turno' },
-			{ text: 'Observaciones',   value: 'tx_observaciones', sortable: false, filterable: false },
-			{ text: 'Status',   value: 'id_status' },
-            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
+            { text: 'Descripcion', value: 'nb_hora_academica' },
+            { text: 'Nivel',       value: 'nivel.nb_nivel' },
+			{ text: 'Status',      value: 'id_status' },
+            { text: 'Acciones',    value: 'actions', sortable: false, filterable: false },
         ],
     }
     },

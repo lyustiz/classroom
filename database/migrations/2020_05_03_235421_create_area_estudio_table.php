@@ -16,6 +16,7 @@ class CreateAreaEstudioTable extends Migration
         Schema::create('area_estudio', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nb_area_estudio', 50);
+            $table->string('tx_color', 30);
             $table->string('tx_observaciones', 100)->nullable();
             $table->integer('id_status');
             $table->integer('id_usuario');

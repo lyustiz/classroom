@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHorarioTable extends Migration
+class CreateActividadCargaHorariaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateHorarioTable extends Migration
      */
     public function up()
     {
-        Schema::create('horario', function (Blueprint $table) {
+        Schema::create('actividad_carga_horaria', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nb_horario', 100);
-            $table->integer('id_grupo');
-            $table->integer('id_hora_academica');
+            $table->integer('id_actividad');
+            $table->integer('id_carga_horaria');
             $table->string('tx_observaciones', 100)->nullable();
             $table->integer('id_status');
             $table->integer('id_usuario');
             $table->timestamps();
-        });
+        }); 
     }
 
     /**
@@ -32,6 +31,6 @@ class CreateHorarioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('horario');
+        Schema::dropIfExists('actividad_carga_horaria');
     }
 }

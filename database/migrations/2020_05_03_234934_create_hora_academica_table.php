@@ -15,10 +15,8 @@ class CreateHoraAcademicaTable extends Migration
     {
         Schema::create('hora_academica', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('nu_orden');
-            $table->datetime('hh_inicio');
-            $table->datetime('hh_fin');
-            $table->integer('id_turno');
+            $table->string('nb_hora_academica', 80);
+            $table->integer('id_nivel');
             $table->string('tx_observaciones', 100)->nullable();
             $table->integer('id_status');
             $table->integer('id_usuario');
@@ -36,3 +34,5 @@ class CreateHoraAcademicaTable extends Migration
         Schema::dropIfExists('hora_academica');
     }
 }
+
+

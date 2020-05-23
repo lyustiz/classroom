@@ -32,7 +32,11 @@ import TipoColegio       from '@pages/tipoColegio/tipoColegio.vue';
 import Jornada           from '@pages/jornada/jornada.vue';
 import Calendario        from '@pages/calendario/calendario.vue';
 import Turno             from '@pages/turno/turno.vue';
+
 import HoraAcademica     from '@pages/horaAcademica/horaAcademica.vue';
+import CargaHoraria      from '@pages/cargaHoraria/cargaHoraria.vue';
+
+
 import Grado             from '@pages/grado/grado.vue';
 import Cargos            from '@pages/cargo/cargo.vue';
 import Empleado          from '@pages/empleado/empleado.vue';
@@ -260,6 +264,14 @@ export default new Router({
                 label: 'Horas Academicas',
                 icon: 'mdi-clock',
                 component: HoraAcademica
+            },
+
+            { 
+                path: 'carga-horaria',
+                name: 'carga-horaria',
+                label: 'Carga Horaria',
+                icon: 'mdi-clock',
+                component: CargaHoraria
             },
             { 
                 path: 'nivel',

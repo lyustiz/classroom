@@ -1,55 +1,50 @@
+import AppFormat  from './AppFormat';
 export default 
 {
-    methods:
-    { 
-        getDataList(dataList)
+    mixins: [AppFormat],
+    computed: 
+    {
+        fullUrl() 
         {
-            this.selectRequests(dataList)
-            .then(
-                axios.spread( (...dataSelects) => 
-                {
-                    let i = 0;
-                    for(var key in dataList) 
-                    {
-                        if(typeof dataSelects[i].data == "object")
-						{
-                            dataList[key].items = dataSelects[i].data
-                        }else
-                        {
-                            dataList[key].items = []
-                        }
-                        i++;
-                    }
-                })
-            )
-            .catch(error =>
-            {
-               console.log(this.$App.ApiUrl)
-               this.showError(error);
-            })
-            .finally( () =>
-            {
-                this.loading = false;
-                this.dataReady();
-            });;
+            return this.apiUrl + this.path;
         },
-        selectRequests(dataList) 
+        fullUrlId() 
         {
-            let requests = [];
-
-            for(var select in dataList) 
-            {
-                requests.push(
-                    axios.get(
-                        this.$App.ApiUrl + select + dataList[select].group
-                    )
-                ); 
-            }
-            return axios.all(requests)
-                    
-        },
-        dataReady(){
-            
+            return this.fullUrl + '/' + this.item.id
         }
-    } 
+    },
+
+    data() 
+    {
+        return {
+            apiUrl:  this.$App.apiUrl,
+            idUser:  this.$store.getters.idUser,
+            loading: true,
+            items:   [],
+            path:    null
+        }
+    },
+
+    methods:
+    {
+        list()
+        {
+            this.loading = true
+
+            axios.get(this.fullUrl)
+            .then(response => 
+            {
+                this.items = response.data
+            })
+            .catch(error => 
+            {
+                this.showError(error)
+            })
+            .finally( () => 
+            {
+                this.loading = false
+            });
+        },
+         
+    }
 }

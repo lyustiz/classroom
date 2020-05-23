@@ -1,5 +1,6 @@
 <template>
 
+    
     <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)">
 
         <template slot="HeadTools">
@@ -23,18 +24,16 @@
                 item-key="id"
                 :loading="loading"
                 sort-by=""
-                dense
+                single-expand
+                :expanded.sync="expanded"
+                show-expand
             >
 
-                <template v-slot:item="{ item }">
+              <!--   <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.co_horario }}</td>
-						<td class="text-xs-left">{{ item.id_grado_materia }}</td>
-						<td class="text-xs-left">{{ item.id_grupo }}</td>
-						<td class="text-xs-left">{{ item.id_dia_semana }}</td>
-						<td class="text-xs-left">{{ item.hh_inicio }}</td>
-						<td class="text-xs-left">{{ item.hh_fin }}</td>
-						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
+                        <td class="text-xs-left">{{ item.nb_horario }}</td>
+						<td class="text-xs-left">{{ item.grupo.nb_grupo }}</td>
+						<td class="text-xs-left">{{ item.hora_academica.nb_hora_academica }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -50,6 +49,12 @@
                             </list-buttons>
                         </td>
                     </tr>
+                </template> -->
+
+                 <template v-slot:expanded-item="{ headers, item }">
+                    <td :colspan="headers.length" class="py-4" >
+                    <carga-horaria :horario="item"></carga-horaria>
+                    </td>
                 </template>
 
             </v-data-table>
@@ -78,38 +83,44 @@
 
             <app-message></app-message>
 
+           
+
             <pre v-if="$App.debug">{{ $data }}</pre>
 
     </list-container>
-
+    
 </template>
 
 <script>
 import listHelper from '@mixins/Applist';
 import horarioForm  from './horarioForm';
+import CargaHoraria from './cargaHoraria';
 export default {
+
     mixins:     [ listHelper],
-    components: { 'horario-form': horarioForm },
+
+    components: { 
+        'horario-form' : horarioForm,
+        'carga-horaria': CargaHoraria
+    },
+
     data () {
     return {
         title:    'Horario',
         resource: 'horario',
         headers: [
-            { text: 'Horario',   value: 'co_horario' },
-			{ text: 'Grado Materia',   value: 'id_grado_materia' },
-			{ text: 'Grupo',   value: 'id_grupo' },
-			{ text: 'Dia Semana',   value: 'id_dia_semana' },
-			{ text: 'Inicio',   value: 'hh_inicio' },
-			{ text: 'Fin',   value: 'hh_fin' },
-			{ text: 'Observaciones',   value: 'tx_observaciones', sortable: false, filterable: false },
+            { text: 'Codigo',   value: 'nb_horario' },
+			{ text: 'Grupo',   value: 'grupo.nb_grupo' },
+			{ text: 'Hora Academica',   value: 'hora_academica.nb_hora_academica' },
 			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
+        expanded: []
     }
     },
     methods:
     {
-        
+   
     }
 }
 </script>

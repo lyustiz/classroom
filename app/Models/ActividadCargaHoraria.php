@@ -2,17 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Materia extends Model
+
+class ActividadCargaHoraria extends Pivot
 {
-    protected $table 	  = 'materia';
+    protected $table 	  = 'actividad_carga_horaria';
 
     protected $fillable   = [
-                            'nb_materia',
-	 	 	 	 	 	 	'co_materia',
-	 	 	 	 	 	 	'id_area_estudio',
-	 	 	 	 	 	 	'tx_icono',
+                            'id_actividad',
+	 	 	 	 	 	 	'id_carga_horaria',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'
@@ -34,12 +33,6 @@ class Materia extends Model
     public function usuario(){
 
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
-
-    }
-
-    public function areaEstudio(){
-
-        return $this->BelongsTo('App\Models\AreaEstudio', 'id');
 
     }
 }

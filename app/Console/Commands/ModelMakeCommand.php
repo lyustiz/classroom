@@ -18,7 +18,7 @@ class ModelMakeCommand extends DefaultModelMakeCommand
         
         if ($this->option("pivot")) 
         {
-            return resource_path("templates/pivot.model.template");
+            return resource_path("templates/model/pivot.model.template");
         }        
         
         return resource_path("templates/model/model.template");

@@ -12,26 +12,13 @@
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
-                v-model="form.co_horario"
-                label="Horario"
-                placeholder="Indique Horario"
+                v-model="form.nb_horario"
+                label="Codigo Horario"
+                placeholder="Indique Codigo del Horario"
                 dense
             ></v-text-field>
         </v-col>
                           
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.grado_materia"
-            item-text="nb_grado_materia"
-            item-value="id"
-            v-model="form.id_grado_materia"
-            :rules="[rules.select]"
-            label="Grado Materia"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
-                  
         <v-col cols="12" md="6">
             <v-select
             :items="selects.grupo"
@@ -47,74 +34,20 @@
                   
         <v-col cols="12" md="6">
             <v-select
-            :items="selects.dia_semana"
-            item-text="nb_dia_semana"
+            :items="selects.horaAcademica"
+            item-text="nb_hora_academica"
             item-value="id"
-            v-model="form.id_dia_semana"
+            v-model="form.id_hora_academica"
             :rules="[rules.select]"
-            label="Dia Semana"
+            label="Hora Academica"
             :loading="loading"
             dense
             ></v-select>
         </v-col>
-         
-        <v-col cols="12" md="3">
-            <v-menu
-                ref="picker"
-                v-model="pickers.hh_inicio"
-                min-width="290px"
-                readonly
-            >
-                <template v-slot:activator="{ on }">
-                    <v-text-field
-                        v-on="on"
-                        v-model="dates.hh_inicio"
-                        :rules="rules.etapaCo"
-                        label="Inicio"
-                        prepend-icon="event"
-                        readonly
-                        dense
-                    ></v-text-field>
-                </template>
-
-                <v-date-picker 
-                    v-model="form.hh_inicio" 
-                    locale="es"
-                    @input="dates.hh_inicio = formatDate( form.hh_inicio )"
-                ></v-date-picker>
-            </v-menu>
-        </v-col>
-
-        <v-col cols="12" md="3">
-            <v-menu
-                ref="picker"
-                v-model="pickers.hh_fin"
-                min-width="290px"
-                readonly
-            >
-                <template v-slot:activator="{ on }">
-                    <v-text-field
-                        v-on="on"
-                        v-model="dates.hh_fin"
-                        :rules="rules.etapaCo"
-                        label="Fin"
-                        prepend-icon="event"
-                        readonly
-                        dense
-                    ></v-text-field>
-                </template>
-
-                <v-date-picker 
-                    v-model="form.hh_fin" 
-                    locale="es"
-                    @input="dates.hh_fin = formatDate( form.hh_fin )"
-                ></v-date-picker>
-            </v-menu>
-        </v-col>
- 
+          
         <v-col cols="12" md="6">
             <v-text-field
-                :rules="[]"
+                :rules="[rules.max(100)]"
                 v-model="form.tx_observaciones"
                 label="Observaciones"
                 placeholder="Indique Observaciones"
@@ -172,33 +105,27 @@ export default {
             resource: 'horario',
             dates:
             {
-                hh_inicio: 	 null,
-	 	 	 	hh_fin: 	 null,
+                
             },
             pickers:
             {
-                hh_inicio: 	 null,
-	 	 	 	hh_fin: 	 null,
+                
             },
             form:
             {
-                id: 	null,
-				co_horario: 	null,
-				id_grado_materia: 	null,
-				id_grupo: 	null,
-				id_dia_semana: 	null,
-				hh_inicio: 	null,
-				hh_fin: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
+                id: 	           null,
+				nb_horario: 	   null,
+				id_grupo: 	       null,
+				id_hora_academica: null,
+				tx_observaciones:  null,
+				id_status: 	       null,
+				id_usuario: 	   null,
             },
             selects:
             {
-                grado_materia: 	 [],
-	 	 	 	grupo: 	 [],
-	 	 	 	dia_semana: 	 [],
-	 	 	 	status: 	 [],
+                grupo: 	        [],
+	 	 	 	horaAcademica: 	[],
+	 	 	 	status: 	    [],
             },
         }
     },

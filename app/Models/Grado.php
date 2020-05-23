@@ -40,5 +40,18 @@ class Grado extends Model
 
     }
 
+    public function materia()
+    {
+        return $this->belongsToMany('App\Models\Materia', 'grado_materia', 'id_grado', 'id_materia');
+    }
+
+    public function grupo(){
+
+        return $this->HasMany('App\Models\Grupo', 'id_grupo');
+
+    }
+
+
+
 
 }

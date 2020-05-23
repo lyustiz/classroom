@@ -23,13 +23,20 @@
                 item-key="id"
                 :loading="loading"
                 sort-by=""
-                dense
             >
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.nb_area_estudio }}</td>
-                        <td class="text-xs-left"><v-chip small label :color="item.tx_color"></v-chip></td>
+                        <td class="text-xs-left">{{ item.nb_actividad }}</td>
+						<td class="text-xs-left">{{ item.id_horario }}</td>
+						<td class="text-xs-left">{{ item.id_materia }}</td>
+						<td class="text-xs-left">{{ item.id_profesor }}</td>
+						<td class="text-xs-left">{{ item.id_dia_semana }}</td>
+						<td class="text-xs-left">{{ item.id_aula }}</td>
+						<td class="text-xs-left">{{ item.hh_inicio }}</td>
+						<td class="text-xs-left">{{ item.hh_fin }}</td>
+						<td class="text-xs-left">{{ item.nu_carga_horaria }}</td>
+						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -55,11 +62,11 @@
                 :head-color="$App.theme.headModal"
                 :title="title"
             >
-                <area-estudio-form
+                <actividad-form
                     :action="action"
                     :item="item"
                     @closeModal="closeModal()"
-                ></area-estudio-form>
+                ></actividad-form>
 
             </app-modal>
 
@@ -81,19 +88,27 @@
 
 <script>
 import listHelper from '@mixins/Applist';
-import areaEstudioForm  from './areaEstudioForm';
+import actividadForm  from './actividadForm';
 export default {
     mixins:     [ listHelper],
-    components: { 'area-estudio-form': areaEstudioForm },
+    components: { 'actividad-form': actividadForm },
     data () {
     return {
-        title:    'Area Estudio',
-        resource: 'areaEstudio',
+        title:    'Actividad',
+        resource: 'actividad',
         headers: [
-            { text: 'Areas Estudio', value: 'nb_area_estudio' },
-            { text: 'Color',         value: 'tx_color' },
-			{ text: 'Status',        value: 'id_status' },
-            { text: 'Acciones',      value: 'actions', sortable: false, filterable: false },
+            { text: 'Actividad',   value: 'nb_actividad' },
+			{ text: 'Horario',   value: 'id_horario' },
+			{ text: 'Materia',   value: 'id_materia' },
+			{ text: 'Profesor',   value: 'id_profesor' },
+			{ text: 'Dia Semana',   value: 'id_dia_semana' },
+			{ text: 'Aula',   value: 'id_aula' },
+			{ text: 'Inicio',   value: 'hh_inicio' },
+			{ text: 'Fin',   value: 'hh_fin' },
+			{ text: 'Carga Horaria',   value: 'nu_carga_horaria' },
+			{ text: 'Observaciones',   value: 'tx_observaciones' },
+			{ text: 'Status',   value: 'id_status' },
+            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
     }
     },

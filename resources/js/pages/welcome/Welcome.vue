@@ -94,7 +94,6 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 
-import AppData from '@mixins/AppData';
 import AppMessage from '@mixins/AppMessage';
 
 export default {

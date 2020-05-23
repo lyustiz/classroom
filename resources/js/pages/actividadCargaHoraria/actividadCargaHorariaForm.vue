@@ -8,30 +8,42 @@
 
         <v-row>
 
-        <v-col cols="12" md="6">
-            <v-text-field
-                :rules="[rules.required]"
-                v-model="form.nb_hora_academica"
-                label="Hora Academica"
-                placeholder="Indique Hora Academica"
-                dense
-            ></v-text-field>
-        </v-col>
-
+                         
         <v-col cols="12" md="6">
             <v-select
-            :items="selects.nivel"
-            item-text="nb_nivel"
+            :items="selects.actividad"
+            item-text="nb_actividad"
             item-value="id"
-            v-model="form.id_nivel"
+            v-model="form.id_actividad"
             :rules="[rules.select]"
-            label="Nivel"
+            label="Actividad"
             :loading="loading"
             dense
             ></v-select>
         </v-col>
-
-    
+                  
+        <v-col cols="12" md="6">
+            <v-select
+            :items="selects.cargaHoraria"
+            item-text="nb_carga_horaria"
+            item-value="id"
+            v-model="form.id_carga_horaria"
+            :rules="[rules.select]"
+            label="Carga Horaria"
+            :loading="loading"
+            dense
+            ></v-select>
+        </v-col>
+          
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.tx_observaciones"
+                label="Observaciones"
+                placeholder="Indique Observaciones"
+                dense
+            ></v-text-field>
+        </v-col>
                           
         <v-col cols="12" md="6">
             <v-select
@@ -44,16 +56,6 @@
             :loading="loading"
             dense
             ></v-select>
-        </v-col>
-        
-        <v-col cols="12" md="12">
-            <v-text-field
-                :rules="[]"
-                v-model="form.tx_observaciones"
-                label="Observaciones"
-                placeholder="Indique Observaciones"
-                dense
-            ></v-text-field>
         </v-col>
          
 
@@ -90,56 +92,35 @@ export default {
     mixins: [Appform],
     data() {
         return {
-            resource: 'horaAcademica',
+            resource: 'actividad_carga_horaria',
             dates:
             {
-                hh_inicio: 	 null,
-	 	 	 	hh_fin: 	 null,
+                
             },
             pickers:
             {
-                hh_inicio: 	 null,
-	 	 	 	hh_fin: 	 null,
+                
             },
             form:
             {
-                id: 	            null,
-                nb_hora_academica:  null,
-				nu_orden: 	        null,
-				hh_inicio: 	        null,
-				hh_fin: 	        null,
-                id_turno: 	        null,
-                id_nivel: 	        null,
-                bo_receso: 	        null,
+                id: 	null,
+				id_actividad: 	null,
+				id_carga_horaria: 	null,
 				tx_observaciones: 	null,
-				id_status: 	        null,
-                id_usuario: 	    null,
+				id_status: 	null,
+				id_usuario: 	null,
             },
             selects:
             {
-                nivel: 	[],
-	 	 	 	status: [],
+                actividad: 	 [],
+	 	 	 	cargaHoraria: 	 [],
+	 	 	 	status: 	 [],
             },
-            
         }
     },
 
     methods:
     {
-
-        setDataForm(action)
-        {
-            if(this.action == 'upd')
-            {
-                this.mapForm()
-            }
-            else if(this.action == 'ins')
-            {
-                let nu_orden = this.item.nu_orden
-                this.reset()
-                this.form.nu_orden = nu_orden
-            }
-        },
 
     }
 }

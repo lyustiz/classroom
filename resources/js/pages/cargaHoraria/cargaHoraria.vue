@@ -23,13 +23,24 @@
                 item-key="id"
                 :loading="loading"
                 sort-by=""
-                dense
             >
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.nb_area_estudio }}</td>
-                        <td class="text-xs-left"><v-chip small label :color="item.tx_color"></v-chip></td>
+                        <td class="text-xs-left">{{ item.nu_orden }}</td>
+                        <td class="text-xs-left">{{ item.hora_academica.nb_hora_academica }}</td>
+                        <td class="text-xs-left" :class="{ 'green--text font-weight-bold': item.bo_receso  }"> 
+                            {{ item.nb_carga_horaria }}
+                         </td>
+						<td class="text-xs-left">{{ item.hh_inicio | formatTime }}</td>
+						<td class="text-xs-left">{{ item.hh_fin | formatTime }}</td>
+						<td class="text-xs-left">{{ item.turno.nb_turno }}</td>
+						<td class="text-xs-center">
+                            <v-icon 
+                                color="success"
+                                v-text="(item.bo_receso) ? 'mdi-coffee': 'mdi-coffee-off-outline'">
+                            </v-icon>
+                        </td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -55,11 +66,11 @@
                 :head-color="$App.theme.headModal"
                 :title="title"
             >
-                <area-estudio-form
+                <carga-horaria-form
                     :action="action"
                     :item="item"
                     @closeModal="closeModal()"
-                ></area-estudio-form>
+                ></carga-horaria-form>
 
             </app-modal>
 
@@ -81,17 +92,22 @@
 
 <script>
 import listHelper from '@mixins/Applist';
-import areaEstudioForm  from './areaEstudioForm';
+import cargaHorariaForm  from './cargaHorariaForm';
 export default {
     mixins:     [ listHelper],
-    components: { 'area-estudio-form': areaEstudioForm },
+    components: { 'carga-horaria-form': cargaHorariaForm },
     data () {
     return {
-        title:    'Area Estudio',
-        resource: 'areaEstudio',
+        title:    'CargaHoraria',
+        resource: 'cargaHoraria',
         headers: [
-            { text: 'Areas Estudio', value: 'nb_area_estudio' },
-            { text: 'Color',         value: 'tx_color' },
+            { text: 'Orden',         value: 'nu_orden' },
+            { text: 'Grupo Hora',    value: 'hora_academica.nb_hora_academica' },
+            { text: 'Descripcion',   value: 'nb_carga_horaria' },
+			{ text: 'Inicio',        value: 'hh_inicio' },
+			{ text: 'Fin',           value: 'hh_fin' },
+			{ text: 'Turno',         value: 'turno.nb_turno' },
+			{ text: 'Receso',        value: 'bo_receso' },
 			{ text: 'Status',        value: 'id_status' },
             { text: 'Acciones',      value: 'actions', sortable: false, filterable: false },
         ],

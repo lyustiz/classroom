@@ -10,6 +10,7 @@ class AreaEstudio extends Model
 
     protected $fillable   = [
                             'nb_area_estudio',
+                            'tx_color',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'

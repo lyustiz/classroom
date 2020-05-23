@@ -23,13 +23,13 @@
                 item-key="id"
                 :loading="loading"
                 sort-by=""
-                dense
             >
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.nb_area_estudio }}</td>
-                        <td class="text-xs-left"><v-chip small label :color="item.tx_color"></v-chip></td>
+                        <td class="text-xs-left">{{ item.id_actividad }}</td>
+						<td class="text-xs-left">{{ item.id_carga_horaria }}</td>
+						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -55,11 +55,11 @@
                 :head-color="$App.theme.headModal"
                 :title="title"
             >
-                <area-estudio-form
+                <actividad-carga-horaria-form
                     :action="action"
                     :item="item"
                     @closeModal="closeModal()"
-                ></area-estudio-form>
+                ></actividad-carga-horaria-form>
 
             </app-modal>
 
@@ -81,19 +81,20 @@
 
 <script>
 import listHelper from '@mixins/Applist';
-import areaEstudioForm  from './areaEstudioForm';
+import actividadCargaHorariaForm  from './actividadCargaHorariaForm';
 export default {
     mixins:     [ listHelper],
-    components: { 'area-estudio-form': areaEstudioForm },
+    components: { 'actividad-carga-horaria-form': actividadCargaHorariaForm },
     data () {
     return {
-        title:    'Area Estudio',
-        resource: 'areaEstudio',
+        title:    'ActividadCargaHoraria',
+        resource: 'actividadCargaHoraria',
         headers: [
-            { text: 'Areas Estudio', value: 'nb_area_estudio' },
-            { text: 'Color',         value: 'tx_color' },
-			{ text: 'Status',        value: 'id_status' },
-            { text: 'Acciones',      value: 'actions', sortable: false, filterable: false },
+            { text: 'Actividad',   value: 'id_actividad' },
+			{ text: 'Carga Horaria',   value: 'id_carga_horaria' },
+			{ text: 'Observaciones',   value: 'tx_observaciones' },
+			{ text: 'Status',   value: 'id_status' },
+            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
     }
     },

@@ -15,8 +15,13 @@ class HorarioController extends Controller
      */
     public function index()
     {
-        $horario = Horario::with([])
-                    ->get();
+        $horario = Horario::with([
+                                    'horaAcademica:id,nb_hora_academica',
+                                    'grupo:id,nb_grupo,id_grado', 
+                                    'grupo.grado:id,nb_grado',
+                                    'grupo.grado.materia:materia.id,nb_materia',
+                                ])
+                                ->get();
         
         return $horario;
     }
@@ -30,15 +35,12 @@ class HorarioController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-            'co_horario'        => 	'required|string|max:100',
-			'id_grado_materia'  => 	'required|integer',
-			'id_grupo'          => 	'required|integer',
-			'id_dia_semana'     => 	'required|integer',
-			'hh_inicio'         => 	'required|date',
-			'hh_fin'            => 	'required|date',
+            'nb_horario'        => 	'required|string|max:100',
+			'id_grupo'          => 	'required|integer|max:999999999',
+			'id_hora_academica' => 	'required|integer|max:999999999',
 			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer',
-			'id_usuario'        => 	'required|integer',
+			'id_status'         => 	'required|integer|max:999999999',
+			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
         $horario = horario::create($request->all());
@@ -67,15 +69,12 @@ class HorarioController extends Controller
     public function update(Request $request, Horario $horario)
     {
         $validate = request()->validate([
-            'co_horario'        => 	'required|string|max:100',
-			'id_grado_materia'  => 	'required|integer',
-			'id_grupo'          => 	'required|integer',
-			'id_dia_semana'     => 	'required|integer',
-			'hh_inicio'         => 	'required|date',
-			'hh_fin'            => 	'required|date',
+            'nb_horario'        => 	'required|string|max:100',
+			'id_grupo'          => 	'required|integer|max:999999999',
+			'id_hora_academica' => 	'required|integer|max:999999999',
 			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer',
-			'id_usuario'        => 	'required|integer',
+			'id_status'         => 	'required|integer|max:999999999',
+			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
         $horario = $horario->update($request->all());
