@@ -1,5 +1,12 @@
 export default 
 {
+    data()
+    {
+        return{
+
+        }
+    },
+    
     methods: 
     {
         navegateTo(route)

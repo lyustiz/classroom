@@ -12,16 +12,6 @@
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
-                v-model="form.nb_nombre"
-                label="Nombre"
-                placeholder="Indique Nombre"
-                dense
-            ></v-text-field>
-        </v-col>
-                  
-        <v-col cols="12" md="6">
-            <v-text-field
-                :rules="[rules.required]"
                 v-model="form.nb_apellido"
                 label="Apellido"
                 placeholder="Indique Apellido"
@@ -32,9 +22,82 @@
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
+                v-model="form.nb_apellido2"
+                label="Apellido2"
+                placeholder="Indique Apellido2"
+                dense
+            ></v-text-field>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.nb_nombre"
+                label="Nombre"
+                placeholder="Indique Nombre"
+                dense
+            ></v-text-field>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.nb_nombre2"
+                label="Nombre2"
+                placeholder="Indique Nombre2"
+                dense
+            ></v-text-field>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required]"
                 v-model="form.tx_documento"
                 label="Documento"
                 placeholder="Indique Documento"
+                dense
+            ></v-text-field>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.tx_sexo"
+                label="Sexo"
+                placeholder="Indique Sexo"
+                dense
+            ></v-text-field>
+        </v-col>
+                 
+        <v-col cols="12" md="6">
+            <v-menu
+                v-model="pickers.fe_nacimiento"
+                :close-on-content-click="false"
+                min-width="290px"
+            >
+                <template v-slot:activator="{ on }">
+                    <v-text-field
+                        v-model="dates.fe_nacimiento"
+                        :rules="[rules.fecha]"
+                        label="Nacimiento"
+                        prepend-icon="event"
+                        readonly
+                        v-on="on"
+                        dense
+                    ></v-text-field>
+                </template>
+                <v-date-picker 
+                    v-model="form.fe_nacimiento" 
+                    @input="dates.fe_nacimiento = formatPicker(form.fe_nacimiento, 'fe_nacimiento')">
+                </v-date-picker>
+            </v-menu>
+        </v-col> 
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.tx_nacionalidad"
+                label="Nacionalidad"
+                placeholder="Indique Nacionalidad"
                 dense
             ></v-text-field>
         </v-col>
@@ -127,7 +190,7 @@
                   
         <v-col cols="12" md="6">
             <v-text-field
-                :rules="[]"
+                :rules="[rules.required]"
                 v-model="form.tx_observaciones"
                 label="Observaciones"
                 placeholder="Indique Observaciones"
@@ -185,18 +248,23 @@ export default {
             resource: 'pariente',
             dates:
             {
-                
+                fe_nacimiento: 	 null,
             },
             pickers:
             {
-                
+                fe_nacimiento: 	 null,
             },
             form:
             {
                 id: 	null,
-				nb_nombre: 	null,
 				nb_apellido: 	null,
+				nb_apellido2: 	null,
+				nb_nombre: 	null,
+				nb_nombre2: 	null,
 				tx_documento: 	null,
+				tx_sexo: 	null,
+				fe_nacimiento: 	null,
+				tx_nacionalidad: 	null,
 				id_alumno: 	null,
 				id_parentesco: 	null,
 				tx_empresa: 	null,

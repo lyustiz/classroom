@@ -9,9 +9,14 @@ class Pariente extends Model
     protected $table 	  = 'pariente';
 
     protected $fillable   = [
-                            'nb_nombre',
-	 	 	 	 	 	 	'nb_apellido',
+                            'nb_apellido',
+	 	 	 	 	 	 	'nb_apellido2',
+	 	 	 	 	 	 	'nb_nombre',
+	 	 	 	 	 	 	'nb_nombre2',
 	 	 	 	 	 	 	'tx_documento',
+	 	 	 	 	 	 	'tx_sexo',
+	 	 	 	 	 	 	'fe_nacimiento',
+	 	 	 	 	 	 	'tx_nacionalidad',
 	 	 	 	 	 	 	'id_alumno',
 	 	 	 	 	 	 	'id_parentesco',
 	 	 	 	 	 	 	'tx_empresa',
@@ -28,8 +33,10 @@ class Pariente extends Model
     protected $hidden     = [
                             'created_at',
 	 	 	 	 	 	 	'updated_at'
-                            ]; 
-                           
+                            ];
+
+
+
     public function status(){
 
         return $this->BelongsTo('App\Models\Status', 'id_status');
@@ -41,9 +48,4 @@ class Pariente extends Model
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
 
     }
-
-                           
-    //
-
-
 }

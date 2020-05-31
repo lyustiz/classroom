@@ -55,17 +55,52 @@ return [
             'visibility' => 'public',
         ],
 
-        'account' => [
+        'detalleEvaluacion' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/account'),
-            'url' => env('APP_URL').'/storage/account',
+            'root' => storage_path('app/public/detalleEvaluacion'),
+            'url' => env('APP_URL').'/storage/detalleEvaluacion',
             'visibility' => 'public',
         ],
 
-        'commerce' => [
+        'evaluacion' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/commerce'),
-            'url' => env('APP_URL').'/storage/commerce',
+            'root' => storage_path('app/public/evaluacion'),
+            'url' => env('APP_URL').'/storage/evaluacion',
+            'visibility' => 'public',
+        ],
+
+        'grado' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/grado'),
+            'url' => env('APP_URL').'/storage/grado',
+            'visibility' => 'public',
+        ],
+
+        'grupo' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/grupo'),
+            'url' => env('APP_URL').'/storage/grupo',
+            'visibility' => 'public',
+        ],
+
+        'alumno' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/alumno'),
+            'url' => env('APP_URL').'/storage/alumno',
+            'visibility' => 'public',
+        ],
+
+        'docente' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/docente'),
+            'url' => env('APP_URL').'/storage/docente',
+            'visibility' => 'public',
+        ],
+
+        'colegio' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/colegio'),
+            'url' => env('APP_URL').'/storage/colegio',
             'visibility' => 'public',
         ],
 

@@ -16,7 +16,7 @@
 
                         <actividad-item 
                             :actividad="showActividad(item, dia).actividad"
-                            @update="updateForm(item)" 
+                            @update="updateForm(item, showActividad(item, dia).actividad, dia)" 
                             @delete="deleteForm(showActividad(item, dia).actividad)"
                         ></actividad-item> 
 
@@ -148,7 +148,14 @@ export default {
             this.dia          = dia
             this.item         = {};
         },
-
+        updateForm (cargaHoraria, actividad, dia)
+        {
+            this.action = 'upd';
+            this.modal  = true;
+            this.item   = actividad;
+            this.cargaHoraria = cargaHoraria
+            this.dia          = dia
+        },
         deleteItem ()
         {
            

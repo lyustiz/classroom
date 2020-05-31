@@ -15,9 +15,14 @@ class CreateParienteTable extends Migration
     {
         Schema::create('pariente', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nb_nombre', 30)->nullable();
-            $table->string('nb_apellido', 30)->nullable();
+            $table->string('nb_apellido', 30);
+            $table->string('nb_apellido2', 30)->nullable();
+            $table->string('nb_nombre', 30);
+            $table->string('nb_nombre2', 30)->nullable();
             $table->string('tx_documento', 30)->nullable();
+            $table->string('tx_sexo', 1);
+            $table->date('fe_nacimiento');
+            $table->string('tx_nacionalidad', 30)->nullable();
             $table->integer('id_alumno');
             $table->integer('id_parentesco');
             $table->string('tx_empresa', 30)->nullable();

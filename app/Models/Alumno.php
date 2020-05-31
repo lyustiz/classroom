@@ -53,23 +53,21 @@ class Alumno extends Model
 		return trim(str_replace( '  ', ' ',  "{$this->nb_apellido} {$nb_apellido2} {$this->nb_nombre} {$nb_nombre2}")) ;
 	}
 
+
+
 	public function getNuEdadAttribute()
 	{
 		return Carbon::parse($this->fe_nacimiento)->age;
 	}
 
-	
-
-    public function status(){
-
+	public function status()
+	{
         return $this->BelongsTo('App\Models\Status', 'id_status');
-
     }
                            
-    public function usuario(){
-
+	public function usuario()
+	{
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
-
 	}
 	
 	public function tipoDocumento()
@@ -85,5 +83,16 @@ class Alumno extends Model
 	public function ciudad()
 	{
         return $this->BelongsTo('App\Models\Ciudad', 'id_ciudad');
+	}
+	
+	public function grupoAlumno()
+	{
+        return $this->hasMany('App\Models\GrupoAlumno', 'id_alumno');
+	}
+	
+	public function gradoAlumno()
+	{
+        return $this->hasMany('App\Models\GradoAlumno', 'id_alumno');
     }
 }
+

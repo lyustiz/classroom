@@ -4,14 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Documento extends Model
+class GrupoAlumno extends Model
 {
-    protected $table 	  = 'documento';
+    protected $table 	  = 'grupo_alumno';
 
     protected $fillable   = [
-                            'id_tipo_documento',
-	 	 	 	 	 	 	'nb_documento',
-	 	 	 	 	 	 	'tx_archivo',
+                            'id_grupo',
+	 	 	 	 	 	 	'id_alumno',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'
@@ -20,22 +19,25 @@ class Documento extends Model
     protected $hidden     = [
                             'created_at',
 	 	 	 	 	 	 	'updated_at'
-                            ]; 
-                           
-    public function status(){
+                            ];
 
+    public function status()
+    {
         return $this->BelongsTo('App\Models\Status', 'id_status');
-
     }
                            
-    public function usuario(){
-
+    public function usuario()
+    {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
-
     }
 
-                           
-    //
+    public function alumno()
+    {
+        return $this->BelongsTo('App\Models\Alumno', 'id_alumno');
+    }
 
-
+    public function grupo()
+    {
+        return $this->BelongsTo('App\Models\Grupo', 'id_grupo');
+    }
 }

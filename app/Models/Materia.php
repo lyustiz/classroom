@@ -39,7 +39,7 @@ class Materia extends Model
 
     public function areaEstudio(){
 
-        return $this->BelongsTo('App\Models\AreaEstudio', 'id');
+        return $this->BelongsTo('App\Models\AreaEstudio', 'id_area_estudio');
 
     }
 }

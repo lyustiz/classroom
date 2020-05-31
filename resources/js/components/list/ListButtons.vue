@@ -1,5 +1,5 @@
 <template>
-<div class="table-cell">
+<div class="button-container">
    <!--  <v-speed-dial 
         v-model="fab"
         direction="left" 
@@ -23,6 +23,7 @@
         </v-btn>
 
         <slot></slot>
+
 
   <!--   </v-speed-dial> -->
   </div>
@@ -83,7 +84,7 @@ export default {
 </script>
 
 <style scoped>
-.buttonContainer {
-             
+.button-container {
+    min-width: 78px;           
 }
 </style>

@@ -10,7 +10,7 @@
                 <v-text-field
                     v-model="search"
                     append-icon="search"
-                    label="Buscar"
+                    label="Buscar" 
                     hide-details
                     clearable
                 ></v-text-field>

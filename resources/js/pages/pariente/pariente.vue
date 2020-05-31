@@ -23,14 +23,18 @@
                 item-key="id"
                 :loading="loading"
                 sort-by=""
-                dense
             >
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.nb_nombre }}</td>
-						<td class="text-xs-left">{{ item.nb_apellido }}</td>
+                        <td class="text-xs-left">{{ item.nb_apellido }}</td>
+						<td class="text-xs-left">{{ item.nb_apellido2 }}</td>
+						<td class="text-xs-left">{{ item.nb_nombre }}</td>
+						<td class="text-xs-left">{{ item.nb_nombre2 }}</td>
 						<td class="text-xs-left">{{ item.tx_documento }}</td>
+						<td class="text-xs-left">{{ item.tx_sexo }}</td>
+						<td class="text-xs-left">{{ item.fe_nacimiento }}</td>
+						<td class="text-xs-left">{{ item.tx_nacionalidad }}</td>
 						<td class="text-xs-left">{{ item.id_alumno }}</td>
 						<td class="text-xs-left">{{ item.id_parentesco }}</td>
 						<td class="text-xs-left">{{ item.tx_empresa }}</td>
@@ -100,9 +104,14 @@ export default {
         title:    'Pariente',
         resource: 'pariente',
         headers: [
-            { text: 'Nombre',   value: 'nb_nombre' },
-			{ text: 'Apellido',   value: 'nb_apellido' },
+            { text: 'Apellido',   value: 'nb_apellido' },
+			{ text: 'Apellido2',   value: 'nb_apellido2' },
+			{ text: 'Nombre',   value: 'nb_nombre' },
+			{ text: 'Nombre2',   value: 'nb_nombre2' },
 			{ text: 'Documento',   value: 'tx_documento' },
+			{ text: 'Sexo',   value: 'tx_sexo' },
+			{ text: 'Nacimiento',   value: 'fe_nacimiento' },
+			{ text: 'Nacionalidad',   value: 'tx_nacionalidad' },
 			{ text: 'Alumno',   value: 'id_alumno' },
 			{ text: 'Parentesco',   value: 'id_parentesco' },
 			{ text: 'Empresa',   value: 'tx_empresa' },
@@ -111,7 +120,7 @@ export default {
 			{ text: 'Telefono',   value: 'tx_telefono' },
 			{ text: 'Telefono2',   value: 'tx_telefono2' },
 			{ text: 'Telefono3',   value: 'tx_telefono3' },
-			{ text: 'Observaciones',   value: 'tx_observaciones', sortable: false, filterable: false },
+			{ text: 'Observaciones',   value: 'tx_observaciones' },
 			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
@@ -119,7 +128,7 @@ export default {
     },
     methods:
     {
-        
+   
     }
 }
 </script>

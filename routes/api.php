@@ -52,7 +52,6 @@ Route::group(['prefix'=>'v1'], function() {
     Route::put('/comercio/{comercio}/openclose',      'ComercioController@comercioOpenClose');
 
      */
-Route::apiResource('/alumno',            'AlumnoController');
 Route::apiResource('/barrio',            'BarrioController');
 Route::apiResource('/calendario',        'CalendarioController');
 Route::apiResource('/calificacion',      'CalificacionController');
@@ -118,6 +117,29 @@ Route::apiResource('/cargaHoraria',      'CargaHorariaController', ['parameters'
 
 Route::apiResource('/actividadCargaHoraria',        'ActividadCargaHorariaController');
 
+Route::get('/alumno/sinGrado',            'AlumnoController@alumnoSinGrado');
+Route::get('/alumno/sinGrupo',            'AlumnoController@alumnoSinGrupo');
+Route::apiResource('/alumno',            'AlumnoController');
+
+
+Route::apiResource('/grupoAlumno',     'GrupoAlumnoController');
+Route::apiResource('/configuracion',     'ConfiguracionController');
+Route::apiResource('/gradoAlumno',     'GradoAlumnoController');
+Route::apiResource('/pariente',     'ParienteController');
+Route::apiResource('/pariente',     'ParienteController');
+Route::apiResource('/pariente',     'ParienteController');
+Route::apiResource('/pariente',     'ParienteController');
+Route::apiResource('/tipoEvaluacion',     'TipoEvaluacionController');
+
+Route::apiResource('/planEvaluacion',     'PlanEvaluacionController');
+
+Route::get('/detalleEvaluacion/planEvaluacion/{idPlanEvaluacion}',  'DetalleEvaluacionController@detallePlanEvaluacion');
+Route::apiResource('/detalleEvaluacion',     'DetalleEvaluacionController');
+Route::apiResource('/tipoArchivo',     'TipoArchivoController');
+
+
+Route::get('/archivo/tipoArchivo/{idTipoArchivo}/origen/{origenId}',     'ArchivoController@archivoTipoOrigen');
+Route::apiResource('/archivo',     'ArchivoController');
 //newRoutes
 
 });

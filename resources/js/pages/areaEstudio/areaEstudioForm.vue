@@ -104,14 +104,6 @@ export default {
     data() {
         return {
             resource: 'areaEstudio',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
             form:
             {
                 id: 	          null,
@@ -121,6 +113,7 @@ export default {
 				id_status: 	      null,
 				id_usuario: 	  null,
             },
+
             selects:
             {
                 status: 	 [],
@@ -136,13 +129,15 @@ export default {
                     'blue-grey',
                     'brown',
                     'deep-purple',
-                    'pink'
+                    'pink',
+                    'blue',
+                    'cyan',
+                    'red'
                     ],
+                    
             defaultForm: {
                 tx_color: 'cyan' 
             }
-
-
         }
     },
 

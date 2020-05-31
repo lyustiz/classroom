@@ -65,6 +65,10 @@ export default
 
                 max: len => value => (value || '').length <= len || `max caracteres permitidos ${len} actual ${value.length}`,
 
+                minNum: num => value => parseInt(value || 0) >= num || `valor minimo ${num}`,
+
+                maxNum: num => value => parseInt(value || 0) <= num || `var maximo permitido ${num}`,
+
             }
         }
     },

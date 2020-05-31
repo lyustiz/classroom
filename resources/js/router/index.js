@@ -48,11 +48,19 @@ import GrupoCalificacion from '@pages/grupoCalificacion/grupoCalificacion.vue';
 import NivelCalificacion from '@pages/nivelCalificacion/nivelCalificacion.vue';
 import Calificacion      from '@pages/calificacion/calificacion.vue';
 
+import TipoEvaluacion   from '@pages/tipoEvaluacion/tipoEvaluacion.vue';
+import PlanEvaluacion   from '@pages/planEvaluacion/planEvaluacion.vue'; 
+import DetalleEvaluacion from '@pages/detalleEvaluacion/detalleEvaluacion.vue'; 
+
+
 import AreaEstudio       from '@pages/areaEstudio/areaEstudio.vue';
 import Materia           from '@pages/materia/materia.vue';
 
 import Docente           from '@pages/docente/docente.vue';
 import Alumno            from '@pages/alumno/alumno.vue';
+
+import GradoAlumno      from '@pages/gradoAlumno/gradoAlumno.vue';
+import GrupoAlumno      from '@pages/grupoAlumno/grupoAlumno.vue';
 
 import Ciudad            from '@pages/ciudad/ciudad.vue';
 import Clase             from '@pages/clase/clase.vue';
@@ -85,6 +93,13 @@ import TipoTelefono      from '@pages/tipoTelefono/tipoTelefono.vue';
 import TipoUsuario       from '@pages/tipoUsuario/tipoUsuario.vue';
 import Usuario           from '@pages/usuario/usuario.vue';
 import Zona              from '@pages/zona/zona.vue';
+
+
+import TipoDocumento     from '@pages/tipoDocumento/tipoDocumento.vue';
+
+import TipoArchivo       from '@pages/tipoArchivo/tipoArchivo.vue';
+import Archivo           from '@pages/archivo/archivo.vue';
+import Configuracion     from '@pages/configuracion/configuracion.vue';
 
 import EstadoCivil       from '@pages/estadoCivil/estadoCivil.vue';
 const Parentesco         =  () => import('@pages/parentesco/parentesco.vue');
@@ -337,6 +352,33 @@ export default new Router({
                 component: Calificacion
             },
 
+            { 
+                path: 'tipo-evaluacion',
+                name: 'tipo-evaluacion',
+                label: 'Tipo Evaluacion',
+                icon: 'mdi-clipboard-check-multiple',
+                component: TipoEvaluacion
+            },
+
+            { 
+                path: 'plan-evaluacion',
+                name: 'plan-evaluacion',
+                label: 'Plan Evaluacion',
+                icon: 'mdi-clipboard-check-multiple-outline',
+                component: PlanEvaluacion
+            },
+
+            { 
+                path: 'detalle-evaluacion',
+                name: 'detalle-evaluacion',
+                label: 'Detalle Evaluacion',
+                icon: 'mdi-clipboard-file',
+                component: DetalleEvaluacion
+            },
+
+
+            
+
 
             /**************************** */
             { 
@@ -347,6 +389,21 @@ export default new Router({
                 component: Alumno
             },
 
+            { 
+                path: 'grado-alumno',
+                name: 'grado-alumno',
+                label: 'Grado Alumnos',
+                icon: 'mdi-face-recognition',
+                component: GradoAlumno
+            },
+
+            { 
+                path: 'grupo-alumno',
+                name: 'grupo-alumno',
+                label: 'Grupo Alumnos',
+                icon: 'mdi-face-recognition',
+                component: GrupoAlumno
+            },
 
             { 
                 path: 'clase',
@@ -530,6 +587,41 @@ export default new Router({
                 label: 'Comuna',
                 icon: 'mdi-map-marker-radius',
                 component: Comuna
+            },
+
+            { 
+                path: 'tipo-documento',
+                name: 'tipo-documento',
+                label: 'Tipo Documento',
+                icon: 'mdi-card-account-details',
+                component: TipoDocumento
+            },
+
+            { 
+                path: 'tipo-archivo',
+                name: 'tipo-archivo',
+                label: 'Tipo Archivo',
+                icon: 'mdi-file-multiple',
+                component: TipoArchivo
+            },
+
+            { 
+                path: 'archivo',
+                name: 'archivo',
+                label: 'archivo',
+                icon: 'mdi-file',
+                component: Archivo
+            },
+     
+
+
+
+            { 
+                path: 'configuracion',
+                name: 'configuracion',
+                label: 'Configurar',
+                icon: 'mdi-cogs',
+                component: Configuracion
             },
           ]
         },

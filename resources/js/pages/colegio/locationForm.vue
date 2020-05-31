@@ -2,9 +2,9 @@
 
     <v-form ref="form" v-model="valid" lazy-validation>
     <v-container>
-    <v-row class="align-center">
+    <v-row justify="center">
 
-        <v-col cols="6">
+        <v-col cols="12" md="6">
             <v-card >
             <v-card-title class="orange lighten-2" primary-title>
                 <h3 class="white--text">Ubicacion</h3>
@@ -95,6 +95,17 @@
         </v-row>
                         
                     </v-card-text>
+
+                     <v-card-actions>
+            <v-spacer></v-spacer>
+            <form-buttons
+                @store="store()"
+                @clear="clear()"
+                :action="action"
+                :valid="valid"
+                :loading:="loading"
+            ></form-buttons>
+        </v-card-actions>
                 </v-card>
             </v-col>
 

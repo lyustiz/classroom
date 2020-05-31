@@ -126,7 +126,7 @@ export default
         },
         onMenu(payload)
         {
-            switch (payload) {
+            switch (payload.action) {
                 case 'refresh':
                     this.list()
                     break;

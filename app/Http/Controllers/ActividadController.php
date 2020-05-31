@@ -138,49 +138,19 @@ class ActividadController extends Controller
         ]);
 
 
-        $cargaHoraria = CargaHoraria::select('id', 'nu_orden', 'bo_receso', 'id_status')
-                                    ->where('id_hora_academica', $request->id_hora_academica)
-                                    ->where('id', '>=', $request->id_carga_horaria)
-                                    ->where('bo_receso', 0)
-                                    ->where('id_status', 1)
-                                    ->orderBy('nu_orden', 'asc')
-                                    ->get();
-
-        $actividad = [];
-                
-        $nu_carga_horaria =  ( $request->nu_carga_horaria > count($cargaHoraria) ) ? count($cargaHoraria) : $request->nu_carga_horaria;
-
-        foreach ($cargaHoraria as $key => $row) {
-
-        $actividad = Actividad::create([
-
-        'nb_actividad'       => $request->nb_actividad,
-        'id_horario'         => $request->id_horario,
-        'id_materia'         => $request->id_materia,
-        'id_docente'         => $request->id_docente,
-        'id_dia_semana'      => $request->id_dia_semana,
-        'id_aula'            => $request->id_aula,
-        'hh_inicio'          => $request->hh_inicio,
-        'hh_fin'             => $request->hh_fin,
-        'id_carga_horaria'   => $request->id_carga_horaria,
-        'nu_carga_horaria'   => $nu_carga_horaria,
-        'id_status'          => $request->id_status,
-        'id_usuario'         => $request->id_usuario,
-
-        ]);
-
-        $nu_carga_horaria = 0;
-
+        $actividades = [];
+        
+        if($actividad->nu_carga_horaria == $request->nu_carga_horaria)
+        {
+           $actividades =  Actividad::where('nb_actividad', $actividad->nb_actividad)
+                           ->update([
+                            'id_materia'    => $request->id_materia,
+                            'id_docente'    => $request->id_docente,
+                            'id_aula'       => $request->id_aula,
+                           ]);
         }
 
-
-
-
-
-
-        $actividad = $actividad->update($request->all());
-
-        return [ 'msj' => 'Actividad Editada' , compact('actividad')];
+        return [ 'msj' => 'Actividad Actualizada' , compact('actividad')];
     }
 
     /**

@@ -1,0 +1,148 @@
+<template>
+
+    <v-form ref="form" v-model="valid" lazy-validation>
+
+    <v-card :loading="loading" >
+
+        <v-card-text>
+
+        <v-row>
+
+                 
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.nb_tipo_archivo"
+                label="Tipo Archivo"
+                placeholder="Indique Tipo Archivo"
+                dense
+            ></v-text-field>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required, rules.max(20)]"
+                v-model="form.tx_origen"
+                label="Origen"
+                placeholder="Indique Origen"
+                dense
+            ></v-text-field>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.max(50)]"
+                v-model="form.tx_storage"
+                label="Storage"
+                placeholder="Indique Almacenamiento "
+                dense
+            ></v-text-field>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required, rules.max(80)]"
+                v-model="form.tx_base_path"
+                label="Base Path"
+                placeholder="Indique Base Path"
+                dense
+            ></v-text-field>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.max(20)]"
+                v-model="form.tx_grupo"
+                label="Grupo"
+                placeholder="Indique Grupo"
+                dense
+            ></v-text-field>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.max(100)]"
+                v-model="form.tx_observaciones"
+                label="Observaciones"
+                placeholder="Indique Observaciones"
+                dense
+            ></v-text-field>
+        </v-col>
+                          
+        <v-col cols="12" md="6">
+            <v-select
+            :items="selects.status"
+            item-text="nb_status"
+            item-value="id"
+            v-model="form.id_status"
+            :rules="[rules.select]"
+            label="Status"
+            :loading="loading"
+            dense
+            ></v-select>
+        </v-col>
+         
+
+        </v-row>
+
+        </v-card-text>
+
+        <v-card-actions>
+            <v-spacer></v-spacer>
+            <form-buttons
+                @update="update()"
+                @store="store()"
+                @clear="clear()"
+                @cancel="cancel()"
+                :action="action"
+                :valid="valid"
+                :loading:="loading"
+            ></form-buttons>
+        </v-card-actions>
+
+        <pre v-if="$App.debug">{{ $data }}</pre>
+
+    </v-card>
+    
+    </v-form>
+
+</template>
+
+<script>
+
+import Appform from '@mixins/Appform';
+
+export default {
+    mixins: [Appform],
+    data() {
+        return {
+            resource: 'tipoArchivo',
+ 
+            form:
+            {
+                id: 	           null,
+				nb_tipo_archivo:   null,
+				tx_origen: 	       null,
+				tx_storage: 	   null,
+				tx_base_path: 	   null,
+				tx_grupo: 	       null,
+				tx_observaciones:  null,
+				id_status: 	       null,
+				id_usuario: 	   null,
+            },
+            selects:
+            {
+                status: 	 [],
+            },
+        }
+    },
+
+    methods:
+    {
+
+    }
+}
+</script>
+
+<style>
+</style>

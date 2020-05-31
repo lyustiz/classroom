@@ -28,7 +28,7 @@ class CargaHorariaController extends Controller
                                             'horaAcademica:id,nb_hora_academica', 
                                             'actividad:actividad.id,actividad.id_carga_horaria,nu_carga_horaria,id_dia_semana,id_horario,id_materia,id_docente,id_aula',
                                             'actividad.horario:id,nb_horario',
-                                            'actividad.materia:id,nb_materia',
+                                            'actividad.materia:id,nb_materia,id_area_estudio',
                                             'actividad.materia.areaEstudio:id,tx_color',
                                             'actividad.docente:id,nb_nombre,nb_apellido',
                                             'actividad.aula:id,nb_aula'

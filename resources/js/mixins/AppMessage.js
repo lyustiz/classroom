@@ -12,7 +12,6 @@ export default {
             this.showMessage(response.data.msj)
             this.modal = false;
             this.servicios=response  
-            console.log('valid response')   
             this.$emit('closeModal')    
         },
 		showMessage (message)

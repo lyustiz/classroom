@@ -60,7 +60,7 @@
                 :rules="[rules.required]"
                 dense
             >
-            <v-rating v-model="form.nu_carga_horaria" dense x-small length="4">
+            <v-rating v-model="form.nu_carga_horaria" dense x-small length="4" :readonly="action == 'upd'">
                 <template v-slot:item="props">
                     <v-icon
                         :color="props.isFilled ? 'green': 'grey lighten-1'"
@@ -135,6 +135,7 @@ export default {
     created()
     {
         this.materias = this.horario.grupo.grado.materia
+        
     },
     data() {
         return {

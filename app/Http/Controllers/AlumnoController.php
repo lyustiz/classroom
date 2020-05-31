@@ -21,6 +21,26 @@ class AlumnoController extends Controller
         return $alumno;
     }
 
+    public function alumnoSinGrupo()
+    {
+        $alumno = Alumno::doesntHave('grupoAlumno')
+                    ->select('id','nb_apellido','nb_apellido2','nb_nombre','nb_nombre2')
+                    ->where('id_status', 1)
+                    ->get();
+        
+        return $alumno;
+    }
+
+    public function alumnoSinGrado()
+    {
+        $alumno = Alumno::doesntHave('gradoAlumno')
+                    ->select('id','nb_apellido','nb_apellido2','nb_nombre','nb_nombre2')
+                    ->where('id_status', 1)
+                    ->get();
+        
+        return $alumno;
+    }
+
     /**
      * Store a newly created resource in storage.
      *

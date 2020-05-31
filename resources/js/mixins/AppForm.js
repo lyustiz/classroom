@@ -53,6 +53,7 @@ export default
         action (value)
         {
             this.setDataForm(value)
+            this.preActionForms()
         },
     },
 
@@ -111,8 +112,6 @@ export default
                 this.reset()
                 this.setDefaultForm()
             }
-
-            
         },
 
 		store() 
@@ -136,6 +135,7 @@ export default
             .finally( () =>
             {
                 this.loading = false;
+                this.postResponse()
             });
         },
 		
@@ -160,6 +160,7 @@ export default
             .finally( () =>
             {
                 this.loading = false
+                this.postResponse()
             }); 
         },
         
@@ -204,6 +205,18 @@ export default
                 this.form[key]  =  this.default[key];
             }
         },
+
+        preActionForms()
+        {
+            //funcion para ejecutar al cambiar acciones del formulario
+
+        },
+
+        postResponse()
+        {
+            //funcion para ejecutar despues de las respuestas de store/update
+        },
+
         setDefaultForm() 
         {
             for(var key in this.defaultForm)
