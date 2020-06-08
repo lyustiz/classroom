@@ -21,6 +21,16 @@ class ContactoController extends Controller
         return $contacto;
     }
 
+    public function contactoTipoOrigen( $tipo, $origen )
+    {
+        $contacto = Contacto::with(['tipoContacto:id,nb_tipo_contacto'])
+                            ->where('id_tipo_contacto', $tipo)
+                            ->where('id_origen', $origen)
+                            ->first();
+        
+        return $contacto;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -31,13 +41,13 @@ class ContactoController extends Controller
     {
         $validate = request()->validate([
             'id_tipo_contacto'  => 	'required|integer',
-			'id_entidad'        => 	'required|integer',
+			'id_origen'        => 	'required|integer',
 			'tx_email'          => 	'required|string|max:80',
-			'tx_sitio_web'      => 	'required|string|max:80',
-			'tx_facebook'       => 	'required|string|max:30',
-			'tx_twitter'        => 	'required|string|max:30',
-			'tx_instagram'      => 	'required|string|max:30',
-			'tx_youtube'        => 	'required|string|max:30',
+			'tx_sitio_web'      => 	'nullable|string|max:80',
+			'tx_facebook'       => 	'nullable|string|max:30',
+			'tx_twitter'        => 	'nullable|string|max:30',
+			'tx_instagram'      => 	'nullable|string|max:30',
+			'tx_youtube'        => 	'nullable|string|max:30',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer',
 			'id_usuario'        => 	'required|integer',
@@ -70,19 +80,19 @@ class ContactoController extends Controller
     {
         $validate = request()->validate([
             'id_tipo_contacto'  => 	'required|integer',
-			'id_entidad'        => 	'required|integer',
+			'id_origen'        => 	'required|integer',
 			'tx_email'          => 	'required|string|max:80',
-			'tx_sitio_web'      => 	'required|string|max:80',
-			'tx_facebook'       => 	'required|string|max:30',
-			'tx_twitter'        => 	'required|string|max:30',
-			'tx_instagram'      => 	'required|string|max:30',
-			'tx_youtube'        => 	'required|string|max:30',
+			'tx_sitio_web'      => 	'nullable|string|max:80',
+			'tx_facebook'       => 	'nullable|string|max:30',
+			'tx_twitter'        => 	'nullable|string|max:30',
+			'tx_instagram'      => 	'nullable|string|max:30',
+			'tx_youtube'        => 	'nullable|string|max:30',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer',
 			'id_usuario'        => 	'required|integer',
         ]);
 
-        $contacto = $contacto->update($request->all());
+        $contacto = tap($contacto)->update($request->all());
 
         return [ 'msj' => 'Contacto Editado' , compact('contacto')];
     }

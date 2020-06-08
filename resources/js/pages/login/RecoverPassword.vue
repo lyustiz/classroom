@@ -1,22 +1,18 @@
 <template>
 
-    <div  class="grey lighten-4 holder">
-
-    <v-row class="fill-height" >
-    
     <v-col md="12">
 
         <v-form v-model="valid" ref="form" >
         
-        <v-card class="mx-auto elevation-8 mt-5" max-width="320">
+        <v-card class="mx-auto elevation-8 mt-12 form-login" max-width="320" :loading="loading" color="rgba(255,255,255,0.9)">
             
-            <v-card-title primary-title class="cyan darken-3 white--text">
-               <h4>Recuperar Contraseña</h4><v-icon class="mx-2" color="white">mdi-account-key</v-icon>
+            <v-card-title class="mx-1">
+                <v-spacer></v-spacer>
+                <v-chip dark color="orange" class="title-login">Recuperar Contraseña</v-chip>
+                <v-spacer></v-spacer>
             </v-card-title>
-
-            <v-divider></v-divider>
         
-            <v-card-text class="pa-5">
+            <v-card-text class="px-6 pt-6">
 
                 <v-flex xs12>
                     <v-text-field
@@ -84,15 +80,29 @@
 
             </v-card-text>
            
-           <v-card-actions class="white px-6 pb-4">
+           <v-card-actions class="px-6 pb-4">
 
-                <v-btn v-if="resetForm" block dark small color="cyan darken-3" :loading="loading" @click="resetPassword()">
-                    <v-icon class="mx-2">mdi-account-key</v-icon> Cambiar Password
-                </v-btn>
+                <v-row>
                 
-                <v-btn v-else block dark small color="cyan darken-3" :loading="loading" @click="recoverPassword()" >
-                    <v-icon class="mx-2">mdi-email-send</v-icon> Recuperar Contraseña
-                </v-btn>
+                <v-col cols="12" v-if="resetForm" >
+                    <v-btn  block dark small color="indigo" :loading="loading" @click="resetPassword()">
+                        Cambiar Password
+                    </v-btn>
+                </v-col>
+                
+                <v-col cols="12" v-else>
+                    <v-btn  block dark small color="indigo" :loading="loading" @click="recoverPassword()" >
+                        Recuperar Contraseña
+                    </v-btn>
+                </v-col>
+
+                <v-col cols="12">
+                    <v-btn block text small color="indigo" :disabled="loading" @click="navegateTo('login')">
+                        Login
+                    </v-btn>
+                </v-col>
+
+                </v-row>
 
             </v-card-actions>
            
@@ -101,10 +111,6 @@
         </v-form>
 
     </v-col>
-    
-
-</v-row>
-</div>
 
 </template>
 
@@ -207,10 +213,5 @@ export default {
 </script>
 
 <style scoped>
-#full-container{
-    height: 92.8vh;
-}
-#input-40 {
-    font-size: 0.8rem !important;
-  }
+
 </style>

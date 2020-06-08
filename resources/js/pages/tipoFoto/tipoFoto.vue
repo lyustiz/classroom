@@ -23,15 +23,15 @@
                 item-key="id"
                 :loading="loading"
                 sort-by=""
-                dense
             >
 
                 <template v-slot:item="{ item }">
                     <tr>
                         <td class="text-xs-left">{{ item.nb_tipo_foto }}</td>
-						<td class="text-xs-left">{{ item.tx_icono }}</td>
-						<td class="text-xs-left">{{ item.tx_path }}</td>
-						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
+						<td class="text-xs-left">{{ item.tx_origen }}</td>
+						<td class="text-xs-left">{{ item.tx_storage }}</td>
+						<td class="text-xs-left">{{ item.tx_base_path }}</td>
+						<td class="text-xs-left">{{ item.tx_grupo }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -93,17 +93,18 @@ export default {
         resource: 'tipoFoto',
         headers: [
             { text: 'Tipo Foto',   value: 'nb_tipo_foto' },
-			{ text: 'Icono',   value: 'tx_icono' },
-			{ text: 'Path',   value: 'tx_path' },
-			{ text: 'Observaciones',   value: 'tx_observaciones', sortable: false, filterable: false },
+			{ text: 'Origen',   value: 'tx_origen' },
+			{ text: 'Storage',   value: 'tx_storage' },
+			{ text: 'Base Path',   value: 'tx_base_path' },
+			{ text: 'Grupo',   value: 'tx_grupo' },
 			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
     }
     },
     methods:
-    {
-        
+    { 
+   
     }
 }
 </script>

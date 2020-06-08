@@ -31,7 +31,7 @@
                         <td class="text-xs-left">{{ item.nb_foto }}</td>
 						<td class="text-xs-left">{{ item.tx_src }}</td>
 						<td class="text-xs-left">{{ item.id_tipo_foto }}</td>
-						<td class="text-xs-left">{{ item.id_entidad }}</td>
+						<td class="text-xs-left">{{ item.id_origen }}</td>
 						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">
                             <status-switch 
@@ -93,13 +93,13 @@ export default {
         title:    'Foto',
         resource: 'foto',
         headers: [
-            { text: 'Foto',   value: 'nb_foto' },
-			{ text: 'Src',   value: 'tx_src' },
-			{ text: 'Tipo Foto',   value: 'id_tipo_foto' },
-			{ text: 'Entidad',   value: 'id_entidad' },
-			{ text: 'Observaciones',   value: 'tx_observaciones', sortable: false, filterable: false },
-			{ text: 'Status',   value: 'id_status' },
-            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
+            { text: 'Foto',          value: 'nb_foto' },
+			{ text: 'Src',           value: 'tx_src' },
+			{ text: 'Tipo Foto',     value: 'id_tipo_foto' },
+			{ text: 'Entidad',       value: 'id_origen' },
+			{ text: 'Observaciones', value: 'tx_observaciones', sortable: false, filterable: false },
+			{ text: 'Status',        value: 'id_status' },
+            { text: 'Acciones',      value: 'actions', sortable: false, filterable: false },
         ],
     }
     },

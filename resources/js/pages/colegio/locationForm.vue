@@ -4,15 +4,15 @@
     <v-container>
     <v-row justify="center">
 
-        <v-col cols="12" md="6">
-            <v-card >
-            <v-card-title class="orange lighten-2" primary-title>
-                <h3 class="white--text">Ubicacion</h3>
-            </v-card-title>
+    <v-col cols="12" md="6">
 
-            <v-card-text class="pt-3">
-                
-            
+    <v-card >
+        
+        <v-card-title class="orange lighten-2" primary-title>
+            <h3 class="white--text">Ubicacion</h3>
+        </v-card-title>
+
+        <v-card-text class="pt-3">
         
         <v-row  class="justify-space-between">
         
@@ -99,11 +99,10 @@
                      <v-card-actions>
             <v-spacer></v-spacer>
             <form-buttons
-                @store="store()"
-                @clear="clear()"
-                :action="action"
+                @store="update()"
                 :valid="valid"
-                :loading:="loading"
+                :loading="loading"
+                remove-cancel
             ></form-buttons>
         </v-card-actions>
                 </v-card>
@@ -118,41 +117,43 @@
 
 <script>
 
-import Appform from '@mixins/Appform';
+import AppData from '@mixins/AppData';
+import AppSelect from '@mixins/AppSelect';;
 
 export default {
-    mixins: [Appform],
+    mixins: [ AppData, AppSelect ],
+    created()
+    {
+        this.fillSelects()
+        this.mapData(this.colegio)
+    },
+    watch:
+    {
+        colegio(data)
+        {
+            this.mapData(data)
+        }
+    },
+    computed:
+    {
+        colegio()
+        {
+            return this.$store.getters['getColegio']
+        }
+    },
     data() {
         return {
-            resource: 'colegio',
-            logoColegio: require('@images/logo-colegio.png') ,
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
             form:
             {
                 id: 	          null,
-				nb_colegio: 	  null,
-				id_tipo_colegio:  null,
-				tx_codigo: 	      null,
-				tx_descripcion:   null,
 				id_departamento:  null,
 				id_ciudad: 	      null,
 				id_zona: 	      null,
 				id_comuna: 	      null,
 				id_barrio: 	      null,
 				tx_direccion: 	  null,
-				tx_telefono: 	  null,
-				nu_estudiantes:   null,
 				nu_latitud: 	  null,
 				nu_longitud: 	  null,
-				tx_observaciones: null,
-				id_status: 	      null,
 				id_usuario: 	  null,
             },
             selects:
@@ -168,7 +169,19 @@ export default {
 
     methods:
     {
+        update()
+        {
+            if (!this.$refs.form.validate())  return 
 
+            this.setDefaults()
+            this.loading = true
+
+            this.$store.dispatch('apiLocationColegio', { id: this.form.id, form: this.form})
+            .then( (data) => {
+                this.showMessage(data.msj)
+                this.loading = false
+            })
+        }
     }
 }
 </script>

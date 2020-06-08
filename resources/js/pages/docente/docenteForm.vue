@@ -232,7 +232,7 @@
                 @cancel="cancel()"
                 :action="action"
                 :valid="valid"
-                :loading:="loading"
+                :loading="loading"
             ></form-buttons>
         </v-card-actions>
 

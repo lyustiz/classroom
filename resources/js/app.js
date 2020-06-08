@@ -5,6 +5,7 @@ import store    from './store';
 /** Plugins **/
 import './plugins/axios';
 import vuetify from './plugins/vuetify';
+window._ = require('lodash');
 
 let isMobile = {
     Android:    () => navigator.userAgent.match(/Android/i),

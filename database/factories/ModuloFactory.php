@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\Profesor;
+use App\Models\Modulo;
 use Faker\Generator as Faker;
 
-$factory->define(Profesor::class, function (Faker $faker) {
+$factory->define(Modulo::class, function (Faker $faker) {
     return [
         //
     ];

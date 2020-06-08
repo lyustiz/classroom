@@ -22,9 +22,9 @@
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
-                v-model="form.tx_icono"
-                label="Icono"
-                placeholder="Indique Icono"
+                v-model="form.tx_origen"
+                label="Origen"
+                placeholder="Indique Origen"
                 dense
             ></v-text-field>
         </v-col>
@@ -32,16 +32,36 @@
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
-                v-model="form.tx_path"
-                label="Path"
-                placeholder="Indique Path"
+                v-model="form.tx_storage"
+                label="Storage"
+                placeholder="Indique Storage"
                 dense
             ></v-text-field>
         </v-col>
                   
         <v-col cols="12" md="6">
             <v-text-field
-                :rules="[]"
+                :rules="[rules.required]"
+                v-model="form.tx_base_path"
+                label="Base Path"
+                placeholder="Indique Base Path"
+                dense
+            ></v-text-field>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.tx_grupo"
+                label="Grupo"
+                placeholder="Indique Grupo"
+                dense
+            ></v-text-field>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.max(100)]"
                 v-model="form.tx_observaciones"
                 label="Observaciones"
                 placeholder="Indique Observaciones"
@@ -76,7 +96,7 @@
                 @cancel="cancel()"
                 :action="action"
                 :valid="valid"
-                :loading:="loading"
+                :loading="loading"
             ></form-buttons>
         </v-card-actions>
 
@@ -109,8 +129,10 @@ export default {
             {
                 id: 	null,
 				nb_tipo_foto: 	null,
-				tx_icono: 	null,
-				tx_path: 	null,
+				tx_origen: 	null,
+				tx_storage: 	null,
+				tx_base_path: 	null,
+				tx_grupo: 	null,
 				tx_observaciones: 	null,
 				id_status: 	null,
 				id_usuario: 	null,

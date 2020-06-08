@@ -66,7 +66,7 @@ class Actividad extends Model
 
     public function cargaHoraria()
     {
-        return $this->belongsTO('App\Models\CargaHoraria', 'id');
+        return $this->belongsTo('App\Models\CargaHoraria', 'id');
     }
 
 }

@@ -8,7 +8,6 @@
 
         <v-row>
 
-                 
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
@@ -41,18 +40,16 @@
             dense
             ></v-select>
         </v-col>
-                  
+
+
         <v-col cols="12" md="6">
-            <v-select
-            :items="selects.entidad"
-            item-text="nb_entidad"
-            item-value="id"
-            v-model="form.id_entidad"
-            :rules="[rules.select]"
-            label="Entidad"
-            :loading="loading"
-            dense
-            ></v-select>
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.id_origen"
+                label="Origen"
+                placeholder="Indique Origen"
+                dense
+            ></v-text-field>
         </v-col>
           
         <v-col cols="12" md="6">
@@ -92,7 +89,7 @@
                 @cancel="cancel()"
                 :action="action"
                 :valid="valid"
-                :loading:="loading"
+                :loading="loading"
             ></form-buttons>
         </v-card-actions>
 
@@ -127,7 +124,7 @@ export default {
 				nb_foto: 	null,
 				tx_src: 	null,
 				id_tipo_foto: 	null,
-				id_entidad: 	null,
+				id_origen: 	null,
 				tx_observaciones: 	null,
 				id_status: 	null,
 				id_usuario: 	null,

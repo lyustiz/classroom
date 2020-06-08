@@ -6,32 +6,42 @@
 </template>
 
 <script>
-
+import { mapActions } from 'vuex';
 export default {
     created()
     {
         this.$store.commit('setIsMobile', this.$App.isMobile)
       
-        let auth  = localStorage.getItem('auth');
-        let token = localStorage.getItem('token');
-        let user  = localStorage.getItem('user');
-        let expire  = localStorage.getItem('expire');
+        let auth      = localStorage.getItem('auth');
+        let token     = localStorage.getItem('token');
+        let user      = localStorage.getItem('user');
+        let expire    = localStorage.getItem('expire');
+        let profiles  = localStorage.getItem('profiles');
         
-        if(auth==='true') //check expire
+        if(auth==='true') // TODO:check expire
         {
             const data ={
                             user: JSON.parse(user),
                             token,
-                            expire
+                            expire,
+                            profiles: JSON.parse(profiles)
                         };
             
-            //this.$store.dispatch('autenticate', data)
+            this.$store.dispatch('autenticate', data)
         }
         else
         {
             this.$store.dispatch('unatenticate')
+            this.$store.commit('setColegio', null)
+            this.navegateTo('/')
         }
-    
+
+        if( !this.$store.getters['getColegioId'] )
+        {
+            let userID = this.$store.getters['getUserid']
+            this.$store.dispatch('apiColegioUsuario', userID)
+        }
+        
     },
     computed: 
     {
@@ -47,22 +57,35 @@ export default {
         },
         layout()
         {
-            return this.$store.getters['getLayout']
+           
+           if(this.$route.name == 'login')
+           {
+               return 'login-layout'
+           }
+
+           if(this.$route.name == 'recover-password')
+           {
+               return 'login-layout'
+           }
+           
+
+           if(this.$route.name == 'welcome')
+           {
+               return 'welcome-layout'
+           }
+
+           return this.$store.getters['getLayout']
         }
     },
 
     methods: 
     {
+        ...mapActions(['apiColegioUsuario']),
     }
   }
 
 </script>
 <style>
-
-    /* Item Activo del Menu */
-    .v-list__tile--active{
-        color:#f44336 !important;
-    }
 
     /* Transicion Contenido */
     .fade-enter-active, .fade-leave-active {

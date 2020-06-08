@@ -10,7 +10,7 @@
                         fab small 
                         @click="update" 
                         :disabled="!valid" 
-                        :loading:="loading" 				
+                        :loading="loading" 				
                         :class="$App.theme.button.update">
                         <v-icon>edit</v-icon>
                     </v-btn>
@@ -27,7 +27,7 @@
                     fab small 
                     @click="store" 
                     :disabled="!valid"
-                    :loading:="loading" 
+                    :loading="loading" 
                     :color="$App.theme.button.insert">
                     <v-icon>save_alt</v-icon>
                 </v-btn>
@@ -50,13 +50,13 @@
             <span>Resetear</span>
         </v-tooltip> -->
 
-        <v-tooltip top>
+        <v-tooltip top v-if="!removeCancel" >
             <template v-slot:activator="{ on }">
             <v-btn 
                 v-on="on" 
                 fab small 
                 @click="cancel"
-                :loading:="loading" 
+                :loading="loading" 
                 :class="$App.theme.button.cancel">
                 <v-icon>reply</v-icon>
             </v-btn>
@@ -70,18 +70,44 @@
 
 <script>
 export default {
-    props: ['action', 'valid', 'loading'],
+
+    props:
+    {
+        action: {
+            type:       String,
+            default:    null
+        },
+
+        valid: {
+            type:       Boolean,
+            default:    true
+        },
+
+        loading: {
+            type:       Boolean,
+            default:    false
+        },
+
+        removeCancel: {
+            type:       Boolean,
+            default:    false
+        },
+    },
+
     methods:{
 
         update(){
            this.$emit('update');
         },
+
         store(){
             this.$emit('store');
         },
+
         clear(){
             this.$emit('clear');
         },
+
         cancel(){
             this.$emit('cancel');
         }

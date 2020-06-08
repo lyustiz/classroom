@@ -41,70 +41,71 @@ export default {
                 let status = error.response.status;
                 let msj    = '';
 
-            switch (status)
-            {
-                case 500:
-                msj = 'Error interno'
-                break;
-
-                case 404:
-                msj = 'Servicio No disponible'
-                break;
-
-                case 403:
-                msj = error.response.data
-                break;
-
-                case 401:
-                    msj = 'Session invalida favor Ingresar nuevamente '
-                    this.showMsjBar(msj, 'error')
-                    setTimeout(() => {
-                        axios.post('logout')
-						.then(response =>
-						{
-							if (response.status==200){
-								localStorage.removeItem("auth")
-								window.location='/'
-							}
-						})
-						.catch(error =>
-						{
-							this.mostrarBarraMsj( 'Error en LogOut', 'error')
-							localStorage.removeItem("auth")
-							window.location='/'
-						})
-                    }, 2000);
-                break;
-
-                case 429:
-                for (var idx in error.response.data.errors)
+                switch (status)
                 {
-                    msj = msj + error.response.data.errors[idx];
-                }
-                msj = ( msj != '') ? msj :  'Servicio Ocupado favor Ingresar en unos Minutos'
-                break;
+                    case 500:
+                    msj = 'Error interno'
+                    break;
 
-                case 422:
-                for (var idx in error.response.data.errors)
-                {
-                    msj = msj + ' ' + error.response.data.errors[idx];
-                }
-                break;
+                    case 404:
+                    msj = 'Servicio No disponible'
+                    break;
 
-                case 400:
-                for (var idx in error.response.data)
-                {
-                    msj = msj + error.response.data[idx];
-                }
-                break;
+                    case 403:
+                    msj = error.response.data
+                    break;
 
-                default:
-                for (var idx in error.response.data)
-                {
-                    msj = msj + error.response.data[idx];
+                    case 401:
+                        msj = 'Session invalida favor Ingresar nuevamente '
+                        this.showMsjBar(msj, 'error')
+                        setTimeout(() => {
+                            axios.post('logout')
+                            .then(response =>
+                            {
+                                if (response.status==200){
+                                    localStorage.removeItem("auth")
+                                    window.location='/'
+                                }
+                            })
+                            .catch(error =>
+                            {
+                                this.mostrarBarraMsj( 'Error en LogOut', 'error')
+                                localStorage.removeItem("auth")
+                                window.location='/'
+                            })
+                        }, 2000);
+                    break;
+
+                    case 429:
+                    for (var idx in error.response.data.errors)
+                    {
+                        msj = msj + error.response.data.errors[idx];
+                    }
+                    msj = ( msj != '') ? msj :  'Servicio Ocupado favor Ingresar en unos Minutos'
+                    break;
+
+                    case 422:
+                    for (var idx in error.response.data.errors)
+                    {
+                        msj = msj + ' ' + error.response.data.errors[idx];
+                    }
+                    break;
+
+                    case 400:
+                    for (var idx in error.response.data)
+                    {
+                        msj = msj + error.response.data[idx];
+                    }
+                    break;
+
+                    default:
+                    for (var idx in error.response.data)
+                    {
+                        msj = msj + error.response.data[idx];
+                    }
+                    break;
                 }
-                break;
-            }
+
                 this.showMsjBar( msj, 'error')
 
             }else

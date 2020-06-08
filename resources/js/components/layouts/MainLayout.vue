@@ -10,7 +10,7 @@
             :clipped="clipped"
             :fixed="fixed"
             app
-            class="indigo lighten-5"
+            class="grey lighten-5"
         >
             <!--menu-->
            <app-menu></app-menu>

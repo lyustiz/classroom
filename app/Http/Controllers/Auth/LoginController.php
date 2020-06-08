@@ -53,11 +53,14 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        try {
+
+        try 
+        {
             if (! $token = JWTAuth::attempt($credentials)) {
                 return response()->json(['error' => 'invalid_credentials'], 400);
             }
-        } catch (JWTException $e) {
+        } catch (JWTException $e) 
+        {
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
         return response()->json(compact('token'));
@@ -65,35 +68,35 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = [
-            'nb_usuario' => $request->input('nb_usuario'),
-            'password'   => $request->input('password')
-        ];
+        
+        $credentials = $request->only(['nb_usuario', 'password']); 
 
-        if(filter_var($request->input('nb_usuario'), FILTER_VALIDATE_EMAIL))
+        if(filter_var($request->nb_usuario, FILTER_VALIDATE_EMAIL))
         {
             $credentials = [
-                'tx_email'   => $request->input('nb_usuario'),
-                'password'   => $request->input('password')
+                'tx_email' => $request->nb_usuario,
+                'password' => $request->password
             ];
         } 
 
         if (Auth::attempt($credentials)) 
         {
-            
             $user    = Auth::user();
 
             if($user->id_status == 1)
             {
-                $payload = JWTFactory::sub($user->id_usuario)->make();
+                $payload  = JWTFactory::sub($user->id_usuario)->make();
                 
-                $token   = JWTAuth::encode($payload);
+                $token    = JWTAuth::encode($payload);
                 
-                $m       = Cookie::queue('AUTH-TOKEN', $token->get(), 15);
+                $m        = Cookie::queue('AUTH-TOKEN', $token->get(), 15);
 
+                $profiles = $this->getProfile($user);
+                
                 return [ 
-                    'auth' => $token->get(),
-                    'user' => $user,
+                    'auth'       => $token->get(),
+                    'user'       => $user,
+                    'profiles'   => $profiles,
                     'expires_in' => JWTFactory::getTTL() * 60
                 ]; 
             }
@@ -121,6 +124,22 @@ class LoginController extends Controller
     public function refresh()
     {
         return $this->respondWithToken(auth()->refresh());
+    }
+
+    public function getProfile($user)
+    {
+        $profiles = [];
+
+        foreach ($user->perfil as $key => $profile) 
+        {
+            $profiles[$key] =   [ 
+                                    'id' => $profile['id'], 
+                                    'nb_perfil' => $profile['nb_perfil'], 
+                                    'tx_icono' => $profile['tx_icono']
+                                ];
+        }
+
+        return $profiles;
     }
 
 }

@@ -7,34 +7,33 @@
         dark
         dense
     >
-        <!--Titulo-->
-
-        <v-avatar size="32" color="white" >
-            <v-icon :color="$App.theme.headApp" size="28" @click="navegateTo('/')">mdi-chair-school</v-icon>
+        <!-- Logo -->
+        <v-avatar size="32" color="white" @click="navegateTo('/home')">
+            <v-img src="/images/logo-sm.png" class="logo-holder" ></v-img>
         </v-avatar>
-        
+
+        <!-- Titulo-->
         <v-toolbar-title >
             <v-btn
                 text 
                 :color="$App.theme.textTitle" 
                 v-text="$App.title" 
-                @click="navegateTo('/')">
+                @click="navegateTo('/home')">
             </v-btn>
         </v-toolbar-title>
+
+        <!--Toggle Menu Lateral-->
+        <v-app-bar-nav-icon @click.stop="toggleMenu =! toggleMenu"></v-app-bar-nav-icon>
         
-        <!--Toggle iconos/texto-->
+        <!--Toggle minivariant-->
         <v-btn icon @click.stop=" iconMenu = ! iconMenu">
             <v-icon v-html="iconMenu ? 'chevron_left' : 'chevron_right'"></v-icon>
         </v-btn>
         
-        <!--Toggle Menu Lateral-->
-        <v-app-bar-nav-icon @click.stop="toggleMenu =! toggleMenu"></v-app-bar-nav-icon>
-
-        <div class="flex-grow-1"></div>
+        <v-spacer></v-spacer>
 
         <!-- Logged -->
         <template v-if="auth">
-            
         
             <!-- Ayuda -->
             <v-tooltip bottom>
@@ -58,22 +57,8 @@
 
             <!-- User -->
             <app-user></app-user>
-        </template>
 
-        <!-- UnLogged -->
-        <template v-else>
- 
-            <v-tooltip bottom>
-                <template v-slot:activator="{ on }">
-                    <v-btn small text v-on="on" @click="navegateTo('/login')">
-                        <v-icon>mdi-login-variant</v-icon> Ingresar
-                    </v-btn>
-                </template>
-                <span>Ingresar</span>
-            </v-tooltip>
         </template>
-
-         <v-app-bar-nav-icon @click="toggleFilter()" v-show="resize" ></v-app-bar-nav-icon>
 
     </v-app-bar>
 
@@ -128,28 +113,10 @@
         data(){
             return {
                 loading : false,
+                dropdown_font: ['Arial', 'Calibri', 'Courier', 'Verdana'],
             }
         },
-        methods:{
-            
-            logout()
-            {
-                this.loading = true;
-                axios.post('logout')
-                .then(response =>{
-                    localStorage.clear()
-                    navegateTo('/');
-                })
-                .catch(error =>{
-                    console.log('error', error)
-                })
-            },
 
-            navegateTo(route)
-            {
-                this.$router.push(route).catch(err => {})
-            }
-        }
     }
 </script>
 <style>

@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Usuario extends Pivot
+class Usuario extends Authenticatable implements MustVerifyEmail, JWTSubject
 {
-    protected $table 	  = 'usuario';
-	protected $primaryKey = 'id';
+	use Notifiable;
 	
-	const 	  CREATED_AT  = 'fe_creado';
-	const 	  UPDATED_AT  = 'fe_actualizado';
+	protected $table 	  = 'usuario';
 
     protected $fillable   = [
                             'id',
@@ -29,27 +30,43 @@ class Usuario extends Pivot
 	 	 	 	 	 	 	'id_usuario',
 	 	 	 	 	 	 	'created_at',
 	 	 	 	 	 	 	'updated_at'
-                            ]; 
+							]; 
+							
+	protected $hidden   = [ 'password', 'verification', 'remember_token', 'id_usuario', 'api_token', 'created_at', 'updated_at'];
                            
-    public function status(){
+	protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 
-        return $this->BelongsTo('App\Models\Status', 'id_status');
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
 
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+	
+	public function status()
+	{
+        return $this->belongsTo('App\Models\Status', 'id_status');
     }
                            
-    public function usuario(){
+	public function usuario()
+	{
+        return $this->belongsTo('App\Models\Usuario', 'id_usuario');
+	}
+	
+	public function rolUsuario()
+	{
+        return $this->belongsTo('App\Models\Usuario', 'id_usuario');
+	}
+	
+	public function perfil(){
 
-        return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
+        return $this->belongsToMany('App\Models\Perfil', 'usuario_perfil', 'id_usuario', 'id_perfil');
 
     }
-
-                           
-    // 
-    
-    protected $hidden     = [
-                            'fe_creado',
-	 	 	 	 	 	 	'fe_actualizado'
-                            ];
-
 
 }

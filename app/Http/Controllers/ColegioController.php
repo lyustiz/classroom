@@ -21,6 +21,16 @@ class ColegioController extends Controller
         return $colegio;
     }
 
+
+    public function colegioUsuario($idUsuario)
+    {
+        $colegio = Colegio::with(['tipoColegio'])
+                          ->where('id_usuario', $idUsuario)
+                          ->first();
+        
+        return $colegio;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -31,27 +41,22 @@ class ColegioController extends Controller
     {
         $validate = request()->validate([
             'nb_colegio'        => 	'required|string|max:50',
-            'tx_codigo'         => 	'required|string|max:20',
+            'tx_codigo'         => 	'nullable|string|max:20',
 			'id_tipo_colegio'   => 	'required|integer',
             'id_calendario'     => 	'required|integer',
             'id_jornada'        => 	'required|integer',
-			'id_departamento'   => 	'required|integer',
-			'id_ciudad'         => 	'required|integer',
-			'id_zona'           => 	'required|integer',
-			'id_comuna'         => 	'required|integer',
-			'id_barrio'         => 	'required|integer',
-			'tx_direccion'      => 	'required|string|max:80',
 			'tx_telefono'       => 	'required|string|max:20',
             'nu_estudiantes'    => 	'required|integer',
-            'tx_logo'           =>  'nullable|string|max:100',
-			'nu_latitud'        => 	'nullable|string|max:20',
-			'nu_longitud'       => 	'nullable|string|max:20',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer',
 			'id_usuario'        => 	'required|integer',
         ]);
 
         $colegio = colegio::create($request->all());
+
+        $colegio->tx_codigo =  date('Y') . str_pad($colegio->id, 5, "0", STR_PAD_LEFT);
+        
+        $colegio->save();
 
         return [ 'msj' => 'Colegio Agregado Correctamente', compact('colegio') ];
     }
@@ -78,29 +83,39 @@ class ColegioController extends Controller
     {
         $validate = request()->validate([
             'nb_colegio'        => 	'required|string|max:50',
-            'tx_codigo'         => 	'required|string|max:20',
 			'id_tipo_colegio'   => 	'required|integer',
             'id_calendario'     => 	'required|integer',
             'id_jornada'        => 	'required|integer',
-			'id_departamento'   => 	'required|integer',
-			'id_ciudad'         => 	'required|integer',
-			'id_zona'           => 	'required|integer',
-			'id_comuna'         => 	'required|integer',
-			'id_barrio'         => 	'required|integer',
-			'tx_direccion'      => 	'required|string|max:80',
 			'tx_telefono'       => 	'required|string|max:20',
             'nu_estudiantes'    => 	'required|integer',
-            'tx_logo'           =>  'nullable|string|max:100',
-			'nu_latitud'        => 	'nullable|string|max:20',
-			'nu_longitud'       => 	'nullable|string|max:20',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer',
 			'id_usuario'        => 	'required|integer',
         ]);
 
-        $colegio = $colegio->update($request->all());
+        $colegio = tap($colegio)->update($request->all());
 
-        return [ 'msj' => 'Colegio Editado' , compact('colegio')];
+        return [ 'msj' => 'Colegio Actualizado' , compact('colegio')];
+    }
+
+
+    public function location(Request $request, Colegio $colegio)
+    {
+        $validate = request()->validate([
+            'id_departamento' => 'required|integer',
+            'id_ciudad'       => 'required|integer',
+            'id_zona'         => 'required|integer',
+            'id_comuna'       => 'required|integer',
+            'id_barrio'       => 'required|integer',
+            'tx_direccion'    => 'nullable|string|max:80',
+            'nu_latitud'      => 'nullable|string|max:20',
+            'nu_longitud'     => 'nullable|string|max:20',
+            'id_usuario'      => 'required|integer',
+        ]);
+
+        $colegio = tap($colegio)->update($request->all());
+
+        return [ 'msj' => 'Localizacion del Colegio Actualizada' , compact('colegio')];
     }
 
     /**

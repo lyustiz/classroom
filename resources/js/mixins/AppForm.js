@@ -55,6 +55,7 @@ export default
             this.setDataForm(value)
             this.preActionForms()
         },
+        
     },
 
 	computed: 
@@ -204,6 +205,8 @@ export default
             {
                 this.form[key]  =  this.default[key];
             }
+
+            this.form.id_usuario = this.idUser
         },
 
         preActionForms()

@@ -18,7 +18,7 @@ class CreateFotoTable extends Migration
 			$table->string('nb_foto', 100);
 			$table->string('tx_src', 100);
 			$table->integer('id_tipo_foto');
-			$table->integer('id_entidad');
+			$table->integer('id_origen');
 			$table->string('tx_observaciones', 100)->nullable();
 			$table->integer('id_status');
 			$table->integer('id_usuario');

@@ -31,8 +31,10 @@ class TipoFotoController extends Controller
     {
         $validate = request()->validate([
             'nb_tipo_foto'      => 	'required|string|max:30',
-			'tx_icono'          => 	'required|string|max:20',
-			'tx_path'           => 	'required|string|max:20',
+            'tx_origen'        => 	'required|string|max:30',
+			'tx_storage'        => 	'required|string|max:50',
+			'tx_base_path'      => 	'required|string|max:80',
+			'tx_grupo'          => 	'nullable|string|max:20',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer',
 			'id_usuario'        => 	'required|integer',

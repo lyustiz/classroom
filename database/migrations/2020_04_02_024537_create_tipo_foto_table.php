@@ -16,13 +16,14 @@ class CreateTipoFotoTable extends Migration
         Schema::create('tipo_foto', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('nb_tipo_foto', 30);
-			$table->string('tx_icono', 20)->nullable();
-			$table->string('tx_path', 20)->nullable();
+            $table->string('tx_origen', 20);
+            $table->string('tx_storage', 35)->nullable();
+            $table->string('tx_base_path', 80);
+            $table->string('tx_grupo', 20)->nullable();
 			$table->string('tx_observaciones', 100)->nullable();
 			$table->integer('id_status');
 			$table->integer('id_usuario');
 			$table->timestamps();
-
         });
     }
 

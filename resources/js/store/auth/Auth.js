@@ -6,8 +6,10 @@ export default
 			expire:     null,
 			auth: 		false,
 			user: 		null,
-			userid: 	null,
+			userid: 	1,
 			username: 	null,
+			profile:	null,
+			profiles: 	[],
 		}
 	},
 
@@ -19,6 +21,8 @@ export default
 		getUser:  		state => state.user,
 		getUserid:  	state => state.userid,
 		getUsername:  	state => state.username,
+		getProfile:   	state => state.profile,
+		getProfiles:   	state => state.profiles,
 	},
 
 	mutations:
@@ -51,12 +55,24 @@ export default
 
 		setUserid(state, userid)
 		{
-			state.userid 	= userid
+			state.userid   = userid
 		},
 
 		setUsername(state, username)
 		{
 			state.username = username
+		},
+
+		setProfile (state, profile)
+        {
+			state.profile  = profile
+		},
+
+		setProfiles (state, profiles)
+        {
+			state.profiles	= profiles
+			state.profile   = profiles[0]
+			localStorage.setItem("profiles", (profiles)  ? JSON.stringify(profiles): null	)
 		},
     },
     
@@ -72,9 +88,10 @@ export default
 					if (response.status == 200)
 					{
 						const 	data = {
-									user: response.data.user,
-									token: response.data.auth,
-									expire: response.data.expires_in
+									user: 	  response.data.user,
+									token: 	  response.data.auth,
+									expire:   response.data.expires_in,
+									profiles: response.data.profiles
 								};
 
 						dispatch('autenticate', data)
@@ -94,22 +111,6 @@ export default
 				})
 			})
         },
-        
-        register( { commit }, form )
-		{
-			return new Promise((resolve, reject) => 
-			{
-				axios.post('/api/' + 'register', form)
-				.then(response => 
-				{
-					resolve(response)
-				})
-				.catch(error => 
-				{
-					reject(error)
-				})
-			})
-		},
 		
 		verify( { commit }, form )
 		{
@@ -197,25 +198,23 @@ export default
 
 		autenticate({ commit, dispatch }, data)
 		{
-			commit('setUser'  , data.user);
-			commit('setAuth'  , true);
-			commit('setToken' , data.token);
-			commit('setExpire', data.expire);
-
+			commit('setUser'  	 , data.user);
+			commit('setToken' 	 , data.token);
+			commit('setExpire'   , data.expire);
+			commit('setProfiles' , data.profiles);
+			commit('setAuth'  	 , true);
 		},
 
 		unatenticate({ commit })
 		{
-			commit('setUser'  , { id: null, nb_usuario: null });
-			commit('setAuth'  , false);
-			commit('setToken' , null);
-			commit('setExpire', null);
+			commit('setUser'  	 , { id: null, nb_usuario: null } );
+			commit('setToken' 	 , null);
+			commit('setExpire'  , null);
+			commit('setProfiles' , []);
+			commit('setAuth'  	 , false);
 
-			localStorage.removeItem("token")
-			localStorage.removeItem("user")
-			localStorage.removeItem("expire")
+			localStorage.clear()
 			localStorage.setItem("auth", 	false)
-
 		}
 
     }

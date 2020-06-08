@@ -4,15 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProfesorMateria extends Model
+class Permiso extends Model
 {
-    protected $table 	  = 'profesor_materia';
+    protected $table 	  = 'permiso';
 
     protected $fillable   = [
-                            'id_profesor',
-	 	 	 	 	 	 	'id_materia',
-	 	 	 	 	 	 	'id_grado',
-	 	 	 	 	 	 	'id_grupo',
+                            'id_menu',
+	 	 	 	 	 	 	'id_perfil',
+	 	 	 	 	 	 	'bo_select',
+	 	 	 	 	 	 	'bo_insert',
+	 	 	 	 	 	 	'bo_update',
+	 	 	 	 	 	 	'bo_delete',
+	 	 	 	 	 	 	'bo_admin',
+	 	 	 	 	 	 	'bo_default',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'
@@ -21,8 +25,10 @@ class ProfesorMateria extends Model
     protected $hidden     = [
                             'created_at',
 	 	 	 	 	 	 	'updated_at'
-                            ]; 
-                           
+                            ];
+
+
+
     public function status(){
 
         return $this->BelongsTo('App\Models\Status', 'id_status');
@@ -34,9 +40,4 @@ class ProfesorMateria extends Model
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
 
     }
-
-                           
-    //
-
-
 }

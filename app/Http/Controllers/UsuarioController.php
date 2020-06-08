@@ -19,7 +19,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuario::with(['status'])
+        $usuarios = Usuario::with(['perfil','status'])
                            ->get();
         
         return $usuarios;

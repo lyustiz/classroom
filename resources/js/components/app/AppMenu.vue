@@ -55,32 +55,45 @@ export default {
     },
     created ()
     {
-            let url = this.url + this.$store.getters.username
-     
-            this.menus = this.$router.options.routes.filter((menu) =>  !['welcome', 'notfound'].includes(menu.name) )
-           
-        },  
-        methods:
+            this.setMenu()
+    },  
+    methods:
+    {
+        setMenu()
         {
-            navegateTo(route)
-            {
-               this.$router.push(route).catch(err => {})
-            }
+            this.menus = this.$router.options.routes.filter((menu) =>  {
+                 return  (menu.visible === true) && ( (menu.profile == this.profile.nb_perfil)  ||  (menu.profile == '*') )
+            })
+        }
+    },
+    watch:
+    {
+        profile()
+        {
+            this.setMenu()
+        }
 
-        },
+    },
+    computed: 
+    {
+        profile()
+        {
+            return this.$store.getters['getProfile'] 
+        }
+    }
 }
 </script>
 
 <style scoped>
     .menu-active{
-        color:#3f51b5 !important;
-        caret-color: #3f51b5 !important;
+        color:#ff9800 !important;
+        caret-color: #ff9800 !important;
     }
     .v-list-item--link::before{
-        background-color: rgb(134, 133, 133) !important;
+        background-color: #4caf50 !important;
     }
     .menu-active.v-list-item__content{
-        color:#3f51b5 !important;
-        caret-color: #3f51b5 !important;
+        color:#ff9800 !important;
+        caret-color: #ff9800 !important;
     }
 </style>

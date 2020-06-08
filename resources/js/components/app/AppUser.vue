@@ -1,6 +1,6 @@
 <template>
-<div class="text-xs-center">
-    <v-dialog v-model="showDialog" width="320">
+<div class="text-center">
+    <v-dialog v-model="showDialog" width="365">
     <template v-slot:activator="{ on }">
         <v-btn icon v-on="on">
             <v-icon >account_circle</v-icon>
@@ -9,7 +9,7 @@
 
     <v-card :loading="loading">
         <v-card-title
-            class="cyan darken-3 white--text"
+            class="indigo white--text"
             primary-title
         >
             {{user.nb_nombre}}
@@ -18,7 +18,6 @@
         </v-card-title>
 
         <v-list nav>
-        <v-list-item-group>
 
             <v-list-item disabled class="grey lighten-3">
                 <v-list-item-avatar>
@@ -31,21 +30,23 @@
                 </v-list-item-content>
             </v-list-item>
 
-            <v-list-item ripple @click="administrar()">
-                <v-list-item-avatar>
-                    <v-icon color="grey" size="36">mdi-cog</v-icon>
-                </v-list-item-avatar>
+        <v-list-item-group>
+            
+            <v-chip class="mb-1" color="green lighten-2" close dark :close-icon="profile.tx_icono"> Perfil: {{profile.nb_perfil}}</v-chip>
 
-                <v-list-item-content>
-                    <v-list-item-title>Configurar Cuenta</v-list-item-title>
-                </v-list-item-content>
-
-                <v-list-item-action>
-                    <v-btn icon ripple> 
-                        <v-icon color="grey lighten-1">mdi-account-cog</v-icon>  
-                    </v-btn>
-                </v-list-item-action>
-            </v-list-item>
+    
+                    <v-radio-group v-model="profile" row hide-details label="Perfiles: " >
+                        <v-radio
+                            v-for="profile in profiles"
+                            :key="profile.id"
+                            :off-icon="profile.tx_icono"
+                            :on-icon="profile.tx_icono"
+                            :prepend-icon="profile.tx_icono"
+                            :value="profile"
+                            color="success"
+                            class="ml-3"
+                        ></v-radio>
+                    </v-radio-group>
 
         </v-list-item-group>
         </v-list>
@@ -76,6 +77,7 @@
                 showDialog: false,
                 loading: false,
                 comercioActivo: false,
+                rol: 'Secretaria',
             }
         },
         computed:
@@ -83,6 +85,22 @@
             user(){
                 return this.$store.getters['getUser']
             },
+
+            profile:
+            {
+                get() {
+                    return this.$store.getters['getProfile']
+                },
+                set(profile) {
+                    this.showMessage('Se  ha establecido el Perfil: ' + profile.nb_perfil )
+                    this.$store.commit('setProfile', profile) 
+                }
+            },
+
+            profiles()
+            {
+                return this.$store.getters['getProfiles'] 
+            }
             
         },
 
@@ -100,7 +118,7 @@
                     if(response.status == 200)
                     {
                         this.showMessage(response.data)
-                        this.$router.push('/').catch(()=>{});
+                        this.navegateTo('/')
                     }
 
                 }).catch(error =>

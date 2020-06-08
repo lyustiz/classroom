@@ -3,11 +3,13 @@ import Vue from 'vue';
 //layouts
 import LoginLayout   from '@components/layouts/LoginLayout'
 import MainLayout    from '@components/layouts/MainLayout'
+import WelcomeLayout from '@components/layouts/WelcomeLayout'
 import AppToolbar    from '@components/app/AppToolbar'
 import Login 		 from '@components/app/AppLogin'
 
 Vue.component('login-layout',     LoginLayout);
 Vue.component('main-layout',      MainLayout);
+Vue.component('welcome-layout',   WelcomeLayout);
 Vue.component('app-toolbar',      AppToolbar);
 Vue.component('app-login',        Login);
 
@@ -37,3 +39,8 @@ Vue.component('app-message',      AppMessage);
 Vue.component('app-modal',        AppModal);
 Vue.component('app-dialog',       AppDialog);
 Vue.component('app-user',         AppUser);
+
+//Tools Components
+import AppFoto     from '@pages/foto/appFoto'
+
+Vue.component('app-foto',         AppFoto);
