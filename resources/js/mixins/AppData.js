@@ -78,7 +78,7 @@ export default
 
         deleteResource(resourceID)
         {
-            this.preFormActions()
+            this.preFormActions('delete')
 
             return new Promise((resolve, reject) => 
 			{
@@ -101,7 +101,7 @@ export default
 
         storeResource(resource, data)
         {
-            this.preFormActions()
+            this.preFormActions('store')
 
             return new Promise((resolve, reject) => 
 			{
@@ -124,7 +124,7 @@ export default
 
         updateResource(resourceID, data)
         {
-            this.preFormActions()
+            this.preFormActions('update')
 
             return new Promise((resolve, reject) => 
 			{
@@ -182,9 +182,12 @@ export default
             }
         },
 
-        preFormActions()
+        preFormActions(action)
         {
-            if (!this.$refs.form.validate())  return 
+            if(action != 'delete')
+            {
+                if (!this.$refs.form.validate())  return 
+            }
 
             this.setDefaults()
 

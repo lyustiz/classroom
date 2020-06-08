@@ -92,6 +92,7 @@
                     return this.$store.getters['getProfile']
                 },
                 set(profile) {
+                    this.navegateTo('home')
                     this.showMessage('Se  ha establecido el Perfil: ' + profile.nb_perfil )
                     this.$store.commit('setProfile', profile) 
                 }

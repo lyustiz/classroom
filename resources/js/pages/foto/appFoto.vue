@@ -192,6 +192,11 @@ export default {
             })
         },
 
+        preFormActions(action)
+        {
+            this.loading = true;
+        },
+
         deleteImage()
         {
 

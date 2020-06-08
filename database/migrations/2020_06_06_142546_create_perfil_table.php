@@ -16,6 +16,7 @@ class CreatePerfilTable extends Migration
         Schema::create('perfil', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nb_perfil', 40);
+            $table->string('tx_icono', 35);
             $table->string('tx_observaciones', 100)->nullable();
             $table->integer('id_status');
             $table->integer('id_usuario');
