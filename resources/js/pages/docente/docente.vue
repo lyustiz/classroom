@@ -31,7 +31,6 @@
                         <td class="text-xs-left">{{ item.nb_docente }}</td>
 						<td class="text-xs-left">{{ item.tx_sexo }}</td>
 						<td class="text-xs-left">{{ item.tx_documento }}</td>
-				
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -39,11 +38,18 @@
                                 @onChangeStatus="changeStatus($event)">
                             </status-switch>
                         </td>
-                        
                         <td class="text-xs-left">
                             <list-buttons 
                                 @update="updateForm(item)" 
-                                @delete="deleteForm(item)" >
+                                @delete="deleteForm(item)" 
+                            >
+                                <item-menu 
+                                    :menus="ItemsMenu" 
+                                    iconColor="white" 
+                                    btnColor="cyan" 
+                                    :item="item"
+                                    @onItemMenu="onItemMenu($event)" 
+                                ></item-menu>
                             </list-buttons>
                         </td>
                     </tr>
@@ -53,9 +59,9 @@
 
             <app-modal
                 :modal="modal"
-                @closeModal="closeModal()"
                 :head-color="$App.theme.headModal"
                 :title="title"
+                @closeModal="closeModal()"
             >
                 <docente-form
                     :action="action"
@@ -64,6 +70,14 @@
                 ></docente-form>
 
             </app-modal>
+
+            <v-dialog v-model="addMateriaDialog" max-width="400" >
+                <docente-materia :idDocente="idDocente" v-if="addMateriaDialog"></docente-materia>
+            </v-dialog>
+
+            <v-dialog v-model="addGrupoDialog" max-width="400" >
+                <docente-grupo :idDocente="idDocente" v-if="addGrupoDialog"></docente-grupo>
+            </v-dialog>
 
             <form-delete
                 :dialog="dialog"
@@ -82,26 +96,64 @@
 </template>
 
 <script>
-import listHelper from '@mixins/Applist';
-import docenteForm  from './docenteForm';
+import listHelper     from '@mixins/Applist';
+import docenteForm    from './docenteForm';
+import docenteMateria from '@pages/docenteMateria/AppDocenteMateria';
+import docenteGrupo   from '@pages/docenteGrupo/AppDocenteGrupo';
+
 export default {
-    mixins:     [ listHelper],
-    components: { 'docente-form': docenteForm },
+    mixins:     [ listHelper ],
+    components: { 
+        'docente-form':    docenteForm,
+        'docente-materia': docenteMateria,
+        'docente-grupo':   docenteGrupo 
+    },
     data () {
-    return {
-        title:    'Docente',
-        resource: 'docente',
-        headers: [
-            { text: 'Apellidos y Nombres',   value: 'nb_docente' },
-			{ text: 'Sexo',   value: 'tx_sexo' },
-			{ text: 'Documento',   value: 'tx_documento' },
-			{ text: 'Status',   value: 'id_status' },
-            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
-        ],
-    }
+        return {
+            title:    'Docente',
+            resource: 'docente',
+            headers: [
+                { text: 'Apellidos y Nombres', value: 'nb_docente' },
+                { text: 'Sexo',                value: 'tx_sexo' },
+                { text: 'Documento',           value: 'tx_documento' },
+                { text: 'Status',              value: 'id_status' },
+                { text: 'Acciones',            value: 'actions', sortable: false, filterable: false },
+            ],
+            ItemsMenu: [
+                { action: 'addGrupo',   icon: 'mdi-alphabetical-variant', label: 'Asignar Grupo' },
+                { action: 'addMateria', icon: 'mdi-file-cad-box', label: 'Asignar Materia' }
+            ],
+
+            addGrupoDialog: false,
+            addMateriaDialog: false,
+            idDocente:      null,
+        }
     },
     methods:
     {
+        onItemMenu(data)
+        {
+            switch (data.action) {
+                case 'addGrupo':
+                    this.addGrupo(data.item)
+                    break;
+                case 'addMateria':
+                    this.addMateria(data.item)
+                    break;
+            }
+        },
+
+        addGrupo(item)
+        {
+            this.idDocente      = item.id
+            this.addGrupoDialog = true
+        },
+
+        addMateria(item)
+        {
+            this.idDocente        = item.id
+            this.addMateriaDialog = true
+        }
    
     }
 }

@@ -38,9 +38,21 @@ class EstructuraController extends Controller
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
+        $tx_path = $this->getPath($request->id_padre, $request->nb_estructura);
+
+        $request-> merge (['tx_path' => $tx_path]);
+
         $estructura = estructura::create($request->all());
 
         return [ 'msj' => 'Estructura Agregado Correctamente', compact('estructura') ];
+    }
+
+    public function getPath($idPadre, $nbEstructura)
+    {
+        return Estructura::select('tx_path')
+                          ->where('id', $idPadre)
+                          ->first()
+                          ->tx_path . '>' . $nbEstructura;
     }
 
     /**

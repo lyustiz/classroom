@@ -47,6 +47,11 @@ export default {
         toBoolean(value)
         {
             return (value == 1) ? true : false 
+        },
+
+        initLeter(value)
+        {
+            return (value) ? value.charAt(0).toUpperCase() : null 
         }
 
     },

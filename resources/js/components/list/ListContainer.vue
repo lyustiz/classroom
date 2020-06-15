@@ -16,7 +16,7 @@
 
                                 <slot name="HeadTools"></slot>
 
-                                <list-menu :itemsMenu="itemsMenu" @onMenu="$emit('onMenu', $event)"></list-menu>
+                                <list-menu :itemsMenu="itemsMenu" @onMenu="$emit('onItemMenu', $event)"></list-menu>
 
                             </v-toolbar>
 

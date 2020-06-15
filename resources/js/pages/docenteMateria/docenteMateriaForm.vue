@@ -8,33 +8,39 @@
 
         <v-row>
 
-                  
+                         
         <v-col cols="12" md="6">
-            <v-text-field
-                :rules="[rules.required]"
-                v-model="form.nb_usuario"
-                label="Usuario"
-                placeholder="Indique Usuario"
-                dense
-            ></v-text-field>
+            <v-select
+            :items="selects.docente"
+            item-text="nb_docente"
+            item-value="id"
+            v-model="form.id_docente"
+            :rules="[rules.select]"
+            label="Docente"
+            :loading="loading"
+            dense
+            ></v-select>
         </v-col>
                   
         <v-col cols="12" md="6">
-            <v-text-field
-                :rules="[rules.required]"
-                v-model="form.password"
-                label="Password"
-                placeholder="Indique Password"
-                dense
-            ></v-text-field>
+            <v-select
+            :items="selects.materia"
+            item-text="nb_materia"
+            item-value="id"
+            v-model="form.id_materia"
+            :rules="[rules.select]"
+            label="Materia"
+            :loading="loading"
+            dense
+            ></v-select>
         </v-col>
-                  
+          
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
-                v-model="form.tx_email"
-                label="Email"
-                placeholder="Indique Email"
+                v-model="form.tx_observaciones"
+                label="Observaciones"
+                placeholder="Indique Observaciones"
                 dense
             ></v-text-field>
         </v-col>
@@ -86,32 +92,30 @@ export default {
     mixins: [Appform],
     data() {
         return {
-            resource: 'usuario',
+            resource: 'docente_materia',
             dates:
             {
-                email_verified_at: 	 null,
+                
             },
             pickers:
             {
-                email_verified_at: 	 null,
+                
             },
             form:
             {
-                id: 	         null,
-				nb_usuario: 	 null,
-				password: 	     null,
-                tx_email: 	     null,
-                id_tipo_usuario: null,
-				id_status: 	     null,
-				id_usuario: 	 null,
+                id: 	null,
+				id_docente: 	null,
+				id_materia: 	null,
+				tx_observaciones: 	null,
+				id_status: 	null,
+				id_usuario: 	null,
             },
             selects:
             {
+                docente: 	 [],
+	 	 	 	materia: 	 [],
 	 	 	 	status: 	 [],
             },
-            default:{
-                id_tipo_usuario: 1
-            }
         }
     },
 

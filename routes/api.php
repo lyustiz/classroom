@@ -95,6 +95,10 @@ Route::apiResource('/gradoAlumno',          'GradoAlumnoController');
 
 // -- DOCENTE -- //
 Route::apiResource('/docente',              'DocenteController');
+Route::get('/docenteMateria/docente/{docente}', 'DocenteMateriaController@docenteMateriaDocente');
+Route::apiResource('/docenteMateria',       'DocenteMateriaController', ['parameters' => ['docenteMateria' => 'docenteMateria']]);
+Route::get('/docenteGrupo/docente/{docente}',   'DocenteGrupoController@docenteGrupoDocente');
+Route::apiResource('/docenteGrupo',         'DocenteGrupoController');
 
 // -- GESTION ACADEMICA -- //
 Route::apiResource('/periodo',              'PeriodoController');
@@ -124,6 +128,7 @@ Route::apiResource('/horario',              'HorarioController');
 Route::apiResource('/tipoEvaluacion',       'TipoEvaluacionController');
 Route::apiResource('/planEvaluacion',       'PlanEvaluacionController');
 Route::get('/detalleEvaluacion/planEvaluacion/{idPlanEvaluacion}',  'DetalleEvaluacionController@detallePlanEvaluacion');
+Route::get('/planEvaluacion/grupo/{grupo}/periodo/{periodo}', 'PlanEvaluacionController@planEvaluacionGrupoPeriodo');
 Route::apiResource('/detalleEvaluacion',    'DetalleEvaluacionController');
 
 // -- FOTOS / ARCHIVOS -- //
@@ -142,16 +147,16 @@ Route::apiResource('/configuracion',        'ConfiguracionController');
 Route::apiResource('/tipoUsuario',          'TipoUsuarioController');
 Route::apiResource('/usuario',              'UsuarioController');
 
-Route::apiResource('/tipoContacto',     'TipoContactoController');
-Route::apiResource('/menu',     'MenuController');
-Route::apiResource('/modulos',     'ModulosController');
-Route::apiResource('/perfil',     'PerfilController');
-Route::apiResource('/permiso',     'PermisoController');
-Route::apiResource('/usuarioPerfil',     'UsuarioPerfilController');
-Route::apiResource('/modulo',     'ModuloController');
-Route::apiResource('/menu',     'MenuController');
-Route::apiResource('/modulo',     'ModuloController');
-Route::apiResource('/menu',     'MenuController');
+Route::apiResource('/tipoContacto',         'TipoContactoController');
+Route::apiResource('/menu',                 'MenuController');
+Route::apiResource('/perfil',               'PerfilController');
+Route::apiResource('/permiso',              'PermisoController');
+Route::apiResource('/usuarioPerfil',        'UsuarioPerfilController');
+Route::apiResource('/modulo',               'ModuloController');
+Route::apiResource('/menu',                 'MenuController');
+Route::apiResource('/modulo',               'ModuloController');
+Route::apiResource('/menu',                 'MenuController');
+
 //newRoutes
 
 });

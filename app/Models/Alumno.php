@@ -53,8 +53,6 @@ class Alumno extends Model
 		return trim(str_replace( '  ', ' ',  "{$this->nb_apellido} {$nb_apellido2} {$this->nb_nombre} {$nb_nombre2}")) ;
 	}
 
-
-
 	public function getNuEdadAttribute()
 	{
 		return Carbon::parse($this->fe_nacimiento)->age;

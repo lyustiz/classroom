@@ -21,7 +21,7 @@
         <v-col cols="12" md="6">
             <v-select
             :items="selects.estructura"
-            item-text="nb_estructura"
+            item-text="tx_path"
             item-value="id"
             v-model="form.id_padre"
             :rules="[]"

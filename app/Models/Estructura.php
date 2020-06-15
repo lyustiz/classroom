@@ -11,7 +11,8 @@ class Estructura extends Model
     protected $fillable   = [
                             'nb_estructura',
 	 	 	 	 	 	 	'id_colegio',
-	 	 	 	 	 	 	'id_padre',
+                            'id_padre',
+                            'tx_path',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'

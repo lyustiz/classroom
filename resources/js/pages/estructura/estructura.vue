@@ -28,7 +28,7 @@
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ getEstructuraPadre(item) }} {{ item.nb_estructura }}</td>
+                        <td class="text-xs-left">{{  item.tx_path }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -92,20 +92,13 @@ export default {
         title:    'Estructura',
         resource: 'estructura',
         headers: [
-            { text: 'Estructura',   value: 'nb_estructura' },
+            { text: 'Estructura',   value: 'tx_path' },
 			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
     }
     },
-    methods:
-    {
-        getEstructuraPadre(item)
-        {
-            return(item.id_padre == 0) ? null : item.estructura_padre.nb_estructura + ' > '
-        }
-   
-    }
+
 }
 </script>
 

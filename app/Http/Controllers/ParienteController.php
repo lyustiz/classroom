@@ -15,7 +15,7 @@ class ParienteController extends Controller
      */
     public function index()
     {
-        $pariente = Pariente::with([])
+        $pariente = Pariente::with(['alumno:id,nb_nombre,nb_apellido', 'parentesco:id,nb_parentesco'])
                     ->get();
         
         return $pariente;

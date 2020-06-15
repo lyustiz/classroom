@@ -39,8 +39,8 @@
                 <v-text-field
                     :rules="[rules.required]"
                     v-model="form.nb_colegio"
-                    label="Nombre del Colegio"
-                    placeholder="Indique Nombre del Colegio"
+                    label="Nombre de la Institucion"
+                    placeholder="Indique Nombre de la Institucion"
                     dense
                 ></v-text-field>
             </v-col>
@@ -52,7 +52,7 @@
                 item-value="id"
                 v-model="form.id_tipo_colegio"
                 :rules="[rules.select]"
-                label="Tipo Colegio"
+                label="Tipo Institucion"
                 :loading="loading"
                 dense
                 ></v-select>
@@ -66,19 +66,6 @@
                 v-model="form.id_calendario"
                 :rules="[rules.select]"
                 label="Calendario"
-                :loading="loading"
-                dense
-                ></v-select>
-            </v-col>
-
-            <v-col cols="12" md="12">
-                <v-select
-                :items="selects.jornada"
-                item-text="nb_jornada"
-                item-value="id"
-                v-model="form.id_jornada"
-                :rules="[rules.select]"
-                label="Jornada"
                 :loading="loading"
                 dense
                 ></v-select>
@@ -100,8 +87,8 @@
                 <v-text-field
                     :rules="[rules.required]"
                     v-model="form.nu_estudiantes"
-                    label="Numero de Estudiantes"
-                    placeholder="Indique Estudiantes"
+                    label="Cuota de Estudiantes"
+                    placeholder="Indique Cuota de Estudiantes"
                     type="number"
                     dense
                 ></v-text-field>
@@ -178,11 +165,11 @@ export default {
             {
                 tipoColegio: 	 [],
                 calendario:      [],
-                jornada:         [],
 	 	 	 	status: 	     [],
             },
             default: {
                 id_status:      1,
+                id_jornada:     1
             }
         }
     },

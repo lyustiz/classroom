@@ -29,7 +29,7 @@
                 <template v-slot:item="{ item }">
                     <tr>
                         <td class="text-xs-left">{{ item.nb_aula }}</td>
-						<td class="text-xs-left">{{ item.estructura.nb_estructura }}</td>
+						<td class="text-xs-left">{{ item.estructura.tx_path }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 

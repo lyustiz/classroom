@@ -35,63 +35,59 @@ class Colegio extends Model
 	 	 	 	 	 	 	'updated_at'
                             ]; 
                            
-    public function status(){
-
+	public function status()
+	{
         return $this->BelongsTo('App\Models\Status', 'id_status');
-
     }
                            
-    public function usuario(){
-
+	public function usuario()
+	{
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
-
     }
 
-	public function pais(){
-
+	public function pais()
+	{
         return $this->HasMany('App\Models\Pais', 'id_pais');
 	}
 	
-	public function departamento(){
-
+	public function departamento()
+	{
         return $this->HasMany('App\Models\Departamento', 'id_departamento');
-
 	}
 	
-	public function ciudad(){
-
+	public function ciudad()
+	{
         return $this->HasMany('App\Models\Ciudad', 'id_ciudad');
-
 	}
 	
-	public function zona(){
-
+	public function zona()
+	{
         return $this->HasMany('App\Models\Zona', 'id_zona');
-
 	}
 	
-	public function comuna(){
-
+	public function comuna()
+	{
         return $this->HasMany('App\Models\Comuna', 'id_comuna');
-
 	}
 	
-	public function barrio(){
-
+	public function barrio()
+	{
         return $this->HasMany('App\Models\Barrio', 'id_barrio');
-
 	}
 	
-	public function tipoColegio(){
-
+	public function tipoColegio()
+	{
         return $this->HasMany('App\Models\TipoColegio', 'id');
-
 	}
 	
-	public function jornada(){
-
+	public function jornada()
+	{
         return $this->HasMany('App\Models\Jornada', 'id_jornada');
-
+	}
+	
+	public function calendario()
+	{
+        return $this->BelongsTo('App\Models\Calendario', 'id_calendario');
     }
 
 

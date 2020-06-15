@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Calendario extends Model
+class Documento extends Model
 {
-    protected $table 	  = 'calendario';
+    protected $table 	  = 'documento';
 
     protected $fillable   = [
-                            'nb_calendario',
-                            'aa_escolar',
-                            'fe_inicio',
-                            'fe_fin',
+                            'id_tipo_documento',
+	 	 	 	 	 	 	'nb_documento',
+	 	 	 	 	 	 	'tx_archivo',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'

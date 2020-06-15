@@ -29,6 +29,7 @@ export default
             modal:   false,
             dialog:  false,
             valid:   true,
+            validateForm: true,
         }
     },
 
@@ -56,13 +57,13 @@ export default
         getResource(resource)
         {
             this.loading = true
-
+      
             return new Promise((resolve, reject) => 
 			{
 				axios.get(this.apiUrl + resource)
 				.then(response => 
 				{
-					resolve(response.data)
+                    resolve(response.data)
 				})
 				.catch(error => 
 				{
@@ -131,7 +132,9 @@ export default
 				axios.put(this.apiUrl + resourceID, data)
 				.then(response => 
 				{
-					resolve(response.data)
+                    this.loading = false;
+
+                    resolve(response.data)
 				})
 				.catch(error => 
 				{
@@ -184,7 +187,8 @@ export default
 
         preFormActions(action)
         {
-            if(action != 'delete')
+           
+            if(action != 'delete' && this.validateForm )
             {
                 if (!this.$refs.form.validate())  return 
             }
@@ -192,8 +196,6 @@ export default
             this.setDefaults()
 
             this.loading = true;
-            this.form.id_usuario = this.idUser
-
         },
 
         setDefaults()
@@ -203,7 +205,7 @@ export default
                 this.form[key]  =  this.default[key];
             }
 
-            this.form.id_usuario = this.idUser
+            if(this.form)  this.form.id_usuario = this.idUser
         },
 
         clear()

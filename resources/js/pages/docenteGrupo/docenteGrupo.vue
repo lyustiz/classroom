@@ -27,20 +27,9 @@
 
                 <template v-slot:item="{ item }">
                     <tr>
-						<td class="text-xs-left">{{ item.nb_usuario }}</td>
-                        <td class="text-xs-left">{{ item.tx_correo }}</td>
-
-                        <td class="text-xs-left">
-                              <v-tooltip bottom :key="perfil.id" v-for="perfil in item.perfil">
-                                <template v-slot:activator="{ on }">
-                                    <v-btn fab x-small v-on="on" color="success" class="elevation-5 mr-1">
-                                        <v-icon size="22" v-text="perfil.tx_icono"></v-icon>
-                                    </v-btn>
-                                </template>
-                                <span v-text="perfil.nb_perfil"></span>
-                            </v-tooltip>
-                        </td>
-
+                        <td class="text-xs-left">{{ item.id_docente }}</td>
+						<td class="text-xs-left">{{ item.id_grupo }}</td>
+						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -66,11 +55,11 @@
                 :head-color="$App.theme.headModal"
                 :title="title"
             >
-                <usuario-form
+                <docente-grupo-form
                     :action="action"
                     :item="item"
                     @closeModal="closeModal()"
-                ></usuario-form>
+                ></docente-grupo-form>
 
             </app-modal>
 
@@ -92,18 +81,18 @@
 
 <script>
 import listHelper from '@mixins/Applist';
-import usuarioForm  from './usuarioForm';
+import docenteGrupoForm  from './docenteGrupoForm';
 export default {
     mixins:     [ listHelper],
-    components: { 'usuario-form': usuarioForm },
+    components: { 'docente-grupo-form': docenteGrupoForm },
     data () {
     return {
-        title:    'Usuario',
-        resource: 'usuario',
+        title:    'DocenteGrupo',
+        resource: 'docenteGrupo',
         headers: [
-			{ text: 'Usuario',   value: 'nb_usuario' },
-            { text: 'Email',   value: 'tx_email' },
-            { text: 'Perfil',   value: 'perfil' },
+            { text: 'Docente',   value: 'id_docente' },
+			{ text: 'Grupo',   value: 'id_grupo' },
+			{ text: 'Observaciones',   value: 'tx_observaciones' },
 			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],

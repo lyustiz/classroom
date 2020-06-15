@@ -25,12 +25,15 @@
                 :loading="loading"
                 sort-by=""
                 single-expand
-                :expanded.sync="expanded"
-                show-expand
             >
 
-              <!--   <template v-slot:item="{ item }">
-                    <tr>
+                <template v-slot:item="{ item, expand, isExpanded }">
+                    <tr :class="(isExpanded) ? 'green lighten-4 ': ''">
+                        <td class="text-xs-left"> 
+                            <v-btn icon color="grey" @click="expand(!isExpanded)">
+                                <v-icon>{{ (isExpanded) ? 'mdi-arrow-down-drop-circle-outline': 'mdi-arrow-right-drop-circle-outline'}}</v-icon>
+                            </v-btn> 
+                        </td>
                         <td class="text-xs-left">{{ item.nb_horario }}</td>
 						<td class="text-xs-left">{{ item.grupo.nb_grupo }}</td>
 						<td class="text-xs-left">{{ item.hora_academica.nb_hora_academica }}</td>
@@ -49,11 +52,11 @@
                             </list-buttons>
                         </td>
                     </tr>
-                </template> -->
+                </template>
 
-                 <template v-slot:expanded-item="{ headers, item }">
+                <template v-slot:expanded-item="{ headers, item }">
                     <td :colspan="headers.length" class="py-4" >
-                    <carga-horaria :horario="item"></carga-horaria>
+                        <carga-horaria :horario="item"></carga-horaria>
                     </td>
                 </template>
 
@@ -109,11 +112,12 @@ export default {
         title:    'Horario',
         resource: 'horario',
         headers: [
-            { text: 'Codigo',   value: 'nb_horario' },
-			{ text: 'Grupo',   value: 'grupo.nb_grupo' },
-			{ text: 'Hora Academica',   value: 'hora_academica.nb_hora_academica' },
-			{ text: 'Status',   value: 'id_status' },
-            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
+            { text: ' ',              value: 'expand', sortable: false, filterable: false },
+            { text: 'Codigo',         value: 'nb_horario' },
+			{ text: 'Grupo',          value: 'grupo.nb_grupo' },
+			{ text: 'Hora Academica', value: 'hora_academica.nb_hora_academica' },
+			{ text: 'Status',         value: 'id_status' },
+            { text: 'Acciones',       value: 'actions', sortable: false, filterable: false },
         ],
         expanded: []
     }

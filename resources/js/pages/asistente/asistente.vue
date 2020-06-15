@@ -2,19 +2,15 @@
 
     <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)">
 
-        <template slot="HeadTools">
-            <add-button @insItem="insertForm()"></add-button>
-        </template>
-
-        <v-btn color="primary" v-if="steep == 0 "  @click="steep = 1">
+        <v-btn small color="primary" v-if="steep == 0 "  @click="steep = 1" class="mb-1">
             Iniciar
         </v-btn>
 
         <v-stepper v-model="steep" vertical>
 
             <v-stepper-step :complete="steep > 1" step="1" color="green">
-                Colegio
-                <small>Informacion del Colegio</small>
+                Institucion
+                <small>Informacion de la Institucion</small>
             </v-stepper-step>
 
             <v-stepper-content step="1">

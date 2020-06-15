@@ -15,7 +15,7 @@ class AulaController extends Controller
      */
     public function index()
     {
-        $aula = Aula::with(['estructura:id,nb_estructura'])
+        $aula = Aula::with(['estructura:id,nb_estructura,tx_path'])
                     ->get();
         
         return $aula;

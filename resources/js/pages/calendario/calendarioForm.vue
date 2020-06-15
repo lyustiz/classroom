@@ -29,6 +29,54 @@
                 dense
             ></v-text-field>
         </v-col>
+
+         <v-col cols="12" md="6">
+            <v-menu
+                v-model="pickers.fe_inicio"
+                :close-on-content-click="false"
+                min-width="290px"
+            >
+                <template v-slot:activator="{ on }">
+                    <v-text-field
+                        v-model="dates.fe_inicio"
+                        :rules="[rules.fecha]"
+                        label="Fecha Inicio"
+                        prepend-icon="event"
+                        readonly
+                        v-on="on"
+                        dense
+                    ></v-text-field>
+                </template>
+                <v-date-picker 
+                    v-model="form.fe_inicio" 
+                    @input="dates.fe_inicio = formatPicker(form.fe_inicio, 'fe_inicio')">
+                </v-date-picker>
+            </v-menu>
+        </v-col>
+
+        <v-col cols="12" md="6">
+            <v-menu
+                v-model="pickers.fe_fin"
+                :close-on-content-click="false"
+                min-width="290px"
+            >
+                <template v-slot:activator="{ on }">
+                    <v-text-field
+                        v-model="dates.fe_fin"
+                        :rules="[rules.fecha]"
+                        label="Fecha Fin"
+                        prepend-icon="event"
+                        readonly
+                        v-on="on"
+                        dense
+                    ></v-text-field>
+                </template>
+                <v-date-picker 
+                    v-model="form.fe_fin" 
+                    @input="dates.fe_fin = formatPicker(form.fe_fin, 'fe_fin')">
+                </v-date-picker>
+            </v-menu>
+        </v-col>
                   
         <v-col cols="12" md="6">
             <v-text-field
@@ -98,12 +146,14 @@ export default {
             },
             form:
             {
-                id: 	null,
-				nb_calendario: 	null,
-				aa_escolar: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
+                id: 	          null,
+				nb_calendario: 	  null,
+                aa_escolar: 	  null,
+                fe_inicio:        null,
+                fe_fin:           null,
+				tx_observaciones: null,
+				id_status: 	      null,
+				id_usuario: 	  null,
             },
             selects:
             {

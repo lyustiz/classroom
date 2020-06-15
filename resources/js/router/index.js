@@ -233,7 +233,7 @@ export default new Router({
             { 
                 path: 'colegio',
                 name: 'colegio',
-                label: 'Colegio',
+                label: 'Institucion',
                 icon: 'mdi-store',
                 profile: 'secretaria',
                 visible: true,
@@ -562,7 +562,7 @@ export default new Router({
             { 
                 path: 'pariente',
                 name: 'pariente',
-                label: 'Pariente',
+                label: 'Acudiente',
                 icon: 'mdi-human-male-child',
                 profile: 'secretaria',
                 visible: true,

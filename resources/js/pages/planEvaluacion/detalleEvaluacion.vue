@@ -2,22 +2,26 @@
 
 <v-row no-gutters class="pt-2">
 
-    <v-col cols="11" md="6">
-        <v-select
-            :items="selects.tipoEvaluacion"
-            item-text="nb_tipo_evaluacion"
-            item-value="id"
-            v-model="tipoEvaluacion"
-            label="Tipo Evaluacion"
-            :loading="loading"
-            dense
-        ></v-select> 
-    </v-col>
+    <v-col cols="12">
+        <v-form ref="formAdd" v-model="valid" lazy-validation class="d-flex">
 
-    <v-col cols="1" >
-        <v-btn dark fab icon small :loading="loading" color="success" @click="addEvaluacion()" :disabled="disableAdd">
-            <v-icon size="30">mdi-plus-circle</v-icon>
-        </v-btn>
+            <v-select
+                :items="selects.tipoEvaluacion"
+                item-text="nb_tipo_evaluacion"
+                item-value="id"
+                v-model="tipoEvaluacion"
+                label="Tipo Evaluacion"
+                :rules="[rules.select]"
+                :loading="loading"
+                dense
+                class="col-6"
+            ></v-select> 
+
+            <v-btn dark fab x-small :loading="loading" color="green" @click="addEvaluacion()" :disabled=" !valid">
+                <v-icon size="30">mdi-plus</v-icon>
+            </v-btn>
+
+        </v-form>
     </v-col>
 
     <v-col>
@@ -36,6 +40,7 @@
         >
 
                 <template v-slot:item="{ item }">
+                    
                     <tr>
                         <td class="text-xs-left">
                             {{item.tipo_evaluacion.nb_tipo_evaluacion}}
@@ -151,17 +156,13 @@
 
 						<td class="text-xs-left">
 
-                            <v-item-group>
 
-                            <v-badge left color="red" :value=" item.archivo.length > 0 " overlap dot bordered >
-                                <span slot="badge">{{item.archivo.length}}</span> 
+                            <v-badge left color="red" :value=" (item.archivo) ?    item.archivo.length > 0  : 0" overlap dot bordered >
                                 <v-btn fab class="my-1" dark x-small color="cyan lighten-2" @click="addFile(item)" :loading="loading" v-if="item.id">
                                     <v-icon>mdi-paperclip</v-icon>
                                 </v-btn>
                             </v-badge>
 
-                            
-                            
                             <v-btn fab class="my-1" x-small :color="$App.theme.button.delete" @click="deleteEvaluacion(item)" :loading="loading" v-if="item.id">
                                 <v-icon>delete</v-icon>
                             </v-btn>
@@ -174,7 +175,6 @@
                                 <v-icon>mdi-window-close</v-icon>
                             </v-btn>
 
-                            </v-item-group>
 
                         </td>
                      </tr>
@@ -262,11 +262,11 @@ export default {
     {
         return{
             search: null,
-            disableAdd: false,
+            newRowExist: false,
             selects: {
                 tipoEvaluacion: []
             },
-            tipoEvaluacion: [],
+            tipoEvaluacion: null,
             evaluaciones: [],
              headers: [
                 { text: 'Tipo Evaluacion', value: 'tipoEvaluacion' },
@@ -276,10 +276,8 @@ export default {
                 { text: 'Observaciones',   value: 'tx_observaciones' },
                 { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
             ],
-
-            //fileUpload
+            validateForm: false,
             detalleEvaluacionId: null
-
         }
     },
 
@@ -290,7 +288,7 @@ export default {
             this.getResource('detalleEvaluacion/planEvaluacion/' + this.planEvaluacion.id  )
             .then( data =>  this.evaluaciones = data )
 
-            this.disableAdd = false
+            this.newRowExist = false
         },
         
         getTiposEvaluacion()
@@ -300,9 +298,11 @@ export default {
 
         addEvaluacion()
         {
-            if(this.tipoEvaluacion.length < 1) return
+            if( !this.$refs.formAdd.validate() ) return
+            
+            if( this.newRowExist ) return
 
-            if(this.getTotalPeso() > 99) return
+            if( this.getTotalPeso() > 99 ) return
 
             let detalleEvaluacion = {
                 id:                 null,
@@ -317,7 +317,8 @@ export default {
 
             this.evaluaciones.push( detalleEvaluacion );
 
-            this.disableAdd = true
+            this.$refs.formAdd.resetValidation()
+            this.newRowExist = true
             this.tipoEvaluacion = null;
 
         },
@@ -327,6 +328,7 @@ export default {
             const tipoEvaluacion = (id) ? 
                                    this.selects.tipoEvaluacion.filter( evaluacion => evaluacion.id == id) 
                                    : [{nb_tipo_evaluacion: null}];
+
             return tipoEvaluacion[0];
         },
 
@@ -337,13 +339,6 @@ export default {
             this.evaluaciones.forEach(item => {
                 totalPeso += ( item.nu_peso ) ? parseInt(item.nu_peso) : 0
             });
-
-            if(totalPeso > 99)
-            {
-                this.disableAdd = true
-            }else{
-                this.disableAdd = false
-            }
             
             return totalPeso
         },
@@ -363,14 +358,13 @@ export default {
         {
             if(!this.validEvaluacion(evaluacion)) return
 
-            evaluacion.id_usuario = 1,//this.$store.getters.idUser,
+            evaluacion.id_usuario = this.idUser,
 
             this.storeResource('detalleEvaluacion', evaluacion )
             .then( (data) => {
                 this.showMessage(data.msj)
                 this.list();
             })
-
         },
 
         updateEvaluacion(evaluacion)
@@ -383,14 +377,13 @@ export default {
                 return
             }
 
-            evaluacion.id_usuario = 1,//this.$store.getters.idUser,
+            evaluacion.id_usuario = this.idUser,
 
             this.updateResource('detalleEvaluacion/' + evaluacion.id, evaluacion )
             .then( (data) => {
                 this.showMessage(data.msj)
                 this.list();
             })
-
         },
 
         validEvaluacion(evaluacion)
@@ -418,6 +411,7 @@ export default {
         cancelEvaluacion(item)
         {
             this.evaluaciones = this.evaluaciones.filter( evaluacion => evaluacion.id !== null) 
+            this.newRowExist = false
         },
 
         addFile(item)

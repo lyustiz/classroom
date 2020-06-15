@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Pariente extends Model
@@ -33,19 +34,50 @@ class Pariente extends Model
     protected $hidden     = [
                             'created_at',
 	 	 	 	 	 	 	'updated_at'
-                            ];
+							];
 
+	protected $appends    = [
+							'nb_pariente', 
+							'nb_pariente_corto', 
+							'nu_edad'
+							];
+							
+	public function getNbParienteAttribute()
+	{
+		return trim(str_replace( '  ', ' ',  "{$this->nb_apellido} {$this->nb_apellido2} {$this->nb_nombre} {$this->nb_nombre2}")) ;
+	}
 
+	public function getNbParienteCortoAttribute()
+	{
+		$nb_nombre2   = (substr($this->nb_nombre2, 0 , 1) == '') ? null : ucfirst(substr($this->nb_nombre2, 0 , 1)) . '.';
 
-    public function status(){
+		$nb_apellido2 = (substr($this->nb_apellido2, 0 , 1) == '') ? null : ucfirst(substr($this->nb_apellido2, 0 , 1)) . '.';
+		
+		return trim(str_replace( '  ', ' ',  "{$this->nb_apellido} {$nb_apellido2} {$this->nb_nombre} {$nb_nombre2}")) ;
+	}
 
+	public function getNuEdadAttribute()
+	{
+		return Carbon::parse($this->fe_nacimiento)->age;
+	}
+
+	public function status()
+	{
         return $this->BelongsTo('App\Models\Status', 'id_status');
-
     }
                            
-    public function usuario(){
-
+	public function usuario()
+	{
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
-
+	}
+	
+	public function parentesco()
+	{
+        return $this->BelongsTo('App\Models\Parentesco', 'id_parentesco');
+	}
+	
+	public function alumno()
+	{
+        return $this->HasMany('App\Models\Alumno', 'id', 'id_alumno');
     }
 }

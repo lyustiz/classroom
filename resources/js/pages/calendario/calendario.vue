@@ -30,7 +30,8 @@
                     <tr>
                         <td class="text-xs-left">{{ item.nb_calendario }}</td>
 						<td class="text-xs-left">{{ item.aa_escolar }}</td>
-						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
+                        <td class="text-xs-left">{{ item.fe_inicio | formatDate }}</td>
+                        <td class="text-xs-left">{{ item.fe_fin | formatDate }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -91,11 +92,12 @@ export default {
         title:    'Calendario',
         resource: 'calendario',
         headers: [
-            { text: 'Calendario',   value: 'nb_calendario' },
-			{ text: 'Año Escolar',   value: 'aa_escolar' },
-			{ text: 'Observaciones',   value: 'tx_observaciones', sortable: false, filterable: false },
-			{ text: 'Status',   value: 'id_status' },
-            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
+            { text: 'Calendario',  value: 'nb_calendario' },
+            { text: 'Año Escolar', value: 'aa_escolar' },
+            { text: 'Inicio',      value: 'fe_inicio' },
+            { text: 'Fin',         value: 'fe_fin' },
+			{ text: 'Status',      value: 'id_status' },
+            { text: 'Acciones',    value: 'actions', sortable: false, filterable: false },
         ],
     }
     },

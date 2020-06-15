@@ -31,7 +31,9 @@ class CalendarioController extends Controller
     {
         $validate = request()->validate([
             'nb_calendario'     => 	'required|string|max:30',
-			'aa_escolar'        => 	'required|integer',
+            'aa_escolar'        => 	'required|integer',
+            'fe_inicio'         => 	'required|date|before:fe_fin',
+		    'fe_fin'            => 	'required|date',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer',
 			'id_usuario'        => 	'required|integer',
@@ -64,7 +66,9 @@ class CalendarioController extends Controller
     {
         $validate = request()->validate([
             'nb_calendario'     => 	'required|string|max:30',
-			'aa_escolar'        => 	'required|integer',
+            'aa_escolar'        => 	'required|integer',
+            'fe_inicio'         => 	'required|date|before:fe_fin',
+		    'fe_fin'            => 	'required|date',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer',
 			'id_usuario'        => 	'required|integer',
