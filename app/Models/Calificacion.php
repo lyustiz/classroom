@@ -41,19 +41,19 @@ class Calificacion extends Model
 
 	public function grupoCalificacion(){
 
-		return $this->BelongsTo('App\Models\grupoCalificacion', 'id_grupo_calificacion');
+		return $this->BelongsTo('App\Models\GrupoCalificacion', 'id_grupo_calificacion');
 
 	}
 
 	public function tipoCalificacion(){
 
-		return $this->BelongsTo('App\Models\tipoCalificacion', 'id_tipo_calificacion');
+		return $this->BelongsTo('App\Models\TipoCalificacion', 'id_tipo_calificacion');
 
 	}
 
 	public function nivelCalificacion(){
 
-		return $this->BelongsTo('App\Models\nivelCalificacion', 'id_nivel_calificacion');
+		return $this->BelongsTo('App\Models\NivelCalificacion', 'id_nivel_calificacion');
 
 	}
 

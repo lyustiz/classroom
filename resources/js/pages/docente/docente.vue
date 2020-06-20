@@ -71,11 +71,11 @@
 
             </app-modal>
 
-            <v-dialog v-model="addMateriaDialog" max-width="400" >
+            <v-dialog v-model="addMateriaDialog" max-width="400" content-class="rounded-xl">
                 <docente-materia :idDocente="idDocente" v-if="addMateriaDialog"></docente-materia>
             </v-dialog>
 
-            <v-dialog v-model="addGrupoDialog" max-width="400" >
+            <v-dialog v-model="addGrupoDialog" max-width="400" content-class="rounded-xl">
                 <docente-grupo :idDocente="idDocente" v-if="addGrupoDialog"></docente-grupo>
             </v-dialog>
 

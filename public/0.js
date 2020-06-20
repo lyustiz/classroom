@@ -91,6 +91,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -302,7 +303,8 @@ var render = function() {
           search: _vm.search,
           "item-key": "id",
           loading: _vm.loading,
-          "sort-by": ""
+          "sort-by": "",
+          dense: ""
         },
         scopedSlots: _vm._u([
           {
@@ -447,7 +449,7 @@ var render = function() {
     [
       _c(
         "v-card",
-        { attrs: { loading: _vm.loading } },
+        { attrs: { loading: _vm.loading, flat: "" } },
         [
           _c(
             "v-card-text",
@@ -542,7 +544,7 @@ var render = function() {
                 attrs: {
                   action: _vm.action,
                   valid: _vm.valid,
-                  "loading:": _vm.loading
+                  loading: _vm.loading
                 },
                 on: {
                   update: function($event) {
