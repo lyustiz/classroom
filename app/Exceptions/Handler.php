@@ -50,6 +50,23 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+       /*  if($request->expectsJson())
+        {
+            dd($exception);
+
+            $this-handleApiException($request, $exception);
+        } */
+ 
+        return parent::render($request, $exception);
+    }
+
+    public function handleApiException($request, $exception)
+    {
+        if($exception instanceof ModelNotFoundException)
+        {
+            return response()->json(['error' , 'Model Not Found'], 404);
+        }
+        
         return parent::render($request, $exception);
     }
 }

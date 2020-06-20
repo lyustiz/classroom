@@ -4,9 +4,32 @@ export default {
         formatDate(date)
         {
             if (!date) return null
+            date = date.substr(0, 10)
             const [year, month, day] = date.split('-')
             return `${day}/${month}/${year}`
         },
+
+        yearFromDate(date)
+        {
+            if (!date) return null
+            const [year, month, day] = date.split('-')
+            return year
+        },
+
+        hourFromDate(date)
+        {
+            if (!date) return null
+            date = date.substr(-5)
+            return date
+        },
+
+        monthDayFromDate(date)
+        {
+            if (!date) return null
+            const [year, month, day] = date.split('-')
+            return `${day}-${this.months[month-1]}`
+        },
+
         formatTime(time)
         {
             if (!time) return null
@@ -55,6 +78,7 @@ export default {
         }
 
     },
+
     methods:
     {
         formatDate (date)
@@ -64,16 +88,33 @@ export default {
             const [year, month, day] = date.split('-')
             return `${day}/${month}/${year}`
         },
+
+        monthDayFromDate(date)
+        {
+            if (!date) return null
+            const [year, month, day] = date.split('-')
+            return `${day}-${this.months[month-1]}`
+        },
+
+        yearFromDate(date)
+        {
+            if (!date) return null
+            const [year, month, day] = date.split('-')
+            return year
+        },
+
         formatNumber: function (value)
         {
             let val = (value/1).toFixed(2).replace('.', ',')
             return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
         },
+
         capitalize(value)
         {
             return value.charAt(0)
                    .toUpperCase() + value.slice(1)
         },
+        
         capitalizeSentence(value)
         {
             return value.toLowerCase()
@@ -82,5 +123,33 @@ export default {
                    .join(' ');
         },
         
-    }
+    },
+    data() {
+        return {
+            months: [   
+                        'enero', 
+                        'febrero',
+                        'marzo',
+                        'abril',
+                        'mayo',
+                        'junio',
+                        'julio',
+                        'agosto',
+                        'septiembre',
+                        'octubre',
+                        'noviembre',
+                        'diciembre'
+                    ],
+            days:   [   
+                        'lunes', 
+                        'martes',
+                        'miercoles',
+                        'jueves',
+                        'viernes',
+                        'sabado',
+                        'domingo',
+                    ]
+        }
+    },
+
 }

@@ -117,6 +117,8 @@ export default
 
 		store() 
 		{
+            this.extraActions('store')
+            
             if (!this.$refs.form.validate())  return 
 
             this.setDefaults()
@@ -142,6 +144,8 @@ export default
 		
         update() 
 		{
+            this.extraActions('update')
+            
             if (!this.$refs.form.validate())  return 
 
             this.setDefaults()
@@ -209,10 +213,14 @@ export default
             this.form.id_usuario = this.idUser
         },
 
+        extraActions(method)
+        {
+             //acciones extra antes de ejecutar insert/update methods
+        },
+
         preActionForms()
         {
             //funcion para ejecutar al cambiar acciones del formulario
-
         },
 
         postResponse()

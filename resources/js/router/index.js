@@ -31,9 +31,15 @@ import BandejaRepresentante  from '@pages/bandejaRepresentante/dashboard.vue';
 // loading on demand
 import Asistente         from '@pages/asistente/asistente.vue';
 import TipoColegio       from '@pages/tipoColegio/tipoColegio.vue';
-import Jornada           from '@pages/jornada/jornada.vue';
+//import Jornada         from '@pages/jornada/jornada.vue';
 import Calendario        from '@pages/calendario/calendario.vue';
 import Turno             from '@pages/turno/turno.vue';
+import Feriado           from '@pages/feriado/feriado.vue';
+
+
+import TipoAgenda        from '@pages/tipoAgenda/tipoAgenda.vue';
+import TipoActividad     from '@pages/tipoActividad/tipoActividad.vue';
+import Agenda            from '@pages/Agenda/Agenda.vue';
 
 import HoraAcademica     from '@pages/horaAcademica/horaAcademica.vue';
 import CargaHoraria      from '@pages/cargaHoraria/cargaHoraria.vue';
@@ -321,13 +327,41 @@ export default new Router({
                 component: Periodo
             },
             { 
-                path: 'jornada',
-                name: 'jornada',
-                label: 'Jornadas',
-                icon: 'mdi-calendar-clock',
+                path: 'feriado',
+                name: 'feriado',
+                label: 'Feriados ',
+                icon: 'mdi-calendar-star',
                 profile: 'secretaria',
                 visible: true,
-                component: Jornada
+                component: Feriado
+            }, 
+            { 
+                path: 'tipo-agenda',
+                name: 'tipo-agenda',
+                label: 'Tipo Agenda ',
+                icon: 'mdi-clipboard-text-multiple',
+                profile: 'secretaria',
+                visible: true,
+                component: TipoAgenda
+            }, 
+
+            { 
+                path: 'tipo-actividad',
+                name: 'tipo-actividad',
+                label: 'Tipo Actividad ',
+                icon: 'mdi-clipboard-text-multiple',
+                profile: 'secretaria',
+                visible: true,
+                component: TipoActividad
+            }, 
+            { 
+                path: 'agenda',
+                name: 'agenda',
+                label: 'Agenda',
+                icon: 'mdi-clipboard-text',
+                profile: 'secretaria',
+                visible: true,
+                component: Agenda
             },
             { 
                 path: 'turno',

@@ -9,6 +9,7 @@ import AppLayout  from '@store/app/AppLayout';
 
 //data
 import Colegio    from '@store/data/Colegio';
+import Calendario from '@store/data/Calendario';
 
 //auth
 import Auth       from '@store/auth/Auth';
@@ -24,6 +25,7 @@ export default new Vuex.Store({
 
         //data
         Colegio,
+        Calendario,
 
         //Auth
         Auth,

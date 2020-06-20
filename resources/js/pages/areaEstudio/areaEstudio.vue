@@ -91,7 +91,7 @@ export default {
         resource: 'areaEstudio',
         headers: [
             { text: 'Areas Estudio', value: 'nb_area_estudio' },
-            { text: 'Color',         value: 'tx_color' },
+            { text: 'Color',         value: 'tx_color', sortable: false, filterable: false },
 			{ text: 'Status',        value: 'id_status' },
             { text: 'Acciones',      value: 'actions', sortable: false, filterable: false },
         ],

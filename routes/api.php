@@ -157,6 +157,14 @@ Route::apiResource('/menu',                 'MenuController');
 Route::apiResource('/modulo',               'ModuloController');
 Route::apiResource('/menu',                 'MenuController');
 
+Route::apiResource('/feriado',     'FeriadoController');
+Route::apiResource('/tipoFeriado',     'TipoFeriadoController');
+Route::apiResource('/tipoFeriado',     'TipoFeriadoController');
+Route::apiResource('/feriado',     'FeriadoController');
+Route::apiResource('/feriado',     'FeriadoController');
+Route::apiResource('/tipoAgenda',     'TipoAgendaController');
+Route::apiResource('/agenda',     'AgendaController');
+Route::apiResource('/tipoActividad',     'TipoActividadController');
 //newRoutes
 
 });

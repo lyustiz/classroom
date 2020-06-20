@@ -2,7 +2,7 @@
 
 <v-dialog v-model="modal" fullscreen  >
 
-    <v-card >
+    <v-card class="rounded-xl">
 
         <v-toolbar dark flat dense :color="(HeadColor) ? HeadColor : $App.theme.headModal">
 

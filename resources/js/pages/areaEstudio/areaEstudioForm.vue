@@ -2,7 +2,7 @@
 
     <v-form ref="form" v-model="valid" lazy-validation>
 
-    <v-card :loading="loading" >
+    <v-card :loading="loading" flat >
 
         <v-card-text>
 
@@ -36,7 +36,6 @@
                                 dark
                                 x-small
                                 fab 
-                                
                                 class="ma-1"
                                 @click="form.tx_color = color">
                             </v-btn>

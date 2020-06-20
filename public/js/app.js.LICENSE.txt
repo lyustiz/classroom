@@ -1,5 +1,5 @@
 /*!
-  * vue-router v3.1.6
+  * vue-router v3.3.4
   * (c) 2020 Evan You
   * @license MIT
   */
@@ -8,6 +8,12 @@
  * Vue.js v2.6.11
  * (c) 2014-2019 Evan You
  * Released under the MIT License.
+ */
+
+/*!
+ * vuex v3.4.0
+ * (c) 2020 Evan You
+ * @license MIT
  */
 
 /*! ../../../directives/resize */
@@ -27,6 +33,8 @@
 /*! ../../../util/dateTimeUtils */
 
 /*! ../../../util/helpers */
+
+/*! ../../../util/mergeData */
 
 /*! ../../../util/mixins */
 
@@ -96,6 +104,8 @@
 
 /*! ../../mixins/menuable */
 
+/*! ../../mixins/mobile */
+
 /*! ../../mixins/overlayable */
 
 /*! ../../mixins/picker */
@@ -111,6 +121,8 @@
 /*! ../../mixins/returnable */
 
 /*! ../../mixins/rippleable */
+
+/*! ../../mixins/roundable */
 
 /*! ../../mixins/routable */
 
@@ -216,6 +228,8 @@
 
 /*! ../VList */
 
+/*! ../VMain/VMain */
+
 /*! ../VMenu */
 
 /*! ../VMessages */
@@ -266,6 +280,8 @@
 
 /*! ../delayable */
 
+/*! ../framework */
+
 /*! ../modes */
 
 /*! ../positionable */
@@ -283,6 +299,8 @@
 /*! ../toggleable */
 
 /*! ../transitions */
+
+/*! ../util */
 
 /*! ../util/events */
 
@@ -364,6 +382,10 @@
 
 /*! ./VCalendar */
 
+/*! ./VCalendarCategory */
+
+/*! ./VCalendarCategory.sass */
+
 /*! ./VCalendarDaily */
 
 /*! ./VCalendarDaily.sass */
@@ -423,8 +445,6 @@
 /*! ./VContainer */
 
 /*! ./VContent */
-
-/*! ./VContent.sass */
 
 /*! ./VCounter */
 
@@ -555,6 +575,10 @@
 /*! ./VListItemGroup.sass */
 
 /*! ./VListItemIcon */
+
+/*! ./VMain */
+
+/*! ./VMain.sass */
 
 /*! ./VMenu */
 
@@ -738,6 +762,10 @@
 
 /*! ./VTreeviewNode */
 
+/*! ./VVirtualScroll */
+
+/*! ./VVirtualScroll.sass */
+
 /*! ./VVirtualTable */
 
 /*! ./VVirtualTable.sass */
@@ -796,6 +824,8 @@
 
 /*! ./et */
 
+/*! ./eventHelpers */
+
 /*! ./expand-transition */
 
 /*! ./fa */
@@ -803,6 +833,8 @@
 /*! ./fa-svg */
 
 /*! ./fa4 */
+
+/*! ./fi */
 
 /*! ./fr */
 
@@ -892,6 +924,8 @@
 
 /*! ./services */
 
+/*! ./sk */
+
 /*! ./sl */
 
 /*! ./sr-Cyrl */
@@ -960,7 +994,7 @@
 
 /*! exports provided: Mutate, default */
 
-/*! exports provided: PARSE_REGEX, PARSE_TIME, DAYS_IN_MONTH, DAYS_IN_MONTH_LEAP, DAYS_IN_MONTH_MIN, DAYS_IN_MONTH_MAX, MONTH_MAX, MONTH_MIN, DAY_MIN, DAYS_IN_WEEK, MINUTES_IN_HOUR, HOURS_IN_DAY, FIRST_HOUR, OFFSET_YEAR, OFFSET_MONTH, OFFSET_HOUR, OFFSET_TIME, getStartOfWeek, getEndOfWeek, getStartOfMonth, getEndOfMonth, parseTime, validateTimestamp, parseTimestamp, parseDate, getDayIdentifier, getTimeIdentifier, getTimestampIdentifier, updateRelative, updateMinutes, updateWeekday, updateFormatted, getWeekday, daysInMonth, copyTimestamp, padNumber, getDate, getTime, nextMinutes, nextDay, prevDay, relativeDays, diffMinutes, findWeekday, getWeekdaySkips, createDayList, createIntervalList, createNativeLocaleFormatter */
+/*! exports provided: PARSE_REGEX, PARSE_TIME, DAYS_IN_MONTH, DAYS_IN_MONTH_LEAP, DAYS_IN_MONTH_MIN, DAYS_IN_MONTH_MAX, MONTH_MAX, MONTH_MIN, DAY_MIN, DAYS_IN_WEEK, MINUTES_IN_HOUR, MINUTE_MAX, MINUTES_IN_DAY, HOURS_IN_DAY, HOUR_MAX, FIRST_HOUR, OFFSET_YEAR, OFFSET_MONTH, OFFSET_HOUR, OFFSET_TIME, getStartOfWeek, getEndOfWeek, getStartOfMonth, getEndOfMonth, validateTime, parseTime, validateTimestamp, parseTimestamp, parseDate, getDayIdentifier, getTimeIdentifier, getTimestampIdentifier, updateRelative, isTimedless, updateHasTime, updateMinutes, updateWeekday, updateFormatted, getWeekday, daysInMonth, copyTimestamp, padNumber, getDate, getTime, nextMinutes, nextDay, prevDay, relativeDays, diffMinutes, findWeekday, getWeekdaySkips, timestampToDate, createDayList, createIntervalList, createNativeLocaleFormatter */
 
 /*! exports provided: Presets */
 
@@ -982,7 +1016,7 @@
 
 /*! exports provided: VAlert, default */
 
-/*! exports provided: VApp, VAppBar, VAppBarNavIcon, VAlert, VAutocomplete, VAvatar, VBadge, VBanner, VBottomNavigation, VBottomSheet, VBreadcrumbs, VBreadcrumbsItem, VBreadcrumbsDivider, VBtn, VBtnToggle, VCalendar, VCalendarDaily, VCalendarWeekly, VCalendarMonthly, VCard, VCardActions, VCardSubtitle, VCardText, VCardTitle, VCarousel, VCarouselItem, VCheckbox, VSimpleCheckbox, VChip, VChipGroup, VColorPicker, VColorPickerSwatches, VColorPickerCanvas, VContent, VCombobox, VCounter, VData, VDataIterator, VDataFooter, VDataTable, VEditDialog, VTableOverflow, VDataTableHeader, VSimpleTable, VVirtualTable, VDatePicker, VDatePickerTitle, VDatePickerHeader, VDatePickerDateTable, VDatePickerMonthTable, VDatePickerYears, VDialog, VDivider, VExpansionPanels, VExpansionPanel, VExpansionPanelHeader, VExpansionPanelContent, VFileInput, VFooter, VForm, VContainer, VCol, VRow, VSpacer, VLayout, VFlex, VHover, VIcon, VImg, VInput, VItem, VItemGroup, VLabel, VLazy, VListItemActionText, VListItemContent, VListItemTitle, VListItemSubtitle, VList, VListGroup, VListItem, VListItemAction, VListItemAvatar, VListItemIcon, VListItemGroup, VMenu, VMessages, VNavigationDrawer, VOverflowBtn, VOverlay, VPagination, VSheet, VParallax, VPicker, VProgressCircular, VProgressLinear, VRadioGroup, VRadio, VRangeSlider, VRating, VResponsive, VSelect, VSkeletonLoader, VSlider, VSlideGroup, VSlideItem, VSnackbar, VSparkline, VSpeedDial, VStepper, VStepperContent, VStepperStep, VStepperHeader, VStepperItems, VSubheader, VSwitch, VSystemBar, VTabs, VTab, VTabItem, VTabsItems, VTabsSlider, VTextarea, VTextField, VThemeProvider, VTimeline, VTimelineItem, VTimePicker, VTimePickerClock, VTimePickerTitle, VToolbar, VToolbarItems, VToolbarTitle, VTooltip, VTreeview, VTreeviewNode, VWindow, VWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition */
+/*! exports provided: VApp, VAppBar, VAppBarNavIcon, VAlert, VAutocomplete, VAvatar, VBadge, VBanner, VBottomNavigation, VBottomSheet, VBreadcrumbs, VBreadcrumbsItem, VBreadcrumbsDivider, VBtn, VBtnToggle, VCalendar, VCalendarCategory, VCalendarDaily, VCalendarWeekly, VCalendarMonthly, VCard, VCardActions, VCardSubtitle, VCardText, VCardTitle, VCarousel, VCarouselItem, VCheckbox, VSimpleCheckbox, VChip, VChipGroup, VColorPicker, VColorPickerSwatches, VColorPickerCanvas, VContent, VCombobox, VCounter, VData, VDataIterator, VDataFooter, VDataTable, VEditDialog, VTableOverflow, VDataTableHeader, VSimpleTable, VVirtualTable, VDatePicker, VDatePickerTitle, VDatePickerHeader, VDatePickerDateTable, VDatePickerMonthTable, VDatePickerYears, VDialog, VDivider, VExpansionPanels, VExpansionPanel, VExpansionPanelHeader, VExpansionPanelContent, VFileInput, VFooter, VForm, VContainer, VCol, VRow, VSpacer, VLayout, VFlex, VHover, VIcon, VImg, VInput, VItem, VItemGroup, VLabel, VLazy, VListItemActionText, VListItemContent, VListItemTitle, VListItemSubtitle, VList, VListGroup, VListItem, VListItemAction, VListItemAvatar, VListItemIcon, VListItemGroup, VMain, VMenu, VMessages, VNavigationDrawer, VOverflowBtn, VOverlay, VPagination, VSheet, VParallax, VPicker, VProgressCircular, VProgressLinear, VRadioGroup, VRadio, VRangeSlider, VRating, VResponsive, VSelect, VSkeletonLoader, VSlider, VSlideGroup, VSlideItem, VSnackbar, VSparkline, VSpeedDial, VStepper, VStepperContent, VStepperStep, VStepperHeader, VStepperItems, VSubheader, VSwitch, VSystemBar, VTabs, VTab, VTabItem, VTabsItems, VTabsSlider, VTextarea, VTextField, VThemeProvider, VTimeline, VTimelineItem, VTimePicker, VTimePickerClock, VTimePickerTitle, VToolbar, VToolbarItems, VToolbarTitle, VTooltip, VTreeview, VTreeviewNode, VVirtualScroll, VWindow, VWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition */
 
 /*! exports provided: VApp, default */
 
@@ -1006,7 +1040,7 @@
 
 /*! exports provided: VBtnToggle, default */
 
-/*! exports provided: VCalendar, VCalendarDaily, VCalendarWeekly, VCalendarMonthly, default */
+/*! exports provided: VCalendar, VCalendarCategory, VCalendarDaily, VCalendarWeekly, VCalendarMonthly, default */
 
 /*! exports provided: VCard, VCardActions, VCardSubtitle, VCardText, VCardTitle, default */
 
@@ -1065,6 +1099,8 @@
 /*! exports provided: VLazy, default */
 
 /*! exports provided: VListItemActionText, VListItemContent, VListItemTitle, VListItemSubtitle, VList, VListGroup, VListItem, VListItemAction, VListItemAvatar, VListItemIcon, VListItemGroup, default */
+
+/*! exports provided: VMain, default */
 
 /*! exports provided: VMenu, default */
 
@@ -1138,13 +1174,13 @@
 
 /*! exports provided: VTreeviewNodeProps, default */
 
+/*! exports provided: VVirtualScroll, default */
+
 /*! exports provided: VWindow, VWindowItem, default */
 
-/*! exports provided: af, ar, ca, cs, de, el, en, es, et, fa, fr, hr, hu, he, id, it, ja, ko, lv, lt, nl, no, pl, pt, ro, ru, sl, srCyrl, sv, th, tr, uk, zhHans, zhHant */
+/*! exports provided: af, ar, ca, cs, de, el, en, es, et, fa, fi, fr, hr, hu, he, id, it, ja, ko, lv, lt, nl, no, pl, pt, ro, ru, sk, sl, srCyrl, sv, th, tr, uk, zhHans, zhHant */
 
 /*! exports provided: checkCollinear, getDistance, moveTo */
-
-/*! exports provided: colorToInt, intToHex, colorToHex, HSVAtoRGBA, RGBAtoHSVA, HSVAtoHSLA, HSLAtoHSVA, RGBAtoCSS, RGBtoCSS, RGBAtoHex, HexToRGBA, HexToHSVA, HSVAtoHex, parseHex, RGBtoInt, contrastRatio */
 
 /*! exports provided: column */
 
@@ -1152,15 +1188,19 @@
 
 /*! exports provided: convertToComponentDeclarations, default */
 
-/*! exports provided: createNativeLocaleFormatter, monthChange, pad */
+/*! exports provided: createItemTypeListeners, createItemTypeNativeListeners, createNativeLocaleFormatter, monthChange, pad */
 
-/*! exports provided: createSimpleFunctional, directiveConfig, addOnceEventListener, passiveSupported, addPassiveEventListener, getNestedValue, deepEqual, getObjectValueByPath, getPropertyFromItem, createRange, getZIndex, escapeHTML, filterObjectOnKeys, convertToUnit, kebabCase, isObject, keyCodes, remapInternalIcon, keys, camelize, arrayDiff, upperFirst, groupItems, wrapInArray, sortItems, defaultFilter, searchItems, getSlotType, debounce, getPrefixedScopedSlots, getSlot, clamp, padEnd, chunk, humanReadableFileSize, camelizeObjectKeys, mergeDeep */
+/*! exports provided: createItemTypeNativeListeners, createItemTypeListeners */
+
+/*! exports provided: createSimpleFunctional, directiveConfig, addOnceEventListener, passiveSupported, addPassiveEventListener, getNestedValue, deepEqual, getObjectValueByPath, getPropertyFromItem, createRange, getZIndex, escapeHTML, filterObjectOnKeys, convertToUnit, kebabCase, isObject, keyCodes, remapInternalIcon, keys, camelize, arrayDiff, upperFirst, groupItems, wrapInArray, sortItems, defaultFilter, searchItems, getSlotType, debounce, throttle, getPrefixedScopedSlots, getSlot, clamp, padEnd, chunk, humanReadableFileSize, camelizeObjectKeys, mergeDeep, fillArray */
 
 /*! exports provided: createSimpleTransition, createJavascriptTransition */
 
 /*! exports provided: default */
 
 /*! exports provided: default, Goto */
+
+/*! exports provided: default, mergeStyles, mergeClasses, mergeListeners */
 
 /*! exports provided: default, validateNumber, validateWeekdays */
 
@@ -1187,6 +1227,8 @@
 /*! exports provided: inject, provide */
 
 /*! exports provided: install */
+
+/*! exports provided: isCssColor, colorToInt, classToHex, intToHex, colorToHex, HSVAtoRGBA, RGBAtoHSVA, HSVAtoHSLA, HSLAtoHSVA, RGBAtoCSS, RGBtoCSS, RGBAtoHex, HexToRGBA, HexToHSVA, HSVAtoHex, parseHex, parseGradient, RGBtoInt, contrastRatio */
 
 /*! exports provided: linear, easeInQuad, easeOutQuad, easeInOutQuad, easeInCubic, easeOutCubic, easeInOutCubic, easeInQuart, easeOutQuart, easeInOutQuart, easeInQuint, easeOutQuint, easeInOutQuint */
 
@@ -1259,6 +1301,10 @@
   \**************************/
 
 /*!**************************!*\
+  !*** ./src/locale/fi.ts ***!
+  \**************************/
+
+/*!**************************!*\
   !*** ./src/locale/fr.ts ***!
   \**************************/
 
@@ -1320,6 +1366,10 @@
 
 /*!**************************!*\
   !*** ./src/locale/ru.ts ***!
+  \**************************/
+
+/*!**************************!*\
+  !*** ./src/locale/sk.ts ***!
   \**************************/
 
 /*!**************************!*\
@@ -1405,6 +1455,10 @@
 /*!***********************************!*\
   !*** ./src/util/dateTimeUtils.ts ***!
   \***********************************/
+
+/*!************************************!*\
+  !*** ./src/mixins/mobile/index.ts ***!
+  \************************************/
 
 /*!************************************!*\
   !*** ./src/mixins/picker/index.ts ***!
@@ -1571,6 +1625,14 @@
   \***************************************/
 
 /*!***************************************!*\
+  !*** ./src/components/VMain/VMain.ts ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/components/VMain/index.ts ***!
+  \***************************************/
+
+/*!***************************************!*\
   !*** ./src/components/VMenu/VMenu.ts ***!
   \***************************************/
 
@@ -1612,6 +1674,10 @@
 
 /*!***************************************!*\
   !*** ./src/mixins/proxyable/index.ts ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/mixins/roundable/index.ts ***!
   \***************************************/
 
 /*!***************************************!*\
@@ -1780,6 +1846,10 @@
 
 /*!*****************************************!*\
   !*** ./src/components/VList/VList.sass ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/components/VMain/VMain.sass ***!
   \*****************************************/
 
 /*!*****************************************!*\
@@ -2291,10 +2361,6 @@
   \***********************************************/
 
 /*!***********************************************!*\
-  !*** ./src/components/VContent/VContent.sass ***!
-  \***********************************************/
-
-/*!***********************************************!*\
   !*** ./src/components/VCounter/VCounter.sass ***!
   \***********************************************/
 
@@ -2392,6 +2458,10 @@
 
 /*!************************************************!*\
   !*** ./src/components/VThemeProvider/index.ts ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/components/VVirtualScroll/index.ts ***!
   \************************************************/
 
 /*!*************************************************!*\
@@ -2747,6 +2817,10 @@
   \*******************************************************/
 
 /*!*******************************************************!*\
+  !*** ./src/components/VCalendar/VCalendarCategory.ts ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
   !*** ./src/components/VCalendar/VCalendarWeekly.sass ***!
   \*******************************************************/
 
@@ -2815,6 +2889,10 @@
   \*********************************************************/
 
 /*!*********************************************************!*\
+  !*** ./src/components/VCalendar/VCalendarCategory.sass ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
   !*** ./src/components/VColorPicker/VColorPickerEdit.ts ***!
   \*********************************************************/
 
@@ -2827,7 +2905,15 @@
   \*********************************************************/
 
 /*!*********************************************************!*\
+  !*** ./src/components/VDatePicker/util/eventHelpers.ts ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
   !*** ./src/components/VThemeProvider/VThemeProvider.ts ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/components/VVirtualScroll/VVirtualScroll.ts ***!
   \*********************************************************/
 
 /*!*********************************************************!*\
@@ -2888,6 +2974,10 @@
 
 /*!***********************************************************!*\
   !*** ./src/components/VSkeletonLoader/VSkeletonLoader.ts ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./src/components/VVirtualScroll/VVirtualScroll.sass ***!
   \***********************************************************/
 
 /*!************************************************************!*\
@@ -3009,10 +3099,4 @@
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
- */
-
-/**
- * vuex v3.3.0
- * (c) 2020 Evan You
- * @license MIT
  */

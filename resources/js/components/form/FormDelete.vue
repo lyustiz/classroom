@@ -6,10 +6,11 @@
         persistent 
         max-width="500px"
         transition="dialog-transition"
+        content-class="rounded-xl"
         >
-        <v-card>
+        <v-card class="rounded-xl">
 
-            <v-toolbar dark flat dense color="red">
+            <v-toolbar dark flat color="red">
 
                 <v-btn icon x-small dark class="mx-1" @click.native="$emit('deleteCancel')">
                     <v-icon>mdi-close-circle</v-icon>
@@ -23,7 +24,7 @@
 
             <v-card-text class="pt-4">
 
-                <v-alert border="left" colored-border type="warning" elevation="2" :icon="icon">
+                <v-alert flat border="left" colored-border type="warning" :icon="icon">
                     {{ message }}
                 </v-alert>
 

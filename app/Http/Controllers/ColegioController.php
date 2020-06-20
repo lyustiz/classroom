@@ -58,6 +58,8 @@ class ColegioController extends Controller
         
         $colegio->save();
 
+        $colegio->calendario;
+
         return [ 'msj' => 'Colegio Agregado Correctamente', compact('colegio') ];
     }
 

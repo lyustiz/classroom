@@ -19,11 +19,11 @@
 
         
         <!-- Contenido -->
-        <v-content class="fill-height">
+        <v-main class="fill-height">
             <transition name="fade" mode="out-in" >
                 <router-view></router-view>
             </transition>
-        </v-content>
+        </v-main>
 
         <!--Mensaje Sistema-->
         <app-message></app-message>
@@ -54,7 +54,7 @@ export default
     {
         return {
             clipped:     true,
-            menu:        true,
+            menu:        false,
             fixed:       false,
             items:       [],
             miniVariant: true,

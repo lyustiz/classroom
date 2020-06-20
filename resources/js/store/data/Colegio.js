@@ -73,6 +73,7 @@ export default
 				.then(response => 
 				{
 					commit('setColegio', response.data)
+					commit('setCalendario', response.data.calendario)
 					resolve(response)
 				})
 				.catch(error => 
@@ -90,6 +91,7 @@ export default
 				.then(response => 
 				{
 					commit('setColegio', response.data[0].colegio)
+					commit('setCalendario', response.data[0].calendario)
 					resolve(response.data)
 				})
 				.catch(error => 
