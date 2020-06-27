@@ -3,7 +3,7 @@
 
     <v-form ref="form" v-model="valid" lazy-validation>
 
-    <v-card :loading="loading" flat >
+    <v-card :loading="loading" flat class="rounded-xl">
 
         <v-card-text>
 

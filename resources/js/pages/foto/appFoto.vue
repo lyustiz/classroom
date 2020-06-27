@@ -1,8 +1,8 @@
 <template>
             
-        <v-sheet color="grey lighten-5" class="py-1" :width="width+8" :height="height+8" >
+        <v-sheet color="grey lighten-5" class="py-1 rounded" :width="width+8" :height="height+8" >
             
-            <v-avatar  :width="width" :height="height" tile class="ml-1" v-if="images.length < 1">
+            <v-avatar  :width="width" :height="height" tile class="ml-1 rounded" v-if="images.length < 1">
                 <v-file-input 
                     accept="image/*" 
                     :capture="capture" 

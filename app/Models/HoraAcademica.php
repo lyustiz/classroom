@@ -41,4 +41,9 @@ class HoraAcademica extends Model
     {
         return $this->BelongsTo('App\Models\Nivel', 'id_nivel');
     }
+
+    public function horario()
+    {
+        return $this->hasMany('App\Models\Horario', 'id_hora_academica');
+    }
 }

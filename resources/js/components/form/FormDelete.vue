@@ -22,12 +22,11 @@
         
             </v-toolbar>
 
-            <v-card-text class="pt-4">
-
-                <v-alert flat border="left" colored-border type="warning" :icon="icon">
-                    {{ message }}
-                </v-alert>
-
+            <v-card-text class="pt-6">
+                <p class="text-subtitle-1">
+                  <v-icon v-text="icon" color="amber" class="mr-2" size="30"></v-icon>  
+                  {{ message }}
+                </p>
             </v-card-text>
 
             <v-card-actions>
@@ -70,7 +69,7 @@ export default {
         },
         icon: {
             type: String,
-            default: 'warning'
+            default: 'mdi-alert-circle'
         },
 		message: {
             type: String,

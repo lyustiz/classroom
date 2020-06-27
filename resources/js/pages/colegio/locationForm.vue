@@ -6,7 +6,7 @@
 
     <v-col cols="12" md="6">
 
-    <v-card >
+    <v-card class="rounded-xl">
         
         <v-card-title class="orange lighten-2" primary-title>
             <h3 class="white--text">Ubicacion</h3>

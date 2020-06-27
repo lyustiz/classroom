@@ -21,11 +21,15 @@ class AgendaResource extends JsonResource
             'date'        => $this->fe_agenda,
             'start'       => $this->fe_inicio,
             'end'         => $this->fe_fin,
+            'startHour'   => $this->hh_inicio,
+            'endHour'     => $this->hh_fin,
             'color'       => $this->tipoAgenda->tx_color,
             'category'    => $this->tipoAgenda->nb_tipo_agenda,
+            'categoryId'  => $this->id_tipo_agenda,
             'type'        => $this->tipoActividad->nb_tipo_actividad,
+            'typeId'      => $this->id_tipo_actividad,
             'icon'        => $this->tipoActividad->tx_icono,
-            'description' => $this->tx_observaciones,
+            'description' => $this->tx_observaciones
         ];
     }
 }

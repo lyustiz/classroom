@@ -43,12 +43,12 @@
 
         <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn fab dark x-small color="red" @click="$emit('delete', event)">
+            <v-btn fab dark small color="amber" @click="$emit('update', event)">
+                <v-icon>mdi-lead-pencil</v-icon>
+            </v-btn>
+            <v-btn fab dark small color="red" @click="$emit('delete', event)">
                 <v-icon>mdi-delete</v-icon>
             </v-btn>
-           <!--  <v-btn fab dark x-small color="amber">
-                <v-icon>mdi-lead-pencil</v-icon>
-            </v-btn> -->
         </v-card-actions>
             
     </v-card>

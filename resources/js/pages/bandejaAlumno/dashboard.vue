@@ -1,84 +1,40 @@
 <template>
-<div v-cloak class="welcome-holder">
-
     <!-- Contenido -->
     <v-container fluid>
 
         <v-row>
 
-            <v-col cols="8">
+            <v-col cols="8" >
 
-                <v-row>
-                    <v-col cols="12">
-                    <v-calendar
-                    type="week" 
-                    :weekdays="[1,2,3,4,5]"
-                    :interval-count="8"
-                    :first-interval="14"
-                    :interval-format="intervalFormat"
-                    :events="events"
-                    interval-minutes="30"
-                    interval-width="65"
-                    :today="today"
-                    ></v-calendar>
+                <v-row no-gutters >
+                    <v-col cols="12" >
+                        <app-agenda-alumno :events="events"></app-agenda-alumno>
                     </v-col>
                </v-row>
                
-               <v-row no-gutters>
-                   <v-col>
-                <v-list three-line>
-                        <v-subheader> Comentarios</v-subheader>
-
-                        <v-list-item>
-
-                            <v-list-item-avatar>
-                                <v-icon size="38">mdi-account-circle</v-icon>
-                            </v-list-item-avatar>
-
-                            <v-list-item-content>
-                                <v-list-item-title>Jose Pedroza</v-list-item-title>
-                                <v-list-item-subtitle >Existe la posibilidad de cambiar la fecha del examen</v-list-item-subtitle>
-                            </v-list-item-content>
-                        </v-list-item>
-
-                        <v-list-item>
-
-                            <v-list-item-avatar>
-                                <v-icon size="38">mdi-account-circle</v-icon>
-                            </v-list-item-avatar>
-
-                            <v-list-item-content>
-                                <v-list-item-title>Luis Yustiz</v-list-item-title>
-                                <v-list-item-subtitle >Tengo dudas con la formula de despeje</v-list-item-subtitle>
-                            </v-list-item-content>
-                        </v-list-item>
-
-                    </v-list>
-                    </v-col>
-                </v-row>
-
             </v-col>
+
             <v-col cols="4">
-                <v-card>
-                    <v-card-title >
-                            Actividades 
-                    </v-card-title>
+
+                <app-eventos :events="events"></app-eventos>
+
+                <v-card class="mt-3 rounded-xl">
+
+                    <v-toolbar color="indigo" flat dark>
+                        Secciones
+                    </v-toolbar>
+     
                     <v-card-text>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. At a ipsa, quod recusandae consectetur tenetur modi deserunt ab animi nesciunt sit libero odit quasi eos veniam reiciendis nulla. Suscipit, odio.
-                    </v-card-text>
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn fab small color="success">
-                            <v-icon>mdi-save</v-icon>
-                        </v-btn>
-                    </v-card-actions>
-                </v-card>
-                <v-card class="mt-5">
-                    <v-card-title >
-                            Tareas 
-                    </v-card-title>
-                    <v-card-text>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. At a ipsa, quod recusandae consectetur tenetur modi deserunt ab animi nesciunt sit libero odit quasi eos veniam reiciendis nulla. Suscipit, odio.
+
+                        <v-tooltip top v-for="section in sections" :key="section.name" color="info">
+                            <template v-slot:activator="{ on }">
+                                <v-btn v-on="on" fab dark depressed :color="section.color" @click="showSection(section.component)" class="ml-1">
+                                    <v-icon size="32" v-text="section.icon"></v-icon>
+                                </v-btn>
+                            </template>
+                            <span v-text="section.label"></span>
+                        </v-tooltip>
+
                     </v-card-text>
     
                 </v-card>
@@ -88,46 +44,69 @@
             
     </v-container>
 
-</div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
 
 import AppData from '@mixins/AppData';
-import AppMessage from '@mixins/AppMessage';
+import AppAgendaAlumno from './AppAgendaAlumno'
+import AppEventos from './AppEventos'
+
 
 export default {
-    mixins: [AppMessage],
+
+    mixins: [AppData],
+
     components: 
     { 
-
+        'app-agenda-alumno': AppAgendaAlumno,
+        'app-eventos': AppEventos
     },
+
+    created()
+    {
+        this.list()
+    },
+
     computed: 
     { 
     
     },
+
     data () 
 	{
         return {
-            today: '2020-05-04',
-            events: [
-                {
-                name:   'Matematica',
-                start:  '2020-05-04 07:00',
-                end:    '2020-05-04 08:00',
-                },
-                {
-                name:   'Castellano',
-                start:  '2020-05-04 08:00',
-                end:    '2020-05-04 09:00',
-                },
-            ],
+            events: [],
+            sections: [
+                { label: 'Tareas', icon: 'mdi-notebook', component: 'tareas-alumno', color: 'red' },
+                { label: 'Recursos', icon: 'mdi-book-open-page-variant', component: 'recursos-alumno', color: 'purple' },
+                { label: 'Evaluaciones', icon: 'mdi-order-bool-descending-variant', component: 'evaluacion-alumno', color: 'blue' },
+                { label: 'Materias', icon: 'mdi-bookshelf', component: 'materias-alumno', color: 'amber' },
+                { label: 'Aula Virtual', icon: 'mdi-google-classroom', component: 'materias-alumno', color: 'green' },
+            ]
         }
     },
+
     methods: {
-        intervalFormat(interval) {
+        
+        list()
+        {
+            this.getResource( 'agenda' ).then( (data) => 
+            { 
+                this.events = data.data
+            })
+            
+        },
+        
+        intervalFormat(interval) 
+        {
             return interval.time
+        },
+
+        showSection(conponent)
+        {
+            this.dialog = true
         }
     }
     

@@ -8,9 +8,16 @@
     >
         {{ txtMsj }}
         {{ subTxtMsj }}
-        <v-btn text  @click.native="closeMsj()">
-          <v-icon>close</v-icon>
+        <template v-slot:action="{ attrs }">
+        <v-btn
+            dark
+            text
+            v-bind="attrs"
+          @click.native="closeMsj()"
+        >
+         <v-icon>close</v-icon>
         </v-btn>
+      </template>
     </v-snackbar>
 </template>
 

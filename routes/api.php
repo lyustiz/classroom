@@ -49,6 +49,7 @@ Route::apiResource('/tipoColegio',          'TipoColegioController');
 Route::apiResource('/calendario',           'CalendarioController');
 Route::apiResource('/turno',                'TurnoController');
 Route::apiResource('/jornada',              'JornadaController');
+Route::apiResource('/tipoContacto',         'TipoContactoController');
 Route::apiResource('/tipoDirectiva',        'TipoDirectivaController');
 Route::apiResource('/tipoPago',             'TipoPagoController');
 Route::apiResource('/telefono',             'TelefonoController');
@@ -118,25 +119,33 @@ Route::apiResource('/grupoCalificacion',    'GrupoCalificacionController');
 
 // -- HORARIO -- //
 Route::apiResource('/horaAcademica',        'HoraAcademicaController');
-Route::get('/cargaHoraria/horaAcademica/{idHoraAcademica}',  'CargaHorariaController@horaAcademica');
+Route::get('/cargaHoraria/horario/{horario}',         'CargaHorariaController@cargaHorariaHorario');
 Route::apiResource('/cargaHoraria',         'CargaHorariaController', ['parameters' => ['cargaHoraria' => 'cargaHoraria']]);
-Route::apiResource('/actividadCargaHoraria','ActividadCargaHorariaController');
-Route::apiResource('/actividad',            'ActividadController');
+Route::get('/detalleHorario/horario/{horario}',       'detalleHorarioController@detalleByHorarioId');
+Route::apiResource('/detalleHorario',       'detalleHorarioController');
+Route::get('/horario/grupo/{grupo}',        'HorarioController@horarioGrupo');
 Route::apiResource('/horario',              'HorarioController');
 
 // -- PLAN EVALUACION -- //
 Route::apiResource('/tipoEvaluacion',       'TipoEvaluacionController');
 Route::apiResource('/planEvaluacion',       'PlanEvaluacionController');
-Route::get('/detalleEvaluacion/planEvaluacion/{idPlanEvaluacion}',  'DetalleEvaluacionController@detallePlanEvaluacion');
+Route::get('/detalleEvaluacion/planEvaluacion/{planEvaluacion}',  'DetalleEvaluacionController@detallePlanEvaluacion');
 Route::get('/planEvaluacion/grupo/{grupo}/periodo/{periodo}', 'PlanEvaluacionController@planEvaluacionGrupoPeriodo');
 Route::apiResource('/detalleEvaluacion',    'DetalleEvaluacionController');
 
+// -- AGENDA -- //
+Route::apiResource('/tipoFeriado',          'TipoFeriadoController');
+Route::apiResource('/feriado',              'FeriadoController');
+Route::apiResource('/tipoAgenda',           'TipoAgendaController');
+Route::apiResource('/agenda',               'AgendaController');
+Route::apiResource('/tipoActividad',        'TipoActividadController');
+
 // -- FOTOS / ARCHIVOS -- //
-Route::get('/foto/tipoFoto/{idTipoFoto}/origen/{origenId}',          'FotoController@fotoTipoOrigen');
+Route::get('/foto/tipoFoto/{tipoFoto}/origen/{origenId}',          'FotoController@fotoTipoOrigen');
 Route::apiResource('/foto',                 'FotoController');
 Route::apiResource('/tipoFoto',             'TipoFotoController');
 
-Route::get('/archivo/tipoArchivo/{idTipoArchivo}/origen/{origenId}', 'ArchivoController@archivoTipoOrigen');
+Route::get('/archivo/tipoArchivo/{tipoArchivo}/origen/{origenId}', 'ArchivoController@archivoTipoOrigen');
 Route::apiResource('/archivo',              'ArchivoController');
 Route::apiResource('/tipoArchivo',          'TipoArchivoController');
 
@@ -146,8 +155,6 @@ Route::apiResource('/configuracion',        'ConfiguracionController');
 // -- GESTION USUARIO -- //
 Route::apiResource('/tipoUsuario',          'TipoUsuarioController');
 Route::apiResource('/usuario',              'UsuarioController');
-
-Route::apiResource('/tipoContacto',         'TipoContactoController');
 Route::apiResource('/menu',                 'MenuController');
 Route::apiResource('/perfil',               'PerfilController');
 Route::apiResource('/permiso',              'PermisoController');
@@ -157,14 +164,8 @@ Route::apiResource('/menu',                 'MenuController');
 Route::apiResource('/modulo',               'ModuloController');
 Route::apiResource('/menu',                 'MenuController');
 
-Route::apiResource('/feriado',     'FeriadoController');
-Route::apiResource('/tipoFeriado',     'TipoFeriadoController');
-Route::apiResource('/tipoFeriado',     'TipoFeriadoController');
-Route::apiResource('/feriado',     'FeriadoController');
-Route::apiResource('/feriado',     'FeriadoController');
-Route::apiResource('/tipoAgenda',     'TipoAgendaController');
-Route::apiResource('/agenda',     'AgendaController');
-Route::apiResource('/tipoActividad',     'TipoActividadController');
+
+
 //newRoutes
 
 });

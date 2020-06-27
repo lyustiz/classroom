@@ -53,6 +53,7 @@ export default
         action (value)
         {
             this.setDataForm(value)
+
             this.preActionForms()
         },
         
@@ -77,7 +78,6 @@ export default
         {
             if(this.item)
             {
-                
                 for(var key in this.item)
                 {
                     if(this.form.hasOwnProperty(key))
@@ -93,26 +93,22 @@ export default
 							this.form[key]  =  this.item[key];
 						}
                     }
-
                 }
-            }else
-            {
+            }else {
+                
                this.reset()
             }
-            
         },
         
         setDataForm(action)
         {
-            if(this.action == 'upd')
-            {
-                this.mapForm()
-            }
-            else if(this.action == 'ins')
-            {
-                this.reset()
-                this.setDefaultForm()
-            }
+            if(this.action == 'upd') this.mapForm()
+         
+            if(this.action == 'ins') this.reset()
+
+            if(!this.action) this.reset()
+     
+            if(action) this.setDefaultForm()
         },
 
 		store() 
@@ -124,6 +120,7 @@ export default
             this.setDefaults()
 			
             this.loading = true;
+
             this.form.id_usuario = this.idUser 
 				
             axios.post(this.fullUrl, this.form)
@@ -138,6 +135,7 @@ export default
             .finally( () =>
             {
                 this.loading = false;
+
                 this.postResponse()
             });
         },
@@ -151,6 +149,7 @@ export default
             this.setDefaults()
 
             this.loading = true;
+
             this.form.id_usuario = this.idUser
             
             axios.put(this.fullUrlId, this.form)
@@ -165,6 +164,7 @@ export default
             .finally( () =>
             {
                 this.loading = false
+
                 this.postResponse()
             }); 
         },
@@ -179,7 +179,7 @@ export default
             {
                 for(var key in this.form)
                 {
-                    this.form[key] = null;
+                    this.form[key]  = null;
                 }
 
                 for(var key in this.dates)
@@ -193,13 +193,13 @@ export default
                 }
             }
             this.form.id_usuario = this.idUser
-            //this.setDefaultForm()
             
         },
 		
         cancel()
         {
             this.$emit('closeModal');
+
             this.reset();
         },
 
@@ -232,13 +232,14 @@ export default
         {
             for(var key in this.defaultForm)
             {
-                this.form[key]  =  this.defaultForm[key];
+                this.form[key]  = (this.form[key]) ? this.form[key] : this.defaultForm[key];
             }
         },
 
         formatPicker(date, picker)
         {
             this.pickers[picker] = false;
+
             return this.formatDate(date)
         },
     }

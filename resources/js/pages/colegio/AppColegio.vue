@@ -32,8 +32,6 @@ import InfoForm     from '@pages/colegio/infoForm'
 import LocationForm from '@pages/colegio/locationForm'
 import Directiva    from '@pages/directiva/directiva'
 import Contacto     from '@pages/colegio/contactoForm'
-import Estructura   from '@pages/estructura/estructura'
-import Aula         from '@pages/aula/aula'
 
 export default {
     components: {
@@ -41,8 +39,6 @@ export default {
         'location-form'  : LocationForm,
         'app-directiva'  : Directiva,
         'app-contacto'   : Contacto,
-        'app-estructura' : Estructura,
-        'app-aula'       : Aula
     },
     computed:
     {
@@ -74,16 +70,6 @@ export default {
                     label: 'Directiva',
                     icon: 'mdi-account-group',
                     component: 'app-directiva'
-                },
-                {
-                    label: 'Estructura',
-                    icon: 'mdi-floor-plan',
-                    component: 'app-estructura'
-                },
-                {
-                    label: 'Aulas',
-                    icon: 'mdi-chair-school',
-                    component: 'app-aula'
                 },
 
             ],

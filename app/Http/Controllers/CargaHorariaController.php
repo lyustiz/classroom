@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CargaHoraria;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 use App\Http\Controllers\Controller;
 
 class CargaHorariaController extends Controller
@@ -22,20 +23,30 @@ class CargaHorariaController extends Controller
     }
 
 
-    public function horaAcademica($idHoraAcademica)
+    public function cargaHorariaHorario($idHorario)
     {
-        $cargaHoraria = CargaHoraria::with(['turno:id,nb_turno', 
-                                            'horaAcademica:id,nb_hora_academica', 
-                                            'actividad:actividad.id,actividad.id_carga_horaria,nu_carga_horaria,id_dia_semana,id_horario,id_materia,id_docente,id_aula',
-                                            'actividad.horario:id,nb_horario',
-                                            'actividad.materia:id,nb_materia,id_area_estudio',
-                                            'actividad.materia.areaEstudio:id,tx_color',
-                                            'actividad.docente:id,nb_nombre,nb_apellido',
-                                            'actividad.aula:id,nb_aula'
-                                            ])
-                    ->where('id_hora_academica', $idHoraAcademica)
-                    ->get();
-        
+        $cargaHoraria = CargaHoraria::with([
+                                        'detalleHorario'=> function($query) use ( $idHorario ){
+                                            $query->select( 
+                                                            'id',
+                                                            'id_carga_horaria',
+                                                            'nu_carga_horaria',
+                                                            'id_dia_semana',
+                                                            'id_horario',
+                                                            'id_materia',
+                                                            'id_docente',
+                                                            'id_aula'
+                                                           )
+                                                  ->where('id_horario' , $idHorario);
+                                        },
+                                        'detalleHorario.materia:id,nb_materia,id_area_estudio',
+                                        'detalleHorario.materia.areaEstudio:id,tx_color',
+                                        'detalleHorario.docente:id,nb_nombre,nb_apellido',
+                                        'detalleHorario.aula:id,nb_aula'
+                                    ])
+                                    ->orderBy('carga_horaria.nu_orden')
+                                    ->get();
+
         return $cargaHoraria;
     }
 

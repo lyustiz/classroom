@@ -1,18 +1,17 @@
 <template>
 <div class="text-center">
-    <v-dialog v-model="showDialog" width="365">
+    <v-dialog v-model="showDialog" width="365" content-class="rounded-xl">
     <template v-slot:activator="{ on }">
         <v-btn icon v-on="on">
             <v-icon >account_circle</v-icon>
         </v-btn>
     </template>
 
-    <v-card :loading="loading">
+    <v-card :loading="loading" class="rounded-xl">
         <v-card-title
             class="indigo white--text"
-            primary-title
         >
-            {{user.nb_nombre}}
+            Usuario
             <v-spacer></v-spacer>
                 <v-btn icon x-small  dark @click="showDialog = false"><v-icon>mdi-close-circle</v-icon></v-btn> 
         </v-card-title>

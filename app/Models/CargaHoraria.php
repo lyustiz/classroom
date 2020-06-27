@@ -56,11 +56,17 @@ class CargaHoraria extends Model
         return $this->belongsToMany('App\Models\Actividad', 'actividad_carga_horaria', 'id_carga_horaria', 'id_actividad');
 
     }
- */
+ 
 
     public function actividad(){
 
         return $this->HasMany('App\Models\Actividad', 'id_carga_horaria' );
+
+    }*/
+
+    public function detalleHorario(){
+
+        return $this->HasMany('App\Models\DetalleHorario', 'id_carga_horaria' );
 
     }
 }

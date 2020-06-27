@@ -78,8 +78,6 @@
                 @deleteCancel="deleteCancel()"
             ></form-delete>
 
-            <app-message></app-message>
-
             <pre v-if="$App.debug">{{ $data }}</pre>
 
     </list-container>

@@ -44,8 +44,8 @@ class Horario extends Model
         return $this->BelongsTo('App\Models\Grupo', 'id_grupo');
     }
 
-    public function actividad()
+    public function detalleHorario()
     {
-        return $this->HasMany('App\Models\Actividad', 'id_horario');
+        return $this->HasMany('App\Models\DetalleHorario', 'id_horario');
     }
 }

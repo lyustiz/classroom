@@ -2,56 +2,92 @@
   <div >
       <v-toolbar color="grey lighten-3"  flat class="mt-2 mx-2" rounded> 
             
-            <v-toolbar-title class="mr-3">
-                {{ title }}
-            </v-toolbar-title>
-
             <v-row>
-                <v-col cols="4" md="2">
-                    <v-btn fab x-small text color="grey darken-2"  @click="prev($event)">
-                        <v-icon>mdi-chevron-left</v-icon>
-                    </v-btn>
-                        
-                    <v-btn fab x-small text color="grey darken-2"  @click="next($event)" >
-                        <v-icon>mdi-chevron-right</v-icon>
-                    </v-btn>
+                <v-col>
+
+                    <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                        <v-btn fab x-small color="grey lighten-5" v-on="on" @click="prev($event)" depressed>
+                            <v-icon>mdi-chevron-left</v-icon>
+                        </v-btn>
+                    </template>
+                    <span>Anterior</span>
+                    </v-tooltip>
+
+                    <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                        <v-btn fab x-small color="grey lighten-5" v-on="on" @click="next($event)" depressed>
+                            <v-icon>mdi-chevron-right</v-icon>
+                        </v-btn>
+                    </template>
+                    <span>Siguiente</span>
+                    </v-tooltip>
+
+                </v-col>
+
+                <v-spacer></v-spacer>
+
+                <v-col>
+                    <v-toolbar-title>
+                        {{ title }}
+                    </v-toolbar-title>
                 </v-col>
   
                 <v-spacer></v-spacer>
 
                 <v-col class="flex-grow-0">
-                    <v-btn-toggle v-model="type" mandatory dense rounded >
-                        <v-btn value="month">
-                            <v-icon>mdi-calendar-month</v-icon>
-                        </v-btn>
-                        
-                        <v-btn value="week">
-                            <v-icon>mdi-calendar-week</v-icon>
-                        </v-btn>
-
-                        <v-btn value="day">
-                            <v-icon>mdi-view-day</v-icon>
-                        </v-btn>
-                    </v-btn-toggle>
-                </v-col>
-
-
-                <v-col class="flex-grow-0">
-                    <v-btn-toggle v-model="weekend" dense rounded>
-                        <v-btn value="1">
-                            <v-icon>mdi-calendar-weekend</v-icon>
-                        </v-btn>
-                    </v-btn-toggle>
-
+                    <v-tooltip bottom>
+                        <template v-slot:activator="{ on }">
+                            <v-btn depressed value="1" @click="setToday()" v-on="on" rounded>
+                                <v-icon color="grey darken-2">mdi-calendar-today</v-icon>
+                            </v-btn>
+                        </template>
+                        <span>Hoy</span>
+                    </v-tooltip>
                 </v-col>
 
                 <v-col class="flex-grow-0">
+                    <v-btn-toggle v-model="type" mandatory dense rounded borderless>
 
-                    <v-btn-toggle  dense rounded>
-                        <v-btn value="1" @click="setToday()">
-                            <v-icon>mdi-calendar-today</v-icon>
-                        </v-btn>
+                        <v-tooltip bottom>
+                            <template v-slot:activator="{ on }">
+                                <v-btn value="month" v-on="on">
+                                    <v-icon>mdi-calendar-month</v-icon>
+                                </v-btn>
+                            </template>
+                            <span>Ver Mes</span>
+                        </v-tooltip>
+
+                        <v-tooltip bottom>
+                            <template v-slot:activator="{ on }">
+                                <v-btn value="week" v-on="on">
+                                    <v-icon>mdi-calendar-week</v-icon>
+                                </v-btn>
+                            </template>
+                            <span>Ver Semana</span>
+                        </v-tooltip>
+
+                        <v-tooltip bottom>
+                            <template v-slot:activator="{ on }">
+                                <v-btn value="day" v-on="on">
+                                    <v-icon>mdi-view-day</v-icon>
+                                </v-btn>
+                            </template>
+                            <span>Ver Dia</span>
+                        </v-tooltip>
+     
                     </v-btn-toggle>
+                </v-col>
+
+                <v-col class="flex-grow-0">
+                    <v-tooltip bottom>
+                        <template v-slot:activator="{ on }">
+                            <v-btn depressed v-on="on" @click="weekend =! weekend" rounded :color="(weekend) ? 'grey lighten-1' : 'grey lighten-4'">
+                                <v-icon color="grey darken-2">mdi-calendar-weekend</v-icon>
+                            </v-btn>
+                        </template>
+                        <span>Fines de Semana</span>
+                    </v-tooltip>
                 </v-col>
 
             </v-row>
@@ -87,24 +123,17 @@
 
         <v-dialog v-model="dialogShow" max-width="500px" content-class="rounded-xl" >
             <agenda-evento 
+                v-if="dialogShow"
                 :event="event" 
                 @closeModal="closeModal('showEvento')" 
                 @refresh="list()" 
-                @delete="deleteForm"
+                @delete="deleteForm($event)"
+                @update="updateForm($event)"
             ></agenda-evento>
         </v-dialog>
 
-       <!--  <v-dialog v-model="dialogAdd" max-width="500px" content-class="rounded-xl" >
-           <agenda-form 
-                :date="date" 
-                :action="action"
-                :item="item"
-                @closeModal="closeModal()"
-            ></agenda-form>
-        </v-dialog>
-        -->
         <app-modal
-            :modal="dialogAdd"
+            :modal="dialogForm"
             @closeModal="closeModal('addEvento')"
             :head-color="$App.theme.headModal"
             :title="title"
@@ -138,7 +167,7 @@ import AppAgendaEvento  from './AppAgendaEvento'
 export default {
 
     components: {   
-                'agenda-form':      AppAgendaForm,
+                'agenda-form':   AppAgendaForm,
                 'agenda-evento': AppAgendaEvento,
                 },
 
@@ -185,7 +214,7 @@ export default {
                 events:     [],
                 event:      {},
                 date:       {},
-                dialogAdd:  false,
+                dialogForm:  false,
                 dialogShow: false,
                 dialogDel: false,
                 action:     null
@@ -229,7 +258,7 @@ export default {
 
         addEvent ( date) {
             this.date      = date
-            this.dialogAdd = true
+            this.dialogForm = true
             this.action = 'ins'
         },
 
@@ -247,7 +276,7 @@ export default {
                     this.dialogShow = false
                     break;
                 case 'addEvento':
-                    this.dialogAdd  = false
+                    this.dialogForm  = false
                     this.action = null
                     this.event = null
                     this.list()
@@ -260,7 +289,6 @@ export default {
 
         deleteForm (item)
         {
-            console.log(item)
             this.dialogShow = false;
             this.dialogDel  = true;
             this.item       = item;
@@ -268,7 +296,6 @@ export default {
 
         eventDelete()
         {
-            console.log('delete')
             this.deleteResource('agenda/' + this.event.id )
             .then( (data) => {
                 this.showMessage(data.msj)
@@ -276,7 +303,14 @@ export default {
                 this.dialogDel  = false;
                 this.list();
             })
+        },
 
+        updateForm(event)
+        {
+            this.dialogShow = false;
+            this.date       = { date: event.date }
+            this.action     = 'upd'
+            this.dialogForm = true;
         }
     }
 }
@@ -284,6 +318,6 @@ export default {
 
 <style>
 .agenda-container{
-    height: 78vh;
+    height: 79vh !important;
 }
 </style>

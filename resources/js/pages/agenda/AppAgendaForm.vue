@@ -4,17 +4,9 @@
 
     <v-card :loading="loading" flat>
 
-        <!-- <v-toolbar color="indigo" dark flat>
-            <div class="col-11">
-                Cargar Evento
-            </div>
-            <v-btn icon x-small  dark @click="$emit('closeModal')"><v-icon>mdi-close-circle</v-icon></v-btn>
-        </v-toolbar> -->
-
         <v-card-text>
 
         <v-row>
-
                  
         <v-col cols="12" >
             <v-text-field
@@ -26,7 +18,7 @@
             ></v-text-field>
         </v-col>
                           
-                  
+
         <v-col cols="12" md="6">
             <v-select
             :items="selects.tipoAgenda"
@@ -45,7 +37,7 @@
             </v-select>
         </v-col>
 
-          <v-col cols="12" md="6">
+        <v-col cols="12" md="6">
             <v-select
             :items="selects.tipoActividad"
             item-text="nb_tipo_actividad"
@@ -87,7 +79,7 @@
             </v-menu>
         </v-col>
         
-         <v-col cols="12" md="4">
+        <v-col cols="12" md="4">
             <v-menu
                 ref="pickers1"
                 v-model="pickers.hh_inicio"
@@ -225,17 +217,18 @@ export default {
             },
             form:
             {
-                id: 	          null,
-				nb_agenda: 	      null,
-				id_calendario: 	  null,
-				id_tipo_agenda:   null,
-				fe_agenda: 	      null,
-				hh_inicio: 	      null,
-				hh_fin: 	      null,
-				id_origen: 	      null,
-				tx_observaciones: null,
-				id_status: 	      null,
-				id_usuario: 	  null,
+                id: 	           null,
+				nb_agenda: 	       null,
+				id_calendario: 	   null,
+                id_tipo_agenda:    null,
+                id_tipo_actividad: null,
+				fe_agenda: 	       null,
+				hh_inicio: 	       null,
+				hh_fin: 	       null,
+				id_origen: 	       null,
+				tx_observaciones:  null,
+				id_status: 	       null,
+				id_usuario: 	   null,
             },
             selects:
             {
@@ -253,14 +246,26 @@ export default {
 
     methods:
     {
-        extraActions(method)
+        setDefaultForm()
         {
             this.form.id_calendario = this.calendario.id
+            
+            this.form.fe_agenda     = this.date.date
+
+            this.dates.fe_agenda    = this.formatDate(this.date.date)
         },
 
         mapForm()
         {
-           console.log( this.item)
+            this.form.id                = this.item.id,
+			this.form.nb_agenda         = this.item.name,
+            this.form.id_tipo_agenda    = this.item.categoryId,
+            this.form.id_tipo_actividad = this.item.typeId,
+            this.form.hh_inicio         = this.item.startHour.substr(0, 5),
+			this.form.hh_fin            = this.item.endHour.substr(0, 5),
+			this.dates.hh_inicio        = this.formatTime(this.item.startHour),
+			this.dates.hh_fin           = this.formatTime(this.item.endHour),
+			this.form.tx_observaciones  = this.item.description
         }
     }
 }

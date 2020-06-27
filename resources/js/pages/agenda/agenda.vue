@@ -81,8 +81,6 @@
                 @deleteCancel="deleteCancel()"
             ></form-delete>
 
-            <app-message></app-message>
-
             <pre v-if="$App.debug">{{ $data }}</pre>
 
     </list-container> -->
@@ -134,7 +132,5 @@ export default {
 </script>
 
 <style>
-.agenda-container{
-    max-height: 600px;
-}
+
 </style>

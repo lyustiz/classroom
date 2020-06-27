@@ -103,6 +103,37 @@ export default {
             return year
         },
 
+        formatTime(time)
+        {
+            if (!time) return null
+
+            let  hour, minutes, second, ampm
+
+            if(time.length <= 5 )
+            {
+                [hour, minutes] = time.split(':')
+
+            } else
+            {
+                [hour, minutes, second] = time.split(':')
+
+                if (minutes.length > 2)
+                {
+                    [minutes, ampm] = second.split(' ')
+                }
+            }
+            
+            hour = parseInt(hour);
+
+            ampm = (hour > 12) ? 'pm' : 'am'
+
+            hour = (hour > 12) ?  (hour - 12) : hour
+
+            hour = (hour < 10 )  ? '0' + hour : hour
+
+            return `${hour}:${minutes} ${ampm}`
+        }, 
+
         formatNumber: function (value)
         {
             let val = (value/1).toFixed(2).replace('.', ',')

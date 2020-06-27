@@ -1,5 +1,4 @@
 <template>
-
     
     <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)">
 
@@ -30,8 +29,8 @@
                 <template v-slot:item="{ item, expand, isExpanded }">
                     <tr :class="(isExpanded) ? 'green lighten-4 ': ''">
                         <td class="text-xs-left"> 
-                            <v-btn icon color="grey" @click="expand(!isExpanded)">
-                                <v-icon>{{ (isExpanded) ? 'mdi-arrow-down-drop-circle-outline': 'mdi-arrow-right-drop-circle-outline'}}</v-icon>
+                            <v-btn icon color="green" @click="expand(!isExpanded)">
+                                <v-icon color="green">{{ (isExpanded) ? 'mdi-arrow-down-drop-circle-outline' : 'mdi-arrow-right-drop-circle-outline'}}</v-icon>
                             </v-btn> 
                         </td>
                         <td class="text-xs-left">{{ item.nb_horario }}</td>
@@ -56,7 +55,7 @@
 
                 <template v-slot:expanded-item="{ headers, item }">
                     <td :colspan="headers.length" class="py-4" >
-                        <carga-horaria :horario="item"></carga-horaria>
+                        <detalle-horario :horario="item"></detalle-horario>
                     </td>
                 </template>
 
@@ -84,10 +83,6 @@
                 @deleteCancel="deleteCancel()"
             ></form-delete>
 
-            <app-message></app-message>
-
-           
-
             <pre v-if="$App.debug">{{ $data }}</pre>
 
     </list-container>
@@ -97,14 +92,14 @@
 <script>
 import listHelper from '@mixins/Applist';
 import horarioForm  from './horarioForm';
-import CargaHoraria from './cargaHoraria';
+import DetalleHorario from '@pages/detalleHorario/AppDetalleHorario';
 export default {
 
     mixins:     [ listHelper],
 
     components: { 
         'horario-form' : horarioForm,
-        'carga-horaria': CargaHoraria
+        'detalle-horario': DetalleHorario
     },
 
     data () {
