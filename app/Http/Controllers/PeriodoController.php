@@ -16,6 +16,17 @@ class PeriodoController extends Controller
     public function index()
     {
         $periodo = Periodo::with(['calendario:id,nb_calendario'])
+                          ->where('id_status', 1)
+                          ->get();
+        
+        return $periodo;
+    }
+
+    public function periodoCalendario($idCalendario)
+    {
+        $periodo = Periodo::with(['calendario:id,nb_calendario'])
+                    ->where('id_calendario', $idCalendario)
+                    ->where('id_status', 1)
                     ->get();
         
         return $periodo;

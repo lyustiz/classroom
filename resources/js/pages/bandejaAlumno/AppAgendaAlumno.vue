@@ -1,8 +1,7 @@
 <template>
-  <v-card height="535" flat>
+  <v-card height="76vh" flat class="rounded-xl">
 
     <app-agenda-toolbar 
-        dense
         :title="title" 
         :type="type" 
         :weekend="weekend"
@@ -29,7 +28,6 @@
         :interval-minutes="60"
         :interval-count="14"
         :interval-format="formatHour"
-        :interval-height="60"
         @change="updateRange"
         @click:event="showEvent"
         @click:date="setType('day')"

@@ -33,6 +33,30 @@ class MateriaController extends Controller
                 return $materia;
     }
 
+    public function materiaGrado($idGrado)
+    {
+        $materia = Materia::select('id', 'nb_materia')
+                    ->whereHas('grado', function ($query) use ($idGrado) {
+                        $query->where('grado.id', $idGrado);
+                    }) 
+                    ->orderBY('nb_materia')
+                    ->get();
+
+                return $materia;
+    }
+
+    public function materiaGrupo($idGrupo)
+    {
+        $materia = Materia::select('id', 'nb_materia')
+                    ->whereHas('grado.grupo', function ($query) use ($idGrupo) {
+                        $query->where('grupo.id', $idGrupo);
+                    }) 
+                    ->orderBY('nb_materia')
+                    ->get();
+
+                return $materia;
+    }
+
     /**
      * Store a newly created resource in storage.
      *

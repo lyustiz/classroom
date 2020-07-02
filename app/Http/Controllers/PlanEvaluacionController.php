@@ -15,30 +15,43 @@ class PlanEvaluacionController extends Controller
      */
     public function index()
     {
-        $planEvaluacion = PlanEvaluacion::with([
-                                                'grupo:id,nb_grupo', 
-                                                'periodo:id,nb_periodo', 
-                                                'materia:id,nb_materia',
-                                                'detalleEvaluacion'
-                                            ])
-                                            ->get();
-        
-        return $planEvaluacion;
+        return PlanEvaluacion::with([
+                                        'grupo:id,nb_grupo', 
+                                        'periodo:id,nb_periodo', 
+                                        'materia:id,nb_materia',
+                                        'planDetalle'
+                                    ])
+                                    ->get();
+ 
     }
 
     public function planEvaluacionGrupoPeriodo($idGrupo, $idPeriodo)
     {
-        $planEvaluacion = PlanEvaluacion::with([
-                                                'grupo:id,nb_grupo', 
-                                                'periodo:id,nb_periodo', 
-                                                'materia:id,nb_materia',
-                                                'detalleEvaluacion'
-                                            ])
-                                            ->where('id_grupo', $idGrupo)
-                                            ->where('id_periodo', $idPeriodo)
-                                            ->get();
-        
-        return $planEvaluacion;
+        return PlanEvaluacion::with([
+                                        'grupo:id,nb_grupo', 
+                                        'periodo:id,nb_periodo', 
+                                        'materia:id,nb_materia',
+                                        'planDetalle'
+                                    ])
+                                    ->where('id_grupo', $idGrupo)
+                                    ->where('id_periodo', $idPeriodo)
+                                    ->get();
+    }
+
+    public function planEvaluacionGrupoPeriodoMateria($idGrupo, $idPeriodo, $idMateria)
+    {
+        return PlanEvaluacion::with([
+                                    'planDetalle:id,id_tipo_evaluacion,id_plan_evaluacion,nu_peso,fe_evaluacion,tx_tema,tx_observaciones,id_status',
+                                    'planDetalle.tipoEvaluacion:id,nb_tipo_evaluacion',
+                                    'planDetalle.evaluacion',
+                                    'planDetalle.archivo'
+                                ])
+                                ->select('id', 'id_status')
+                                ->where('id_grupo', $idGrupo)
+                                ->where('id_periodo', $idPeriodo)
+                                ->where('id_materia', $idMateria)
+                                ->where('id_status', 1)
+                                ->first();
     }
 
     /**

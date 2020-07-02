@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class GradoMateria extends Model
+class GradoMateria extends Pivot
 {
     protected $table 	  = 'grado_materia';
 

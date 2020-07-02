@@ -7,11 +7,11 @@
 
     <v-row class="fill-height" >
 
-          <v-content class="fill-height">
+          <v-main class="fill-height">
             <transition name="fade" mode="out-in" >
                 <router-view></router-view>
             </transition>
-        </v-content>
+        </v-main>
   
   </v-row>
     

@@ -1,45 +1,27 @@
 <template>
-    <!-- Contenido -->
-    <v-container fluid>
+
+    <v-container fluid class="amber lighten-4 contend"> 
 
         <v-row>
 
-            <v-col cols="8" >
+            <v-col cols="12" md="8" >
 
                 <v-row no-gutters >
                     <v-col cols="12" >
-                        <app-agenda-alumno :events="events"></app-agenda-alumno>
+                        <app-agenda-alumno :events="eventEvaluations"></app-agenda-alumno>
                     </v-col>
                </v-row>
                
             </v-col>
 
-            <v-col cols="4">
+            <v-col cols="12" md="4">
 
                 <app-eventos :events="events"></app-eventos>
 
-                <v-card class="mt-3 rounded-xl">
-
-                    <v-toolbar color="indigo" flat dark>
-                        Secciones
-                    </v-toolbar>
-     
-                    <v-card-text>
-
-                        <v-tooltip top v-for="section in sections" :key="section.name" color="info">
-                            <template v-slot:activator="{ on }">
-                                <v-btn v-on="on" fab dark depressed :color="section.color" @click="showSection(section.component)" class="ml-1">
-                                    <v-icon size="32" v-text="section.icon"></v-icon>
-                                </v-btn>
-                            </template>
-                            <span v-text="section.label"></span>
-                        </v-tooltip>
-
-                    </v-card-text>
-    
-                </v-card>
+                <app-secciones></app-secciones>
 
             </v-col>
+
         </v-row>
             
     </v-container>
@@ -51,8 +33,8 @@ import { mapGetters, mapActions } from 'vuex';
 
 import AppData from '@mixins/AppData';
 import AppAgendaAlumno from './AppAgendaAlumno'
+import AppAlumnoSections from './AppAlumnoSections'
 import AppEventos from './AppEventos'
-
 
 export default {
 
@@ -61,7 +43,8 @@ export default {
     components: 
     { 
         'app-agenda-alumno': AppAgendaAlumno,
-        'app-eventos': AppEventos
+        'app-eventos': AppEventos,
+        'app-secciones': AppAlumnoSections
     },
 
     created()
@@ -69,22 +52,12 @@ export default {
         this.list()
     },
 
-    computed: 
-    { 
-    
-    },
-
     data () 
 	{
         return {
             events: [],
-            sections: [
-                { label: 'Tareas', icon: 'mdi-notebook', component: 'tareas-alumno', color: 'red' },
-                { label: 'Recursos', icon: 'mdi-book-open-page-variant', component: 'recursos-alumno', color: 'purple' },
-                { label: 'Evaluaciones', icon: 'mdi-order-bool-descending-variant', component: 'evaluacion-alumno', color: 'blue' },
-                { label: 'Materias', icon: 'mdi-bookshelf', component: 'materias-alumno', color: 'amber' },
-                { label: 'Aula Virtual', icon: 'mdi-google-classroom', component: 'materias-alumno', color: 'green' },
-            ]
+            evaluaciones: [],
+            eventEvaluations: []
         }
     },
 
@@ -96,17 +69,44 @@ export default {
             { 
                 this.events = data.data
             })
-            
-        },
-        
-        intervalFormat(interval) 
-        {
-            return interval.time
+
+            this.getResource( 'evaluacion/grupo/1' ).then( (data) => 
+            { 
+                this.evaluaciones = data
+                this.getEventEvaluations()
+            })
         },
 
-        showSection(conponent)
+        getEventEvaluations()
         {
-            this.dialog = true
+           
+            this.evaluaciones.map( (evaluacion) => {
+                 
+                let currentDate  = new Date(evaluacion.fe_evaluacion).toISOString().substr(0, 10)
+                
+                this.eventEvaluations.push(
+                    {
+                        id:             evaluacion.id,
+                        name:           evaluacion.tipo_evaluacion.nb_tipo_evaluacion,
+                        date:           currentDate,
+                        start:          `${currentDate} 07:00`,
+                        end:            `${currentDate} 07:30`,
+                        startHour:      '08:00',    
+                        endHour:        '09:00',   
+                        color:          evaluacion.plan_evaluacion.materia.area_estudio.tx_color,
+                        category:       evaluacion.plan_evaluacion.materia.nb_materia, 
+                        categoryId:     98,    
+                        type:           'evaluacion',
+                        typeId:         98,
+                        icon:           'mdi-notebook',
+                        topic:          evaluacion.tx_tema,
+                        description:    evaluacion.tx_observaciones,
+                        status:         evaluacion.id_status,
+                        weight:         evaluacion.nu_peso
+
+                    } 
+                )
+            })
         }
     }
     
@@ -114,5 +114,7 @@ export default {
 </script>
 
 <style>
-
+.contend{
+    min-height: 92.8vh;
+}
 </style>

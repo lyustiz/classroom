@@ -1,6 +1,6 @@
 <template>
 
-    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)">
+    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)" :inDialog="inDialog">
 
         <template slot="HeadTools">
             <add-button @insItem="insertForm()"></add-button>
@@ -27,7 +27,7 @@
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.nb_tipo_archivo }}</td>
+                        <td class="text-xs-left">{{ item.id }}-{{ item.nb_tipo_archivo }}</td>
 						<td class="text-xs-left">{{ item.tx_origen }}</td>
 						<td class="text-xs-left">{{ item.tx_storage }}</td>
 						<td class="text-xs-left">{{ item.tx_base_path }}</td>

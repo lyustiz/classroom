@@ -1,13 +1,13 @@
 <template>
 
-     <v-toolbar color="grey lighten-3"  flat dense> 
+     <v-toolbar color="indigo" dark flat :dense="dense"> 
             
         <v-row>
-            <v-col md="auto">
+            <v-col>
                 <div>
                 <v-tooltip bottom>
                 <template v-slot:activator="{ on }">
-                    <v-btn fab x-small color="grey lighten-5" v-on="on" @click="$emit('OnPrev')" depressed>
+                    <v-btn fab dark x-small color="indigo lighten-1" v-on="on" @click="$emit('OnPrev')" depressed>
                         <v-icon>mdi-chevron-left</v-icon>
                     </v-btn>
                 </template>
@@ -16,7 +16,7 @@
 
                 <v-tooltip bottom>
                 <template v-slot:activator="{ on }">
-                    <v-btn fab x-small color="grey lighten-5" v-on="on" @click="$emit('OnNext')" depressed>
+                    <v-btn fab dark x-small color="indigo lighten-1" v-on="on" @click="$emit('OnNext')" depressed>
                         <v-icon>mdi-chevron-right</v-icon>
                     </v-btn>
                 </template>
@@ -26,7 +26,6 @@
 
             </v-col>
 
-            <v-spacer ></v-spacer>
 
             <v-col>
                 <v-toolbar-title>
@@ -34,57 +33,49 @@
                 </v-toolbar-title>
             </v-col>
 
-            <v-spacer></v-spacer>
+           
 
-            <v-col class="flex-grow-0">
+            <v-col md="auto">
                 <v-tooltip bottom>
                     <template v-slot:activator="{ on }">
-                        <v-btn depressed value="1" @click="$emit('OnToday')" v-on="on" rounded>
-                            <v-icon color="grey darken-2">mdi-calendar-today</v-icon>
+                        <v-btn depressed x-small color="indigo lighten-1" fab value="1" @click="$emit('OnToday')" v-on="on" rounded>
+                            <v-icon size="24">mdi-calendar-today</v-icon>
                         </v-btn>
                     </template>
                     <span>Hoy</span>
                 </v-tooltip>
-            </v-col>
+           
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on }" >
+                        <v-btn depressed value="month" fab x-small v-on="on" :color="( type == 'month' ) ? 'indigo lighten-4' : 'indigo lighten-1'" @click="$emit('OnType', 'month')">
+                            <v-icon>mdi-calendar-month</v-icon>
+                        </v-btn>
+                    </template>
+                    <span>Ver Mes</span>
+                </v-tooltip>
 
-            <v-col class="flex-grow-0">
-                <v-btn-toggle value="type" mandatory dense rounded borderless >
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on }" >
+                        <v-btn depressed value="week" fab x-small v-on="on" :color="( type == 'week' ) ? 'indigo lighten-4' : 'indigo lighten-1'" @click="$emit('OnType', 'week')">
+                            <v-icon  size="24">mdi-calendar-week</v-icon>
+                        </v-btn>
+                    </template>
+                    <span>Ver Semana</span>
+                </v-tooltip>
 
-                    <v-tooltip bottom>
-                        <template v-slot:activator="{ on }" >
-                            <v-btn value="month" v-on="on" @click="$emit('OnType', 'month')">
-                                <v-icon>mdi-calendar-month</v-icon>
-                            </v-btn>
-                        </template>
-                        <span>Ver Mes</span>
-                    </v-tooltip>
-
-                    <v-tooltip bottom>
-                        <template v-slot:activator="{ on }" >
-                            <v-btn value="week" v-on="on" @click="$emit('OnType', 'week')">
-                                <v-icon>mdi-calendar-week</v-icon>
-                            </v-btn>
-                        </template>
-                        <span>Ver Semana</span>
-                    </v-tooltip>
-
-                    <v-tooltip bottom>
-                        <template v-slot:activator="{ on }">
-                            <v-btn value="day" v-on="on" @click="$emit('OnType', 'day')">
-                                <v-icon>mdi-view-day</v-icon>
-                            </v-btn>
-                        </template>
-                        <span>Ver Dia</span>
-                    </v-tooltip>
-    
-                </v-btn-toggle>
-            </v-col>
-
-            <v-col class="flex-grow-0">
                 <v-tooltip bottom>
                     <template v-slot:activator="{ on }">
-                        <v-btn depressed v-on="on" rounded :color="(weekend) ? 'grey lighten-1' : 'grey lighten-4'" @click="$emit('OnWeekend')">
-                            <v-icon color="grey darken-2">mdi-calendar-weekend</v-icon>
+                        <v-btn depressed value="day" fab x-small v-on="on" :color="( type == 'day' ) ? 'indigo lighten-4' : 'indigo lighten-1'" @click="$emit('OnType', 'day')">
+                            <v-icon  size="24">mdi-view-day</v-icon>
+                        </v-btn>
+                    </template>
+                    <span>Ver Dia</span>
+                </v-tooltip>
+    
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                        <v-btn depressed x-small fab v-on="on" :color="(weekend) ? 'indigo lighten-4' : 'indigo lighten-1'" @click="$emit('OnWeekend')">
+                            <v-icon  size="24">mdi-calendar-weekend</v-icon>
                         </v-btn>
                     </template>
                     <span>Fines de Semana</span>

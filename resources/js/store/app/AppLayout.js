@@ -7,7 +7,7 @@ export default
 			isMobile: 	false, 
 			resize: 	false,
 			iconMenu: 	false,
-			toggleMenu: true
+			toggleMenu: false
 		}
 	},
 

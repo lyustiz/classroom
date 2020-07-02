@@ -4,6 +4,14 @@ export default
 {
     mixins: [AppFormat],
 
+    props:
+    {
+        inDialog: {
+            type:       Boolean,
+            default:    false
+        },
+    },
+
     data() 
     {
         return {

@@ -1,6 +1,6 @@
 <template>
 
-    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)">
+    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)" :inDialog="inDialog">
 
         <v-btn small color="primary" v-if="steep == 0 "  @click="steep = 1" class="mb-1">
             Iniciar

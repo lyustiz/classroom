@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDetalleEvaluacionTable extends Migration
+class CreateTipoRecursoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateDetalleEvaluacionTable extends Migration
      */
     public function up()
     {
-        Schema::create('detalle_evaluacion', function (Blueprint $table) {
+        Schema::create('tipo_recurso', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_plan_evaluacion');
-            $table->integer('id_tipo_evaluacion');
-            $table->integer('nu_peso')->nullable();;
-            $table->date('fe_evaluacion')->nullable();;
-            $table->string('tx_tema', 100)->nullable();
+            $table->string('nb_tipo_recurso', 30);
+            $table->integer('id_tipo_archivo');
+            $table->string('tx_icono', 30);
+            $table->string('tx_color', 30);
             $table->string('tx_observaciones', 100)->nullable();
             $table->integer('id_status');
             $table->integer('id_usuario');
@@ -34,6 +33,6 @@ class CreateDetalleEvaluacionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detalle_evaluacion');
+        Schema::dropIfExists('tipo_recurso');
     }
 }

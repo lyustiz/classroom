@@ -24,22 +24,19 @@ class Periodo extends Model
 	 	 	 	 	 	 	'updated_at'
                             ]; 
                            
-    public function status(){
-
+    public function status()
+    {
         return $this->BelongsTo('App\Models\Status', 'id_status');
-
     }
                            
-    public function usuario(){
-
+    public function usuario()
+    {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
-
     }
 
-    public function calendario(){
-
+    public function calendario()
+    {
         return $this->BelongsTo('App\Models\Calendario', 'id_calendario');
-
     }
 
                            

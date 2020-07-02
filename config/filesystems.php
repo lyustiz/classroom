@@ -55,10 +55,10 @@ return [
             'visibility' => 'public',
         ],
 
-        'detalleEvaluacion' => [
+        'detallePlan' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/detalleEvaluacion'),
-            'url' => env('APP_URL').'/storage/detalleEvaluacion',
+            'root' => storage_path('app/public/detallePlan'),
+            'url' => env('APP_URL').'/storage/detallePlan',
             'visibility' => 'public',
         ],
 
@@ -103,6 +103,29 @@ return [
             'url' => env('APP_URL').'/storage/colegio',
             'visibility' => 'public',
         ],
+
+        'libro' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/recurso/libro'),
+            'url' => env('APP_URL').'/storage/recurso/libro',
+            'visibility' => 'public',
+        ],
+
+        'video' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/recurso/video'),
+            'url' => env('APP_URL').'/storage/recurso/video',
+            'visibility' => 'public',
+        ],
+
+
+        'guia' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/recurso/guia'),
+            'url' => env('APP_URL').'/storage/recurso/guia',
+            'visibility' => 'public',
+        ],
+
 
         'public' => [
             'driver' => 'local',

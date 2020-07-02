@@ -1,6 +1,6 @@
 <template>
 
-    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)">
+    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)" :inDialog="inDialog">
 
         <template slot="HeadTools">
             <add-button @insItem="insertForm()"></add-button>
@@ -29,9 +29,9 @@
 
                 <template v-slot:item="{ item, expand, isExpanded }">
                     <tr :class="(isExpanded) ? 'green lighten-4 ': ''">
-                        <td class="text-xs-left"> 
-                            <v-btn icon color="grey" @click="expand(!isExpanded)">
-                                <v-icon>{{ (isExpanded) ? 'mdi-arrow-down-drop-circle-outline': 'mdi-arrow-right-drop-circle-outline'}}</v-icon>
+                       <td class="text-xs-left"> 
+                            <v-btn icon color="green" @click="expand(!isExpanded)">
+                                <v-icon color="green">{{ (isExpanded) ? 'mdi-arrow-down-drop-circle-outline' : 'mdi-arrow-right-drop-circle-outline'}}</v-icon>
                             </v-btn> 
                         </td>
                         <td class="text-xs-left">{{ item.grupo.nb_grupo }}</td>
@@ -56,7 +56,7 @@
 
                 <template v-slot:expanded-item="{ headers, item }">
                     <td :colspan="headers.length" class="py-4 " >
-                        <detalle-evaluacion :planEvaluacion="item"></detalle-evaluacion>
+                        <plan-detalle :planEvaluacion="item"></plan-detalle>
                     </td>
                 </template>
 
@@ -93,12 +93,12 @@
 <script>
 import listHelper from '@mixins/Applist';
 import planEvaluacionForm  from './planEvaluacionForm';
-import detalleEvaluacion  from './detalleEvaluacion';
+import planDetalle  from '@pages/planDetalle/AppPlanDetalle';
 export default {
     mixins:     [ listHelper],
     components: { 
         'plan-evaluacion-form': planEvaluacionForm,
-        'detalle-evaluacion':  detalleEvaluacion
+        'plan-detalle':  planDetalle
     },
     data () { 
     return {

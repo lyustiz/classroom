@@ -24,8 +24,17 @@ import MenuProfesor          from '@pages/bandejaProfesor/index.vue';
 import MenuRepresentante     from '@pages/bandejaRepresentante/index.vue'; 
 
 import BandejaAdmin          from '@pages/admin/dashboard.vue';
+
+
+
 import BandejaAlumno         from '@pages/bandejaAlumno/dashboard.vue';
-import BandejaProfesor       from '@pages/bandejaProfesor/dashboard.vue';
+import EvaluacionAlumno      from '@pages/bandejaAlumno/evaluacion/AppEvaluacionAlumno';
+
+
+
+
+
+import BandejaDocente       from '@pages/bandejaProfesor/dashboard.vue';
 import BandejaRepresentante  from '@pages/bandejaRepresentante/dashboard.vue';
 
 // loading on demand
@@ -57,8 +66,6 @@ import Calificacion      from '@pages/calificacion/calificacion.vue';
 
 import TipoEvaluacion    from '@pages/tipoEvaluacion/tipoEvaluacion.vue';
 import PlanEvaluacion    from '@pages/planEvaluacion/planEvaluacion.vue'; 
-import DetalleEvaluacion from '@pages/detalleEvaluacion/detalleEvaluacion.vue'; 
-
 
 import AreaEstudio       from '@pages/areaEstudio/areaEstudio.vue';
 import Materia           from '@pages/materia/materia.vue';
@@ -110,6 +117,9 @@ import TipoArchivo       from '@pages/tipoArchivo/tipoArchivo.vue';
 import Archivo           from '@pages/archivo/archivo.vue';
 import Configuracion     from '@pages/configuracion/configuracion.vue';
 
+import TipoRecurso           from '@pages/tipoRecurso/tipoRecurso.vue';
+import Recurso           from '@pages/recurso/recurso.vue';
+
 import EstadoCivil       from '@pages/estadoCivil/estadoCivil.vue';
 const Parentesco         =  () => import('@pages/parentesco/parentesco.vue');
 
@@ -151,7 +161,7 @@ export default new Router({
             component: Home,
         },
         {
-            path: '/bandeja-profesor',
+            path: '/bandeja-docente',
             label: 'Docente',
             icon: 'mdi-account-tie',
             profile: 'docente',
@@ -161,12 +171,12 @@ export default new Router({
             children: [
                 {
                     path: '',
-                    name: 'bandeja-profesor',
+                    name: 'bandeja-docente',
                     label: 'Bandeja',
                     icon:   'mdi-tray-full',
                     profile: 'docente',
                     visible: true,
-                    component: BandejaProfesor,
+                    component: BandejaDocente,
                 }
             ]
         },
@@ -187,7 +197,17 @@ export default new Router({
                     profile: 'alumno',
                     visible: true,
                     component: BandejaAlumno,
+                },
+                {
+                    path: 'alumno-evaluacion-alumno',
+                    name: 'alumno-evaluacion-alumno',
+                    label: 'Evaluaciones',
+                    icon:   'mdi-clipboard-check-multiple-outline',
+                    profile: 'alumno',
+                    visible: true,
+                    component: EvaluacionAlumno,
                 }
+                
             ]
         },
         {
@@ -492,16 +512,6 @@ export default new Router({
                 visible: true,
                 component: PlanEvaluacion
             },
-/* 
-            { 
-                path: 'detalle-evaluacion',
-                name: 'detalle-evaluacion',
-                label: 'Detalle Evaluacion',
-                icon: 'mdi-clipboard-file',
-                profile: 'secretaria',
-                visible: true,
-                component: DetalleEvaluacion
-            }, */
 
             { 
                 path: 'horario',
@@ -850,12 +860,35 @@ export default new Router({
             { 
                 path: 'archivo',
                 name: 'archivo',
-                label: 'archivo',
+                label: 'Archivo',
                 icon: 'mdi-file',
                 profile: 'secretaria',
                 visible: true,
                 component: Archivo
             },
+
+            { 
+                path: 'tipo-recurso',
+                name: 'tipo-recurso',
+                label: 'Tipo Recurso',
+                icon: 'mdi-file',
+                profile: 'secretaria',
+                visible: true,
+                component: TipoRecurso
+            },
+
+            { 
+                path: 'recurso',
+                name: 'recurso',
+                label: 'Recurso',
+                icon: 'mdi-file',
+                profile: 'secretaria',
+                visible: true,
+                component: Recurso
+            },
+
+            
+
             
             /********************** */
 

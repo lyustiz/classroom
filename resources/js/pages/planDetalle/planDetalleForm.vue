@@ -2,7 +2,7 @@
 
     <v-form ref="form" v-model="valid" lazy-validation>
 
-    <v-card :loading="loading" flat >
+    <v-card :loading="loading" >
 
         <v-card-text>
 
@@ -17,6 +17,19 @@
             v-model="form.id_plan_evaluacion"
             :rules="[rules.select]"
             label="Plan Evaluacion"
+            :loading="loading"
+            dense
+            ></v-select>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-select
+            :items="selects.tipoEvaluacion"
+            item-text="nb_tipo_evaluacion"
+            item-value="id"
+            v-model="form.id_tipo_evaluacion"
+            :rules="[rules.select]"
+            label="Tipo Evaluacion"
             :loading="loading"
             dense
             ></v-select>
@@ -122,7 +135,7 @@ export default {
     mixins: [Appform],
     data() {
         return {
-            resource: 'detalle_evaluacion',
+            resource: 'plan_detalle',
             dates:
             {
                 fe_evaluacion: 	 null,
@@ -135,6 +148,7 @@ export default {
             {
                 id: 	null,
 				id_plan_evaluacion: 	null,
+				id_tipo_evaluacion: 	null,
 				nu_peso: 	null,
 				fe_evaluacion: 	null,
 				tx_tema: 	null,
@@ -145,6 +159,7 @@ export default {
             selects:
             {
                 planEvaluacion: 	 [],
+	 	 	 	tipoEvaluacion: 	 [],
 	 	 	 	status: 	 [],
             },
         }

@@ -1,6 +1,9 @@
 <template>
+ <div>
 
-    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)" :itemsMenu="itemsMenu">
+    <app-simple-toolbar :title="title" @closeModal="$emit('closeModal')"></app-simple-toolbar>
+
+    <list-container inDialog>
     
     <v-row>
         <v-col>
@@ -33,7 +36,7 @@
 
                 </v-list-item-action>
 
-                 <a class="d-none" :ref="file.id" rel="noreferrer noopener" target="_blank" :href="file.tipo_archivo.tx_base_path + '/' + file.tx_path" :download="file.nb_real"></a>
+                 <a class="d-none" :ref="file.id" rel="noreferrer noopener" target="_blank" :href="file.tipo_archivo.tx_base_path + file.tx_origen_id + '/' + file.tx_path" :download="file.nb_real"></a>
 
             </v-list-item>
             </v-list-item-group>
@@ -85,12 +88,12 @@
         @deleteCancel="deleteCancel()"
     ></form-delete>
 
-    <app-message></app-message>
+    
 
     <pre v-if="$App.debug">{{ $data }}</pre>
 
     </list-container>
-
+</div>
 </template>
 
 <script>

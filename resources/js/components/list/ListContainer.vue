@@ -1,14 +1,14 @@
 <template>
 
-    <v-container fluid>
+    <v-container fluid class="rounded-b-xl white"  >
 
             <v-row >
 
                 <v-flex xs12>
 
-                        <v-card class="mx-2">
+                        <v-card :class="`mx-2 ${(inDialog) ? 'rounded-xl' : null }`" :flat="inDialog">
 
-                            <v-toolbar flat dense :class="headColor">
+                            <v-toolbar flat dense :class="headColor" v-if="!inDialog">
 
                                 <v-toolbar-title v-html="title"></v-toolbar-title>
 
@@ -16,7 +16,7 @@
 
                                 <slot name="HeadTools"></slot>
 
-                                <list-menu :itemsMenu="itemsMenu" @onMenu="$emit('onItemMenu', $event)"></list-menu>
+                                <list-menu :itemsMenu="itemsMenu" @onMenu="$emit('onMenu', $event)"></list-menu>
 
                             </v-toolbar>
 
@@ -74,6 +74,10 @@ export default
                     action: 'refresh'
                 }
             ]
+        },
+        inDialog:{
+            type: Boolean,
+            default: false
         }
     },
 

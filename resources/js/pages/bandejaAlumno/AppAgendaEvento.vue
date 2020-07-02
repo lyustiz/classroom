@@ -54,6 +54,30 @@
                 </v-list>
             </v-col>
 
+            <v-col v-else-if="event.type == 'evaluacion'">
+
+                <v-list >
+                    <v-list-item two-line>
+                        <v-list-item-avatar :color="event.color">
+                            <v-icon dark>mdi-percent</v-icon>
+                        </v-list-item-avatar>
+                        <v-list-item-content>
+                            <v-list-item-title>{{event.weight}} %</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                    <v-list-item>
+                        <v-list-item-avatar :color="event.color">
+                            <v-icon dark>mdi-note-text</v-icon>
+                        </v-list-item-avatar>
+                        <v-list-item-content>
+                            <v-list-item-title v-html="event.topic"></v-list-item-title>
+                            <v-list-item-subtitle v-html="event.description"></v-list-item-subtitle>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list>
+                
+            </v-col>
+
             <v-col v-else>
                 <p>{{event.description}}</p>
             </v-col>

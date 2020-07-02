@@ -47,7 +47,7 @@ class Grado extends Model
 
     public function grupo(){
 
-        return $this->HasMany('App\Models\Grupo', 'id_grupo');
+        return $this->HasMany('App\Models\Grupo', 'id_grado');
 
     }
 

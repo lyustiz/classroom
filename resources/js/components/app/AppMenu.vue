@@ -1,4 +1,8 @@
 <template>
+<div>
+
+    <!--profile-->
+    <app-profile></app-profile>
 
     <!--menu-->
    <v-list nav>
@@ -37,15 +41,20 @@
 
         </v-list-group>
     </v-list>
-
+</div>
 </template>
 
 <script>
 
-import AppMessage from '~/mixins/AppMessage'
+import AppProfile from '@components/app/AppProfile'
 
 export default {
-    mixins:[ AppMessage ],
+
+    components: 
+    {
+        'app-profile': AppProfile
+    },
+
     data()
     {
         return{

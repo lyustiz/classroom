@@ -32,7 +32,7 @@ Vue.prototype.$App = Object.freeze({
     theme:{
             headApp:    'indigo',
             textTitle:  'white--text',
-            headForm:   'red',
+            headForm:   'indigo',
             titleForm:  'red lighten-4',
             headList:   'grey lighten-3',
             titleList:  'black--text',

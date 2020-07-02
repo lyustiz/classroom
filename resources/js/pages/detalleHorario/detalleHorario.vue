@@ -1,6 +1,6 @@
 <template>
 
-    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)">
+    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)" :inDialog="inDialog">
 
         <template slot="HeadTools">
             <add-button @insItem="insertForm()"></add-button>
@@ -80,7 +80,7 @@
                 @deleteCancel="deleteCancel()"
             ></form-delete>
 
-            <app-message></app-message>
+            
 
             <pre v-if="$App.debug">{{ $data }}</pre>
 

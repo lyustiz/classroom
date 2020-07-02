@@ -91,9 +91,11 @@
                     return this.$store.getters['getProfile']
                 },
                 set(profile) {
-                    this.navegateTo('home')
+                    
                     this.showMessage('Se  ha establecido el Perfil: ' + profile.nb_perfil )
-                    this.$store.commit('setProfile', profile) 
+                    this.$store.commit('setProfile', profile)
+                    this.showDialog = false
+                    this.setHome(profile.nb_perfil)
                 }
             },
 
@@ -106,6 +108,26 @@
 
         methods: 
         {
+            setHome(profile)
+            {
+                let route = 'home'
+                
+                switch (profile) {
+                    case 'docente':
+                        route = 'bandeja-docente'
+                        break;
+
+                    case 'alumno':
+                        route = 'bandeja-alumno'
+                        break;
+                    
+                    case 'secretaria':
+                        route = 'admin'
+                        break;
+                }
+                this.navegateTo(route)
+            },
+            
             logout()
             {
                 if(this.loading) return
@@ -128,6 +150,7 @@
                 .finally(() => (this.loading = false))
 
             },
+
             administrar()
             {
                 this.$router.push('/cuenta').catch(()=>{});

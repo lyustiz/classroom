@@ -47,8 +47,8 @@ class PlanEvaluacion extends Model
         return $this->BelongsTo('App\Models\Materia', 'id_materia');
     }
 
-    public function detalleEvaluacion()
+    public function planDetalle()
     {
-        return $this->hasMany('App\Models\DetalleEvaluacion', 'id_plan_evaluacion');
+        return $this->hasMany('App\Models\PlanDetalle', 'id_plan_evaluacion');
     }
 }

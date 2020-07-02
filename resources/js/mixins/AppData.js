@@ -3,6 +3,14 @@ import AppRules   from './AppRules';
 export default 
 {
     mixins: [AppFormat, AppRules],
+
+    props:
+    {
+        inDialog: {
+            type:       Boolean,
+            default:    false
+        },
+    },
     
     computed: 
     {
@@ -24,6 +32,7 @@ export default
             idUser:  this.$store.getters.getUserid,
             loading: true,
             items:   [],
+            search:  null,
             item:    null,
             path:    null,
             modal:   false,

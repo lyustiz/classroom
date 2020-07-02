@@ -31,6 +31,8 @@ import AppModal      from '@components/app/AppModal'
 import AppDialog     from '@components/app/AppDialog'
 import AppUser       from '@components/app/AppUser'
 
+import AppSimpleToolbar   from '@components/app/AppSimpleToolbar'
+
 Vue.component('list-icon',        ListIcon);
 Vue.component('list-buttons',     ListButtons);
 Vue.component('add-button',       AddButton);
@@ -47,6 +49,7 @@ Vue.component('app-modal',        AppModal);
 Vue.component('app-dialog',       AppDialog);
 Vue.component('app-user',         AppUser);
 
+Vue.component('app-simple-toolbar',      AppSimpleToolbar);
 
 //Tools Components
 import AppFoto          from '@pages/foto/appFoto'
