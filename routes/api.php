@@ -129,8 +129,8 @@ Route::apiResource('/grupoCalificacion',    'GrupoCalificacionController');
 Route::apiResource('/horaAcademica',        'HoraAcademicaController');
 Route::get('/cargaHoraria/horario/{horario}',         'CargaHorariaController@cargaHorariaHorario');
 Route::apiResource('/cargaHoraria',         'CargaHorariaController', ['parameters' => ['cargaHoraria' => 'cargaHoraria']]);
-Route::get('/detalleHorario/horario/{horario}',       'detalleHorarioController@detalleByHorarioId');
-Route::apiResource('/detalleHorario',       'detalleHorarioController');
+Route::get('/detalleHorario/horario/{horario}',       'DetalleHorarioController@detalleByHorarioId');
+Route::apiResource('/detalleHorario',       'DetalleHorarioController');
 Route::get('/horario/grupo/{grupo}',        'HorarioController@horarioGrupo');
 Route::apiResource('/horario',              'HorarioController');
 
