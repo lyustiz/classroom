@@ -114,11 +114,11 @@
                 
                 switch (profile) {
                     case 'docente':
-                        route = 'bandeja-docente'
+                        route = '/bandeja-docente'
                         break;
 
                     case 'alumno':
-                        route = 'bandeja-alumno'
+                        route = '/bandeja-alumno'
                         break;
                     
                     case 'secretaria':

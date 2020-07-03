@@ -48,8 +48,7 @@
                                                 <menu-items :itemsMenu="filesMenu" :item="archivo" iconColor="green lighten-5" @onMenu="onMenu($event)"></menu-items>
                                             </v-list-item-action>
 
-                                            <a class="d-none" :ref="archivo.id" rel="noreferrer noopener" target="_blank" :href="archivo.tipo_archivo.tx_base_path + archivo.tx_origen_id + '/' + archivo.tx_path" ></a>
-
+                                        
                                         </v-list-item>
 
                                     </v-list-item-group>
@@ -63,7 +62,13 @@
 
             </v-row>
 
-        </v-card-text>   
+        </v-card-text>
+
+        <v-dialog v-model="dialog" max-width="500px" content-class="rounded-t-xl" fullscreen>
+
+            <app-visor :fileUrl="fileUrl" :fileType="fileType" :title="title" @closeModal="closeModal()"></app-visor>
+            
+        </v-dialog>   
 
     </v-card>
 
@@ -72,11 +77,13 @@
 <script>
 import DataHelper from '@mixins/AppData';
 import MenuItems  from '@components/list/ListMenu'
+import AppVisor   from './AppVisor'  
 
 export default {
 
     components: { 
-        'menu-items': MenuItems
+        'menu-items': MenuItems,
+        'app-visor':  AppVisor
     },
 
     mixins:     [ DataHelper ],
@@ -105,6 +112,11 @@ export default {
                 },
             ],
 
+            //visor
+            fileUrl:  null,
+            fileType: null,
+            title:    null
+
         }
     },
     methods:
@@ -117,9 +129,20 @@ export default {
             })
         },
 
-        downloadFile(file)
+        closeModal()
         {
-            this.$refs[file.id][0].click()
+            this.fileUrl  = null
+            this.fileType = null
+            this.title    = null
+            this.dialog   = false
+        },
+
+        showFile(file)
+        {
+            this.fileUrl  = file.tipo_archivo.tx_base_path + file.tx_origen_id + '/' + file.tx_path
+            this.fileType = file.tx_mimetype
+            this.title    = file.nb_archivo
+            this.dialog   = true
         },
 
         onMenu(payload)
@@ -131,15 +154,13 @@ export default {
                     break;
                 
                 case 'showfile':
-                    this.downloadFile(payload.item)
+                    this.showFile(payload.item)
                     break;
             
                 default:
                     break;
             }
         }
-
-
 
     }
 }
