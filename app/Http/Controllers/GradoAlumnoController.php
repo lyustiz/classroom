@@ -24,6 +24,17 @@ class GradoAlumnoController extends Controller
         return $gradoAlumno;
     }
 
+
+
+    public function gradoAlumnoAsignacion($idAlumno)
+    {
+        $gradoAlumno = GradoAlumno::with(['grado:id,nb_grado'])
+                                   ->where('id_alumno','<>', $idAlumno)
+                                   ->get();
+        
+        return $gradoAlumno;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -42,7 +53,7 @@ class GradoAlumnoController extends Controller
 
         $gradoAlumno = gradoAlumno::create($request->all());
 
-        return [ 'msj' => 'GradoAlumno Agregado Correctamente', compact('gradoAlumno') ];
+        return [ 'msj' => 'Grado Agregado Correctamente', compact('gradoAlumno') ];
     }
 
     /**
@@ -75,7 +86,7 @@ class GradoAlumnoController extends Controller
 
         $gradoAlumno = $gradoAlumno->update($request->all());
 
-        return [ 'msj' => 'GradoAlumno Editado' , compact('gradoAlumno')];
+        return [ 'msj' => 'Grado Actualizado' , compact('gradoAlumno')];
     }
 
     /**
@@ -88,6 +99,6 @@ class GradoAlumnoController extends Controller
     {
         $gradoAlumno = $gradoAlumno->delete();
  
-        return [ 'msj' => 'GradoAlumno Eliminado' , compact('gradoAlumno')];
+        return [ 'msj' => 'Grado Eliminado' , compact('gradoAlumno')];
     }
 }

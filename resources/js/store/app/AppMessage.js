@@ -31,7 +31,7 @@ export default
 		},
 		setMsjText(state, text)
 		{
-			state.text 	= text || 'Ha ocurrido un error'
+			state.text 	= text || '...'
 		},
 		setMsjSubText(state, subText)
 		{

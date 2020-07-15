@@ -14,11 +14,11 @@
             </v-btn>
         </template> -->
 
-        <v-btn fab dark x-small :color="$App.theme.button.update" @click="update" class="my-1 mr-1" :loading="loading">
+        <v-btn fab dark x-small :color="$App.theme.button.update" @click="update" class="my-1 mr-1" :loading="loading" depressed>
             <v-icon>mdi-lead-pencil</v-icon>
         </v-btn>
 
-        <v-btn fab dark x-small :color="$App.theme.button.delete" @click="deleter" class="my-1 mr-1" :loading="loading">
+        <v-btn fab dark x-small :color="$App.theme.button.delete" @click="deleter" class="my-1 mr-1" :loading="loading" depressed>
             <v-icon>delete</v-icon>
         </v-btn>
 

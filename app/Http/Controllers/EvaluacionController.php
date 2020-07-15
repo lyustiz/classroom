@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evaluacion;
-use App\Models\PlanDetalle;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
@@ -23,10 +22,24 @@ class EvaluacionController extends Controller
         return $evaluacion;
     }
 
+    public function evaluacionPlan($idPlanEvaluacion)
+    {
+        $planEvaluacion = Evaluacion::with([
+                                            'planEvaluacion',
+                                            'planEvaluacion.grupo:id,nb_grupo', 
+                                            'planEvaluacion.periodo:id,nb_periodo', 
+                                            'tipoEvaluacion:id,nb_tipo_evaluacion',
+                                            'archivo:id,id_tipo_archivo,tx_origen_id'
+                                        ])
+                                        ->where('id_plan_evaluacion', $idPlanEvaluacion)
+                                        ->get();
+        
+        return $planEvaluacion;
+    }
+
     public function evaluacionGrupo($idGrupo)
     {
-        $evaluaciones = PlanDetalle:: with([
-                                            'evaluacion', 
+        $evaluaciones = Evaluacion:: with([
                                             'tipoEvaluacion:id,nb_tipo_evaluacion',
                                             'planEvaluacion:id,id_materia',
                                             'planEvaluacion.materia:id,nb_materia,id_area_estudio',
@@ -40,7 +53,24 @@ class EvaluacionController extends Controller
         return $evaluaciones;
     }
 
-    /**
+    public function evaluacionDocente($idDocente)
+    {
+        $evaluaciones = Evaluacion:: with([
+                                            'tipoEvaluacion:id,nb_tipo_evaluacion',
+                                            'planEvaluacion:id,id_materia,id_grupo',
+                                            'planEvaluacion.materia:id,nb_materia,id_area_estudio',
+                                            'planEvaluacion.materia.areaEstudio:id,tx_color',
+                                            'planEvaluacion.grupo:id,nb_grupo'
+                                    ])
+                                    ->whereHas('planEvaluacion.grupo.docente', function (Builder $query) use($idDocente) {
+                                        $query->where('id_docente', $idDocente);
+                                    })
+                                    ->get();
+
+        return $evaluaciones;
+    }
+
+      /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -49,19 +79,19 @@ class EvaluacionController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-            'id_plan_detalle'  =>  'required|integer|max:999999999',
-			'fe_evaluacion'    =>  'required|string|max:0',
-			'hh_inicio'        =>  'required|date_format:"H:i"|before:hh_fin"',
-            'hh_fin'           =>  'required|date_format:"H:i"',
-			'nu_peso'          =>  'required|integer|max:999999999',
-			'tx_observaciones' =>  'nullable|string|max:100',
-			'id_status'        =>  'required|integer|max:999999999',
-			'id_usuario'       =>  'required|integer|max:999999999',
+            'id_plan_evaluacion'=> 	'required|integer|max:999999999',
+			'id_tipo_evaluacion'=> 	'required|integer|max:999999999',
+			'nu_peso'           => 	'nullable|integer|max:999999999',
+			'fe_evaluacion'     => 	'nullable|date',
+			'tx_tema'           => 	'nullable|string|max:100',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer|max:999999999',
+			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
         $evaluacion = evaluacion::create($request->all());
 
-        return [ 'msj' => 'Evaluacion Agregado Correctamente', compact('evaluacion') ];
+        return [ 'msj' => 'Evaluacion Agregada Correctamente', compact('evaluacion') ];
     }
 
     /**
@@ -85,19 +115,19 @@ class EvaluacionController extends Controller
     public function update(Request $request, Evaluacion $evaluacion)
     {
         $validate = request()->validate([
-            'id_plan_detalle'  => 'required|integer|max:999999999',
-			'fe_evaluacion'    => 'required|string|max:0',
-            'hh_inicio'        => 'required|date_format:"H:i"|before:hh_fin"',
-            'hh_fin'           => 'required|date_format:"H:i"',
-			'nu_peso'          => 'required|integer|max:999999999',
-			'tx_observaciones' => 'nullable|string|max:100',
-			'id_status'        => 'required|integer|max:999999999',
-			'id_usuario'       => 'required|integer|max:999999999',
+            'id_plan_evaluacion'=> 	'required|integer|max:999999999',
+			'id_tipo_evaluacion'=> 	'required|integer|max:999999999',
+			'nu_peso'           => 	'nullable|integer|max:999999999',
+			'fe_evaluacion'     => 	'nullable|date',
+			'tx_tema'           => 	'nullable|string|max:100',
+			'tx_observaciones'  => 	'nullable|string|max:100',
+			'id_status'         => 	'required|integer|max:999999999',
+			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
         $evaluacion = $evaluacion->update($request->all());
 
-        return [ 'msj' => 'Evaluacion Editado' , compact('evaluacion')];
+        return [ 'msj' => 'Evaluacion Actualizada' , compact('evaluacion')];
     }
 
     /**
@@ -110,6 +140,6 @@ class EvaluacionController extends Controller
     {
         $evaluacion = $evaluacion->delete();
  
-        return [ 'msj' => 'Evaluacion Eliminado' , compact('evaluacion')];
+        return [ 'msj' => 'Evaluacion Eliminada' , compact('evaluacion')];
     }
 }

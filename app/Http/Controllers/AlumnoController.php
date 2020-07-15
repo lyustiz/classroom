@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Alumno;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 
 class AlumnoController extends Controller
 {
@@ -15,8 +16,27 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        $alumno = Alumno::with([])
+        return Alumno::with([
+                                'grado:grado.id,nb_grado', 
+                                'grupo:grupo.id,nb_grupo',
+                                'matricula:id,id_alumno,id_grado,id_grupo,fe_matricula,id_tipo_condicion,id_colegio_origen,tx_observaciones'
+                            ])
                     ->get();
+    }
+
+    public function list()
+    {
+        return Alumno::get();
+    }
+
+    public function alumnoGrupo($idGrupo)
+    {
+        $alumno = Alumno::select('id','nb_apellido','nb_apellido2','nb_nombre','nb_nombre2','tx_documento','fe_nacimiento')
+                        ->where('id_status', 1)
+                        ->whereHas('matricula', function (Builder $query) use($idGrupo) {
+                            $query->where('id_grupo', $idGrupo)->where('id_status', 1);
+                        })
+                        ->get();
         
         return $alumno;
     }
@@ -40,6 +60,7 @@ class AlumnoController extends Controller
         
         return $alumno;
     }
+
 
     /**
      * Store a newly created resource in storage.

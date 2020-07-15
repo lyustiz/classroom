@@ -6,6 +6,7 @@ use App\Models\DocenteGrupo;
 use App\Models\Grupo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 
 class DocenteGrupoController extends Controller
 {
@@ -22,7 +23,7 @@ class DocenteGrupoController extends Controller
         return $docenteGrupo;
     }
 
-    public function docenteGrupoDocente($idDocente)
+    public function docenteGrupoAsignacion($idDocente)
     {
         $docenteGrupo = DocenteGrupo::select('id','id_docente','id_grupo')
                                         ->with(['grupo:id,nb_grupo'])
@@ -34,6 +35,16 @@ class DocenteGrupoController extends Controller
         $docenteGrupo = $this->formatData($docenteGrupo);
 
         return [ 'docenteGrupo' => $docenteGrupo, 'grupo' => $grupo] ;
+    }
+
+    public function docenteGrupoDocente($idDocente)
+    {
+        return Grupo::select('id','nb_grupo')
+                    ->whereHas('docente', function (Builder $query) use($idDocente) {
+                        $query->where('id_docente', $idDocente);
+                    })
+                    ->where('id_status', 1)
+                    ->get();
     }
 
     function formatData($data)

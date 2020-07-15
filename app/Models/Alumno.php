@@ -82,15 +82,38 @@ class Alumno extends Model
 	{
         return $this->BelongsTo('App\Models\Ciudad', 'id_ciudad');
 	}
-	
-	public function grupoAlumno()
+
+	public function grado()
 	{
-        return $this->hasMany('App\Models\GrupoAlumno', 'id_alumno');
+		return $this->hasOneThrough(
+			
+			'App\Models\Grado', //final
+            'App\Models\Matricula', //intermedia
+            'id_alumno', // fk en intermedia
+            'id', // laocal en origen
+            'id', // local en final
+			'id_grado' // fk en intermedia
+		);
 	}
 	
-	public function gradoAlumno()
+	public function grupo()
 	{
-        return $this->hasMany('App\Models\GradoAlumno', 'id_alumno');
-    }
+        return $this->hasOneThrough(
+			
+			'App\Models\Grupo', //final
+            'App\Models\Matricula', //intermedia
+            'id_alumno', // fk en intermedia
+            'id', // laocal en origen
+            'id', // local en final
+			'id_grupo' // fk en intermedia
+		);
+	}
+
+	public function matricula()
+	{
+        return $this->hasOne('App\Models\Matricula', 'id_alumno');
+	}
+	
+	
 }
 

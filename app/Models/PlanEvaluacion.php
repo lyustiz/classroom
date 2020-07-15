@@ -12,6 +12,7 @@ class PlanEvaluacion extends Model
                             'id_grupo',
                             'id_periodo',
                             'id_materia',
+                            'id_docente',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'
@@ -47,8 +48,17 @@ class PlanEvaluacion extends Model
         return $this->BelongsTo('App\Models\Materia', 'id_materia');
     }
 
-    public function planDetalle()
+    public function docente()
     {
-        return $this->hasMany('App\Models\PlanDetalle', 'id_plan_evaluacion');
+        return $this->BelongsTo('App\Models\Docente', 'id_docente');
     }
+
+    public function evaluacion()
+    {
+        return $this->hasMany('App\Models\Evaluacion', 'id_plan_evaluacion');
+    }
+
+    
+
+
 }

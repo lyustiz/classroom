@@ -47,8 +47,10 @@
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
-                                :item="item" 
-                                @onChangeStatus="changeStatus($event)">
+                                :item="item"
+                                :resource="resource"
+                                @onStatusChanging="loading=true"
+                                @onStatusChanged="loading=false">
                             </status-switch>
                         </td>
                         

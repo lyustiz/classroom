@@ -20,6 +20,7 @@ import ListButtons   from '@components/list/ListButtons'
 import AddButton     from '@components/list/AddButton'
 import ListContainer from '@components/list/ListContainer'
 import StatusSwitch  from '@components/list/StatusSwitch'
+import ListMenu      from '@components/list/ListMenu'
 import ItemMenu      from '@components/list/ItemMenu'
 
 import FormModal     from '@components/form/FormModal'
@@ -38,6 +39,7 @@ Vue.component('list-buttons',     ListButtons);
 Vue.component('add-button',       AddButton);
 Vue.component('list-container',   ListContainer);
 Vue.component('status-switch',    StatusSwitch);
+Vue.component('list-menu',        ListMenu);
 Vue.component('item-menu',        ItemMenu);
 
 Vue.component('form-modal',       FormModal);

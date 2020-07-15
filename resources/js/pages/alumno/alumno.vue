@@ -28,18 +28,38 @@
 
                 <template v-slot:item="{ item }">
                     <tr>
+                        <td class="text-xs-left">
+
+                            <v-menu transition="slide-y-transition" right :close-on-content-click="false">
+
+                                <template v-slot:activator="{ on }" @click="menu==true">
+                                     <v-avatar color="grey lighten-4 pointer" size="40" v-on="on" ripple  >
+                                        <v-img :src="`/storage/foto/alumno/${item.id}.jpg`"></v-img>
+                                    </v-avatar>
+                                </template>
+
+                                <app-foto :origenId="item.id" :maxItems="1" :tipoFoto="2" :aspectRatio="32/43"></app-foto>
+
+                            </v-menu>
+
+                        </td>
+                        
                         <td class="text-xs-left">{{ item.nb_alumno_corto }}</td>
+
 						<td class="text-xs-left">
                             <list-icon :data="sexoIcons" :value="item.tx_sexo"></list-icon>
                         </td>
-						<td class="text-xs-left">{{ item.fe_nacimiento | formatDate }}</td>
-                        <td class="text-xs-left">{{ item.nu_edad }}</td>
+
+                        <td class="text-xs-left">{{ (item.grado) ? item.grado.nb_grado : null }}</td>
+                        <td class="text-xs-left">{{ (item.grupo) ? item.grupo.nb_grupo : null }}</td>
 						<td class="text-xs-left">{{ item.tx_documento }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
-                                :item="item" 
-                                @onChangeStatus="changeStatus($event)">
+                                :item="item"
+                                :resource="resource"
+                                @onStatusChanging="loading=true"
+                                @onStatusChanged="loading=false">
                             </status-switch>
                         </td>
                         
@@ -47,6 +67,15 @@
                             <list-buttons 
                                 @update="updateForm(item)" 
                                 @delete="deleteForm(item)" >
+
+                                <item-menu 
+                                    :menus="ItemsMenu" 
+                                    iconColor="white" 
+                                    btnColor="cyan" 
+                                    :item="item"
+                                    @onItemMenu="onItemMenu($event)" 
+                                ></item-menu>
+
                             </list-buttons>
                         </td>
                     </tr>
@@ -68,6 +97,11 @@
 
             </app-modal>
 
+            <v-dialog v-model="dialogMatricula" max-width="600" content-class="rounded-xl">
+                <app-simple-toolbar title="Asignar Matricula" @closeModal="closeDialog($event)"></app-simple-toolbar>
+                <matricula-alumno :matricula="matricula" :alumno="alumno" v-if="dialogMatricula"  @closeModal="closeDialog($event)"></matricula-alumno>
+            </v-dialog>
+
             <form-delete
                 :dialog="dialog"
                 :loading="loading"
@@ -83,33 +117,71 @@
 </template>
 
 <script>
-import listHelper from '@mixins/Applist';
-import alumnoForm  from './alumnoForm';
+import listHelper   from '@mixins/Applist';
+import alumnoForm   from './alumnoForm';
+import AppMatricula from '@pages/matricula/AppMatricula';
 export default {
+    
     mixins:     [ listHelper],
-    components: { 'alumno-form': alumnoForm },
+
+    components: { 
+                    'alumno-form'     : alumnoForm,
+                    'matricula-alumno': AppMatricula,
+                },
+
     data () {
-    return {
-        title:    'Alumno',
-        resource: 'alumno',
-        headers: [
-            { text: 'Alumno',       value: 'nb_alumno' },
-			{ text: 'Sexo',         value: 'tx_sexo' },
-            { text: 'Nacimiento',   value: 'fe_nacimiento' },
-            { text: 'Edad',         value: 'nu_edad' },
-			{ text: 'Documento',    value: 'tx_documento' },
-			{ text: 'Status',       value: 'id_status' },
-            { text: 'Acciones',     value: 'actions', sortable: false, filterable: false },
-        ],
-        sexoIcons: [
-            {value: 'M', icon: 'mdi-human-male',  color: 'blue', label: 'Masculino'},
-            {value: 'F', icon: 'mdi-human-female',  color: 'pink', label: 'Femenino'}
-        ]
-    }
+        return {
+            title:    'Alumno',
+            resource: 'alumno',
+            headers: [
+                { text: 'Foto',         value: 'id', sortable: false, filterable: false },
+                { text: 'Alumno',       value: 'nb_alumno' },
+                { text: 'Sexo',         value: 'tx_sexo' },
+                { text: 'Grado',        value: 'grado' },
+                { text: 'Grupo',        value: 'grupo' },
+                { text: 'Documento',    value: 'tx_documento' },
+                { text: 'Status',       value: 'id_status' },
+                { text: 'Acciones',     value: 'actions', sortable: false, filterable: false },
+            ],
+            sexoIcons: [
+                {value: 'M', icon: 'mdi-human-male',  color: 'blue', label: 'Masculino'},
+                {value: 'F', icon: 'mdi-human-female',  color: 'pink', label: 'Femenino'}
+            ],
+            ItemsMenu: [
+                { action: 'addMatricula',   icon: 'mdi-account-details', label: 'Matricula' },
+            ],
+
+            dialogMatricula: false,
+            matricula:       null,
+            alumno:          null,
+        }
     },
     methods:
     {
-   
+        onItemMenu(data)
+        {
+            switch (data.action) {
+
+                case 'addMatricula':
+                    this.addMatricula(data.item)
+                    break;
+            }
+        },
+
+        addMatricula(alumno)
+        {
+            this.matricula = alumno.matricula 
+            this.alumno    = alumno.id
+            this.dialogMatricula = true
+        },
+
+        closeDialog(refresh)
+        {
+            this.matricula = null
+            this.alumno    = null
+            this.dialogMatricula =  false
+            if(refresh) this.list()
+        }
     }
 }
 </script>

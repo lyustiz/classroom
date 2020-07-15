@@ -30,7 +30,7 @@ export default
         return {
             apiUrl:  this.$App.apiUrl,
             idUser:  this.$store.getters.getUserid,
-            loading: true,
+            loading: false,
             items:   [],
             search:  null,
             item:    null,
@@ -232,6 +232,13 @@ export default
             this.$refs.form.resetValidation();
 
             this.form.id_usuario = this.idUser
+        },
+
+        formatPicker(date, picker)
+        {
+            this.pickers[picker] = false;
+
+            return this.formatDate(date)
         },
          
     }

@@ -45,6 +45,21 @@
             label="Materia"
             :loading="loading"
             dense
+            @change="getDocentes($event)"
+            ></v-select>
+        </v-col>
+
+        <v-col cols="12" md="6">
+            <v-select
+            :items="docentes"
+            item-text="nb_docente"
+            item-value="id"
+            v-model="form.id_docente"
+            :rules="[rules.select]"
+            label="Docente"
+            :loading="loading"
+            :disabled="docentes.length < 1"
+            dense
             ></v-select>
         </v-col>
           
@@ -102,33 +117,42 @@
 import Appform from '@mixins/Appform';
 
 export default {
+
     mixins: [Appform],
+
+    created()
+    {
+        if(this.action == 'upd') this.getDocentes(this.item.id_materia)
+    },
+
+    watch:
+    {
+        action(action)
+        {
+            if(action == 'upd') this.getDocentes(this.item.id_materia)
+        }
+    },
+
     data() {
         return {
             resource: 'planEvaluacion',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
+            docentes: [],
             form:
             {
                 id: 	             null,
 				id_grupo: 	         null,
                 id_periodo: 	     null,
                 id_materia: 	     null,
+                id_docente: 	     null,
 				tx_observaciones: 	 null,
 				id_status: 	         null,
 				id_usuario: 	     null,
             },
             selects:
             {
-                grupo: 	 [],
+                grupo: 	 ['/list'],
                 periodo: [],
-                materia:  [],      
+                materia: [],      
 	 	 	 	status:  [],
             },
         }
@@ -136,7 +160,24 @@ export default {
 
     methods:
     {
+        getDocentes(materia)
+        {
+            this.loading = true
 
+            axios.get( `${this.apiUrl}docente/materia/${materia}` )
+            .then(response => 
+            {
+                this.docentes = response.data
+            })
+            .catch(error => 
+            {
+                this.showError(error)
+            })
+            .finally( () => 
+            {
+                this.loading = false
+            });
+        }
     }
 }
 </script>

@@ -22,22 +22,19 @@ class Grado extends Model
 	 	 	 	 	 	 	'updated_at'
                             ];
 
-    public function status(){
-
+    public function status()
+    {
         return $this->BelongsTo('App\Models\Status', 'id_status');
-
     }
                             
-    public function usuario(){
-
+    public function usuario()
+    {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
-
     }
 
-    public function nivel(){
-
+    public function nivel()
+    {
         return $this->BelongsTo('App\Models\Nivel', 'id_nivel');
-
     }
 
     public function materia()
@@ -45,13 +42,9 @@ class Grado extends Model
         return $this->belongsToMany('App\Models\Materia', 'grado_materia', 'id_grado', 'id_materia');
     }
 
-    public function grupo(){
-
+    public function grupo()
+    {
         return $this->HasMany('App\Models\Grupo', 'id_grado');
-
     }
-
-
-
 
 }

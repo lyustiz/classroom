@@ -114,7 +114,7 @@ export default {
         list()
         {
             this.grupos = []
-            let resource  = 'docenteGrupo/docente/' + this.idDocente
+            let resource  = 'docenteGrupo/asignacion/' + this.idDocente
             this.getResource( resource ).then( data =>  
             {
                 this.grupos = data.docenteGrupo

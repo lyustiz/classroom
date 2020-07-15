@@ -18,6 +18,7 @@ class CreatePlanEvaluacionTable extends Migration
             $table->integer('id_grupo');
             $table->integer('id_periodo');
             $table->integer('id_materia');
+            $table->integer('id_docente');
             $table->string('tx_observaciones', 100)->nullable();
             $table->integer('id_status');
             $table->integer('id_usuario');

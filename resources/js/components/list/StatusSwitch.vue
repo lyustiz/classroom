@@ -1,34 +1,49 @@
 <template>
+
         <v-switch 
-            :input-value="item.id_status"
-            @change="changeStatus($event)"
+            v-model="status"
             inset 
             dense
             hide-details
             :readonly="readOnly"
             :loading="loading" 
-            :true-value="1"
-            :false-value="2"
-            color="green">
+            :true-value="trueValue"
+            :false-value="falseValue"
+            :color="color"
+            :input-value="item.id_status"
+            @change="changeStatus($event)">
         </v-switch>
+
 </template>
 
 <script>
+
 export default {
+
     props:{
+        
         color:{
             type: String,
             default: 'green'
         },
+        
         loading:{
             type: Boolean,
             default: false
         },
+        
         item:{
             type: Object,
-            default: () => {}
-        }
+            required: true
+        },
+
+        resource:{
+            type: String,
+            required: true
+        },
+
     },
+
     computed:
     {
         readOnly()
@@ -36,33 +51,55 @@ export default {
             return this.loading
         }
     },
-    created()
-    {
-       /*  if(this.item)
-        {
-            this.id_status = this.item.id_status 
-        }
 
-        console.log(this.$props) */
-        
+    data() {
+        return{
+            apiUrl:  this.$App.apiUrl,
+            idUser:  this.$store.getters.getUserid,
+            status:  this.item.id_status,
+            form: {
+                resource:   null,
+                id:         null,
+                id_status:  null,
+                id_usuario: null
+            },
+            trueValue:  1,
+            falseValue: 2,
+        }
     },
 
-
-    data(){
-        return {
-            id_status: null
-        }
-    },
     methods:
     {
         changeStatus(status)
         {
-            if(this.loading)
+            if(this.loading) return
+
+            this.updateStatus(status)
+        },
+
+        updateStatus(status)
+        {
+            this.form.resource   = this.resource
+            this.form.id         = this.item.id            
+            this.form.id_status  = status
+            this.form.id_usuario = this.idUser
+
+            this.$emit('onStatusChanging', { id: this.item.id, status: status })
+
+            axios.put( `${this.apiUrl}status/resource`, this.form )
+            .then(response => 
             {
-                return
-            }
-            this.$emit('onChangeStatus', { id: this.item.id, status: status })
+                this.showMessage(response.data.msj)
+                this.$emit('onStatusChanged', { id: this.item.id, status: status })
+            })
+            .catch(error => 
+            {
+                this.showError(error)
+                this.status = (this.status == 1) ? 2 : 1;
+            })
+
         }
+
     },
     
 }

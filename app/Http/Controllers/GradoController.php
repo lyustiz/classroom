@@ -21,6 +21,54 @@ class GradoController extends Controller
         return $grado;
     }
 
+    public function gradoPlanEvaluacion()
+    {
+        return Grado::with([
+                        'grupo:grupo.id,nb_grupo,id_grado', 
+                        'grupo.planEvaluacion:id,id_grupo,id_materia,id_periodo,id_docente,id_status', 
+                        'grupo.planEvaluacion.docente:id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2', 
+                        'materia:materia.id,nb_materia',
+                        'materia.docente:docente.id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',                            
+                        ])
+                ->get();
+    }
+
+    public function gradoPlanEvaluacionDocentePeriodo($idDocente, $idPeriodo)
+    {
+        return Grado::with([
+                        'grupo:grupo.id,nb_grupo,id_grado', 
+                        'grupo.planEvaluacion' => function ($query) use($idDocente,$idPeriodo) {
+                            $query->select('id','id_grupo','id_materia','id_periodo','id_docente','id_status')
+                                  ->where('id_periodo', $idPeriodo)
+                                  ->where('id_docente', $idDocente);
+                        }, 
+                        'grupo.planEvaluacion.materia:id,nb_materia',
+                        'materia.docente:docente.id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',                            
+                        ])
+                ->get();
+
+               /*  'detalleHorario' => function ($query) use($idDocente) {
+                    $query->select('id','id_horario','id_materia','id_docente','id_dia_semana','id_aula','hh_inicio','hh_fin','nu_carga_horaria')
+                          ->where('id_docente', $idDocente);
+                }, */
+    }
+
+
+    public function grupoGrado($idGrado)
+    {
+        return Grado::select('id', 'nb_grado')
+                    ->where('id_grado', $idGrado)
+                    ->where('id_status', 1)
+                    ->get();
+    }
+
+    public function list()
+    {
+        return Grado::select('id', 'nb_grado')
+                    ->where('id_status', 1)
+                    ->get();
+    }
+
     /**
      * Store a newly created resource in storage.
      *

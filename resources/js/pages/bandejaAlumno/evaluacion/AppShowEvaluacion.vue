@@ -16,12 +16,12 @@
             
             <tr>
                 <td class="text-left" v-text="item.tipo_evaluacion.nb_tipo_evaluacion"></td>
-                <td class="text-left" >{{item.nu_peso}} %</td>
+                <td class="text-left" >{{item.nu_peso}} %</td>                                                                                                                                
                 <td class="text-left" v-text="item.tx_tema"></td>
-                <td class="text-left" ><v-chip small color="amber lighten-3" >pendiente</v-chip></td>
+                <td class="text-left" ><v-chip small color="amber lighten-3" >P</v-chip></td>
                 <td class="text-left" >{{item.fe_evaluacion | formatDate}}</td>
                 <td class="text-left">
-                    <app-archivo origen="detalleEvaluacion" :origenId="item.id" :tipoArchivo="1" :hasArchivo="item.archivo.length > 0"></app-archivo>
+                    <app-archivo origen="evaluacion" :origenId="item.id" :tipoArchivo="2" :hasArchivo="item.archivo.length > 0"></app-archivo>
                 </td>
             </tr>
         </template>
@@ -59,7 +59,6 @@ export default {
             this.items = []
             this.list() 
         },
-
     },
 
     props:
@@ -94,17 +93,15 @@ export default {
             ],
         }
     },
-    
 
     methods: 
     {
         list()
         {
             this.getResource( `planEvaluacion/grupo/${this.grupo}/periodo/${this.periodo}/materia/${this.materia.id}` )
-            .then( data =>  this.items = data.plan_detalle )
+            .then( data =>  this.items = data.evaluacion )
         }
     }
-
 }
 </script>
 

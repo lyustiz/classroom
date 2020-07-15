@@ -27,7 +27,7 @@
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.id }}-{{ item.nb_tipo_archivo }}</td>
+                        <td class="text-xs-left">{{ item.nb_tipo_archivo }} ({{ item.id }})</td>
 						<td class="text-xs-left">{{ item.tx_origen }}</td>
 						<td class="text-xs-left">{{ item.tx_storage }}</td>
 						<td class="text-xs-left">{{ item.tx_base_path }}</td>
@@ -35,8 +35,10 @@
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
-                                :item="item" 
-                                @onChangeStatus="changeStatus($event)">
+                                :item="item"
+                                :resource="resource"
+                                @onStatusChanging="loading=true"
+                                @onStatusChanged="loading=false">
                             </status-switch>
                         </td>
                         

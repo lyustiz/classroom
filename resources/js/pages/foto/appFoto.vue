@@ -66,7 +66,7 @@
         </v-dialog>
 
         <form-delete
-            :dialog="dialog"
+            :dialog="delDialog"
             :loading="loading"
             message="Desea eliminar la Foto?"
             @deleteItem="deleteImage()"
@@ -129,6 +129,7 @@ export default {
             type:       Boolean,
             default:    false
         },
+
     },
 
     created()
@@ -153,13 +154,14 @@ export default {
 
     data () {
         return {
-            resource:    `foto/tipoFoto/${this.tipoFoto}/origen/${this.origenId}`,
-            imageUpload: null,
-            images:      [],
-            rawImg:      null,
-            crop:        false,
-            loading:     true,
-            image:       null
+            resource:     `foto/tipoFoto/${this.tipoFoto}/origen/${this.origenId}`,
+            imageUpload:  null,
+            images:       [],
+            rawImg:       null,
+            crop:         false,
+            loading:      true,
+            image:        null,
+            delDialog: false,
         }
     },
     methods:
@@ -208,7 +210,7 @@ export default {
 
                 this.image  = null
 
-                this.dialog = false
+                this.delDialog = false
 
                 this.$emit('updateImages', this.images)
             })
@@ -216,14 +218,15 @@ export default {
         
         deleteDialog(image)
         {
-            this.image  = image
-            this.dialog = true
+           this.image  = image
+            this.delDialog = true
         },
 
         deleteCancel()
         {
             this.image  = null
-            this.dialog = false
+            this.delDialog = false
+            this.$emit('close', this.image)
         },
 
         cropImage() 

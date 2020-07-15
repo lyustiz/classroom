@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Status;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class StatusController extends Controller
 {
@@ -79,6 +80,49 @@ class StatusController extends Controller
         $status = $status->update($request->all());
 
         return [ 'msj' => 'Status Editado' , compact('status')];
+    }
+
+
+    /**
+     * Actualiza el estatus de Cualquier recurso/tabla.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\PlanEvaluacion  $planEvaluacion
+     * @return \Illuminate\Http\Response
+     */
+    public function updateResource(Request $request)
+    {
+        $validate = request()->validate([
+            
+            'resource'          => 	'required|string|max:64',
+            'id'                => 	'required|integer|max:999999999',
+            'id_status'         => 	'required|integer|max:999999999',
+            'id_usuario'        => 	'required|integer|max:999999999',
+            
+        ]);
+
+        $tableName    = Str::snake($request->resource);
+
+        $updated = \DB::table($tableName)
+                    ->where('id', $request->id)
+                    ->update([
+                                'id_status'  => $request->id_status,
+                                'id_usuario' => $request->id_usuario
+                                ]);
+
+        $resourceName = ucwords(implode(' ',preg_split('/(?=[A-Z])/', $request->resource)));
+        
+        if($updated)   
+        {
+            $status   =  Status::select('nb_status')->find($request->id_status);
+            
+            return [ 'msj' => "$resourceName $status->nb_status" , 'updated' => $updated]; 
+
+        } else {
+
+            return  [ 'msj' => "Error al Actualizar el estatus de $resourceName" , 'updated' => $updated];
+        }                    
+                            
     }
 
     /**

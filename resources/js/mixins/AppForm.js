@@ -29,7 +29,7 @@ export default
     data() 
     {
         return {
-            idUser:      1,//this.$store.getters.idUser,
+            idUser:      1, //TODO:this.$store.getters.idUser,
             valid:       true,
             calendar:    false,
             dates:       {},
@@ -37,7 +37,7 @@ export default
             default:     {},
             defaultForm: {
                 id_status: 1
-            }
+            },
         }
     },
 
@@ -61,6 +61,11 @@ export default
 
 	computed: 
 	{
+        apiUrl() 
+		{
+            return this.$App.apiUrl;
+        },
+        
         fullUrl() 
 		{
             return this.$App.apiUrl + this.resource;

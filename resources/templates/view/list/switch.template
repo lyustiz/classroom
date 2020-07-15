@@ -1,6 +1,7 @@
 <td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
+                                :resource="resource" 
                                 :item="item" 
                                 @onChangeStatus="changeStatus($event)">
                             </status-switch>

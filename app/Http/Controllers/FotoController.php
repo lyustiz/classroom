@@ -55,13 +55,13 @@ class FotoController extends Controller
         $imgName     = date('U') . '_' . $request->id_origen . '.jpg';
         $imgSource   = $request->tx_src;
         $storage     = $tipoFoto->tx_storage;
-        $folder      = $request->id_origen;
+        $folder      = $tipoFoto->tx_origen . DIRECTORY_SEPARATOR .  $request->id_origen;
         
         $stored      = $this->storeImage($imgSource, $storage, $imgName, $folder);
 
         $request->merge([
             'tx_src'       =>  $imgName,
-            'nb_foto'      =>  'imagen del Colegio ' . $request->id_origen,
+            'nb_foto'      =>  "$tipoFoto->tx_origen id: $request->id_origen",
             'id_status'    =>  1
         ]);
 
@@ -76,7 +76,7 @@ class FotoController extends Controller
              
         $imgSource  = base64_decode($imgSource);
                                                     
-        $stored = Storage::disk($storage)->put( 'foto' . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . $imgName, $imgSource);
+        $stored = Storage::disk($storage)->put(  $folder . DIRECTORY_SEPARATOR . $imgName, $imgSource);
 
         return $stored;
     }
@@ -129,7 +129,9 @@ class FotoController extends Controller
 
         $storage    = $tipoFoto->tx_storage;
 
-        $path       = 'foto' . DIRECTORY_SEPARATOR . $foto->id_origen . DIRECTORY_SEPARATOR . $foto->tx_src;
+        $folder      = $tipoFoto->tx_origen . DIRECTORY_SEPARATOR .  $foto->id_origen;
+
+        $path       = $folder . DIRECTORY_SEPARATOR  . $foto->tx_src;
 
         if($this->deleteImage( $storage, $path ))
         {

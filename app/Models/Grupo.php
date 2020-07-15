@@ -52,8 +52,31 @@ class Grupo extends Model
         return $this->BelongsTo('App\Models\Calendario', 'id_calendario');
     }
 
-    public function docente()
+    public function coordinador() 
     {
         return $this->BelongsTo('App\Models\Docente', 'id_docente');
     }
+
+    public function docente()
+    {
+        return $this->belongsToMany('App\Models\Docente', 'docente_grupo', 'id_grupo', 'id_docente');
+    }
+
+    public function planEvaluacion()
+    {
+        return $this->HasMany('App\Models\PlanEvaluacion', 'id_grupo');
+    }
+
+    public function alumno()
+	{
+        return $this->hasManyThrough(
+			
+			'App\Models\Alumno', //final
+            'App\Models\Matricula', //intermedia
+            'id_grupo', // fk en intermedia
+            'id', // laocal en origen
+            'id', // local en final
+			'id_alumno' // fk en intermedia
+		);
+	}
 }

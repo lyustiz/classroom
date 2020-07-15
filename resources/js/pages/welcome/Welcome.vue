@@ -64,7 +64,7 @@
 
             <v-row>
                 <v-col cols="12" md="6">
-                    <v-card>
+                    <v-card flat>
                         <v-card-text class="text-justify">
                         <p class="body-1">VIRTUALIN es un producto de Aguirre Impresores, que consiste en plataforma web educativa LMS (Learning Management System), diseñada para cubrir diversas necesidades de Instituciones Educativas (IE) oficiales, privadas y otros centros educativos. Esta plataforma permitirá a las instituciones administrar, distribuir y controlar las actividades de formación no presencial, agilizando así el control académico de los estudiantes y la interacción entre los diferentes actores de la IE (directivos, docentes, padres de familia, etc.)</p>
                         <p class="body-1">Entre sus funciones, permite gestionar diversos procesos académicos y administrativos, como evaluaciones, control disciplinario; en el marco de una mayor participación de los padres de familia en el seguimiento de sus hijos. Nuestro objetivo principal es que esta herramienta mejore la experiencia de enseñanza-aprendizaje a distancia. La plataforma VIRTUALiN es diseñada y desarrollada para llevar el entorno educativo presencial al entorno virtual de aprendizaje, transformando así el proceso educativo, sin descuidar la calidad académica</p>
@@ -87,7 +87,7 @@
                         MISIÓN
                     </v-alert>
 
-                    <p class="white elevation-1">
+                    <p class="white">
                         Nuestra misión es la asesoría, diseño, diagramación y fabricación de productos impresos y digitales, con énfasis en las Instituciones Educativas, brindando asi el mayor bienestar posible a nuestros clientes y colaboradores, cumpliendo así con nuestro compromiso con el desarrollo de la comunidad y la nación.
                     </p>
 
@@ -95,7 +95,7 @@
                         VISIÓN
                     </v-alert>
 
-                    <p class="white elevation-1">
+                    <p class="white">
                         En una década, en el desarrollo de productos educativos innovadores, comprometidos con la educación, mediante nuestro estricto cumplimiento de requisitos legales, estándares de calidad y la excelencia en la prestación de nuestros servicios.
                     </p>
 

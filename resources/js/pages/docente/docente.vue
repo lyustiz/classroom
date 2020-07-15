@@ -28,14 +28,28 @@
 
                 <template v-slot:item="{ item }">
                     <tr>
+                        <td class="text-xs-left">
+                            <v-menu transition="scale-transition" right :close-on-content-click="false">
+                                <template v-slot:activator="{ on }" @click="menu==true">
+                                     <v-avatar color="grey lighten-4 pointer" size="40" v-on="on" ripple  >
+                                        <v-img :src="`/storage/foto/docente/${item.id}.jpg`"></v-img>
+                                    </v-avatar>
+                                </template>
+                                <app-foto :origenId="item.id" :maxItems="1" :tipoFoto="3" :aspectRatio="35/43"></app-foto>
+                            </v-menu>
+                        </td>
                         <td class="text-xs-left">{{ item.nb_docente }}</td>
-						<td class="text-xs-left">{{ item.tx_sexo }}</td>
+						<td class="text-xs-left">
+                            <list-icon :data="sexoIcons" :value="item.tx_sexo"></list-icon>
+                        </td>
 						<td class="text-xs-left">{{ item.tx_documento }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
-                                :item="item" 
-                                @onChangeStatus="changeStatus($event)">
+                                :item="item"
+                                :resource="resource"
+                                @onStatusChanging="loading=true"
+                                @onStatusChanged="loading=false">
                             </status-switch>
                         </td>
                         <td class="text-xs-left">
@@ -111,6 +125,7 @@ export default {
             title:    'Docente',
             resource: 'docente',
             headers: [
+                { text: 'Foto',                value: 'id', sortable: false, filterable: false },
                 { text: 'Apellidos y Nombres', value: 'nb_docente' },
                 { text: 'Sexo',                value: 'tx_sexo' },
                 { text: 'Documento',           value: 'tx_documento' },
@@ -121,7 +136,10 @@ export default {
                 { action: 'addGrupo',   icon: 'mdi-alphabetical-variant', label: 'Asignar Grupo' },
                 { action: 'addMateria', icon: 'mdi-file-cad-box', label: 'Asignar Materia' }
             ],
-
+            sexoIcons: [
+                {value: 'M', icon: 'mdi-human-male',  color: 'blue', label: 'Masculino'},
+                {value: 'F', icon: 'mdi-human-female',  color: 'pink', label: 'Femenino'}
+            ],
             addGrupoDialog: false,
             addMateriaDialog: false,
             idDocente:      null,

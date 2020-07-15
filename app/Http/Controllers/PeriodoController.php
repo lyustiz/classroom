@@ -22,6 +22,15 @@ class PeriodoController extends Controller
         return $periodo;
     }
 
+    public function list()
+    {
+        $periodo = Periodo::select('id','nb_periodo')
+                          ->where('id_status', 1)
+                          ->get();
+        
+        return $periodo;
+    }
+
     public function periodoCalendario($idCalendario)
     {
         $periodo = Periodo::with(['calendario:id,nb_calendario'])

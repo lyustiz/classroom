@@ -20,7 +20,7 @@ import Home                  from  '@pages/home/home.vue';
 
 import MenuAdmin             from '@pages/admin/index.vue'; 
 import MenuAlumno            from '@pages/bandejaAlumno/index.vue'; 
-import MenuProfesor          from '@pages/bandejaProfesor/index.vue'; 
+import MenuProfesor          from '@pages/bandejaDocente/index.vue'; 
 import MenuRepresentante     from '@pages/bandejaRepresentante/index.vue'; 
 
 import BandejaAdmin          from '@pages/admin/dashboard.vue';
@@ -34,7 +34,7 @@ import EvaluacionAlumno      from '@pages/bandejaAlumno/evaluacion/AppEvaluacion
 
 
 
-import BandejaDocente       from '@pages/bandejaProfesor/dashboard.vue';
+import BandejaDocente       from '@pages/BandejaDocente/dashboard.vue';
 import BandejaRepresentante  from '@pages/bandejaRepresentante/dashboard.vue';
 
 // loading on demand
@@ -66,11 +66,14 @@ import Calificacion      from '@pages/calificacion/calificacion.vue';
 
 import TipoEvaluacion    from '@pages/tipoEvaluacion/tipoEvaluacion.vue';
 import PlanEvaluacion    from '@pages/planEvaluacion/planEvaluacion.vue'; 
+import AppPlanEvaluacion    from '@pages/planEvaluacion/AppPlanEvaluacion.vue';
 
 import AreaEstudio       from '@pages/areaEstudio/areaEstudio.vue';
 import Materia           from '@pages/materia/materia.vue';
 
 import Docente           from '@pages/docente/docente.vue';
+
+import TipoCondicion     from '@pages/tipoCondicion/tipoCondicion.vue';
 import Alumno            from '@pages/alumno/alumno.vue';
 
 import GradoAlumno       from '@pages/gradoAlumno/gradoAlumno.vue';
@@ -457,8 +460,8 @@ export default new Router({
                 component: Materia
             },
             { 
-                path: 'gradoMateria',
-                name: 'gradoMateria',
+                path: 'grado-materia',
+                name: 'grado-materia',
                 label: 'Grado Materias',
                 icon: 'mdi-square-root',
                 profile: 'secretaria',
@@ -514,6 +517,16 @@ export default new Router({
             },
 
             { 
+                path: 'app-plan-evaluacion',
+                name: 'app-plan-evaluacion',
+                label: 'App Plan Evaluacion',
+                icon: 'mdi-clipboard-check-multiple-outline',
+                profile: 'secretaria',
+                visible: true,
+                component: AppPlanEvaluacion
+            },
+
+            { 
                 path: 'horario',
                 name: 'horario',
                 label: 'Horario',
@@ -536,6 +549,18 @@ export default new Router({
 
 
             /**************************** */
+            
+            
+
+            { 
+                path: 'tipo-condicion',
+                name: 'tipo-condicion',
+                label: 'Condicion Alumno',
+                icon: 'mdi-face',
+                profile: 'secretaria',
+                visible: true,
+                component: TipoCondicion
+            },
             { 
                 path: 'alumno',
                 name: 'alumno',

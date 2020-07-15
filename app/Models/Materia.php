@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+
 
 class Materia extends Model
 {
@@ -22,8 +24,15 @@ class Materia extends Model
                             'created_at',
 	 	 	 	 	 	 	'updated_at'
                             ];
-
-
+    
+    protected static function boot()
+    {
+        parent::boot();
+        
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('nb_materia', 'asc');
+        });
+    }
 
     public function status()
     {
@@ -43,6 +52,11 @@ class Materia extends Model
     public function grado()
     {
         return $this->belongsToMany('App\Models\Grado', 'grado_materia', 'id_materia', 'id_grado');
+    }
+
+    public function docente()
+    {
+        return $this->belongsToMany('App\Models\docente', 'docente_materia', 'id_materia', 'id_docente');
     }
 
    /*  public function grado()

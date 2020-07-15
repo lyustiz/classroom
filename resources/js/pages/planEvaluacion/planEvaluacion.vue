@@ -37,11 +37,14 @@
                         <td class="text-xs-left">{{ item.grupo.nb_grupo }}</td>
 						<td class="text-xs-left">{{ item.periodo.nb_periodo }}</td>
                         <td class="text-xs-left">{{ item.materia.nb_materia }}</td>
+                        <td class="text-xs-left">{{ item.docente.nb_docente }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
-                                :item="item" 
-                                @onChangeStatus="changeStatus($event)">
+                                :item="item"
+                                :resource="resource"
+                                @onStatusChanging="loading=true"
+                                @onStatusChanged="loading=false">
                             </status-switch>
                         </td>
                         
@@ -56,7 +59,7 @@
 
                 <template v-slot:expanded-item="{ headers, item }">
                     <td :colspan="headers.length" class="py-4 " >
-                        <plan-detalle :planEvaluacion="item"></plan-detalle>
+                        <evaluacion :planEvaluacion="item"></evaluacion>
                     </td>
                 </template>
 
@@ -93,12 +96,12 @@
 <script>
 import listHelper from '@mixins/Applist';
 import planEvaluacionForm  from './planEvaluacionForm';
-import planDetalle  from '@pages/planDetalle/AppPlanDetalle';
+import evaluacion  from '@pages/evaluacion/AppEvaluacion';
 export default {
     mixins:     [ listHelper],
     components: { 
         'plan-evaluacion-form': planEvaluacionForm,
-        'plan-detalle':  planDetalle
+        'evaluacion':  evaluacion
     },
     data () { 
     return {
@@ -109,6 +112,7 @@ export default {
             { text: 'Grupo',           value: 'grupo.nb_grupo' },
             { text: 'Periodo',         value: 'periodo.nb_periodo' },
             { text: 'Materia',         value: 'materia.nb_materia' },
+            { text: 'Docente',         value: 'docente.nb_docente' },
 			{ text: 'Status',          value: 'id_status' },
             { text: 'Acciones',        value: 'actions', sortable: false, filterable: false },
         ],

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Docente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
+
 
 class DocenteController extends Controller
 {
@@ -19,6 +21,22 @@ class DocenteController extends Controller
                     ->get();
         
         return $docente;
+    }
+
+    public function docenteMateria($idMateria)
+    {
+        return  Docente::select('id', 'nb_apellido', 'nb_apellido2', 'nb_nombre', 'nb_nombre2')
+                        ->whereHas('docenteMateria', function (Builder $query) use($idMateria) {
+                            $query->where('id_materia', $idMateria);
+                        })
+                        ->get();
+    }
+
+
+    public function list()
+    {
+        return Docente::select('nb_apellido', 'nb_apellido2', 'nb_nombre', 'nb_nombre2')
+                          ->get();
     }
 
     /**

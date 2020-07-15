@@ -42,7 +42,7 @@ class GrupoAlumnoController extends Controller
 
         $grupoAlumno = grupoAlumno::create($request->all());
 
-        return [ 'msj' => 'GrupoAlumno Agregado Correctamente', compact('grupoAlumno') ];
+        return [ 'msj' => 'Grupo Agregado Correctamente', compact('grupoAlumno') ];
     }
 
     /**
@@ -75,7 +75,7 @@ class GrupoAlumnoController extends Controller
 
         $grupoAlumno = $grupoAlumno->update($request->all());
 
-        return [ 'msj' => 'GrupoAlumno Editado' , compact('grupoAlumno')];
+        return [ 'msj' => 'Grupo Actualizado' , compact('grupoAlumno')];
     }
 
     /**
@@ -88,6 +88,6 @@ class GrupoAlumnoController extends Controller
     {
         $grupoAlumno = $grupoAlumno->delete();
  
-        return [ 'msj' => 'GrupoAlumno Eliminado' , compact('grupoAlumno')];
+        return [ 'msj' => 'Grupo Eliminado' , compact('grupoAlumno')];
     }
 }

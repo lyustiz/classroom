@@ -6,7 +6,7 @@
 
                 <v-flex xs12>
 
-                        <v-card :class="`mx-2 ${(inDialog) ? 'rounded-xl' : null }`" :flat="inDialog">
+                        <v-card min-height="89vh" :class="`mx-2 list-container ${(inDialog) ? 'rounded-xl' : null }`" :flat="inDialog">
 
                             <v-toolbar flat dense :class="headColor" v-if="!inDialog">
 
@@ -83,3 +83,7 @@ export default
 
 }
 </script>
+<style scoped>
+.list-container{
+}
+</style>

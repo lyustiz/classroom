@@ -1,22 +1,52 @@
 <template>
 
     <v-card flat :loading="loading">
-        
-        <v-card-text class="pt-3">
-    
+
+        <v-card-text class="pt-2">
+
+            <v-toolbar color="grey lighten-4 subtitle-2" dense flat class="rounded-xl mb-2">
+                <div class="indigo--text">Calificaciones por Periodo</div>  <v-spacer></v-spacer> <list-menu :itemsMenu="itemsMenu"></list-menu>
+            </v-toolbar>
+
             <v-row justify="center"> 
+
                 <v-expansion-panels  focusable class="rounded-xl" accordion>
                     <v-expansion-panel v-for="(item,i) in items" :key="i">
                         <v-expansion-panel-header>
-
-
-                            <div class="purple--text">
-                                <v-icon color="purple" class="mr-1">mdi-bookshelf</v-icon> {{item.nb_materia}}
+                            
+                            <div>
+                                <v-icon color="red" class="mr-1">mdi-clipboard-list</v-icon> {{item.nb_periodo}}
                             </div>
                         
                         </v-expansion-panel-header>
                             <v-expansion-panel-content>
-                                    
+                                
+                                 <v-simple-table dense>
+
+                                    <template v-slot:default>
+                                        <thead>
+                                        <tr>
+                                            <th class="text-left">Materia</th>
+                                            <th class="text-left">Calificacion</th>
+                                            <th class="text-left">Cualitativa</th>
+                                            <th class="text-left">Detalle</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="materia in materias" :key="materia.id">
+                                            <td>{{ materia.nb_materia }}</td>
+                                            <td>A</td>
+                                            <td>Sobresaliente</td>
+                                            <td>
+                                                <v-btn small icon color="indigo">
+                                                    <v-icon>mdi-text-box-search</v-icon>
+                                                </v-btn>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </template>
+
+                                </v-simple-table>
                             </v-expansion-panel-content>
                     </v-expansion-panel>
                 </v-expansion-panels>
@@ -36,35 +66,36 @@ export default {
 
     created()
     {
-        this.getMaterias()
+        this.list()
     },
 
     data () {
         return {
-            tarea: null,
             grupo:    1,  //TODO: agregar grupo
             periodo:  null,
+            calendario: 1, //TODO: agregar calendario
             headers:  [
                 { text: ' ',        value: 'expand'},
                 { text: 'Materia',  value: 'nb_materia' },
             ],
-            selects:  
-            {
-                periodo: 	 [],
-            },
-            tareas: [
-                { nb_tarea: 'Proyecto',   fe_tarea: '20/07/2020', descripcion: "Ciclo de la Naturaleza (Agua, Carbono)" },
-                { nb_tarea: 'Maqueta',    fe_tarea: '28/07/2020', descripcion: "Patrimonio Cultural de la Umanidad" },
-                { nb_tarea: 'Exposicion', fe_tarea: '10/07/2020', descripcion: "Contaminacion (tipo, conseguencia, medidas)" }
+            marerias: [],
+            itemsMenu: [
+                {
+                    label:  'Imprimir Boletin',
+                    icon:   'mdi-printer',
+                    action: 'print-boletin'
+                }
             ]
         }
     },
     methods:
     {
-        getMaterias()
+        list()
         {
-           this.getResource( `materia/grupo/${this.grupo}` ).then( data =>  this.items = data )
+           this.getResource( `periodo/calendario/${this.calendario}` ).then( data =>  this.items = data )
+           this.getResource( `materia/grupo/${this.grupo}` ).then( data =>  this.materias = data )
         }
+
     }
 }
 </script>

@@ -105,5 +105,8 @@ export default {
     .v-application {
         background-color: var(--v-background-base) !important;
     }
+    .pointer{
+        cursor: pointer;
+    }
 
 </style>

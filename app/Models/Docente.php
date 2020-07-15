@@ -42,16 +42,14 @@ class Docente extends Model
 		return trim(str_replace( '  ', ' ',  "{$this->nb_apellido} {$this->nb_apellido2} {$this->nb_nombre} {$this->nb_nombre2}")) ;
 	}
 
-    public function status(){
-
+	public function status()
+	{
         return $this->BelongsTo('App\Models\Status', 'id_status');
-
     }
                            
-    public function usuario(){
-
+	public function usuario()
+	{
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
-
 	}
 	
 	public function estadoCivil()
@@ -72,5 +70,15 @@ class Docente extends Model
 	public function ciudad()
 	{
         return $this->BelongsTo('App\Models\Ciudad', 'id_ciudad');
-    }
+	}
+
+	public function planEvaluacion()
+	{
+        return $this->HasMany('App\Models\PlanEvaluacion', 'id_docente');
+	}
+
+	public function docenteMateria()
+	{
+        return $this->HasMany('App\Models\DocenteMateria', 'id_docente');
+	}
 }

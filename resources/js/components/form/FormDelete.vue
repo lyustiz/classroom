@@ -1,7 +1,7 @@
 <template>
 
     <v-dialog
-        v-model="dialog"
+        :value="dialog"
         scrollable  
         persistent 
         max-width="500px"
@@ -80,6 +80,10 @@ export default {
             default: false
         },
         loading:{
+            type: Boolean,
+            default: false
+        },
+        modal:{
             type: Boolean,
             default: false
         },

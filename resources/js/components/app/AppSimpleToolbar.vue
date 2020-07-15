@@ -2,7 +2,7 @@
   <v-toolbar :color="backgroundColor" :dark="dark" flat :dense="dense">
         <v-toolbar-title :class="textColor" v-text="title"></v-toolbar-title>
         <v-spacer></v-spacer>
-            <v-btn icon x-small class="mr-2" :class="textColor" @click="$emit('closeModal')">    
+            <v-btn icon x-small class="mr-2" :class="textColor" @click="closeModal()">    
                 <v-icon>mdi-close-circle</v-icon>
             </v-btn>
     </v-toolbar>
@@ -38,6 +38,14 @@ export default {
             default:    false
         },
     },
+
+    methods:
+    {
+        closeModal()
+        {
+            this.$emit('closeModal')
+        }
+    }
 
 }
 </script>
