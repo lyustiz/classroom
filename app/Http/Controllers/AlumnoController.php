@@ -19,7 +19,9 @@ class AlumnoController extends Controller
         return Alumno::with([
                                 'grado:grado.id,nb_grado', 
                                 'grupo:grupo.id,nb_grupo',
-                                'matricula:id,id_alumno,id_grado,id_grupo,fe_matricula,id_tipo_condicion,id_colegio_origen,tx_observaciones'
+                                'matricula:id,id_alumno,id_grado,id_grupo,fe_matricula,id_tipo_condicion,id_colegio_origen,tx_observaciones',
+                                'foto:id,tx_src,id_tipo_foto,id_origen',
+                                'foto.tipoFoto:id,tx_base_path',
                             ])
                     ->get();
     }

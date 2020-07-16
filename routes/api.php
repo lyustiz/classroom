@@ -123,6 +123,7 @@ Route::get('/periodo/list',                 'PeriodoController@list');
 Route::apiResource('/periodo',              'PeriodoController');
 Route::apiResource('/nivel',                'NivelController');
 Route::get('/grado/planEvaluacion/docente/{docente}/periodo/{periodo}', 'GradoController@gradoPlanEvaluacionDocentePeriodo');
+Route::get('/grado/planEvaluacion/docente/{docente}',  'GradoController@GradoPlanEvaluacionDocente');
 Route::get('/grado/planEvaluacion',          'GradoController@GradoPlanEvaluacion');
 Route::get('/grado/list',                   'GradoController@list');
 Route::apiResource('/grado',                'GradoController');

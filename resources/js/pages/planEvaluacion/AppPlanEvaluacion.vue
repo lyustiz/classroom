@@ -201,8 +201,6 @@ export default {
 
     data () {
         return {
-           tree:           null,
-           open:           null,
            grados:         null,
            periodos:       [],
            periodo:        null, //TODO: periodo

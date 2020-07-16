@@ -17,8 +17,11 @@ class DocenteController extends Controller
      */
     public function index()
     {
-        $docente = Docente::with([])
-                    ->get();
+        $docente = Docente::with([
+                                    'foto:id,tx_src,id_tipo_foto,id_origen',
+                                    'foto.tipoFoto:id,tx_base_path',
+                                ])
+                                ->get();
         
         return $docente;
     }

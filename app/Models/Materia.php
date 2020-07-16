@@ -59,6 +59,11 @@ class Materia extends Model
         return $this->belongsToMany('App\Models\docente', 'docente_materia', 'id_materia', 'id_docente');
     }
 
+    public function planEvaluacion()
+    {
+        return $this->HasMany('App\Models\PlanEvaluacion', 'id_materia');
+    }
+
    /*  public function grado()
     {
         return $this->hasManyThrough('App\Models\Grado', 'App\Models\GradoMateria', 'id_materia', 'id_grado', 'id', 'id');

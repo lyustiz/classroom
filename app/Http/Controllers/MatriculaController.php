@@ -60,6 +60,7 @@ class MatriculaController extends Controller
         $storeMaterias = [];
 
         foreach ($materias as $materia) {
+           
             $storeMaterias[] =  [
                                     'id_calendario' => $matricula->id_calendario,
                                     'id_alumno'     => $matricula->id_alumno,

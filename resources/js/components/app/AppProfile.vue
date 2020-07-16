@@ -15,9 +15,8 @@
                 </v-list-item-action>
             </v-list-item>
            
-            <v-avatar size="150" color="indigo">
-                 <!--  <img src="src" alt="alt"> -->
-                <v-icon size="145" dark>mdi-account</v-icon>
+            <v-avatar size="145" color="indigo">
+                 <img  src="/storage/foto/cuenta/1/1594861435_1.jpg" alt="alt">
             </v-avatar>
 
        </v-card-text>

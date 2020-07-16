@@ -67,7 +67,7 @@ class FotoController extends Controller
 
         $foto = foto::create($request->all());
 
-        return [ 'msj' => 'Foto Agregada Correctamente', compact('foto', 'stored') ];
+        return [ 'msj' => 'Foto Agregada Correctamente', 'foto' => $foto, 'stored' => $stored ];
     }
 
     public function storeImage($imgSource, $storage, $imgName, $folder)

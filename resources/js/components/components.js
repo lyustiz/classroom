@@ -55,7 +55,9 @@ Vue.component('app-simple-toolbar',      AppSimpleToolbar);
 
 //Tools Components
 import AppFoto          from '@pages/foto/appFoto'
+import AppFotoCuenta    from '@pages/foto/appFotoCuenta'
 import AppAgendaToolbar from '@components/app/AppAgendaToolbar'
 
 Vue.component('app-foto',           AppFoto);
+Vue.component('app-foto-cuenta',    AppFotoCuenta);
 Vue.component('app-agenda-toolbar', AppAgendaToolbar);

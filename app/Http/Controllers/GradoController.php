@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Grado;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 
 class GradoController extends Controller
 {
@@ -30,6 +31,32 @@ class GradoController extends Controller
                         'materia:materia.id,nb_materia',
                         'materia.docente:docente.id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',                            
                         ])
+                ->get();
+    }
+
+    public function gradoPlanEvaluacionDocente($idDocente)
+    {
+        return Grado::with([
+                        'grupo' => function ($query) use($idDocente) {
+                            $query->select('grupo.id','nb_grupo','id_grado')
+                            ->whereHas('planEvaluacion', function (Builder $query) use($idDocente) {
+                                $query->where('id_docente', $idDocente);
+                            });
+                        }, 
+                        'grupo.planEvaluacion' => function ($query) use($idDocente) {
+                            $query->select('plan_evaluacion.id','id_grupo','id_materia','id_periodo','id_docente','id_status')
+                                  ->where('id_docente', $idDocente);
+                        }, 
+                        'grupo.planEvaluacion.materia'=> function ($query) use($idDocente) {
+                            $query->select('materia.id','nb_materia')
+                            ->whereHas('planEvaluacion', function (Builder $query) use($idDocente) {
+                                $query->where('id_docente', $idDocente);
+                            });
+                        }, 
+                        ])
+                ->whereHas('grupo.planEvaluacion', function (Builder $query) use($idDocente) {
+                    $query->where('id_docente', $idDocente);
+                })
                 ->get();
     }
 

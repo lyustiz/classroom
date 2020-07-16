@@ -1,41 +1,58 @@
 <template>
-            
-        <v-sheet color="grey lighten-5" class="py-1 rounded" :width="width+8" :height="height+8" >
-            
-            <v-avatar  :width="width" :height="height" tile class="ml-1 rounded" v-if="images.length < 1">
-                <v-file-input 
-                    accept="image/*" 
-                    :capture="capture" 
-                    v-model="imageUpload" 
-                    color="purple"
-                    prepend-icon="mdi-image-search" 
-                    class="col-1 mr-5 mt-3"
-                    :loading="loading"
-                    :disabled="disabled"
-                    @change="setImage()">
-                    <template v-slot:selection></template>
-                </v-file-input>
-            </v-avatar>
+    <div>
 
-            <!-- Image Item -->
-            <template v-for="(image, idx) in images" >
-                <v-hover v-slot:default="{ hover }" :key="idx" >
-                <v-expand-x-transition>
-                <v-avatar  :width="width" :height="height" tile class="ml-1">
-                    <v-img :src="image.tipo_foto.tx_base_path + '/' + image.id_origen + '/' + image.tx_src">
+        <v-menu transition="slide-x-transition" right :close-on-content-click="false" content-class="rounded-circle elevation-0">
+
+            <template v-slot:activator="{ on }" @click="menu==true">
+                
+                <v-avatar color="grey lighten-4 pointer" size="40" v-on="on" ripple  v-if="src">
+                    <v-img :src="src"></v-img>
+                </v-avatar>
+
+                <v-avatar color="grey lighten-4 pointer" size="40" v-on="on" ripple v-else >
+                    <v-icon color="indigo" size="38">mdi-account-circle</v-icon>
+                </v-avatar>
+
+            </template>
+
+
+            <template v-if="src">
+                <v-hover v-slot:default="{ hover }">
+                <v-avatar  :width="width" :height="height" tile class="ml-1 rounded-circle elevation-5" >
+                    <v-img :src="src">
                         <v-scale-transition>
-                            <v-icon v-if="hover" color="white" class="pointer" size="48" @click="deleteDialog(image)">mdi-close-circle-outline</v-icon>
+                            <v-icon v-if="hover" color="white" class="pointer" size="48" @click="deleteDialog()">mdi-close-circle-outline</v-icon>
                         </v-scale-transition> 
                     </v-img>
                 </v-avatar>
-                </v-expand-x-transition>
                 </v-hover>
             </template>
 
+            <template v-else>
+                <v-avatar  :width="width" :height="height" tile color="grey lighten-2" class="ml-1 rounded-circle" >
+                     <v-file-input 
+                        accept="image/*" 
+                        :capture="capture" 
+                        v-model="imageUpload" 
+                        color="indigo"
+                        prepend-icon="mdi-image-search" 
+                        class="col-1 mr-5 mt-3"
+                        :loading="loading"
+                        :disabled="disabled"
+                        @change="setImage($event)">
+                        <template v-slot:selection></template>
+                        
+                    </v-file-input>
+                </v-avatar>
+            </template>
+
+        </v-menu>
+
         <!-- Cropper Tool -->
-        <v-dialog
+       <v-dialog
             v-model="crop"
-            fullscreen 
+            width="95vw" 
+            height="95vh"
             persistent 
             transition="dialog-transition">
             
@@ -49,6 +66,8 @@
                         :src="rawImg"
                         :stencil-props="{ aspectRatio: aspectRatio }"
                         ref="cropper"
+                        width="95vw" 
+                        height="95vh"
                     ></cropper>
                     
                     <v-btn fab top right absolute @click="cropImage" color="success" class="mt-12">
@@ -71,9 +90,9 @@
             message="Desea eliminar la Foto?"
             @deleteItem="deleteImage()"
             @deleteCancel="deleteCancel()"
-        ></form-delete>
+        ></form-delete> 
 
-        </v-sheet>
+    </div>
             
 </template>
 
@@ -101,16 +120,17 @@ export default {
             default:    1
         },
 
-        maxItems: {
-            type:       Number,
-            default:    2
+        foto: {
+            type:       Object,
+            default:    null
         },
-        width:{
+
+        height: {
             type:       Number,
             default:    100
         },
 
-        height:{
+        width: {
             type:       Number,
             default:    100
         },
@@ -129,16 +149,12 @@ export default {
             type:       Boolean,
             default:    false
         },
-        
-
     },
 
     created()
     {
-        if(this.origenId)
-        {
-            this.list()
-        }
+        this.src     = (this.foto) ? this.foto.full_url: null
+        this.image   = (this.foto) ? this.foto: null
     },
 
     watch:
@@ -147,8 +163,8 @@ export default {
         {
             if(this.origenId)
             {
-                this.resource =   `foto/tipoFoto/${this.tipoFoto}/origen/${this.origenId}`
-                this.list()
+                this.src     = (this.foto) ? this.foto.full_url: null
+                this.image   = (this.foto) ? this.foto: null
             }
         },
     },
@@ -156,8 +172,9 @@ export default {
     data () {
         return {
             resource:     `foto/tipoFoto/${this.tipoFoto}/origen/${this.origenId}`,
+            src:          null,
             imageUpload:  null,
-            images:       [],
+            image:        null,
             rawImg:       null,
             crop:         false,
             loading:      true,
@@ -167,12 +184,6 @@ export default {
     },
     methods:
     {
-        list()
-        {
-            this.images = []
-            
-            this.getResource( this.resource ).then( data =>  this.images = data )
-        },
 
         store(imgSource)
         {
@@ -191,6 +202,10 @@ export default {
                 
                 this.rawImg = null
 
+                this.src = data.foto.full_url
+
+                this.image = data.foto
+
                 this.list()
             })
         },
@@ -207,25 +222,24 @@ export default {
             {
                 this.showMessage(data.msj)
 
-                this.images = this.images.filter(image => image.id != this.image.id)
-
-                this.image  = null
+                this.image     = null
 
                 this.delDialog = false
 
-                this.$emit('updateImages', this.images)
+                this.src       = null
+
+                this.$emit('updateImage', this.image)
             })
         },
         
-        deleteDialog(image)
+        deleteDialog()
         {
-           this.image  = image
+            console.log(this.image)
             this.delDialog = true
         },
 
         deleteCancel()
         {
-            this.image  = null
             this.delDialog = false
             this.$emit('close', this.image)
         },
@@ -238,7 +252,7 @@ export default {
 
             this.store(imgSource)
 
-            this.$emit('updateImages', this.images)
+            this.$emit('updateImage', this.image)
         },
         
         validImage(image)
@@ -280,12 +294,13 @@ export default {
             return true;
         },
 
-        setImage()
+        setImage(file)
         {
+           
+           console.log('file', file, this.imageUpload)
+           
            if(this.imageUpload)
             {
-                if(this.isMaxFiles()) return 
-
                 if(!this.validSize()) return
 
                 this.loading  = true
@@ -301,6 +316,8 @@ export default {
                     this.imageUpload = null
 
                     this.crop        = true
+
+                    console.log('raw', reader.result)
                 };
 
                 reader.onerror = () => 
@@ -322,23 +339,15 @@ export default {
             }
             return true
         },
-
-        isMaxFiles()
-        {
-            if(this.images.length >= this.maxItems)
-            {
-                this.imageUpload = null
-
-                this.showError('Solo se permiten la carga de '+ this.maxItems+ ' archivos')
-
-                return true
-            }
-            return false
-        },
+       
 
     }
 }
 </script>
 
 <style>
+.cropper {
+	max-height: 95vh;
+	background: #DDD;
+}
 </style>

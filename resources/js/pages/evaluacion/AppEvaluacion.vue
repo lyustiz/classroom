@@ -134,11 +134,16 @@
                             cancel-text="Cancelar"
                             save-text="Guardar"
                         >
-                            <v-chip label outlined link class="tema-field">
-                                {{item.tx_observaciones}}
-                                <v-icon size="18" right>mdi-event</v-icon>
-                            </v-chip>
-                        
+            
+                            <v-tooltip top>
+                                <template v-slot:activator="{ on }">
+                                    <v-btn v-on="on" fab x-small dark depressed color="indigo">
+                                        <v-icon>mdi-comment-text</v-icon>
+                                    </v-btn>
+                                </template>
+                                <span>{{item.tx_observaciones}}</span>
+                            </v-tooltip>
+
                             <template v-slot:input>
                                 <v-text-field
                                     v-model="item.tx_observaciones"

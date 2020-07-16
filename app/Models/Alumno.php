@@ -113,7 +113,10 @@ class Alumno extends Model
 	{
         return $this->hasOne('App\Models\Matricula', 'id_alumno');
 	}
-	
-	
+
+	public function foto()
+    {
+        return $this->hasOne('App\Models\Foto',  'id_origen', 'id')->where('id_tipo_foto', 2);
+    }
 }
 

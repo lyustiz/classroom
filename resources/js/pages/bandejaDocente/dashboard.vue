@@ -1,6 +1,6 @@
 <template>
 
-    <v-container fluid class="purple lighten-4 contend"> 
+    <v-container fluid class="green lighten-4 contend"> 
 
         <v-row>
 

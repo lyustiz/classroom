@@ -23,11 +23,11 @@ class Foto extends Model
 	 	 	 	 	 	 	'updated_at'
                             ]; 
 
-    protected $appends = ['nb_real'];
+    protected $appends = ['full_url'];
     
-    public function getNbRealAttribute()
+    public function getFullUrlAttribute()
     {
-        return substr($this->tx_src, strpos($this->tx_src, '_') + 1 );
+        return "{$this->tipoFoto->tx_base_path}{$this->id_origen}/{$this->tx_src}";
     }
                            
     public function status()

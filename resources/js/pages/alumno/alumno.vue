@@ -29,19 +29,14 @@
                 <template v-slot:item="{ item }">
                     <tr>
                         <td class="text-xs-left">
-
-                            <v-menu transition="slide-y-transition" right :close-on-content-click="false">
-
-                                <template v-slot:activator="{ on }" @click="menu==true">
-                                     <v-avatar color="grey lighten-4 pointer" size="40" v-on="on" ripple  >
-                                        <v-img :src="`/storage/foto/alumno/${item.id}.jpg`"></v-img>
-                                    </v-avatar>
-                                </template>
-
-                                <app-foto :origenId="item.id" :maxItems="1" :tipoFoto="2" :aspectRatio="32/43"></app-foto>
-
-                            </v-menu>
-
+                            <app-foto-cuenta 
+                                :origenId="item.id" 
+                                :maxItems="1" 
+                                :tipoFoto="2" 
+                                :foto="item.foto"
+                                :aspectRatio="32/43"
+                                >
+                            </app-foto-cuenta> 
                         </td>
                         
                         <td class="text-xs-left">{{ item.nb_alumno_corto }}</td>

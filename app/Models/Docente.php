@@ -81,4 +81,9 @@ class Docente extends Model
 	{
         return $this->HasMany('App\Models\DocenteMateria', 'id_docente');
 	}
+
+	public function foto()
+    {
+        return $this->hasOne('App\Models\Foto',  'id_origen', 'id')->where('id_tipo_foto', 3);
+    }
 }

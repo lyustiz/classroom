@@ -21,7 +21,8 @@
 
                                 <v-list-item v-for="alumno in grupo.alumno" :key="alumno.id" > 
                                     <v-list-item-avatar>
-                                    <v-img :src="`/storage/foto/alumno/${alumno.id}.jpg`"></v-img>
+                                        <v-img :src="alumno.foto.full_url" v-if="alumno.foto"></v-img>
+                                        <v-icon v-else color="indigo" size="42">mdi-account-circle</v-icon>
                                     </v-list-item-avatar>
 
                                     <v-list-item-content>
@@ -38,15 +39,6 @@
 
                     </v-expansion-panel>
                 </v-expansion-panels> 
-
-
-
-
-
-
-
-
-
 
             </v-row>
 
