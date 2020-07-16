@@ -250,7 +250,11 @@ var render = function() {
   return _c(
     "list-container",
     {
-      attrs: { title: _vm.title, "head-color": _vm.$App.theme.headList },
+      attrs: {
+        title: _vm.title,
+        "head-color": _vm.$App.theme.headList,
+        inDialog: _vm.inDialog
+      },
       on: {
         onMenu: function($event) {
           return _vm.onMenu($event)
@@ -326,10 +330,17 @@ var render = function() {
                     { staticClass: "text-xs-left" },
                     [
                       _c("status-switch", {
-                        attrs: { loading: _vm.loading, item: item },
+                        attrs: {
+                          loading: _vm.loading,
+                          item: item,
+                          resource: _vm.resource
+                        },
                         on: {
-                          onChangeStatus: function($event) {
-                            return _vm.changeStatus($event)
+                          onStatusChanging: function($event) {
+                            _vm.loading = true
+                          },
+                          onStatusChanged: function($event) {
+                            _vm.loading = false
                           }
                         }
                       })
@@ -403,8 +414,6 @@ var render = function() {
           }
         }
       }),
-      _vm._v(" "),
-      _c("app-message"),
       _vm._v(" "),
       _vm.$App.debug ? _c("pre", [_vm._v(_vm._s(_vm.$data))]) : _vm._e()
     ],
