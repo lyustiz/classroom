@@ -70,11 +70,11 @@
                         height="95vh"
                     ></cropper>
                     
-                    <v-btn fab top right absolute @click="cropImage" color="success" class="mt-12">
+                    <v-btn fab top right absolute @click="cropImage" color="success" class="mt-12" :loading="loading">
                         <v-icon>mdi-crop</v-icon>
                     </v-btn>
 
-                    <v-btn fab top left absolute @click="crop=false" color="error" class="mt-12">
+                    <v-btn fab top left absolute @click="crop=false" color="error" class="mt-12" :loading="loading">
                         <v-icon>mdi-close</v-icon>
                     </v-btn>
                     
@@ -153,8 +153,9 @@ export default {
 
     created()
     {
-        this.src     = (this.foto) ? this.foto.full_url: null
-        this.image   = (this.foto) ? this.foto: null
+        this.src          = (this.foto) ? this.foto.full_url: null
+        this.image        = (this.foto) ? this.foto: null
+        this.validateForm = false
     },
 
     watch:
@@ -206,13 +207,10 @@ export default {
 
                 this.image = data.foto
 
+                this.$emit('updateImage', this.image)
+
                 this.list()
             })
-        },
-
-        preFormActions(action)
-        {
-            this.loading = true;
         },
 
         deleteImage()
@@ -228,13 +226,12 @@ export default {
 
                 this.src       = null
 
-                this.$emit('updateImage', this.image)
+                this.$emit('updateImage', null)
             })
         },
         
         deleteDialog()
         {
-            console.log(this.image)
             this.delDialog = true
         },
 
@@ -252,7 +249,6 @@ export default {
 
             this.store(imgSource)
 
-            this.$emit('updateImage', this.image)
         },
         
         validImage(image)
@@ -295,10 +291,7 @@ export default {
         },
 
         setImage(file)
-        {
-           
-           console.log('file', file, this.imageUpload)
-           
+        {           
            if(this.imageUpload)
             {
                 if(!this.validSize()) return
@@ -315,9 +308,10 @@ export default {
 
                     this.imageUpload = null
 
+                    this.loading     = false
+
                     this.crop        = true
 
-                    console.log('raw', reader.result)
                 };
 
                 reader.onerror = () => 

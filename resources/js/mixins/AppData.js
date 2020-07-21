@@ -76,7 +76,8 @@ export default
 				})
 				.catch(error => 
 				{
-					this.showError(error)
+                    this.showError(error)
+                    reject(error)
                 })
                 .finally( () => 
                 {
@@ -99,7 +100,8 @@ export default
 				})
 				.catch(error => 
 				{
-					this.showError(error)
+                    this.showError(error)
+                    reject(error)
                 })
                 .finally( () => 
                 {
@@ -122,7 +124,8 @@ export default
 				})
 				.catch(error => 
 				{
-					this.showError(error)
+                    this.showError(error)
+                    reject(error)
                 })
                 .finally( () => 
                 {
@@ -239,6 +242,26 @@ export default
             this.pickers[picker] = false;
 
             return this.formatDate(date)
+        },
+
+        onItemMenu(menu)
+        {
+            try {
+                this[menu.action](menu.item)
+            } catch (error) 
+            {
+                console.log(error)
+            }
+        },
+
+        onListMenu(menu)
+        {
+            try {
+                this[menu.action]()
+            } catch (error) 
+            {
+                console.log(error)
+            }
         },
          
     }

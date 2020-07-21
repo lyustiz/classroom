@@ -6,6 +6,7 @@ Vue.use(Vuex)
 //app
 import AppMessage from '@store/app/AppMessage';
 import AppLayout  from '@store/app/AppLayout';
+import AppHelp    from '@store/app/AppHelp';
 
 //data
 import Colegio    from '@store/data/Colegio';
@@ -22,6 +23,7 @@ export default new Vuex.Store({
         //app
         AppMessage,
         AppLayout,
+        AppHelp,
 
         //data
         Colegio,

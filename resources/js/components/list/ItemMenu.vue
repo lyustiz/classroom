@@ -3,7 +3,7 @@
     <v-menu bottom left>
         
         <template v-slot:activator="{ on }">
-            <v-btn x-small :color="btnColor" fab v-on="on" depressed>
+            <v-btn :x-small="small" :small="!small" :color="btnColor" fab v-on="on" depressed>
                 <v-icon :color="iconColor">mdi-dots-vertical</v-icon>
             </v-btn>
         </template>
@@ -56,7 +56,12 @@ export default
         item:{
             type: [ Object, Array],
             default: () => {}
-        }
+        },
+
+        small:{
+            type: Boolean,
+            default: true
+        },
     },
 
     

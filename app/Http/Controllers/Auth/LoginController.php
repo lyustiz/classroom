@@ -92,6 +92,8 @@ class LoginController extends Controller
                 $m        = Cookie::queue('AUTH-TOKEN', $token->get(), 15);
 
                 $profiles = $this->getProfile($user);
+
+                $foto     = $user->foto;
                 
                 return [ 
                     'auth'       => $token->get(),

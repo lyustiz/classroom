@@ -1,6 +1,6 @@
 <template>
 
-    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)" :inDialog="inDialog">
+    <list-container :title="title" :head-color="$App.theme.headList" :itemsMenu="listMenu" @onMenu="onListMenu($event)" :inDialog="inDialog">
 
         <template slot="HeadTools">
             <add-button @insItem="insertForm()"></add-button>
@@ -64,7 +64,7 @@
                                 @delete="deleteForm(item)" >
 
                                 <item-menu 
-                                    :menus="ItemsMenu" 
+                                    :menus="itemsMenu" 
                                     iconColor="white" 
                                     btnColor="cyan" 
                                     :item="item"
@@ -83,6 +83,7 @@
                 @closeModal="closeModal()"
                 :head-color="$App.theme.headModal"
                 :title="title"
+                width="95vw"
             >
                 <alumno-form
                     :action="action"
@@ -93,8 +94,16 @@
             </app-modal>
 
             <v-dialog v-model="dialogMatricula" max-width="600" content-class="rounded-xl">
-                <app-simple-toolbar title="Asignar Matricula" @closeModal="closeDialog($event)"></app-simple-toolbar>
+                <app-simple-toolbar title="Asignar Matricula" @closeModal="closeDialog($event,'dialogMatricula')"></app-simple-toolbar>
                 <matricula-alumno :matricula="matricula" :alumno="alumno" v-if="dialogMatricula"  @closeModal="closeDialog($event)"></matricula-alumno>
+            </v-dialog>
+
+            <v-dialog v-model="dialogAlumnoMateria" max-width="600" content-class="rounded-xl">
+                <alumno-materia :idAlumno="alumno" :idGrado="grado" v-if="dialogAlumnoMateria" @closeModal="closeDialog($event,'dialogAlumnoMateria')"></alumno-materia>
+            </v-dialog>
+
+            <v-dialog v-model="dialogAlumnosMateria" max-width="600" content-class="rounded-xl">
+                <alumnos-materia v-if="dialogAlumnosMateria" @closeModal="closeDialog($event,'dialogAlumnosMateria')"></alumnos-materia>
             </v-dialog>
 
             <form-delete
@@ -112,16 +121,20 @@
 </template>
 
 <script>
-import listHelper   from '@mixins/Applist';
-import alumnoForm   from './alumnoForm';
-import AppMatricula from '@pages/matricula/AppMatricula';
+import listHelper        from '@mixins/Applist';
+import alumnoForm        from './alumnoForm';
+import AppMatricula      from '@pages/matricula/AppMatricula';
+import AppAlumnoMateria  from '@pages/alumnoMateria/AppAlumnoMateria';
+import AppAlumnosMateria from '@pages/alumnoMateria/AppAlumnosMateria';
 export default {
     
     mixins:     [ listHelper],
 
     components: { 
-                    'alumno-form'     : alumnoForm,
-                    'matricula-alumno': AppMatricula,
+                    'alumno-form'      : alumnoForm,
+                    'matricula-alumno' : AppMatricula,
+                    'alumno-materia'   : AppAlumnoMateria,
+                    'alumnos-materia'  : AppAlumnosMateria,
                 },
 
     data () {
@@ -142,25 +155,46 @@ export default {
                 {value: 'M', icon: 'mdi-human-male',  color: 'blue', label: 'Masculino'},
                 {value: 'F', icon: 'mdi-human-female',  color: 'pink', label: 'Femenino'}
             ],
-            ItemsMenu: [
+            itemsMenu: [
                 { action: 'addMatricula',   icon: 'mdi-account-details', label: 'Matricula' },
+                { action: 'addMateriaAlumno',   icon: 'mdi-bookshelf', label: 'Asignar Materia' },
+                { action: 'addLibroAlumno',   icon: 'mdi-account-alert', label: 'Faltas y Sanciones' },
             ],
-
-            dialogMatricula: false,
+            listMenu:[
+                { action: 'list',   icon: 'mdi-table-refresh', label: 'Refrescar' },
+                { action: 'addMateriasAlumnos',   icon: 'mdi-bookshelf', label: 'Agregar Materias Alumnos' },
+                { action: 'print',   icon: 'mdi-printer', label: 'Reporte Alumnos' },
+            ],
+            dialogMatricula:      false,
+            dialogAlumnoMateria:  false,
+            dialogAlumnosMateria: false,
             matricula:       null,
             alumno:          null,
+            grado:           null
         }
     },
     methods:
     {
-        onItemMenu(data)
-        {
-            switch (data.action) {
 
-                case 'addMatricula':
-                    this.addMatricula(data.item)
-                    break;
+        addMateriaAlumno(alumno)
+        {
+            if(!alumno.grado) {
+                this.showError('Debe Asignar Grado al alumno') 
+                return
             }
+            this.grado     = alumno.grado.id
+            this.alumno    = alumno.id
+            this.dialogAlumnoMateria = true
+        },
+
+        print()
+        {
+            alert('print')
+        },
+
+        addMateriasAlumnos()
+        {
+            this.dialogAlumnosMateria = true
         },
 
         addMatricula(alumno)
@@ -170,12 +204,13 @@ export default {
             this.dialogMatricula = true
         },
 
-        closeDialog(refresh)
+        closeDialog(refresh, dialog)
         {
             this.matricula = null
             this.alumno    = null
-            this.dialogMatricula =  false
-            if(refresh) this.list()
+            this.grado     = null
+            this[dialog]   = false
+            if(refresh)    this.list()
         }
     }
 }

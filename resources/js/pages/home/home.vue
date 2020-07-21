@@ -4,73 +4,163 @@
    
 <v-container fluid>
 
-    <v-row > 
-        <v-col></v-col>
-        <v-col>
-            <v-img src="images/logo-lg.png" class="logo-holder" width="300"></v-img>
-        </v-col>
-        <v-col></v-col>
-        
-    </v-row>
+    <v-divider dark></v-divider>
 
     <v-row>
+
         <v-col>
-            <v-alert dark border="bottom"  color="amber darken-1" >
-                MODULOS
-            </v-alert>
+            <v-card class="rounded-xl red " flat>
+                <v-card-title>
+                    <div class="white--text"> Alumnos</div>
+                    <v-spacer></v-spacer>
+                    <item-menu :menus="menuAlumnos" btnColor="red" iconColor="white" :small="false" @onItemMenu="onMenu($event)"></item-menu>
+                </v-card-title>
+                <v-card-text>
+                    <v-row no-gutters justify="space-between">
+                            <v-avatar size="90">
+                                <v-icon size="90">mdi-school</v-icon>
+                            </v-avatar>
+                        <v-col class="pa-3 text-center">
+                            <span class="white--text text-h2 font-weight-bold">{{ (item) ? item.alumnos : '--' }}</span>
+                            <span class="white--text text-h5" >/500</span>
+                        </v-col>
+                        <v-col cols="auto" class="text-center">
+                            <v-progress-circular
+                                :rotate="-90"
+                                :size="80"
+                                :width="8"
+                                :value=" (item) ? item.alumnos*100/500 : 0 "
+                                color="white">
+                                {{ (item) ? item.alumnos : 0 }}
+                            </v-progress-circular>
+                        </v-col>
+                    </v-row>
+                </v-card-text>
+            </v-card>
         </v-col>
-        
+        <v-col>
+ 
+            <v-card class="rounded-xl green " flat>
+                <v-card-title>
+                    <div class="white--text"> Docentes </div>
+                    <v-spacer></v-spacer>
+                    <item-menu :menus="menuDocentes" btnColor="green" iconColor="white" :small="false" @onItemMenu="onMenu($event)"></item-menu>
+                </v-card-title>
+                <v-card-text>
+
+                    <v-row no-gutters justify="space-between">
+                            <v-avatar size="90">
+                                <v-icon size="90">mdi-account-tie</v-icon>
+                            </v-avatar>
+                        <v-col class="pa-3 text-center">
+                            <span class="white--text text-h2 font-weight-bold">{{ (item) ? item.docentes : '--' }}</span>
+                            <span class="white--text text-h5" >/200</span>
+                        </v-col>
+                        <v-col cols="auto">
+                            <v-progress-circular
+                                :rotate="-90"
+                                :size="80"
+                                :width="8"
+                                :value=" (item) ? item.docentes*100/200 : 0 "
+                                color="white">
+                                {{ (item) ? item.docentes : 0 }}
+                            </v-progress-circular>
+                        </v-col>
+                    </v-row>
+
+                </v-card-text>
+            </v-card>
+
+
+        </v-col>
+        <v-col>
+
+            <v-card class="rounded-xl cyan " flat>
+                <v-card-title>
+                    <div class="white--text"> Archivos </div>
+                    <v-spacer></v-spacer>
+                    <item-menu :menus="menuArchivos" btnColor="cyan" iconColor="white" :small="false" @onItemMenu="onMenu($event)"></item-menu>
+                </v-card-title>
+                <v-card-text>
+                    <v-row no-gutters justify="space-between">
+                            <v-avatar size="90">
+                                <v-icon size="90">mdi-file</v-icon>
+                            </v-avatar>
+                        <v-col class="pa-3 text-center">
+                            <span class="white--text text-h2 font-weight-bold">{{ (item) ? item.archivos : '--' }}</span>
+                            <span class="white--text text-h5" >/1000</span>
+                        </v-col>
+                        <v-col cols="auto">
+                            <v-progress-circular
+                                :rotate="-90"
+                                :size="80"
+                                :width="8"
+                                :value=" (item) ? item.archivos*100/1000 : 0 "
+                                color="white">
+                                {{ (item) ? item.archivos : 0 }}
+                            </v-progress-circular>
+                        </v-col>
+                    </v-row>
+                </v-card-text>
+            </v-card>
+        </v-col>
+
+
     </v-row>
 
+    <v-divider dark></v-divider>
+
     <v-row>
-        <v-col>
-            <v-card dark color="cyan">
-                <v-card-title>
-                    <div class=""> Secretaria</div>
-                    <v-spacer></v-spacer>
-                    <v-btn dark icon><v-icon>mdi-menu</v-icon></v-btn>
-                </v-card-title>
+        <v-col cols="6" sm="4" md="3">
+
+            <v-card color="transparent" class="rounded-xl" flat>
                 <v-card-text class="text-center">
-                    <v-icon size="60">mdi-chair-rolling</v-icon>
+                   <v-avatar size="130" color="cyan">
+                        <v-icon size="90" color="white">mdi-chair-rolling</v-icon>
+                    </v-avatar>
                 </v-card-text>
-            </v-card>
+                <div class="text-center">Secretaria</div>
+            </v-card> 
+
         </v-col>
-        <v-col>
-            <v-card dark color="green">
-                <v-card-title>
-                    <div class=""> Docente</div>
-                    <v-spacer></v-spacer>
-                    <v-btn dark icon><v-icon>mdi-menu</v-icon></v-btn>
-                </v-card-title>
+        <v-col cols="6" sm="4" md="3">
+
+            <v-card color="transparent" class="rounded-xl" flat >
                 <v-card-text class="text-center">
-                    <v-icon size="60">mdi-account-tie</v-icon>
+                   <v-avatar size="130" color="green">
+                        <v-icon size="90" color="white">mdi-account-tie</v-icon>
+                    </v-avatar>
                 </v-card-text>
-            </v-card>
+                <div class="text-center">Docente</div>
+            </v-card> 
+ 
         </v-col>
-        <v-col>
-            <v-card dark color="red">
-                <v-card-title>
-                    <div class=""> Alumno</div>
-                    <v-spacer></v-spacer>
-                    <v-btn dark icon><v-icon>mdi-menu</v-icon></v-btn>
-                </v-card-title>
+        <v-col cols="6" sm="4" md="3">
+
+            <v-card color="transparent" class="rounded-xl" flat >
                 <v-card-text class="text-center">
-                    <v-icon size="60">mdi-face</v-icon>
+                   <v-avatar size="130" color="red">
+                        <v-icon size="90" color="white">mdi-school</v-icon>
+                    </v-avatar>
                 </v-card-text>
-            </v-card>
+                <div class="text-center">Alumno</div>
+            </v-card> 
+      
         </v-col>
-        <v-col>
-            <v-card dark color="purple">
-                <v-card-title>
-                    <div class=""> Acudiente</div>
-                    <v-spacer></v-spacer>
-                    <v-btn dark icon><v-icon>mdi-menu</v-icon></v-btn>
-                </v-card-title>
+        <v-col cols="6" sm="4" md="3">
+
+            <v-card color="transparent" class="rounded-xl" flat >
                 <v-card-text class="text-center">
-                    <v-icon size="60">mdi-human-male-child</v-icon>
+                   <v-avatar size="130" color="purple">
+                        <v-icon size="90" color="white">mdi-human-male-child</v-icon>
+                    </v-avatar>
                 </v-card-text>
-            </v-card>
+                <div class="text-center">Acudiente</div>
+            </v-card> 
+ 
         </v-col>
+
+        
     </v-row>
     
 </v-container>
@@ -82,25 +172,74 @@
 
 <script>
 
-
+import AppData from '@mixins/AppData';
 export default 
 {
+    mixins:     [ AppData],
+
+    created()
+    {
+        this.list()
+    },
 
     data () 
 	{
         return {
             Showfilter: true,
             logo: require('~/assets/img/logo.png'),
+            resource: 'home',
+            menuAlumnos: [
+                {  label: 'Lista Alumnos', icon:  'mdi-school', action: 'showAlumnos' }
+            ],
+            menuDocentes: [
+                {  label: 'Lista Docentes', icon:  'mdi-account-tie', action: 'showDocentes' }
+            ],
+            menuArchivos: [
+                {  label: 'Archivos',  icon: 'mdi-file', action: 'showArchivos'  },
+                {  label: 'Recursos',  icon: 'mdi-bookshelf', action: 'showRecursos' },
+                {  label: 'Ver Fotos', icon: 'mdi-image', action: 'showFotos' }
+            ],
         }
     },
+
+    methods:
+    {
+        list()
+        {
+            this.getResource( this.resource ).then( data =>  this.item = data )
+        },
+
+        onMenu(menu)
+        {
+           switch (menu.action) {
+
+                case 'showAlumnos':
+                    this.navegateToName('alumno')
+                    break;
+                
+                case 'showDocentes':
+                    this.navegateToName('docente')
+                    break;
+                
+                case 'showArchivos':
+                    this.navegateToName('archivo')
+                    break;
+                
+                case 'showRecursos':
+                    this.navegateToName('recurso')
+                    break;
+                
+                case 'showFotos':
+                    this.navegateToName('foto')
+                    break;
+            }
+        }
+    }
 }
 </script>
 
 <style>
 .home-holder{
-    height: 97vh;
-}
-.logo-holder{
-    border-radius: 10px;
+    min-height: 96.4vh;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
 
-    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)" :inDialog="inDialog">
+    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)">
 
         <template slot="HeadTools">
             <add-button @insItem="insertForm()"></add-button>
@@ -27,37 +27,15 @@
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">
-                            <app-foto-cuenta 
-                                :origenId="item.id" 
-                                :maxItems="1" 
-                                :tipoFoto="4" 
-                                :foto="item.foto"
-                                :aspectRatio="32/43"
-                                >
-                            </app-foto-cuenta> 
-                        </td>
-
-						<td class="text-xs-left">{{ item.nb_usuario }}</td>
-
-                        <td class="text-xs-left">
-                              <v-tooltip bottom :key="perfil.id" v-for="perfil in item.perfil">
-                                <template v-slot:activator="{ on }">
-                                    <v-btn fab x-small v-on="on" color="success" class="elevation-5 mr-1">
-                                        <v-icon size="22" v-text="perfil.tx_icono"></v-icon>
-                                    </v-btn>
-                                </template>
-                                <span v-text="perfil.nb_perfil"></span>
-                            </v-tooltip>
-                        </td>
-
+                        <td class="text-xs-left">{{ item.id_grupo }}</td>
+						<td class="text-xs-left">{{ item.id_materia }}</td>
+						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
-                                :item="item"
-                                :resource="resource"
-                                @onStatusChanging="loading=true"
-                                @onStatusChanged="loading=false">
+                                :resource="resource" 
+                                :item="item" 
+                                @onChangeStatus="changeStatus($event)">
                             </status-switch>
                         </td>
                         
@@ -78,11 +56,11 @@
                 :head-color="$App.theme.headModal"
                 :title="title"
             >
-                <usuario-form
+                <grupo-materia-form
                     :action="action"
                     :item="item"
                     @closeModal="closeModal()"
-                ></usuario-form>
+                ></grupo-materia-form>
 
             </app-modal>
 
@@ -93,7 +71,7 @@
                 @deleteItem="deleteItem()"
                 @deleteCancel="deleteCancel()"
             ></form-delete>
-
+            
             <pre v-if="$App.debug">{{ $data }}</pre>
 
     </list-container>
@@ -102,18 +80,18 @@
 
 <script>
 import listHelper from '@mixins/Applist';
-import usuarioForm  from './usuarioForm';
+import grupoMateriaForm  from './grupoMateriaForm';
 export default {
     mixins:     [ listHelper],
-    components: { 'usuario-form': usuarioForm },
+    components: { 'grupo-materia-form': grupoMateriaForm },
     data () {
     return {
-        title:    'Usuario',
-        resource: 'usuario',
+        title:    'GrupoMateria',
+        resource: 'grupoMateria',
         headers: [
-            { text: 'Foto',     value: 'id', sortable: false, filterable: false },
-			{ text: 'Usuario',  value: 'nb_usuario' },
-            { text: 'Perfil',   value: 'perfil' },
+            { text: 'Grupo',   value: 'id_grupo' },
+			{ text: 'Materia',   value: 'id_materia' },
+			{ text: 'Observaciones',   value: 'tx_observaciones' },
 			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],

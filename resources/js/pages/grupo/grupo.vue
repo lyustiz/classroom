@@ -48,6 +48,15 @@
                             <list-buttons 
                                 @update="updateForm(item)" 
                                 @delete="deleteForm(item)" >
+
+                                <item-menu 
+                                    :menus="itemsMenu" 
+                                    iconColor="white" 
+                                    btnColor="cyan" 
+                                    :item="item"
+                                    @onItemMenu="onItemMenu($event)" 
+                                ></item-menu>
+
                             </list-buttons>
                         </td>
                     </tr>
@@ -77,6 +86,10 @@
                 @deleteCancel="deleteCancel()"
             ></form-delete>
 
+            <v-dialog v-model="dialogMateria" max-width="600" content-class="rounded-xl">
+                <grupo-materia :idGrupo="grupo" v-if="dialogMateria" @closeModal="closeDialog($event,'dialogMateria')"></grupo-materia>
+            </v-dialog>
+
             <pre v-if="$App.debug">{{ $data }}</pre>
 
     </list-container>
@@ -86,27 +99,49 @@
 <script>
 import listHelper from '@mixins/Applist';
 import grupoForm  from './grupoForm';
+import AppGrupoMateria from '@pages/grupoMateria/AppGrupoMateria'
 export default {
     mixins:     [ listHelper],
-    components: { 'grupo-form': grupoForm },
-    data () {
-    return {
-        title:    'Grupo',
-        resource: 'grupo',
-        headers: [
-            { text: 'Grupo',      value: 'nb_grupo' },
-			{ text: 'Grado',      value: 'grado.nb_grado' },
-			{ text: 'Turno',      value: 'turno.nb_turno' },
-			{ text: 'Calendario', value: 'calendario.nb_calendario' },
-			{ text: 'Docente',    value: 'docente.nb_docente' },
-			{ text: 'Orden',      value: 'nu_orden' },
-			{ text: 'Status',     value: 'id_status' },
-            { text: 'Acciones',   value: 'actions', sortable: false, filterable: false },
-        ],
-    }
+    components: { 
+        'grupo-form'   : grupoForm,
+        'grupo-materia': AppGrupoMateria 
+    },
+    data () 
+    {
+        return {
+            title:    'Grupo',
+            resource: 'grupo',
+            headers: [
+                { text: 'Grupo',      value: 'nb_grupo' },
+                { text: 'Grado',      value: 'grado.nb_grado' },
+                { text: 'Turno',      value: 'turno.nb_turno' },
+                { text: 'Calendario', value: 'calendario.nb_calendario' },
+                { text: 'Docente',    value: 'docente.nb_docente' },
+                { text: 'Orden',      value: 'nu_orden' },
+                { text: 'Status',     value: 'id_status' },
+                { text: 'Acciones',   value: 'actions', sortable: false, filterable: false },
+            ],
+            itemsMenu: [
+                { action: 'addMateriaGrupo',   icon: 'mdi-bookshelf', label: 'Asignar Materia' },
+            ],
+            dialogMateria: false,
+            grupo:              null,
+        }
     },
     methods:
     {
+        addMateriaGrupo(grupo)
+        {
+            this.grupo         = grupo.id 
+            this.dialogMateria = true
+        },
+
+        closeDialog(refresh, dialog)
+        {
+            this.grupo    = null
+            this[dialog]  = false
+            if(refresh)   this.list()
+        }
    
     }
 }

@@ -2,11 +2,11 @@
 <div>
 
     <!-- Contenido -->
-        <v-content class="fill-height">
+        <v-main class="fill-height">
             <transition name="fade" mode="out-in" >
                 <router-view></router-view>
             </transition>
-        </v-content>
+        </v-main>
 
     <!--Mensaje Sistema-->
     <app-message></app-message>
@@ -15,18 +15,8 @@
 </template>
 
 <script>
-import AppRules from '@mixins/AppRules'
 
 export default {
-    mixins: [ AppRules ],
-    data () 
-	{
-  
-    },
-    methods: {
-
-     
-    }
 
 }
 </script>

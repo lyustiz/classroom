@@ -117,6 +117,24 @@ class Alumno extends Model
 	public function foto()
     {
         return $this->hasOne('App\Models\Foto',  'id_origen', 'id')->where('id_tipo_foto', 2);
-    }
+	}
+
+	public function alumnoMateria()
+    {
+        return $this->hasMany('App\Models\AlumnoMateria', 'id_alumno');
+	}
+
+	public function materia()
+	{
+        return $this->hasManyThrough(
+			
+			'App\Models\Materia', //final
+            'App\Models\AlumnoMateria', //intermedia
+            'id_alumno', // fk en intermedia
+            'id', // laocal en origen
+            'id', // local en final
+			'id_materia' // fk en intermedia
+		);
+	}
 }
 

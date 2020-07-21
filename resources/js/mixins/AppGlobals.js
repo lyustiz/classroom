@@ -12,6 +12,13 @@ export default
         navegateTo(route)
         {
             this.$router.push(route).catch(err => {})
+        },
+
+        navegateToName(routeName)
+        {
+            this.$router.push({ name: routeName }).catch(err => {})
         }
+
+        
     }
 }

@@ -23,6 +23,7 @@ export default
 		getUsername:  	state => state.username,
 		getProfile:   	state => state.profile,
 		getProfiles:   	state => state.profiles,
+		getFoto:   	    state => state.user.foto,
 	},
 
 	mutations:
@@ -74,6 +75,12 @@ export default
 			state.profile   = profiles[0]
 			localStorage.setItem("profiles", (profiles)  ? JSON.stringify(profiles): null	)
 		},
+
+		setFoto (state, foto)
+		{
+			state.user.foto  = foto
+			localStorage.setItem("user", state.user)
+		}
     },
     
     actions:
@@ -91,7 +98,7 @@ export default
 									user: 	  response.data.user,
 									token: 	  response.data.auth,
 									expire:   response.data.expires_in,
-									profiles: response.data.profiles
+									profiles: response.data.profiles,
 								};
 
 						dispatch('autenticate', data)
@@ -209,7 +216,7 @@ export default
 		{
 			commit('setUser'  	 , { id: null, nb_usuario: null } );
 			commit('setToken' 	 , null);
-			commit('setExpire'  , null);
+			commit('setExpire'   , null);
 			commit('setProfiles' , []);
 			commit('setAuth'  	 , false);
 

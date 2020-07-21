@@ -16,7 +16,11 @@
             </v-list-item>
            
             <v-avatar size="145" color="indigo">
-                 <img  src="/storage/foto/cuenta/1/1594861435_1.jpg" alt="alt">
+
+                 <v-img :src="foto.full_url" alt="alt" v-if="foto" aspect-ratio="32/43" ></v-img>
+
+                 <v-icon size="145" dark v-else>mdi-account</v-icon>
+
             </v-avatar>
 
        </v-card-text>
@@ -27,6 +31,13 @@
 
 <script>
 export default {
+    computed: {
+
+        foto() {
+                return this.$store.getters['getFoto']
+            },
+
+    }
 
 }
 </script>

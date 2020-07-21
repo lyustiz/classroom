@@ -20,6 +20,7 @@ export default {
         
         if(auth==='true') // TODO:check expire
         {
+            console.log('log')
             const data ={
                             user: JSON.parse(user),
                             token,
@@ -31,6 +32,7 @@ export default {
         }
         else
         {
+            console.log('nolog')
             this.$store.dispatch('unatenticate')
             this.$store.commit('setColegio', null)
             this.navegateTo('/')

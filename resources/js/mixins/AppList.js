@@ -132,9 +132,13 @@ export default
             }, 3000);
             console.log('changeStatus', payload)
         },
-        onMenu(payload)
+
+
+        //acciones de los menus
+
+        onMenu(menu)
         {
-            switch (payload.action) {
+            switch (menu.action) {
                 case 'refresh':
                     this.list()
                     break;
@@ -142,6 +146,26 @@ export default
                 default:
                     break;
             }
-        }
+        },
+
+        onItemMenu(menu)
+        {
+            try {
+                this[menu.action](menu.item)
+            } catch (error) 
+            {
+                console.log(error)
+            }
+        },
+
+        onListMenu(menu)
+        {
+            try {
+                this[menu.action]()
+            } catch (error) 
+            {
+                console.log(error)
+            }
+        },
     }
 }

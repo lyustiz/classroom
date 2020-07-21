@@ -69,11 +69,14 @@ export default
 		{
 			return new Promise((resolve, reject) => 
 			{
+				
+				commit('setLoading', true)
 				axios.get('/api/v1/' + 'colegio/usuario/' + idUsuario)
 				.then(response => 
 				{
 					commit('setColegio', response.data)
 					commit('setCalendario', response.data.calendario)
+					commit('setLoading', false)
 					resolve(response)
 				})
 				.catch(error => 

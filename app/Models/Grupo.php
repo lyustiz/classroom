@@ -78,5 +78,18 @@ class Grupo extends Model
             'id', // local en final
 			'id_alumno' // fk en intermedia
 		);
+    }
+    
+    public function materia()
+	{
+        return $this->hasManyThrough(
+			
+			'App\Models\Materia', //final
+            'App\Models\GrupoMateria', //intermedia
+            'id_grupo', // fk en intermedia
+            'id', // laocal en origen
+            'id', // local en final
+			'id_materia' // fk en intermedia
+		);
 	}
 }

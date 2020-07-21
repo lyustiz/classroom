@@ -88,10 +88,6 @@
                 <docente-materia :idDocente="idDocente" v-if="addMateriaDialog"></docente-materia>
             </v-dialog>
 
-            <v-dialog v-model="addGrupoDialog" max-width="400" content-class="rounded-xl">
-                <docente-grupo :idDocente="idDocente" v-if="addGrupoDialog"></docente-grupo>
-            </v-dialog>
-
             <form-delete
                 :dialog="dialog"
                 :loading="loading"
@@ -132,7 +128,6 @@ export default {
                 { text: 'Acciones',            value: 'actions', sortable: false, filterable: false },
             ],
             ItemsMenu: [
-                { action: 'addGrupo',   icon: 'mdi-alphabetical-variant', label: 'Asignar Grupo' },
                 { action: 'addMateria', icon: 'mdi-file-cad-box', label: 'Asignar Materia' }
             ],
             sexoIcons: [

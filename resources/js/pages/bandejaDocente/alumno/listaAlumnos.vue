@@ -78,12 +78,10 @@ export default {
         },
 
     }
-
-
 }
 </script>
 
-<style>
+<style scoped>
 
 .expand-alumnos{
     max-height: 51vh !important;

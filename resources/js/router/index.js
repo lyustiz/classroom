@@ -25,14 +25,8 @@ import MenuRepresentante     from '@pages/bandejaRepresentante/index.vue';
 
 import BandejaAdmin          from '@pages/admin/dashboard.vue';
 
-
-
 import BandejaAlumno         from '@pages/bandejaAlumno/dashboard.vue';
 import EvaluacionAlumno      from '@pages/bandejaAlumno/evaluacion/AppEvaluacionAlumno';
-
-
-
-
 
 import BandejaDocente       from '@pages/BandejaDocente/dashboard.vue';
 import BandejaRepresentante  from '@pages/bandejaRepresentante/dashboard.vue';
@@ -76,8 +70,8 @@ import Docente           from '@pages/docente/docente.vue';
 import TipoCondicion     from '@pages/tipoCondicion/tipoCondicion.vue';
 import Alumno            from '@pages/alumno/alumno.vue';
 
-import GradoAlumno       from '@pages/gradoAlumno/gradoAlumno.vue';
-import GrupoAlumno       from '@pages/grupoAlumno/grupoAlumno.vue';
+//import GradoAlumno       from '@pages/gradoAlumno/gradoAlumno.vue';
+//import GrupoAlumno       from '@pages/grupoAlumno/grupoAlumno.vue';
 
 import Ciudad            from '@pages/ciudad/ciudad.vue';
 import Clase             from '@pages/clase/clase.vue';
@@ -159,7 +153,7 @@ export default new Router({
             name: 'home',
             label: 'Home',
             icon: 'mdi-view-dashboard',
-            profile: '*',
+            profile: 'secretaria',
             visible: true,
             component: Home,
         },
@@ -186,7 +180,7 @@ export default new Router({
         {
             path: '/bandeja-alumno',
             label: 'Alumno',
-            icon: 'mdi-face',
+            icon: 'mdi-school',
             profile: 'alumno',
             visible: true,
             component: MenuAlumno,
@@ -279,7 +273,7 @@ export default new Router({
             },
             { 
                 path: 'cargos',
-                name: 'cargos',
+                name: 'cargo',
                 label: 'Cargos',
                 icon: 'mdi-account-settings',
                 profile: 'secretaria',
@@ -288,7 +282,7 @@ export default new Router({
             },
             { 
                 path: 'tipoDirectiva',
-                name: 'tipoDirectiva',
+                name: 'tipo-directiva',
                 label: 'Tipo Directiva',
                 icon: 'mdi-account-group-outline',
                 profile: 'secretaria',
@@ -454,7 +448,7 @@ export default new Router({
                 path: 'materia',
                 name: 'materia',
                 label: 'Materias',
-                icon: 'mdi-file-cad-box',
+                icon: 'mdi-bookshelf',
                 profile: 'secretaria',
                 visible: true,
                 component: Materia
@@ -500,13 +494,13 @@ export default new Router({
                 path: 'tipo-evaluacion',
                 name: 'tipo-evaluacion',
                 label: 'Tipo Evaluacion',
-                icon: 'mdi-clipboard-check-multiple',
+                icon: 'mdi-clipboard-check-multiple-outline',
                 profile: 'secretaria',
                 visible: true,
                 component: TipoEvaluacion
             },
 
-            { 
+           /*  { 
                 path: 'plan-evaluacion',
                 name: 'plan-evaluacion',
                 label: 'Plan Evaluacion',
@@ -514,13 +508,13 @@ export default new Router({
                 profile: 'secretaria',
                 visible: true,
                 component: PlanEvaluacion
-            },
+            }, */
 
             { 
-                path: 'app-plan-evaluacion',
-                name: 'app-plan-evaluacion',
-                label: 'App Plan Evaluacion',
-                icon: 'mdi-clipboard-check-multiple-outline',
+                path: 'plan-evaluacion',
+                name: 'plan-evaluacion',
+                label: 'Plan Evaluacion',
+                icon: 'mdi-clipboard-check-multiple',
                 profile: 'secretaria',
                 visible: true,
                 component: AppPlanEvaluacion
@@ -556,7 +550,7 @@ export default new Router({
                 path: 'tipo-condicion',
                 name: 'tipo-condicion',
                 label: 'Condicion Alumno',
-                icon: 'mdi-face',
+                icon: 'mdi-school-outline',
                 profile: 'secretaria',
                 visible: true,
                 component: TipoCondicion
@@ -565,7 +559,7 @@ export default new Router({
                 path: 'alumno',
                 name: 'alumno',
                 label: 'Alumnos',
-                icon: 'mdi-face',
+                icon: 'mdi-school',
                 profile: 'secretaria',
                 visible: true,
                 component: Alumno
@@ -581,7 +575,7 @@ export default new Router({
                 component: Pariente
             },
 
-            { 
+            /* { 
                 path: 'grado-alumno',
                 name: 'grado-alumno',
                 label: 'Grado Alumnos',
@@ -599,7 +593,7 @@ export default new Router({
                 profile: 'secretaria',
                 visible: true,
                 component: GrupoAlumno
-            },
+            }, */
 
             { 
                 path: 'clase',

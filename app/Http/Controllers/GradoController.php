@@ -22,6 +22,21 @@ class GradoController extends Controller
         return $grado;
     }
 
+    public function gradoMateriaAlumno()
+    {
+        return Grado::with([
+                        'grupo:grupo.id,nb_grupo,id_grado', 
+                        'grupo.alumno' => function ($query) {
+                            $query->select('alumno.id','nb_apellido','nb_apellido2','nb_nombre','nb_nombre2','tx_documento')
+                            ->orderBy('nb_apellido', 'asc' );
+                        },  
+                        'grupo.materia:materia.id,nb_materia',
+                        'grupo.alumno.alumnoMateria:alumno_materia.id,id_materia,id_alumno',
+                        'grupo.alumno.matricula:matricula.id,id_alumno,id_tipo_condicion'
+                        ])
+                        ->get();
+    }
+
     public function gradoPlanEvaluacion()
     {
         return Grado::with([
@@ -31,7 +46,7 @@ class GradoController extends Controller
                         'materia:materia.id,nb_materia',
                         'materia.docente:docente.id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',                            
                         ])
-                ->get();
+                        ->get();
     }
 
     public function gradoPlanEvaluacionDocente($idDocente)
@@ -73,13 +88,7 @@ class GradoController extends Controller
                         'materia.docente:docente.id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',                            
                         ])
                 ->get();
-
-               /*  'detalleHorario' => function ($query) use($idDocente) {
-                    $query->select('id','id_horario','id_materia','id_docente','id_dia_semana','id_aula','hh_inicio','hh_fin','nu_carga_horaria')
-                          ->where('id_docente', $idDocente);
-                }, */
     }
-
 
     public function grupoGrado($idGrado)
     {

@@ -7,7 +7,8 @@ export default
 			isMobile: 	false, 
 			resize: 	false,
 			iconMenu: 	false,
-			toggleMenu: false
+			toggleMenu: false,
+			loading   : false
 		}
 	},
 
@@ -19,6 +20,7 @@ export default
 		getResize:  	state => state.resize,
 		getIconMenu:	state => state.iconMenu,
 		getToggleMenu:	state => state.toggleMenu,
+		getLoading:	state => state.toggleMenu,
 	},
 
 	mutations:
@@ -45,6 +47,10 @@ export default
 
 		setToggleMenu(state, active) {
 			state.toggleMenu = active
+		},
+
+		setLoading(state, isLoading) {
+			state.toggleMenu = isLoading
 		} 
 	}
 }

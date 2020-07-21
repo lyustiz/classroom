@@ -25,11 +25,6 @@
         <!--Toggle Menu Lateral-->
         <v-app-bar-nav-icon @click.stop="toggleMenu =! toggleMenu"></v-app-bar-nav-icon>
         
-        <!--Toggle minivariant-->
-        <v-btn icon @click.stop=" iconMenu = ! iconMenu">
-            <v-icon v-html="iconMenu ? 'chevron_left' : 'chevron_right'"></v-icon>
-        </v-btn>
-        
         <v-spacer></v-spacer>
 
         <!-- Logged -->
@@ -38,9 +33,7 @@
             <!-- Ayuda -->
             <v-tooltip bottom>
                 <template v-slot:activator="{ on }">
-                    <v-btn small icon v-on="on">
-                        <v-icon>help</v-icon>
-                    </v-btn>
+                    <app-help v-on="on"></app-help>
                 </template>
                 <span>Ayuda</span>
             </v-tooltip>
@@ -48,15 +41,14 @@
             <!-- Notificaciones -->
             <v-tooltip bottom>
                 <template v-slot:activator="{ on }">
-                    <v-btn small icon v-on="on">
-                        <v-icon>notification_important</v-icon>
-                    </v-btn>
+                    <app-notifications v-on="on"></app-notifications>
                 </template>
                 <span>Notificaciones</span>
             </v-tooltip>
-
+            
             <!-- User -->
             <app-user></app-user>
+
 
         </template>
 

@@ -1,6 +1,6 @@
 <template>
 
-<v-dialog v-model="modal" persistent width="600" min-width="700" content-class="rounded-xl">
+<v-dialog v-model="modal" persistent :width="width" :min-width="minWidt" content-class="rounded-xl">
 
     <v-card content-class="rounded-xl">
 
@@ -53,6 +53,14 @@ export default {
         TextColor:{
             type:       String,
             default:    'white--text'
+        },
+        width:{
+            type:       String,
+            default:    '600'
+        },
+        minWidt:{
+            type:       String,
+            default:    '700'
         },
     }
 }

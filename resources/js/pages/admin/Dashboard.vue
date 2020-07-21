@@ -1,7 +1,8 @@
 <template>
-  <v-container>
-  <div id="full-container" >
-      <v-toolbar dark color="info" dense>
+  <v-container class="amber lighten-2">
+  <div id="full-container"  >
+      
+      <v-toolbar dark color="indigo lighten-1" class="rounded-lg" dense flat>
           Administrador
       </v-toolbar>
       
@@ -10,19 +11,14 @@
       <v-row>
           <v-col v-for="(menu, idx) in menus" :key="idx" cols="6" md="4" lg="3" @click="navegateTo(menu.name)">
 
-              <v-card dark color="orange card-menu" ripple>
-
-                  <v-card-title v-html="menu.label" class="subtitle-1"></v-card-title>
-                
-                    <v-card-text>
-                        <v-col cols="12 text-center">
-                            <v-avatar class="white" size="60"  >
-                                <v-icon size="40" color="orange">{{menu.icon}}</v-icon>
-                            </v-avatar>
-                        </v-col>
-                    </v-card-text> 
-
-                </v-card>
+            <v-card color="transparent" class="rounded-xl pointer" flat>
+                <v-card-text class="text-center">
+                   <v-avatar size="130" color="cyan" ripple>
+                        <v-icon size="90" color="white">{{menu.icon}}</v-icon>
+                    </v-avatar>
+                </v-card-text>
+                <div class="text-center">{{menu.label}}</div>
+            </v-card> 
                 
           </v-col>
 
@@ -62,7 +58,6 @@ export default {
 <style scoped>
 #full-container{
     min-height: 200%;
-    background-color: blue;
     background-attachment: fixed;
     background-size: 100% 100%; 
 }

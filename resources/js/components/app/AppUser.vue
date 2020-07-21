@@ -18,34 +18,41 @@
 
         <v-list nav>
 
-            <v-list-item disabled class="grey lighten-3">
-                <v-list-item-avatar>
-                    <v-icon class="grey lighten-1 white--text">mdi-account</v-icon>
-                </v-list-item-avatar>
+            <v-list-item  class="grey lighten-3">
+
+                <app-foto-cuenta 
+                    :origenId="user.id" 
+                    :maxItems="1" 
+                    :tipoFoto="4" 
+                    :foto="(user.foto) ? user.foto : null "
+                    :aspectRatio="32/43"
+                    class="mr-2"
+                    @updateImage="setFoto($event)">
+                </app-foto-cuenta> 
 
                 <v-list-item-content>
                     <v-list-item-title>{{ user.nb_usuario }}</v-list-item-title>
                     <v-list-item-subtitle>{{ user.tx_email }}</v-list-item-subtitle>
                 </v-list-item-content>
+
             </v-list-item>
 
         <v-list-item-group>
             
             <v-chip class="mb-1" color="green lighten-2" close dark :close-icon="profile.tx_icono"> Perfil: {{profile.nb_perfil}}</v-chip>
 
-    
-                    <v-radio-group v-model="profile" row hide-details label="Perfiles: " >
-                        <v-radio
-                            v-for="profile in profiles"
-                            :key="profile.id"
-                            :off-icon="profile.tx_icono"
-                            :on-icon="profile.tx_icono"
-                            :prepend-icon="profile.tx_icono"
-                            :value="profile"
-                            color="success"
-                            class="ml-3"
-                        ></v-radio>
-                    </v-radio-group>
+                <v-radio-group v-model="profile" row hide-details label="Perfiles: " >
+                    <v-radio
+                        v-for="profile in profiles"
+                        :key="profile.id"
+                        :off-icon="profile.tx_icono"
+                        :on-icon="profile.tx_icono"
+                        :prepend-icon="profile.tx_icono"
+                        :value="profile"
+                        color="success"
+                        class="ml-3"
+                    ></v-radio>
+                </v-radio-group>
 
         </v-list-item-group>
         </v-list>
@@ -53,17 +60,18 @@
         <v-divider></v-divider>
 
         <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn
-            color="error"
-            text
-            small
-            :loading="loading"
-            @click="logout()" >
-            <v-icon>mdi-location-exit</v-icon>
-            Cerrar Sesion
-        </v-btn>
+            <v-spacer></v-spacer>
+            <v-btn
+                color="error"
+                text
+                small
+                :loading="loading"
+                @click="logout()" >
+                <v-icon>mdi-location-exit</v-icon>
+                Cerrar Sesion
+            </v-btn>
         </v-card-actions>
+        
     </v-card>
     </v-dialog>
 </div>
@@ -81,7 +89,7 @@
         },
         computed:
         {
-            user(){
+            user() {
                 return this.$store.getters['getUser']
             },
 
@@ -122,7 +130,7 @@
                         break;
                     
                     case 'secretaria':
-                        route = 'admin'
+                        route = 'home'
                         break;
                 }
                 this.navegateTo(route)
@@ -156,6 +164,11 @@
                 this.$router.push('/cuenta').catch(()=>{});
                 this.showDialog = false
             },
+
+            setFoto(foto)
+            {
+                this.$store.commit('setFoto', foto)
+            }
 
         }
     }

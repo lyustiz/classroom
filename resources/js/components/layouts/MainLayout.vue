@@ -27,17 +27,23 @@
 
         <!--Mensaje Sistema-->
         <app-message></app-message>
+
+        <app-asistente></app-asistente>
+
+    
     </div>
 </template>
 
 <script>
 
 import AppMenu from  '~/components/app/AppMenu';
+import AppAsistente from  '@pages/asistente/AppAsistente';
 
 export default 
 {
     components: {
-        'app-menu' : AppMenu
+        'app-menu' : AppMenu,
+        'app-asistente': AppAsistente
     },
     computed: 
     {

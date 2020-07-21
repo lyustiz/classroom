@@ -14,7 +14,8 @@ class Usuario extends Authenticatable implements MustVerifyEmail, JWTSubject
 	protected $table 	  = 'usuario';
 
     protected $fillable   = [
-                            'id',
+							'id',
+							'id_colegio',
 	 	 	 	 	 	 	'nb_nombres',
 	 	 	 	 	 	 	'nb_usuario',
 	 	 	 	 	 	 	'password',
@@ -33,11 +34,11 @@ class Usuario extends Authenticatable implements MustVerifyEmail, JWTSubject
 							]; 
 							
 	protected $hidden   = [ 'password', 'verification', 'remember_token', 'id_usuario', 'api_token', 'created_at', 'updated_at'];
-                           
+           
 	protected $casts = [
         'email_verified_at' => 'datetime',
-    ];
-
+	];
+	
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -57,16 +58,20 @@ class Usuario extends Authenticatable implements MustVerifyEmail, JWTSubject
 	{
         return $this->belongsTo('App\Models\Usuario', 'id_usuario');
 	}
-	
-	public function rolUsuario()
+
+	public function colegio()
 	{
-        return $this->belongsTo('App\Models\Usuario', 'id_usuario');
+        return $this->belongsTo('App\Models\Colegio', 'id_colegio');
 	}
 	
-	public function perfil(){
-
+	public function perfil()
+	{
         return $this->belongsToMany('App\Models\Perfil', 'usuario_perfil', 'id_usuario', 'id_perfil');
-
+	}
+	
+	public function foto()
+    {
+        return $this->hasOne('App\Models\Foto',  'id_origen', 'id')->where('id_tipo_foto', 4);
     }
 
 }

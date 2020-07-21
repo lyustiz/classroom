@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grupo;
+use App\Models\GradoMateria;
+use App\Models\GrupoMateria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
@@ -79,7 +81,30 @@ class GrupoController extends Controller
 
         $grupo = grupo::create($request->all());
 
-        return [ 'msj' => 'Grupo Agregado Correctamente', compact('grupo') ];
+        $materias  = $this->storeGrupoMateria($grupo);
+
+        return [ 'msj' => 'Grupo Agregado Correctamente', compact('grupo', 'materias') ];
+    }
+
+    public function storeGrupoMateria($grupo)
+    {
+        $materias  = GradoMateria::select('id_materia')->where('id_grado', $grupo->id_grado)->get();
+
+        $storeMaterias = [];
+
+        foreach ($materias as $materia) {
+           
+            $storeMaterias[] =  [
+                                    'id_calendario' => $matricula->id_calendario,
+                                    'id_alumno'     => $matricula->id_alumno,
+                                    'id_grado'      => $matricula->id_grado,  
+                                    'id_materia'    => $materia->id_materia,
+                                    'id_status'     => $matricula->id_status,
+                                    'id_usuario'    => $matricula->id_usuario
+                                ];
+        }
+
+        return GrupoMateria::insert($storeMaterias);
     }
 
     /**

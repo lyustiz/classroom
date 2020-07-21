@@ -16,9 +16,8 @@ class DocenteMateriaController extends Controller
      */
     public function index()
     {
-        $docenteMateria = DocenteMateria::with(['materia:id,nb_materia'])
-                    ->get();
-        
+        $docenteMateria = DocenteMateria::with(['materia:id,nb_materia'])->get();
+                    
         return $docenteMateria;
     }
 
@@ -107,7 +106,7 @@ class DocenteMateriaController extends Controller
 
         $docenteMateria = $docenteMateria->update($request->all());
 
-        return [ 'msj' => 'Materia Editado' , compact('docenteMateria')];
+        return [ 'msj' => 'Materia Editada' , compact('docenteMateria')];
     }
 
     /**

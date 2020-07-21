@@ -19,7 +19,11 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuario::with(['perfil','status'])
+        $usuarios = Usuario::with([
+                                        'perfil',
+                                        'foto:id,tx_src,id_tipo_foto,id_origen',
+                                        'foto.tipoFoto:id,tx_base_path'
+                                    ])
                            ->get();
         
         return $usuarios;

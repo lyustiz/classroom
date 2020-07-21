@@ -3,7 +3,7 @@
     <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)" :inDialog="inDialog">
 
         <template slot="HeadTools">
-            <add-button @insItem="insertForm()"></add-button>
+           
         </template>
 
             <v-col cols="12" md="6">
@@ -44,7 +44,6 @@
                         
                         <td class="text-xs-left">
                             <list-buttons 
-                                @update="updateForm(item)" 
                                 @delete="deleteForm(item)" >
                             </list-buttons>
                         </td>
