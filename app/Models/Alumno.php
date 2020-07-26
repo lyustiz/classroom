@@ -37,14 +37,14 @@ class Alumno extends Model
 	 	 	 	 	 	 	'updated_at'
 							];
 
-	protected $appends = ['nb_alumno', 'nb_alumno_corto', 'nu_edad'];
+	protected $appends = ['nb_alumno', 'nb_corto', 'nu_edad'];
 							
 	public function getNbAlumnoAttribute()
 	{
 		return trim(str_replace( '  ', ' ',  "{$this->nb_apellido} {$this->nb_apellido2} {$this->nb_nombre} {$this->nb_nombre2}")) ;
 	}
 
-	public function getNbAlumnoCortoAttribute()
+	public function getNbCortoAttribute()
 	{
 		$nb_nombre2   = (substr($this->nb_nombre2, 0 , 1) == '') ? null : ucfirst(substr($this->nb_nombre2, 0 , 1)) . '.';
 
@@ -58,6 +58,24 @@ class Alumno extends Model
 		return Carbon::parse($this->fe_nacimiento)->age;
 	}
 
+	public function scopeActivo($query)
+    {
+        return $query->where('id_status', 1);
+	}
+
+	public function scopeSearch($query, $search)
+    {  
+		return $query->where(\DB::raw('lower(nb_apellido)'),    'like', '%' . strtolower($search) . '%')
+					 ->orWhere(\DB::raw('lower(nb_apellido2)'), 'like', '%' . strtolower($search) . '%')
+					 ->orWhere(\DB::raw('lower(nb_nombre)'),    'like', '%' . strtolower($search) . '%')
+					 ->orWhere(\DB::raw('lower(nb_nombre2)'),   'like', '%' . strtolower($search) . '%');
+	}
+	
+	public function scopeComboData($query)
+    {
+        return $query->addSelect('id', 'nb_apellido', 'nb_apellido2', 'nb_nombre', 'nb_nombre2');
+    }
+	
 	public function status()
 	{
         return $this->BelongsTo('App\Models\Status', 'id_status');
@@ -134,6 +152,19 @@ class Alumno extends Model
             'id', // laocal en origen
             'id', // local en final
 			'id_materia' // fk en intermedia
+		);
+	}
+
+	public function pariente()
+	{
+        return $this->hasManyThrough(
+			
+			'App\Models\Pariente', //final
+            'App\Models\AlumnoPariente', //intermedia
+            'id_alumno', // fk en intermedia
+            'id', // laocal en origen
+            'id', // local en final
+			'id_pariente' // fk en intermedia
 		);
 	}
 }

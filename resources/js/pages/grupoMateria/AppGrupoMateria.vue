@@ -2,8 +2,6 @@
 
     <v-form ref="form" v-model="valid" lazy-validation>
     
-   
-
     <v-card :loading="loading" flat class="rounded-xl">
 
         <app-simple-toolbar title="Asignar Materia" @closeModal="$emit('closeModal')"></app-simple-toolbar>
@@ -12,51 +10,52 @@
 
         <v-row no-gutters>
 
-        <v-col cols="12" md="12">
-           <v-autocomplete
-                v-model="form.id_materia"
-                :items="selects.materia"
-                item-text="nb_materia"
-                item-value="id"
-                rounded
-                filled
-                label="Materias"
-                :disabled="loading"
-                :loading="loading"
-                autofocus
-                dense
-                return-object
-                @change="addMateria($event)">
-          </v-autocomplete>
-        </v-col>
+            <v-col cols="12" md="12">
+            <v-autocomplete
+                    v-model="form.id_materia"
+                    :items="selects.materia"
+                    item-text="nb_materia"
+                    item-value="id"
+                    rounded
+                    filled
+                    label="Materias"
+                    :disabled="loading"
+                    :loading="loading"
+                    autofocus
+                    dense
+                    return-object
+                    @change="addMateria($event)">
+            </v-autocomplete>
+            </v-col>
 
-        <v-col>
+            <v-col>
 
-        <v-list subheader>
-        <v-subheader>Materias</v-subheader>
+                <v-list subheader>
+                    <v-subheader>Materias</v-subheader>
 
-            <v-list-item
-                v-for="materia in materias"
-                :key="materia.id"
-            >
-                <v-list-item-avatar>
-                    <v-avatar color="info white--text" >{{ materia.nb_materia | initLeter }}</v-avatar>
-                </v-list-item-avatar>
+                    <v-list-item
+                        v-for="materia in materias"
+                        :key="materia.id">
 
-                <v-list-item-content>
-                <v-list-item-title v-text="materia.nb_materia"></v-list-item-title>
-                </v-list-item-content>
+                        <v-list-item-avatar>
+                            <v-avatar color="info white--text" >{{ materia.nb_materia | initLeter }}</v-avatar>
+                        </v-list-item-avatar>
 
-                <v-list-item-action>
-                    <v-btn small class="grey lighten-4" icon @click="deleteMateria(materia)">
-                        <v-icon color="red">mdi-delete</v-icon>
-                    </v-btn>
-                </v-list-item-action>
-            </v-list-item>
+                        <v-list-item-content>
+                            <v-list-item-title v-text="materia.nb_materia"></v-list-item-title>
+                        </v-list-item-content>
 
-        </v-list>
+                        <v-list-item-action>
+                            <v-btn small class="grey lighten-4" icon @click="deleteMateria(materia)">
+                                <v-icon color="red">mdi-delete</v-icon>
+                            </v-btn>
+                        </v-list-item-action>
 
-        </v-col>
+                    </v-list-item>
+
+                </v-list>
+
+            </v-col>
           
         </v-row>
 

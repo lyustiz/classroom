@@ -21,7 +21,7 @@ import Home                  from  '@pages/home/home.vue';
 import MenuAdmin             from '@pages/admin/index.vue'; 
 import MenuAlumno            from '@pages/bandejaAlumno/index.vue'; 
 import MenuProfesor          from '@pages/bandejaDocente/index.vue'; 
-import MenuRepresentante     from '@pages/bandejaRepresentante/index.vue'; 
+import MenuAcudiente         from '@pages/bandejaAcudiente/index.vue'; 
 
 import BandejaAdmin          from '@pages/admin/dashboard.vue';
 
@@ -29,7 +29,7 @@ import BandejaAlumno         from '@pages/bandejaAlumno/dashboard.vue';
 import EvaluacionAlumno      from '@pages/bandejaAlumno/evaluacion/AppEvaluacionAlumno';
 
 import BandejaDocente       from '@pages/BandejaDocente/dashboard.vue';
-import BandejaRepresentante  from '@pages/bandejaRepresentante/dashboard.vue';
+import BandejaAcudiente     from '@pages/bandejaAcudiente/dashboard.vue';
 
 // loading on demand
 import Asistente         from '@pages/asistente/asistente.vue';
@@ -114,7 +114,7 @@ import TipoArchivo       from '@pages/tipoArchivo/tipoArchivo.vue';
 import Archivo           from '@pages/archivo/archivo.vue';
 import Configuracion     from '@pages/configuracion/configuracion.vue';
 
-import TipoRecurso           from '@pages/tipoRecurso/tipoRecurso.vue';
+import TipoRecurso       from '@pages/tipoRecurso/tipoRecurso.vue';
 import Recurso           from '@pages/recurso/recurso.vue';
 
 import EstadoCivil       from '@pages/estadoCivil/estadoCivil.vue';
@@ -128,6 +128,13 @@ import Menu             from '@pages/menu/menu.vue';
 import Perfil           from '@pages/perfil/perfil.vue';
 import UsuarioPerfil    from '@pages/usuarioPerfil/usuarioPerfil.vue';
 import Permiso          from '@pages/permiso/permiso.vue';
+
+
+//notificaciones
+import TipoDestinatario from '@pages/tipoDestinatario/tipoDestinatario.vue';
+import TipoPrioridad    from '@pages/tipoPrioridad/tipoPrioridad.vue';
+import TipoNotificacion from '@pages/TipoNotificacion/TipoNotificacion.vue';
+import Notificacion     from '@pages/notificacion/notificacion.vue';
 
 
 //tools
@@ -208,22 +215,22 @@ export default new Router({
             ]
         },
         {
-            path: '/bandeja-representante',
-            label: 'Representante',
+            path: '/bandeja-acudiente',
+            label: 'Acudiente',
             icon: 'mdi-human-male-child',
             profile: 'acudiente',
             visible: true,
-            component: MenuRepresentante,
+            component: MenuAcudiente,
 
             children: [
                 {
                     path:  '',
-                    name:  'bandeja-representante',
+                    name:  'bandeja-acudiente',
                     label: 'Bandeja',
                     icon:  'mdi-tray-full',
                     profile: 'acudiente',
                     visible: true,
-                    component: BandejaRepresentante,
+                    component: BandejaAcudiente,
                 }
             ]
         },
@@ -890,7 +897,7 @@ export default new Router({
                 path: 'tipo-recurso',
                 name: 'tipo-recurso',
                 label: 'Tipo Recurso',
-                icon: 'mdi-file',
+                icon: 'mdi-book-open-page-variant',
                 profile: 'secretaria',
                 visible: true,
                 component: TipoRecurso
@@ -900,14 +907,53 @@ export default new Router({
                 path: 'recurso',
                 name: 'recurso',
                 label: 'Recurso',
-                icon: 'mdi-file',
+                icon: 'mdi-book-open-page-variant',
                 profile: 'secretaria',
                 visible: true,
                 component: Recurso
             },
 
-            
+            /**  NOTIFICACIONES  */
 
+            { 
+                path: 'tipo-destinatario',
+                name: 'tipo-destinatario',
+                label: 'Tipo Destinatario',
+                icon: 'mdi-account-question',
+                profile: 'secretaria',
+                visible: true,
+                component: TipoDestinatario
+            },
+
+            { 
+                path: 'tipo-prioridad',
+                name: 'tipo-prioridad',
+                label: 'Prioridad',
+                icon: 'mdi-alert',
+                profile: 'secretaria',
+                visible: true,
+                component: TipoPrioridad
+            },
+
+            { 
+                path: 'tipo-notificacion',
+                name: 'tipo-notificacion',
+                label: 'Tipo Notificacion',
+                icon: 'mdi-bell-outline',
+                profile: 'secretaria',
+                visible: true,
+                component: TipoNotificacion
+            },
+
+            { 
+                path: 'notificacion',
+                name: 'notificacion',
+                label: 'Notificaciones',
+                icon: 'mdi-bell',
+                profile: 'secretaria',
+                visible: true,
+                component: Notificacion
+            },
             
             /********************** */
 

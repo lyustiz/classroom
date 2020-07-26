@@ -23,7 +23,6 @@ class CreateParienteTable extends Migration
             $table->string('tx_sexo', 1);
             $table->date('fe_nacimiento');
             $table->string('tx_nacionalidad', 30)->nullable();
-            $table->integer('id_alumno');
             $table->integer('id_parentesco');
             $table->string('tx_empresa', 30)->nullable();
             $table->string('tx_cargo', 30)->nullable();

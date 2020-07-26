@@ -26,6 +26,7 @@ export default
             search:    '',
             action:    '',
             dialog:    false,
+            confirm:   false
         }
     },
 
@@ -55,35 +56,42 @@ export default
             this.item   = {};
             this.list();
         },
+
         insertForm ()
         {
             this.action = 'ins';
             this.modal  = true;
             this.item   = {};
         },
+
         updateForm (item)
         {
             this.action = 'upd';
             this.modal  = true;
             this.item   = item;
         },
+
         deleteForm (item)
         {
             this.dialog = true;
             this.item   = item;
         },
+
         deleteCancel ()
         {
             this.dialog = false;
             this.item   = {};
         },
+
         deleteItem ()
         {
             if(!this.deleteValidation()) return
             
             this.loading = true
 
-            axios.delete(this.fullUrlId)
+            let url = this.deleteUrl()
+
+            axios.delete(url)
             .then(response => 
             {
                 this.showMessage(response.data.msj)
@@ -100,16 +108,24 @@ export default
                 this.dialog  = false;
             });
         },
+
         deleteValidation()
         {
             return true
-        }
-        ,
+        },
+
+        deleteUrl()
+        {
+            return this.fullUrlId
+        },
+
         list()
         {
+            let url = this.listUrl()
+            
             this.loading = true
 
-            axios.get(this.fullUrl)
+            axios.get(url)
             .then(response => 
             {
                 this.items = response.data
@@ -123,7 +139,13 @@ export default
                 this.loading = false
             });
         },
-        changeStatus(payload)
+
+        listUrl()
+        {
+            return this.fullUrl
+        },
+
+        changeStatus(payload) //deprecated
         {
             this.loading = true
             setInterval(() => { 
@@ -133,10 +155,9 @@ export default
             console.log('changeStatus', payload)
         },
 
-
         //acciones de los menus
 
-        onMenu(menu)
+        onMenu(menu) //compatibilidad versiones anteriores
         {
             switch (menu.action) {
                 case 'refresh':

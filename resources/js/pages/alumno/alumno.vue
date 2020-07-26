@@ -39,7 +39,7 @@
                             </app-foto-cuenta> 
                         </td>
                         
-                        <td class="text-xs-left">{{ item.nb_alumno_corto }}</td>
+                        <td class="text-xs-left">{{ item.nb_corto }}</td>
 
 						<td class="text-xs-left">
                             <list-icon :data="sexoIcons" :value="item.tx_sexo"></list-icon>
@@ -95,7 +95,7 @@
 
             <v-dialog v-model="dialogMatricula" max-width="600" content-class="rounded-xl">
                 <app-simple-toolbar title="Asignar Matricula" @closeModal="closeDialog($event,'dialogMatricula')"></app-simple-toolbar>
-                <matricula-alumno :matricula="matricula" :alumno="alumno" v-if="dialogMatricula"  @closeModal="closeDialog($event)"></matricula-alumno>
+                <alumno-matricula :matricula="matricula" :alumno="alumno" v-if="dialogMatricula"  @closeModal="closeDialog($event)"></alumno-matricula>
             </v-dialog>
 
             <v-dialog v-model="dialogAlumnoMateria" max-width="600" content-class="rounded-xl">
@@ -104,6 +104,10 @@
 
             <v-dialog v-model="dialogAlumnosMateria" max-width="600" content-class="rounded-xl">
                 <alumnos-materia v-if="dialogAlumnosMateria" @closeModal="closeDialog($event,'dialogAlumnosMateria')"></alumnos-materia>
+            </v-dialog>
+
+            <v-dialog v-model="dialogPariente" max-width="95vw" content-class="rounded-xl">
+                <alumno-pariente :alumno="alumno" v-if="dialogPariente" @closeModal="closeDialog($event,'dialogPariente')"></alumno-pariente>
             </v-dialog>
 
             <form-delete
@@ -121,20 +125,22 @@
 </template>
 
 <script>
-import listHelper        from '@mixins/Applist';
-import alumnoForm        from './alumnoForm';
-import AppMatricula      from '@pages/matricula/AppMatricula';
-import AppAlumnoMateria  from '@pages/alumnoMateria/AppAlumnoMateria';
-import AppAlumnosMateria from '@pages/alumnoMateria/AppAlumnosMateria';
+import listHelper         from '@mixins/Applist';
+import alumnoForm         from './alumnoForm';
+import AppMatricula       from '@pages/matricula/AppMatricula';
+import AppAlumnoMateria   from '@pages/alumnoMateria/AppAlumnoMateria';
+import AppAlumnosMateria  from '@pages/alumnoMateria/AppAlumnosMateria';
+import AppAlumnoPariente  from '@pages/alumnoPariente/AppAlumnoPariente';
 export default {
     
     mixins:     [ listHelper],
 
     components: { 
                     'alumno-form'      : alumnoForm,
-                    'matricula-alumno' : AppMatricula,
+                    'alumno-matricula' : AppMatricula,
                     'alumno-materia'   : AppAlumnoMateria,
                     'alumnos-materia'  : AppAlumnosMateria,
+                    'alumno-pariente'  : AppAlumnoPariente
                 },
 
     data () {
@@ -143,7 +149,7 @@ export default {
             resource: 'alumno',
             headers: [
                 { text: 'Foto',         value: 'id', sortable: false, filterable: false },
-                { text: 'Alumno',       value: 'nb_alumno' },
+                { text: 'Alumno',       value: 'nb_corto' },
                 { text: 'Sexo',         value: 'tx_sexo' },
                 { text: 'Grado',        value: 'grado' },
                 { text: 'Grupo',        value: 'grupo' },
@@ -151,14 +157,11 @@ export default {
                 { text: 'Status',       value: 'id_status' },
                 { text: 'Acciones',     value: 'actions', sortable: false, filterable: false },
             ],
-            sexoIcons: [
-                {value: 'M', icon: 'mdi-human-male',  color: 'blue', label: 'Masculino'},
-                {value: 'F', icon: 'mdi-human-female',  color: 'pink', label: 'Femenino'}
-            ],
             itemsMenu: [
-                { action: 'addMatricula',   icon: 'mdi-account-details', label: 'Matricula' },
-                { action: 'addMateriaAlumno',   icon: 'mdi-bookshelf', label: 'Asignar Materia' },
-                { action: 'addLibroAlumno',   icon: 'mdi-account-alert', label: 'Faltas y Sanciones' },
+                { action: 'addMatricula',     icon: 'mdi-account-details',  label: 'Matricula' },
+                { action: 'addMateriaAlumno', icon: 'mdi-bookshelf',        label: 'Asignar Materia' },
+                { action: 'addLibroVida',     icon: 'mdi-account-alert',    label: 'Faltas y Sanciones' },
+                { action: 'addPariente',      icon: 'mdi-human-male-child', label: 'Acudientes' },
             ],
             listMenu:[
                 { action: 'list',   icon: 'mdi-table-refresh', label: 'Refrescar' },
@@ -168,6 +171,7 @@ export default {
             dialogMatricula:      false,
             dialogAlumnoMateria:  false,
             dialogAlumnosMateria: false,
+            dialogPariente:       false,
             matricula:       null,
             alumno:          null,
             grado:           null
@@ -175,6 +179,17 @@ export default {
     },
     methods:
     {
+        print()
+        {
+            alert('print')
+        },
+
+        addMatricula(alumno)
+        {
+            this.matricula = alumno.matricula 
+            this.alumno    = alumno.id
+            this.dialogMatricula = true
+        },
 
         addMateriaAlumno(alumno)
         {
@@ -187,21 +202,15 @@ export default {
             this.dialogAlumnoMateria = true
         },
 
-        print()
-        {
-            alert('print')
-        },
-
         addMateriasAlumnos()
         {
             this.dialogAlumnosMateria = true
         },
 
-        addMatricula(alumno)
+        addPariente(alumno)
         {
-            this.matricula = alumno.matricula 
-            this.alumno    = alumno.id
-            this.dialogMatricula = true
+            this.alumno    = alumno
+            this.dialogPariente = true
         },
 
         closeDialog(refresh, dialog)

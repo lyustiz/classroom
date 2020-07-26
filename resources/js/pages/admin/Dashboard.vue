@@ -1,5 +1,5 @@
 <template>
-  <v-container class="amber lighten-2">
+  <v-container fluid class=" lighten-2">
   <div id="full-container"  >
       
       <v-toolbar dark color="indigo lighten-1" class="rounded-lg" dense flat>
@@ -9,12 +9,12 @@
   </div>
 
       <v-row>
-          <v-col v-for="(menu, idx) in menus" :key="idx" cols="6" md="4" lg="3" @click="navegateTo(menu.name)">
+          <v-col v-for="(menu, idx) in menus" :key="idx" cols="6" sm="4" md="3" lg="2" @click="navegateTo(menu.name)">
 
             <v-card color="transparent" class="rounded-xl pointer" flat>
                 <v-card-text class="text-center">
-                   <v-avatar size="130" color="cyan" ripple>
-                        <v-icon size="90" color="white">{{menu.icon}}</v-icon>
+                   <v-avatar size="100" color="orange" ripple>
+                        <v-icon size="70" color="white">{{menu.icon}}</v-icon>
                     </v-avatar>
                 </v-card-text>
                 <div class="text-center">{{menu.label}}</div>

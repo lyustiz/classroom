@@ -140,6 +140,13 @@ export default {
             return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
         },
 
+        hourFromDate(date)
+        {
+            if (!date) return null
+            date = date.substr(-5)
+            return date
+        },
+
         capitalize(value)
         {
             return value.charAt(0)
@@ -179,7 +186,26 @@ export default {
                         'viernes',
                         'sabado',
                         'domingo',
-                    ]
+                    ],
+            colors: [
+                        'purple',
+                        'indigo',
+                        'teal',
+                        'light-green',
+                        'amber',
+                        'deep-orange',
+                        'blue-grey',
+                        'brown',
+                        'deep-purple',
+                        'pink',
+                        'blue',
+                        'cyan',
+                        'red'
+                    ],
+            sexoIcons: [
+                        {value: 'M', icon: 'mdi-human-male',  color: 'blue', label: 'Masculino'},
+                        {value: 'F', icon: 'mdi-human-female',  color: 'pink', label: 'Femenino'}
+                    ],
         }
     },
 

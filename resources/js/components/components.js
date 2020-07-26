@@ -30,6 +30,7 @@ import FormDelete    from '@components/form/FormDelete'
 import AppMessage    from '@components/app/AppMessage'
 import AppModal      from '@components/app/AppModal'
 import AppDialog     from '@components/app/AppDialog'
+import AppConfirm    from '@components/app/AppConfirm'
 
 import AppHelp       from '@components/app/AppHelp'
 import AppUser       from '@components/app/AppUser'
@@ -52,6 +53,7 @@ Vue.component('form-delete',      FormDelete);
 Vue.component('app-message',      AppMessage);
 Vue.component('app-modal',        AppModal);
 Vue.component('app-dialog',       AppDialog);
+Vue.component('app-confirm',      AppConfirm);
 
 Vue.component('app-help',         AppHelp);
 Vue.component('app-user',         AppUser);

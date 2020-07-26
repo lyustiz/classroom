@@ -37,6 +37,7 @@ export default
             path:    null,
             modal:   false,
             dialog:  false,
+            confirm: false,
             valid:   true,
             validateForm: true,
         }

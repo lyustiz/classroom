@@ -40,6 +40,11 @@ class Agenda extends Model
         return Carbon::parse($this->fe_agenda)->format('Y-m-d') . ' ' . Carbon::parse($this->hh_fin)->format('H:i');
     }
 
+    public function scopeActivo($query)
+    {
+        return $query->where('id_status', 1);
+    }
+
     public function status()
     {
         return $this->BelongsTo('App\Models\Status', 'id_status');

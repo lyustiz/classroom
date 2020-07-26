@@ -129,6 +129,10 @@
                         route = '/bandeja-alumno'
                         break;
                     
+                    case 'acudiente':
+                        route = '/bandeja-acudiente'
+                        break;
+                    
                     case 'secretaria':
                         route = 'home'
                         break;

@@ -2,7 +2,7 @@ export default
 {
 	state(){
 		return{
-			showAsistente: 	true,
+			showAsistente: 	false,
 		}
 	},
 

@@ -25,6 +25,12 @@ class Archivo extends Model
                             ];
    
     protected $appends = ['nb_real'];
+
+    
+    public function scopeActivo($query)
+    {
+        return $query->where('id_status', 1);
+    }
     
     public function getNbRealAttribute()
     {

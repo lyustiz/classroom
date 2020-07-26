@@ -69,7 +69,7 @@ export default {
             dialog:       false,
             sections: [
                     { label: 'Tareas', icon: 'mdi-notebook', component: 'tarea-alumno', color: 'red' },
-                    { label: 'Recursos', icon: 'mdi-bookshelf', component: 'recurso-alumno', color: 'purple' },
+                    { label: 'Recursos', icon: 'mdi-book-open-page-variant', component: 'recurso-alumno', color: 'purple' },
                     { label: 'Evaluaciones', icon: 'mdi-order-bool-descending-variant', component: 'evaluacion-alumno', color: 'blue' },
                     { label: 'Calificaciones', icon: 'mdi-clipboard-list', component: 'materia-alumno', color: 'amber' },
                     { label: 'Aula Virtual (En Construccion)', icon: 'mdi-google-classroom', component: 'clase-alumno', color: 'green' },

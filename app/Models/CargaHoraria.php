@@ -31,6 +31,11 @@ class CargaHoraria extends Model
                             'hh_fin'     => 'datetime:H:i',
                             ];
 
+    public function scopeActivo($query)
+    {
+        return $query->where('id_status', 1);
+    }
+
     public function status()
     {
         return $this->BelongsTo('App\Models\Status', 'id_status');

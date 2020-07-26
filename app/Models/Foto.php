@@ -29,6 +29,11 @@ class Foto extends Model
     {
         return "{$this->tipoFoto->tx_base_path}{$this->id_origen}/{$this->tx_src}";
     }
+
+    public function scopeActivo($query)
+    {
+        return $query->where('id_status', 1);
+    }
                            
     public function status()
     {

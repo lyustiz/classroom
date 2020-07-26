@@ -47,6 +47,11 @@ class Usuario extends Authenticatable implements MustVerifyEmail, JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+	}
+	
+	public function scopeActivo($query)
+    {
+        return $query->where('id_status', 1);
     }
 	
 	public function status()

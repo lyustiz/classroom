@@ -31,7 +31,7 @@
                                     </v-list-item-content>
 
                                     <v-list-item-icon>
-                                        <list-menu iconColor="deep-purple lighten-5" :itemsMenu="itemsMenu"></list-menu>
+                                        <item-menu :item="alumno" iconColor="deep-purple lighten-5" :menus="itemsMenu" @onItemMenu="onItemMenu($event)" ></item-menu>
                                     </v-list-item-icon>
                                 </v-list-item>
                             </v-list>
@@ -44,15 +44,33 @@
 
         </v-card-text>   
 
+        <v-dialog v-model="dialogNotificacion" max-width="600" content-class="rounded-xl">
+            <app-notificacion 
+                :tipo-destinatario="notificacion.tipoDestinatario"
+                :tipo-notificacion="notificacion.tipoNotificacion"
+                :tipo-prioridad="notificacion.tipoPrioridad"
+                :id-destinatario="notificacion.idDestinatario"
+                v-if="dialogNotificacion" 
+                @closeModal="closeDialog('dialogNotificacion')">
+            </app-notificacion>
+        </v-dialog>
+
     </v-card>
 
 </template>
 
 <script>
-import DataHelper from '@mixins/AppData';
+import AppData from '@mixins/AppData';
+import AppNotificacion from '@pages/notificacion/AppNotificacion';
+
 export default {
 
-    mixins:     [ DataHelper ],
+    mixins:     [ AppData ],
+
+    components:
+    {
+        'app-notificacion' : AppNotificacion
+    },
 
     created()
     {
@@ -65,9 +83,11 @@ export default {
             section: null,
             grupos:   [],
             itemsMenu: [
-                { label: 'Evaluaciones Alumno', icon: 'mdi-notebook', action: 'evaluar-alumno' },
-                { label: 'Notificar Alumno', icon: 'mdi-bell-alert', action: 'notificar-alumno' },
-            ]
+                { label: 'Evaluaciones Alumno', icon: 'mdi-notebook', action: 'addEvaluacion' },
+                { label: 'Notificar Alumno', icon: 'mdi-bell-alert', action: 'addNotificacion' },
+            ],
+            dialogNotificacion: false,
+            notificacion:       {}
         }
     },
     methods:
@@ -76,6 +96,29 @@ export default {
         {
            this.getResource( `grupo/alumnos/docente/${this.docente}` ).then( data => this.grupos = data )
         },
+
+        addNotificacion(alumno)
+        {
+            this.dialogNotificacion = true
+
+            this.notificacion = {
+                tipoDestinatario:  3,
+                tipoNotificacion: 1,
+                tipoPrioridad:    1,
+                idDestinatario:   alumno.id,
+                asunto:           null,
+                mensaje:          null,
+                fecha:            null,
+                inicio:           null,
+                fin:              null
+            }
+        },
+
+        closeDialog(dialog)
+        {
+            this[dialog] = false
+            this.notificacion = {}
+        }
 
     }
 }

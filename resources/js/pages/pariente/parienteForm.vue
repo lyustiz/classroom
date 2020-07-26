@@ -101,19 +101,6 @@
                 dense
             ></v-text-field>
         </v-col>
-                          
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.alumno"
-            item-text="nb_alumno"
-            item-value="id"
-            v-model="form.id_alumno"
-            :rules="[rules.select]"
-            label="Alumno"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
                   
         <v-col cols="12" md="6">
             <v-select

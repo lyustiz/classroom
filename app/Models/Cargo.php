@@ -19,11 +19,15 @@ class Cargo extends Model
                             'created_at',
 	 	 	 	 	 	 	'updated_at'
                             ];
+    
+    public function scopeActivo($query)
+    {
+        return $query->where('id_status', 1);
+    }
 
-    public function status(){
-
+    public function status()
+    {
         return $this->BelongsTo('App\Models\Status', 'id_status');
-
     }
                             
     public function usuario(){

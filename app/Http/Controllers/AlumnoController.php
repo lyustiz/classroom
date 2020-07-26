@@ -63,6 +63,25 @@ class AlumnoController extends Controller
         return $alumno;
     }
 
+    public function alumnoPariente($idPariente)
+    {
+        return  Alumno::whereHas('pariente', function ($query)  use ($idPariente){
+                            $query->where('pariente.id', $idPariente);
+                        })
+                        ->get();
+    }
+
+    public function alumnoSearch(Request $request)
+    {
+       
+       return Alumno::whereDoesntHave('pariente', function ($query)  use ($request){
+                    $query->where('pariente.id', $request->id_pariente);
+                })
+                ->activo()
+                ->search($request->tx_search)
+                ->get();
+    }
+
 
     /**
      * Store a newly created resource in storage.

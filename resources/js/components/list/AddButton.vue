@@ -2,7 +2,7 @@
 
     <v-tooltip bottom>
         <template v-slot:activator="{ on }">
-            <v-btn icon dark small v-on="on" @click="insItem()" class="elevation-5">
+            <v-btn icon dark small v-on="on" @click="insItem()" class="elevation-5" :loading="loading">
                 <v-icon size="38" color="success" >mdi-plus-circle</v-icon>
             </v-btn>
         </template>
@@ -18,6 +18,11 @@ export default {
         mensaje: {
             type:     String,
             default:  'Nuevo Item'
+        },
+
+        loading: {
+            type:     Boolean,
+            default:  false
         }
     },
     methods:

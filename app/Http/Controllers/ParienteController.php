@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pariente;
+use App\Models\AlumnoPariente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,25 +16,43 @@ class ParienteController extends Controller
      */
     public function index()
     {
-        $pariente = Pariente::with(['alumno:id,nb_nombre,nb_apellido', 'parentesco:id,nb_parentesco'])
-                    ->get();
+        $pariente = Pariente::with([
+                                    'alumno:alumno.id,nb_nombre,nb_apellido', 
+                                    'parentesco:parentesco.id,nb_parentesco',
+                                    'foto:id,tx_src,id_tipo_foto,id_origen',
+                                    'foto.tipoFoto:id,tx_base_path',
+                            ])
+                            ->get();
         
         return $pariente;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function parienteAlumno($idAlumno)
     {
-        $validate = request()->validate([
+        return  Pariente::with(['parentesco:id,nb_parentesco'])
+                        ->whereHas('alumno', function ($query)  use ($idAlumno){
+                            $query->where('alumno.id', $idAlumno);
+                        })
+                        ->get();
+    }
+
+    public function parienteSearch(Request $request)
+    {
+        return  Pariente::comboData()
+                        ->whereDoesntHave('alumno', function ($query)  use ($request){
+                            $query->where('alumno.id', $request->id_alumno);
+                        })
+                        ->activo()
+                        ->search($request->tx_search)
+                        ->get();
+    }
+
+    public function storeValidate(Request $request)
+    {
+        return  request()->validate([
             'nb_nombre'         => 	'required|string|max:30',
 			'nb_apellido'       => 	'required|string|max:30',
 			'tx_documento'      => 	'required|string|max:30',
-			'id_alumno'         => 	'required|integer',
 			'id_parentesco'     => 	'required|integer',
 			'tx_empresa'        => 	'required|string|max:30',
 			'tx_cargo'          => 	'required|string|max:30',
@@ -45,10 +64,44 @@ class ParienteController extends Controller
 			'id_status'         => 	'required|integer',
 			'id_usuario'        => 	'required|integer',
         ]);
+    }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $validate = $this->storeValidate($request);
+       
         $pariente = pariente::create($request->all());
 
         return [ 'msj' => 'Pariente Agregado Correctamente', compact('pariente') ];
+    }
+
+     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeByAlumno(Request $request, $idAlumno)
+    {
+        $validate = $this->storeValidate($request);
+
+        $pariente = pariente::create($request->all());
+
+        $alumnoPariente = AlumnoPariente::create([
+                                'id_alumno'         => $idAlumno,
+                                'id_pariente'       => $pariente->id,
+                                'bo_acudiente'      => 1,
+                                'id_status'         => 1,
+                                'id_usuario'        => $pariente->id_usuario
+                            ]);
+
+        return [ 'msj' => 'Pariente Agregado Correctamente', compact('pariente', 'alumnoPariente') ];
     }
 
     /**
@@ -75,7 +128,6 @@ class ParienteController extends Controller
             'nb_nombre'         => 	'required|string|max:30',
 			'nb_apellido'       => 	'required|string|max:30',
 			'tx_documento'      => 	'required|string|max:30',
-			'id_alumno'         => 	'required|integer',
 			'id_parentesco'     => 	'required|integer',
 			'tx_empresa'        => 	'required|string|max:30',
 			'tx_cargo'          => 	'required|string|max:30',
@@ -104,5 +156,20 @@ class ParienteController extends Controller
         $pariente = $pariente->delete();
  
         return [ 'msj' => 'Pariente Eliminado' , compact('pariente')];
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Pariente  $pariente
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyByAlumno($idPariente, $idAlumno)
+    {
+        $pariente = AlumnoPariente::where('id_alumno', $idAlumno)
+                    ->where('id_pariente', $idPariente)
+                    ->delete();
+        
+        return [ 'msj' => 'Pariente Desvinculado' , compact('pariente')]; 
     }
 }

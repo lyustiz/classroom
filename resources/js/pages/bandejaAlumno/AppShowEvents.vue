@@ -30,35 +30,52 @@
 
                     <v-list-item-action>
                         <item-menu 
-                            :menus="itemsMenu" 
+                            :item="event" 
                             iconColor="grey darkend-1" 
                             btnColor="grey lighten-4" 
-                            :item="event"
-                            @onItemMenu="onItemMenu($event)" 
-                        ></item-menu>
+                            :menus="itemsMenu" 
+                            @onItemMenu="onItemMenu($event)" >
+                        </item-menu>
                     </v-list-item-action>
                 </v-list-item>
             </v-list>
 
         </v-card-text>
 
-     <!--    <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn fab dark small color="amber" @click="$emit('update', event)">
-                <v-icon>mdi-lead-pencil</v-icon>
-            </v-btn>
-            <v-btn fab dark small color="red" @click="$emit('delete', event)">
-                <v-icon>mdi-delete</v-icon>
-            </v-btn>
-        </v-card-actions> -->
+     <v-dialog v-model="dialogNotificacion" max-width="600" content-class="rounded-xl">
+            <app-notificacion 
+                :tipo-destinatario="notificacion.tipoDestinatario"
+                :tipo-notificacion="notificacion.tipoNotificacion"
+                :tipo-prioridad="notificacion.tipoPrioridad"
+                :id-destinatario="notificacion.idDestinatario"
+                :asunto="notificacion.asunto"
+                :mensaje="notificacion.mensaje"
+                :lugar="notificacion.lugar"
+                :fecha="notificacion.fecha"
+                :inicio="notificacion.inicio"
+                :fin="notificacion.fin"
+                :readonly="true"
+                v-if="dialogNotificacion" 
+                @closeModal="closeDialog('dialogNotificacion')">
+            </app-notificacion>
+        </v-dialog>
             
     </v-card>
   
 </template>
 
 <script>
+import AppData from '@mixins/AppData';
+import AppNotificacion from '@pages/notificacion/AppNotificacion';
 export default {
 
+    mixins:     [ AppData ],
+    
+    components:
+    {
+        'app-notificacion' : AppNotificacion
+    },
+    
     props:
     {
         events: {
@@ -71,16 +88,37 @@ export default {
     {
         return{
             itemsMenu: [
-                { action: 'addNotification',   icon: 'mdi-bell-plus', label: 'Agregar Notificacion' },
+                { action: 'addNotificacion',   icon: 'mdi-bell-plus', label: 'Agregar Notificacion' },
             ],
+            dialogNotificacion: false,
+            notificacion:       {}
         }
     },
 
     methods:
     {
-        onItemMenu(menu)
+        addNotificacion(event)
         {
+            this.notificacion = {
+                tipoDestinatario: 3,
+                tipoNotificacion: 2,
+                tipoPrioridad:    1,
+                idDestinatario:   1,//,
+                asunto:           event.name,
+                mensaje:          event.description,
+                lugar:            'N/A',
+                fecha:            event.date,
+                inicio:           this.hourFromDate(event.start),
+                fin:              this.hourFromDate(event.end)
+            }
+            
+            this.dialogNotificacion = true
+        },
 
+        closeDialog(dialog)
+        {
+            this[dialog] = false
+            this.notificacion = {}
         }
     }
 }

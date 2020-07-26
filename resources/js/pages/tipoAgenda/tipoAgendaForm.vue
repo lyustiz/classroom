@@ -104,14 +104,6 @@ export default {
     data() {
         return {
             resource: 'tipoAgenda',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
             form:
             {
                 id: 	          null,
@@ -125,21 +117,6 @@ export default {
             {
                 status: 	 [],
             },
-            colors: [
-                    'purple',
-                    'indigo',
-                    'teal',
-                    'light-green',
-                    'amber',
-                    'deep-orange',
-                    'blue-grey',
-                    'brown',
-                    'deep-purple',
-                    'pink',
-                    'blue',
-                    'cyan',
-                    'red'
-                    ],
             defaultForm: {
                 tx_color: 'cyan' 
             }

@@ -21,7 +21,11 @@ class AreaEstudio extends Model
 	 	 	 	 	 	 	'updated_at'
                             ];
 
-
+                            
+    public function scopeActivo($query)
+    {
+        return $query->where('id_status', 1);
+    }
 
     public function status(){
 

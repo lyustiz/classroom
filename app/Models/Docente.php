@@ -35,12 +35,26 @@ class Docente extends Model
 	 	 	 	 	 	 	'updated_at'
                             ];
 	
-	protected $appends = ['nb_docente'];
+	protected $appends = ['nb_docente', 'nb_corto'];
 
 	public function getNbDocenteAttribute()
 	{
 		return trim(str_replace( '  ', ' ',  "{$this->nb_apellido} {$this->nb_apellido2} {$this->nb_nombre} {$this->nb_nombre2}")) ;
 	}
+
+	public function getNbCortoAttribute()
+	{
+		$nb_nombre2   = (substr($this->nb_nombre2, 0 , 1) == '') ? null : ucfirst(substr($this->nb_nombre2, 0 , 1)) . '.';
+
+		$nb_apellido2 = (substr($this->nb_apellido2, 0 , 1) == '') ? null : ucfirst(substr($this->nb_apellido2, 0 , 1)) . '.';
+		
+		return trim(str_replace( '  ', ' ',  "{$this->nb_apellido} {$nb_apellido2} {$this->nb_nombre} {$nb_nombre2}")) ;
+	}
+
+	public function scopeActivo($query)
+    {
+        return $query->where('id_status', 1);
+    }
 
 	public function status()
 	{
