@@ -74,6 +74,14 @@ export default {
         this.mapForm()
     },
 
+    watch: 
+    {
+        action()
+        {
+            this.mapForm()
+        }
+    },
+
      props:
     {
         origen: {

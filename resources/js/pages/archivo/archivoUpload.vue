@@ -172,6 +172,7 @@ export default {
                 { name: 'Excel', icon: 'mdi-microsoft-excel', color:'green', mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' },
                 { name: 'PowerPoint', icon: 'mdi-microsoft-powerpoint', color:'orange', mime: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' },
                 { name: 'Image', icon: 'mdi-file-image', color:'red', mime: 'image/*' },
+                { name: 'Video', icon: 'mdi-movie', color:'red', mime: 'video/mp4' },
             ],
             filesMenu: [
                 {
@@ -250,6 +251,8 @@ export default {
                 reader.onload = () => 
                 {
                     this.file = reader.result
+
+                    console.log(this.file )
 
                     let type = this.file.split(';')[0].split(':')[1]
 

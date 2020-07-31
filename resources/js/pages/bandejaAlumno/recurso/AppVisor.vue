@@ -1,10 +1,10 @@
 <template>
 
-    <v-card class="rounded-t-xl">
+    <v-card class="rounded-t-xl grey darken-4">
 
         <app-simple-toolbar :title="title" @closeModal="$emit('closeModal')"></app-simple-toolbar>
 
-        <v-card-text class="pa-0" >
+        <v-card-text class="pa-0 " >
 
             <template v-if="fileType == 'PDF'">
                 <embed class="file-visor" :src="fileUrl+'#toolbar=0&navpanes=0'" type="application/pdf" width="100%"  />
@@ -18,10 +18,12 @@
                 <v-img :src="fileUrl" aspect-ratio="1.7" contain></v-img>
             </template>
 
-            <template v-else-if="fileType == 'Video'">
-                <video width="320" height="240" controls>
-                    <source :src="fileUrl" type="video/mp4">
-                </video>
+            <template v-else-if="fileType == 'Video'" class="text-center">
+                <v-row justify="center">
+                    <video width="70%" controls>
+                        <source :src="fileUrl" type="video/mp4">
+                    </video>
+                </v-row>
             </template>
 
             <template v-else>
