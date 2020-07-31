@@ -50,7 +50,7 @@ class NotificacionController extends Controller
 
             $nameSpace = '\\App\\Models\\'; 
 
-            $model = $nameSpace . Str::of($tipoDestinatario->tx_origen)->camel();
+            $model = $nameSpace . Str::studly($tipoDestinatario->tx_origen);
 
             $data = $model::select('id','nb_apellido','nb_apellido2','nb_nombre','nb_nombre2')->activo()->get(); 
         }
@@ -64,7 +64,7 @@ class NotificacionController extends Controller
 
         $nameSpace = '\\App\\Models\\'; 
 
-        $model = $nameSpace . Str::of($tipoDestinatario->tx_origen)->camel();
+        $model = $nameSpace . Str::studly($tipoDestinatario->tx_origen);
 
         $data = $model::select('id','nb_apellido','nb_apellido2','nb_nombre','nb_nombre2')->activo()->find($idDestinatario); 
 

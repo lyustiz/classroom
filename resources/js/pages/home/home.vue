@@ -88,7 +88,7 @@
                             </v-avatar>
                         <v-col class="pa-3 text-center">
                             <span class="white--text text-h2 font-weight-bold">{{ (item) ? item.archivos : '--' }}</span>
-                            <span class="white--text text-h5" >/1000</span>
+                            <span class="white--text text-h5" >/500</span>
                         </v-col>
                         <v-col cols="auto">
                             <v-progress-circular

@@ -90,7 +90,7 @@
 
     <pre v-if="$App.debug">{{ $data }}</pre>
 
-     </v-card>>
+     </v-card>
 </div>
 </template>
 

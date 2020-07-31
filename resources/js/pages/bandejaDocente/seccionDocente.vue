@@ -52,6 +52,7 @@ import EvaluacionDocente from './evaluacion/evaluacionDocente'
 
 import MateriaAlumno    from './materia/AppMateria'
 import ClaseAlumno      from './clase/AppCLase' */
+import ClaseAlumno      from '@pages/bandejaAlumno/clase/AppCLase'
 export default {
 
     components: {
@@ -61,8 +62,8 @@ export default {
       /*   'tarea-alumno':      TareaAlumno,
         'recurso-alumno':    RecursoAlumno,
         
-        'materia-alumno':    MateriaAlumno,
-        'clase-alumno':      ClaseAlumno, */
+        'materia-alumno':    MateriaAlumno,*/
+        'clase-alumno':      ClaseAlumno, 
     },
 
     data()
@@ -75,7 +76,7 @@ export default {
 
                     { label: 'Alumnos', icon: 'mdi-school', component: 'lista-alumno', color: 'red' },
                     { label: 'Evaluaciones', icon: 'mdi-notebook', component: 'evaluacion-docente', color: 'amber' },
-                    { label: 'Recursos', icon: 'mdi-bookshelf', component: 'recurso-alumno', color: 'purple' },
+                  /*   { label: 'Recursos', icon: 'mdi-bookshelf', component: 'recurso-alumno', color: 'purple' }, */
                     { label: 'Aula Virtual (En Construccion)', icon: 'mdi-google-classroom', component: 'clase-alumno', color: 'green' },
                 ]
         }
