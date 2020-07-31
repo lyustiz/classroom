@@ -3,7 +3,7 @@
 
     <app-simple-toolbar :title="title" @closeModal="$emit('closeModal')"></app-simple-toolbar>
 
-    <list-container inDialog>
+    <v-card>
     
     <v-row>
         <v-col>
@@ -90,7 +90,7 @@
 
     <pre v-if="$App.debug">{{ $data }}</pre>
 
-    </list-container>
+     </v-card>>
 </div>
 </template>
 

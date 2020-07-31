@@ -254,7 +254,7 @@ export default new Router({
                 visible: true,
                 component: BandejaAdmin
             }, 
-            { 
+         /*    { 
                 path: 'asistente',
                 name: 'asistente',
                 label: 'Asistente',
@@ -262,7 +262,7 @@ export default new Router({
                 profile: 'secretaria',
                 visible: true,
                 component: Asistente
-            },
+            }, */
             { 
                 path: 'colegio',
                 name: 'colegio',
@@ -610,7 +610,7 @@ export default new Router({
 
 
 
-            { 
+            /* { 
                 path: 'clase',
                 name: 'clase',
                 label: 'Clase',
@@ -618,7 +618,7 @@ export default new Router({
                 profile: 'secretaria',
                 visible: true,
                 component: Clase
-            }, 
+            },  */
 
             { 
                 path: 'inasistencia',
@@ -978,7 +978,7 @@ export default new Router({
             },
           ]
         },
-        {
+       /*  {
             path: '/crud',
             name: 'crud',
             label: 'Generador',
@@ -986,7 +986,7 @@ export default new Router({
             profile: 'secretaria',
             visible: true,
             component: Crud,
-        },
+        }, */
         {
             path: '/login',
             name: 'login',
