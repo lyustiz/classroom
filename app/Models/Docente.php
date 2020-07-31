@@ -54,6 +54,11 @@ class Docente extends Model
 	public function scopeActivo($query)
     {
         return $query->where('id_status', 1);
+	}
+
+	public function scopeComboData($query)
+    {
+        return $query->addSelect('id', 'nb_apellido','nb_apellido2','nb_nombre','nb_nombre2');
     }
 
 	public function status()
@@ -94,6 +99,19 @@ class Docente extends Model
 	public function docenteMateria()
 	{
         return $this->HasMany('App\Models\DocenteMateria', 'id_docente');
+	}
+
+	public function materia()
+	{
+        return $this->hasOneThrough(
+			
+			'App\Models\Materia', //final
+            'App\Models\DocenteMateria', //intermedia
+            'id_docente', // fk en intermedia
+            'id', // laocal en origen
+            'id', // local en final
+			'id_materia' // fk en intermedia
+		);
 	}
 
 	public function foto()

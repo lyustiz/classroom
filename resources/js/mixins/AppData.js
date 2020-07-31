@@ -88,6 +88,30 @@ export default
 
         },
 
+        postResource(resource, data)
+        {
+            this.loading = true;
+
+            return new Promise((resolve, reject) => 
+			{
+				axios.post(this.apiUrl + resource, data)
+				.then(response => 
+				{
+					resolve(response.data)
+				})
+				.catch(error => 
+				{
+                    this.showError(error)
+                    reject(error)
+                })
+                .finally( () => 
+                {
+                    this.loading = false
+                });
+			})
+
+        },
+
         deleteResource(resourceID)
         {
             this.preFormActions('delete')

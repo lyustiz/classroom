@@ -16,15 +16,9 @@
 
 <script>
 
-import ListMenu from './ListMenu'
-
 export default 
 {
     name: 'list-icon',
-    
-    components: {
-        'list-menu': ListMenu
-    },
 
     computed:
     {

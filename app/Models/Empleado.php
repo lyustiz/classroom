@@ -56,6 +56,11 @@ class Empleado extends Model
 	public function scopeActivo($query)
     {
         return $query->where('id_status', 1);
+	}
+
+	public function scopeComboData($query)
+    {
+        return $query->addSelect('nb_apellido','nb_apellido2','nb_nombre','nb_nombre2');
     }
 
 	public function status()

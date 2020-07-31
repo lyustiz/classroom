@@ -93,7 +93,13 @@ class LoginController extends Controller
 
                 $profiles = $this->getProfile($user);
 
-                $foto     = $user->foto;
+                $this->getDataTipoUsuario($user);
+
+                $user->load([ 'foto',  
+                              'colegio:colegio.id,nb_colegio,id_calendario',
+                              'colegio.calendario:calendario.id,nb_calendario',
+                              'colegio.calendario.periodoActivo:periodo.id,nb_periodo'
+                            ]);
                 
                 return [ 
                     'auth'       => $token->get(),
@@ -142,6 +148,28 @@ class LoginController extends Controller
         }
 
         return $profiles;
+    }
+
+    public function getDataTipoUsuario($user)
+    {
+        switch ($user->tipoUsuario->nb_tipo_usuario) {
+
+            case 'administrador':
+                $user->load(['alumno', 'alumno.grado', 'alumno.grupo', 'alumno.grupo', 'docente', 'pariente', 'empleado']);
+                break;
+            
+            case 'docente':
+                $user->load(['docente', 'docente.materia']);
+                break;
+
+            case 'alumno':
+                $user->load(['alumno', 'alumno.grado', 'alumno.grupo', 'alumno.grupo' ]);
+                break;
+
+            case 'acudiente':
+                $user->load('pariente');
+                break;
+        }
     }
 
 }

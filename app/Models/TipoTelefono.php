@@ -24,6 +24,11 @@ class TipoTelefono extends Model
     public function scopeActivo($query)
     {
         return $query->where('id_status', 1);
+	}
+
+	public function scopeComboData($query)
+    {
+        return $query->where('id_status', 1);
     }
     
     public function status()

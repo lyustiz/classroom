@@ -110,6 +110,10 @@
                 <alumno-pariente :alumno="alumno" v-if="dialogPariente" @closeModal="closeDialog($event,'dialogPariente')"></alumno-pariente>
             </v-dialog>
 
+            <v-dialog v-model="dialogIncidencia" max-width="95vw" content-class="rounded-xl">
+                <alumno-incidencia :alumno="alumno" v-if="dialogIncidencia" @closeModal="closeDialog($event,'dialogIncidencia')"></alumno-incidencia>
+            </v-dialog>
+
             <form-delete
                 :dialog="dialog"
                 :loading="loading"
@@ -125,22 +129,24 @@
 </template>
 
 <script>
-import listHelper         from '@mixins/Applist';
-import alumnoForm         from './alumnoForm';
-import AppMatricula       from '@pages/matricula/AppMatricula';
-import AppAlumnoMateria   from '@pages/alumnoMateria/AppAlumnoMateria';
-import AppAlumnosMateria  from '@pages/alumnoMateria/AppAlumnosMateria';
-import AppAlumnoPariente  from '@pages/alumnoPariente/AppAlumnoPariente';
+import listHelper          from '@mixins/Applist';
+import alumnoForm          from './alumnoForm';
+import AppMatricula        from '@pages/matricula/AppMatricula';
+import AppAlumnoMateria    from '@pages/alumnoMateria/AppAlumnoMateria';
+import AppAlumnosMateria   from '@pages/alumnoMateria/AppAlumnosMateria';
+import AppAlumnoPariente   from '@pages/alumnoPariente/AppAlumnoPariente';
+import AppAlumnoIncidencia from '@pages/incidencia/AppIncidencia';
 export default {
     
     mixins:     [ listHelper],
 
     components: { 
-                    'alumno-form'      : alumnoForm,
-                    'alumno-matricula' : AppMatricula,
-                    'alumno-materia'   : AppAlumnoMateria,
-                    'alumnos-materia'  : AppAlumnosMateria,
-                    'alumno-pariente'  : AppAlumnoPariente
+                    'alumno-form'       : alumnoForm,
+                    'alumno-matricula'  : AppMatricula,
+                    'alumno-materia'    : AppAlumnoMateria,
+                    'alumnos-materia'   : AppAlumnosMateria,
+                    'alumno-pariente'   : AppAlumnoPariente,
+                    'alumno-incidencia' : AppAlumnoIncidencia
                 },
 
     data () {
@@ -151,8 +157,8 @@ export default {
                 { text: 'Foto',         value: 'id', sortable: false, filterable: false },
                 { text: 'Alumno',       value: 'nb_corto' },
                 { text: 'Sexo',         value: 'tx_sexo' },
-                { text: 'Grado',        value: 'grado' },
-                { text: 'Grupo',        value: 'grupo' },
+                { text: 'Grado',        value: 'grado.nb_grado' },
+                { text: 'Grupo',        value: 'grupo.nb_grupo' },
                 { text: 'Documento',    value: 'tx_documento' },
                 { text: 'Status',       value: 'id_status' },
                 { text: 'Acciones',     value: 'actions', sortable: false, filterable: false },
@@ -160,18 +166,19 @@ export default {
             itemsMenu: [
                 { action: 'addMatricula',     icon: 'mdi-account-details',  label: 'Matricula' },
                 { action: 'addMateriaAlumno', icon: 'mdi-bookshelf',        label: 'Asignar Materia' },
-                { action: 'addLibroVida',     icon: 'mdi-account-alert',    label: 'Faltas y Sanciones' },
+                { action: 'addIncidencia',    icon: 'mdi-account-alert',    label: 'Faltas y Sanciones' },
                 { action: 'addPariente',      icon: 'mdi-human-male-child', label: 'Acudientes' },
             ],
             listMenu:[
                 { action: 'list',   icon: 'mdi-table-refresh', label: 'Refrescar' },
-                { action: 'addMateriasAlumnos',   icon: 'mdi-bookshelf', label: 'Agregar Materias Alumnos' },
                 { action: 'print',   icon: 'mdi-printer', label: 'Reporte Alumnos' },
+                { action: 'addMateriasAlumnos',   icon: 'mdi-bookshelf', label: 'Agregar Materias Alumnos' },
             ],
             dialogMatricula:      false,
             dialogAlumnoMateria:  false,
             dialogAlumnosMateria: false,
             dialogPariente:       false,
+            dialogIncidencia:     false,
             matricula:       null,
             alumno:          null,
             grado:           null
@@ -207,6 +214,12 @@ export default {
             this.dialogAlumnosMateria = true
         },
 
+        addIncidencia(alumno)
+        {
+            this.alumno    = alumno
+            this.dialogIncidencia = true
+        },
+
         addPariente(alumno)
         {
             this.alumno    = alumno
@@ -221,6 +234,8 @@ export default {
             this[dialog]   = false
             if(refresh)    this.list()
         }
+
+        
     }
 }
 </script>

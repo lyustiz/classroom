@@ -2,6 +2,20 @@
 
     <div>
 
+        <v-tooltip top v-if="!removeCancel" >
+            <template v-slot:activator="{ on }">
+            <v-btn 
+                v-on="on" 
+                fab x-small 
+                @click="cancel"
+                :loading="loading" 
+                :class="$App.theme.button.cancel + ' ml-2'">
+                <v-icon>reply</v-icon>
+            </v-btn>
+            </template>
+            <span>Cancelar</span>
+        </v-tooltip>
+
         <template v-if="action=='upd'">
             <v-tooltip top>
                 <template v-slot:activator="{ on }">
@@ -34,35 +48,7 @@
             </template>
             <span>Guardar</span>
         </v-tooltip>
-        </template>
-
-  <!--       <v-tooltip top>
-            <template v-slot:activator="{ on }">
-                <v-btn  
-                    v-on="on" 
-                    fab small 
-                    @click="clear" 
-                    :loading:="loading" 			  
-                    :color="$App.theme.button.reset">
-                    <v-icon>refresh</v-icon>
-                </v-btn>
-            </template>
-            <span>Resetear</span>
-        </v-tooltip> -->
-
-        <v-tooltip top v-if="!removeCancel" >
-            <template v-slot:activator="{ on }">
-            <v-btn 
-                v-on="on" 
-                fab small 
-                @click="cancel"
-                :loading="loading" 
-                :class="$App.theme.button.cancel">
-                <v-icon>reply</v-icon>
-            </v-btn>
-            </template>
-            <span>Cancelar</span>
-        </v-tooltip>
+        </template>      
 
     </div>
 

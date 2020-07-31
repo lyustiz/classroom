@@ -203,8 +203,6 @@ export default {
 
             show    = (hasData && isDay && !hidden);
 
-            // if(dia == 1) console.log(data, dia , hasData, isDay, hidden, show,  item[0]);
-
             return  { show, hasData, isDay, hidden, item: item[0] }
         },
     }

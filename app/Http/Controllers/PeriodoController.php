@@ -16,7 +16,6 @@ class PeriodoController extends Controller
     public function index()
     {
         $periodo = Periodo::with(['calendario:id,nb_calendario'])
-                          ->where('id_status', 1)
                           ->get();
         
         return $periodo;
@@ -25,7 +24,7 @@ class PeriodoController extends Controller
     public function list()
     {
         $periodo = Periodo::select('id','nb_periodo')
-                          ->where('id_status', 1)
+                          ->activo()
                           ->get();
         
         return $periodo;
@@ -35,7 +34,7 @@ class PeriodoController extends Controller
     {
         $periodo = Periodo::with(['calendario:id,nb_calendario'])
                     ->where('id_calendario', $idCalendario)
-                    ->where('id_status', 1)
+                    ->activo()
                     ->get();
         
         return $periodo;

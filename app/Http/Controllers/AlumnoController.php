@@ -46,9 +46,9 @@ class AlumnoController extends Controller
     public function alumnoSinGrupo()
     {
         $alumno = Alumno::doesntHave('grupoAlumno')
-                    ->select('id','nb_apellido','nb_apellido2','nb_nombre','nb_nombre2')
-                    ->where('id_status', 1)
-                    ->get();
+                        ->comboData()
+                        ->activo()
+                        ->get();
         
         return $alumno;
     }
@@ -56,25 +56,45 @@ class AlumnoController extends Controller
     public function alumnoSinGrado()
     {
         $alumno = Alumno::doesntHave('gradoAlumno')
-                    ->select('id','nb_apellido','nb_apellido2','nb_nombre','nb_nombre2')
-                    ->where('id_status', 1)
-                    ->get();
+                        ->comboData()
+                        ->activo()
+                        ->get();
         
         return $alumno;
     }
 
     public function alumnoPariente($idPariente)
     {
-        return  Alumno::whereHas('pariente', function ($query)  use ($idPariente){
+        return  Alumno::with([
+                            'foto:foto.id,tx_src,id_tipo_foto,id_origen',
+                            'foto.tipoFoto:tipo_foto.id,tx_base_path',
+                            'grado:grado.id,nb_grado',
+                            'grupo:grupo.id,nb_grupo'
+                        ])
+                        ->whereHas('pariente', function ($query)  use ($idPariente){
                             $query->where('pariente.id', $idPariente);
                         })
                         ->get();
     }
 
+    public function alumnoMatriculadoPariente($idPariente)
+    {
+        return  Alumno::with([
+                            'foto:foto.id,tx_src,id_tipo_foto,id_origen',
+                            'foto.tipoFoto:tipo_foto.id,tx_base_path',
+                            'grado:grado.id,nb_grado',
+                            'grupo:grupo.id,nb_grupo'
+                        ])
+                        ->whereHas('pariente', function ($query)  use ($idPariente){
+                            $query->where('pariente.id', $idPariente);
+                        })
+                        ->has('matricula')
+                        ->get();
+    }
+
     public function alumnoSearch(Request $request)
     {
-       
-       return Alumno::whereDoesntHave('pariente', function ($query)  use ($request){
+        return Alumno::whereDoesntHave('pariente', function ($query)  use ($request){
                     $query->where('pariente.id', $request->id_pariente);
                 })
                 ->activo()
@@ -82,6 +102,22 @@ class AlumnoController extends Controller
                 ->get();
     }
 
+    public function alumnoMateriasDocentes($idAlumno)
+    {
+        $idPeriodo = 1; //TODO    = \Auth::user();//->colegio->calendario->periodoActivo->nb_periodo;
+        
+        return Alumno::with([
+                            'grado:grado.id,nb_grado',
+                            'grupo:grupo.id,nb_grupo',
+                            'grupo.planEvaluacion' => function($query) use ( $idPeriodo ){
+                                $query->where('id_periodo' , $idPeriodo);
+                            },
+                            'grupo.planEvaluacion.materia:materia.id,nb_materia',
+                            'grupo.planEvaluacion.docente:docente.id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',
+                        ])
+                        ->comboData()
+                        ->find($idAlumno);
+    }
 
     /**
      * Store a newly created resource in storage.

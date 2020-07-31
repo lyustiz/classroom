@@ -12,6 +12,9 @@ import RegistroUsuario  from  '@pages/registro/RegistroUsuario.vue';
 import Verify           from  '@pages/registro/Verify.vue';
 import Authentication   from  '@pages/login/Authentication.vue';
 */
+
+
+
 import Login                 from  '@pages/login/login.vue';
 import RecoverPassword       from  '@pages/login/RecoverPassword.vue'; 
 
@@ -70,8 +73,8 @@ import Docente           from '@pages/docente/docente.vue';
 import TipoCondicion     from '@pages/tipoCondicion/tipoCondicion.vue';
 import Alumno            from '@pages/alumno/alumno.vue';
 
-//import GradoAlumno       from '@pages/gradoAlumno/gradoAlumno.vue';
-//import GrupoAlumno       from '@pages/grupoAlumno/grupoAlumno.vue';
+import TipoFalta         from '@pages/tipoFalta/tipoFalta.vue';
+import TipoSancion       from '@pages/tipoSancion/tipoSancion.vue';
 
 import Ciudad            from '@pages/ciudad/ciudad.vue';
 import Clase             from '@pages/clase/clase.vue';
@@ -582,25 +585,30 @@ export default new Router({
                 component: Pariente
             },
 
-            /* { 
-                path: 'grado-alumno',
-                name: 'grado-alumno',
-                label: 'Grado Alumnos',
-                icon: 'mdi-face-recognition',
+            { 
+                path: 'tipo-falta',
+                name: 'tipo-falta',
+                label: 'Tipo Faltas',
+                icon: 'mdi-account-alert-outline',
                 profile: 'secretaria',
                 visible: true,
-                component: GradoAlumno
+                component: TipoFalta
             },
 
             { 
-                path: 'grupo-alumno',
-                name: 'grupo-alumno',
-                label: 'Grupo Alumnos',
-                icon: 'mdi-face-recognition',
+                path: 'tipo-sancion',
+                name: 'tipo-sancion',
+                label: 'Tipo Sancion',
+                icon: 'mdi-gavel',
                 profile: 'secretaria',
                 visible: true,
-                component: GrupoAlumno
-            }, */
+                component: TipoSancion
+            },
+
+
+            
+
+
 
             { 
                 path: 'clase',

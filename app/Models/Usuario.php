@@ -52,6 +52,11 @@ class Usuario extends Authenticatable implements MustVerifyEmail, JWTSubject
 	public function scopeActivo($query)
     {
         return $query->where('id_status', 1);
+	}
+
+	public function scopeComboData($query)
+    {
+        return $query->where('id_status', 1);
     }
 	
 	public function status()
@@ -77,6 +82,33 @@ class Usuario extends Authenticatable implements MustVerifyEmail, JWTSubject
 	public function foto()
     {
         return $this->hasOne('App\Models\Foto',  'id_origen', 'id')->where('id_tipo_foto', 4);
-    }
+	}
 
+	public function alumno()
+    {
+        return $this->belongsTo('App\Models\Alumno',  'id_origen');
+	}
+
+	public function docente()
+    {
+        return $this->belongsTo('App\Models\Docente',  'id_origen');
+	}
+
+	public function pariente()
+    {
+        return $this->belongsTo('App\Models\Pariente',  'id_origen');
+	}
+
+	public function empleado()
+    {
+        return $this->belongsTo('App\Models\Empleado',  'id_origen');
+	}
+
+	public function tipoUsuario()
+    {
+        return $this->belongsTo('App\Models\TipoUsuario',  'id_tipo_usuario');
+	}
+
+
+	
 }

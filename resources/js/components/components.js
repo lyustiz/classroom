@@ -15,30 +15,33 @@ Vue.component('app-login',        Login);
 
 
 //Global Componets
-import ListIcon      from '@components/list/ListIcon'
-import ListButtons   from '@components/list/ListButtons'
-import AddButton     from '@components/list/AddButton'
-import ListContainer from '@components/list/ListContainer'
-import StatusSwitch  from '@components/list/StatusSwitch'
-import ListMenu      from '@components/list/ListMenu'
-import ItemMenu      from '@components/list/ItemMenu'
-
-import FormModal     from '@components/form/FormModal'
-import FormButtons   from '@components/form/FormButton'
-import FormDelete    from '@components/form/FormDelete'
-
-import AppMessage    from '@components/app/AppMessage'
-import AppModal      from '@components/app/AppModal'
-import AppDialog     from '@components/app/AppDialog'
-import AppConfirm    from '@components/app/AppConfirm'
-
-import AppHelp       from '@components/app/AppHelp'
-import AppUser       from '@components/app/AppUser'
+import ListIcon       from '@components/list/ListIcon'
+import ListSimpleIcon from '@components/list/ListSimpleIcon'
+import ListButtons    from '@components/list/ListButtons'
+import AddButton      from '@components/list/AddButton'
+import ListContainer  from '@components/list/ListContainer'
+import StatusSwitch   from '@components/list/StatusSwitch'
+import ListMenu       from '@components/list/ListMenu'
+import ItemMenu       from '@components/list/ItemMenu'
+    
+import FormModal      from '@components/form/FormModal'
+import FormButtons    from '@components/form/FormButton'
+import FormDelete     from '@components/form/FormDelete'
+    
+import AppMessage     from '@components/app/AppMessage'
+import AppModal       from '@components/app/AppModal'
+import AppDialog      from '@components/app/AppDialog'
+import AppConfirm     from '@components/app/AppConfirm'
+    
+import AppHelp        from '@components/app/AppHelp'
+import AppUser        from '@components/app/AppUser'
 
 import AppNotifications   from '@components/app/AppNotifications'
 import AppSimpleToolbar   from '@components/app/AppSimpleToolbar'
 
 Vue.component('list-icon',        ListIcon);
+Vue.component('list-simple-icon', ListSimpleIcon);
+
 Vue.component('list-buttons',     ListButtons);
 Vue.component('add-button',       AddButton);
 Vue.component('list-container',   ListContainer);

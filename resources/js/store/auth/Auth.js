@@ -24,6 +24,10 @@ export default
 		getProfile:   	state => state.profile,
 		getProfiles:   	state => state.profiles,
 		getFoto:   	    state => state.user.foto,
+		getAlumno:   	state => state.user.alumno,
+		getDocente:   	state => state.user.docente,
+		getPariente:   	state => state.user.pariente,
+		getEmpleado:   	state => state.user.empleado,
 	},
 
 	mutations:

@@ -27,6 +27,11 @@ class Calendario extends Model
     public function scopeActivo($query)
     {
         return $query->where('id_status', 1);
+	}
+
+	public function scopeComboData($query)
+    {
+        return $query->where('id_status', 1);
     }
                             
     public function status(){
@@ -40,6 +45,20 @@ class Calendario extends Model
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
 
     }
+
+    public function periodo(){
+
+        return $this->hasMany('App\Models\Periodo', 'id_calendario');
+
+    }
+
+    public function periodoActivo(){
+
+        return $this->hasMany('App\Models\Periodo', 'id_calendario')->where('id_status', 1);
+
+    }
+
+    
 
                            
     //

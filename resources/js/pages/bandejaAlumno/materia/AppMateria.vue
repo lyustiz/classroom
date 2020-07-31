@@ -64,6 +64,13 @@ export default {
 
     mixins:     [ DataHelper ],
 
+    props: {
+         alumno: {
+            type:       Object,
+            default:    () => {}
+        },
+    },
+
     created()
     {
         this.list()
@@ -71,7 +78,6 @@ export default {
 
     data () {
         return {
-            grupo:    1,  //TODO: agregar grupo
             periodo:  null,
             calendario: 1, //TODO: agregar calendario
             headers:  [
@@ -93,7 +99,7 @@ export default {
         list()
         {
            this.getResource( `periodo/calendario/${this.calendario}` ).then( data =>  this.items = data )
-           this.getResource( `materia/grupo/${this.grupo}` ).then( data =>  this.materias = data )
+           this.getResource( `materia/grupo/${this.alumno.grupo.id}` ).then( data =>  this.materias = data )
         }
 
     }

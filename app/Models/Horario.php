@@ -25,6 +25,11 @@ class Horario extends Model
     public function scopeActivo($query)
     {
         return $query->where('id_status', 1);
+	}
+
+	public function scopeComboData($query)
+    {
+        return $query->where('id_status', 1);
     }
   
     public function status()
@@ -47,8 +52,23 @@ class Horario extends Model
         return $this->BelongsTo('App\Models\Grupo', 'id_grupo');
     }
 
+    
+
     public function detalleHorario()
     {
         return $this->HasMany('App\Models\DetalleHorario', 'id_horario');
     }
+
+    public function cargaHoraria()
+    {
+        return $this->hasManyThrough(
+			
+			'App\Models\CargaHoraria', //final
+            'App\Models\HoraAcademica', //intermedia
+            'id', // fk en intermedia
+            'id_hora_academica', // laocal en origen
+            'id_hora_academica', // local en final
+			'id' // fk en intermedia
+		);
+	}
 }

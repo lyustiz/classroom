@@ -37,6 +37,11 @@ class Materia extends Model
     public function scopeActivo($query)
     {
         return $query->where('id_status', 1);
+	}
+
+	public function scopeComboData($query)
+    {
+        return $query->addSelect('id', 'nb_materia');
     }
 
     public function status()
@@ -68,6 +73,19 @@ class Materia extends Model
     {
         return $this->HasMany('App\Models\PlanEvaluacion', 'id_materia');
     }
+
+    public function alumno()
+	{
+        return $this->hasOneThrough(
+			
+			'App\Models\Alumno', //final
+            'App\Models\AlumnoMateria', //intermedia
+            'id_materia', // fk en intermedia
+            'id', // laocal en origen
+            'id', // local en final
+			'id_alumno' // fk en intermedia
+		);
+	}
 
    /*  public function grado()
     {

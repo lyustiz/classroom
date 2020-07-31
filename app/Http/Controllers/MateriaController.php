@@ -57,6 +57,45 @@ class MateriaController extends Controller
                 return $materia;
     }
 
+    public function materiaAlumno($idAlumno)
+    {
+        $materia = Materia::select('id', 'nb_materia')
+                    ->whereHas('alumno', function ($query) use ($idAlumno) {
+                        $query->where('alumno.id', $idAlumno);
+                    }) 
+                    ->orderBY('nb_materia')
+                    ->get();
+
+                return $materia;
+    }
+
+    public function materiaDocenteAlumno($idAlumno)
+    {
+        $idPeriodo = 1; //TODO    = \Auth::user();//->colegio->calendario->periodoActivo->nb_periodo;
+        
+        $materia = Materia::with([
+                        'planEvaluacion' => function($query) use ( $idPeriodo, $idAlumno ){
+                            $query->whereHas('grupo.alumno', function ($query) use ($idPeriodo, $idAlumno) {
+                                $query->where('alumno.id', $idAlumno);
+                            })->where('id_periodo',$idPeriodo )->activo();
+                        },
+                        'planEvaluacion.materia'=> function($query) use ( $idAlumno ){
+                            $query->has('alumno');
+                        },
+                        'planEvaluacion.docente:docente.id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',
+                        'planEvaluacion.docente.foto:id,tx_src,id_tipo_foto,id_origen',
+                        'planEvaluacion.docente.foto.tipoFoto:id,tx_base_path',
+                    ])
+                    ->comboData()
+                    ->whereHas('alumno', function ($query) use ($idAlumno) {
+                        $query->where('alumno.id', $idAlumno);
+                    }) 
+                    ->orderBY('nb_materia')
+                    ->get();
+
+                return $materia;
+    }
+
     /**
      * Store a newly created resource in storage.
      *

@@ -35,7 +35,6 @@ class DocenteController extends Controller
                         ->get();
     }
 
-
     public function list()
     {
         return Docente::select('nb_apellido', 'nb_apellido2', 'nb_nombre', 'nb_nombre2')

@@ -44,7 +44,32 @@ class CargaHorariaController extends Controller
                                         'detalleHorario.docente:id,nb_nombre,nb_apellido',
                                         'detalleHorario.aula:id,nb_aula'
                                     ])
-                                    ->orderBy('carga_horaria.nu_orden')
+                                    ->get();
+
+        return $cargaHoraria;
+    }
+
+    public function cargaHorariaAlumno($idAlumno)
+    {
+        $cargaHoraria = CargaHoraria::with([
+                                        'detalleHorario'=> function($query) use ( $idHorario ){
+                                            $query->select( 
+                                                            'id',
+                                                            'id_carga_horaria',
+                                                            'nu_carga_horaria',
+                                                            'id_dia_semana',
+                                                            'id_horario',
+                                                            'id_materia',
+                                                            'id_docente',
+                                                            'id_aula'
+                                                           )
+                                                  ->where('id_horario' , $idHorario);
+                                        },
+                                        'detalleHorario.materia:id,nb_materia,id_area_estudio',
+                                        'detalleHorario.materia.areaEstudio:id,tx_color',
+                                        'detalleHorario.docente:id,nb_nombre,nb_apellido',
+                                        'detalleHorario.aula:id,nb_aula'
+                                    ])
                                     ->get();
 
         return $cargaHoraria;

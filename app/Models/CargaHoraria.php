@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class CargaHoraria extends Model
 {
@@ -31,7 +32,19 @@ class CargaHoraria extends Model
                             'hh_fin'     => 'datetime:H:i',
                             ];
 
+    protected static function booted()
+    {
+        static::addGlobalScope('oreder', function (Builder $builder) {
+            $builder->orderBy('nu_orden', 'asc');
+        });
+    }
+
     public function scopeActivo($query)
+    {
+        return $query->where('id_status', 1);
+	}
+
+	public function scopeComboData($query)
     {
         return $query->where('id_status', 1);
     }

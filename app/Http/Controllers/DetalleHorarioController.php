@@ -7,6 +7,7 @@ use App\Models\CargaHoraria;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 
 class DetalleHorarioController extends Controller
 {
@@ -28,6 +29,31 @@ class DetalleHorarioController extends Controller
         $detalleHorario = DetalleHorario::with(['cargaHoraria:id,'])
                         ->where('id_horarrio', $idHorario)
                         ->get();
+    }
+
+    public function detalleHorarioAlumnoFecha(Request $request)
+    {
+        $fecha   = date_create_from_format('Y-m-d', $request->fecha);
+        
+        $weekday = ($fecha) ? date_format($fecha, 'w') : date("w");
+      
+        $horario = DetalleHorario::with([ 
+                                    'materia:id,nb_materia,id_area_estudio',
+                                    'materia.areaEstudio:id,tx_color',
+                                    'aula:id,nb_aula,id_estructura',
+                                    'aula.estructura:id,tx_path',
+                                    'docente:id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2'
+                                ])
+                                ->whereHas('horario', function (Builder $query) {
+                                    $query->activo();
+                                })
+                                ->whereHas('horario.grupo.alumno', function (Builder $query) use($request) {
+                                    $query->where('alumno.id', $request->id_alumno);
+                                })
+                                ->where('id_dia_semana', $weekday)
+                                ->get();
+
+        return $horario;
     }
 
     /**

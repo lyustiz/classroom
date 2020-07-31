@@ -28,15 +28,9 @@
     
        <v-dialog v-model="dialog" max-width="700" content-class="rounded-xl"> 
             
-            <v-toolbar color="indigo" dark flat>
-                <v-toolbar-title v-text="sectionTitle"></v-toolbar-title>
-                <v-spacer></v-spacer>
-                 <v-btn icon x-small @click="dialog=false" class="mr-2">    
-                     <v-icon>mdi-close-circle</v-icon>
-                </v-btn>
-            </v-toolbar>
+            <app-simple-toolbar :title="sectionTitle" @closeModal="dialog=false"></app-simple-toolbar>
 
-            <component :is="component" inDialog></component>
+            <component :alumno="alumno" :is="component" inDialog></component>
             
         </v-dialog> 
 
@@ -61,6 +55,14 @@ export default {
         'clase-alumno':      ClaseAlumno,
     },
 
+    computed:
+    {
+        alumno()
+        {
+            return this.$store.getters['getAlumno']
+        }
+    },
+
     data()
     {
         return {
@@ -68,12 +70,12 @@ export default {
             sectionTitle: null,
             dialog:       false,
             sections: [
-                    { label: 'Tareas', icon: 'mdi-notebook', component: 'tarea-alumno', color: 'red' },
-                    { label: 'Recursos', icon: 'mdi-book-open-page-variant', component: 'recurso-alumno', color: 'purple' },
-                    { label: 'Evaluaciones', icon: 'mdi-order-bool-descending-variant', component: 'evaluacion-alumno', color: 'blue' },
-                    { label: 'Calificaciones', icon: 'mdi-clipboard-list', component: 'materia-alumno', color: 'amber' },
-                    { label: 'Aula Virtual (En Construccion)', icon: 'mdi-google-classroom', component: 'clase-alumno', color: 'green' },
-                ]
+                { label: 'Tareas', icon: 'mdi-notebook', component: 'tarea-alumno', color: 'red' },
+                { label: 'Recursos', icon: 'mdi-book-open-page-variant', component: 'recurso-alumno', color: 'purple' },
+                { label: 'Evaluaciones', icon: 'mdi-order-bool-descending-variant', component: 'evaluacion-alumno', color: 'blue' },
+                { label: 'Calificaciones', icon: 'mdi-clipboard-list', component: 'materia-alumno', color: 'amber' },
+                { label: 'Aula Virtual (En Construccion)', icon: 'mdi-google-classroom', component: 'clase-alumno', color: 'green' },
+            ]
         }
     },
 

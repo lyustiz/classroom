@@ -26,11 +26,11 @@ class TipoDestinatario extends Model
     public function scopeActivo($query)
     {
         return $query->where('id_status', 1);
-    }
+	}
 
-    public function scopeComboData($query)
+	public function scopeComboData($query)
     {
-        return $query->addSelect('id', 'nb_tipo_destinatario','tx_color', 'tx_icono');
+        return $query->where('id_status', 1);
     }
 
     public function status()
