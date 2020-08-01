@@ -1,17 +1,20 @@
 <template>
 
-  <v-card class="dialog-container">
-      
-  <div id="grid" class="white dialog-contend">
+  <v-card class="dialog-container" height="90vh">
 
-        
+    <v-card-title class="pa-0">
+        <app-simple-toolbar title="Horario" @closeModal="$emit('closeModal')"></app-simple-toolbar>
+    </v-card-title>
+      
+    <v-card-text class="pa-1">
+   
+    <div id="grid" class="white dialog-contend">
+
         <v-sheet :min-width="130"  v-for="(columna, dia) in columnas" class="grey lighten-4 ma-1 pa-1 rounded-lg " :key="dia" >
             
             <v-card-title class="py-1 body-2">
                 {{columna}}
             </v-card-title>
-
-            <v-card-text>
 
             <v-sheet color="transparent">
                 
@@ -59,7 +62,6 @@
                 </div>
 
             </v-sheet>
-            </v-card-text>
             
         </v-sheet>
 
@@ -71,7 +73,8 @@
             <v-icon size="40" class="mdi-spin">mdi-loading</v-icon>
         </v-overlay>
 
- </div>
+    </div>
+    </v-card-text>
    </v-card>
     
 </template>

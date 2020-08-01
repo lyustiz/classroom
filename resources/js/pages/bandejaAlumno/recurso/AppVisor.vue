@@ -40,17 +40,6 @@
                 </v-container>
             </template>
 
-
-
-<!-- 
-Word
-Excel
-PowerPoint
-Word
-Excel
-PowerPoint
-Image
--->    
         </v-card-text>
                 
     </v-card>

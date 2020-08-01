@@ -27,8 +27,6 @@
         </v-card-text>
     
        <v-dialog v-model="dialog" max-width="700" content-class="rounded-xl"> 
-    
-            <app-simple-toolbar :title="sectionTitle" @closeModal="dialog=false"></app-simple-toolbar>
         
             <component :is="component" inDialog></component>
             

@@ -10,12 +10,12 @@
             
             <v-list-item v-if="data.destinatario && data.tipoDestinatario" > 
                 <v-list-item-avatar color="grey lighten-4" :size="46">
-                    <v-icon size="40" color="indigo">mdi-account-circle</v-icon>
+                    <v-icon size="40" :color="data.tipoDestinatario.tx_color">{{data.tipoDestinatario.tx_icono}}</v-icon>
                 </v-list-item-avatar>
             
                 <v-list-item-content>
                 <v-list-item-title v-text="data.destinatario.nb_corto"></v-list-item-title>
-                <v-list-item-subtitle ><v-icon class="mr-1" :size="20" :color="data.tipoDestinatario.tx_color">{{data.tipoDestinatario.tx_icono}}</v-icon> {{data.tipoDestinatario.nb_tipo_destinatario}}</v-list-item-subtitle>
+                <v-list-item-subtitle >{{data.tipoDestinatario.nb_tipo_destinatario}}</v-list-item-subtitle>
                 </v-list-item-content>
 
   

@@ -92,6 +92,21 @@ class AlumnoController extends Controller
                         ->get();
     }
 
+    public function alumnoPartners($idAlumno)
+    {
+        return Alumno::with([
+                            'foto:foto.id,tx_src,id_tipo_foto,id_origen',
+                            'foto.tipoFoto:tipo_foto.id,tx_base_path'
+                        ])
+                        ->comboData()
+                        ->whereHas('grupo.alumno', function ($query)  use ($idAlumno){
+                            $query->where('alumno.id', $idAlumno);
+                        })
+                        ->where('id', '<>' , $idAlumno)
+                        ->activo()
+                        ->get();
+    }
+
     public function alumnoSearch(Request $request)
     {
         return Alumno::whereDoesntHave('pariente', function ($query)  use ($request){

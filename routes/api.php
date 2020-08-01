@@ -91,6 +91,7 @@ Route::get('/barrio/zona/{zona}',               'BarrioController@barrioZona');
 Route::apiResource('/barrio',                   'BarrioController');
 
 // -- ALUMNO -- //
+Route::get('/alumno/{alumno}/partners',        'AlumnoController@alumnoPartners');
 Route::get('/alumno/{alumno}/materias/docentes',   'AlumnoController@alumnoMateriasDocentes');
 Route::get('/alumno/grupo/{grupo}',             'AlumnoController@alumnoGrupo');
 Route::get('/alumno/sinGrado',                  'AlumnoController@alumnoSinGrado');

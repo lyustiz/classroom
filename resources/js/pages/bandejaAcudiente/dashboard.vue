@@ -15,7 +15,6 @@
                                 <v-item v-slot:default="{ active, toggle }" v-for="alumno in alumnos" :key="alumno.id" :value="alumno" class="pointer" >
                                 <div>
                                     <v-avatar size="150" @click="toggle" dark color="indigo" v-ripple>
-
                                         <v-img :src="alumno.foto.full_url" v-if="alumno.foto">
                                             <v-scroll-y-transition>   
                                             <v-icon 
@@ -33,10 +32,9 @@
                                             size="140" 
                                             v-text="(active) ? 'mdi-account-check': 'mdi-account'">
                                         </v-icon>
-
                                     </v-avatar>
                                     
-                                    <h6 class="text-center grey--text mt-2">{{alumno.nb_corto}}</h6> 
+                                    <p class="text-center mt-2 body-2">{{alumno.nb_corto}}</p> 
                                 </div>
                                 </v-item>
                             </v-row>
@@ -56,55 +54,44 @@
                         <v-card-text>
 
                             <v-row justify="center">
-
                                 <v-scroll-y-transition v-if="alumnoSelected"> 
-                                  
                                     <v-row>
+                                    <v-col cols="12" md="6" lg="4" v-for="section in sections" :key="section.name">
 
-                                        <v-col cols="12" md="6" lg="4" v-for="section in sections" :key="section.name">
-                                        
-                                        <v-list-item  @click="showSection(section.component, section.label)"  > 
-                                        <v-list-item-avatar :color="section.color" size="58" >
-                                            <v-icon size="36" color="white"  v-text="section.icon">mdi-account-circle</v-icon>
-                                        </v-list-item-avatar>
-
-                                        <v-list-item-content>
-                                        <v-list-item-title v-text="section.label"></v-list-item-title>
-                                        </v-list-item-content>
-
+                                        <v-list-item  @click="showSection(section)"  > 
+                                            <v-list-item-avatar :color="section.color" size="58" >
+                                                <v-icon size="36" color="white"  v-text="section.icon">mdi-account-circle</v-icon>
+                                            </v-list-item-avatar>
+                                            <v-list-item-content>
+                                                <v-list-item-title v-text="section.label"></v-list-item-title>
+                                            </v-list-item-content>
                                         </v-list-item>
-                                        
-                                        </v-col>
 
+                                    </v-col>
                                     </v-row>
-                                    
-                                 
                                 </v-scroll-y-transition> 
-
                             </v-row>
 
-                            <v-dialog v-model="dialogSection" content-class="rounded-xl"> 
-                                
-                                <app-simple-toolbar :title="sectionTitle" @closeModal="dialogSection=false" v-if="dialogSection"></app-simple-toolbar>  
-
-                                <component :alumno="alumnoSelected" :is="component"></component>
-                                
+                            <v-dialog v-model="dialogSection" content-class="rounded-xl dialog-section" scrollable :max-width="sectionWidth"> 
+                                <component 
+                                    :is="component" 
+                                    :alumno="alumnoSelected" 
+                                    v-if="dialogSection" 
+                                    @closeModal="dialogSection=false"
+                                ></component>
                             </v-dialog> 
                            
                         </v-card-text>
-
                     </v-card>
+                    
                     </v-col>
                </v-row>
                
             </v-col>
 
             <v-col cols="12" md="4">
-
                 <calendario-acudiente></calendario-acudiente>
-
                 <seccion-acudiente></seccion-acudiente>
-
             </v-col>
 
         </v-row>
@@ -124,6 +111,7 @@ import ItinerarioAlumno    from '@pages/bandejaAlumno/itinerario/ItinerarioAlumn
 import MateriaAlumno       from '@pages/bandejaAlumno/materia/AppMateria'
 import IncidenciaAlumno    from '@pages/incidencia/AppListIncidencia.vue'
 import DocenteAlumno       from './docentes/DocenteAlumno'
+import PartnersAlumno      from '@pages/bandejaAlumno/partners/PartnersAlumno'
 
 export default {
 
@@ -137,7 +125,8 @@ export default {
         'itinerario-alumno':    ItinerarioAlumno,
         'materia-alumno':       MateriaAlumno,
         'incidencia-alumno':    IncidenciaAlumno,
-        'docente-alumno':       DocenteAlumno
+        'docente-alumno':       DocenteAlumno,
+        'partners-alumno':      PartnersAlumno
     },
 
     created()
@@ -160,15 +149,17 @@ export default {
             selected: null,
             alumnos:  [],
             sections: [
-                { label: 'Horario', icon: 'mdi-calendar-multiselect', component: 'horario-alumno', color: 'indigo' },
-                { label: 'Itinerario', icon: 'mdi-calendar-clock', component: 'itinerario-alumno', color: 'green' },
-                { label: 'Calificaciones', icon: 'mdi-clipboard-list', component: 'materia-alumno', color: 'purple' },
-                { label: 'Faltas y Sanciones', icon: 'mdi-account-alert', component: 'incidencia-alumno', color: 'red' },
-                { label: 'Docentes', icon: 'mdi-account-tie', component: 'docente-alumno', color: 'orange' },
+                { label: 'Horario', icon: 'mdi-calendar-multiselect', component: 'horario-alumno', color: 'indigo', width: '90vw' },
+                { label: 'Itinerario', icon: 'mdi-calendar-clock', component: 'itinerario-alumno', color: 'green', width: '700' },
+                { label: 'Calificaciones', icon: 'mdi-clipboard-list', component: 'materia-alumno', color: 'purple', width: '800' },
+                { label: 'Faltas y Sanciones', icon: 'mdi-account-alert', component: 'incidencia-alumno', color: 'red', width: '90vw' },
+                { label: 'Docentes', icon: 'mdi-account-tie', component: 'docente-alumno', color: 'orange', width: '500' },
+                { label: 'Compañeros', icon: 'mdi-school', component: 'partners-alumno', color: 'blue', width: '500' },
             ],
             dialogSection: false,
             component:     null,
-            sectionTitle:  null
+            sectionTitle:  null,
+            sectionWidth:  null
         }
     },
 
@@ -179,13 +170,20 @@ export default {
             this.getResource( `alumno/matriculado/pariente/${this.pariente.id}`).then( (data) => this.alumnos = data)
         },
 
-        showSection(component, label)
+        showSection(section)
         {
             this.dialogSection = true
-            this.component     = component
-            this.sectionTitle  = label
+            this.component     = section.component
+            this.sectionTitle  = section.label
+            this.sectionWidth  = section.width
         }
     }
     
 }
 </script>
+
+<style scoped>
+.dialog-section{
+    min-width: 700px !important;
+}
+</style>

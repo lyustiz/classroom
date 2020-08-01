@@ -175,7 +175,7 @@ export default
                 this[menu.action](menu.item)
             } catch (error) 
             {
-                console.log(error)
+                console.log(error, menu)
             }
         },
 
@@ -185,7 +185,7 @@ export default
                 this[menu.action]()
             } catch (error) 
             {
-                console.log(error)
+                console.log(error, menu)
             }
         },
     }

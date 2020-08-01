@@ -1,19 +1,22 @@
 <template>
 
-    <v-card flat :loading="loading">
+    <v-card flat :loading="loading" height="80vh">
 
-        <v-card-text class="pt-2">
+        <v-card-title class="pa-0">
+            <app-simple-toolbar title="Docentes" @closeModal="$emit('closeModal')"></app-simple-toolbar>
+        </v-card-title>
 
-            <v-toolbar color="grey lighten-4 subtitle-2" dense flat class="rounded-xl mb-2 avatar-toolbar" >
-                <v-avatar color="grey lighten-3" class="mx-0">
-                    <v-icon color="indigo" size="40">mdi-account-tie</v-icon>
-                </v-avatar>
-                <div class="indigo--text ml-3">Docentes por Materia</div>
-            </v-toolbar>
+        <v-card-text class="mt-3">
 
-            <v-row justify="center"> 
+            <v-row no-gutters justify="center"> 
 
-                 <v-list subheader two-line dense> 
+                <v-col>
+
+                 <v-list subheader two-line dense width="100%" color="grey lighten-4" class="rounded-xl"> 
+
+                    <v-subheader class="grey pl-4 lighten-3 rounded-t-xl">
+                        <v-icon class="mr-2" color="orange">mdi-account-tie</v-icon>Docente por Materia
+                    </v-subheader>
 
                     <v-list-item v-for="(materia, idx) in marerias" :key="idx" > 
                         <v-list-item-avatar>
@@ -27,11 +30,13 @@
                         </v-list-item-content>
 
                         <v-list-item-icon>
-                            <item-menu :item="getDocente(materia)" btn-color="primary" iconColor="deep-purple lighten-5" :menus="itemsMenu" @onItemMenu="onItemMenu($event)" ></item-menu>
+                            <item-menu :item="getDocente(materia)" btn-color="indigo" iconColor="white" :menus="itemsMenu" @onItemMenu="onItemMenu($event)" ></item-menu>
                         </v-list-item-icon>
                     </v-list-item>
 
                 </v-list>
+
+                </v-col>
 
             </v-row>
 

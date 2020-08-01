@@ -1,8 +1,10 @@
 <template>
 
-    <v-card>
-        
-    <!-- <app-simple-toolbar title="Lista de Faltas Sanciones" @closeModal="$emit('closeModal')"></app-simple-toolbar>   -->
+    <v-card height="80vh">
+
+        <v-card-title class="pa-0">
+            <app-simple-toolbar title="Incidencias" @closeModal="$emit('closeModal')"></app-simple-toolbar>
+        </v-card-title>
 
     <v-card-text>
             

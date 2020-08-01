@@ -1,6 +1,11 @@
 <template>
- <v-card class="mx-auto dialog-container" :loading="loading">
-    
+
+ <v-card :loading="loading" height="90vh" >
+
+        <v-card-title class="pa-0">
+            <app-simple-toolbar title="Itinerario" @closeModal="$emit('closeModal')"></app-simple-toolbar>
+        </v-card-title>
+
         <v-card-title class="grey lighten-3">
             <v-menu v-model="menu" transition="slide-x-transition" right :close-on-content-click="false" content-class="rounded-xl">
                 <template v-slot:activator="{ on }">
@@ -14,10 +19,10 @@
                     @input="setDate($event)">
                 </v-date-picker>
             </v-menu>
-            <div class="mx-2 subtitle-1">Actividades del alumno - {{alumno.nb_corto}}</div>
+            <div class="mx-2 subtitle-1">Actividades del Dia - {{alumno.nb_corto}}</div>
         </v-card-title>
 
-        <v-card-text class="py-0 dialog-content" >
+        <v-card-text class="py-0" >
 
         <v-timeline align-top dense v-if="items.length > 0">
             <v-timeline-item icon="mdi-clock-outline" fill-dot :color="horario.materia.area_estudio.tx_color" small v-for="horario in items" :key="horario.id">
@@ -38,7 +43,7 @@
             </v-timeline-item>
         </v-timeline>
 
-        <v-alert type="warning" :value="true" v-else-if="items.length < 1 && !loading" colored-border border="left" class="mt-3">
+        <v-alert type="warning" :value="true" v-else-if="items.length < 1 && !loading" prominent outlined border="left" class="mt-3">
             No existen actividades para esta fecha
         </v-alert>
             
