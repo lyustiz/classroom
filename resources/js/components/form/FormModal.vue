@@ -2,7 +2,7 @@
 
 <v-dialog v-model="modal" fullscreen  >
 
-    <v-card class="rounded-xl">
+    <v-card class="rounded-xl" flat>
 
         <v-toolbar dark flat dense :color="(HeadColor) ? HeadColor : $App.theme.headModal">
 
@@ -14,7 +14,7 @@
 
             <v-spacer></v-spacer>
 
-            <v-btn icon>
+            <v-btn icon v-if="showMenu">
                 <v-icon>mdi-dots-vertical</v-icon>
             </v-btn>
         
@@ -62,6 +62,10 @@ export default {
             type:       Boolean,
             default:    false
         },
+        showMenu:{
+            type:       Boolean,
+            default:    false
+        }
     }
 }
 </script>

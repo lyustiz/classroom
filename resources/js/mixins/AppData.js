@@ -3,14 +3,6 @@ import AppRules   from './AppRules';
 export default 
 {
     mixins: [AppFormat, AppRules],
-
-    props:
-    {
-        inDialog: {
-            type:       Boolean,
-            default:    false
-        },
-    },
     
     computed: 
     {
@@ -262,32 +254,7 @@ export default
             this.form.id_usuario = this.idUser
         },
 
-        formatPicker(date, picker)
-        {
-            this.pickers[picker] = false;
-
-            return this.formatDate(date)
-        },
-
-        onItemMenu(menu)
-        {
-            try {
-                this[menu.action](menu.item)
-            } catch (error) 
-            {
-                console.log(error,menu)
-            }
-        },
-
-        onListMenu(menu)
-        {
-            try {
-                this[menu.action]()
-            } catch (error) 
-            {
-                console.log(error,menu)
-            }
-        },
+        
          
     }
 }

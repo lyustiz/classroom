@@ -241,11 +241,5 @@ export default
             }
         },
 
-        formatPicker(date, picker)
-        {
-            this.pickers[picker] = false;
-
-            return this.formatDate(date)
-        },
     }
 }

@@ -75,6 +75,11 @@ export default {
         initLeter(value)
         {
             return (value) ? value.charAt(0).toUpperCase() : null 
+        },
+
+        maxStringLength(value, length)
+        {
+            return  (value) ? value.substr(0, length) : null;
         }
 
     },
@@ -206,6 +211,11 @@ export default {
                         {value: 'M', icon: 'mdi-human-male',  color: 'blue', label: 'Masculino'},
                         {value: 'F', icon: 'mdi-human-female',  color: 'pink', label: 'Femenino'}
                     ],
+            statusIcons:
+            [
+                {value: 0, icon: 'mdi-checkbox-blank-circle-outline',  color: 'error', label: 'No'},
+                {value: 1, icon: 'mdi-checkbox-marked-circle',  color: 'success', label: 'Si'}
+            ],
         }
     },
 

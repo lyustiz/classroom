@@ -2,7 +2,7 @@
 
     <v-form ref="form" v-model="valid" lazy-validation>
 
-    <v-card :loading="loading" >
+    <v-card :loading="loading" flat>
 
         <v-card-text>
 

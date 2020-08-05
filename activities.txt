@@ -4,3 +4,5 @@
       - permite editar el evento del calendario.
       - al dar click para agregar un evento se muestra la fecha seleccionada
       - ajustes en la barra de herramientas del calendario, ahora se muestran un tooltip con las acciones de los botones   
+- format maxleng string
+-add ponter a list icon

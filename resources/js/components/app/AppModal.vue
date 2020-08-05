@@ -14,7 +14,7 @@
 
             <v-spacer></v-spacer>
 
-            <v-btn icon @onMenu="onMenu($event)">
+            <v-btn icon @onMenu="onMenu($event)" v-if="menu">
                 <v-icon>mdi-dots-vertical</v-icon>
             </v-btn>
         
@@ -42,26 +42,37 @@ export default {
             type:       String,
             default:    ''
         },
+
         modal:{
             type:       Boolean,
             default:    true
         },
+
         HeadColor:{
             type:       String,
             default:    null
         },
+
         TextColor:{
             type:       String,
             default:    'white--text'
         },
+
         width:{
             type:       String,
             default:    '600'
         },
+
         minWidt:{
             type:       String,
             default:    '700'
         },
+
+        menu: {
+            type: Boolean,
+            default: false
+        }
+
     }
 }
 </script>

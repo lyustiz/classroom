@@ -75,15 +75,7 @@ export default
                 }
             ]
         },
-        inDialog:{
-            type: Boolean,
-            default: false
-        }
     },
 
 }
 </script>
-<style scoped>
-.list-container{
-}
-</style>

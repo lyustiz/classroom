@@ -2,7 +2,7 @@
 
     <v-form ref="form" v-model="valid" lazy-validation>
 
-    <v-card :loading="loading" >
+    <v-card :loading="loading" flat>
 
         <app-simple-toolbar title="Asignar Materia a Alumnos" @closeModal="$emit('closeModal')"></app-simple-toolbar>
 
@@ -55,8 +55,8 @@
         </v-col>
 
         <v-checkbox label="Todos" v-model="isSelectAll" @click.stop="selectAll(isSelectAll)" :disabled="loading">
-
         </v-checkbox>
+        
         </v-row>
 
         <v-row class="list-alumnos rounded-xl mx-1" v-if="form.id_materia">

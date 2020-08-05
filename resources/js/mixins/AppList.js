@@ -4,14 +4,6 @@ export default
 {
     mixins: [AppFormat],
 
-    props:
-    {
-        inDialog: {
-            type:       Boolean,
-            default:    false
-        },
-    },
-
     data() 
     {
         return {
@@ -155,38 +147,6 @@ export default
             console.log('changeStatus', payload)
         },
 
-        //acciones de los menus
-
-        onMenu(menu) //compatibilidad versiones anteriores
-        {
-            switch (menu.action) {
-                case 'refresh':
-                    this.list()
-                    break;
-            
-                default:
-                    break;
-            }
-        },
-
-        onItemMenu(menu)
-        {
-            try {
-                this[menu.action](menu.item)
-            } catch (error) 
-            {
-                console.log(error, menu)
-            }
-        },
-
-        onListMenu(menu)
-        {
-            try {
-                this[menu.action]()
-            } catch (error) 
-            {
-                console.log(error, menu)
-            }
-        },
+       
     }
 }

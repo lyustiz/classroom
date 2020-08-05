@@ -1,7 +1,10 @@
 
             <v-checkbox
-                  :rules="[rules.required]"
+                   :rules="[rules.check]"
                   v-model="form.{{columnName}}"
                   label="{{labelName}}"
+                  :true-value="1"
+                  :false-value="0"
+                  :indeterminate="(form.{{columnName}}== null)"
                   dense
             ></v-checkbox>

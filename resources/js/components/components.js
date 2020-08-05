@@ -18,6 +18,7 @@ Vue.component('app-login',        Login);
 import ListIcon       from '@components/list/ListIcon'
 import ListSimpleIcon from '@components/list/ListSimpleIcon'
 import ListButtons    from '@components/list/ListButtons'
+import AppButton      from '@components/app/AppButton'
 import AddButton      from '@components/list/AddButton'
 import ListContainer  from '@components/list/ListContainer'
 import StatusSwitch   from '@components/list/StatusSwitch'
@@ -63,6 +64,7 @@ Vue.component('app-user',         AppUser);
 
 Vue.component('app-notifications',    AppNotifications);
 Vue.component('app-simple-toolbar',   AppSimpleToolbar);
+Vue.component('app-button',           AppButton);
 
 //Tools Components
 import AppFoto          from '@pages/foto/appFoto'

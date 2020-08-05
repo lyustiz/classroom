@@ -2,7 +2,7 @@
 
     <v-card flat :loading="loading" height="80vh">
 
-        <v-card-title class="pa-0">
+        <v-card-title class="pa-0" v-if="!inDialog">
             <app-simple-toolbar title="Calificaciones" @closeModal="$emit('closeModal')"></app-simple-toolbar>
         </v-card-title>
 

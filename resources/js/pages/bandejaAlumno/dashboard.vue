@@ -32,9 +32,9 @@
 import { mapGetters, mapActions } from 'vuex';
 
 import AppData from '@mixins/AppData';
-import AppAgendaAlumno from './AppAgendaAlumno'
+import AppAgendaAlumno from './agenda/AppAgendaAlumno'
 import AppAlumnoSections from './AppAlumnoSections'
-import AppEventos from './AppEventos'
+import AppEventos from './eventos/AppEventos'
 
 export default {
 

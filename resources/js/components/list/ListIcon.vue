@@ -5,7 +5,8 @@
             <template v-slot:activator="{ on }">
                 <v-icon v-on="on" 
                     :color="datavalue[0].color" 
-                    v-text="datavalue[0].icon">
+                    v-text="datavalue[0].icon"
+                    class="pointer">>
                 </v-icon>
             </template>
             <span v-text="datavalue[0].label"></span>

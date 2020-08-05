@@ -246,6 +246,20 @@ Route::apiResource('/tipoDestinatario',         'TipoDestinatarioController');
 // --  CONFIGURACION  -- //
 Route::apiResource('/configuracion',            'ConfiguracionController');
 
+// --  PRUEBA  -- //
+Route::apiResource('/tipoPregunta',             'TipoPreguntaController',['parameters' => ['tipoPregunta' => 'tipoPregunta']]);
+
+Route::get('/prueba/grado/{grado}',             'PruebaController@pruebaGrado');
+Route::get('/prueba/{prueba}/grado/{grado}/importar',  'PruebaController@pruebaGradoImportar');
+Route::apiResource('/prueba',                   'PruebaController', ['parameters' => ['prueba' => 'cargaHorapruebaria']]);
+Route::post('/pregunta/importar',               'PreguntaController@importar');
+Route::get('/pregunta/prueba/{prueba}',         'PreguntaController@preguntaPrueba');
+Route::apiResource('/pregunta',                 'PreguntaController', ['parameters' => ['pregunta' => 'pregunta']]);
+Route::get('/respuesta/pregunta/{pregunta}',    'RespuestaController@respuestaPregunta');
+Route::apiResource('/respuesta',                'RespuestaController', ['parameters' => ['respuesta' => 'respuesta']]);
+Route::apiResource('/pruebaAlumno',             'PruebaAlumnoController');
+Route::apiResource('/respuestaAlumno',          'RespuestaAlumnoController');
+
 //newRoutes
 
 });

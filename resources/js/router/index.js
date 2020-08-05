@@ -133,6 +133,15 @@ import UsuarioPerfil    from '@pages/usuarioPerfil/usuarioPerfil.vue';
 import Permiso          from '@pages/permiso/permiso.vue';
 
 
+//prueba
+import TipoPregunta     from '@pages/tipoPregunta/tipoPregunta.vue'; 
+import Prueba           from '@pages/prueba/prueba.vue';
+import Pregunta         from '@pages/pregunta/pregunta.vue';
+import Respuesta        from '@pages/respuesta/respuesta.vue';
+import PruebaAlumno     from '@pages/pruebaAlumno/pruebaAlumno.vue';
+import RespuestaAlumno  from '@pages/respuestaAlumno/respuestaAlumno.vue';
+
+
 //notificaciones
 import TipoDestinatario from '@pages/tipoDestinatario/tipoDestinatario.vue';
 import TipoPrioridad    from '@pages/tipoPrioridad/tipoPrioridad.vue';
@@ -965,6 +974,62 @@ export default new Router({
             
             /********************** */
 
+            /** prueba **/
+
+            { 
+                path: 'tipo-pregunta',
+                name: 'tipo-pregunta',
+                label: 'Tipo Preguntas',
+                icon: 'mdi-order-bool-descending-variant',
+                profile: 'secretaria',
+                visible: true,
+                component: TipoPregunta
+            },
+            { 
+                path: 'prueba',
+                name: 'prueba',
+                label: 'Prueba',
+                icon: 'mdi-order-bool-descending-variant',
+                profile: 'secretaria',
+                visible: true,
+                component: Prueba
+            },
+            { 
+                path: 'pregunta',
+                name: 'pregunta',
+                label: 'Pregunta',
+                icon: 'mdi-order-bool-descending-variant',
+                profile: 'secretaria',
+                visible: true,
+                component: Pregunta
+            },
+            { 
+                path: 'respuesta',
+                name: 'respuesta',
+                label: 'Respuesta',
+                icon: 'mdi-order-bool-descending-variant',
+                profile: 'secretaria',
+                visible: true,
+                component: Respuesta
+            },
+            { 
+                path: 'prueba-alumno',
+                name: 'prueba-alumno',
+                label: 'Prueba Alumno',
+                icon: 'mdi-order-bool-descending-variant',
+                profile: 'secretaria',
+                visible: true,
+                component: PruebaAlumno
+            },
+            { 
+                path: 'respuesta-alumno',
+                name: 'respuesta-alumno',
+                label: 'Respuesta Alumno',
+                icon: 'mdi-order-bool-descending-variant',
+                profile: 'secretaria',
+                visible: true,
+                component: RespuestaAlumno
+            },
       
 
             { 
@@ -978,7 +1043,7 @@ export default new Router({
             },
           ]
         },
-       /*  {
+        {
             path: '/crud',
             name: 'crud',
             label: 'Generador',
@@ -986,7 +1051,7 @@ export default new Router({
             profile: 'secretaria',
             visible: true,
             component: Crud,
-        }, */
+        },
         {
             path: '/login',
             name: 'login',

@@ -2,6 +2,15 @@
 - add notificacion a alumno
  -add notificacion acudiente
 
-
  tanaños modal bandeja acudientes
  add parametro a asecciones eliminar toolbar unico scrollable a dialogo
+
+ addGlobals (inDialog, item-menu listmenu)
+ fix folders bandeja alumno
+
+ //pruebas
+ -tipos preguntas
+ -crear pruebas
+ -crear preguntas
+ -crear respuestas
+ -importar preguntas y respuestas desde otro examen
