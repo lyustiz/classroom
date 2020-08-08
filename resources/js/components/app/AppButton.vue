@@ -2,8 +2,8 @@
 
     <v-tooltip bottom :color="color">
         <template v-slot:activator="{ on }">
-            <v-btn v-on="on" fab dark x-small :color="color" :loading="loading" @click="$emit('click')" :depressed="depressed">
-                <v-icon v-text="icon"></v-icon>
+            <v-btn v-on="on" fab dark x-small :color="color" :loading="loading" @click="$emit('click')" :disabled="disabled" :depressed="depressed">
+                <v-icon size="24" v-text="icon"></v-icon>
             </v-btn>
         </template>
         <span v-text="label"></span>
@@ -43,6 +43,11 @@ export default {
         },
 
         depressed:{
+            type:     Boolean,
+            default:  false
+        },
+
+        disabled:{
             type:     Boolean,
             default:  false
         }

@@ -32,12 +32,12 @@ class Grupo extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->where('id_status', 1);
+        return $query->addSelect('id', 'nb_grupo', 'id_grado');
     }
     
     public function status()
     {
-        return $this->BelongsTo('App\Models\Status', 'id_status');
+        return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');
     }
                            
     public function usuario()

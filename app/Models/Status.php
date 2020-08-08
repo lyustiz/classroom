@@ -12,7 +12,9 @@ class Status extends Model
                             'nb_status',
 	 	 	 	 	 	 	'nb_secundario',
 	 	 	 	 	 	 	'co_status',
-	 	 	 	 	 	 	'co_grupo',
+                            'co_grupo',
+                            'tx_icono',
+                            'tx_color',
 	 	 	 	 	 	 	'id_padre',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'bo_activo',
@@ -31,12 +33,12 @@ class Status extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->where('id_status', 1);
+        return $query->addSelect('status.id', 'nb_status');
     }
     
     public function status()
     {
-        return $this->BelongsTo('App\Models\Status', 'id_status');
+        return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');
     }
                            
     public function usuario()

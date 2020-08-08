@@ -27,7 +27,7 @@ class MateriaController extends Controller
     {
         $materia = Materia::select('id', 'nb_materia')
                 ->where('id_area_estudio',  $idAreaEstudio)
-                ->orderBY('nb_materia')
+                ->orderBY('nb_materia', 'asc')
                 ->get();
 
                 return $materia;
@@ -48,9 +48,24 @@ class MateriaController extends Controller
     public function materiaGrupo($idGrupo)
     {
         $materia = Materia::select('id', 'nb_materia')
-                    ->whereHas('grado.grupo', function ($query) use ($idGrupo) {
+                    ->whereHas('grupo', function ($query) use ($idGrupo) {
                         $query->where('grupo.id', $idGrupo);
                     }) 
+                    ->orderBY('nb_materia')
+                    ->get();
+
+                return $materia;
+    }
+
+    public function materiaGrupoDocente($idGrupo, $idDocente)
+    {
+        $materia = Materia::select('id', 'nb_materia')
+                    ->whereHas('grupo', function ($query) use ($idGrupo) {
+                        $query->where('grupo.id', $idGrupo);
+                    }) 
+                    ->whereHas('docente', function ($query) use ($idDocente) {
+                        $query->where('docente.id', $idDocente);
+                    })
                     ->orderBY('nb_materia')
                     ->get();
 

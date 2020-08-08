@@ -216,6 +216,7 @@ export default {
                 {value: 0, icon: 'mdi-checkbox-blank-circle-outline',  color: 'error', label: 'No'},
                 {value: 1, icon: 'mdi-checkbox-marked-circle',  color: 'success', label: 'Si'}
             ],
+            selectMinutos: [5,10,15,20,25,30,35,40,45,50,60,65,70,75,80,85,90,95,100,105,110,120]
         }
     },
 

@@ -18,13 +18,14 @@ export default
             search:    '',
             action:    '',
             dialog:    false,
-            confirm:   false
+            confirm:   false,
+            autolist:  true
         }
     },
 
     created()
     {
-        this.list();
+        (this.autolist) ? this.list() : this.loading = false
     },
 
     computed: 

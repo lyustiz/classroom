@@ -10,6 +10,7 @@ class PruebaAlumno extends Model
 
     protected $fillable   = [
                             'id_prueba',
+                            'id_alumno',
 	 	 	 	 	 	 	'fe_prueba',
 	 	 	 	 	 	 	'hh_inicio',
 	 	 	 	 	 	 	'hh_fin',
@@ -33,11 +34,21 @@ class PruebaAlumno extends Model
 
     public function status()
     {
-        return $this->BelongsTo('App\Models\Status', 'id_status');
+        return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');
     }
                            
     public function usuario()
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
+    }
+
+    public function prueba()
+    {
+        return $this->BelongsTo('App\Models\Prueba', 'id_prueba');
+    }
+
+    public function alumno()
+    {
+        return $this->BelongsTo('App\Models\Alumno', 'id_alumno');
     }
 }

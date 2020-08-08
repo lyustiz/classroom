@@ -170,12 +170,15 @@ export default {
 
         getGrupo(grado)
         {
+            this.alumnos = []
             this.form.id_grado = grado.id
             this.selects.grupo = (grado.grupo) ?  grado.grupo : []
         },
 
         getMateria(grupo)
         {
+           this.alumnos = []
+           this.form.id_materia = null
            this.form.id_grupo = grupo.id
            this.selects.materia = (grupo.materia) ? grupo.materia : []
            this.alumnos = (grupo.alumno) ? grupo.alumno : []
@@ -236,6 +239,7 @@ export default {
 
         store(alumno, idx)
         {
+            if(!this.form.id_materia) return
             this.form.id_alumno = alumno.id
             this.storeResource(`alumnoMateria`, this.form).then( (data) =>  
             {
@@ -246,6 +250,7 @@ export default {
 
         delete(alumnoMateria, idx)
         {
+            if(!this.form.id_materia) return
             this.deleteResource(`alumnoMateria/${alumnoMateria.id}`).then( (data) =>  
             {
                 this.showMessage(data.msj);

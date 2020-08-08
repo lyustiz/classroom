@@ -46,6 +46,8 @@ export default
         this.fillSelects()
 
         this.setDataForm(this.action)
+
+        this.onCreateForm()
     },
 
     watch: 
@@ -216,6 +218,11 @@ export default
             }
 
             this.form.id_usuario = this.idUser
+        },
+
+        onCreateForm()
+        {
+            //acciones al crearse el formulario
         },
 
         extraActions(method)

@@ -58,12 +58,12 @@ class Docente extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->addSelect('id', 'nb_apellido','nb_apellido2','nb_nombre','nb_nombre2');
+        return $query->addSelect('docente.id', 'nb_apellido','nb_apellido2','nb_nombre','nb_nombre2','tx_documento');
     }
 
 	public function status()
 	{
-        return $this->BelongsTo('App\Models\Status', 'id_status');
+        return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');
     }
                            
 	public function usuario()

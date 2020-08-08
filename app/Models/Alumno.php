@@ -73,12 +73,12 @@ class Alumno extends Model
 	
 	public function scopeComboData($query)
     {
-        return $query->addSelect('id', 'nb_apellido', 'nb_apellido2', 'nb_nombre', 'nb_nombre2');
+        return $query->addSelect('alumno.id', 'nb_apellido', 'nb_apellido2', 'nb_nombre', 'nb_nombre2', 'tx_documento');
     }
 	
 	public function status()
 	{
-        return $this->BelongsTo('App\Models\Status', 'id_status');
+        return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');
     }
                            
 	public function usuario()
@@ -165,6 +165,24 @@ class Alumno extends Model
             'id', // laocal en origen
             'id', // local en final
 			'id_pariente' // fk en intermedia
+		);
+	}
+
+	public function PruebaAlumno()
+    {
+        return $this->hasMany('App\Models\PruebaAlumno', 'id_alumno');
+	}
+
+	public function prueba()
+	{
+        return $this->hasManyThrough(
+			
+			'App\Models\Prueba', //final
+            'App\Models\PruebaAlumno', //intermedia
+            'id_alumno', // fk en intermedia
+            'id', // laocal en origen
+            'id', // local en final
+			'id_prueba' // fk en intermedia
 		);
 	}
 }

@@ -104,13 +104,13 @@ export default
 
         },
 
-        deleteResource(resourceID)
+        deleteResource(resourceID, data)
         {
             this.preFormActions('delete')
 
             return new Promise((resolve, reject) => 
 			{
-				axios.delete(this.apiUrl + resourceID)
+				axios.delete(this.apiUrl + resourceID, {data})
 				.then(response => 
 				{
 					resolve(response.data)

@@ -18,6 +18,8 @@ class CreatePruebaTable extends Migration
             $table->string('nb_prueba', 100);
             $table->integer('id_grado');
             $table->integer('id_grupo')->nullable();
+            $table->integer('id_materia');
+            $table->integer('id_docente');
             $table->integer('id_evaluacion_detalle')->nullable();
             $table->boolean('bo_ver_resultado');
             $table->integer('nu_minutos')->nullable();

@@ -36,11 +36,45 @@ class AlumnoController extends Controller
         $alumno = Alumno::select('id','nb_apellido','nb_apellido2','nb_nombre','nb_nombre2','tx_documento','fe_nacimiento')
                         ->where('id_status', 1)
                         ->whereHas('matricula', function (Builder $query) use($idGrupo) {
-                            $query->where('id_grupo', $idGrupo)->where('id_status', 1);
+                            $query->where('id_grupo', $idGrupo)->activo();
                         })
                         ->get();
         
         return $alumno;
+    }
+
+
+    public function alumnoGrupoMateria($idGrupo, $idMateria)
+    {
+        return Alumno::select('id','nb_apellido','nb_apellido2','nb_nombre','nb_nombre2','tx_documento','fe_nacimiento')
+                        ->where('id_status', 1)
+                        ->whereHas('matricula', function (Builder $query) use($idGrupo) {
+                            $query->where('id_grupo', $idGrupo)->activo();
+                        })
+                        ->whereHas('materia', function (Builder $query) use($idMateria) {
+                            $query->where('materia.id', $idMateria);
+                        })
+                        ->get();
+    }
+
+
+    public function alumnoPruebaGrupoMateria($idPrueba, $idGrupo, $idMateria)
+    {
+        return  Alumno::with([
+                                'pruebaAlumno'=> function($query) use ( $idPrueba ){
+                                    $query->where('id_prueba' , $idPrueba);
+                                },
+                            ])
+                            ->select('id','nb_apellido','nb_apellido2','nb_nombre','nb_nombre2','tx_documento','fe_nacimiento')
+                            ->activo()
+                            ->whereHas('matricula', function (Builder $query) use($idGrupo) {
+                                $query->where('id_grupo', $idGrupo)->activo();
+                            })
+                            ->whereHas('materia', function (Builder $query) use($idMateria) {
+                                $query->where('materia.id', $idMateria);
+                            })
+                            ->get();
+
     }
 
     public function alumnoSinGrupo()

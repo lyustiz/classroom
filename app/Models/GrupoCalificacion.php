@@ -22,7 +22,7 @@ class GrupoCalificacion extends Model
 
     public function status()
     {
-        return $this->BelongsTo('App\Models\Status', 'id_status');
+        return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');
     }
                            
     public function usuario()

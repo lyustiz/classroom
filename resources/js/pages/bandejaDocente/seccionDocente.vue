@@ -16,7 +16,7 @@
                         depressed 
                         v-on="on" 
                         :color="section.color" 
-                        @click="showSection(section.component, section.label)" 
+                        @click="showSection(section)" 
                         class="ml-1">
                         <v-icon size="32" v-text="section.icon"></v-icon>
                     </v-btn>
@@ -25,70 +25,67 @@
             </v-tooltip>
 
         </v-card-text>
-    
-       <v-dialog v-model="dialog" max-width="700" content-class="rounded-xl"> 
-            
-            <v-toolbar color="indigo" dark flat>
-                <v-toolbar-title v-text="sectionTitle"></v-toolbar-title>
-                <v-spacer></v-spacer>
-                 <v-btn icon x-small @click="dialog=false" class="mr-2">    
-                     <v-icon>mdi-close-circle</v-icon>
-                </v-btn>
-            </v-toolbar>
 
-            <component :is="component" inDialog></component>
+            <v-dialog v-model="dialogSection" content-class="rounded-xl dialog-section" scrollable :max-width="sectionWidth"> 
+                <component 
+                    :is="component" 
+                    v-if="dialogSection" 
+                    @closeModal="dialogSection=false"
+                ></component>
+            </v-dialog> 
             
-        </v-dialog> 
-
     </v-card>
 
 </template>
 
 <script>
-
 import ListaAumno        from './alumno/listaAlumnos'
 import EvaluacionDocente from './evaluacion/evaluacionDocente'
-/* import RecursoAlumno    from './recurso/Apprecurso'
+import ClaseAlumno       from '@pages/bandejaAlumno/clase/AppCLase'
+import MenuPrueba        from './prueba/MenuPrueba.vue'
 
-import MateriaAlumno    from './materia/AppMateria'
-import ClaseAlumno      from './clase/AppCLase' */
-import ClaseAlumno      from '@pages/bandejaAlumno/clase/AppCLase'
 export default {
 
     components: {
         'lista-alumno':       ListaAumno,
         'evaluacion-docente': EvaluacionDocente,
+        'menu-prueba'       : MenuPrueba,
+        'clase-alumno':       ClaseAlumno, 
+    },
 
-      /*   'tarea-alumno':      TareaAlumno,
-        'recurso-alumno':    RecursoAlumno,
-        
-        'materia-alumno':    MateriaAlumno,*/
-        'clase-alumno':      ClaseAlumno, 
+    computed:
+    {
+        docente()
+        {
+            return this.$store.getters['getDocente']
+        }
     },
 
     data()
     {
         return {
-            component:    null,
-            sectionTitle: null,
-            dialog:       false,
+            component:     null,
+            sectionTitle:  null,
+            dialogSection: false,
+            sectionWidth:  null,
             sections: [
 
-                    { label: 'Alumnos', icon: 'mdi-school', component: 'lista-alumno', color: 'red' },
-                    { label: 'Evaluaciones', icon: 'mdi-notebook', component: 'evaluacion-docente', color: 'amber' },
-                  /*   { label: 'Recursos', icon: 'mdi-bookshelf', component: 'recurso-alumno', color: 'purple' }, */
-                    { label: 'Aula Virtual (En Construccion)', icon: 'mdi-google-classroom', component: 'clase-alumno', color: 'green' },
+                    { label: 'Alumnos', icon: 'mdi-school', component: 'lista-alumno', color: 'red', sectionWidth: '700' },
+                    { label: 'Evaluaciones', icon: 'mdi-notebook', component: 'evaluacion-docente', color: 'amber', sectionWidth: '700' },
+                    { label: 'Pruebas', icon: 'mdi-order-bool-descending-variant', component: 'menu-prueba', color: 'blue', sectionWidth: '700' },
+                    { label: 'Aula Virtual (En Construccion)', icon: 'mdi-google-classroom', component: 'clase-alumno', color: 'green', sectionWidth: '700' },
                 ]
         }
     },
 
     methods:
     {
-        showSection(component, label)
+        showSection(section)
         {
-            this.dialog       = true
-            this.component    = component
-            this.sectionTitle = label
+            this.sectionWidth  = section.sectionWidth
+            this.dialogSection = true
+            this.component     = section.component
+            this.sectionTitle  = section.label
         }
     }
 }

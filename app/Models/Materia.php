@@ -41,12 +41,12 @@ class Materia extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->addSelect('id', 'nb_materia');
+        return $query->addSelect('id', 'nb_materia', 'id_area_estudio');
     }
 
     public function status()
     {
-        return $this->BelongsTo('App\Models\Status', 'id_status');
+        return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');
     }
                            
     public function usuario()
@@ -85,7 +85,20 @@ class Materia extends Model
             'id', // local en final
 			'id_alumno' // fk en intermedia
 		);
-	}
+    }
+    
+    public function grupo()
+	{
+        return $this->hasOneThrough(
+			
+			'App\Models\Grupo', //final
+            'App\Models\GrupoMateria', //intermedia
+            'id_materia', // fk en intermedia
+            'id', // laocal en origen
+            'id', // local en final
+			'id_grupo' // fk en intermedia
+		);
+    }
 
    /*  public function grado()
     {

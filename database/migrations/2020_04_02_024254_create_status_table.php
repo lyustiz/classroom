@@ -19,6 +19,8 @@ class CreateStatusTable extends Migration
             $table->string('nb_secundario', 20);
             $table->string('co_status', 6)->nullable();
             $table->string('co_grupo', 10)->nullable();
+            $table->string('tx_icono', 30);
+            $table->string('tx_color', 30);
             $table->integer('id_padre')->nullable();
             $table->string('tx_observaciones', 200)->nullable();
             $table->boolean('bo_activo');

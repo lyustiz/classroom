@@ -1,40 +1,30 @@
 <template>
 
-    <v-card flat :loading="loading">
+    <v-card flat :loading="loading" height="80vh">
+
+        <v-card-title class="pa-0">
+            <app-simple-toolbar title="pruebas" @closeModal="$emit('closeModal')"></app-simple-toolbar>
+        </v-card-title>
 
         <v-card-text class="pt-2">
             <v-row justify="center"> 
               
               <v-expansion-panels focusable class="rounded-xl" accordion v-model="section" >
-                    <v-expansion-panel v-for="grupo in grupos" :key="grupo.id">
+                    <v-expansion-panel v-for="grado in grados" :key="grado.id">
                         
                         <v-expansion-panel-header>
                             <template v-slot:default >
-                                <div>
-                                    <v-icon color="red" class="mr-1">mdi-school</v-icon> {{ grupo.nb_grupo }} 
-                                </div>
+                                <div><v-icon color="red" class="mr-1">mdi-numeric</v-icon> {{ grado.nb_grado }}</div>
                             </template>
                         </v-expansion-panel-header>
 
-                        <v-expansion-panel-content class="expand-alumnos">
-                            <v-list subheader two-line dense> 
+                        <v-expansion-panel-content>
 
-                                <v-list-item v-for="alumno in grupo.alumno" :key="alumno.id" > 
-                                    <v-list-item-avatar>
-                                        <v-img :src="alumno.foto.full_url" v-if="alumno.foto"></v-img>
-                                        <v-icon v-else color="indigo" size="42">mdi-account-circle</v-icon>
-                                    </v-list-item-avatar>
-
-                                    <v-list-item-content>
-                                    <v-list-item-title v-text="alumno.nb_alumno"></v-list-item-title>
-                                    <v-list-item-subtitle v-text="alumno.tx_documento"></v-list-item-subtitle>
-                                    </v-list-item-content>
-
-                                    <v-list-item-icon>
-                                        <item-menu :item="alumno" iconColor="deep-purple lighten-5" :menus="itemsMenu" @onItemMenu="onItemMenu($event)" ></item-menu>
-                                    </v-list-item-icon>
-                                </v-list-item>
-                            </v-list>
+                            <list-prueba
+                                :docente="docente"
+                                :materias="grado.materia"
+                                :grado="grado"
+                            ></list-prueba>
                         </v-expansion-panel-content>
 
                     </v-expansion-panel>
@@ -44,24 +34,13 @@
 
         </v-card-text>   
 
-        <v-dialog v-model="dialogNotificacion" max-width="600" content-class="rounded-xl">
-            <app-notificacion 
-                :tipo-destinatario="notificacion.tipoDestinatario"
-                :tipo-notificacion="notificacion.tipoNotificacion"
-                :tipo-prioridad="notificacion.tipoPrioridad"
-                :id-destinatario="notificacion.idDestinatario"
-                v-if="dialogNotificacion" 
-                @closeModal="closeDialog('dialogNotificacion')">
-            </app-notificacion>
-        </v-dialog>
-
     </v-card>
 
 </template>
 
 <script>
-import AppData from '@mixins/AppData';
-import AppNotificacion from '@pages/notificacion/AppNotificacion';
+import AppData    from '@mixins/AppData';
+import ListPrueba from './ListaPrueba'
 
 export default {
 
@@ -69,7 +48,7 @@ export default {
 
     components:
     {
-        'app-notificacion' : AppNotificacion
+        'list-prueba' : ListPrueba
     },
 
     created()
@@ -77,11 +56,18 @@ export default {
         this.list()
     },
 
+    computed:
+    {
+        docente()
+        {
+            return this.$store.getters['getDocente']
+        }
+    },
+
     data () {
         return {
-            docente:  1,     //TODO: agregar docente
             section: null,
-            grupos:   [],
+            grados:   [],
             itemsMenu: [
                 { label: 'Evaluaciones Alumno', icon: 'mdi-notebook', action: 'addEvaluacion' },
                 { label: 'Notificar Alumno', icon: 'mdi-bell-alert', action: 'addNotificacion' },
@@ -94,40 +80,10 @@ export default {
     {
         list()
         {
-           this.getResource( `grupo/alumnos/docente/${this.docente}` ).then( data => this.grupos = data )
+           this.getResource( `grado/materia/docente/${this.docente.id}` ).then( data => this.grados = data )
         },
-
-        addNotificacion(alumno)
-        {
-            this.dialogNotificacion = true
-
-            this.notificacion = {
-                tipoDestinatario:  3,
-                tipoNotificacion: 1,
-                tipoPrioridad:    1,
-                idDestinatario:   alumno.id,
-                asunto:           null,
-                mensaje:          null,
-                fecha:            null,
-                inicio:           null,
-                fin:              null
-            }
-        },
-
-        closeDialog(dialog)
-        {
-            this[dialog] = false
-            this.notificacion = {}
-        }
 
     }
 }
 </script>
 
-<style scoped>
-
-.expand-alumnos{
-    max-height: 51vh !important;
-    overflow-y: scroll;
-}
-</style>
