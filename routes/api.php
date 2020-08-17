@@ -269,7 +269,7 @@ Route::get('/pregunta/prueba/{prueba}/alumno/{alumno}/evaluacion', 'PreguntaCont
 Route::get('/pregunta/{orden}/prueba/{prueba}/alumno/{alumno}/',   'PreguntaController@preguntaOrdenPruebaAlumno');
 
 Route::get('/prueba/{prueba}/grado/{grado}/importar',  'PruebaController@pruebaGradoImportar');
-Route::apiResource('/prueba',                   'PruebaController', ['parameters' => ['prueba' => 'cargaHorapruebaria']]);
+Route::apiResource('/prueba',                   'PruebaController', ['parameters' => ['prueba' => 'prueba']]);
 
 Route::apiResource('/tipoPregunta',             'TipoPreguntaController',['parameters' => ['tipoPregunta' => 'tipoPregunta']]);
 Route::post('/pregunta/importar',               'PreguntaController@importar');
