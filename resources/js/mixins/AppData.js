@@ -197,16 +197,18 @@ export default
 
         preFormActions(action)
         {
+            let validate = true
+           
             if(action != 'delete' && this.validateForm )
             {
                 if(this.$refs.form)
                 {
-                    return this.$refs.form.validate()
+                    validate = this.$refs.form.validate()
                 }
             }
             this.setDefaults()
             this.loading = true;
-            return true
+            return validate
         },
 
         mapForm()
@@ -245,8 +247,6 @@ export default
                 }
             }
         },
-
-        
 
         setDefaults()
         {
