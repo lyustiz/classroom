@@ -66,7 +66,7 @@ class Materia extends Model
 
     public function docente()
     {
-        return $this->belongsToMany('App\Models\docente', 'docente_materia', 'id_materia', 'id_docente');
+        return $this->belongsToMany('App\Models\Docente', 'docente_materia', 'id_materia', 'id_docente');
     }
 
     public function planEvaluacion()

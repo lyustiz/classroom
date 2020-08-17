@@ -47,7 +47,7 @@
                         item-key="id"
                         :loading="loading"
                         sort-by=""
-                        no-data-text="No existen pruebas pendientes por Ejecucion"
+                        no-data-text="No existen pruebas pendientes por Revision"
                     >
 
                         <template v-slot:item="{ item }">
