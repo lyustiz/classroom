@@ -213,6 +213,7 @@ export default {
                 { text: 'Alumnos',          value: 'alumno' },
                 { text: 'Acciones',         value: 'actions', sortable: false, filterable: false },
             ],
+            validateForm:        false,
             dialogAsignarPrueba: false,
             dialogoAlumnos:      false
         }
@@ -281,11 +282,6 @@ export default {
             }
 
             this.dialogAsignarPrueba = true;
-        },
-
-        preFormActions(action)
-        {
-            this.loading = true;
         },
 
         asignarAlumnos()

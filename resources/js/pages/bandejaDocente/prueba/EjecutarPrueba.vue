@@ -170,6 +170,7 @@ export default {
                 { text: 'Status',           value: 'status.nb_status' },
                 { text: 'Acciones',         value: 'actions', sortable: false, filterable: false },
             ],
+            validateForm:    false,
             dialogEjecutar:  false,
             dialogCancelar:  false,
             dialogReiniciar: false,
@@ -182,11 +183,6 @@ export default {
         list()
         {
            this.getResource( `prueba/docente/${this.docente.id}/ejecutar`).then( data =>  this.pruebas = data )
-        },
-
-        preFormActions(action)
-        {
-            this.loading = true;
         },
 
         ejecutarPrueba()

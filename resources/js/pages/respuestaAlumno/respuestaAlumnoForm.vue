@@ -8,7 +8,6 @@
 
         <v-row>
 
-                         
         <v-col cols="12" md="6">
             <v-select
             :items="selects.prueba"
@@ -95,7 +94,6 @@
             ></v-select>
         </v-col>
          
-
         </v-row>
 
         </v-card-text>

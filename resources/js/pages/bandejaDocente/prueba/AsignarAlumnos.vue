@@ -99,7 +99,6 @@ export default {
         return {
             alumnos:         [],
             alumnosSelected: [],
-
             form:
             {
                 id_prueba_alumno: [],
@@ -107,6 +106,7 @@ export default {
                 id_alumnos:       null,
 				id_usuario:       null,
             },
+            validateForm: false
         }
     },
 
@@ -188,11 +188,6 @@ export default {
                 this.showMessage(data.msj);
                 this.list();
             })  
-        },
-
-        preFormActions(action)
-        {
-            this.loading = true;
         },
     }
 }

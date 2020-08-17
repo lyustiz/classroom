@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <v-tooltip bottom>
+        <v-tooltip bottom :color="color">
             <template v-slot:activator="{ on }">
                 <v-icon v-on="on" 
                     :color="color" 

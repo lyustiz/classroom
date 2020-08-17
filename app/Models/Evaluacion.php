@@ -33,7 +33,7 @@ class Evaluacion extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->where('id_status', 1);
+        return $query->addSelect('evaluacion.id', 'tx_tema', 'id_tipo_evaluacion', 'id_plan_evaluacion');
     }
     
     public function status()

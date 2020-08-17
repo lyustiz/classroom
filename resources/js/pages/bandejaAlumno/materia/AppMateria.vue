@@ -5,7 +5,7 @@
         <v-card-title class="pa-0" v-if="!inDialog">
             <app-simple-toolbar title="Calificaciones" @closeModal="$emit('closeModal')"></app-simple-toolbar>
         </v-card-title>
-
+ 
         <v-card-title dense class="pa-0">
             <v-toolbar color="grey lighten-4 subtitle-2" flat>
                 <v-icon color="orange" class="mr-1">mdi-clipboard-list</v-icon>

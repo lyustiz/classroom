@@ -20,18 +20,20 @@
             dense
             outlined
             prepend-inner-icon='mdi-file-cad-box'
+            @change="getDocentes($event)"
             ></v-select>
         </v-col>
 
         <v-col cols="12">
             <v-select
-            :items="selects.docente"
+            :items="docentes"
             item-text="nb_docente"
             item-value="id"
             v-model="form.id_docente"
             :rules="[rules.select]"
             label="Docente"
             :loading="loading"
+            :disabled="docentes.length<1"
             dense
             outlined
             prepend-inner-icon="mdi-account-tie"
@@ -128,19 +130,10 @@ export default {
     created()
     {
         this.materias = this.horario.grupo.grado.materia
-        
     },
     data() {
         return {
             resource: 'detalleHorario',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
             form:
             {
                 id:                null,
@@ -153,16 +146,21 @@ export default {
             selects:
             {
                 aula: 	    [],
-	 	 	 	docente:    [],
             },
-            materias:   [],
-            rating:     0
+            docentes:    [],
+            materias:    [],
+            rating:      0
         }
     },
 
     methods:
     {
-        
+        getDocentes(materia)
+        {
+            this.getResource(`docente/materia/${materia}`).then(data => this.docentes = data)
+
+        },
+
         store()
         {
             if (!this.$refs.form.validate())  return 

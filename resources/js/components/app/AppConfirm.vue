@@ -6,22 +6,11 @@
 
         <app-simple-toolbar :title="titulo" @closeModal="$emit('closeConfirm', false)"></app-simple-toolbar> 
         
+    
+        <v-alert type="info" icon="mdi-comment-question" prominent outlined class="mt-3 mx-3">
+            {{mensaje}}
+        </v-alert>
        
-        <v-list two-line width="100%"> 
-
-                    <v-list-item  > 
-                        
-                        <v-list-item-avatar color="grey lighten-4">
-                            <v-icon  color="cyan" size="32">mdi-comment-question</v-icon>
-                        </v-list-item-avatar>
-
-                        <v-list-item-content>
-                        <v-list-item-title v-text="mensaje"></v-list-item-title>
-                        </v-list-item-content>
-
-                    </v-list-item>
-            </v-list>
-
         <v-card-actions>
           <v-spacer></v-spacer>
           

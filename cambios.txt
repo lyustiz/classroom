@@ -14,3 +14,10 @@
  -crear preguntas
  -crear respuestas
  -importar preguntas y respuestas desde otro examen
+
+//prueba -> docente:crear, Asignar Grupo, Asignar Alumnos, ejecutar, cancelar, reiniciar
+
+alumno: ver lista de pruebas ejecutar pruebas
+docente: evaluar pruebas
+
+secretario fix bug en detalle horario. docentes en detalles horarior por materia.

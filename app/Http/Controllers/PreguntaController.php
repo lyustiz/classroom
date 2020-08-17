@@ -33,6 +33,54 @@ class PreguntaController extends Controller
                     ->get();
     }
 
+    //alumno
+    public function preguntaPruebaAlumnoPendiente($idPrueba, $idAlumno)
+    {
+        return Pregunta::with([
+                        'respuesta:id,nb_respuesta,id_pregunta',
+                        'respuestaAlumno:respuesta_alumno.id,id_pregunta,id_respuesta,tx_respuesta',
+                        'tipoPregunta:id,nb_tipo_pregunta,tx_icono,tx_color,tx_observaciones'
+                        ])
+                    ->where('id_prueba', $idPrueba)
+                    ->whereDoesntHave('respuestaAlumno', function ($query) use ($idAlumno, $idPrueba) {
+                        $query->where('id_alumno', $idAlumno)
+                              ->where('id_prueba', $idPrueba);
+                    })
+                    ->orderBy('nu_orden', 'asc')
+                    ->first();
+    }
+
+    public function preguntaOrdenPruebaAlumno($idOrden, $idPrueba, $idAlumno)
+    {
+        return Pregunta::with([
+                        'respuesta:id,nb_respuesta,id_pregunta',
+                        'respuestaAlumno:respuesta_alumno.id,id_pregunta,id_respuesta,tx_respuesta',
+                        'tipoPregunta:id,nb_tipo_pregunta,tx_icono,tx_color,tx_observaciones'
+                        ])
+                    ->where('id_prueba', $idPrueba)
+                    ->where('nu_orden', $idOrden)
+                    ->orderBy('nu_orden', 'asc')
+                    ->first();
+    }
+
+    public function preguntaPruebaAlumnoEvaluacion($idPrueba, $idAlumno)
+    {
+        return Pregunta::with([
+                        'respuestaAlumno:respuesta_alumno.id,id_pregunta,id_respuesta,tx_respuesta,bo_correcta,nu_valor',
+                        'respuestaAlumno.respuesta:id,nb_respuesta,id_pregunta,bo_correcta',
+                        'tipoPregunta:id,nb_tipo_pregunta,tx_icono,tx_color,tx_observaciones'
+                        ])
+                    ->where('id_prueba', $idPrueba)
+                    ->whereHas('respuestaAlumno', function ($query) use ($idAlumno, $idPrueba) {
+                        $query->where('id_alumno', $idAlumno)
+                              ->where('id_prueba', $idPrueba);
+                    })
+                    ->orderBy('nu_orden', 'asc')
+                    ->get();
+    }
+
+   
+
     /**
      * Store a newly created resource in storage.
      *

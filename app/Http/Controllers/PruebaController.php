@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prueba;
+use App\Models\PruebaAlumno;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 use Carbon\Carbon;
+
 
 class PruebaController extends Controller
 {
@@ -116,12 +119,32 @@ class PruebaController extends Controller
                       ->get();
     }
 
-    public function pruebaGradoImportar($id_prueba, $idGrado)
+    public function pruebaGradoImportar($idPrueba, $idGrado)
     {
         return  Prueba::with(['grado:id,nb_grado', 'grupo:id,nb_grupo'])
                       ->where('id_grado', $idGrado)
-                      ->where('id', '<>', $id_prueba)
+                      ->where('id', '<>', $idPrueba)
                       ->get();
+    }
+
+    //alumno
+    public function pruebaAlumno($idAlumno)
+    {
+        return  Prueba::with([
+                            'status:id,nb_status,tx_color,tx_icono',
+                            'materia:materia.id,nb_materia', 
+                            'pregunta:id,id_prueba,nu_orden',
+                            'pregunta.respuestaAlumno:id,id_respuesta,id_pregunta',
+                            'pruebaAlumno' => function($query) use ( $idAlumno ) {
+                                $query->select('id', 'id_prueba', 'fe_prueba', 'hh_fin')
+                                      ->where('id_alumno' , $idAlumno);
+                            },
+                        ])
+                        ->whereHas('pruebaAlumno', function ($query) use ($idAlumno) {
+                            $query->where('id_alumno', $idAlumno);
+                        })
+                        ->ejecucion()
+                        ->get();
     }
 
     /**
@@ -152,7 +175,7 @@ class PruebaController extends Controller
 
         $prueba = prueba::create($request->all());
 
-        return [ 'msj' => 'Prueba Agregado Correctamente', compact('prueba') ];
+        return [ 'msj' => 'Prueba Creada Correctamente', compact('prueba') ];
     }
 
     /**
@@ -273,6 +296,30 @@ class PruebaController extends Controller
         $prueba = $prueba->update($request->all());
 
         return [ 'msj' => 'Prueba Reiniciada' , compact('prueba')];
+    }
+
+    public function cerrar(Request $request, Prueba $prueba)
+    {
+        $validate = request()->validate([
+			'id_usuario'        => 	  'required|integer|max:999999999',
+        ]);
+        
+        $request->merge([
+            'id_status'       => $prueba->cerrada()
+        ]);
+
+        $pruebasPendientes = PruebaAlumno::where('id_status', '<', 5)
+                            ->where('id_prueba', $prueba->id)
+                            ->count();
+
+        if($pruebasPendientes > 0)
+        {
+            throw ValidationException::withMessages(['pendientes' => "Existen $pruebasPendientes pruebas por evaluar"]);
+        }
+
+        $prueba = $prueba->update($request->all());
+
+        return [ 'msj' => 'Prueba Cerrada' , compact('prueba')];
     }
     
     /**

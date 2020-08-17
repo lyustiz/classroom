@@ -3,7 +3,7 @@
     <v-card :loading="loading" flat height="80vh">
 
         <v-card-title class="pa-0">
-            <app-simple-toolbar title="Evaluar Pruebas" @closeModal="$emit('closeModal', true)"></app-simple-toolbar>
+            <app-simple-toolbar title="Pruebas Pendientes" @closeModal="$emit('closeModal', true)"></app-simple-toolbar>
         </v-card-title>
 
         <v-card-text>
@@ -53,31 +53,35 @@
                         <template v-slot:item="{ item }">
                             <tr>
                                 <td class="text-xs-left">{{ item.nb_prueba }}</td>
-                                <td class="text-xs-left">{{ item.grupo.nb_grupo }}</td>
                                 <td class="text-xs-left">{{ item.materia.nb_materia }}</td>
-                                <td class="text-xs-left">{{ item.alumno.length }}</td>
                                 <td class="text-xs-left">{{ item.fe_prueba | formatDate }}</td>
+                                <td class="text-xs-left">{{ item.pregunta.length }}</td>
+                                <td class="text-xs-left">{{ item.nu_minutos }} min</td>
                                 <td class="text-xs-left">{{ item.status.nb_status }}</td>
                             
                                 <td class="text-xs-left py-1">
-                                    
-                                    <template>
-                                        <app-button 
-                                            color="success" 
-                                            icon="mdi-format-list-checks" 
-                                            label="Evaluar Prueba" 
+                                        
+                                        <app-button v-if="!item.prueba_alumno[0].bo_finalizado"
+                                            color="amber" 
+                                            icon="mdi-play" 
+                                            label="Realizar Prueba"
                                             :loading="loading"
-                                            @click="evaluarPrueba(item)"> 
+                                            @click="dialogEjecutar = true"> 
                                         </app-button>
 
-                                        <v-dialog v-model="dialogEvaluar" max-width="600" content-class="rounded-xl" scrollable>
-                                            <evaluar-prueba-alumno 
-                                                :prueba="prueba" 
-                                                v-if="dialogEvaluar" 
-                                                @closeModal="closeDialog($event,'dialogEvaluar')"
-                                            ></evaluar-prueba-alumno>
-                                        </v-dialog>
-                                    </template>
+                                        <app-button v-else 
+                                            color="success" 
+                                            icon="mdi-check" 
+                                            label="Prueba Realizada"
+                                            :loading="loading"> 
+                                        </app-button>
+
+                                        <app-confirm 
+                                            :confirm="dialogEjecutar" 
+                                            titulo="Realizar Prueba" 
+                                            mensaje="Desea Inicia la Prueba?" 
+                                            @closeConfirm="closeConfirm($event, 'dialogEjecutar', item)">
+                                        </app-confirm>
 
                                 </td>
                             </tr>
@@ -90,6 +94,10 @@
             
         </v-card-text>
 
+        <v-dialog v-model="dialogPrueba" scrollable fullscreen persistent> 
+            <ejecutar-prueba v-if="dialogPrueba" :prueba="prueba" :tiempo="tiempo" @closeModal="closeModal($event)"></ejecutar-prueba>
+        </v-dialog> 
+
         <pre v-if="$App.debug">{{ $data }}</pre>
 
     </v-card>
@@ -99,14 +107,14 @@
 <script>
 
 import AppData from '@mixins/AppData';
-import EvaluarPruebaAlumno from './EvaluarPruebaAlumno'
+import EjecutarPrueba from './EjecucionPrueba'
 export default {
 
     mixins:     [ AppData ],
 
     components:
     {
-        'evaluar-prueba-alumno' : EvaluarPruebaAlumno
+        'ejecutar-prueba': EjecutarPrueba
     },
 
     created()
@@ -116,9 +124,9 @@ export default {
 
     computed:
     {
-        docente()
+        alumno()
         {
-            return this.$store.getters['getDocente'];
+            return this.$store.getters['getAlumno'];
         },
     },
 
@@ -127,31 +135,43 @@ export default {
             pruebas: [],
             headers: [
                 { text: 'Prueba',           value: 'nb_prueba' },
-                { text: 'Grupo',            value: 'grupo.nb_grupo' },
                 { text: 'Materia',          value: 'materia.nb_materia' },
-                { text: 'Alumnos',          value: 'alumno' },
                 { text: 'Fecha',            value: 'fe_prueba' },
+                { text: 'Preguntas',         value: 'pregunta' },
+                { text: 'Tiempo',           value: 'nu_minutos' },
                 { text: 'Status',           value: 'status.nb_status' },
                 { text: 'Acciones',         value: 'actions', sortable: false, filterable: false },
             ],
-            validateForm:   false,
-            dialogEvaluar:  false,
-            prueba: null
+            prueba: null,
+            tiempo: null,
+            dialogEjecutar:  false,
+            dialogPrueba: false
         }
     },
 
     methods:
     {
-
         list()
         {
-           this.getResource( `prueba/docente/${this.docente.id}/evaluar`).then( data =>  this.pruebas = data )
+           this.getResource( `prueba/alumno/${this.alumno.id}`).then( data =>  this.pruebas = data )
         },
 
-        evaluarPrueba(prueba)
+        closeConfirm(confirm, dialog, prueba)
+        {           
+            this[dialog]     = false;
+            this.prueba      = prueba
+            let pruebaAlumno = prueba.prueba_alumno[0].id
+            if(confirm)  this.iniciarPrueba(pruebaAlumno)
+        },
+
+        iniciarPrueba(pruebaAlumno)
         {
-            this.prueba = prueba
-            this.dialogEvaluar = true
+            let data = {'id_usuario': this.idUser }
+            this.updateResource( `pruebaAlumno/iniciar/${pruebaAlumno}`, data ).then( data =>  {
+                this.showMessage(data.msj)
+                this.tiempo       = data.nu_minutos
+                this.dialogPrueba = true
+            })
         },
 
         closeDialog(refresh, dialog)
@@ -159,6 +179,12 @@ export default {
             this[dialog]   = false
             this.list()
         },
+
+        closeModal(refresh)
+        {
+            this.dialogPrueba = false
+            this.list()
+        }
     }
 }
 </script>

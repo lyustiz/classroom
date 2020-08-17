@@ -119,7 +119,15 @@ export default {
         },
     },
 
-    data () 
+    watch:
+    {
+        horario()
+        {
+           this.resource = 'cargaHoraria/horario/' + this.horario.id;
+           this.list()
+        }
+    },
+    data() 
     {
         return {
 

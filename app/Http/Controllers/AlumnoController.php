@@ -57,7 +57,7 @@ class AlumnoController extends Controller
                         ->get();
     }
 
-
+    //prueba
     public function alumnoPruebaGrupoMateria($idPrueba, $idGrupo, $idMateria)
     {
         return  Alumno::with([
@@ -65,7 +65,7 @@ class AlumnoController extends Controller
                                     $query->where('id_prueba' , $idPrueba);
                                 },
                             ])
-                            ->select('id','nb_apellido','nb_apellido2','nb_nombre','nb_nombre2','tx_documento','fe_nacimiento')
+                            ->comboData()
                             ->activo()
                             ->whereHas('matricula', function (Builder $query) use($idGrupo) {
                                 $query->where('id_grupo', $idGrupo)->activo();
@@ -75,6 +75,21 @@ class AlumnoController extends Controller
                             })
                             ->get();
 
+    }
+
+    public function alumnoPrueba($idPrueba)
+    {
+        return  Alumno::with([
+                                'pruebaAlumno' => function($query) use ( $idPrueba ){
+                                    $query->where('id_prueba' , $idPrueba);
+                                },
+                            ])
+                            ->comboData()
+                            ->activo()
+                            ->whereHas('pruebaAlumno', function (Builder $query) use($idPrueba) {
+                                $query->where('id_prueba', $idPrueba);
+                            })
+                            ->get();
     }
 
     public function alumnoSinGrupo()

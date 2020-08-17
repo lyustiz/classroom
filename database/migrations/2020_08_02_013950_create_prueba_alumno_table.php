@@ -20,7 +20,7 @@ class CreatePruebaAlumnoTable extends Migration
             $table->date('fe_prueba')->nullable();
             $table->time('hh_inicio')->nullable();
             $table->time('hh_fin')->nullable();
-            $table->integer('id_calificacion')->nullable();
+            $table->decimal('nu_calificacion', 8,2)->nullable();
             $table->string('tx_observaciones', 100)->nullable();
             $table->integer('id_status');
             $table->integer('id_usuario');

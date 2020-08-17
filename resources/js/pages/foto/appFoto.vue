@@ -161,7 +161,8 @@ export default {
             crop:         false,
             loading:      true,
             image:        null,
-            delDialog: false,
+            delDialog:    false,
+            validateForm: false,
         }
     },
     methods:
@@ -192,11 +193,6 @@ export default {
 
                 this.list()
             })
-        },
-
-        preFormActions(action)
-        {
-            this.loading = true;
         },
 
         deleteImage()

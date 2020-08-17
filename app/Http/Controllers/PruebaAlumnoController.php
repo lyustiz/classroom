@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\PruebaAlumno;
+use App\Models\RespuestaAlumno;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
+use Carbon\Carbon;
 
 class PruebaAlumnoController extends Controller
 {
@@ -88,7 +91,7 @@ class PruebaAlumnoController extends Controller
 			'fe_prueba'         => 	'required|string|max:0',
 			'hh_inicio'         => 	'required|string|max:0',
 			'hh_fin'            => 	'required|string|max:0',
-			'id_calificacion'   => 	'required|integer|max:999999999',
+			'nu_calificacion'   => 	'required|integer|max:999999999',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
@@ -98,7 +101,98 @@ class PruebaAlumnoController extends Controller
 
         $pruebaAlumno = $pruebaAlumno->update($request->all());
 
-        return [ 'msj' => 'Alunos Actualizados' , compact('pruebaAlumno')];
+        return [ 'msj' => 'Alumnos Actualizados' , compact('pruebaAlumno')];
+    }
+
+    
+    public function iniciar(Request $request, PruebaAlumno $pruebaAlumno)
+    {
+        $validate = request()->validate([
+			'id_usuario'        => 	'required|integer|max:999999999',
+        ]);
+
+        if($pruebaAlumno->id_status > 5)
+        {
+            throw ValidationException::withMessages(['status' => 'La prueba ya ha sido ejecutada']);
+        }
+ 
+        $date = Carbon::now();
+
+        if($pruebaAlumno->id_status < 5)
+        {
+            $request->merge([
+                'fe_prueba'  => $date->toDateString(),
+                'hh_inicio'  => $date->toTimeString(),
+                'id_status'  => 5,
+            ]);
+
+            $nu_minutos = $pruebaAlumno->prueba->nu_minutos;
+
+        } else {
+
+            $fechaActual  = Carbon::now();
+            $fechaInicio  = new Carbon($pruebaAlumno->fe_prueba. ' ' . $pruebaAlumno->hh_inicio);
+            $nu_minutos   = $fechaActual->diffInMinutes($fechaInicio);
+        }
+
+        $update = $pruebaAlumno->update($request->all());
+        
+        return [ 'msj' => 'Prueba Iniciada' ,  'nu_minutos' => $nu_minutos];
+    }
+
+
+    public function finalizar(Request $request, PruebaAlumno $pruebaAlumno)
+    {
+        $validate = request()->validate([
+			'id_usuario'   => 	'required|integer|max:999999999',
+        ]);
+
+        $date = Carbon::now();
+
+        $request->merge([
+            'hh_fin'       =>   $date->toTimeString(),
+            'id_status'    => 6
+        ]);
+
+        $pruebaAlumno = $pruebaAlumno->update($request->all());
+
+        return [ 'msj' => 'Prueba Finalizada' , compact('pruebaAlumno')];
+    }
+
+    public function evaluar(Request $request, PruebaAlumno $pruebaAlumno)
+    {
+        $validate = request()->validate([
+            'id_usuario'   => 	'required|integer|max:999999999',
+            'respuestas'   =>   'nullable|array',
+        ]);
+
+        $respuestas = RespuestaAlumno::where('id_alumno', $pruebaAlumno->id_alumno)
+                                     ->where('id_prueba', $pruebaAlumno->id_prueba)
+                                     ->get(); 
+
+        $calificacion = 0;
+      
+        foreach ($respuestas as $key => $repuesta) 
+        {
+            $idxEvaluada  = array_search($repuesta->id, array_column($request->respuestas, 'id'));
+            
+            if($idxEvaluada !== false)
+            {
+                $valorEvaluada = $request->respuestas[$idxEvaluada]['value'];
+                $repuesta->update(['nu_valor' => $valorEvaluada ]);
+            }
+
+            $calificacion += ($repuesta->nu_valor !== null) ?  $repuesta->nu_valor : 0;
+        }
+
+        $request->merge([
+            'nu_calificacion' => $calificacion,
+            'id_status'       => 7
+        ]);
+      
+        $pruebaAlumno = $pruebaAlumno->update($request->except('respuestas'));
+
+        return [ 'msj' => 'Prueba Evaluada' , compact('pruebaAlumno')];
     }
 
     /**

@@ -95,6 +95,7 @@ Route::get('/alumno/{alumno}/partners',         'AlumnoController@alumnoPartners
 Route::get('/alumno/{alumno}/materias/docentes',       'AlumnoController@alumnoMateriasDocentes');
 Route::get('/alumno/grupo/{grupo}/materia/{materia}',  'AlumnoController@alumnoGrupoMateria');
 Route::get('/alumno/prueba/{prueba}/grupo/{grupo}/materia/{materia}',  'AlumnoController@alumnoPruebaGrupoMateria');
+Route::get('/alumno/prueba/{prueba}',           'AlumnoController@alumnoPrueba');
 Route::get('/alumno/grupo/{grupo}',             'AlumnoController@alumnoGrupo');
 Route::get('/alumno/sinGrado',                  'AlumnoController@alumnoSinGrado');
 Route::get('/alumno/sinGrupo',                  'AlumnoController@alumnoSinGrupo');
@@ -192,6 +193,8 @@ Route::apiResource('/tipoEvaluacion',           'TipoEvaluacionController');
 
 // -- EVALUACION -- //
 Route::get('/evaluacion/planEvaluacion/{planEvaluacion}',  'EvaluacionController@evaluacionPlan');
+Route::get('/evaluacion/materia/{materia}/grupo/{grupo}',  'EvaluacionController@evaluacionMateriaGrupo');
+Route::get('/evaluacion/materia/{materia}/grupo/{grupo}/prueba',  'EvaluacionController@evaluacionMateriaGrupoPrueba');
 Route::get('/evaluacion/grupo/{grupo}',         'EvaluacionController@evaluacionGrupo');
 Route::get('/evaluacion/docente/{docente}',     'EvaluacionController@evaluacionDocente');
 Route::apiResource('/evaluacion',               'EvaluacionController');
@@ -257,6 +260,13 @@ Route::put('/prueba/asignar/{prueba}',          'PruebaController@asignar');
 Route::put('/prueba/ejecutar/{prueba}',         'PruebaController@ejecutar');
 Route::put('/prueba/cancelar/{prueba}',         'PruebaController@cancelar');
 Route::put('/prueba/reiniciar/{prueba}',        'PruebaController@reiniciar');
+Route::put('/prueba/cerrar/{prueba}',           'PruebaController@cerrar');
+
+//alumno
+Route::get('/prueba/alumno/{alumno}',           'PruebaController@pruebaAlumno');
+Route::get('/pregunta/prueba/{prueba}/alumno/{alumno}/pendiente',  'PreguntaController@preguntaPruebaAlumnoPendiente');
+Route::get('/pregunta/prueba/{prueba}/alumno/{alumno}/evaluacion', 'PreguntaController@preguntaPruebaAlumnoEvaluacion');
+Route::get('/pregunta/{orden}/prueba/{prueba}/alumno/{alumno}/',   'PreguntaController@preguntaOrdenPruebaAlumno');
 
 Route::get('/prueba/{prueba}/grado/{grado}/importar',  'PruebaController@pruebaGradoImportar');
 Route::apiResource('/prueba',                   'PruebaController', ['parameters' => ['prueba' => 'cargaHorapruebaria']]);
@@ -269,8 +279,12 @@ Route::apiResource('/pregunta',                 'PreguntaController', ['paramete
 Route::get('/respuesta/pregunta/{pregunta}',    'RespuestaController@respuestaPregunta');
 Route::apiResource('/respuesta',                'RespuestaController', ['parameters' => ['respuesta' => 'respuesta']]);
 
-Route::get('/pruebaAlumno/alumno/{alumno}',     'PreguntaController@pruebaAlumnoAlumno');
-Route::get('/pruebaAlumno/prueba/{prueba}',     'PreguntaController@pruebaAlumnoPrueba');
+
+Route::put('/pruebaAlumno/iniciar/{pruebaAlumno}',   'PruebaAlumnoController@iniciar');
+Route::put('/pruebaAlumno/finalizar/{pruebaAlumno}', 'PruebaAlumnoController@finalizar');
+Route::put('/pruebaAlumno/evaluar/{pruebaAlumno}', 'PruebaAlumnoController@evaluar');
+Route::get('/pruebaAlumno/prueba/{prueba}',          'PreguntaController@pruebaAlumnoPrueba');
+
 Route::apiResource('/pruebaAlumno',             'PruebaAlumnoController');
 Route::apiResource('/respuestaAlumno',          'RespuestaAlumnoController');
 

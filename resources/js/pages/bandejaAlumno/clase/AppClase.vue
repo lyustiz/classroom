@@ -1,12 +1,8 @@
 <template>
 
-    <v-card dark>
+    <v-card flat :loading="loading" dark>
    
-
-
         <v-img  src="/images/class.jpg" lazy-src="/images/class.jpg" aspect-ratio="1.8" contain ></v-img>
-
-            
 
         <v-toolbar color="indigo" dense>
             <v-btn icon color="white"><v-icon>mdi-arrow-right-drop-circle</v-icon></v-btn>

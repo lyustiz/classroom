@@ -62,4 +62,18 @@ class Pregunta extends Model
     {
         return $this->HasMany('App\Models\Respuesta', 'id_pregunta');
     }
+
+    public function pruebaAlumno()
+    {
+        return $this->HasMany('App\Models\PruebaAlumno', 'id_pregunta');
+    }
+
+    public function respuestaAlumno()
+    {
+        return $this->HasMany('App\Models\RespuestaAlumno', 'id_pregunta');
+    }
+
+
+
+
 }

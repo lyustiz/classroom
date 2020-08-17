@@ -16,7 +16,7 @@
                         depressed 
                         v-on="on" 
                         :color="section.color" 
-                        @click="showSection(section.component, section.label)" 
+                        @click="showSection(section)" 
                         class="ml-1">
                         <v-icon size="32" v-text="section.icon"></v-icon>
                     </v-btn>
@@ -26,12 +26,8 @@
 
         </v-card-text>
     
-       <v-dialog v-model="dialog" max-width="700" content-class="rounded-xl"> 
-            
-            <app-simple-toolbar :title="sectionTitle" @closeModal="dialog=false"></app-simple-toolbar>
-
-            <component :alumno="alumno" :is="component" inDialog></component>
-            
+        <v-dialog v-model="dialog" content-class="rounded-xl" scrollable :max-width="sectionWidth"> 
+            <component :alumno="alumno" :is="component" inDialog @closeModal="dialog=false"></component>
         </v-dialog> 
 
     </v-card>
@@ -43,6 +39,7 @@
 import TareaAlumno      from './tarea/AppTarea'
 import RecursoAlumno    from './recurso/Apprecurso'
 import EvaluacionAlumno from './evaluacion/AppEvaluacionAlumno'
+import PruebaAlumno     from './prueba/PruebaAlumno'
 import MateriaAlumno    from './materia/AppMateria'
 import ClaseAlumno      from './clase/AppCLase'
 export default {
@@ -51,6 +48,7 @@ export default {
         'tarea-alumno':      TareaAlumno,
         'recurso-alumno':    RecursoAlumno,
         'evaluacion-alumno': EvaluacionAlumno,
+        'prueba-alumno':     PruebaAlumno,
         'materia-alumno':    MateriaAlumno,
         'clase-alumno':      ClaseAlumno,
     },
@@ -68,24 +66,27 @@ export default {
         return {
             component:    null,
             sectionTitle: null,
+            sectionWidth: null,
             dialog:       false,
             sections: [
-                { label: 'Tareas', icon: 'mdi-notebook', component: 'tarea-alumno', color: 'red' },
-                { label: 'Recursos', icon: 'mdi-book-open-page-variant', component: 'recurso-alumno', color: 'purple' },
-                { label: 'Evaluaciones', icon: 'mdi-order-bool-descending-variant', component: 'evaluacion-alumno', color: 'blue' },
-                { label: 'Calificaciones', icon: 'mdi-clipboard-list', component: 'materia-alumno', color: 'amber' },
-                { label: 'Aula Virtual (En Construccion)', icon: 'mdi-google-classroom', component: 'clase-alumno', color: 'green' },
+                { label: 'Tareas', icon: 'mdi-notebook', component: 'tarea-alumno', color: 'blue', sectionWidth: '700' },
+                { label: 'Recursos', icon: 'mdi-book-open-page-variant', component: 'recurso-alumno', color: 'purple', sectionWidth: '700' },
+                { label: 'Pruebas', icon: 'mdi-order-bool-descending-variant', component: 'prueba-alumno', color: 'red', sectionWidth: '85vw' },
+                { label: 'Evaluaciones', icon: 'mdi-format-list-checks', component: 'evaluacion-alumno', color: 'indigo', sectionWidth: '700' },             
+                { label: 'Calificaciones', icon: 'mdi-clipboard-list', component: 'materia-alumno', color: 'amber', sectionWidth: '700' },
+                { label: 'Aula Virtual (En Construccion)', icon: 'mdi-google-classroom', component: 'clase-alumno', color: 'green', sectionWidth: '700' },
             ]
         }
     },
 
     methods:
     {
-        showSection(component, label)
+        showSection(section)
         {
             this.dialog       = true
-            this.component    = component
-            this.sectionTitle = label
+            this.component    = section.component
+            this.sectionTitle = section.label
+            this.sectionWidth = section.sectionWidth
         }
     }
 }

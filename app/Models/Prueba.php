@@ -40,7 +40,11 @@ class Prueba extends Model
 
     protected $ejecucion = 5;
 
-    protected $evaluada  = 6;
+    protected $ejecutada = 6;
+
+    protected $evaluada  = 7;
+
+    protected $cerrada   = 8;
 
     public function pendiente()
     {
@@ -50,6 +54,11 @@ class Prueba extends Model
     public function asignada()
     {
         return $this->asignada;
+    }
+
+    public function ejecutada()
+    {
+        return $this->ejecutada;
     }
 
     public function ejecucion()
@@ -62,7 +71,11 @@ class Prueba extends Model
         return $this->evaluada;
     }
 
-    
+    public function cerrada()
+    {
+        return $this->cerrada;
+    }
+
     public function getBoCulminadoAttribute()
     {
         
@@ -142,11 +155,16 @@ class Prueba extends Model
         return $this->HasMany('App\Models\Pregunta', 'id_prueba');
     }
 
+    public function pruebaAlumno()
+    {
+        return $this->HasMany('App\Models\PruebaAlumno', 'id_prueba');
+    }
+
     public function alumno()
 	{
         return $this->hasManyThrough(
 			
-			'App\Models\ALumno', //final
+			'App\Models\Alumno', //final
             'App\Models\PruebaAlumno', //intermedia
             'id_prueba', // fk en intermedia
             'id', // laocal en origen

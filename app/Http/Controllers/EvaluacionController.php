@@ -53,6 +53,31 @@ class EvaluacionController extends Controller
         return $evaluaciones;
     }
 
+    public function evaluacionMateriaGrupo($idMateria, $idGrupo)
+    {
+        return Evaluacion::comboData()
+                        ->whereHas('planEvaluacion', function (Builder $query) use($idMateria, $idGrupo) {
+                            $query->where('id_materia', $idMateria)
+                                    ->where('id_grupo', $idGrupo)
+                                    ->activo();
+                        })
+                        ->get();
+
+    }
+
+    public function evaluacionMateriaGrupoPrueba($idMateria, $idGrupo)
+    {
+        return Evaluacion::comboData()
+                        ->whereHas('planEvaluacion', function (Builder $query) use($idMateria, $idGrupo) {
+                            $query->where('id_materia', $idMateria)
+                                    ->where('id_grupo', $idGrupo)
+                                    ->activo();
+                        })
+                        ->where('id_tipo_evaluacion', 1)
+                        ->get();
+
+    }
+
     public function evaluacionDocente($idDocente)
     {
         $evaluaciones = Evaluacion:: with([

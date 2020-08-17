@@ -16,7 +16,9 @@ class CreateRespuestaAlumnoTable extends Migration
         Schema::create('respuesta_alumno', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_prueba');
-            $table->date('id_respuesta');
+            $table->integer('id_pregunta');
+            $table->integer('id_respuesta')->nullable();
+            $table->integer('id_alumno');
             $table->string('tx_respuesta', 600)->nullable();
             $table->boolean('bo_correcta');
             $table->float('nu_valor', 8,2);

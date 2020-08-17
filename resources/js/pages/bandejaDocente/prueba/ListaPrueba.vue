@@ -54,6 +54,7 @@
 					
                         <td class="text-xs-left">
                             <list-buttons 
+                                v-if="item.id_status < 5"
                                 @update="updateForm(item)" 
                                 @delete="deleteForm(item)" 
                             >

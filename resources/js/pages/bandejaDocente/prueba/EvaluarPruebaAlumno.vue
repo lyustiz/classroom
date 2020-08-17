@@ -3,50 +3,97 @@
     <v-card flat height="80vh">
 
         <v-card-title class="pa-0">
-            <app-simple-toolbar title="Asignar Alumnos" @closeModal="$emit('closeModal', true)"></app-simple-toolbar>
-        </v-card-title>
-
-        <v-card-title dense class="pa-0">
-            <v-toolbar color="grey lighten-4 subtitle-2" flat>
-                <v-icon color="orange" class="mr-1">mdi-account-plus</v-icon>
-                <div class="indigo--text">{{ alumnosSelected }}</div> 
-                <v-spacer></v-spacer>
-                <v-checkbox label="Todos" :value="isSelectAll" :disabled="loading" class="mt-5" @click.stop="setAll(isSelectAll)"></v-checkbox>
-            </v-toolbar>
+            <app-simple-toolbar title="Alumnos asignados a la Prueba" @closeModal="$emit('closeModal', true)"></app-simple-toolbar>
         </v-card-title>
 
         <v-card-text>
         <v-row justify="center" no-gutters>
-        <v-col cols="12" class="pt-3">
-
-            <v-list subheader dense width="100%"> 
-
-                <v-list-item-group v-model="alumnosSelected" multiple >
-                <v-list-item v-for="(alumno, idx) in alumnos" :key="idx" :value="alumno.id" @click.stop="asignacionAlumno(alumno)" :hasMateria="hasPrueba(alumno)">
-
-                    <template v-slot:default="{ active }" >
+            
+            <v-col cols="12" class="pt-3">
+                <v-list subheader dense width="100%"> 
+                    <v-list-item-group v-model="alumnoSelected">
+                    <v-list-item v-for="(alumno, idx) in alumnos" :key="idx" :value="alumno.id" @click="getRespuestasAlumno(alumno)">
                         <v-list-item-avatar>
                             <v-icon color="indigo" size="36">mdi-school</v-icon>
                         </v-list-item-avatar>
-
                         <v-list-item-content>
                             <v-list-item-title v-text="alumno.nb_alumno"></v-list-item-title>
                             <v-list-item-subtitle v-text="alumno.tx_documento"></v-list-item-subtitle>
                         </v-list-item-content>
-                   
+
                         <v-list-item-action>
-                        <v-checkbox :input-value="active" :disabled="loading" ></v-checkbox>
+                            <span class="mr-1">{{alumno.prueba_alumno[0].nu_calificacion}}</span>
                         </v-list-item-action>
-                    </template>
 
-                </v-list-item>
-                </v-list-item-group>
+                        <v-list-item-action>
+                            <template v-if="alumno.prueba_alumno[0].id_status == 7">
+                                <list-simple-icon color="success" icon="mdi-checkbox-marked-circle" label="evaluado"></list-simple-icon>
+                            </template>
+                            <template v-else>
+                                <list-simple-icon color="amber" icon="mdi-alert-circle" label="Sin Evaluacion"></list-simple-icon>
+                            </template>
+                        </v-list-item-action>
+                        <v-list-item-action>
+                            <template v-if="hasEjecucion(alumno)">
+                                <app-button label="ver respuestas" icon="mdi-book-search" :loading="loading"></app-button>
+                            </template>
+                            <template v-else>
+                                <app-button 
+                                    label="No ejecuto la prueba" 
+                                    icon="mdi-book-remove" 
+                                    color="red" 
+                                    @click="confirmEvaluar = true"
+                                    :loading="loading">
+                                </app-button>
+                                 <app-confirm 
+                                    :confirm="confirmEvaluar" 
+                                    titulo="Evaluar Prueba" 
+                                    mensaje="El Alumno no ejecuto la prueba. Desea realizar la Evaluacion?" 
+                                    @closeConfirm="closeConfirmEvaluar($event, 'confirmEvaluar', alumno)">
+                                </app-confirm>
+                            </template>
+                        </v-list-item-action>
+                    </v-list-item>
+                    </v-list-item-group>
+                </v-list>
+            </v-col>
 
-            </v-list>
+            <v-dialog v-model="dialogRespuesta" fullscreen scrollable>
+                <evaluar-respuesta-alumno 
+                    :prueba="prueba"
+                    :alumno="alumno" 
+                    v-if="dialogRespuesta" 
+                    @closeModal="closeDialog($event,'dialogRespuesta')"
+                ></evaluar-respuesta-alumno>
+            </v-dialog>
 
-        </v-col>
         </v-row>
         </v-card-text>
+
+        <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn fab depressed x-small color="error" @click="$emit('closeModal')">
+               <v-icon>mdi-reply</v-icon>
+            </v-btn>
+            <v-btn fab depressed small color="success" :disabled="!valid" :loading="loading" @click=" confirm = true ">
+                <v-icon>save_alt</v-icon>
+            </v-btn>
+        </v-card-actions>
+
+        <app-confirm 
+            :confirm="confirm" 
+            titulo="Cerrar Prueba" 
+            mensaje="Desea Cerrar la Prueba?" 
+            @closeConfirm="closeConfirm($event, 'confirm')">
+        </app-confirm>
+
+        <v-overlay
+            absolute
+            :opacity="0.3"
+            :value="loading"
+            :z-index="10">
+            <v-icon size="40" class="mdi-spin">mdi-loading</v-icon>
+        </v-overlay>
 
         <pre v-if="$App.debug">{{ $data }}</pre>
 
@@ -57,10 +104,16 @@
 <script>
 
 import AppData from '@mixins/AppData';
+import EvaluarRespuestaAlumno from './EvaluarRespuestaAlumno'
 
 export default {
 
     mixins:     [ AppData ],
+
+    components:
+    {
+        'evaluar-respuesta-alumno' : EvaluarRespuestaAlumno
+    },
 
     props: 
     {
@@ -73,117 +126,74 @@ export default {
     created()
     {
         this.list()
-        this.form.id_prueba  = this.prueba.id
-        this.form.id_usuario = this.idUser
-    },
-
-    computed:
-    {
-        isSelectAll()
-        {
-            return (this.alumnos.length > 0) ?  this.alumnos.length == this.alumnosSelected.length : false;
-        }
     },
 
     data() {
         return {
             alumnos:         [],
-            alumnosSelected: [],
-
-            form:
-            {
-                id_prueba_alumno: [],
-                id_prueba: 	      [],
-                id_alumnos:       null,
-				id_usuario:       null,
-            },
+            alumno:          null,
+            alumnoSelected:  null,
+            dialogRespuesta: false,
+            confirm:       false,
+            confirmEvaluar: false,
         }
     },
 
     methods:
     {
-
         list()
         {
-            this.getResource( `alumno/prueba/${this.prueba.id}/grupo/${this.grupo}/materia/${this.materia}`)
-            .then( data =>  this.alumnos = data )
+            this.getResource( `alumno/prueba/${this.prueba.id}`).then( data =>  this.alumnos = data )
         },
 
-        setAll(isSelectedAll)
+        hasEjecucion(alumno)
         {
-            if(isSelectedAll)
-            {
-                let pruebasAlumno = [];
-                for (const alumno of this.alumnos) {
-                    if(alumno.prueba_alumno.length > 0){
-                        pruebasAlumno.push(alumno.prueba_alumno[0].id);
-                    }
-                }
-                this.alumnosSelected = []
-                this.delete(pruebasAlumno);
-
-            } else{
-                
-                let idAlumnos = []
-                for (const alumno of this.alumnos) {
-                    if(!this.alumnosSelected.includes(alumno.id) ) {
-                        idAlumnos.push(alumno.id);
-                    }
-                }
-                this.alumnosSelected = idAlumnos
-                this.store(idAlumnos)
-            }
+           return alumno.prueba_alumno[0].id_status >= 5
         },
 
-        hasPrueba(alumno)
+        getRespuestasAlumno(alumno)
         {
-            let hasMateria = (alumno.prueba_alumno.length > 0) 
-            
-            if( hasMateria && !this.alumnosSelected.includes(alumno.id)) 
-            {  
-                this.alumnosSelected.push(alumno.id);   
-            }
-            return hasMateria
+            if(!this.hasEjecucion(alumno)) return
+            this.alumno = alumno
+            this.dialogRespuesta = true
         },
 
-        asignacionAlumno( alumno)
+        closeDialog(refresh, dialog)
         {
-            if( this.hasPrueba(alumno) )
-            {
-                this.delete([alumno.prueba_alumno[0].id])
-            }else
-            {
-                this.store([alumno.id])
-            } 
+            this[dialog]   = false
+            this.list()
         },
 
-        store(alumnos)
+        closeConfirm(confirm, dialog)
+        {           
+            this[dialog]   = false;
+            if(confirm)   this.cerrarPrueba()
+        },
+
+        closeConfirmEvaluar(confirm, dialog, alumno)
+        {           
+            this[dialog]   = false;
+            if(confirm)   this.evaluarPruebaImcompleta(alumno)
+        },
+
+        evaluarPruebaImcompleta(alumno)
         {
-            this.form.id_alumnos = alumnos
-            
-            this.storeResource(`pruebaAlumno`, this.form).then( (data) =>  
-            {
-                this.showMessage(data.msj);
-                this.alumnosSelected.concat(alumnos);
-                
+            let data = {id_usuario: this.idUser}
+            this.updateResource(`pruebaAlumno/evaluar/${alumno.prueba_alumno[0].id}`, data ).then( data =>  {
+                this.showMessage(data.msj)
+                this.list()
             })
         },
 
-        delete(pruebasAlumno)
+        cerrarPrueba()
         {
-            this.form.id_prueba_alumno = pruebasAlumno
+            let data = {id_usuario: this.idUser}
+            this.updateResource( `prueba/cerrar/${this.prueba.id}`, data).then( data =>{
+                this.showMessage(data.msj)
+                this.$emit('closeModal')
+            })
+        }
 
-            this.deleteResource(`pruebaAlumno/0`, this.form).then( (data) =>  
-            {
-                this.showMessage(data.msj);
-                this.list();
-            })  
-        },
-
-        preFormActions(action)
-        {
-            this.loading = true;
-        },
     }
 }
 </script>

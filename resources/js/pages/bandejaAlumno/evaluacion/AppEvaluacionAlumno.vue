@@ -1,6 +1,12 @@
 <template>
 
-    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)" :inDialog="inDialog">
+    <v-card :loading="loading" flat height="80vh">
+
+    <v-card-title class="pa-0">
+        <app-simple-toolbar title="Evaluaciones" @closeModal="$emit('closeModal', true)"></app-simple-toolbar>
+    </v-card-title>
+    
+    <v-card-text class="pt-3" >
 
         <v-col cols="12" md="6">
             <v-select
@@ -53,7 +59,8 @@
 
             <pre v-if="$App.debug">{{ $data }}</pre>
 
-    </list-container>
+    </v-card-text>
+    </v-card>
 
 </template>
 

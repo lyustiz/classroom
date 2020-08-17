@@ -110,7 +110,13 @@
 
     </v-row>
     </v-container>
-    
+    <v-overlay
+            absolute
+            :opacity="0.3"
+            :value="loading"
+            :z-index="10">
+            <v-icon size="40" class="mdi-spin">mdi-loading</v-icon>
+        </v-overlay>
     </v-form>
 
 </template>

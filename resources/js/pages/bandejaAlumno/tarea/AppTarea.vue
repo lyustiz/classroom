@@ -1,6 +1,10 @@
 <template>
 
-    <v-card flat :loading="loading">
+    <v-card :loading="loading" flat height="80vh">
+
+        <v-card-title class="pa-0">
+            <app-simple-toolbar title="Tareas" @closeModal="$emit('closeModal', true)"></app-simple-toolbar>
+        </v-card-title>
         
         <v-card-text class="pt-3">
     

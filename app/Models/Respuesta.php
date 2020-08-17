@@ -45,6 +45,11 @@ class Respuesta extends Model
         return $this->BelongsTo('App\Models\Pregunta', 'id_pregunta');
     }
 
+    public function respuestaAlumno()
+    {
+        return $this->hasOne('App\Models\RespuestaAlumno', 'id_pregunta');
+    }
+
     public function prueba()
     {
         return $this->hasOneThrough( 
@@ -56,6 +61,20 @@ class Respuesta extends Model
 			'id_grado' // fk en intermedia
 		);
     }
+
+    public function alumno()
+    {
+        return $this->hasManyThrough( 
+			'App\Models\Alumno', //final
+            'App\Models\RespuestaAlumno', //intermedia
+            'id_prueba', // fk en intermedia
+            'id', // laocal en origen
+            'id', // local en final
+			'id_alumno' // fk en intermedia
+		);
+    }
+
+
 
     
 }

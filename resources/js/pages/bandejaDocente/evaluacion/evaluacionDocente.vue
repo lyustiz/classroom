@@ -1,6 +1,10 @@
 <template>
 
-    <v-card flat :loading="loading">
+    <v-card flat :loading="loading" height="90vh">
+
+        <v-card-title class="pa-0">
+            <app-simple-toolbar title="Asignar Pruebas" @closeModal="$emit('closeModal', true)"></app-simple-toolbar>
+        </v-card-title>
 
         <v-card-text class="pt-2">
 

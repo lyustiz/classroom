@@ -26,12 +26,8 @@
 
         </v-card-text>
 
-            <v-dialog v-model="dialogSection" content-class="rounded-xl dialog-section" scrollable :max-width="sectionWidth"> 
-                <component 
-                    :is="component" 
-                    v-if="dialogSection" 
-                    @closeModal="dialogSection=false"
-                ></component>
+            <v-dialog v-model="dialog" content-class="rounded-xl" scrollable :max-width="sectionWidth"> 
+                <component :is="component" v-if="dialog" @closeModal="dialog=false"></component>
             </v-dialog> 
             
     </v-card>
@@ -66,13 +62,13 @@ export default {
         return {
             component:     null,
             sectionTitle:  null,
-            dialogSection: false,
             sectionWidth:  null,
+            dialog:        false,
             sections: [
 
-                    { label: 'Alumnos', icon: 'mdi-school', component: 'lista-alumno', color: 'red', sectionWidth: '700' },
+                    { label: 'Alumnos', icon: 'mdi-school', component: 'lista-alumno', color: 'blue', sectionWidth: '700' },
                     { label: 'Evaluaciones', icon: 'mdi-notebook', component: 'evaluacion-docente', color: 'amber', sectionWidth: '700' },
-                    { label: 'Pruebas', icon: 'mdi-order-bool-descending-variant', component: 'menu-prueba', color: 'blue', sectionWidth: '700' },
+                    { label: 'Pruebas', icon: 'mdi-order-bool-descending-variant', component: 'menu-prueba', color: 'red', sectionWidth: '700' },
                     { label: 'Aula Virtual (En Construccion)', icon: 'mdi-google-classroom', component: 'clase-alumno', color: 'green', sectionWidth: '700' },
                 ]
         }
@@ -83,7 +79,7 @@ export default {
         showSection(section)
         {
             this.sectionWidth  = section.sectionWidth
-            this.dialogSection = true
+            this.dialog        = true
             this.component     = section.component
             this.sectionTitle  = section.label
         }

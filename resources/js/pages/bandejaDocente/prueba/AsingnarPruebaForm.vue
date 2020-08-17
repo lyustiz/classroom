@@ -14,8 +14,8 @@
 
             <v-col cols="12">
                 <v-select
-                :items="evaluaciones"
-                item-text="nb_evaluacion"
+                :items="selects.evaluacion"
+                item-text="tx_tema"
                 item-value="id"
                 v-model="form.id_evaluacion_detalle"
                 :rules="[rules.select]"
@@ -52,7 +52,7 @@
             ></form-buttons>
         </v-card-actions>
 
-        <pre v-if="$App.debug">{{ $data }}</pre>
+        <pre v-if="$App.debug">{{ $props }}</pre>
 
     </v-card>
     
@@ -87,10 +87,10 @@ export default {
 				tx_observaciones: 	   null,
 				id_usuario: 	       null,
             },
-            evaluaciones: [
-                {'id': 1, 'nb_evaluacion': 'Prueba corta Nro1' },
-                {'id': 2, 'nb_evaluacion': 'Prueba corta Nro2' }
-            ]
+            selects:
+            {
+                evaluacion: [ `/materia/${this.item.id_materia}/grupo/${this.grupo}/prueba` ]
+            },
         }
     },
 

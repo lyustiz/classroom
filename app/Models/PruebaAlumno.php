@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class PruebaAlumno extends Model
 {
@@ -14,7 +15,7 @@ class PruebaAlumno extends Model
 	 	 	 	 	 	 	'fe_prueba',
 	 	 	 	 	 	 	'hh_inicio',
 	 	 	 	 	 	 	'hh_fin',
-	 	 	 	 	 	 	'id_calificacion',
+	 	 	 	 	 	 	'nu_calificacion',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'
@@ -25,16 +26,30 @@ class PruebaAlumno extends Model
 	 	 	 	 	 	 	'updated_at'
                             ];
 
-
+    protected $appends = ['bo_finalizado'];
 
     public function scopeActivo($query)
     {
         return $query->where('id_status', 1);
     }
 
+    public function getBoFinalizadoAttribute()
+    {
+        
+        if($this->fe_prueba != null AND $this->hh_fin != null)
+        {
+            $fechaActual  = Carbon::now();
+            $fechaFinal   = new Carbon($this->fe_prueba. ' ' . $this->hh_fin);
+            
+            return $fechaFinal->lessThan($fechaActual);
+        } 
+    
+        return false;
+    }
+
     public function status()
     {
-        return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');
+        return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'PRUEBA');
     }
                            
     public function usuario()
@@ -51,4 +66,16 @@ class PruebaAlumno extends Model
     {
         return $this->BelongsTo('App\Models\Alumno', 'id_alumno');
     }
+
+    public function pregunta()
+    {
+        return $this->hasMany('App\Models\Pregunta', 'id_prueba', 'id_prueba');
+    }
+
+    public function respuestaAlumno()
+    {
+        return $this->hasMany('App\Models\RespuestaAlumno', 'id_prueba', 'id_prueba');
+    }
+
+
 }

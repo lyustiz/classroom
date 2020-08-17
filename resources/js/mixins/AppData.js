@@ -106,7 +106,13 @@ export default
 
         deleteResource(resourceID, data)
         {
-            this.preFormActions('delete')
+            if(!this.preFormActions('delete')) {
+                return new Promise((resolve, reject) => 
+                {
+                    this.showError('favor validar los datos')
+                    this.loading = false
+                })  
+            }
 
             return new Promise((resolve, reject) => 
 			{
@@ -130,7 +136,14 @@ export default
 
         storeResource(resource, data)
         {
-            this.preFormActions('store')
+            
+            if(!this.preFormActions('store')) {
+                return new Promise((resolve, reject) => 
+                {
+                    this.showError('favor validar los datos')
+                    this.loading = false
+                })  
+            }
 
             return new Promise((resolve, reject) => 
 			{
@@ -154,8 +167,14 @@ export default
 
         updateResource(resourceID, data)
         {
-            this.preFormActions('update')
-
+           if(!this.preFormActions('update')) {
+                return new Promise(() => 
+                {
+                    this.showError('Favor validar los datos')
+                    this.loading = false
+                })  
+            } 
+            
             return new Promise((resolve, reject) => 
 			{
 				axios.put(this.apiUrl + resourceID, data)
@@ -174,7 +193,20 @@ export default
                     this.loading = false
                 });
 			})
+        },
 
+        preFormActions(action)
+        {
+            if(action != 'delete' && this.validateForm )
+            {
+                if(this.$refs.form)
+                {
+                    return this.$refs.form.validate()
+                }
+            }
+            this.setDefaults()
+            this.loading = true;
+            return true
         },
 
         mapForm()
@@ -214,18 +246,7 @@ export default
             }
         },
 
-        preFormActions(action)
-        {
-           
-            if(action != 'delete' && this.validateForm )
-            {
-                if (!this.$refs.form.validate())  return 
-            }
-
-            this.setDefaults()
-
-            this.loading = true;
-        },
+        
 
         setDefaults()
         {

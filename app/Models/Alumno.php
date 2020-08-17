@@ -173,6 +173,11 @@ class Alumno extends Model
         return $this->hasMany('App\Models\PruebaAlumno', 'id_alumno');
 	}
 
+	public function RespuestaAlumno()
+    {
+        return $this->hasMany('App\Models\RespuestaAlumno', 'id_alumno');
+	}
+
 	public function prueba()
 	{
         return $this->hasManyThrough(
