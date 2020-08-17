@@ -95,7 +95,6 @@ class PreguntaController extends Controller
 			'id_tipo_pregunta'  => 	'required|integer|max:999999999',
 			'bo_opcional'       => 	'required|boolean',
 			'nu_valor'          => 	'required|numeric|between:1,99.99',
-			'nu_orden'          => 	'required|integer|max:999999999',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
