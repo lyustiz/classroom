@@ -109,7 +109,7 @@ import SeccionAcudiente    from './SeccionAcudiente'
 import HorarioAlumno       from '@pages/bandejaAlumno/horario/HorarioAlumno'
 import ItinerarioAlumno    from '@pages/bandejaAlumno/itinerario/ItinerarioAlumno'
 import MateriaAlumno       from '@pages/bandejaAlumno/materia/AppMateria'
-import IncidenciaAlumno    from '@pages/incidencia/AppListIncidencia.vue'
+import IncidenciaAlumno    from './incidencia/IncidenciaAlumno'
 import DocenteAlumno       from './docentes/DocenteAlumno'
 import PartnersAlumno      from '@pages/bandejaAlumno/partners/PartnersAlumno'
 
