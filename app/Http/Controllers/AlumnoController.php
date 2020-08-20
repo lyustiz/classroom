@@ -23,7 +23,8 @@ class AlumnoController extends Controller
                                 'foto:id,tx_src,id_tipo_foto,id_origen',
                                 'foto.tipoFoto:id,tx_base_path',
                             ])
-                    ->get();
+                            ->ordenApellido()
+                            ->get();
     }
 
     public function list()
@@ -38,6 +39,8 @@ class AlumnoController extends Controller
                         ->whereHas('matricula', function (Builder $query) use($idGrupo) {
                             $query->where('id_grupo', $idGrupo)->activo();
                         })
+                        ->ordenApellido()
+                        ->activo()
                         ->get();
         
         return $alumno;
@@ -54,7 +57,46 @@ class AlumnoController extends Controller
                         ->whereHas('materia', function (Builder $query) use($idMateria) {
                             $query->where('materia.id', $idMateria);
                         })
+                        ->ordenApellido()
+                        ->activo()
                         ->get();
+    }
+
+    //evaluacion
+
+    public function alumnoEvaluacionGrupoMateria($idEvaluacion, $idGrupo, $idMateria)
+    {
+        return  Alumno::with([
+                                'evaluacionAlumno' => function($query) use ( $idEvaluacion ){
+                                    $query->where('id_evaluacion' , $idEvaluacion);
+                                },
+                            ])
+                            ->comboData()
+                            ->ordenApellido()
+                            ->activo()
+                            ->whereHas('matricula', function (Builder $query) use($idGrupo) {
+                                $query->where('id_grupo', $idGrupo)->activo();
+                            })
+                            ->whereHas('materia', function (Builder $query) use($idMateria) {
+                                $query->where('materia.id', $idMateria);
+                            })
+                            ->get();
+    }
+
+    public function alumnoEvaluacion($idEvaluacion)
+    {
+        return  Alumno::with([
+                                'evaluacionAlumno' => function($query) use ( $idEvaluacion ){
+                                    $query->where('id_evaluacion' , $idEvaluacion);
+                                },
+                            ])
+                            ->comboData()
+                            ->ordenApellido()
+                            ->activo()
+                            ->whereHas('evaluacionAlumno', function (Builder $query) use($idEvaluacion) {
+                                $query->where('id_evaluacion', $idEvaluacion);
+                            })
+                            ->get();
     }
 
     //prueba
@@ -66,6 +108,7 @@ class AlumnoController extends Controller
                                 },
                             ])
                             ->comboData()
+                            ->ordenApellido()
                             ->activo()
                             ->whereHas('matricula', function (Builder $query) use($idGrupo) {
                                 $query->where('id_grupo', $idGrupo)->activo();
@@ -85,6 +128,7 @@ class AlumnoController extends Controller
                                 },
                             ])
                             ->comboData()
+                            ->ordenApellido()
                             ->activo()
                             ->whereHas('pruebaAlumno', function (Builder $query) use($idPrueba) {
                                 $query->where('id_prueba', $idPrueba);
@@ -96,6 +140,7 @@ class AlumnoController extends Controller
     {
         $alumno = Alumno::doesntHave('grupoAlumno')
                         ->comboData()
+                        ->ordenApellido()
                         ->activo()
                         ->get();
         

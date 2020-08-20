@@ -4,8 +4,8 @@
         
     <template v-slot:activator="{ on }">
             <v-badge left color="red" :value="hasArchivo" overlap dot bordered v-on="on">
-                <v-btn fab class="my-1" dark x-small color="cyan lighten-2" @click="modal = !modal">
-                    <v-icon>mdi-paperclip</v-icon>
+                <v-btn fab class="my-1" dark x-small :color="color" @click="modal = !modal">
+                    <v-icon v-text="icono"></v-icon>
                 </v-btn>
             </v-badge>
     </template>
@@ -112,6 +112,18 @@ export default {
         {
             type: Boolean,
             default: false
+        },
+
+        color:
+        {
+            type:       String,
+            default:    'cyan lighten-2'
+        },
+
+        icono:
+        {
+            type:       String,
+            default:    'mdi-paperclip'
         }
     },
 

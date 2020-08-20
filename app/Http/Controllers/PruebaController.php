@@ -330,8 +330,13 @@ class PruebaController extends Controller
      */
     public function destroy(Prueba $prueba)
     {
+        if($prueba->alumno->count() > 0)
+        {
+            throw ValidationException::withMessages(['poseeAsignacion' => "Posee Alumnos asignados"]);
+        }
+        
         $prueba = $prueba->delete();
  
-        return [ 'msj' => 'Prueba Eliminado' , compact('prueba')];
+        return [ 'msj' => 'Prueba Eliminada' , compact('prueba')];
     }
 }

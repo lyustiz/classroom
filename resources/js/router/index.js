@@ -62,8 +62,9 @@ import NivelCalificacion from '@pages/nivelCalificacion/nivelCalificacion.vue';
 import Calificacion      from '@pages/calificacion/calificacion.vue';
 
 import TipoEvaluacion    from '@pages/tipoEvaluacion/tipoEvaluacion.vue';
+import MetodoEvaluacion  from '@pages/evaluacionMetodo/evaluacionMetodo.vue';
 import PlanEvaluacion    from '@pages/planEvaluacion/planEvaluacion.vue'; 
-import AppPlanEvaluacion    from '@pages/planEvaluacion/AppPlanEvaluacion.vue';
+import AppPlanEvaluacion from '@pages/planEvaluacion/AppPlanEvaluacion.vue';
 
 import AreaEstudio       from '@pages/areaEstudio/areaEstudio.vue';
 import Materia           from '@pages/materia/materia.vue';
@@ -508,7 +509,6 @@ export default new Router({
                 visible: true,
                 component: Calificacion
             },
-
             { 
                 path: 'tipo-evaluacion',
                 name: 'tipo-evaluacion',
@@ -518,7 +518,15 @@ export default new Router({
                 visible: true,
                 component: TipoEvaluacion
             },
-
+            { 
+                path: 'metodo-evaluacion',
+                name: 'metodo-evaluacion',
+                label: 'Metodo Evaluacion',
+                icon: 'mdi-clipboard-check-multiple-outline',
+                profile: 'secretaria',
+                visible: true,
+                component: MetodoEvaluacion
+            },
            /*  { 
                 path: 'plan-evaluacion',
                 name: 'plan-evaluacion',
@@ -528,17 +536,15 @@ export default new Router({
                 visible: true,
                 component: PlanEvaluacion
             }, */
-
             { 
                 path: 'plan-evaluacion',
                 name: 'plan-evaluacion',
                 label: 'Plan Evaluacion',
-                icon: 'mdi-clipboard-check-multiple',
+                icon: 'mdi-table-clock',
                 profile: 'secretaria',
                 visible: true,
                 component: AppPlanEvaluacion
             },
-
             { 
                 path: 'horario',
                 name: 'horario',
@@ -548,8 +554,6 @@ export default new Router({
                 visible: true,
                 component: Horario
             },
-
-
             { 
                 path: 'docente',
                 name: 'docente',

@@ -21,12 +21,15 @@
                   
         <v-col cols="12" md="6">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[rules.required, max(30)]"
                 v-model="form.tx_icono"
                 label="Icono"
                 placeholder="Indique Icono"
                 dense
+                append-outer-icon="mdi-shape-outline"
+                @click:append-outer="$refs.icons.click()"
             ></v-text-field>
+            <a  class="d-none" ref="icons" rel="noreferrer noopener" href="/icons/"  target="_blank"></a>
         </v-col>
                   
         <v-col cols="12" md="6">

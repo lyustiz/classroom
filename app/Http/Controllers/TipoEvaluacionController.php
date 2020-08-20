@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TipoEvaluacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class TipoEvaluacionController extends Controller
 {
@@ -70,7 +71,7 @@ class TipoEvaluacionController extends Controller
 
         $tipoEvaluacion = $tipoEvaluacion->update($request->all());
 
-        return [ 'msj' => 'TipoEvaluacion Editado' , compact('tipoEvaluacion')];
+        return [ 'msj' => 'Tipo Evaluacion Actualizada' , compact('tipoEvaluacion')];
     }
 
     /**
@@ -81,8 +82,13 @@ class TipoEvaluacionController extends Controller
      */
     public function destroy(TipoEvaluacion $tipoEvaluacion)
     {
+        if($tipoEvaluacion->id)
+        {
+            throw ValidationException::withMessages(['lockData' => "Tipo evaluacion Asignada solo para pruebas"]);
+        }
+        
         $tipoEvaluacion = $tipoEvaluacion->delete();
  
-        return [ 'msj' => 'TipoEvaluacion Eliminado' , compact('tipoEvaluacion')];
+        return [ 'msj' => 'Tipo Evaluacion Eliminada' , compact('tipoEvaluacion')];
     }
 }

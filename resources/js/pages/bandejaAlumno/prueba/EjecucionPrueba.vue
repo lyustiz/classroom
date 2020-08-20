@@ -25,10 +25,6 @@
             <v-col cols="auto">
                <list-simple-icon icon="mdi-help" color="green" :label="(pregunta.tx_observaciones) ? pregunta.tx_observaciones: 'sin ayuda' "></list-simple-icon>
             </v-col>
-
-            <v-col cols="auto">
-               <app-button @click="list()"></app-button>
-            </v-col>
                    
         </v-card-title>
 

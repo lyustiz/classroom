@@ -74,6 +74,11 @@ class Alumno extends Model
 	public function scopeComboData($query)
     {
         return $query->addSelect('alumno.id', 'nb_apellido', 'nb_apellido2', 'nb_nombre', 'nb_nombre2', 'tx_documento');
+	}
+	
+	public function scopeOrdenApellido($query)
+    {
+        return $query->orderBy('nb_apellido', 'asc');
     }
 	
 	public function status()
@@ -117,7 +122,6 @@ class Alumno extends Model
 	public function grupo()
 	{
         return $this->hasOneThrough(
-			
 			'App\Models\Grupo', //final
             'App\Models\Matricula', //intermedia
             'id_alumno', // fk en intermedia
@@ -145,7 +149,6 @@ class Alumno extends Model
 	public function materia()
 	{
         return $this->hasManyThrough(
-			
 			'App\Models\Materia', //final
             'App\Models\AlumnoMateria', //intermedia
             'id_alumno', // fk en intermedia
@@ -158,7 +161,6 @@ class Alumno extends Model
 	public function pariente()
 	{
         return $this->hasManyThrough(
-			
 			'App\Models\Pariente', //final
             'App\Models\AlumnoPariente', //intermedia
             'id_alumno', // fk en intermedia
@@ -181,13 +183,29 @@ class Alumno extends Model
 	public function prueba()
 	{
         return $this->hasManyThrough(
-			
 			'App\Models\Prueba', //final
             'App\Models\PruebaAlumno', //intermedia
             'id_alumno', // fk en intermedia
             'id', // laocal en origen
             'id', // local en final
 			'id_prueba' // fk en intermedia
+		);
+	}
+
+	public function evaluacionAlumno()
+    {
+        return $this->hasMany('App\Models\EvaluacionAlumno', 'id_alumno');
+	}
+
+	public function evaluacion()
+	{
+        return $this->hasManyThrough(
+			'App\Models\Evaluacion', //final
+            'App\Models\EvaluacionAlumno', //intermedia
+            'id_alumno', // fk en intermedia
+            'id', // laocal en origen
+            'id', // local en final
+			'id_evaluacion' // fk en intermedia
 		);
 	}
 }

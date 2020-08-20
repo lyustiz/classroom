@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EvaluacionAlumno extends Model
+class EvaluacionMetodo extends Model
 {
-    protected $table 	  = 'evaluacion_alumno';
+    protected $table 	  = 'evaluacion_metodo';
 
     protected $fillable   = [
-                            'id_evaluacion',
-	 	 	 	 	 	 	'id_alumno',
-	 	 	 	 	 	 	'nu_calificacion',
+                            'nb_evaluacion_metodo',
+	 	 	 	 	 	 	'tx_icono',
+	 	 	 	 	 	 	'tx_color',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'
@@ -22,25 +22,20 @@ class EvaluacionAlumno extends Model
 	 	 	 	 	 	 	'updated_at'
                             ];
 
+
+
     public function scopeActivo($query)
     {
         return $query->where('id_status', 1);
-	}
-
-	public function scopeComboData($query)
-    {
-        return $query->where('id_status', 1);
     }
 
-    public function status(){
-
-        return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');
-
+    public function status()
+    {
+        return $this->BelongsTo('App\Models\Status', 'id_status');
     }
                            
-    public function usuario(){
-
+    public function usuario()
+    {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
-
     }
 }

@@ -1,5 +1,5 @@
 /*!
-  * vue-router v3.3.4
+  * vue-router v3.4.3
   * (c) 2020 Evan You
   * @license MIT
   */
@@ -11,7 +11,7 @@
  */
 
 /*!
- * vuex v3.4.0
+ * vuex v3.5.1
  * (c) 2020 Evan You
  * @license MIT
  */
@@ -1239,6 +1239,8 @@
 /*! exports provided: parseEvent, isEventOn, isEventStart, isEventOverlapping */
 
 /*! exports provided: preset */
+
+/*! exports provided: prevent, default */
 
 /*! exports provided: stack */
 

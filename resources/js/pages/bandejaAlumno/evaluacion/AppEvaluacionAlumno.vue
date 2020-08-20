@@ -94,7 +94,7 @@ export default {
             ],
             selects:  
             {
-                periodo: 	 [],
+                periodo: 	 ['/list'],
             },
         }
     },

@@ -78,20 +78,20 @@
                     <td class="text-xs-left">
 
                         <v-edit-dialog
-                            :return-value.sync="item.fe_evaluacion"
+                            :return-value.sync="item.fe_planificada"
                             persistent large
                             cancel-text="Cancelar"
                             save-text="Guardar"
                             @save="updateEvaluacion(item)"
                         >
                             <v-chip label outlined link class="date-field text-xs-left">
-                                {{item.fe_evaluacion | formatDate }}
+                                {{item.fe_planificada | formatDate }}
                                 <v-icon size="18" right>mdi-calendar</v-icon>
                             </v-chip>
                         
                             <template v-slot:input>
                                     <v-date-picker 
-                                    v-model="item.fe_evaluacion" >
+                                    v-model="item.fe_planificada" >
                                 </v-date-picker>
                             </template>
                         </v-edit-dialog>
@@ -274,7 +274,7 @@ export default {
              headers: [
                 { text: 'Tipo Evaluacion', value: 'tipoEvaluacion' },
                 { text: 'Peso',   value: 'nu_peso' },
-                { text: 'Fecha',   value: 'fe_evaluacion' },
+                { text: 'Fecha Planificada',   value: 'fe_planificada' },
                 { text: 'Tema',   value: 'tx_tema' },
                 { text: 'Observaciones',   value: 'tx_observaciones' },
                 { text: 'Acciones', value: 'actions', sortable: false, filterable: false },

@@ -41,8 +41,9 @@ class PlanEvaluacionController extends Controller
     public function planEvaluacionGrupoPeriodoMateria($idGrupo, $idPeriodo, $idMateria)
     {
         return PlanEvaluacion::with([
-                                    'evaluacion:id,id_tipo_evaluacion,id_plan_evaluacion,nu_peso,fe_evaluacion,tx_tema,tx_observaciones,id_status',
+                                    'evaluacion:id,id_tipo_evaluacion,id_plan_evaluacion,nu_peso,fe_planificada,fe_evaluacion,tx_tema,tx_observaciones,id_status',
                                     'evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion',
+                                    'evaluacion.status:status.id,nb_status,tx_icono,tx_color',
                                     'evaluacion.archivo'
                                 ])
                                 ->select('id', 'id_status')

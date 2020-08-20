@@ -2,7 +2,7 @@
 
     <v-form ref="form" v-model="valid" lazy-validation>
 
-    <v-card :loading="loading" flat >
+    <v-card :loading="loading" flat>
 
         <v-card-text>
 
@@ -12,29 +12,43 @@
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
-                v-model="form.nb_tipo_pago"
-                label="Tipo Pago"
-                placeholder="Indique Tipo Pago"
+                v-model="form.nb_evaluacion_metodo"
+                label="Evaluacion Metodo"
+                placeholder="Indique Evaluacion Metodo"
                 dense
             ></v-text-field>
         </v-col>
-                          
+                  
         <v-col cols="12" md="6">
-            <v-select
-            :items="selects.comercio"
-            item-text="nb_comercio"
-            item-value="id"
-            v-model="form.id_comercio"
-            :rules="[rules.select]"
-            label="Comercio"
-            :loading="loading"
-            dense
-            ></v-select>
+            <v-input
+                prepend-icon="mdi-format-color-fill"
+                :value="form.tx_color">
+                    <div class="mx-2">Color</div>
+
+                    <v-menu offset-y max-width="200">
+                        <template v-slot:activator="{ on }">
+                            <v-chip slot="activator" v-on="on" small label :color="form.tx_color"></v-chip>
+                        </template>
+                        <span>
+                            <v-card>
+                            <v-btn 
+                                v-for="color in colors" :key="color"
+                                :color="color" 
+                                dark
+                                x-small
+                                fab 
+                                class="ma-1"
+                                @click="form.tx_color = color">
+                            </v-btn>
+                            </v-card>                        
+                        </span>
+                    </v-menu>
+            </v-input>
         </v-col>
-          
+
         <v-col cols="12" md="6">
             <v-text-field
-                :rules="[rules.required, max(30)]"
+                :rules="[rules.required, rules.max(30)]"
                 v-model="form.tx_icono"
                 label="Icono"
                 placeholder="Indique Icono"
@@ -47,7 +61,7 @@
                   
         <v-col cols="12" md="6">
             <v-text-field
-                :rules="[]"
+                :rules="[rules.max(100)]"
                 v-model="form.tx_observaciones"
                 label="Observaciones"
                 placeholder="Indique Observaciones"
@@ -102,29 +116,20 @@ export default {
     mixins: [Appform],
     data() {
         return {
-            resource: 'tipoPago',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
+            resource: 'evaluacionMetodo',
             form:
             {
-                id: 	null,
-				nb_tipo_pago: 	null,
-				id_comercio: 	null,
-				tx_icono: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
+                id: 	              null,
+				nb_evaluacion_metodo: null,
+				tx_icono: 	          null,
+				tx_color: 	          null,
+				tx_observaciones: 	  null,
+				id_status: 	          null,
+				id_usuario: 	      null,
             },
             selects:
             {
-                comercio: 	 [],
-	 	 	 	status: 	 [],
+                status: 	 [],
             },
         }
     },

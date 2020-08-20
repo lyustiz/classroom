@@ -36,7 +36,8 @@
 
 <script>
 import ListaAumno        from './alumno/listaAlumnos'
-import EvaluacionDocente from './evaluacion/evaluacionDocente'
+import PlanEvaluacion    from './evaluacion/PlanEvaluacion'
+import EvaluacionDocente from './evaluacion/EvaluacionDocente'
 import ClaseAlumno       from '@pages/bandejaAlumno/clase/AppCLase'
 import MenuPrueba        from './prueba/MenuPrueba.vue'
 
@@ -44,6 +45,7 @@ export default {
 
     components: {
         'lista-alumno':       ListaAumno,
+        'plan-evaluacion':    PlanEvaluacion,
         'evaluacion-docente': EvaluacionDocente,
         'menu-prueba'       : MenuPrueba,
         'clase-alumno':       ClaseAlumno, 
@@ -67,7 +69,8 @@ export default {
             sections: [
 
                     { label: 'Alumnos', icon: 'mdi-school', component: 'lista-alumno', color: 'blue', sectionWidth: '700' },
-                    { label: 'Evaluaciones', icon: 'mdi-notebook', component: 'evaluacion-docente', color: 'amber', sectionWidth: '700' },
+                    { label: 'Plan Evaluacion', icon: 'mdi-table-clock', component: 'plan-evaluacion', color: 'indigo', sectionWidth: '700' },
+                    { label: 'Evaluaciones', icon: 'mdi-table-check', component: 'evaluacion-docente', color: 'amber', sectionWidth: '95vw' },
                     { label: 'Pruebas', icon: 'mdi-order-bool-descending-variant', component: 'menu-prueba', color: 'red', sectionWidth: '700' },
                     { label: 'Aula Virtual (En Construccion)', icon: 'mdi-google-classroom', component: 'clase-alumno', color: 'green', sectionWidth: '700' },
                 ]

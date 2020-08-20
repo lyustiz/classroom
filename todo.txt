@@ -15,3 +15,10 @@ thema:
 autenticacion 
 
     probar apitoken
+
+
+
+plan evaluacion grupos sin grados asignados - cierre de modal evaluacion
+materias asignara grado replicar a grupos y alumnos
+evaluacion observaciones agregar update
+junta directiva combo cargos  

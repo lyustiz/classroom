@@ -32,15 +32,16 @@ class EvaluacionAlumnoController extends Controller
         $validate = request()->validate([
             'id_evaluacion'     => 	'required|integer|max:999999999',
 			'id_alumno'         => 	'required|integer|max:999999999',
-			'id_calificacion'   => 	'required|integer|max:999999999',
+			'nu_calificacion'   => 	'required|numeric|max:100',
 			'tx_observaciones'  => 	'nullable|string|max:200',
-			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
+        $request->merge( ['id_status' => 1] );
+
         $evaluacionAlumno = evaluacionAlumno::create($request->all());
 
-        return [ 'msj' => 'EvaluacionAlumno Agregado Correctamente', compact('evaluacionAlumno') ];
+        return [ 'msj' => 'Evaluacion Agregada Correctamente', compact('evaluacionAlumno') ];
     }
 
     /**
@@ -66,15 +67,14 @@ class EvaluacionAlumnoController extends Controller
         $validate = request()->validate([
             'id_evaluacion'     => 	'required|integer|max:999999999',
 			'id_alumno'         => 	'required|integer|max:999999999',
-			'id_calificacion'   => 	'required|integer|max:999999999',
+			'nu_calificacion'   => 	'required|numeric|max:100',
 			'tx_observaciones'  => 	'nullable|string|max:200',
-			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
         $evaluacionAlumno = $evaluacionAlumno->update($request->all());
 
-        return [ 'msj' => 'EvaluacionAlumno Editado' , compact('evaluacionAlumno')];
+        return [ 'msj' => 'Evaluacion Actualizada' , compact('evaluacionAlumno')];
     }
 
     /**

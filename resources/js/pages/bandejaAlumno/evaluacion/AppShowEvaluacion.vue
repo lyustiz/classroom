@@ -9,20 +9,29 @@
             sort-by=""
             hide-default-footer
             dense
-            class="green lighten-1 white--text rounded-xl col-12"
+            class="rounded-xl col-12"
         >
 
         <template v-slot:item="{ item }" >
             
             <tr>
                 <td class="text-left" v-text="item.tipo_evaluacion.nb_tipo_evaluacion"></td>
-                <td class="text-left" >{{item.nu_peso}} %</td>                                                                                                                                
-                <td class="text-left" v-text="item.tx_tema"></td>
-                <td class="text-left" ><v-chip small color="amber lighten-3" >P</v-chip></td>
-                <td class="text-left" >{{item.fe_evaluacion | formatDate}}</td>
+                <td class="text-left">{{item.nu_peso}} %</td>                                                                                                                                
+                <td class="text-left">
+                    <list-simple-icon icon="mdi-card-text" color="indigo" :label="item.tx_tema" ></list-simple-icon>
+                </td>
                 <td class="text-left">
                     <app-archivo origen="evaluacion" :origenId="item.id" :tipoArchivo="2" :hasArchivo="item.archivo.length > 0"></app-archivo>
                 </td>
+                <td class="text-left">{{item.fe_planificada | formatDate}}</td>
+                <td class="text-left">{{item.fe_evaluacion | formatDate}}</td>
+                <td class="text-left">
+                    <list-simple-icon :icon="item.status.tx_icono" :color="item.status.tx_color" :label="item.status.nb_status" ></list-simple-icon>
+                </td>
+                <td class="text-left">
+                    <app-archivo color="red" icono="mdi-notebook" origen="evaluacion_alumno" :origenId="item.id" :tipoArchivo="2" :hasArchivo="item.archivo.length > 0"></app-archivo>
+                </td>
+                <td class="text-left"><v-chip small color="grey lighten-4 subtitle-2" >00,00</v-chip></td>               
             </tr>
         </template>
     
@@ -84,12 +93,16 @@ export default {
             item: [],
             items: [],
             headers:  [
-                { text: 'Evaluacion',  value: 'tipo_evaluacion.nb_tipo_evaluacion' },
-                { text: 'peso',        value: 'nu_peso' },
-                { text: 'Tema',        value: 'tx_tema' },
-                { text: 'Status',      value: 'id_status' },
-                { text: 'Fecha',       value: 'fe_evaluacion' },
-                { text: 'Guias',       value: 'archivo' },
+                { text: 'Evaluacion',           value: 'tipo_evaluacion.nb_tipo_evaluacion' },
+                { text: 'peso',                 value: 'nu_peso' },
+                { text: 'Tema',                 value: 'tx_tema' },
+                { text: 'Guias',                value: 'archivo' },
+                { text: 'Planificada',          value: 'fe_planificada' },
+                { text: 'Fecha Ejecucion',      value: 'fe_evaluacion' },
+                { text: 'Status',               value: 'id_status' },
+                { text: 'Cargar Asignacion',    value: 'archivo' },
+                { text: 'Calificacion',         value: 'archivo' },
+                
             ],
         }
     },

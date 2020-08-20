@@ -10,8 +10,10 @@ class Evaluacion extends Model
 
     protected $fillable   = [
                             'id_plan_evaluacion',
-	 	 	 	 	 	 	'id_tipo_evaluacion',
-	 	 	 	 	 	 	'nu_peso',
+                            'id_tipo_evaluacion',
+                            'id_evaluacion_metodo',
+                            'nu_peso',
+                            'fe_planificada',
                             'fe_evaluacion',
                             'hh_inicio',
 	 	 	 	 	 	 	'hh_fin',
@@ -25,10 +27,31 @@ class Evaluacion extends Model
                             'created_at',
 	 	 	 	 	 	 	'updated_at'
                             ];
+    
+    protected $planificada = 9;
+
+    protected $asignada    = 10;
+
+    protected $evaluada    = 11;
+
+    public function planificada()
+    {
+        return $this->planificada;
+    }
+
+    public function asignada()
+    {
+        return $this->asignada;
+    }
+
+    public function evaluada()
+    {
+        return $this->evaluada;
+    }
 
     public function scopeActivo($query)
     {
-        return $query->where('id_status', 1);
+        return $query->where('id_status', 9);
 	}
 
 	public function scopeComboData($query)
@@ -38,7 +61,7 @@ class Evaluacion extends Model
     
     public function status()
     {
-        return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');
+        return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'EVALUACION');
     }
                            
     public function usuario()
@@ -54,6 +77,11 @@ class Evaluacion extends Model
     public function planEvaluacion()
     {
         return $this->BelongsTo('App\Models\PlanEvaluacion', 'id_plan_evaluacion');
+    }
+
+    public function evaluacionMetodo()
+    {
+        return $this->BelongsTo('App\Models\EvaluacionMetodo',  'id_evaluacion_metodo');
     }
 
     public function archivo()

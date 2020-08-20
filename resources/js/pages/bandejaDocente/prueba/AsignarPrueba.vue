@@ -131,7 +131,7 @@
                                 <td class="text-xs-left py-1">
                                     <app-button 
                                         color="amber" 
-                                        icon="mdi-account-plus" 
+                                        icon="mdi-account-multiple-plus" 
                                         label="Asignar Alumnos" 
                                         :loading="loading" 
                                         @click="asignarAlumnos()">

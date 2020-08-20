@@ -29,7 +29,9 @@ class EvaluacionController extends Controller
                                             'planEvaluacion.grupo:id,nb_grupo', 
                                             'planEvaluacion.periodo:id,nb_periodo', 
                                             'tipoEvaluacion:id,nb_tipo_evaluacion',
-                                            'archivo:id,id_tipo_archivo,tx_origen_id'
+                                            'archivo:id,id_tipo_archivo,tx_origen_id',
+                                            'status:status.id,nb_status,tx_icono,tx_color',
+                                            'evaluacionMetodo:id,nb_evaluacion_metodo,tx_icono,tx_color'
                                         ])
                                         ->where('id_plan_evaluacion', $idPlanEvaluacion)
                                         ->get();
@@ -107,12 +109,13 @@ class EvaluacionController extends Controller
             'id_plan_evaluacion'=> 	'required|integer|max:999999999',
 			'id_tipo_evaluacion'=> 	'required|integer|max:999999999',
 			'nu_peso'           => 	'nullable|integer|max:999999999',
-			'fe_evaluacion'     => 	'nullable|date',
+			'fe_planificada'    => 	'nullable|date',
 			'tx_tema'           => 	'nullable|string|max:100',
 			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
+
+        $request->merge( ['id_status' => 9] );
 
         $evaluacion = evaluacion::create($request->all());
 
@@ -143,12 +146,43 @@ class EvaluacionController extends Controller
             'id_plan_evaluacion'=> 	'required|integer|max:999999999',
 			'id_tipo_evaluacion'=> 	'required|integer|max:999999999',
 			'nu_peso'           => 	'nullable|integer|max:999999999',
-			'fe_evaluacion'     => 	'nullable|date',
+			'fe_planificada'    => 	'nullable|date',
 			'tx_tema'           => 	'nullable|string|max:100',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
+
+        $evaluacion = $evaluacion->update($request->all());
+
+        return [ 'msj' => 'Evaluacion Actualizada' , compact('evaluacion')];
+    }
+
+    public function asignar(Request $request, Evaluacion $evaluacion)
+    {
+        $validate = request()->validate([
+            'id_evaluacion_metodo'  =>  'required|integer|max:999999999',
+            'fe_evaluacion'         =>  'required|date|after:fe_planificada',
+            'hh_inicio'             => 	'nullable|date_format:"H:i"|before:hh_fin"',
+            'hh_fin'                => 	'nullable|date_format:"H:i"',
+			'tx_observaciones'      =>  'nullable|string|max:100',
+			'id_usuario'            =>  'required|integer|max:999999999',
+        ]);
+
+        $request->merge( ['id_status' => $evaluacion->asignada()] );
+
+        $evaluacion = $evaluacion->update($request->all());
+
+        return [ 'msj' => 'Evaluacion Actualizada' , compact('evaluacion')];
+    }
+
+    public function evaluar(Request $request, Evaluacion $evaluacion)
+    {
+        $validate = request()->validate([
+			'id_usuario'        => 	'required|integer|max:999999999',
+        ]);
+
+        $request->merge( ['id_status' => $evaluacion->evaluada()] );
 
         $evaluacion = $evaluacion->update($request->all());
 

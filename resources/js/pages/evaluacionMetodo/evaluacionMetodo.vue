@@ -1,6 +1,6 @@
 <template>
 
-    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)" :inDialog="inDialog">
+    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)">
 
         <template slot="HeadTools">
             <add-button @insItem="insertForm()"></add-button>
@@ -27,21 +27,16 @@
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.nb_menu }}</td>
-						<td class="text-xs-left">{{ item.id_modulo }}</td>
-						<td class="text-xs-left">{{ item.tx_ruta }}</td>
-						<td class="text-xs-left">{{ item.tx_path }}</td>
-						<td class="text-xs-left"><v-icon color="green">{{item.tx_icono}}</v-icon></td>
-						<td class="text-xs-left">{{ item.tx_target }}</td>
-						<td class="text-xs-left">{{ item.nu_orden }}</td>
+                        <td class="text-xs-left">{{ item.nb_evaluacion_metodo }}</td>
+						<td class="text-xs-left"><v-icon :color="item.tx_color">{{item.tx_icono}}</v-icon></td>
+						<td class="text-xs-left"><v-chip small label :color="item.tx_color"></v-chip></td>
 						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
-                                :item="item"
-                                :resource="resource"
-                                @onStatusChanging="loading=true"
-                                @onStatusChanged="loading=false">
+                                :resource="resource" 
+                                :item="item" 
+                                @onChangeStatus="changeStatus($event)">
                             </status-switch>
                         </td>
                         
@@ -62,11 +57,11 @@
                 :head-color="$App.theme.headModal"
                 :title="title"
             >
-                <menu-form
+                <evaluacion-metodo-form
                     :action="action"
                     :item="item"
                     @closeModal="closeModal()"
-                ></menu-form>
+                ></evaluacion-metodo-form>
 
             </app-modal>
 
@@ -77,7 +72,7 @@
                 @deleteItem="deleteItem()"
                 @deleteCancel="deleteCancel()"
             ></form-delete>
-
+            
             <pre v-if="$App.debug">{{ $data }}</pre>
 
     </list-container>
@@ -86,22 +81,18 @@
 
 <script>
 import listHelper from '@mixins/Applist';
-import menuForm  from './menuForm';
+import evaluacionMetodoForm  from './evaluacionMetodoForm';
 export default {
     mixins:     [ listHelper],
-    components: { 'menu-form': menuForm },
+    components: { 'evaluacion-metodo-form': evaluacionMetodoForm },
     data () {
     return {
-        title:    'Menu',
-        resource: 'menu',
+        title:    'Metodo Evaluacion',
+        resource: 'evaluacionMetodo',
         headers: [
-            { text: 'Menu',   value: 'nb_menu' },
-			{ text: 'Modulo',   value: 'id_modulo' },
-			{ text: 'Ruta',   value: 'tx_ruta' },
-			{ text: 'Path',   value: 'tx_path' },
+            { text: 'Evaluacion Metodo',   value: 'nb_evaluacion_metodo' },
 			{ text: 'Icono',   value: 'tx_icono' },
-			{ text: 'Target',   value: 'tx_target' },
-			{ text: 'Orden',   value: 'nu_orden' },
+			{ text: 'Color',   value: 'tx_color' },
 			{ text: 'Observaciones',   value: 'tx_observaciones' },
 			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },

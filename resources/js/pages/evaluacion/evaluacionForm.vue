@@ -24,13 +24,13 @@
          
         <v-col cols="12" md="6">
             <v-menu
-                v-model="pickers.fe_evaluacion"
+                v-model="pickers.fe_planificada"
                 :close-on-content-click="false"
                 min-width="290px"
             >
                 <template v-slot:activator="{ on }">
                     <v-text-field
-                        v-model="dates.fe_evaluacion"
+                        v-model="dates.fe_planificada"
                         :rules="[rules.fecha]"
                         label="Evaluacion"
                         prepend-icon="event"
@@ -40,8 +40,8 @@
                     ></v-text-field>
                 </template>
                 <v-date-picker 
-                    v-model="form.fe_evaluacion" 
-                    @input="dates.fe_evaluacion = formatPicker(form.fe_evaluacion, 'fe_evaluacion')">
+                    v-model="form.fe_planificada" 
+                    @input="dates.fe_planificada = formatPicker(form.fe_planificada, 'fe_planificada')">
                 </v-date-picker>
             </v-menu>
         </v-col> 
@@ -135,23 +135,23 @@ export default {
             resource: 'evaluacion',
             dates:
             {
-                fe_evaluacion: 	 null,
+                fe_planificada: 	 null,
             },
             pickers:
             {
-                fe_evaluacion: 	 null,
+                fe_planificada: 	 null,
             },
             form:
             {
-                id: 	null,
-				id_detalle_evaluacion: 	null,
-				fe_evaluacion: 	null,
-				hh_inicio: 	null,
-				hh_fin: 	null,
-				nu_peso: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
+                id: 	               null,
+				id_detalle_evaluacion: null,
+				fe_planificada: 	   null,
+				hh_inicio: 	           null,
+				hh_fin: 	           null,
+				nu_peso: 	           null,
+				tx_observaciones: 	   null,
+				id_status: 	           null,
+				id_usuario: 	       null,
             },
             selects:
             {
