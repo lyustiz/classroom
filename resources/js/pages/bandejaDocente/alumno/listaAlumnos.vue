@@ -81,9 +81,16 @@ export default {
         this.list()
     },
 
+    computed:
+    {
+        docente()
+        {
+            return this.$store.getters['getDocente']
+        }
+    },
+
     data () {
         return {
-            docente:  1,     //TODO: agregar docente
             section: null,
             grupos:   [],
             itemsMenu: [
@@ -98,7 +105,7 @@ export default {
     {
         list()
         {
-           this.getResource( `grupo/alumnos/docente/${this.docente}` ).then( data => this.grupos = data )
+           this.getResource( `grupo/alumnos/docente/${this.docente.id}` ).then( data => this.grupos = data )
         },
 
         addNotificacion(alumno)

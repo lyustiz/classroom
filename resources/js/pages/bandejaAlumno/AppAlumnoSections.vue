@@ -24,6 +24,9 @@
                 <span v-text="section.label"></span>
             </v-tooltip>
 
+            
+            <meet-room :usuario="2"></meet-room>
+
         </v-card-text>
     
         <v-dialog v-model="dialog" content-class="rounded-xl" scrollable :max-width="sectionWidth"> 
@@ -41,7 +44,7 @@ import RecursoAlumno    from './recurso/Apprecurso'
 import EvaluacionAlumno from './evaluacion/AppEvaluacionAlumno'
 import PruebaAlumno     from './prueba/PruebaAlumno'
 import MateriaAlumno    from './materia/AppMateria'
-import ClaseAlumno      from './clase/AppCLase'
+import ClaseAlumno      from './clase/AppClase'
 export default {
 
     components: {
@@ -87,6 +90,11 @@ export default {
             this.component    = section.component
             this.sectionTitle = section.label
             this.sectionWidth = section.sectionWidth
+        },
+
+        showMeet()
+        {
+
         }
     }
 }

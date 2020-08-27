@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Docente;
+use App\Http\Controllers\Traits\UsuarioTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
@@ -10,6 +11,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 class DocenteController extends Controller
 {
+    use UsuarioTrait;
+
     /**
      * Display a listing of the resource.
      *
@@ -74,7 +77,9 @@ class DocenteController extends Controller
 
         $docente = docente::create($request->all());
 
-        return [ 'msj' => 'Docente Agregado Correctamente', compact('docente') ];
+        $usuario = UsuarioTrait::usuarioOrigenTipo($docente, 2) ;
+
+        return [ 'msj' => 'Docente Agregado Correctamente', compact('docente', 'usuario') ];
     }
 
     /**

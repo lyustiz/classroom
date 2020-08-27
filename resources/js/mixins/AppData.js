@@ -195,6 +195,43 @@ export default
 			})
         },
 
+        downloadResource(resource, data, type, filename)
+        {
+           if(!this.preFormActions('download')) {
+                return new Promise(() => 
+                {
+                    this.showError('Favor validar los datos')
+                    this.loading = false
+                })  
+            } 
+            
+            return new Promise((resolve, reject) => 
+			{
+                axios({
+                    method: 'post',
+                    url: this.apiUrl + resource,
+                    responseType: 'arraybuffer',
+                    data: data
+                })
+                .then(function(response) {
+                        let blob      = new Blob([response.data], { type })
+                        let link      = document.createElement('a')
+                        link.href     = window.URL.createObjectURL(blob)
+                        link.download = filename
+                        link.click()
+                        resolve('Descargando Archivo ...')
+                })
+                .catch(error => 
+                {
+                    this.showError(error)
+                })
+                .finally( () => 
+                {
+                    this.loading = false
+                });
+			})
+        },
+
         preFormActions(action)
         {
             let validate = true

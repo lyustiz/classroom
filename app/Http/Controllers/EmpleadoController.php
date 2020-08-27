@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empleado;
+use App\Http\Controllers\Traits\UsuarioTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class EmpleadoController extends Controller
 {
+    use UsuarioTrait;
+    
     /**
      * Display a listing of the resource.
      *
@@ -61,7 +64,9 @@ class EmpleadoController extends Controller
 
         $empleado = empleado::create($request->all());
 
-        return [ 'msj' => 'Empleado Agregado Correctamente', compact('empleado') ];
+        $usuario = UsuarioTrait::usuarioOrigenTipo($empleado, 5) ;
+
+        return [ 'msj' => 'Empleado Agregado Correctamente', compact('empleado', 'usuario') ];
     }
 
     /**

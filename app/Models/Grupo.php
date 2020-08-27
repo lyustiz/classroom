@@ -65,7 +65,7 @@ class Grupo extends Model
         return $this->BelongsTo('App\Models\Docente', 'id_docente');
     }
 
-    public function docente()
+    public function docenteGrupo()
     {
         return $this->belongsToMany('App\Models\Docente', 'docente_grupo', 'id_grupo', 'id_docente');
     }
@@ -98,6 +98,20 @@ class Grupo extends Model
             'id', // laocal en origen
             'id', // local en final
 			'id_materia' // fk en intermedia
+		);
+    }
+    
+
+    public function docente()
+	{
+        return $this->hasManyThrough(
+			
+			'App\Models\Docente', //final
+            'App\Models\PlanEvaluacion', //intermedia
+            'id_grupo', // fk en intermedia
+            'id', // laocal en origen
+            'id', // local en final
+			'id_docente' // fk en intermedia
 		);
 	}
 }

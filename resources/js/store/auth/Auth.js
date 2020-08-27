@@ -106,7 +106,7 @@ export default
 								};
 
 						dispatch('autenticate', data)
-						resolve( { status: 200 } )
+						resolve( { status: 200, userType: response.data.user.id_tipo_usuario } )
 					}
 					else{
 

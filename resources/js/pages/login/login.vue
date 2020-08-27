@@ -18,8 +18,8 @@
                     <v-text-field
                         color="indigo"
                         prepend-inner-icon="mdi-account"
-                        label="Usuario o Email"
-                        hint="Indique el usuario o correo registrado"
+                        label="Usuario"
+                        hint="Indique el usuario"
                         type="text"
                         v-model="form.nb_usuario"
                         :rules="[rules.required]"
@@ -116,7 +116,8 @@ export default {
                 if(response.status == 200)
                 {
                     this.$refs.registerForm.reset();
-                    this.$router.push('home');
+
+                    this.redirectTo(response)
                 }
 
             }).catch(error =>
@@ -169,7 +170,33 @@ export default {
             {
                 this.loading = false
             })
+        },
+
+        redirectTo(data)
+        {
+            let userType = data.userType;
+            
+            switch (userType) {
+                case 1:
+                    this.navegateTo('/home');
+                    break;
+                case 2:
+                    this.navegateTo('/bandeja-docente');
+                    break;
+                case 3:
+                    this.navegateTo('/bandeja-alumno');
+                    break;
+                case 4:
+                    this.navegateTo('/bandeja-acudiente');
+                    break;
+                default:
+                    this.showError('Usuario no Autorizado')
+                    break;
+            }
+
         }
+
+        
     }
 
 }

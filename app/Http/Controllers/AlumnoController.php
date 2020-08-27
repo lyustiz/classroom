@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumno;
+use App\Http\Controllers\Traits\UsuarioTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 
 class AlumnoController extends Controller
 {
+    use UsuarioTrait;
+    
     /**
      * Display a listing of the resource.
      *
@@ -246,22 +249,27 @@ class AlumnoController extends Controller
 			'id_tipo_documento' => 	'required|integer|max:999999999',
 			'tx_documento'      => 	'required|string|max:12',
 			'tx_lugar_nacimiento'=> 'nullable|string|max:30',
-			'tx_nacionalidad'   => 	'nullable|string|max:30',
+			'tx_nacionalidad'   => 	'required|string|max:30',
 			'tx_direccion'      => 	'required|string|max:80',
 			'id_departamento'   => 	'required|integer|max:999999999',
 			'id_ciudad'         => 	'required|integer|max:999999999',
-			'tx_email'          => 	'nullable|string|max:30',
-			'tx_telefono'       => 	'nullable|string|max:15',
+			'tx_email'          => 	'required|string|max:30',
+			'tx_telefono'       => 	'required|string|max:15',
 			'tx_telefono2'      => 	'nullable|string|max:15',
 			'tx_telefono3'      => 	'nullable|string|max:15',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
+        ],
+        [
+            'tx_email.require' => 'El correo es requerido',
         ]);
 
-        $alumno = alumno::create($request->all());
+        $alumno  = alumno::create($request->all());
 
-        return [ 'msj' => 'Alumno Agregado Correctamente', compact('alumno') ];
+        $usuario = UsuarioTrait::usuarioOrigenTipo($alumno, 3) ;
+
+        return [ 'msj' => 'Alumno Agregado Correctamente', compact('alumno', 'usuario') ];
     }
 
     /**

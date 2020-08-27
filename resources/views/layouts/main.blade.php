@@ -13,12 +13,6 @@
      <!-- Material Icons -->
     <link rel="stylesheet" href="/assets/googlefonts/css/css.css">
 
-    <!-- DesdeCasa Icons -->
-    <link rel="stylesheet" href="/assets/desdecasafonts/css/css.css">
-
-    <!-- MapBox -->
-    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css"  rel="stylesheet"/>
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

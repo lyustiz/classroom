@@ -205,7 +205,7 @@ Route::get('/evaluacion/grupo/{grupo}',         'EvaluacionController@evaluacion
 Route::get('/evaluacion/docente/{docente}',     'EvaluacionController@evaluacionDocente');
 Route::put('/evaluacion/asignar/{evaluacion}',  'EvaluacionController@asignar');
 Route::apiResource('/evaluacion',               'EvaluacionController');
-
+Route::apiResource('/evaluacionMetodo',     'EvaluacionMetodoController');
 Route::apiResource('/evaluacionAlumno',         'EvaluacionAlumnoController');
 
 // -- AGENDA -- //
@@ -227,11 +227,16 @@ Route::apiResource('/tipoArchivo',              'TipoArchivoController');
 Route::apiResource('/tipoRecurso',              'TipoRecursoController');
 Route::get('/recurso/grado/{grado}',            'RecursoController@recursoGrado');
 Route::get('/recurso/grupo/{grupo}',            'RecursoController@recursoGrupo');
+Route::get('/recurso/docente/{docente}',        'RecursoController@recursoDocente');
 Route::apiResource('/recurso',                  'RecursoController');
 
 // -- GESTION USUARIO -- //
 Route::apiResource('/tipoUsuario',              'TipoUsuarioController');
+
+Route::get('/usuario/lote/tipo/{tipo}',         'UsuarioController@usuarioLoteTipo');
 Route::apiResource('/usuario',                  'UsuarioController');
+
+
 Route::apiResource('/menu',                     'MenuController');
 Route::apiResource('/perfil',                   'PerfilController');
 Route::apiResource('/permiso',                  'PermisoController');
@@ -287,19 +292,24 @@ Route::apiResource('/pregunta',                 'PreguntaController', ['paramete
 Route::get('/respuesta/pregunta/{pregunta}',    'RespuestaController@respuestaPregunta');
 Route::apiResource('/respuesta',                'RespuestaController', ['parameters' => ['respuesta' => 'respuesta']]);
 
-
 Route::put('/pruebaAlumno/iniciar/{pruebaAlumno}',   'PruebaAlumnoController@iniciar');
 Route::put('/pruebaAlumno/finalizar/{pruebaAlumno}', 'PruebaAlumnoController@finalizar');
-Route::put('/pruebaAlumno/evaluar/{pruebaAlumno}', 'PruebaAlumnoController@evaluar');
+Route::put('/pruebaAlumno/evaluar/{pruebaAlumno}',   'PruebaAlumnoController@evaluar');
 Route::get('/pruebaAlumno/prueba/{prueba}',          'PreguntaController@pruebaAlumnoPrueba');
-
 Route::apiResource('/pruebaAlumno',             'PruebaAlumnoController');
 Route::apiResource('/respuestaAlumno',          'RespuestaAlumnoController');
 
+// --  REPORTES  -- //
+Route::post('/reporte/generate',                'Reportes\ReporteController@generate');
+Route::post('/reporte/execute',                 'Reportes\ReporteController@execute');
+Route::post('/reporte/execute/excel',           'Reportes\ReporteController@executeExcel');
 
-Route::apiResource('/evaluacionMetodo',     'EvaluacionMetodoController');
+
+//Meet
+Route::get('meet/{usuario}', 'MeetController@index');
+Route::post('meet/auth/{usuario}', 'MeetController@auth');
+
 //newRoutes
-
 
 Route::fallback(function () {
     return response('Ruta Invalida', 200);

@@ -14,6 +14,7 @@ import Calendario from '@store/data/Calendario';
 
 //auth
 import Auth       from '@store/auth/Auth';
+import Pusher     from '@store/auth/Pusher';
 
 const debug = process.env.NODE_ENV !== 'production'
 
@@ -31,6 +32,7 @@ export default new Vuex.Store({
 
         //Auth
         Auth,
+        Pusher,
     },
     strict: debug
 })

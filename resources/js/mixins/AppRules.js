@@ -13,7 +13,9 @@ export default
 
                 select: v => !!v || 'Seleccione una Opcion (Dato Requerido)',
                 
-                mutiple: v =>  v.length > 0 || 'Seleccione una Opcion (Dato Requerido)',
+                mutiple: v =>  v.length > 0 || 'Seleccione una Opcion (Dato Requerido)', //search mal colocado
+
+                multiple: v =>  v.length > 0 || 'Seleccione una Opcion (Dato Requerido)',
                 
                 required: v => (!!v) || 'Dato Requerido',
                 

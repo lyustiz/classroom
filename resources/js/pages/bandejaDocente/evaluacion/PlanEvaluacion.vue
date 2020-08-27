@@ -132,12 +132,19 @@ export default {
         this.list()
     },
 
+    computed:
+    {
+        docente()
+        {
+            return this.$store.getters['getDocente']
+        }
+    },
+
     data () {
         return {
            periodos: [],
            periodo:  null,
            grados:   [],
-           docente:  1 //TODO: getDocente
         }
     },
     methods:
@@ -151,7 +158,7 @@ export default {
 
         getGradoDetalle()
         {
-            this.getResource( `grado/planEvaluacion/docente/${this.docente}` ).then( data => this.grados   = data )
+            this.getResource( `grado/planEvaluacion/docente/${this.docente.id}` ).then( data => this.grados   = data )
         },
 
         getPlanesEvaluacion(planesEvaluacion)

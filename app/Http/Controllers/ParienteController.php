@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pariente;
 use App\Models\AlumnoPariente;
+use App\Http\Controllers\Traits\UsuarioTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -78,7 +79,9 @@ class ParienteController extends Controller
        
         $pariente = pariente::create($request->all());
 
-        return [ 'msj' => 'Pariente Agregado Correctamente', compact('pariente') ];
+        $usuario = UsuarioTrait::usuarioOrigenTipo($pariente, 4) ;
+
+        return [ 'msj' => 'Pariente Agregado Correctamente', compact('pariente', 'usuario') ];
     }
 
      /**

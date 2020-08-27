@@ -21,3 +21,5 @@ alumno: ver lista de pruebas ejecutar pruebas
 docente: evaluar pruebas
 
 secretario fix bug en detalle horario. docentes en detalles horarior por materia.
+
+ALTER TABLE status AUTO_INCREMENT = 12

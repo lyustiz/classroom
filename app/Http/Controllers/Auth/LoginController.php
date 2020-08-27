@@ -169,6 +169,10 @@ class LoginController extends Controller
             case 'acudiente':
                 $user->load('pariente');
                 break;
+            
+            default:
+                return response('Usuario o Contraseña Invalida', 403) ;
+                break;
         }
     }
 

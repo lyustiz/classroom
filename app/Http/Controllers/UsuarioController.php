@@ -3,15 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
+use App\Models\TipoUsuario;
+use App\Models\UsuarioPerfil;
+use App\Http\Controllers\Traits\UsuarioTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Str;
 
 
 class UsuarioController extends Controller
 {
+    use UsuarioTrait;
+    
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +33,6 @@ class UsuarioController extends Controller
                            ->get();
         
         return $usuarios;
-
     }
 
     /**
@@ -56,6 +61,61 @@ class UsuarioController extends Controller
         $usuario = Usuario::create($request->all());
 
         return [ 'msj' => 'Registro Agregado Correctamente', compact('usuario') ];
+    }
+
+    public function usuarioLoteTipo($idTipoUsuario)  //(Request $request)
+    {
+        if($idTipoUsuario == 1) 
+        {
+            throw ValidationException::withMessages(['createAdministrador' => "No es posible crear usuario Administrador"]);
+        }
+                
+        $tipoUsuario  = TipoUsuario::find($idTipoUsuario)->first();
+
+        $tableName    = $tipoUsuario->tx_tabla;
+
+        $idPerfil     = $tipoUsuario->id_perfil;
+
+        $dataUsuarios = \DB::table($tableName)
+                           ->whereNotIn('id', function($query) use( $idTipoUsuario){
+                                $query->select('id_origen')
+                                    ->from('usuario')
+                                    ->where('id_tipo_usuario', $idTipoUsuario);
+                            })->get()->toArray();
+
+        $idColegio   = null;
+        
+        $usuarios    = [];
+        
+        foreach ($dataUsuarios as $key => $data) 
+        {
+            $idColegio   = ($idColegio == null) ?  Usuario::find($data->id_usuario)->id_colegio : $idColegio;
+            
+            $nbUsuario   = UsuarioTrait::makeNbUsuario($data);
+
+            $dataUsuario = [
+                'nb_usuario'      => $nbUsuario,
+                'nb_nombres'      => strtolower($data->nb_nombre) . ' ' . strtolower($data->nb_apellido),
+                'id_colegio'      => $idColegio,
+                'tx_email'        => $data->tx_email,
+                'id_tipo_usuario' => $idTipoUsuario,
+                'id_origen'       => $data->id,
+                'id_usuario'      => $data->id_usuario, //TODO
+            ];
+
+            $usuario = UsuarioTrait::store($dataUsuario);
+
+            $perfil  = UsuarioPerfil::create([
+                        'id_usuario'     => $usuario->id,
+                        'id_perfil'      => $idPerfil,
+                        'id_status'      => 1,
+                        'id_usuario_ed'  => $data->id_usuario
+                        ]);
+
+            $usuarios[] = $usuario;
+        }
+
+        return [ 'msj' => "Usuarios Crados ($tableName)", 'creados' =>  count($usuarios)];
     }
 
     /**

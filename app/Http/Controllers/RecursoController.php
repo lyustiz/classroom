@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Recurso;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 
 class RecursoController extends Controller
 {
@@ -52,6 +53,23 @@ class RecursoController extends Controller
                                     'archivo.tipoArchivo:id,nb_tipo_archivo,tx_origen,tx_base_path'
                                 ])
                                 ->where('id_grupo', $idGrupo)
+                                ->get();
+
+        return $recurso;
+    }
+
+    public function recursoDocente($idDocente)
+    {
+        $recurso = Recurso:: with([
+                                    'tipoRecurso:id,nb_tipo_recurso,id_tipo_archivo,tx_icono,tx_color', 
+                                    'grado:id,nb_grado', 
+                                    'archivo',
+                                    'archivo.tipoArchivo:id,nb_tipo_archivo,tx_origen,tx_base_path'
+                                ])
+                                ->whereHas('grupo.docente', function (Builder $query) use($idDocente) {
+                                    $query->where('id_docente', $idDocente);
+                                })
+                                ->orderBy('id_grado', 'asc')
                                 ->get();
 
         return $recurso;
@@ -110,7 +128,7 @@ class RecursoController extends Controller
 
         $recurso = $recurso->update($request->all());
 
-        return [ 'msj' => 'Recurso Editado' , compact('recurso')];
+        return [ 'msj' => 'Recurso Actualizado' , compact('recurso')];
     }
 
     /**

@@ -24,6 +24,8 @@
                 <span v-text="section.label"></span>
             </v-tooltip>
 
+            <meet-room :usuario="3"></meet-room>
+
         </v-card-text>
 
             <v-dialog v-model="dialog" content-class="rounded-xl" scrollable :max-width="sectionWidth"> 
@@ -36,18 +38,20 @@
 
 <script>
 import ListaAumno        from './alumno/listaAlumnos'
+import RecursoDocente    from './recurso/RecursoDocente' 
 import PlanEvaluacion    from './evaluacion/PlanEvaluacion'
 import EvaluacionDocente from './evaluacion/EvaluacionDocente'
-import ClaseAlumno       from '@pages/bandejaAlumno/clase/AppCLase'
+import ClaseAlumno       from '@pages/bandejaAlumno/clase/AppClase'
 import MenuPrueba        from './prueba/MenuPrueba.vue'
 
 export default {
 
     components: {
         'lista-alumno':       ListaAumno,
+        'recurso-docente':    RecursoDocente,
         'plan-evaluacion':    PlanEvaluacion,
         'evaluacion-docente': EvaluacionDocente,
-        'menu-prueba'       : MenuPrueba,
+        'menu-prueba':        MenuPrueba,
         'clase-alumno':       ClaseAlumno, 
     },
 
@@ -69,6 +73,7 @@ export default {
             sections: [
 
                     { label: 'Alumnos', icon: 'mdi-school', component: 'lista-alumno', color: 'blue', sectionWidth: '700' },
+                    { label: 'Recursos', icon: 'mdi-book-open-page-variant', component: 'recurso-docente', color: 'purple', sectionWidth: '700' },
                     { label: 'Plan Evaluacion', icon: 'mdi-table-clock', component: 'plan-evaluacion', color: 'indigo', sectionWidth: '700' },
                     { label: 'Evaluaciones', icon: 'mdi-table-check', component: 'evaluacion-docente', color: 'amber', sectionWidth: '95vw' },
                     { label: 'Pruebas', icon: 'mdi-order-bool-descending-variant', component: 'menu-prueba', color: 'red', sectionWidth: '700' },

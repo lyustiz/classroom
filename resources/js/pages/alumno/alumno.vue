@@ -4,6 +4,7 @@
 
         <template slot="HeadTools">
             <add-button @insItem="insertForm()"></add-button>
+            <app-reporte tableName="vw_alumno" title="Lista Alumnos"></app-reporte>
         </template>
 
             <v-col cols="12" md="6">
@@ -136,6 +137,7 @@ import AppAlumnoMateria    from '@pages/alumnoMateria/AppAlumnoMateria';
 import AppAlumnosMateria   from '@pages/alumnoMateria/AppAlumnosMateria';
 import AppAlumnoPariente   from '@pages/alumnoPariente/AppAlumnoPariente';
 import AppAlumnoIncidencia from '@pages/incidencia/AppIncidencia';
+import AppReporte          from '@pages/reportes/AppReporte'
 export default {
     
     mixins:     [ listHelper],
@@ -146,7 +148,8 @@ export default {
                     'alumno-materia'    : AppAlumnoMateria,
                     'alumnos-materia'   : AppAlumnosMateria,
                     'alumno-pariente'   : AppAlumnoPariente,
-                    'alumno-incidencia' : AppAlumnoIncidencia
+                    'alumno-incidencia' : AppAlumnoIncidencia,
+                    'app-reporte'       : AppReporte
                 },
 
     data () {

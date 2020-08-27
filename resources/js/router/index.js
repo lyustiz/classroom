@@ -149,6 +149,8 @@ import TipoPrioridad    from '@pages/tipoPrioridad/tipoPrioridad.vue';
 import TipoNotificacion from '@pages/TipoNotificacion/TipoNotificacion.vue';
 import Notificacion     from '@pages/notificacion/notificacion.vue';
 
+//report
+/* import AppReporte       from '@pages/reportes/AppReporte.vue' */
 
 //tools
 import PageNotFound     from  '@pages/404/NotFound.vue'
@@ -1034,7 +1036,6 @@ export default new Router({
                 visible: true,
                 component: RespuestaAlumno
             },
-      
 
             { 
                 path: 'configuracion',
@@ -1045,6 +1046,17 @@ export default new Router({
                 visible: true,
                 component: Configuracion
             },
+
+            //reporte
+            /* { 
+                path: 'reporte',
+                name: 'reporte',
+                label: 'Reporte',
+                icon: 'mdi-table-large',
+                profile: 'secretaria',
+                visible: true,
+                component: AppReporte
+            }, */
           ]
         },
         {

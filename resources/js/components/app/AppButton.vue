@@ -2,7 +2,7 @@
 
     <v-tooltip bottom :color="color">
         <template v-slot:activator="{ on }">
-            <v-btn v-on="on" fab dark x-small :color="color" :loading="loading" @click="$emit('click')" :disabled="disabled" :depressed="depressed">
+            <v-btn v-on="on" fab dark x-small :color="color" :loading="loading" @click="$emit('click', $event)" :disabled="disabled" :depressed="depressed">
                 <v-icon size="24" v-text="icon"></v-icon>
             </v-btn>
         </template>

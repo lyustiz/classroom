@@ -168,17 +168,18 @@
           
         <v-col cols="12" md="3">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[rules.required, rules.max(30)]"
                 v-model="form.tx_email"
                 label="Email"
                 placeholder="Indique Email"
+                hint="Correo requerido para creacion de Usuario"
                 dense
             ></v-text-field>
         </v-col>
                   
         <v-col cols="12" md="3">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[rules.required, rules.max(15)]"
                 v-model="form.tx_telefono"
                 label="Telefono"
                 placeholder="Indique Telefono"
@@ -188,7 +189,7 @@
                   
         <v-col cols="12" md="3">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[rules.max(15)]"
                 v-model="form.tx_telefono2"
                 label="Telefono2"
                 placeholder="Indique Telefono2"
@@ -198,7 +199,7 @@
                   
         <v-col cols="12" md="3">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[rules.max(15)]"
                 v-model="form.tx_telefono3"
                 label="Telefono3"
                 placeholder="Indique Telefono3"

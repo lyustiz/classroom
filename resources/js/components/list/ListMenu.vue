@@ -51,8 +51,21 @@ export default
         item:{
             type: [ Object, Array],
             default: () => {}
+        },
+
+        reports:{
+            type: Array,
+            default: () => []
         }
     },
+
+    created()
+    {
+        if(this.reports.length > 0)
+        {
+            //this.itemsMenu
+        }
+    }
 
     
 }

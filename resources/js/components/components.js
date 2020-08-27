@@ -74,3 +74,9 @@ import AppAgendaToolbar from '@components/app/AppAgendaToolbar'
 Vue.component('app-foto',           AppFoto);
 Vue.component('app-foto-cuenta',    AppFotoCuenta);
 Vue.component('app-agenda-toolbar', AppAgendaToolbar);
+
+
+//Meet
+
+import MeetRoom from '@components/meet/MeetRoom'
+Vue.component('meet-room', MeetRoom);
