@@ -24,7 +24,7 @@
                 <v-btn fab depressed x-small color="error" @click="cancel()">
                     <v-icon>mdi-reply</v-icon>
                 </v-btn>
-                <v-btn fab depressed small color="success" :disabled="!valid" @click="sendMessage()">
+                <v-btn fab depressed small color="success" @click="sendMessage()">
                     <v-icon>mdi-send</v-icon>
                 </v-btn>
             </v-card-actions>
@@ -52,7 +52,7 @@ export default {
 
         sendMessage()
         {
-            this.$emit('send-message', message )
+            this.$emit('send-message', this.message )
             this.menu    = false
             this.message = null
         }

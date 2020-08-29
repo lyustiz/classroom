@@ -8,27 +8,60 @@
         </template>
 
         <v-card>
-             <v-card-title class="pa-0">
-                <app-simple-toolbar dense title="Aula Virtual" @closeModal="dialog = false"></app-simple-toolbar>
-            </v-card-title>
+
+            <v-subheader class="indigo pl-6" dark>
+
+                <v-row no-gutters justify="space-between">
+                    <v-col cols="auto">Aula Virtual</v-col>
+                    <v-col cols="auto"><v-btn x-small icon dark color="white" @click="dialog = false"><v-icon>close</v-icon></v-btn></v-col>
+                </v-row>
+                 
+            </v-subheader>
             
             <v-card-text class="grey darken-4 meet-container">
+                
                 <v-row >
-                    <v-col cols="12" md="7" >
 
+                    <v-col cols="12" md="4" >
+                        
                         <v-row class="rounded-xl" justify="center">
                             
-                            <v-col cols="auto">
+                            <v-col cols="12">
 
                                 <!-- self video chat -->
+                                <v-speed-dial
+                                    v-model="tools"
+                                    top
+                                    left
+                                    direction="bottom"
+                                    open-on-hover
+                                    transition="scale-transition"
+                                    class="mb-n10"
+                                >
+                                    <template v-slot:activator>
+                                        <v-btn v-model="tools" color="white" fab x-small outlined>
+                                            <v-icon  v-if="tools">mdi-close</v-icon>
+                                            <v-icon  v-else>mdi-cog</v-icon>
+                                        </v-btn>
+                                    </template>
+                                    <v-btn fab dark small color="green" >
+                                        <v-icon>mdi-account-multiple-check</v-icon>
+                                    </v-btn>
+                                    <v-btn fab dark small color="indigo">
+                                        <v-icon>mdi-presentation</v-icon>
+                                    </v-btn>
+                                    <v-btn fab dark small color="red">
+                                        <v-icon>mdi-clipboard-file</v-icon>
+                                    </v-btn>
+                                </v-speed-dial>
                                 
-                                <video class="rounded-lg mb-n2 elevation-3" ref="local-video"  width="720" height="360" autoplay playsinline></video>
+                                <video class="rounded-lg mb-n2 elevation-3 local-video" ref="local-video" height="300"  autoplay playsinline></video>
                                 
                                 <v-toolbar color="rgba(0,0,0,0.1)" class="mt-n16 elevation-0 text-center rounded-b-lg">
 
                                     <v-row no-gutters justify="center">
                                         
-                                        <v-col class="text-left">
+                                        <v-col cols="auto" class="text-left">
                                             <v-btn fab dark x-small class="ma-1" :color="(hasAudio) ? null: 'red' " :outlined="hasAudio" @click="toggleAudio()">
                                                 <v-icon>{{ (hasAudio) ? 'mdi-volume-high': 'mdi-volume-mute' }}</v-icon>
                                             </v-btn>
@@ -48,8 +81,8 @@
                                             </v-btn>
                                         </v-col>
                                         
-                                        <v-col class="text-right" >
-                                           <v-btn fab dark x-small class="ma-1 ml-4" color="transparent" depressed>
+                                        <v-col cols="auto" class="text-right" >
+                                           <v-btn fab dark x-small class="ma-1 ml-4" color="transparent" depressed >
                                                 <v-icon>mdi-dots-vertical</v-icon>
                                             </v-btn>
                                         </v-col>
@@ -59,36 +92,83 @@
                                    
                             </v-col>
 
-                        </v-row>
-
-                        <v-row justify="center">
-                            <v-col>
-                                <v-card color="grey darken-3" class="rounded-xl">
-                                    <v-card-title class="indigo subtitle-2 white--text" dense>
-                                        Herramientas
-                                    </v-card-title>
-                                    <v-card-text class="py-6 px-4">
-                                        <v-tooltip top v-for="section in sections" :key="section.name" color="info">
-                                            <template v-slot:activator="{ on }">
-                                                <v-btn 
-                                                    fab 
-                                                    dark 
-                                                    depressed 
-                                                    v-on="on" 
-                                                    :color="section.color" 
-                                                    class="ml-1">
-                                                    <v-icon size="18" v-text="section.icon"></v-icon>
-                                                </v-btn>
-                                            </template>
-                                            <span v-text="section.label"></span>
-                                        </v-tooltip>
-                                    </v-card-text>
-                                    
-                                </v-card>
+                            <v-col cols="12" class="text-center">
+                                <video class="rounded-lg mb-n2 elevation-3 video-board" ref="video-board" width="410" height="170" controls autoplay playsinline></video>
                             </v-col>
 
+                        </v-row>
+
+                        <v-row no-gutters>
+
                             <v-col>
 
+                                
+
+                                <v-list subheader two-line dense width="100%" color="grey darken-3" class="rounded-lg" dark> 
+                                
+                                    <v-subheader class="indigo pl-6 rounded-t-lg">
+                                        Participantes {{members.length}} 
+                                    </v-subheader>
+
+                                    <!-- members video chat -->
+
+                                    <v-list-item-group class="members-container">
+
+                                    <v-list-item v-if="members.length < 1">
+                                        <v-list-item-avatar color="grey lighten-2">
+                                            <v-icon color="indigo" size="30">mdi-account-multiple-remove</v-icon>
+                                        </v-list-item-avatar>
+                                        <v-list-item-content>
+                                            <v-list-item-title>No existen Usuarios Conectados</v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>    
+                                    
+                                    <v-list-item v-for="(member, idx) in members" :key="idx" v-else> 
+                                        
+                                        <v-list-item-action tile class="mb-6">
+                                            
+                                            <video class="rounded-lg mb-n3 elevation-3 grey darken-4" :ref="`remote-video-${member.id}`" width="125" height="90" autoplay playsinline></video>
+                                            
+                                            <v-hover v-slot:default="{ hover }">
+                                            
+                                                <v-toolbar color="rgba(0,0,0,0.05)" class="mt-n16 elevation-0 text-center rounded-l-lg">
+                                                    <v-row no-gutters justify="center">
+                                                        
+                                                        <v-expand-x-transition>
+                                                            <v-btn fab dark x-small class="ma-1" :color="(hasAudio) ? null: 'red' " :outlined="hasAudio" v-show="hover" transition="slide-x-transition">
+                                                                <v-icon>{{ (hasAudio) ? 'mdi-volume-high': 'mdi-volume-mute' }}</v-icon>
+                                                            </v-btn>
+                                                        </v-expand-x-transition>
+                                                        
+                                                        <v-btn fab dark x-small class="ma-1 ml-4" color="transparent" depressed @click="startVideoChat(member.id)">
+                                                            <v-icon>mdi-dots-vertical</v-icon>
+                                                        </v-btn>
+                                                    
+                                                    </v-row>
+                                                </v-toolbar>
+                                                
+                                            </v-hover>
+
+                                        </v-list-item-action>
+
+                                        <v-list-item-content>
+                                            <v-list-item-title class="text.center">{{`${member.nb_usuario}`}}</v-list-item-title>
+                                            <v-list-item-subtitle>{{`${member.nb_nombres}`}}</v-list-item-subtitle>
+
+                                                <v-row no-gutters justify="space-around">
+                                                    <v-btn fab dark x-small class="ma-1 ml-4" color="transparent" depressed @click="handUp(member.id)">
+                                                        <v-icon color="amber">mdi-hand</v-icon>
+                                                    </v-btn>
+                                                    <send-message @sendMessage="sendMessage($event, member)"></send-message>
+                                                </v-row>
+                                        
+                                        </v-list-item-content>
+
+                                    </v-list-item> 
+
+                                    </v-list-item-group>
+
+                                </v-list>
 
                                 
                             </v-col> 
@@ -96,85 +176,26 @@
                         </v-row>
         
                     </v-col>
-                    <v-col cols="12" md="5">
+                    <v-col cols="12" md="8">
 
-                    <v-list subheader two-line dense width="100%" color="grey darken-3" class="rounded-xl" dark> 
-                    
-                        <v-subheader class="indigo pl-6 rounded-t-xl">
-                            Participantes {{members.length}} 
-                        </v-subheader>
+                        <v-row >
+                            <v-card color="white" class="board ma-2 rounded-lg" height="360">
+     
+                            <draw-board @onStream="videoBoard($event)"></draw-board>
 
-                        <!-- members video chat -->
-
-                        <v-list-item v-if="members.length < 1">
-                            <v-list-item-avatar color="grey lighten-2">
-                                <v-icon color="indigo" size="34">mdi-account-multiple-remove</v-icon>
-                            </v-list-item-avatar>
-                            <v-list-item-content>
-                                <v-list-item-title>No existen Usuarios Conectados</v-list-item-title>
-                            </v-list-item-content>
-                        </v-list-item>    
-                        
-                        <v-list-item v-for="(member, idx) in members" :key="idx" v-else> 
-                            
-                            <v-list-item-action tile class="mb-6">
-                                
-                                <video class="rounded-lg mb-n3 elevation-3 grey darken-4" :ref="[`remote-video-${member.id}`]" width="170" height="90" autoplay playsinline></video>
-                                
-                                <v-hover v-slot:default="{ hover }">
-                                   
-                                    <v-toolbar color="rgba(0,0,0,0.05)" class="mt-n16 elevation-0 text-center rounded-l-lg">
-                                        <v-row no-gutters justify="center">
-                                            
-                                            <v-expand-x-transition>
-                                                <v-btn fab dark x-small class="ma-1" :color="(hasAudio) ? null: 'red' " :outlined="hasAudio" v-show="hover" transition="slide-x-transition">
-                                                    <v-icon>{{ (hasAudio) ? 'mdi-volume-high': 'mdi-volume-mute' }}</v-icon>
-                                                </v-btn>
-                                            </v-expand-x-transition>
-                                            
-                                            <v-btn fab dark x-small class="ma-1 ml-4" color="transparent" depressed>
-                                                <v-icon>mdi-dots-vertical</v-icon>
-                                            </v-btn>
-                                           
-                                        </v-row>
-                                    </v-toolbar>
-                                    
-                                </v-hover>
-
-                            </v-list-item-action>
-
-                            <v-list-item-content>
-                                <v-list-item-title v-text="member.nb_usuario"></v-list-item-title>
-                                <v-list-item-subtitle v-text="member.nb_nombres"></v-list-item-subtitle>
-                            </v-list-item-content>
-
-                            <v-list-item-action>
-                                <v-btn fab dark x-small class="ma-1 ml-4" color="transparent" depressed @click="handUp(member.id)">
-                                    <v-icon color="amber">mdi-hand</v-icon>
-                                </v-btn>
-
-                            </v-list-item-action>
-
-                            <v-list-item-action>
-                                <send-message @sendMessage="sendMessage($event, member)"></send-message>
-                            </v-list-item-action>
-
-                            <v-list-item-action>
-                                <v-btn fab dark x-small class="ma-1 ml-4" color="transparent" depressed>
-                                    <v-icon color="grey lighten-2">mdi-dots-vertical</v-icon>
-                                </v-btn>
-                            </v-list-item-action>
-                        </v-list-item> 
-
-
-                    </v-list>
+                            </v-card>
+                              
+                        </v-row>
+                        <v-row>
+                            <chat-room :messages="chatMsg" @send-chat="sendChat($event)"></chat-room>
+                        </v-row>
 
                     </v-col>
                 </v-row>
             </v-card-text>
 
         </v-card>
-        
+        <pre>{{$data.peers}}</pre>
     </v-dialog>  
 </template>
 
@@ -182,13 +203,17 @@
 import AppData from '@mixins/AppData';
 import Pusher  from 'pusher-js';
 import Peer    from 'simple-peer';
+import Chat    from './ChatRoom';
 import Message from './TextMessage';
+import Draw    from './DrawBoard'
 export default {
 
     mixins:     [ AppData ],
 
     components:{
-        'send-message': Message
+        'send-message': Message,
+        'chat-room':    Chat,
+        'draw-board':   Draw
     },
 
     watch:
@@ -237,87 +262,100 @@ export default {
     },
 
     data: () => ({
-        instance: null,
-        channel:  null,
-        members:  [],
-        menu:     false,
+        instance:    null,
+        channel:     null,
+        members:     [],
+        personalMsg: [],
+        chatMsg:     [],
         dialog:   false,
         stream:   null,
         peers:    {},
+        tools:    false,
+        board:    false,
         media:    { audio: false,  video: false },
         player:   { muted: false,  paused: false },
+        ppalChanel: 'presence-clasrrorm-1-2-3-25082020',
         sections: [
                 { label: 'Asistencia', icon: 'mdi-account-check', component: 'tarea-alumno', color: 'blue', sectionWidth: '700' },
                 { label: 'Recursos', icon: 'mdi-book-open-page-variant', component: 'recurso-alumno', color: 'purple', sectionWidth: '700' },
                 { label: 'Presentacion', icon: 'mdi-presentation', component: 'recurso-alumno', color: 'green', sectionWidth: '700' },
             ]
-            /*
-            getDisplayMedia()
-                        {
-                video: {
-                    cursor: 'always' | 'motion' | 'never',
-                    displaySurface: 'application' | 'browser' | 'monitor' | 'window'
-                }
-            }
-                        
-                        */
     }),
 
     methods:
     {
         async list()
         {
-            if(!this.credentials)
-            {
-                await this.$store.dispatch('credentials', this.idUser).then(users => {
-                    console.log('credenciales recibidas')
-                }).catch(error => 
-				{
-					console.log('Error en Credentiasls')
-				})
-            } 
-            
-            await this.$store.dispatch('instance', this.idUser).then(pusher => {
-                this.instance = pusher
-                console.log('Creada Instancia de Pusher')
-            }).catch(error => 
-            {
-                console.log('Error al iniciar de Pusher', error)
-            })
+            await this.getInstance();
 
             Pusher.logToConsole = true;
 
             if(!this.chanel)
             {
-                this.setChanel()
+                this.setChanels()
             }
 
-            //this.setupVideoChat()
+            this.setupVideoChat()
         },
 
-        setChanel()
+        async getInstance()
         {
-            this.channel  = this.instance.subscribe('presence-clasrrorm-1-2-3-25082020');
+            if(!this.credentials)
+            {
+                await this.$store.dispatch('credentials', this.idUser).then(users => {
+                    console.log('credenciales obtenidad')
+                }).catch(error => 
+				{
+					console.log('Error en Credentiasls')
+				})
+            }
+
+            if(!this.instance)
+            {
+
+                await this.$store.dispatch('instance', this.idUser).then(pusher => {
+                    this.instance = pusher
+                    console.log('Creada Instancia de Pusher')
+                }).catch(error => 
+                {
+                    console.log('Error al iniciar de Pusher', error)
+                })
+            }
+        },
+
+        setChanels()
+        {
+            this.channel  = this.instance.subscribe(this.ppalChanel); //curso/materia/docente/dia
             
-            this.channel.bind(`client-${this.idUser}`, (signal) => 
+            this.channel.bind(`client-${this.idUser}`, (mensaje) => 
             {
-                console.log('mensaje->', signal)                 //llamada p2p
-                const peer = this.getPeer(signal.userId, false);
-                peer.signal(signal.data);
+                console.log('personal recibido..', mensaje)                 //llamada p2p /mensaje personal
+
+                switch (mensaje.type) {
+                    case 'message':
+                        this.personal[mesaje.userId].push(mensaje)
+                        break;
+                    case 'stream':
+                        console.log('answer', mensaje)
+                        const peer = this.getPeer(mensaje.userId, false);
+                        peer.signal(mensaje.data);
+                    default:
+                        break;
+                }
             }); 
 
-            this.channel.bind(`client-video-room`, (signal) =>  //streaming
+            this.channel.bind(`client-video-room`, (signal) =>      
             {
-                console.log('mensaje->', signal) //stream video
-                const peer = this.getPeer(signal.userId, false);
-                peer.signal(signal.data);
+                console.log('video recibido...', signal)                    //stream video
             }); 
 
-            this.channel.bind(`client-chat-room`, (signal) => 
+            this.channel.bind(`client-chat-room`, (mensaje) => 
             {
-                console.log('chat->', signal)                  //mensajes tipo: atencion y  chat
-                peer.signal(signal.data);
+                console.log('chat recibido...', mensaje)  
+                this.chatMsg.push(mensaje)                                  //mensajes tipo:  chat
             }); 
+
+            /* Members Presence */
 
             this.channel.bind("pusher:subscription_succeeded", (members) =>
             {
@@ -334,12 +372,15 @@ export default {
             {
                 this.showMessage(`ingresó ${member.info.nb_usuario} (${member.info.nb_nombres})`)
                 this.members.push(member.info)  
+                this.startVideoChat(member.info.id)
+
             });
 
             this.channel.bind('pusher:member_removed', (member) => 
             {
                 this.showMessage(`salio ${member.info.nb_usuario} (${member.info.nb_nombres})`)
                 this.members = this.members.filter((membr) => { return membr.id != member.id})
+                delete this.peers[member.info.id];
             });
 
             console.log(this.instance, this.channel)
@@ -355,16 +396,21 @@ export default {
                                         trickle: false
                                     });
 
-                peer.on('error', err => this.showError(err))
+                peer.on('error', err => {
+                    console.log('peer error', err)
+                    this.showError(err)
+                })
 
                 peer.on('signal', (data) => {
+                    console.log('señal peer')
                     this.channel.trigger(`client-${userId}`, {type:'stream', userId: this.idUser, data: data});
                 })
                 .on('connect', () => {
                     console.log('Se ha establecido la conexion')
                 })
                 .on('stream', (stream) => {
-                    this.$refs['remote-video'].srcObject = stream;
+                    console.log('Se ha estRecibiendo stream')
+                    this.$refs[`remote-video-${userId}`][0].srcObject = stream;
                 })
                 .on('close', () => {
                     const peer = this.peers[userId];
@@ -384,16 +430,43 @@ export default {
         {
             let mensage = { type: 'message', text} 
             this.channel.trigger(`client-${user.id}`, mensage );
+            console.log('mensaje enviado...',text)
         },
 
-        startVideoChat(user) {
-            return
-            this.getPeer(user.id, true);
+        sendChat(text)
+        {
+            let user    = this.channel.members.me.info
+            let mensage = { type: 'chat', text, user} 
+            this.channel.trigger(`client-chat-room`, mensage );
+            this.chatMsg.push(mensage)
+            console.log('chat enviado..',text)
+        },
+
+        startVideoChat(userId) {
+            this.getPeer(userId, true);
+        },
+
+        startMeet()
+        {
+            this.setChanels()
+            this.setupVideoChat()
         },
 
         endMeet()
         {
-            console.log(this.stream.getVideoStream())
+            this.instance.unsubscribe(this.ppalChanel);
+            this.chanel = null
+            
+            for (const userId in this.peers) {
+                if (this.peers.hasOwnProperty(userId)) {
+                    this.peers[userId].destroy();
+                    delete this.peers[userId];
+                }
+            }
+
+            this.$refs['local-video'].pause()
+
+            this.stream.getTracks().forEach( (track) => track.stop());
         },
 
         async setupVideoChat() {
@@ -422,7 +495,7 @@ export default {
 
                     if(device.kind == 'videoinput')
                     {
-                        this.media.video = { width: 740, height: 320, frameRate: { ideal: 10, max: 15 } };
+                        this.media.video = { width: 435, height: 310, frameRate: { ideal: 10, max: 15 } };
                     }
                 }, this);
             })
@@ -474,7 +547,6 @@ export default {
                 this.media.video   = videoTracks[0].enabled 
                 this.player.paused = !videoTracks[0].enabled 
             }
-
         },
 
         toggleMicrophone()
@@ -495,17 +567,44 @@ export default {
 
         },
 
+        videoFullscreen(refVideo)
+        {
+            this.$ref[refVideo].requestFullscreen()
+        },
+
+        videoBoard(stream)
+        {
+            console.log('stream',stream)   
+            this.$refs['video-board'].srcObject = stream
+        }
+
+    /*
+            getDisplayMedia()
+                        {
+                video: {
+                    cursor: 'always' | 'motion' | 'never',
+                    displaySurface: 'application' | 'browser' | 'monitor' | 'window'
+                }
+            }
+                        */
        
     }
 }
 </script>
 
 <style >
+.local-video{
+    width: 100%;
+}
+.board{
+    width: 100%;
+}
 .meet-container{
     max-height: 93vh;
 }
-.user-container{
-    max-height: 82vh;
+.members-container{
+    height: 40vh;
+    max-height: 40vh;
     overflow-y: scroll;
 }
 </style>
