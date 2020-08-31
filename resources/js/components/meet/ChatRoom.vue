@@ -31,7 +31,7 @@
         </v-virtual-scroll>
 
         <v-row class="mx-1 mb-n2">
-            <v-col cols="10">
+            <v-col>
                 <v-text-field
                     v-model="message"
                     label="Mensaje..."
@@ -45,8 +45,8 @@
                     @keyup.enter="sendMessage()"
                 ></v-text-field>
             </v-col>
-            <v-col cols="2">
-                <v-btn fab depressed small color="success" @click="sendMessage()">
+            <v-col cols="auto">
+                <v-btn fab x-small class="mt-1" color="success" @click="sendMessage()">
                     <v-icon>mdi-send</v-icon>
                 </v-btn>
             </v-col>
@@ -86,6 +86,7 @@ export default {
         sendMessage()
         {
             if(!this.message) return
+            if(this.message.length < 1) return
             this.$emit('send-chat', this.message )
             this.message = null
             //this.$vuetify.goTo("#newmsg", {duration: 800, offset: 0, easing: 'easeInOutCubic'})

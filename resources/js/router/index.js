@@ -150,6 +150,7 @@ import TipoNotificacion from '@pages/TipoNotificacion/TipoNotificacion.vue';
 import Notificacion     from '@pages/notificacion/notificacion.vue';
 
 import MeetDocente      from '@components/meet/docente/meetDocente.vue';
+import MeetAlumno       from '@components/meet/alumno/meetAlumno.vue';
 
 //report
 /* import AppReporte       from '@pages/reportes/AppReporte.vue' */
@@ -1052,11 +1053,21 @@ export default new Router({
             { 
                 path: 'meet-docente',
                 name: 'meet-docente',
-                label: 'Llamada Docente',
+                label: 'Clase Docente',
                 icon: 'mdi-google-classroom',
                 profile: 'secretaria',
                 visible: true,
                 component: MeetDocente
+            },
+
+            { 
+                path: 'meet-alumno',
+                name: 'meet-alumno',
+                label: 'Clase Alumno',
+                icon: 'mdi-google-classroom',
+                profile: 'secretaria',
+                visible: true,
+                component: MeetAlumno
             },
 
             //reporte

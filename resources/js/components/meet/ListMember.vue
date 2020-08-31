@@ -7,7 +7,7 @@
         </v-subheader>
         <v-divider dark></v-divider>
 
-        <div class="members-container">
+        <div class="members-container py-1">
 
             <v-list-item v-if="members.length < 1">
                 <v-list-item-avatar color="grey lighten-2">
@@ -20,7 +20,7 @@
             
             <v-list-item v-for="(member, idx) in members" :key="idx" v-else> 
                 
-                <v-list-item-action tile class="mr-1 ml-n1">
+                <v-list-item-action tile class="mr-2 ml-n2 mt-0 mb-1">
                     <slot name="video" :member="member"></slot>
                 </v-list-item-action>
 

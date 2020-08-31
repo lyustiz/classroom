@@ -13,8 +13,10 @@
 
                     <v-col cols="12">
                         <list-members :members="members">
-                            <template v-slot:video="member">  
-                                <remote-video :stream="stream" :ref="`remote-video-${member.id}`"></remote-video>
+                            <template v-slot:video>  
+                                <v-avatar>
+                                   <v-icon size="40" color="info">mdi-account-circle</v-icon>
+                                </v-avatar>
                             </template>
                         </list-members>
                     </v-col>
@@ -28,7 +30,7 @@
                 <v-row dense>
 
                     <v-col cols="12">
-                        <draw-board @onStream="videoBoard($event)" class="board white rounded-lg elevation-3"></draw-board>
+                        <board-video :stream="stream" style="height: 52vh;"></board-video>
                     </v-col>
 
                     <v-col cols="12">
@@ -50,9 +52,8 @@ import AppData     from '@mixins/AppData';
 import Pusher      from 'pusher-js';
 import Peer        from 'simple-peer';
 import Chat        from '../ChatRoom';
-import Draw        from '../DrawBoard'
 import LocalVideo  from '../LocalVideo'
-import RemoteVideo from '../RemoteVideo'
+import BoardVideo  from '../BoardVideo'
 import Listmembers from '../ListMember'
 export default {
 
@@ -61,10 +62,9 @@ export default {
     components:
     {
         'chat-room':    Chat,
-        'draw-board':   Draw,
         'local-video':  LocalVideo,
-        'remote-video': RemoteVideo,
-        'list-members': Listmembers
+        'list-members': Listmembers,
+        'board-video':  BoardVideo
     },
 
     created()
@@ -408,9 +408,8 @@ export default {
 </script>
 
 <style >
-.board{
+.board-video{
     height: 50vh;
-    
 }
 .meet-container{
     min-height: 100%;

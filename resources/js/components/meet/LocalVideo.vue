@@ -1,6 +1,6 @@
 <template>
 
-    <div>
+    <div class="mb-2">
 
     <video class="rounded-lg mb-n2 elevation-3 player" ref="player" autoplay playsinline></video>
         
@@ -15,11 +15,11 @@
             </v-col>
 
             <v-col class="text-center">
-                <v-btn fab dark small class="ma-1" :color="(hasCamera) ? null: 'red' " :outlined="hasCamera" @click="$emit('togle-video')">
+                <v-btn fab dark small class="ma-1" :color="(hasCamera) ? null: 'red' " :outlined="hasCamera" @click="$emit('toggle-video')">
                     <v-icon>{{ (hasCamera) ? 'mdi-video': 'mdi-video-off' }}</v-icon>
                 </v-btn>
             
-                <v-btn fab dark small class="ma-1" :color="(hasMicrophone) ? null: 'red' " :outlined="hasMicrophone" @click="$emit('togle-microphone')">
+                <v-btn fab dark small class="ma-1" :color="(hasMicrophone) ? null: 'red' " :outlined="hasMicrophone" @click="$emit('toggle-microphone')">
                     <v-icon>{{ (hasMicrophone) ? 'mdi-microphone': 'mdi-microphone-off' }}</v-icon>
                 </v-btn>
 

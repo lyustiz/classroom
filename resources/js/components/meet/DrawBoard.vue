@@ -9,7 +9,7 @@
             <canvas class="draw-board rounded-lg" ref="draw-board" v-on="on"
                 @mousedown="startDraw($event)"
                 @mouseup="stopDraw($event)"
-                @mousemove="drawer($event)"
+                @mousemove="drawer($event, false)"
                 @mouseleave="stopDraw($event)"
             ></canvas>
 
@@ -60,6 +60,9 @@
         <v-btn fab dark x-small color="amber" @click="lineColor='#FFC107'">
             <v-icon>mdi-invert-colors</v-icon>
         </v-btn>
+        <v-btn fab dark x-small color="black" @click="lineColor='#000000'">
+            <v-icon>mdi-invert-colors</v-icon>
+        </v-btn>
     </v-speed-dial>
 
     <v-speed-dial
@@ -76,16 +79,16 @@
                 <v-icon  v-else>{{ shapeIcon }}</v-icon>
             </v-btn>
         </template>
-        <v-btn fab dark x-small color="indigo" @click="setShape('circle', 'mdi-shape-circle-plus', 'indigo')">
+        <v-btn fab dark small color="indigo" @click="setShape('circle', 'mdi-shape-circle-plus', 'indigo')">
             <v-icon>mdi-shape-circle-plus</v-icon>
         </v-btn>
-        <v-btn fab dark x-small color="green" @click="setShape('pencil', 'mdi-lead-pencil', 'green')">
+        <v-btn fab dark small color="green" @click="setShape('pencil', 'mdi-lead-pencil', 'green')">
             <v-icon>mdi-lead-pencil</v-icon>
         </v-btn>
-        <v-btn fab dark x-small color="red" @click="setShape('text', 'mdi-format-annotation-plus', 'red')">
+        <v-btn fab dark small color="red" @click="setShape('text', 'mdi-format-annotation-plus', 'red')">
             <v-icon>mdi-format-annotation-plus</v-icon>
         </v-btn>
-        <v-btn fab dark x-small color="blue" @click="setShape('eraser', 'mdi-eraser', 'blue')">
+        <v-btn fab dark small color="blue" @click="setShape('eraser', 'mdi-eraser', 'blue')">
             <v-icon>mdi-eraser</v-icon>
         </v-btn>
     </v-speed-dial>
@@ -104,16 +107,16 @@
                 <v-icon  v-else>mdi-tools</v-icon>
             </v-btn>
         </template>
-        <v-btn fab dark x-small color="orange" @click="clean()">
+        <v-btn fab dark small color="blue" @click="clean()">
             <v-icon>mdi-television-clean</v-icon>
         </v-btn>
-        <v-btn fab dark x-small color="blue" @click="fullScreen()">
+        <v-btn fab dark small color="red" @click="fullScreen()">
             <v-icon>{{ (this.isfullScreen) ? 'mdi-fullscreen-exit' : 'mdi-fullscreen'}}</v-icon>
         </v-btn>
-        <v-btn fab dark x-small color="red" @click="$refs['upload-image'].click()">
+        <v-btn fab dark small color="amber" @click="$refs['upload-image'].click()">
             <v-icon>mdi-image-plus</v-icon>
         </v-btn>
-        <v-btn fab dark x-small color="green" @click="downloadImage()">
+        <v-btn fab dark small color="green" @click="downloadImage()">
             <v-icon>mdi-image-area-close</v-icon>
         </v-btn>
     </v-speed-dial>
@@ -206,9 +209,9 @@ export default {
             this.draw = false; 
         },
 
-        drawer(event)
+        drawer(event, touch)
         {
-            if (!this.draw) return; 
+            if (!this.draw && !touch) return; 
 
             this.context.lineWidth = 5; 
 
