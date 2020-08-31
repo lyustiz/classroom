@@ -1,125 +1,128 @@
 <template>
 
-    <div class="rounded-lg" ref="board-container" >
+<div ref="board-container"  class="board-container" @resize="resize()">
 
-        <v-speed-dial
-            v-model="colors"
-            left
-            top
-            direction="bottom"
-            transition="scale-transition"
-            absolute
-            class="ml-10"
-        >
-            <template v-slot:activator>
-                <v-btn v-model="colors" dark :color="lineColor" fab x-small>
-                    <v-icon  v-if="colors">mdi-close</v-icon>
-                    <v-icon  v-else>mdi-palette</v-icon>
-                </v-btn>
-            </template>
-            <v-btn fab dark x-small color="brown" @click="lineColor='#795548'">
-                <v-icon>mdi-invert-colors</v-icon>
-            </v-btn>
-            <v-btn fab dark x-small color="green" @click="lineColor='#4CAF50'">
-                <v-icon>mdi-invert-colors</v-icon>
-            </v-btn>
-            <v-btn fab dark x-small color="indigo" @click="lineColor='#3F51B5'">
-                <v-icon>mdi-invert-colors</v-icon>
-            </v-btn>
-            <v-btn fab dark x-small color="red" @click="lineColor='#F44336'">
-                <v-icon>mdi-invert-colors</v-icon>
-            </v-btn>
-            <v-btn fab dark x-small color="amber" @click="lineColor='#FFC107'">
-                <v-icon>mdi-invert-colors</v-icon>
-            </v-btn>
-        </v-speed-dial>
+    <v-menu v-model="textMenu" absolute :disabled="disableMenu" :close-on-content-click="false" :close-on-click="false">
 
-        <v-speed-dial
-            v-model="shapeTools"
-            left
-            top
-            of
-            direction="bottom"
-            transition="scale-transition"
-            absolute
-        >
-            <template v-slot:activator>
-                <v-btn v-model="shapeTools" dark :color="shapeColor" fab x-small>
-                    <v-icon  v-if="shapeTools">mdi-close</v-icon>
-                    <v-icon  v-else>{{ shapeIcon }}</v-icon>
-                </v-btn>
-            </template>
-            <v-btn fab dark x-small color="indigo" @click="setShape('circle', 'mdi-shape-circle-plus', 'indigo')">
-                <v-icon>mdi-shape-circle-plus</v-icon>
-            </v-btn>
-            <v-btn fab dark x-small color="green" @click="setShape('pencil', 'mdi-lead-pencil', 'green')">
-                <v-icon>mdi-lead-pencil</v-icon>
-            </v-btn>
-            <v-btn fab dark x-small color="red" @click="setShape('text', 'mdi-format-annotation-plus', 'red')">
-                <v-icon>mdi-format-annotation-plus</v-icon>
-            </v-btn>
-            <v-btn fab dark x-small color="blue" @click="setShape('eraser', 'mdi-eraser', 'blue')">
-                <v-icon>mdi-eraser</v-icon>
-            </v-btn>
-        </v-speed-dial>
+        <template v-slot:activator="{ on }">
+            
+            <canvas class="draw-board rounded-lg" ref="draw-board" v-on="on"
+                @mousedown="startDraw($event)"
+                @mouseup="stopDraw($event)"
+                @mousemove="drawer($event)"
+                @mouseleave="stopDraw($event)"
+            ></canvas>
 
-        <v-speed-dial
-            v-model="tools"
-            right
-            top
-            direction="bottom"
-            transition="scale-transition"
-            absolute
-        >
-            <template v-slot:activator>
-                <v-btn v-model="colors" dark color="indigo" fab x-small>
-                    <v-icon  v-if="tools">mdi-close</v-icon>
-                    <v-icon  v-else>mdi-tools</v-icon>
-                </v-btn>
-            </template>
-            <v-btn fab dark x-small color="orange" @click="clean()">
-                <v-icon>mdi-television-clean</v-icon>
+        </template>
+
+        <v-text-field
+            outlined
+            v-model="text"
+            single-line
+            hide-details
+            dense
+            :color="lineColor"
+            append-outer-icon="mdi-close-circle"
+            append-icon="mdi-check-circle"
+            @click:append="setText($event)"
+            @click:append-outer="closeText()"
+        ></v-text-field>
+
+    </v-menu>
+
+    <v-speed-dial
+        v-model="colors"
+        top
+        left
+        direction="bottom"
+        transition="scale-transition"
+        absolute
+        class="ml-10"
+    >
+        <template v-slot:activator>
+            <v-btn v-model="colors" dark :color="lineColor" fab x-small>
+                <v-icon  v-if="colors">mdi-close</v-icon>
+                <v-icon  v-else>mdi-palette</v-icon>
             </v-btn>
-            <v-btn fab dark x-small color="blue" @click="fullScreen()">
-                <v-icon>{{ (this.isfullScreen) ? 'mdi-fullscreen-exit' : 'mdi-fullscreen'}}</v-icon>
+        </template>
+        <v-btn fab dark x-small color="brown" @click="lineColor='#795548'">
+            <v-icon>mdi-invert-colors</v-icon>
+        </v-btn>
+        <v-btn fab dark x-small color="green" @click="lineColor='#4CAF50'">
+            <v-icon>mdi-invert-colors</v-icon>
+        </v-btn>
+        <v-btn fab dark x-small color="indigo" @click="lineColor='#3F51B5'">
+            <v-icon>mdi-invert-colors</v-icon>
+        </v-btn>
+        <v-btn fab dark x-small color="red" @click="lineColor='#F44336'">
+            <v-icon>mdi-invert-colors</v-icon>
+        </v-btn>
+        <v-btn fab dark x-small color="amber" @click="lineColor='#FFC107'">
+            <v-icon>mdi-invert-colors</v-icon>
+        </v-btn>
+    </v-speed-dial>
+
+    <v-speed-dial
+        v-model="shapeTools"
+        left
+        top
+        direction="bottom"
+        transition="scale-transition"
+        absolute
+    >
+        <template v-slot:activator>
+            <v-btn v-model="shapeTools" dark :color="shapeColor" fab x-small>
+                <v-icon  v-if="shapeTools">mdi-close</v-icon>
+                <v-icon  v-else>{{ shapeIcon }}</v-icon>
             </v-btn>
-            <v-btn fab dark x-small color="red" @click="$refs['upload-image'].click()">
-                <v-icon>mdi-image-plus</v-icon>
+        </template>
+        <v-btn fab dark x-small color="indigo" @click="setShape('circle', 'mdi-shape-circle-plus', 'indigo')">
+            <v-icon>mdi-shape-circle-plus</v-icon>
+        </v-btn>
+        <v-btn fab dark x-small color="green" @click="setShape('pencil', 'mdi-lead-pencil', 'green')">
+            <v-icon>mdi-lead-pencil</v-icon>
+        </v-btn>
+        <v-btn fab dark x-small color="red" @click="setShape('text', 'mdi-format-annotation-plus', 'red')">
+            <v-icon>mdi-format-annotation-plus</v-icon>
+        </v-btn>
+        <v-btn fab dark x-small color="blue" @click="setShape('eraser', 'mdi-eraser', 'blue')">
+            <v-icon>mdi-eraser</v-icon>
+        </v-btn>
+    </v-speed-dial>
+
+    <v-speed-dial
+        v-model="tools"
+        right
+        top
+        direction="bottom"
+        transition="scale-transition"
+        absolute
+    >
+        <template v-slot:activator>
+            <v-btn v-model="colors" dark color="indigo" fab x-small>
+                <v-icon  v-if="tools">mdi-close</v-icon>
+                <v-icon  v-else>mdi-tools</v-icon>
             </v-btn>
-            <v-btn fab dark x-small color="green" @click="downloadImage()">
-                <v-icon>mdi-image-area-close</v-icon>
-            </v-btn>
-        </v-speed-dial>
+        </template>
+        <v-btn fab dark x-small color="orange" @click="clean()">
+            <v-icon>mdi-television-clean</v-icon>
+        </v-btn>
+        <v-btn fab dark x-small color="blue" @click="fullScreen()">
+            <v-icon>{{ (this.isfullScreen) ? 'mdi-fullscreen-exit' : 'mdi-fullscreen'}}</v-icon>
+        </v-btn>
+        <v-btn fab dark x-small color="red" @click="$refs['upload-image'].click()">
+            <v-icon>mdi-image-plus</v-icon>
+        </v-btn>
+        <v-btn fab dark x-small color="green" @click="downloadImage()">
+            <v-icon>mdi-image-area-close</v-icon>
+        </v-btn>
+    </v-speed-dial>
 
-        <v-menu v-model="textMenu" absolute :disabled="disableMenu" :close-on-content-click="false" :close-on-click="false">
+    <a ref="download-image" class="d-none"></a>
+    <input ref="upload-image" class="d-none" type="file" accept="image/x-png,image/gif,image/jpeg" @change="uploadImage($event)">
 
-            <template v-slot:activator="{ on }">
-                <canvas class="draw-board rounded-lg" ref="draw-board" v-on="on"
-                    @mousedown="startDraw($event)"
-                    @mouseup="stopDraw($event)"
-                    @mousemove="drawer($event)"
-                ></canvas>
-            </template>
+</div>
 
-            <v-text-field
-                outlined
-                v-model="text"
-                single-line
-                hide-details
-                dense
-                :color="lineColor"
-                append-outer-icon="mdi-close-circle"
-                append-icon="mdi-check-circle"
-                @click:append="setText($event)"
-                @click:append-outer="closeText()"
-            ></v-text-field>
-
-        </v-menu>
-
-        <a ref="download-image" class="d-none"></a>
-        <input ref="upload-image" class="d-none" type="file" accept="image/x-png,image/gif,image/jpeg" @change="uploadImage($event)">
-    </div>
-    
 </template>
 
 <script>
@@ -127,8 +130,9 @@ export default {
 
     mounted()
     {
-        this.canvas = this.$refs['draw-board'];
-        this.context = this.canvas.getContext('2d'); 
+        this.container = this.$refs["board-container"]
+        this.canvas    = this.$refs['draw-board'];
+        this.context   = this.canvas.getContext('2d'); 
         
         this.$nextTick().then( () => {
             this.resize()
@@ -138,6 +142,7 @@ export default {
     },
 
     data: () => ({
+        container:    null,
         canvas:       null,
         context:      null,
         draw:         false,
@@ -159,20 +164,35 @@ export default {
     {
         resize()
         {
-            this.context.canvas.width = this.$parent.$el.clientWidth;  
-            this.context.canvas.height = this.$parent.$el.clientHeight;
+            if(!this.fullScreen)
+            {
+               
+                this.context.canvas.width  = screen.width;  
+                this.context.canvas.height = screen.height  
+
+            }else{
+                this.context.canvas.width  = this.container.clientWidth;  
+                this.context.canvas.height = this.container.clientHeight;
+            }
         },
 
         streamCanvas()
         {
-            let stream = this.canvas.captureStream(25)
-            this.$emit('onStream', stream)            
+           try {
+              let stream = this.canvas.captureStream(25) 
+              this.$emit('onStream', stream) 
+           } catch (error) {
+               this.showError('Error a iniciar transmision de Pizarra' + error)
+           }
         },
 
         position(event)
         {
-           this.coordinates.x = event.clientX - (this.canvas.offsetParent.offsetLeft + this.canvas.offsetLeft); 
-	       this.coordinates.y = event.clientY - (this.canvas.offsetParent.offsetTop + this.canvas.offsetTop);
+           this.coordinates.x = event.clientX - (this.container.offsetLeft + this.canvas.offsetLeft); 
+
+           let top = ((this.container.offsetParent) ? this.container.offsetParent.offsetTop : 0) + this.container.offsetTop  + this.canvas.offsetTop
+
+           this.coordinates.y = event.clientY - (top);
         },
 
         startDraw(event){ 
@@ -317,16 +337,16 @@ export default {
 
         fullScreen()
         {
-            if(this.isfullScreen)
+            if(window.innerHeight == screen.height)
             {
                 document.exitFullscreen() 
                 this.isfullScreen = false
             }else{
-                this.$refs['board-container'].requestFullscreen() 
+                this.container.requestFullscreen() 
                 this.isfullScreen = true
             }
-           
-            //this.resize()
+            this.resize()
+            this.clean()
         },
     } 
 
@@ -334,9 +354,18 @@ export default {
 </script>
 
 <style>
+.board-container{
+    position: relative;
+    height: 50vh;
+}
+
 .draw-board {
-    width: 100%;
-    cursor: crosshair
+    cursor: crosshair;
+}
+
+.fullscreen{
+    width: 100vw;
+    height: 100vh;
 }
 
 </style>

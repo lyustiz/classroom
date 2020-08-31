@@ -2,9 +2,10 @@
         
     <v-list subheader dense width="100%" color="grey darken-3" class="rounded-lg" dark>
             
-        <v-subheader class="indigo pl-6 rounded-t-lg" >
+        <v-subheader dark inset class="rounded-t-lg ">
             Chat
         </v-subheader>
+        <v-divider dark></v-divider>
 
         <v-virtual-scroll height="147" :items="messages" :item-height="45">
 

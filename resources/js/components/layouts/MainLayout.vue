@@ -5,7 +5,7 @@
 
         <!--Navegacion lateral-->
         <v-navigation-drawer
-            :value="toggleMenu"
+            :value="(toggleMenu)?toggleMenu:false"
             :mini-variant="iconMenu"
             :clipped="clipped"
             :fixed="fixed"

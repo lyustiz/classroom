@@ -286,14 +286,14 @@ export default {
     {
         async list()
         {
-            await this.getInstance();
+           /*  await this.getInstance();
 
             Pusher.logToConsole = true;
 
             if(!this.chanel)
             {
                 this.setChanels()
-            }
+            } */
 
             this.setupVideoChat()
         },

@@ -149,6 +149,8 @@ import TipoPrioridad    from '@pages/tipoPrioridad/tipoPrioridad.vue';
 import TipoNotificacion from '@pages/TipoNotificacion/TipoNotificacion.vue';
 import Notificacion     from '@pages/notificacion/notificacion.vue';
 
+import MeetDocente      from '@components/meet/docente/meetDocente.vue';
+
 //report
 /* import AppReporte       from '@pages/reportes/AppReporte.vue' */
 
@@ -1045,6 +1047,16 @@ export default new Router({
                 profile: 'secretaria',
                 visible: true,
                 component: Configuracion
+            },
+
+            { 
+                path: 'meet-docente',
+                name: 'meet-docente',
+                label: 'Llamada Docente',
+                icon: 'mdi-google-classroom',
+                profile: 'secretaria',
+                visible: true,
+                component: MeetDocente
             },
 
             //reporte
