@@ -18,7 +18,7 @@ class ReporteModel extends Model
 						   )
 	{
                 
-        $this->query = \DB::table($tabla)->distinct();
+        $this->query = \DB::connection('mysqlviews')->table($tabla)->distinct();   
         
         foreach ($campos as $key => $campo) {
 
