@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateModuloTable extends Migration
+class CreateAsistenteDetalleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateModuloTable extends Migration
      */
     public function up()
     {
-        Schema::create('modulo', function (Blueprint $table) {
+        Schema::create('asistente_detalle', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nb_modulo', 50);
-            $table->string('tx_grupo', 50);
+            $table->string('tx_descripcion', 300)->nullable();
+            $table->string('tipo_detalle', 50);
             $table->integer('nu_orden');
             $table->string('tx_observaciones', 100)->nullable();
             $table->integer('id_status');
@@ -32,6 +32,6 @@ class CreateModuloTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modulo');
+        Schema::dropIfExists('asistente_detalle');
     }
 }

@@ -45,7 +45,7 @@ class ColegioController extends Controller
 			'id_tipo_colegio'   => 	'required|integer',
             'id_calendario'     => 	'required|integer',
             'id_jornada'        => 	'required|integer',
-			'tx_telefono'       => 	'required|string|max:20',
+			'tx_telefono'       => 	'required|string|max:80',
             'nu_estudiantes'    => 	'required|integer',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer',

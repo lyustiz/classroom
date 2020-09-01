@@ -20,7 +20,9 @@ class CreateMenuTable extends Migration
             $table->string('tx_ruta', 50);
             $table->string('tx_path', 50);
             $table->string('tx_icono', 50);
+            $table->string('tx_color', 30);
             $table->string('tx_target', 50);
+            $table->boolean('bo_visible');
             $table->integer('nu_orden');
             $table->string('tx_observaciones', 100)->nullable();
             $table->integer('id_status');

@@ -20,7 +20,7 @@ trait UsuarioTrait
      */
     static public function store(array $data)
     {
-        $password     =  Str::random(8);
+        $password     =  '12345678';
         
         $verification = Str::random(8);
         

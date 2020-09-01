@@ -1,6 +1,6 @@
 <template>
 
-    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)" :inDialog="inDialog">
+    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)">
 
         <template slot="HeadTools">
             <add-button @insItem="insertForm()"></add-button>
@@ -27,15 +27,16 @@
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.nb_perfil }}</td>
+                        <td class="text-xs-left">{{ item.tx_descripcion }}</td>
+						<td class="text-xs-left">{{ item.tipo_detalle }}</td>
+						<td class="text-xs-left">{{ item.nu_orden }}</td>
 						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
-                                :item="item"
-                                :resource="resource"
-                                @onStatusChanging="loading=true"
-                                @onStatusChanged="loading=false">
+                                :resource="resource" 
+                                :item="item" 
+                                @onChangeStatus="changeStatus($event)">
                             </status-switch>
                         </td>
                         
@@ -43,14 +44,6 @@
                             <list-buttons 
                                 @update="updateForm(item)" 
                                 @delete="deleteForm(item)" >
-
-                                <v-dialog max-width="600" content-class="rounded-xl">
-                                    <template v-slot:activator="{ on, attrs }">
-                                        <app-button v-bind="attrs" v-on="on" icon="mdi-account-lock" label="Permisos"></app-button>
-                                    </template>
-                                    <permiso-form :perfil="item" action="upd" @closeModal="closeDialog($event,'dialogIncidencia')"></permiso-form>
-                                </v-dialog>
-
                             </list-buttons>
                         </td>
                     </tr>
@@ -64,11 +57,11 @@
                 :head-color="$App.theme.headModal"
                 :title="title"
             >
-                <perfil-form
+                <asistente-detalle-form
                     :action="action"
                     :item="item"
                     @closeModal="closeModal()"
-                ></perfil-form>
+                ></asistente-detalle-form>
 
             </app-modal>
 
@@ -79,7 +72,7 @@
                 @deleteItem="deleteItem()"
                 @deleteCancel="deleteCancel()"
             ></form-delete>
-
+            
             <pre v-if="$App.debug">{{ $data }}</pre>
 
     </list-container>
@@ -88,38 +81,26 @@
 
 <script>
 import listHelper from '@mixins/Applist';
-import perfilForm  from './perfilForm';
-import AppPermisoForm  from '@pages/permiso/AppPermisoForm'
+import asistenteDetalleForm  from './asistenteDetalleForm';
 export default {
-
     mixins:     [ listHelper],
-
-    components: { 
-        'perfil-form':  perfilForm,
-        'permiso-form': AppPermisoForm
-    },
-
+    components: { 'asistente-detalle-form': asistenteDetalleForm },
     data () {
-        return {
-            title:    'Perfil',
-            resource: 'perfil',
-            headers: [
-                { text: 'Perfil',   value: 'nb_perfil' },
-                { text: 'Observaciones',   value: 'tx_observaciones' },
-                { text: 'Status',   value: 'id_status' },
-                { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
-            ],
-            dilogPermiso: false
-        }
+    return {
+        title:    'AsistenteDetalle',
+        resource: 'asistenteDetalle',
+        headers: [
+            { text: 'Descripcion',   value: 'tx_descripcion' },
+			{ text: 'Tipo Detalle',   value: 'tipo_detalle' },
+			{ text: 'Orden',   value: 'nu_orden' },
+			{ text: 'Observaciones',   value: 'tx_observaciones' },
+			{ text: 'Status',   value: 'id_status' },
+            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
+        ],
+    }
     },
-
     methods:
     {
-        closeDialog(refresh, dialog)
-        {
-            this[dialog]   = false
-            if(refresh)    this.list()
-        }
    
     }
 }

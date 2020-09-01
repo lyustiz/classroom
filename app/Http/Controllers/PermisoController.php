@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permiso;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -20,6 +21,45 @@ class PermisoController extends Controller
         
         return $permiso;
     }
+
+    public function permisoPerfilAsignacion($idPerfil)
+    {
+        $permisos = Permiso::select('id', 'id_menu', 'id_perfil','bo_select','bo_insert','bo_update','bo_delete','bo_admin','bo_default')
+                                ->with(['perfil:id,nb_perfil', 'menu:id,nb_menu,tx_icono'])
+                                ->where('id_perfil', $idPerfil)
+                                ->get();
+
+                            
+        $menus  = Menu::whereNotIn('id', $permisos->pluck('id_menu'))
+                        ->comboData()
+                        ->activo()
+                        ->visible()
+                        ->orderBy('nu_orden', 'asc')
+                        ->get();
+
+        //$permisoPerfil = $this->formatData($permisoPerfil);
+
+        return [ 'permisos' => $permisos, 'menus' => $menus] ;
+    }
+
+
+    function formatData($data)
+    {
+        $permisoPerfil = [];
+        
+        foreach ($data as $key => $row) {
+
+            $permisoPerfil[] = [
+                'id'         => $row->id,
+                'id_perfil'  => $row->id_perfil,
+                'nb_permiso' => $row->perfil->nb_permiso,
+            ];
+        }
+
+        return $permisoPerfil;
+    }
+
+
 
     /**
      * Store a newly created resource in storage.

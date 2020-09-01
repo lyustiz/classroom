@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Perfil extends Model
+class AsistenteDetalle extends Model
 {
-    protected $table 	  = 'perfil';
+    protected $table 	  = 'asistente_detalle';
 
     protected $fillable   = [
-                            'nb_perfil',
-                            'tx_icono',
+                            'tx_descripcion',
+	 	 	 	 	 	 	'tipo_detalle',
+	 	 	 	 	 	 	'nu_orden',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'
@@ -21,30 +22,20 @@ class Perfil extends Model
 	 	 	 	 	 	 	'updated_at'
                             ];
 
+
+
     public function scopeActivo($query)
     {
         return $query->where('id_status', 1);
-	}
-
-	public function scopeComboData($query)
-    {
-        return $query->addSelect('id', 'nb_perfil');
     }
-    
+
     public function status()
     {
-        return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');
+        return $this->BelongsTo('App\Models\Status', 'id_status');
     }
                            
     public function usuario()
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
     }
-
-    public function permiso()
-    {
-        return $this->hasMany('App\Models\Permiso', 'id_perfil');
-    }
-
-    
 }

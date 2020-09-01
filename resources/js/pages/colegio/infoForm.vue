@@ -73,7 +73,7 @@
 
             <v-col cols="12" md="6">
                 <v-text-field
-                    :rules="[rules.required]"
+                    :rules="[rules.required, rules.max(80)]"
                     v-model="form.tx_telefono"
                     label="Telefono"
                     placeholder="Indique Telefono"

@@ -236,14 +236,12 @@ Route::apiResource('/tipoUsuario',              'TipoUsuarioController');
 Route::get('/usuario/lote/tipo/{tipo}',         'UsuarioController@usuarioLoteTipo');
 Route::apiResource('/usuario',                  'UsuarioController');
 
-
-Route::apiResource('/menu',                     'MenuController');
 Route::apiResource('/perfil',                   'PerfilController');
+Route::get('/permiso/perfil/{perfil}/asignacion', 'PermisoController@permisoPerfilAsignacion');
 Route::apiResource('/permiso',                  'PermisoController');
 Route::apiResource('/usuarioPerfil',            'UsuarioPerfilController');
 Route::apiResource('/modulo',                   'ModuloController');
-Route::apiResource('/menu',                     'MenuController');
-Route::apiResource('/modulo',                   'ModuloController');
+Route::get('/menu/combo',                       'MenuController@combo');
 Route::apiResource('/menu',                     'MenuController');
 
 //Notificaciones
@@ -306,9 +304,11 @@ Route::post('/reporte/execute/excel',           'Reportes\ReporteController@exec
 
 
 //Meet
-Route::get('meet/{usuario}', 'MeetController@index');
-Route::post('meet/auth/{usuario}', 'MeetController@auth');
+Route::get('meet/{usuario}',                    'MeetController@index');
+Route::post('meet/auth/{usuario}',              'MeetController@auth');
 
+Route::apiResource('/asistente',     'AsistenteController');
+Route::apiResource('/asistenteDetalle',     'AsistenteDetalleController');
 //newRoutes
 
 Route::fallback(function () {

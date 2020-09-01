@@ -1,83 +1,113 @@
 <template>
 
-    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)" :inDialog="inDialog">
+    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)">
 
-        <v-btn small color="primary" v-if="steep == 0 "  @click="steep = 1" class="mb-1">
-            Iniciar
-        </v-btn>
+        <template slot="HeadTools">
+            <add-button @insItem="insertForm()"></add-button>
+        </template>
 
-        <v-stepper v-model="steep" vertical>
+            <v-col cols="12" md="6">
+                <v-text-field
+                    v-model="search"
+                    append-icon="search"
+                    label="Buscar"
+                    hide-details
+                    clearable
+                ></v-text-field>
+            </v-col>
 
-            <v-stepper-step :complete="steep > 1" step="1" color="green">
-                Institucion
-                <small>Informacion de la Institucion</small>
-            </v-stepper-step>
+            <v-data-table
+                :headers="headers"
+                :items  ="items"
+                :search ="search"
+                item-key="id"
+                :loading="loading"
+                sort-by=""
+            >
 
-            <v-stepper-content step="1">
-                <info-form></info-form>
-                <v-btn color="primary" @click="steep = 2">Siguiente</v-btn>
-            </v-stepper-content>
+                <template v-slot:item="{ item }">
+                    <tr>
+                        <td class="text-xs-left">{{ item.nb_asistente }}</td>
+						<td class="text-xs-left">{{ item.id_menu }}</td>
+						<td class="text-xs-left">{{ item.tx_descripcion }}</td>
+						<td class="text-xs-left">{{ item.tx_color }}</td>
+						<td class="text-xs-left">{{ item.nu_orden }}</td>
+						<td class="text-xs-left">{{ item.tx_grupo }}</td>
+						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
+						<td class="text-xs-left">
+                            <status-switch 
+                                :loading="loading" 
+                                :resource="resource" 
+                                :item="item" 
+                                @onChangeStatus="changeStatus($event)">
+                            </status-switch>
+                        </td>
+                        
+                        <td class="text-xs-left">
+                            <list-buttons 
+                                @update="updateForm(item)" 
+                                @delete="deleteForm(item)" >
+                            </list-buttons>
+                        </td>
+                    </tr>
+                </template>
 
-            <v-stepper-step :complete="steep > 2" step="2" color="green">
-                Academico
-                <small>Datos para la configuracion del area Academica</small>
-            </v-stepper-step>
+            </v-data-table>
 
-            <v-stepper-content step="2">
-            <v-card flat=""> 
-                <v-card-text>
-                    <h1>Configuracion Academico</h1>
-                </v-card-text>
-                <v-card-actions>
-                    <v-btn color="primary" @click="steep = 3">Siguiente</v-btn>
-                </v-card-actions>
-            </v-card>
-            </v-stepper-content>
+            <app-modal
+                :modal="modal"
+                @closeModal="closeModal()"
+                :head-color="$App.theme.headModal"
+                :title="title"
+            >
+                <asistente-form
+                    :action="action"
+                    :item="item"
+                    @closeModal="closeModal()"
+                ></asistente-form>
 
-            <v-stepper-step step="3" :complete="steep > 3" color="green">
-                Profesores
-                <small>Carga de la Plantilla de Profesores</small>
-            </v-stepper-step>
+            </app-modal>
 
-            <v-stepper-content step="3">
-            <v-card flat=""> 
-                <v-card-text>
-                    <h1>Configuracion Profesores</h1>
-                </v-card-text>
-                <v-card-actions>
-                    <v-btn color="primary" @click="steep = 4">Finalizar</v-btn>
-                </v-card-actions>
-                </v-card>
-            </v-stepper-content>
-
-        </v-stepper>
-
-        <v-alert v-if="steep == 4" type="success" icon="mdi-check-circle" :value="true" class="mt-3" >
-            Felicitaciones ha culminado la configuracion! <v-btn x-small color="info" @click="steep = 1">Reiniciar</v-btn>
-        </v-alert>
+            <form-delete
+                :dialog="dialog"
+                :loading="loading"
+                message="Desea eliminar el Registro Seleccionado?"
+                @deleteItem="deleteItem()"
+                @deleteCancel="deleteCancel()"
+            ></form-delete>
+            
+            <pre v-if="$App.debug">{{ $data }}</pre>
 
     </list-container>
 
 </template>
 
 <script>
-import InfoForm from '@pages/colegio/infoForm'
-
+import listHelper from '@mixins/Applist';
+import asistenteForm  from './asistenteForm';
 export default {
-    components: {
-        'info-form': InfoForm
-    },
-
+    mixins:     [ listHelper],
+    components: { 'asistente-form': asistenteForm },
     data () {
     return {
         title:    'Asistente',
-        steep: 0,
-
+        resource: 'asistente',
+        headers: [
+            { text: 'Asistente',   value: 'nb_asistente' },
+			{ text: 'Menu',   value: 'id_menu' },
+			{ text: 'Descripcion',   value: 'tx_descripcion' },
+			{ text: 'Color',   value: 'tx_color' },
+			{ text: 'Orden',   value: 'nu_orden' },
+			{ text: 'Grupo',   value: 'tx_grupo' },
+			{ text: 'Observaciones',   value: 'tx_observaciones' },
+			{ text: 'Status',   value: 'id_status' },
+            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
+        ],
     }
     },
     methods:
     {
-        
+   
     }
 }
 </script>

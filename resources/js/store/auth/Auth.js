@@ -10,6 +10,8 @@ export default
 			username: 	null,
 			profile:	null,
 			profiles: 	[],
+			modulos:    [],
+			menus:    [],
 		}
 	},
 
@@ -28,6 +30,7 @@ export default
 		getDocente:   	state => state.user.docente,
 		getPariente:   	state => state.user.pariente,
 		getEmpleado:   	state => state.user.empleado,
+		getModules:   	state => state.user.modules,
 	},
 
 	mutations:
@@ -84,7 +87,13 @@ export default
 		{
 			state.user.foto  = foto
 			localStorage.setItem("user", state.user)
-		}
+		},
+
+		setModules (state, modules)
+        {
+			state.modules	= modules
+			localStorage.setItem("modules", (modules)  ? JSON.stringify(modules): null	)
+		},
     },
     
     actions:
@@ -221,6 +230,7 @@ export default
 			commit('setUser'  	 , { id: null, nb_usuario: null } );
 			commit('setToken' 	 , null);
 			commit('setExpire'   , null);
+			commit('setProfiles' , []);
 			commit('setProfiles' , []);
 			commit('setAuth'  	 , false);
 

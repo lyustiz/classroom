@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Menu;
+use App\Models\Asistente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class MenuController extends Controller
+class AsistenteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +15,10 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menu = Menu::with(['modulo:id,nb_modulo'])
+        $asistente = Asistente::with([])
                     ->get();
         
-        return $menu;
-    }
-
-    public function combo()
-    {
-       return Menu::comboData()->activo()->get();
+        return $asistente;
     }
 
     /**
@@ -35,75 +30,69 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-            'nb_menu'           => 	'required|string|max:40',
-			'id_modulo'         => 	'nullable|integer|max:999999999',
-			'tx_ruta'           => 	'required|string|max:50',
-			'tx_path'           => 	'required|string|max:50',
-			'tx_icono'          => 	'required|string|max:50',
+            'nb_asistente'      => 	'required|string|max:50',
+			'id_menu'           => 	'required|integer|max:999999999',
+			'tx_descripcion'    => 	'nullable|string|max:300',
 			'tx_color'          => 	'nullable|string|max:30',
-			'tx_target'         => 	'required|string|max:50',
-			'bo_visible'        => 	'required|boolean',
 			'nu_orden'          => 	'required|integer|max:999999999',
+			'tx_grupo'          => 	'nullable|string|max:30',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
-        $menu = menu::create($request->all());
+        $asistente = asistente::create($request->all());
 
-        return [ 'msj' => 'Menu Agregado Correctamente', compact('menu') ];
+        return [ 'msj' => 'Asistente Agregado Correctamente', compact('asistente') ];
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Menu  $menu
+     * @param  \App\Models\Asistente  $asistente
      * @return \Illuminate\Http\Response
      */
-    public function show(Menu $menu)
+    public function show(Asistente $asistente)
     {
-        return $menu;
+        return $asistente;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Menu  $menu
+     * @param  \App\Models\Asistente  $asistente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Menu $menu)
+    public function update(Request $request, Asistente $asistente)
     {
         $validate = request()->validate([
-            'nb_menu'           => 	'required|string|max:40',
-			'id_modulo'         => 	'nullable|integer|max:999999999',
-			'tx_ruta'           => 	'required|string|max:50',
-			'tx_path'           => 	'required|string|max:50',
-			'tx_icono'          => 	'required|string|max:50',
+            'nb_asistente'      => 	'required|string|max:50',
+			'id_menu'           => 	'required|integer|max:999999999',
+			'tx_descripcion'    => 	'nullable|string|max:300',
 			'tx_color'          => 	'nullable|string|max:30',
-			'tx_target'         => 	'required|string|max:50',
-			'bo_visible'        => 	'required|boolean',
 			'nu_orden'          => 	'required|integer|max:999999999',
+			'tx_grupo'          => 	'nullable|string|max:30',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
-        $menu = $menu->update($request->all());
+        $asistente = $asistente->update($request->all());
 
-        return [ 'msj' => 'Menu Editado' , compact('menu')];
+        return [ 'msj' => 'Asistente Editado' , compact('asistente')];
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Menu  $menu
+     * @param  \App\Models\Asistente  $asistente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Menu $menu)
+    public function destroy(Asistente $asistente)
     {
-        $menu = $menu->delete();
+        $asistente = $asistente->delete();
  
-        return [ 'msj' => 'Menu Eliminado' , compact('menu')];
+        return [ 'msj' => 'Asistente Eliminado' , compact('asistente')];
     }
 }

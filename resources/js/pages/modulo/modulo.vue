@@ -1,6 +1,6 @@
 <template>
 
-    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)" :inDialog="inDialog">
+    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)">
 
         <template slot="HeadTools">
             <add-button @insItem="insertForm()"></add-button>
@@ -34,10 +34,9 @@
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
-                                :item="item"
-                                :resource="resource"
-                                @onStatusChanging="loading=true"
-                                @onStatusChanged="loading=false">
+                                :resource="resource" 
+                                :item="item" 
+                                @onChangeStatus="changeStatus($event)">
                             </status-switch>
                         </td>
                         
@@ -73,7 +72,7 @@
                 @deleteItem="deleteItem()"
                 @deleteCancel="deleteCancel()"
             ></form-delete>
-
+            
             <pre v-if="$App.debug">{{ $data }}</pre>
 
     </list-container>

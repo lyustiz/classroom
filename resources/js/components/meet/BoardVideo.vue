@@ -2,7 +2,7 @@
 
     <div class="player-container">
 
-        <v-avatar class="picture-container elevation-3" @click="downloadImage()">
+        <v-avatar class="picture-container elevation-3" @click="downloadImage()" ripple>
             <canvas class="rounded-lg picture" ref="picture" ></canvas>
         </v-avatar>
         
@@ -13,6 +13,12 @@
         <v-toolbar color="rgba(0,0,0,0.1)" class="mt-n16 elevation-0 text-center rounded-b-lg">
 
             <v-row no-gutters justify="center">
+                
+                <v-col  class="text-left">
+                    <v-btn fab dark x-small class="ma-1" :color="(hasAudio) ? null: 'red' " :outlined="hasAudio"  transition="slide-x-transition" @click="toggleAudio()">
+                        <v-icon>{{ (hasAudio) ? 'mdi-volume-high': 'mdi-volume-mute' }}</v-icon>
+                    </v-btn>
+                </v-col>
                 
                 <v-col cols="auto" class="text-left">
                     <v-btn fab dark small class="ma-1" outlined @click="takePicture()">
@@ -25,6 +31,8 @@
                         <v-icon color="yellow">mdi-hand</v-icon>
                     </v-btn>
                 </v-col>
+
+                <v-col></v-col>
 
             </v-row>
         
@@ -73,9 +81,17 @@ export default {
         }
     },
 
+    computed:
+    {
+        hasAudio()
+        {
+            return !this.media.muted
+        },
+    },
+
     data: () => ({
         player:     null,
-        media:      { video: false },
+        media:      { audio: false,  video: false, muted: true },
     }),
 
     methods: {
@@ -88,6 +104,13 @@ export default {
         statusMedia()
         {
             this.media.video  = (this.stream) ? this.stream.getVideoTracks().length > 0 : false
+
+            this.media.audio  = (this.stream) ? this.stream.getAudioTracks().length > 0 : false
+        },
+
+        toggleAudio()
+        {
+            this.media.muted = this.player.muted = !this.player.muted
         },
 
         takePicture() 

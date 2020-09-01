@@ -22,23 +22,25 @@ class Modulo extends Model
 	 	 	 	 	 	 	'updated_at'
                             ];
 
+
+
     public function scopeActivo($query)
     {
         return $query->where('id_status', 1);
-	}
-
-	public function scopeComboData($query)
-    {
-        return $query->where('id_status', 1);
     }
-  
+
     public function status()
     {
-        return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');
+        return $this->BelongsTo('App\Models\Status', 'id_status');
     }
                            
     public function usuario()
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
+    }
+
+    public function menu()
+    {
+        return $this->HasMany('App\Models\Menu', 'id_modulo');
     }
 }

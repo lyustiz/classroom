@@ -1,6 +1,6 @@
 <template>
 
-    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)" :inDialog="inDialog">
+    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)">
 
         <template slot="HeadTools">
             <add-button @insItem="insertForm()"></add-button>
@@ -23,25 +23,33 @@
                 item-key="id"
                 :loading="loading"
                 sort-by=""
+                dense
             >
-
                 <template v-slot:item="{ item }">
                     <tr>
                         <td class="text-xs-left">{{ item.nb_menu }}</td>
-						<td class="text-xs-left">{{ item.id_modulo }}</td>
-						<td class="text-xs-left">{{ item.tx_ruta }}</td>
+						<td class="text-xs-left">{{item.modulo.nb_modulo}}</td>
+						<td class="text-xs-left">
+                            <list-simple-icon :label="item.tx_ruta" icon="mdi-routes" color="grey"></list-simple-icon>
+                        </td>
 						<td class="text-xs-left">{{ item.tx_path }}</td>
-						<td class="text-xs-left"><v-icon color="green">{{item.tx_icono}}</v-icon></td>
-						<td class="text-xs-left">{{ item.tx_target }}</td>
+						<td class="text-xs-left">
+                            <list-simple-icon :label="item.tx_icono" :icon="item.tx_icono" color="grey"></list-simple-icon>
+                        </td>
+						<td class="text-xs-left"><v-chip small label :color="item.tx_color"></v-chip></td>
+						<td class="text-xs-left">
+                            <list-simple-icon :label="item.tx_target" icon="mdi-puzzle" color="grey"></list-simple-icon>
+                        </td>
+                        <td class="text-xs-left">
+                            <list-icon :data="visibleIcons" :value="item.bo_visible"></list-icon>
+                        </td>
 						<td class="text-xs-left">{{ item.nu_orden }}</td>
-						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
-                                :item="item"
-                                :resource="resource"
-                                @onStatusChanging="loading=true"
-                                @onStatusChanged="loading=false">
+                                :resource="resource" 
+                                :item="item" 
+                                @onChangeStatus="changeStatus($event)">
                             </status-switch>
                         </td>
                         
@@ -77,7 +85,7 @@
                 @deleteItem="deleteItem()"
                 @deleteCancel="deleteCancel()"
             ></form-delete>
-
+            
             <pre v-if="$App.debug">{{ $data }}</pre>
 
     </list-container>
@@ -95,14 +103,15 @@ export default {
         title:    'Menu',
         resource: 'menu',
         headers: [
-            { text: 'Menu',   value: 'nb_menu' },
-			{ text: 'Modulo',   value: 'id_modulo' },
-			{ text: 'Ruta',   value: 'tx_ruta' },
-			{ text: 'Path',   value: 'tx_path' },
-			{ text: 'Icono',   value: 'tx_icono' },
+            { text: 'Menu',     value: 'nb_menu' },
+			{ text: 'Modulo',   value: 'modulo.nb_modulo' },
+			{ text: 'Ruta',     value: 'tx_ruta' },
+			{ text: 'Path',     value: 'tx_path' },
+			{ text: 'Icono',    value: 'tx_icono' },
+			{ text: 'Color',    value: 'tx_color' },
 			{ text: 'Target',   value: 'tx_target' },
-			{ text: 'Orden',   value: 'nu_orden' },
-			{ text: 'Observaciones',   value: 'tx_observaciones' },
+			{ text: 'Visible',  value: 'bo_visible' },
+			{ text: 'Orden',    value: 'nu_orden' },
 			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],

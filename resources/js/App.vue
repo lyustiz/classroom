@@ -12,11 +12,12 @@ export default {
     {
         this.$store.commit('setIsMobile', this.$App.isMobile)
       
-        let auth      = localStorage.getItem('auth');
-        let token     = localStorage.getItem('token');
-        let user      = localStorage.getItem('user');
-        let expire    = localStorage.getItem('expire');
-        let profiles  = localStorage.getItem('profiles');
+        let auth     = localStorage.getItem('auth');
+        let token    = localStorage.getItem('token');
+        let user     = localStorage.getItem('user');
+        let expire   = localStorage.getItem('expire');
+        let profiles = localStorage.getItem('profiles');
+        let modules  = localStorage.getItem('modules');
         
         if(auth==='true') // TODO:check expire
         {
@@ -25,7 +26,7 @@ export default {
                             user: JSON.parse(user),
                             token,
                             expire,
-                            profiles: JSON.parse(profiles)
+                            profiles: JSON.parse(profiles),
                         };
             
             this.$store.dispatch('autenticate', data)

@@ -269,15 +269,7 @@ export default new Router({
                 visible: true,
                 component: BandejaAdmin
             }, 
-         /*    { 
-                path: 'asistente',
-                name: 'asistente',
-                label: 'Asistente',
-                icon: 'mdi-head-cog',
-                profile: 'secretaria',
-                visible: true,
-                component: Asistente
-            }, */
+
             { 
                 path: 'colegio',
                 name: 'colegio',
@@ -979,6 +971,16 @@ export default new Router({
                 profile: 'secretaria',
                 visible: true,
                 component: Notificacion
+            },
+
+            { 
+                path: 'asistente',
+                name: 'asistente',
+                label: 'Asistente',
+                icon: 'mdi-account-voice',
+                profile: 'secretaria',
+                visible: true,
+                component: Asistente
             },
             
             /********************** */

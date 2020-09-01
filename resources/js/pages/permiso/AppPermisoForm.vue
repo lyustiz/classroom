@@ -2,25 +2,72 @@
 
     <v-form ref="form" v-model="valid" lazy-validation>
 
-    <v-card :loading="loading" flat >
+    <v-card :loading="loading" height="80vh" flat >
+
+        <v-card-title class="pa-0">
+            <app-simple-toolbar title="Permisos" @closeModal="$emit('closeModal', true)"></app-simple-toolbar>
+        </v-card-title>
+
+        <v-card-title class="pa-0" >
+            <v-col class="grey lighten-3 subtitle-2">
+                <v-icon class="mr-2" color="orange">mdi-account-settings</v-icon>{{perfil.nb_perfil}}
+            </v-col>
+        </v-card-title>
 
         <v-card-text>
 
-        <v-row>
+        <v-row dense>
 
-        <v-col cols="12" md="6">
+        <v-col cols="12">
             <v-select
-            :items="selects.perfil"
-            item-text="nb_perfil"
+            :items="selects.menu"
+            item-text="nb_menu"
             item-value="id"
-            v-model="form.id_perfil"
+            v-model="form.id_menu"
             :rules="[rules.select]"
-            label="Perfil"
+            label="Menu"
             :loading="loading"
             dense
+            filled
             ></v-select>
         </v-col>
 
+        <v-col cols="12">
+
+            <v-list subheader two-line dense width="100%" color="grey lighten-4" class="rounded-xl"> 
+                    
+                <v-subheader class="grey pl-4 lighten-3 rounded-t-xl">
+                    Permisos asignados
+                </v-subheader>
+                
+                <v-list-item v-for="permiso in permisos" :key="permiso.id" >
+
+                    <v-list-item-avatar>
+                        <v-icon color="indigo" size="42" v-text="permiso.menu.tx_icono"></v-icon>
+                    </v-list-item-avatar> 
+                
+                    <v-list-item-content>
+                        <v-list-item-title v-text="permiso.menu.nb_menu"></v-list-item-title>
+                        <v-row no-gutters> 
+                            <v-switch prepend-icon="mdi-database-search"></v-switch>
+                            <v-switch prepend-icon="mdi-database-plus"></v-switch>
+                            <v-switch prepend-icon="mdi-database-edit"></v-switch>
+                            <v-switch prepend-icon="mdi-database-minus"></v-switch>
+                            <v-switch prepend-icon="mdi-shield-account"></v-switch>
+                        </v-row>
+                    </v-list-item-content>
+
+             <!-- TODO/ implement insert and update permiso  avoid reload and modal fail-->
+                    <v-list-item-action>
+                        <app-button color="red" icon="mdi-delete" label="Eliminar"></app-button>
+                    </v-list-item-action>
+
+                </v-list-item>
+
+                </v-list>
+
+        </v-col>
+<!-- 
         <v-col cols="12" md="6">
             <v-select
             :items="selects.menu"
@@ -98,49 +145,26 @@
             :indeterminate="(form.bo_default== null)"
             dense
             class="col-auto d-none ml-3"
-        ></v-checkbox>
- 
-        <v-col cols="12" md="6">
-            <v-text-field
-                :rules="[rules.max(100)]"
-                v-model="form.tx_observaciones"
-                label="Observaciones"
-                placeholder="Indique Observaciones"
-                dense
-            ></v-text-field>
-        </v-col>
-                          
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.status"
-            item-text="nb_status"
-            item-value="id"
-            v-model="form.id_status"
-            :rules="[rules.select]"
-            label="Status"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
+        ></v-checkbox>   
          
-
+ -->
         </v-row>
 
         </v-card-text>
 
-        <v-card-actions>
+       <!--  <v-card-actions>
             <v-spacer></v-spacer>
             <form-buttons
                 @update="update()"
                 @store="store()"
                 @clear="clear()"
                 @cancel="cancel()"
-                :action="action"
+                action="upd"
                 :valid="valid"
                 :loading="loading"
             ></form-buttons>
         </v-card-actions>
-
+ -->
         <pre v-if="$App.debug">{{ $data }}</pre>
 
     </v-card>
@@ -151,10 +175,34 @@
 
 <script>
 
-import Appform from '@mixins/Appform';
+import Appform from '@mixins/AppData';
 
 export default {
     mixins: [Appform],
+
+    props:
+    {
+        perfil:{
+            type: Object,
+            default: () => {}
+        }
+    },
+
+    created()
+    {
+        this.form.id_perfil = this.perfil.id
+        this.list()
+    },
+
+    watch:
+    {
+        perfil(val)
+        {
+            this.form.id_perfil = this.perfil.id
+            this.list()
+        }
+    },
+
     data() {
         return {
             resource: 'permiso',
@@ -173,13 +221,14 @@ export default {
 				id_status: 	      null,
 				id_usuario: 	  null,
             },
+
             selects:
             {
-                menu: 	 [],
-	 	 	 	perfil:  [],
-	 	 	 	status:  [],
+	 	 	 	menu:  [],
             },
-            defaultForm:{
+
+            defaultForm:
+            {
                 bo_select:  0,
                 bo_insert:  0,
                 bo_update:  0,
@@ -187,12 +236,22 @@ export default {
                 bo_admin:   0,
                 bo_default: 0,
             },
+
+            permisos: [],
+
+            permiso:  []
         }
     },
 
     methods:
     {
-
+        list()
+        {
+            this.getResource(`permiso/perfil/${this.perfil.id}/asignacion`).then( data =>{
+                this.selects.menu = data.menus
+                this.permisos     = data.permisos
+            })
+        }
     }
 }
 </script>

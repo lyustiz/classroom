@@ -12,57 +12,36 @@
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
-                v-model="form.nb_tipo_pregunta"
-                label="Tipo Pregunta"
-                placeholder="Indique Tipo Pregunta"
+                v-model="form.tx_descripcion"
+                label="Descripcion"
+                placeholder="Indique Descripcion"
                 dense
             ></v-text-field>
         </v-col>
                   
         <v-col cols="12" md="6">
-            <v-input
-                prepend-icon="mdi-format-color-fill"
-                :value="form.tx_color">
-                    <div class="mx-2">Color</div>
-
-                    <v-menu offset-y max-width="200">
-                        <template v-slot:activator="{ on }">
-                            <v-chip slot="activator" v-on="on" small label :color="form.tx_color"></v-chip>
-                        </template>
-                        <span>
-                            <v-card>
-                            <v-btn 
-                                v-for="color in colors" :key="color"
-                                :color="color" 
-                                dark
-                                x-small
-                                fab 
-                                class="ma-1"
-                                @click="form.tx_color = color">
-                            </v-btn>
-                            </v-card>                        
-                        </span>
-                    </v-menu>
-            </v-input>
-        </v-col>
-                  
-        <v-col cols="12" md="6">
             <v-text-field
-                :prepend-icon="form.tx_icono"
                 :rules="[rules.required]"
-                v-model="form.tx_icono"
-                label="Icono"
-                placeholder="Indique Icono"
+                v-model="form.tipo_detalle"
+                label="Tipo Detalle"
+                placeholder="Indique Tipo Detalle"
                 dense
-                append-outer-icon="mdi-shape-outline"
-                @click:append-outer="$refs.icons.click()"
             ></v-text-field>
-            <a  class="d-none" ref="icons" rel="noreferrer noopener" href="/icons/"  target="_blank"></a>
         </v-col>
                   
         <v-col cols="12" md="6">
             <v-text-field
-                :rules="[rules.max(100)]"
+                :rules="[rules.required]"
+                v-model="form.nu_orden"
+                label="Orden"
+                placeholder="Indique Orden"
+                dense
+            ></v-text-field>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-text-field
+                :rules="[rules.required]"
                 v-model="form.tx_observaciones"
                 label="Observaciones"
                 placeholder="Indique Observaciones"
@@ -117,16 +96,24 @@ export default {
     mixins: [Appform],
     data() {
         return {
-            resource: 'tipoPregunta',
+            resource: 'asistenteDetalle',
+            dates:
+            {
+                
+            },
+            pickers:
+            {
+                
+            },
             form:
             {
-                id: 	           null,
-				nb_tipo_pregunta:  null,
-				tx_icono: 	       null,
-				tx_color: 	       null,
-				tx_observaciones:  null,
-				id_status: 	       null,
-				id_usuario: 	   null,
+                id: 	null,
+				tx_descripcion: 	null,
+				tipo_detalle: 	null,
+				nu_orden: 	null,
+				tx_observaciones: 	null,
+				id_status: 	null,
+				id_usuario: 	null,
             },
             selects:
             {
@@ -135,6 +122,10 @@ export default {
         }
     },
 
+    methods:
+    {
+
+    }
 }
 </script>
 

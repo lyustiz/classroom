@@ -207,16 +207,31 @@ export default {
                         'cyan',
                         'red'
                     ],
-            sexoIcons: [
-                        {value: 'M', icon: 'mdi-human-male',  color: 'blue', label: 'Masculino'},
-                        {value: 'F', icon: 'mdi-human-female',  color: 'pink', label: 'Femenino'}
-                    ],
+            sexoIcons: 
+            [
+                {value: 'M', icon: 'mdi-human-male',   color: 'blue', label: 'Masculino'},
+                {value: 'F', icon: 'mdi-human-female', color: 'pink', label: 'Femenino'}
+            ],
             statusIcons:
             [
-                {value: 0, icon: 'mdi-checkbox-blank-circle-outline',  color: 'error', label: 'No'},
-                {value: 1, icon: 'mdi-checkbox-marked-circle',  color: 'success', label: 'Si'}
+                {value: 0, icon: 'mdi-checkbox-blank-circle-outline', color: 'error',   label: 'No'},
+                {value: 1, icon: 'mdi-checkbox-marked-circle',        color: 'success', label: 'Si'}
             ],
-            selectMinutos: [5,10,15,20,25,30,35,40,45,50,60,65,70,75,80,85,90,95,100,105,110,120]
+            visibleIcons:
+            [
+                {value: 0, icon: 'mdi-eye-off', color: 'grey',    label: 'No'},
+                {value: 1, icon: 'mdi-eye',     color: 'success', label: 'Si'}
+            ],
+            selectMinutos: [
+                5,10,15,20,25,30,35,40,45,50,60,65,70,75,80,85,90,95,100,105,110,120
+            ],
+            grupoAsistente: [
+                { id: 1, nb_grupo: 'secretaria'},
+                { id: 1, nb_grupo: 'docente'},
+                { id: 1, nb_grupo: 'alumno'},
+                { id: 1, nb_grupo: 'acudiente'},
+                { id: 1, nb_grupo: 'empleado'},
+            ]
         }
     },
 
