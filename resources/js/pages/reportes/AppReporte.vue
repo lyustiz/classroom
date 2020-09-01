@@ -118,7 +118,7 @@
                     Seleccione las columnas y haga click en "mostrar datos"  <v-icon color="blue" class="ml-1">mdi-table-eye</v-icon>
                 </v-alert>
             </template>
-            <pre>{{$data}}</pre>
+            <pre v-if="$App.debug">{{ $data }}</pre>
         </v-card-text>
 
         <v-overlay

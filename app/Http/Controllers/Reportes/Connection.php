@@ -22,7 +22,7 @@ class Connection
 
     public function setConnection($connectionName)
     {
-        return $this->connection = \DB::connection($connectionName);
+        return $this->connection = \DB::connection('mysqlviews');
 
     }
 
