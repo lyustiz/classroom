@@ -132,6 +132,7 @@ export default {
     {
         this.fillSelects()
         this.mapData(this.colegio)
+        this.loading = true;
     },
     watch:
     {
@@ -186,7 +187,14 @@ export default {
             .then( (data) => {
                 this.showMessage(data.msj)
                 this.loading = false
+            }).catch(error => 
+            {
+                this.showError(error)
             })
+            .finally( () => 
+            {
+            this.loading = false
+            });
         }
     }
 }

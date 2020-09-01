@@ -101,7 +101,7 @@
         <v-card-actions>
             <v-spacer></v-spacer>
             <form-buttons
-                @store="setData()"
+                @store="update()"
                 :valid="valid"
                 :loading="loading"
                 remove-cancel
@@ -154,7 +154,6 @@ export default {
     },
     data() {
         return {
-            resource: 'colegio',
             logoColegio: require('@images/logo-colegio.png') ,
             form:
             {
@@ -185,27 +184,6 @@ export default {
 
     methods:
     {
-        setData()
-        {
-            return (this.form.id) ? this.update() : this.store()
-        },
-
-        store()
-        {
-            if (!this.$refs.form.validate())  return 
-
-            this.setDefaults()
-            this.loading = true
-
-            this.$store.dispatch('apiStoreColegio', this.form)
-            .then( (data) => {
-                this.showMessage(data.msj)
-                this.form.id = data[0].colegio.id
-                this.form.tx_codigo = data[0].colegio.tx_codigo
-                this.loading = false
-            })
-        },
-
         update()
         {
             if (!this.$refs.form.validate())  return 
@@ -217,7 +195,14 @@ export default {
             .then( (data) => {
                 this.showMessage(data.msj)
                 this.loading = false
+            }).catch(error => 
+            {
+                this.showError(error)
             })
+            .finally( () => 
+            {
+                this.loading = false
+            });
         }
 
     }

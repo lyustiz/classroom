@@ -223,6 +223,8 @@ export default
 			commit('setExpire'   , data.expire);
 			commit('setProfiles' , data.profiles);
 			commit('setAuth'  	 , true);
+
+			commit('setColegio'  , data.user.colegio )
 		},
 
 		unatenticate({ commit })

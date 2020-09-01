@@ -71,7 +71,14 @@ export default {
         setMenu()
         {
             this.menus = this.$router.options.routes.filter((menu) =>  {
-                 return  (menu.visible === true) && ( (menu.profile == this.profile.nb_perfil)  ||  (menu.profile == '*') )
+
+                if(this.profile)
+                {
+                    return  (menu.visible === true) && ( (menu.profile == this.profile.nb_perfil)  ||  (menu.profile == '*') )
+                }
+
+                return false
+                
             })
         }
     },

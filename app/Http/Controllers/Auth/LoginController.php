@@ -96,7 +96,7 @@ class LoginController extends Controller
                 $this->getDataTipoUsuario($user);
 
                 $user->load([ 'foto',  
-                              'colegio:colegio.id,nb_colegio,id_calendario',
+                              'colegio',
                               'colegio.calendario:calendario.id,nb_calendario',
                               'colegio.calendario.periodoActivo:periodo.id,nb_periodo'
                             ]);
