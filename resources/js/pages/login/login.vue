@@ -175,6 +175,8 @@ export default {
         redirectTo(data)
         {
             let userType = parseInt(data.userType); 
+
+            console.log(userType)
             
             switch (userType) {
                 case 1:
