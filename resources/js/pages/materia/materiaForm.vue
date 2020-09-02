@@ -36,7 +36,7 @@
             item-value="id"
             v-model="form.id_area_estudio"
             :rules="[rules.select]"
-            label="Grupo Materia"
+            label="Area estudio"
             :loading="loading"
             dense
             ></v-select>
@@ -44,7 +44,7 @@
           
         <v-col cols="12" md="6" v-show="false">
             <v-text-field
-                :rules="[rules.required, rules.max(30)]"
+    
                 v-model="form.tx_icono"
                 label="Icono"
                 placeholder="Indique Icono"
