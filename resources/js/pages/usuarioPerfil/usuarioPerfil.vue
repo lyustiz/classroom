@@ -27,9 +27,11 @@
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.id_usuario }}</td>
-                        <td class="text-xs-left">{{ item.id_perfil }}</td>
-						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
+                        <td class="text-xs-left">{{ item.usuario.nb_usuario }}</td>
+                        <td class="text-xs-left">{{ item.usuario.nb_nombres }}</td>
+                        <td class="text-xs-left">
+                              <list-simple-icon :label="item.perfil.nb_perfil" color="success" :icon="item.perfil.tx_icono"></list-simple-icon>
+                        </td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -39,7 +41,6 @@
                                 @onStatusChanged="loading=false">
                             </status-switch>
                         </td>
-						
                         
                         <td class="text-xs-left">
                             <list-buttons 
@@ -88,12 +89,12 @@ export default {
     components: { 'usuario-perfil-form': usuarioPerfilForm },
     data () {
     return {
-        title:    'UsuarioPerfil',
+        title:    'Usuario Perfil',
         resource: 'usuarioPerfil',
         headers: [
-            { text: 'Usuario',       value: 'id_usuario' },
-            { text: 'Perfil',        value: 'id_perfil' },
-			{ text: 'Observaciones', value: 'tx_observaciones' },
+            { text: 'Usuario',       value: 'usuario.nb_usuario' },
+            { text: 'Nombre',        value: 'usuario.nb_nombres' },
+            { text: 'Perfil',        value: 'perfil.nb_perfil' },
 			{ text: 'Status',        value: 'id_status' },
             { text: 'Acciones',      value: 'actions', sortable: false, filterable: false },
         ],

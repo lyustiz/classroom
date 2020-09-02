@@ -42,4 +42,11 @@ class UsuarioPerfil extends Model
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
     }
+
+    public function perfil()
+    {
+        return $this->BelongsTo('App\Models\Perfil', 'id_perfil');
+    }
+
+
 }

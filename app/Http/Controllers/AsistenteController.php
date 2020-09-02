@@ -15,7 +15,7 @@ class AsistenteController extends Controller
      */
     public function index()
     {
-        $asistente = Asistente::with([])
+        $asistente = Asistente::with(['menu:id,nb_menu,tx_icono'])
                     ->get();
         
         return $asistente;
@@ -41,9 +41,36 @@ class AsistenteController extends Controller
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
-        $asistente = asistente::create($request->all());
+        $asistente = Asistente::create($request->all());
+        
+        $this->updateOrden( $asistente->tx_grupo, $asistente->id, $asistente->nu_orden);
 
         return [ 'msj' => 'Asistente Agregado Correctamente', compact('asistente') ];
+    }
+
+    public function updateOrden($grupo, $idAsistente, $nuevoOrden)
+    {
+        $asistentes = Asistente::where('tx_grupo', $grupo)->orderBy('nu_orden', 'asc')->get();
+
+        $orden = 1;
+
+        foreach ($asistentes as $key => $asistente) {
+            
+            if($asistente->id == $idAsistente)
+            {
+                continue;
+            }
+            
+            if($orden == $nuevoOrden)
+            {
+                $orden++; 
+            }
+
+            $preguntaUpd->nu_orden = $orden; 
+            $preguntaUpd->update(); 
+            
+            $orden++; 
+        }
     }
 
     /**
@@ -82,6 +109,8 @@ class AsistenteController extends Controller
 
         return [ 'msj' => 'Asistente Editado' , compact('asistente')];
     }
+
+    
 
     /**
      * Remove the specified resource from storage.

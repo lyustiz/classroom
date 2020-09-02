@@ -41,4 +41,9 @@ class Asistente extends Model
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
     }
+
+    public function menu()
+    {
+        return $this->BelongsTo('App\Models\Menu', 'id_menu');
+    }
 }

@@ -47,7 +47,7 @@ trait UsuarioTrait
             throw ValidationException::withMessages(['createAdministrador' => "No es posible crear usuario Administrador"]);
         }
                 
-        $tipoUsuario = TipoUsuario::find($idTipoUsuario)->first();
+        $tipoUsuario = TipoUsuario::find($idTipoUsuario);
 
         $idPerfil    = $tipoUsuario->id_perfil;
 

@@ -127,14 +127,7 @@ export default {
     data() {
         return {
             resource: 'pregunta',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
+ 
             form:
             {
                 id: 	           null,

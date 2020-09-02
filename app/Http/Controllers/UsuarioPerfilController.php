@@ -15,7 +15,7 @@ class UsuarioPerfilController extends Controller
      */
     public function index()
     {
-        $usuarioPerfil = UsuarioPerfil::with([])
+        $usuarioPerfil = UsuarioPerfil::with(['usuario:id,nb_usuario,nb_nombres', 'perfil:id,nb_perfil,tx_icono'])
                     ->get();
         
         return $usuarioPerfil;

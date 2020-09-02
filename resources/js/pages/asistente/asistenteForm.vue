@@ -88,7 +88,7 @@
 
         <v-col cols="12">
             <v-textarea
-                :rules="[rules.required, rules.max(100)]"
+                :rules="[rules.required, rules.max(300)]"
                 v-model="form.tx_descripcion"
                 label="Descripcion"
                 placeholder="Indique Descripcion"
@@ -157,7 +157,7 @@ export default {
     {
         defaultData(menuId)
         {
-            let menu = this.selects.menu.filter((menu) => menu.id == menuId )
+            let menu = this.selects.menu.find((menu) => menu.id == menuId )
             console.log(menu)
             this.form.nb_asistente = menu.nb_menu
             this.form.tx_color = menu.tx_color
