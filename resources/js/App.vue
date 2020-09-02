@@ -33,9 +33,7 @@ export default {
         }
         else
         {
-            console.log('nolog')
             this.$store.dispatch('unatenticate')
-            this.$store.commit('setColegio', null)
             this.navegateTo('/')
         }
 

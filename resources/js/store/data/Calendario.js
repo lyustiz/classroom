@@ -45,7 +45,8 @@ export default
 
 		setCalendario (state, calendario)
         {
-            state.calendario 	= calendario
+			state.calendario 	= calendario
+			localStorage.setItem("calendario", (calendario)  ? JSON.stringify(calendario): ''	)
 		},
 		
 		setCalendariobyId (state, calendario)

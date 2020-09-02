@@ -90,6 +90,7 @@
                 @closeModal="closeModal()"
                 :head-color="$App.theme.headModal"
                 :title="title"
+                width="95vw"
             >
                 <pariente-form
                     :action="action"

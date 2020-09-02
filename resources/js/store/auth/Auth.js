@@ -224,7 +224,8 @@ export default
 			commit('setProfiles' , data.profiles);
 			commit('setAuth'  	 , true);
 
-			commit('setColegio'  , data.user.colegio )
+			commit('setColegio'     , data.user.colegio )
+			commit('setCalendario'  , data.user.colegio.calendario )
 		},
 
 		unatenticate({ commit })
@@ -235,6 +236,9 @@ export default
 			commit('setProfiles' , []);
 			commit('setProfiles' , []);
 			commit('setAuth'  	 , false);
+
+			commit('setColegio'    , null )
+			commit('setCalendario' , null )
 
 			localStorage.clear()
 			localStorage.setItem("auth", 	false)

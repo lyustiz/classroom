@@ -47,7 +47,8 @@ export default
 
 		setColegio (state, colegio)
         {
-            state.colegio 	= colegio
+			state.colegio 	= colegio
+			localStorage.setItem("colegio", (colegio)  ? JSON.stringify(colegio): ''	)
 		},
 
 		setOpenCloseColegio (state, openClose)

@@ -151,6 +151,8 @@ Route::get('/grado/MateriaAlumno',              'GradoController@gradoMateriaAlu
 Route::get('/grado/planEvaluacion',             'GradoController@gradoPlanEvaluacion');
 Route::get('/grado/list',                       'GradoController@list');
 Route::apiResource('/grado',                    'GradoController');
+Route::get('/gradoMateria/grado/{grado}/asignacion',   'GradoMateriaController@gradoMateriaAsignacion');
+Route::apiResource('/gradoMateria',             'GradoMateriaController');
 
 Route::get('/grupo/grado/{grado}',              'GrupoController@grupoGrado');
 Route::get('/grupo/alumnos/docente/{docente}',  'GrupoController@grupoAlumnosDocente');
@@ -170,8 +172,7 @@ Route::apiResource('/materia',                  'MateriaController', ['parameter
 Route::apiResource('/clase',                    'ClaseController');
 Route::apiResource('/calificacion',             'CalificacionController');
 Route::apiResource('/tipoCalificacion',         'TipoCalificacionController');
-Route::apiResource('/nivelCalificacion',        'NivelCalificacionController');
-Route::apiResource('/gradoMateria',             'GradoMateriaController');
+Route::apiResource('/nivelCalificacion',        'NivelCalificacionController');;
 Route::apiResource('/inasistencia',             'InasistenciaController'); //TODO: ASISTENCIA
 Route::apiResource('/grupoCalificacion',        'GrupoCalificacionController');
 

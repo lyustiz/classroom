@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GradoMateria;
+use App\Models\Materia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -23,6 +24,37 @@ class GradoMateriaController extends Controller
                     ->orderBy('id_materia', 'asc')
                     ->get();
         
+        return $gradoMateria;
+    }
+
+    public function gradoMateriaAsignacion($idGrado)
+    {
+        $gradoMateria = GradoMateria::select('id','id_grado','id_materia')
+                                        ->with(['materia:id,nb_materia'])
+                                        ->where('id_grado', $idGrado)
+                                        ->get();
+
+        $materia     = Materia::whereNotIn('id', $gradoMateria->pluck('id_materia'))->get();
+
+        $gradoMateria = $this->formatData($gradoMateria);
+
+        return [ 'gradoMateria' => $gradoMateria, 'materia' => $materia] ;
+    }
+
+
+    function formatData($data)
+    {
+        $gradoMateria = [];
+        
+        foreach ($data as $key => $row) {
+
+            $gradoMateria[] = [
+                'id'         => $row->id,
+                'id_materia' => $row->id_materia,
+                'nb_materia' => $row->materia->nb_materia,
+            ];
+        }
+
         return $gradoMateria;
     }
 

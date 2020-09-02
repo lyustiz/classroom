@@ -70,7 +70,7 @@ class UsuarioController extends Controller
             throw ValidationException::withMessages(['createAdministrador' => "No es posible crear usuario Administrador"]);
         }
                 
-        $tipoUsuario  = TipoUsuario::find($idTipoUsuario)->first();
+        $tipoUsuario  = TipoUsuario::find($idTipoUsuario);
 
         $tableName    = $tipoUsuario->tx_tabla;
 

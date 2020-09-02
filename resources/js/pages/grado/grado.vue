@@ -74,6 +74,9 @@
                 @deleteCancel="deleteCancel()"
             ></form-delete>
 
+            <v-dialog v-model="dialogMateria" max-width="95vw" content-class="rounded-xl">
+                <alumno-pariente :alumno="alumno" v-if="dialogMateria" @closeModal="closeDialog($event,'dialogMateria')"></alumno-pariente>
+            </v-dialog>
             <pre v-if="$App.debug">{{ $data }}</pre>
 
     </list-container>
