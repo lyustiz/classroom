@@ -42,9 +42,9 @@
             ></v-select>
         </v-col>
           
-        <v-col cols="12" md="6">
+        <v-col cols="12" md="6" v-show="false">
             <v-text-field
-                :rules="[rules.required, max(30)]"
+                :rules="[rules.required, rules.max(30)]"
                 v-model="form.tx_icono"
                 label="Icono"
                 placeholder="Indique Icono"
@@ -113,29 +113,21 @@ export default {
     data() {
         return {
             resource: 'materia',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
             form:
             {
-                id: 	null,
-				nb_materia: 	null,
-				co_materia: 	null,
-				id_area_estudio: 	null,
-				tx_icono: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
+                id: 	          null,
+				nb_materia: 	  null,
+				co_materia: 	  null,
+				id_area_estudio:  null,
+				tx_icono: 	      null,
+				tx_observaciones: null,
+				id_status: 	      null,
+				id_usuario: 	  null,
             },
             selects:
             {
                 areaEstudio: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     [],
             },
         }
     },

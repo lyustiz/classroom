@@ -47,19 +47,61 @@
                     </v-list-item-avatar> 
                 
                     <v-list-item-content>
-                        <v-list-item-title v-text="permiso.menu.nb_menu"></v-list-item-title>
+                        <v-list-item-title class="indigo--text" v-text="permiso.menu.nb_menu"></v-list-item-title>
                         <v-row no-gutters> 
-                            <v-switch prepend-icon="mdi-database-search"></v-switch>
-                            <v-switch prepend-icon="mdi-database-plus"></v-switch>
-                            <v-switch prepend-icon="mdi-database-edit"></v-switch>
-                            <v-switch prepend-icon="mdi-database-minus"></v-switch>
-                            <v-switch prepend-icon="mdi-shield-account"></v-switch>
+                            
+                            <v-tooltip top color="indigo">
+                                <template v-slot:activator="{ on }">
+                                    <div v-on="on">
+                                     <v-switch class="mr-2" color="success" :input-value="permiso.bo_select" :false-value="0" :true-value="1" prepend-icon="mdi-database-search" hide-details></v-switch>
+                                    </div>
+                                </template>
+                                <span>Consultar</span>
+                            </v-tooltip>
+
+                            <v-tooltip top color="indigo">
+                                <template v-slot:activator="{ on }">
+                                    <div v-on="on">
+                                     <v-switch class="mr-2" color="success" :input-value="permiso.bo_insert" :false-value="0" :true-value="1" prepend-icon="mdi-database-plus" hide-details></v-switch>
+                                    </div>
+                                </template>
+                                <span>Agregar</span>
+                            </v-tooltip>
+
+                            <v-tooltip top color="indigo">
+                                <template v-slot:activator="{ on }">
+                                    <div v-on="on">
+                                     <v-switch  class="mr-2" color="success" :input-value="permiso.bo_update" :false-value="0" :true-value="1" prepend-icon="mdi-database-edit" hide-details></v-switch>
+                                    </div>
+                                </template>
+                                <span>Editar</span>
+                            </v-tooltip>
+
+                            <v-tooltip top color="indigo">
+                                <template v-slot:activator="{ on }">
+                                    <div v-on="on">
+                                     <v-switch class="mr-2" color="success" :input-value="permiso.bo_delete" :false-value="0" :true-value="1" prepend-icon="mdi-database-remove" hide-details></v-switch>
+                                    </div>
+                                </template>
+                                <span>Eliminar</span>
+                            </v-tooltip>
+
+                            <v-tooltip top color="indigo">
+                                <template v-slot:activator="{ on }">
+                                    <div v-on="on">
+                                     <v-switch class="mr-2" color="success" :input-value="permiso.bo_admin" :false-value="0" :true-value="1" prepend-icon="mdi-shield-account" hide-details></v-switch>
+                                    </div>
+                                </template>
+                                <span>Administrador</span>
+                            </v-tooltip>
+                            
+                    
                         </v-row>
                     </v-list-item-content>
 
              <!-- TODO/ implement insert and update permiso  avoid reload and modal fail-->
                     <v-list-item-action>
-                        <app-button color="red" icon="mdi-delete" label="Eliminar"></app-button>
+                        <app-button color="red" icon="mdi-delete" label="Eliminar Permiso" class="my-1"></app-button>
                     </v-list-item-action>
 
                 </v-list-item>
@@ -256,5 +298,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+    .v-input--selection-controls
+    {
+        margin-top: 0px !important;
+    }
 </style>

@@ -44,7 +44,7 @@
                                 @update="updateForm(item)" 
                                 @delete="deleteForm(item)" >
 
-                                <v-dialog max-width="600" content-class="rounded-xl">
+                                <v-dialog max-width="640" content-class="rounded-xl">
                                     <template v-slot:activator="{ on, attrs }">
                                         <app-button v-bind="attrs" v-on="on" icon="mdi-account-lock" label="Permisos"></app-button>
                                     </template>
