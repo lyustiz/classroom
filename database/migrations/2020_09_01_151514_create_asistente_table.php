@@ -21,7 +21,7 @@ class CreateAsistenteTable extends Migration
             $table->string('tx_color', 30)->nullable();
             $table->integer('nu_orden');
             $table->string('tx_grupo', 30)->nullable();
-            $table->string('tx_observaciones', 100)->nullable();
+            $table->string('tx_observaciones', 300)->nullable();
             $table->integer('id_status');
             $table->integer('id_usuario');
             $table->timestamps();

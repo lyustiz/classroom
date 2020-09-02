@@ -16,6 +16,19 @@ class AsistenteController extends Controller
     public function index()
     {
         $asistente = Asistente::with(['menu:id,nb_menu,tx_icono'])
+                    ->orderBy('tx_grupo', 'asc')
+                    ->orderBy('nu_orden', 'asc')
+                    ->get();
+        
+        return $asistente;
+    }
+
+    public function asistentePerfil($nbPerfil)
+    {
+        $asistente = Asistente::with(['menu:id,nb_menu,tx_icono,tx_ruta'])
+                    ->where('tx_grupo', $nbPerfil)
+                    ->orderBy('tx_grupo', 'asc')
+                    ->orderBy('nu_orden', 'asc')
                     ->get();
         
         return $asistente;
@@ -36,7 +49,7 @@ class AsistenteController extends Controller
 			'tx_color'          => 	'nullable|string|max:30',
 			'nu_orden'          => 	'required|integer|max:999999999',
 			'tx_grupo'          => 	'nullable|string|max:30',
-			'tx_observaciones'  => 	'nullable|string|max:100',
+			'tx_observaciones'  => 	'nullable|string|max:300',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
@@ -66,8 +79,8 @@ class AsistenteController extends Controller
                 $orden++; 
             }
 
-            $preguntaUpd->nu_orden = $orden; 
-            $preguntaUpd->update(); 
+            $asistente->nu_orden = $orden; 
+            $asistente->update(); 
             
             $orden++; 
         }
@@ -100,14 +113,16 @@ class AsistenteController extends Controller
 			'tx_color'          => 	'nullable|string|max:30',
 			'nu_orden'          => 	'required|integer|max:999999999',
 			'tx_grupo'          => 	'nullable|string|max:30',
-			'tx_observaciones'  => 	'nullable|string|max:100',
+			'tx_observaciones'  => 	'nullable|string|max:300',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
+        
+        $update = $asistente->update($request->all());
+        
+        $this->updateOrden( $asistente->tx_grupo, $asistente->id, $asistente->nu_orden);
 
-        $asistente = $asistente->update($request->all());
-
-        return [ 'msj' => 'Asistente Editado' , compact('asistente')];
+        return [ 'msj' => 'Asistente Editado' , compact('update')];
     }
 
     
@@ -120,8 +135,11 @@ class AsistenteController extends Controller
      */
     public function destroy(Asistente $asistente)
     {
-        $asistente = $asistente->delete();
+        
+        $grupo = $asistente->tx_grupo;
+        $delete = $asistente->delete();
+        $this->updateOrden( $grupo, 0, 0);
  
-        return [ 'msj' => 'Asistente Eliminado' , compact('asistente')];
+        return [ 'msj' => 'Asistente Eliminado' , compact('delete')];
     }
 }

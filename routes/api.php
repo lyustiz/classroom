@@ -307,8 +307,10 @@ Route::post('/reporte/execute/excel',           'Reportes\ReporteController@exec
 Route::get('meet/{usuario}',                    'MeetController@index');
 Route::post('meet/auth/{usuario}',              'MeetController@auth');
 
-Route::apiResource('/asistente',     'AsistenteController');
-Route::apiResource('/asistenteDetalle',     'AsistenteDetalleController');
+//asistente
+Route::get('/asistente/perfil/{perfil}',        'AsistenteController@asistentePerfil');
+Route::apiResource('/asistente',                'AsistenteController');
+Route::apiResource('/asistenteDetalle',                 'AsistenteDetalleController');
 //newRoutes
 
 Route::fallback(function () {

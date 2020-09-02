@@ -43,11 +43,11 @@
                                 @onChangeStatus="changeStatus($event)">
                             </status-switch>
                         </td>
-                        
                         <td class="text-xs-left">
                             <list-buttons 
                                 @update="updateForm(item)" 
                                 @delete="deleteForm(item)" >
+
                             </list-buttons>
                         </td>
                     </tr>
@@ -64,6 +64,7 @@
                 <asistente-form
                     :action="action"
                     :item="item"
+                    :orden="orden"
                     @closeModal="closeModal()"
                 ></asistente-form>
 
@@ -87,28 +88,38 @@
 import listHelper from '@mixins/Applist';
 import asistenteForm  from './asistenteForm';
 export default {
+
     mixins:     [ listHelper],
-    components: { 'asistente-form': asistenteForm },
-    data () {
-    return {
-        title:    'Asistente',
-        resource: 'asistente',
-        headers: [
-            { text: 'Icono',       value: 'menu.nb_menu' },
-            { text: 'Menu',        value: 'menu.nb_menu' },
-            { text: 'Asistente',   value: 'nb_asistente' },
-			{ text: 'Descripcion', value: 'tx_descripcion' },
-			{ text: 'Orden',       value: 'nu_orden' },
-			{ text: 'Grupo',       value: 'tx_grupo' },
-			{ text: 'Status',      value: 'id_status' },
-            { text: 'Acciones',    value: 'actions', sortable: false, filterable: false },
-        ],
-    }
+
+    components: { 
+        'asistente-form': asistenteForm 
     },
-    methods:
+
+    computed: 
     {
-   
-    }
+        orden()
+        {
+            return (this.items) ? this.items.length : 0
+        }
+    },
+
+    data () {
+        return {
+            title:    'Asistente',
+            resource: 'asistente',
+            headers: [
+                { text: 'Icono',       value: 'menu.nb_menu' },
+                { text: 'Menu',        value: 'menu.nb_menu' },
+                { text: 'Asistente',   value: 'nb_asistente' },
+                { text: 'Descripcion', value: 'tx_descripcion' },
+                { text: 'Orden',       value: 'nu_orden' },
+                { text: 'Grupo',       value: 'tx_grupo' },
+                { text: 'Status',      value: 'id_status' },
+                { text: 'Acciones',    value: 'actions', sortable: false, filterable: false },
+            ],
+        }
+    },
+
 }
 </script>
 

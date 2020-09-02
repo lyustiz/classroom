@@ -33,6 +33,33 @@
                 dense
             ></v-text-field>
         </v-col>
+
+        <v-col cols="12" md="4">
+            <v-select
+            :items="grupoAsistente"
+            item-text="nb_grupo"
+            item-value="nb_grupo"
+            v-model="form.tx_grupo"
+            :rules="[rules.select]"
+            label="Indique Grupo"
+            :loading="loading"
+            dense
+            ></v-select>
+        </v-col>
+
+        <v-col cols="12" md="4">
+            <v-select
+            :items="ordenOptions"
+            v-model="form.nu_orden"
+            :rules="[rules.select]"
+            label="Orden"
+            :loading="loading"
+            outlined
+            dense
+            class="ml-3"
+            prepend-icon="mdi-order-numeric-ascending"
+            ></v-select>
+        </v-col>
                         
           
         <v-col cols="12" md="4">
@@ -62,29 +89,6 @@
             </v-input>
         </v-col>
                   
-        <v-col cols="12" md="4">
-            <v-text-field
-                :rules="[rules.required]"
-                v-model="form.nu_orden"
-                label="Orden"
-                placeholder="Indique Orden"
-                dense
-                type="number"
-            ></v-text-field>
-        </v-col>
-
-        <v-col cols="12" md="4">
-            <v-select
-            :items="grupoAsistente"
-            item-text="nb_grupo"
-            item-value="nb_grupo"
-            v-model="form.tx_grupo"
-            :rules="[rules.select]"
-            label="Indique Grupo"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
 
         <v-col cols="12">
             <v-textarea
@@ -92,6 +96,18 @@
                 v-model="form.tx_descripcion"
                 label="Descripcion"
                 placeholder="Indique Descripcion"
+                dense
+                filled
+                rows="2"
+            ></v-textarea>
+        </v-col>
+
+        <v-col cols="12">
+            <v-textarea
+                :rules="[rules.required, rules.max(300)]"
+                v-model="form.tx_observaciones"
+                label="Observaciones"
+                placeholder="Indique Observaciones"
                 dense
                 filled
                 rows="2"
@@ -116,7 +132,7 @@
             ></form-buttons>
         </v-card-actions>
 
-        <pre vv-if="$App.debug">{{ $data }}</pre>
+        <pre v-if="$App.debug">{{ $data }}</pre>
 
     </v-card>
     
@@ -129,7 +145,26 @@
 import Appform from '@mixins/Appform';
 
 export default {
+
     mixins: [Appform],
+
+    props:
+    {
+        orden:
+        {
+            type:    Number,
+            default: 1
+        }
+    },
+
+    computed:
+    {
+        ordenOptions()
+        {
+            return  Array.from({length: this.orden + ((this.action =='ins')? 1: 0) }, (v, i) => i + 1 );
+        }     
+    },
+
     data() {
         return {
             resource: 'asistente',
@@ -155,10 +190,14 @@ export default {
 
     methods:
     {
+        preActionForms()
+        {
+            this.form.nu_orden = (this.action =='ins') ? this.orden + 1: this.orden
+        },
+        
         defaultData(menuId)
         {
             let menu = this.selects.menu.find((menu) => menu.id == menuId )
-            console.log(menu)
             this.form.nb_asistente = menu.nb_menu
             this.form.tx_color = menu.tx_color
         }
