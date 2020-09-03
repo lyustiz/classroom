@@ -8,8 +8,7 @@
 
         <v-row>
 
-                 
-        <v-col cols="12" md="6">
+        <v-col cols="6" md="3">
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.nb_apellido"
@@ -19,9 +18,9 @@
             ></v-text-field>
         </v-col>
                   
-        <v-col cols="12" md="6">
+        <v-col cols="6" md="3">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[rules.max(100)]"
                 v-model="form.nb_apellido2"
                 label="Apellido2"
                 placeholder="Indique Apellido2"
@@ -29,7 +28,7 @@
             ></v-text-field>
         </v-col>
                   
-        <v-col cols="12" md="6">
+        <v-col cols="6" md="3">
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.nb_nombre"
@@ -39,9 +38,9 @@
             ></v-text-field>
         </v-col>
                   
-        <v-col cols="12" md="6">
+        <v-col cols="6" md="3">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[rules.max(100)]"
                 v-model="form.nb_nombre2"
                 label="Nombre2"
                 placeholder="Indique Nombre2"
@@ -49,7 +48,7 @@
             ></v-text-field>
         </v-col>
                           
-        <v-col cols="12" md="6">
+        <v-col cols="6" md="3">
             <v-select
             :items="selects.estadoCivil"
             item-text="nb_estado_civil"
@@ -62,7 +61,7 @@
             ></v-select>
         </v-col>
           
-        <v-col cols="12" md="6">
+        <v-col cols="6" md="3">
             <v-radio-group v-model="form.tx_sexo" prepend-icon="mdi-human-male-female" :rules="[rules.radio]" row>
                 <v-radio
                     v-for="(sexo, idx) in sexos"
@@ -73,7 +72,32 @@
             </v-radio-group>
         </v-col>
                  
-        <v-col cols="12" md="6">
+        
+
+        <v-col cols="6" md="3">
+            <v-select
+            :items="selects.tipoDocumento"
+            item-text="nb_tipo_documento"
+            item-value="id"
+            v-model="form.id_tipo_documento"
+            :rules="[rules.select]"
+            label="Tipo Documento"
+            :loading="loading"
+            dense
+            ></v-select>
+        </v-col>
+          
+        <v-col cols="6" md="3">
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.tx_documento"
+                label="Documento"
+                placeholder="Indique Documento"
+                dense
+            ></v-text-field>
+        </v-col>
+
+        <v-col cols="6" md="3" class="pb-6">
             <v-menu
                 v-model="pickers.fe_nacimiento"
                 :close-on-content-click="false"
@@ -91,35 +115,16 @@
                     ></v-text-field>
                 </template>
                 <v-date-picker 
+                    ref="fe_nacimiento"
                     v-model="form.fe_nacimiento" 
-                    @input="dates.fe_nacimiento = formatPicker(form.fe_nacimiento, 'fe_nacimiento')">
+                    @input="dates.fe_nacimiento = formatPicker(form.fe_nacimiento, 'fe_nacimiento')"
+                    :max="new Date().toISOString().substr(0, 10)"
+                    min="1950-01-01">
                 </v-date-picker>
             </v-menu>
-        </v-col>         
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.tipoDocumento"
-            item-text="nb_tipo_documento"
-            item-value="id"
-            v-model="form.id_tipo_documento"
-            :rules="[rules.select]"
-            label="Tipo Documento"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
-          
-        <v-col cols="12" md="6">
-            <v-text-field
-                :rules="[rules.required]"
-                v-model="form.tx_documento"
-                label="Documento"
-                placeholder="Indique Documento"
-                dense
-            ></v-text-field>
-        </v-col>
+        </v-col>      
                   
-        <v-col cols="12" md="6">
+        <v-col cols="6" md="3">
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.tx_lugar_nacimiento"
@@ -129,7 +134,7 @@
             ></v-text-field>
         </v-col>
                   
-        <v-col cols="12" md="6">
+        <v-col cols="6" md="3">
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.tx_direccion"
@@ -139,7 +144,7 @@
             ></v-text-field>
         </v-col>
                           
-        <v-col cols="12" md="6">
+        <v-col cols="6" md="3">
             <v-select
             :items="selects.departamento"
             item-text="nb_departamento"
@@ -152,7 +157,7 @@
             ></v-select>
         </v-col>
                   
-        <v-col cols="12" md="6">
+        <v-col cols="6" md="3">
             <v-select
             :items="selects.ciudad"
             item-text="nb_ciudad"
@@ -165,7 +170,7 @@
             ></v-select>
         </v-col>
           
-        <v-col cols="12" md="6">
+        <v-col cols="6" md="3">
             <v-text-field
                 :rules="rules.email"
                 v-model="form.tx_email"
@@ -175,7 +180,7 @@
             ></v-text-field>
         </v-col>
                   
-        <v-col cols="12" md="6">
+        <v-col cols="6" md="3">
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.tx_telefono"
@@ -185,7 +190,7 @@
             ></v-text-field>
         </v-col>
                   
-        <v-col cols="12" md="6">
+        <v-col cols="6" md="3">
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.tx_telefono_movil"
@@ -195,7 +200,7 @@
             ></v-text-field>
         </v-col>
                           
-        <v-col cols="12" md="6">
+        <v-col cols="6" md="3">
             <v-select
             :items="selects.cargo"
             item-text="nb_cargo"
@@ -208,7 +213,7 @@
             ></v-select>
         </v-col>
          
-        <v-col cols="12" md="6"> 
+        <v-col cols="6" md="3"> 
             <v-checkbox
                   :rules="[rules.check]"
                   v-model="form.bo_profesor"
@@ -220,7 +225,7 @@
             ></v-checkbox>
         </v-col>
  
-        <v-col cols="12" md="6">
+        <v-col cols="6" md="3">
             <v-text-field
                 :rules="[]"
                 v-model="form.tx_observaciones"
@@ -230,20 +235,6 @@
             ></v-text-field>
         </v-col>
                           
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.status"
-            item-text="nb_status"
-            item-value="id"
-            v-model="form.id_status"
-            :rules="[rules.select]"
-            label="Status"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
-         
-
         </v-row>
 
         </v-card-text>
@@ -274,7 +265,16 @@
 import Appform from '@mixins/Appform';
 
 export default {
+
     mixins: [Appform],
+
+    watch:
+    {
+        'pickers.fe_nacimiento': function (val){
+            val && setTimeout(() => (this.$refs.fe_nacimiento.activePicker = 'YEAR'))
+        },
+    },
+
     data() {
         return {
             resource: 'empleado',
@@ -318,7 +318,6 @@ export default {
 	 	 	 	departamento: 	[],
 	 	 	 	ciudad: 	    [],
 	 	 	 	cargo: 	        [],
-	 	 	 	status: 	    [],
             },
             sexos: [ 'M', 'F' ],
             defaultForm:{

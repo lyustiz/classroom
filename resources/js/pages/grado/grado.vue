@@ -45,6 +45,15 @@
                             <list-buttons 
                                 @update="updateForm(item)" 
                                 @delete="deleteForm(item)" >
+
+                                <item-menu 
+                                    :menus="ItemsMenu" 
+                                    iconColor="white" 
+                                    btnColor="cyan" 
+                                    :item="item"
+                                    @onItemMenu="onItemMenu($event)" 
+                                ></item-menu>
+
                             </list-buttons>
                         </td>
                     </tr>
@@ -74,8 +83,8 @@
                 @deleteCancel="deleteCancel()"
             ></form-delete>
 
-            <v-dialog v-model="dialogMateria" max-width="95vw" content-class="rounded-xl">
-                <alumno-pariente :alumno="alumno" v-if="dialogMateria" @closeModal="closeDialog($event,'dialogMateria')"></alumno-pariente>
+            <v-dialog v-model="dialogMateria" max-width="600" content-class="rounded-xl">
+                <grado-materia-form :grado="grado" v-if="dialogMateria" @closeModal="closeDialog($event,'dialogMateria')"></grado-materia-form>
             </v-dialog>
             <pre v-if="$App.debug">{{ $data }}</pre>
 
@@ -86,25 +95,41 @@
 <script>
 import listHelper from '@mixins/Applist';
 import gradoForm  from './gradoForm';
+import GradoMateriaForm from '@pages/gradoMateria/AppGradoMateriaForm'
 export default {
+
     mixins:     [ listHelper],
-    components: { 'grado-form': gradoForm },
+
+    components: { 
+        'grado-form':         gradoForm,
+        'grado-materia-form': GradoMateriaForm
+    },
+
     data () {
-    return {
-        title:    'Grado',
-        resource: 'grado',
-        headers: [
-            { text: 'Grado',   value: 'nb_grado' },
-			{ text: 'Numero',   value: 'nu_grado' },
-			{ text: 'Nivel',   value: 'nivel.nb_nivel' },
-			{ text: 'Status',   value: 'id_status' },
-            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
-        ],
-    }
+        return {
+            title:    'Grado',
+            resource: 'grado',
+            headers: [
+                { text: 'Grado',    value: 'nb_grado' },
+                { text: 'Orden',   value: 'nu_grado' },
+                { text: 'Nivel',    value: 'nivel.nb_nivel' },
+                { text: 'Status',   value: 'id_status' },
+                { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
+            ],
+            ItemsMenu: [
+                { action: 'addMateria', icon: 'mdi-file-cad-box', label: 'Asignar Materia' }
+            ],
+            dialogMateria: false,
+            grado:         1
+        }
     },
     methods:
     {
-        
+        addMateria(grado)
+        {
+            this.grado         = grado
+            this.dialogMateria = true
+        }
     }
 }
 </script>

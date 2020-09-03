@@ -70,6 +70,7 @@
                 @closeModal="closeModal()"
                 :head-color="$App.theme.headModal"
                 :title="title"
+                width="95vw"
             >
                 <empleado-form
                     :action="action"

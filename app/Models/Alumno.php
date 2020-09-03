@@ -30,8 +30,8 @@ class Alumno extends Model
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'
-                            ]; 
-    
+							]; 
+
     protected $hidden     = [
                             'created_at',
 	 	 	 	 	 	 	'updated_at'

@@ -74,6 +74,7 @@
                 :modal="modal"
                 :head-color="$App.theme.headModal"
                 :title="title"
+                width="95vw"
                 @closeModal="closeModal()"
             >
                 <docente-form
@@ -129,10 +130,6 @@ export default {
             ],
             ItemsMenu: [
                 { action: 'addMateria', icon: 'mdi-file-cad-box', label: 'Asignar Materia' }
-            ],
-            sexoIcons: [
-                {value: 'M', icon: 'mdi-human-male',  color: 'blue', label: 'Masculino'},
-                {value: 'F', icon: 'mdi-human-female',  color: 'pink', label: 'Femenino'}
             ],
             addGrupoDialog: false,
             addMateriaDialog: false,

@@ -6,7 +6,7 @@
 
         <v-card-text>
             <v-subheader>Datos Personales</v-subheader>
-        <v-row dense>
+        <v-row>
                   
         <v-col cols="6" md="3">
             <v-text-field
@@ -20,7 +20,7 @@
                   
         <v-col cols="6" md="3">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[rules.max(100)]"
                 v-model="form.nb_nombre2"
                 label="Nombre2"
                 placeholder="Indique Nombre2"
@@ -40,7 +40,7 @@
                   
         <v-col cols="6" md="3">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[rules.max(100)]"
                 v-model="form.nb_apellido2"
                 label="Apellido2"
                 placeholder="Indique Apellido2"
@@ -59,7 +59,7 @@
             </v-radio-group>
         </v-col>
                  
-        <v-col cols="12" md="3" class="pb-6">
+        <v-col cols="6" md="3" class="pb-6">
             <v-menu
                 v-model="pickers.fe_nacimiento"
                 :close-on-content-click="false"
@@ -128,18 +128,7 @@
                 dense
             ></v-text-field>
         </v-col>
-                  
-                  
-        <v-col cols="6" md="3">
-            <v-text-field
-                :rules="[rules.required]"
-                v-model="form.tx_direccion"
-                label="Direccion"
-                placeholder="Indique Direccion"
-                dense
-            ></v-text-field>
-        </v-col>
-                          
+                     
         <v-col cols="6" md="3">
             <v-select
             :items="selects.departamento"
@@ -165,10 +154,20 @@
             dense
             ></v-select>
         </v-col>
+
+        <v-col cols="6" md="3">
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.tx_direccion"
+                label="Direccion"
+                placeholder="Indique Direccion"
+                dense
+            ></v-text-field>
+        </v-col>
           
         <v-col cols="6" md="3">
             <v-text-field
-                :rules="[rules.required, rules.max(30)]"
+                :rules="rules.email"
                 v-model="form.tx_email"
                 label="Email"
                 placeholder="Indique Email"

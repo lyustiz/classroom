@@ -17,7 +17,8 @@ class Docente extends Model
 	 	 	 	 	 	 	'tx_sexo',
 	 	 	 	 	 	 	'fe_nacimiento',
 	 	 	 	 	 	 	'id_tipo_documento',
-	 	 	 	 	 	 	'tx_documento',
+							'tx_documento',
+							'tx_nacionalidad',
 	 	 	 	 	 	 	'tx_lugar_nacimiento',
 	 	 	 	 	 	 	'tx_direccion',
 	 	 	 	 	 	 	'id_departamento',
@@ -28,7 +29,8 @@ class Docente extends Model
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'
-                            ]; 
+							]; 
+							
     
     protected $hidden     = [
                             'created_at',

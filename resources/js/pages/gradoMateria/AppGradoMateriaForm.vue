@@ -21,6 +21,8 @@
                 autofocus
                 dense
                 return-object
+                single-line
+                hide-details
                 @change="addMateria($event)">
           </v-autocomplete>
         </v-col>
@@ -74,15 +76,15 @@ export default {
     mixins: [ AppData, AppSelect ],
     props:
     {
-        idGrado: {
-            type:       Number,
+        grado: {
+            type:       Object,
             default:    null
         },
     },
     created()
     {
         this.list();
-        this.default.id_grado = this.idGrado
+        this.default.id_grado = this.grado.id
     },
     data() {
         return {
@@ -113,7 +115,7 @@ export default {
         list()
         {
             this.materias = []
-            let resource  = 'gradoMateria/docente/' + this.idGrado
+            let resource  = `gradoMateria/grado/${this.grado.id}/asignacion`
             this.getResource( resource ).then( data =>  {
                 this.materias = data.gradoMateria
                 this.selects.materia = data.materia

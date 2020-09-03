@@ -17,7 +17,6 @@
                 dense
             ></v-text-field>
         </v-col>
-                          
 
         <v-col cols="12" md="6">
             <v-select

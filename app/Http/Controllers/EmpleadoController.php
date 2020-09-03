@@ -39,9 +39,9 @@ class EmpleadoController extends Controller
     {
         $validate = request()->validate([
             'nb_apellido'       => 	'required|string|max:30',
-			'nb_apellido2'      => 	'required|string|max:30',
+			'nb_apellido2'      => 	'nullable|string|max:30',
 			'nb_nombre'         => 	'required|string|max:30',
-			'nb_nombre2'        => 	'required|string|max:30',
+			'nb_nombre2'        => 	'nullable|string|max:30',
 			'id_estado_civil'   => 	'required|integer|max:999999999',
 			'tx_sexo'           => 	'required|string|max:1',
 			'fe_nacimiento'     => 	'required|date|before:today',
@@ -60,6 +60,9 @@ class EmpleadoController extends Controller
             'bo_profesor'       =>  'required|boolean',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
+        ],
+        [
+            'tx_email.require' => 'El correo es requerido',
         ]);
 
         $empleado = empleado::create($request->all());
@@ -91,9 +94,9 @@ class EmpleadoController extends Controller
     {
         $validate = request()->validate([
             'nb_apellido'       => 	'required|string|max:30',
-			'nb_apellido2'      => 	'required|string|max:30',
+			'nb_apellido2'      => 	'nullable|string|max:30',
 			'nb_nombre'         => 	'required|string|max:30',
-			'nb_nombre2'        => 	'required|string|max:30',
+			'nb_nombre2'        => 	'nullable|string|max:30',
 			'id_estado_civil'   => 	'required|integer|max:999999999',
 			'tx_sexo'           => 	'required|string|max:1',
 			'fe_nacimiento'     => 	'required|date|before:today',
@@ -112,6 +115,9 @@ class EmpleadoController extends Controller
             'bo_profesor'       =>  'required|boolean',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
+        ],
+        [
+            'tx_email.require' => 'El correo es requerido'
         ]);
 
         $empleado = $empleado->update($request->all());

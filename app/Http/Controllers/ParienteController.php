@@ -50,23 +50,37 @@ class ParienteController extends Controller
 
     public function storeValidate(Request $request)
     {
-        return  request()->validate([
-            'nb_nombre'         => 	'required|string|max:30',
-			'nb_apellido'       => 	'required|string|max:30',
-			'tx_documento'      => 	'required|string|max:30',
-			'id_parentesco'     => 	'required|integer',
-			'tx_empresa'        => 	'required|string|max:30',
-			'tx_cargo'          => 	'required|string|max:30',
-			'tx_ocupacion'      => 	'required|string|max:30',
-			'tx_telefono'       => 	'required|string|max:20',
-			'tx_telefono2'      => 	'required|string|max:20',
-			'tx_telefono3'      => 	'required|string|max:20',
-			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer',
-			'id_usuario'        => 	'required|integer',
+        return  request()->validate([  
+            'nb_apellido'         => 'required|string|max:30',
+            'nb_apellido2'        => 'nullable|string|max:30',
+            'nb_nombre'           => 'required|string|max:30',
+            'nb_nombre2'          => 'nullable|string|max:30',
+            'id_tipo_documento'   => 'required|integer|max:999999999',
+            'tx_documento'        => 'required|string|max:12',
+            'tx_sexo'             => 'required|string|max:1',
+            'fe_nacimiento'       => 'required|date|before:today',
+            'tx_nacionalidad'     => 'required|string|max:30',
+            'tx_lugar_nacimiento' => 'required|string|max:80',
+            'id_parentesco'       => 'required|integer|max:999999999',
+            'id_estado_civil'     => 'required|integer|max:999999999',
+            'tx_empresa'          => 'required|string|max:30',
+            'tx_cargo'            => 'required|string|max:30',
+            'tx_ocupacion'        => 'required|string|max:30',
+            'tx_telefono'         => 'required|string|max:15',
+            'tx_telefono2'        => 'required|string|max:15',
+            'tx_telefono3'        => 'nullable|string|max:15',
+            'tx_email'            => 'required|string|max:30',
+            'tx_observaciones'    => 'required|string|max:100',
+            'id_status'           => 'required|integer|max:999999999',
+            'id_usuario'          => 'required|integer|max:999999999',
+        ],
+        [
+            'tx_email.require' => 'El correo es requerido',
         ]);
     }
 
+
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -128,19 +142,31 @@ class ParienteController extends Controller
     public function update(Request $request, Pariente $pariente)
     {
         $validate = request()->validate([
-            'nb_nombre'         => 	'required|string|max:30',
-			'nb_apellido'       => 	'required|string|max:30',
-			'tx_documento'      => 	'required|string|max:30',
-			'id_parentesco'     => 	'required|integer',
-			'tx_empresa'        => 	'required|string|max:30',
-			'tx_cargo'          => 	'required|string|max:30',
-			'tx_ocupacion'      => 	'required|string|max:30',
-			'tx_telefono'       => 	'required|string|max:20',
-			'tx_telefono2'      => 	'required|string|max:20',
-			'tx_telefono3'      => 	'required|string|max:20',
-			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer',
-			'id_usuario'        => 	'required|integer',
+            'nb_apellido'         => 'required|string|max:30',
+            'nb_apellido2'        => 'nullable|string|max:30',
+            'nb_nombre'           => 'required|string|max:30',
+            'nb_nombre2'          => 'nullable|string|max:30',
+            'id_tipo_documento'   => 'required|integer|max:999999999',
+            'tx_documento'        => 'required|string|max:12',
+            'tx_sexo'             => 'required|string|max:1',
+            'fe_nacimiento'       => 'required|date|before:today',
+            'tx_nacionalidad'     => 'required|string|max:30',
+            'tx_lugar_nacimiento' => 'required|string|max:80',
+            'id_parentesco'       => 'required|integer|max:999999999',
+            'id_estado_civil'     => 'required|integer|max:999999999',
+            'tx_empresa'          => 'required|string|max:30',
+            'tx_cargo'            => 'required|string|max:30',
+            'tx_ocupacion'        => 'required|string|max:30',
+            'tx_telefono'         => 'required|string|max:15',
+            'tx_telefono2'        => 'nullable|string|max:15',
+            'tx_telefono3'        => 'nullable|string|max:15',
+            'tx_email'            => 'required|string|max:30',
+            'tx_observaciones'    => 'required|string|max:100',
+            'id_status'           => 'required|integer|max:999999999',
+            'id_usuario'          => 'required|integer|max:999999999',
+        ],
+        [
+            'tx_email.require' => 'El correo es requerido',
         ]);
 
         $pariente = $pariente->update($request->all());

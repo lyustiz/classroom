@@ -13,23 +13,27 @@ class Pariente extends Model
                             'nb_apellido',
 	 	 	 	 	 	 	'nb_apellido2',
 	 	 	 	 	 	 	'nb_nombre',
-	 	 	 	 	 	 	'nb_nombre2',
+							'nb_nombre2',
+							'id_tipo_documento',
 	 	 	 	 	 	 	'tx_documento',
 	 	 	 	 	 	 	'tx_sexo',
 	 	 	 	 	 	 	'fe_nacimiento',
-	 	 	 	 	 	 	'tx_nacionalidad',
-	 	 	 	 	 	 	'id_parentesco',
+							'tx_nacionalidad',
+							'tx_lugar_nacimiento',
+							'id_parentesco',
+							'id_estado_civil',
 	 	 	 	 	 	 	'tx_empresa',
 	 	 	 	 	 	 	'tx_cargo',
 	 	 	 	 	 	 	'tx_ocupacion',
 	 	 	 	 	 	 	'tx_telefono',
 	 	 	 	 	 	 	'tx_telefono2',
-	 	 	 	 	 	 	'tx_telefono3',
+							'tx_telefono3',
+							'tx_email',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'
-                            ]; 
-    
+							]; 
+
     protected $hidden     = [
                             'created_at',
 	 	 	 	 	 	 	'updated_at'
