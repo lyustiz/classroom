@@ -1,16 +1,17 @@
 <template>
 
-    <v-form ref="form" v-model="valid" lazy-validation>
-
-    <v-card :loading="loading" flat class="rounded-xl">
-
-
+    <v-card :loading="loading" flat class="rounded-xl" height="80vh">
+    
+        <v-form ref="form" v-model="valid" lazy-validation>
+        <v-card-title class="pa-0">
+            <app-simple-toolbar title="AsignarMateria" @closeModal="$emit('closeModal', true)"></app-simple-toolbar>
+        </v-card-title>
 
         <v-card-text>
 
         <v-row no-gutters>
 
-        <v-col cols="12" md="12">
+        <v-col cols="12" md="12" class="mt-2 mb-n1">
            <v-autocomplete
                 v-model="form.id_materia"
                 :items="selects.materia"
@@ -61,11 +62,13 @@
 
         </v-card-text>
 
+        </v-form>
+
         <pre v-if="$App.debug">{{ $data }}</pre>
 
     </v-card>
     
-    </v-form>
+    
 
 </template>
 

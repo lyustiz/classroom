@@ -48,7 +48,7 @@ class Directiva extends Model
 	
 	public function cargo(){
 
-        return $this->BelongsTo('App\Models\Cargo', 'id');
+        return $this->BelongsTo('App\Models\Cargo', 'id_cargo');
 
     }
 
