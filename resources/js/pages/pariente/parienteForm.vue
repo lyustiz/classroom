@@ -72,6 +72,29 @@
             </v-radio-group>
         </v-col>
 
+        <v-col cols="6" md="3">
+            <v-select
+            :items="selects.tipoDocumento"
+            item-text="nb_tipo_documento"
+            item-value="id"
+            v-model="form.id_tipo_documento"
+            :rules="[rules.select]"
+            label="Tipo Documento"
+            :loading="loading"
+            dense
+            ></v-select>
+        </v-col>
+                  
+        <v-col cols="6" md="3">
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.tx_documento"
+                label="Documento"
+                placeholder="Indique Documento"
+                dense
+            ></v-text-field>
+        </v-col>
+
         <v-col cols="6" md="3" class="pb-6">
             <v-menu
                 v-model="pickers.fe_nacimiento"
@@ -97,30 +120,7 @@
                     min="1950-01-01">
                 </v-date-picker>
             </v-menu>
-        </v-col>   
-
-        <v-col cols="6" md="3">
-            <v-select
-            :items="selects.tipoDocumento"
-            item-text="nb_tipo_documento"
-            item-value="id"
-            v-model="form.id_tipo_documento"
-            :rules="[rules.select]"
-            label="Tipo Documento"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
-                  
-        <v-col cols="6" md="3">
-            <v-text-field
-                :rules="[rules.required]"
-                v-model="form.tx_documento"
-                label="Documento"
-                placeholder="Indique Documento"
-                dense
-            ></v-text-field>
-        </v-col>
+        </v-col> 
 
         <v-col cols="6" md="3">
             <v-text-field
@@ -218,7 +218,7 @@
                   
         <v-col cols="6" md="3">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[rules.max(80)]"
                 v-model="form.tx_observaciones"
                 label="Observaciones"
                 placeholder="Indique Observaciones"

@@ -4,6 +4,8 @@
 
     <v-card :loading="loading" flat class="rounded-xl">
 
+
+
         <v-card-text>
 
         <v-row no-gutters>
@@ -96,7 +98,7 @@ export default {
 				id_grado: 	      null,
 				id_materia: 	  null,
 				tx_observaciones: null,
-				id_status: 	      null,
+				id_status: 	      1,
 				id_usuario: 	  null,
             },
             selects:
