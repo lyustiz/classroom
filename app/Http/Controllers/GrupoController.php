@@ -96,8 +96,8 @@ class GrupoController extends Controller
            
             $storeMaterias[] =  [
                                 'id_grupo'   => $grupo->id,
-                                'id_materia' => $materia->id,
-                                'id_status'  => $materia->id_status,
+                                'id_materia' => $materia->id_materia,
+                                'id_status'  => 1,
                                 'id_usuario' => $grupo->id_usuario,
                                 ];
         }
