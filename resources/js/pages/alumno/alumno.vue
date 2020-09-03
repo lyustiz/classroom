@@ -4,7 +4,7 @@
 
         <template slot="HeadTools">
             <add-button @insItem="insertForm()"></add-button>
-            <app-reporte tableName="vw_alumno" title="Lista Alumnos"></app-reporte>
+            <app-reporte tableName="vw_alumno" title="Lista Alumnos" class="mx-1"></app-reporte>
         </template>
 
             <v-col cols="12" md="6">
@@ -70,6 +70,7 @@
                                     btnColor="cyan" 
                                     :item="item"
                                     @onItemMenu="onItemMenu($event)" 
+                                    
                                 ></item-menu>
 
                             </list-buttons>

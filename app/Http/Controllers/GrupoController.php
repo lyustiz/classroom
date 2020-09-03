@@ -95,12 +95,10 @@ class GrupoController extends Controller
         foreach ($materias as $materia) {
            
             $storeMaterias[] =  [
-                                    'id_calendario' => $matricula->id_calendario,
-                                    'id_alumno'     => $matricula->id_alumno,
-                                    'id_grado'      => $matricula->id_grado,  
-                                    'id_materia'    => $materia->id_materia,
-                                    'id_status'     => $matricula->id_status,
-                                    'id_usuario'    => $matricula->id_usuario
+                                'id_grupo'   => $grupo->id,
+                                'id_materia' => $materia->id,
+                                'id_status'  => $materia->id_status,
+                                'id_usuario' => $grupo->id_usuario,
                                 ];
         }
 

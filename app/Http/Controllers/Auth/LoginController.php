@@ -100,7 +100,7 @@ class LoginController extends Controller
                               'colegio.calendario:calendario.id,nb_calendario',
                               'colegio.calendario.periodoActivo:periodo.id,nb_periodo'
                             ]);
-                
+
                 return [ 
                     'auth'       => $token->get(),
                     'user'       => $user,
@@ -145,6 +145,11 @@ class LoginController extends Controller
                                     'nb_perfil' => $profile['nb_perfil'], 
                                     'tx_icono' => $profile['tx_icono']
                                 ];
+        }
+
+        if(count($profiles) < 1)
+        {
+            response('El usuario no tiene perfil asignado', 403);
         }
 
         return $profiles;
