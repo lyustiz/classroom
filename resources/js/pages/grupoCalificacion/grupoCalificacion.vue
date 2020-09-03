@@ -87,7 +87,7 @@ export default {
     components: { 'grupo-calificacion-form': grupoCalificacionForm },
     data () {
     return {
-        title:    'GrupoCalificacion',
+        title:    'Grupo Calificacion',
         resource: 'grupoCalificacion',
         headers: [
             { text: 'Grupo Calificacion',   value: 'nb_grupo_calificacion' },

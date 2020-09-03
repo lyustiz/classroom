@@ -23,7 +23,7 @@
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.nu_grado"
-                label="Numero"
+                label="Orden"
                 placeholder="Indique Numero de Grado"
                 dense
             ></v-text-field>

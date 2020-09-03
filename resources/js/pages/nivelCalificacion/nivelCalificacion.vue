@@ -87,7 +87,7 @@ export default {
     components: { 'nivel-calificacion-form': nivelCalificacionForm },
     data () {
     return {
-        title:    'NivelCalificacion',
+        title:    'Nivel Calificacion',
         resource: 'nivelCalificacion', 
         headers: [
             { text: 'Nivel Calificacion',   value: 'nb_nivel_calificacion' },

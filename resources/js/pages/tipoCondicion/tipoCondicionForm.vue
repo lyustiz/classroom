@@ -20,7 +20,7 @@
                         
                 <v-col cols="12" md="6">
                     <v-text-field
-                        :rules="[rules.required, max(30)]"
+                        :rules="[rules.required, rules.max(30)]"
                         v-model="form.tx_icono"
                         label="Icono"
                         placeholder="Indique Icono"
