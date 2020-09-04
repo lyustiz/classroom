@@ -10,6 +10,7 @@ use \Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Facades\JWTFactory;
 use Illuminate\Support\Facades\Crypt;
 
+
 use JWTAuth;
 use Cookie;
 
@@ -160,7 +161,7 @@ class LoginController extends Controller
         switch ($user->tipoUsuario->nb_tipo_usuario) {
 
             case 'administrador':
-                $user->load(['alumno', 'alumno.grado', 'alumno.grupo', 'alumno.grupo', 'docente', 'pariente', 'empleado']);
+                $user->load(['alumno', 'alumno.grado', 'alumno.grupo', 'docente', 'pariente', 'pariente.alumno', 'empleado']);
                 break;
             
             case 'docente':
@@ -168,11 +169,11 @@ class LoginController extends Controller
                 break;
 
             case 'alumno':
-                $user->load(['alumno', 'alumno.grado', 'alumno.grupo', 'alumno.grupo' ]);
+                $user->load(['alumno', 'alumno.grado', 'alumno.grupo' ]);
                 break;
 
             case 'acudiente':
-                $user->load('pariente');
+                $user->load('pariente', 'pariente.alumno');
                 break;
             
             default:

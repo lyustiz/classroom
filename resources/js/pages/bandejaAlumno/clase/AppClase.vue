@@ -27,8 +27,12 @@ export default {
 
     mixins:     [ DataHelper ],
 
-    created()
+    computed:
     {
+        grupo()
+        {
+            return this.$store.getters['getAlumnoGrupo']
+        }
     },
 
     data () {
@@ -36,7 +40,6 @@ export default {
             progress: 25,
             buffer: 100,
             title:    'Evaluaciones',
-            grupo:    1,  //TODO: agregar grupo
             periodo:  null,
             headers:  [
                 { text: ' ',        value: 'expand'},
@@ -52,7 +55,7 @@ export default {
     {
         getMaterias(periodo)
         {
-           this.getResource( `materia/grupo/${this.grupo}` ).then( data =>  this.items = data )
+           this.getResource( `materia/grupo/${this.grupo.id}` ).then( data =>  this.items = data )
         }
     }
 }

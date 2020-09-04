@@ -156,7 +156,15 @@ export default {
             this.action = 'ins'
         }
 
-        this.default.id_calendario = 1 //TODO: get calendario 
+        this.default.id_calendario = this.calendario.id
+    },
+
+    computed:
+    {
+        calendario()
+        {
+            return this.$store.getters['getCalendario']
+        }
     },
 
     data() {
@@ -188,7 +196,6 @@ export default {
             {
 	 	 	 	grado: 	       [],
 	 	 	 	tipoCondicion: [],
-	 	 	 	status: 	   [],
             },
             default:
             {

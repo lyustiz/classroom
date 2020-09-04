@@ -87,6 +87,14 @@ export default {
         }
     },
 
+    computed:
+    {
+        calendario()
+        {
+            return this.$store.getters['getCalendario']
+        }
+    },
+
     created()
     {
         this.list()
@@ -95,7 +103,6 @@ export default {
     data () {
         return {
             periodo:  null,
-            calendario: 1, //TODO: agregar calendario
             headers:  [
                 { text: ' ',        value: 'expand'},
                 { text: 'Materia',  value: 'nb_materia' },
@@ -114,7 +121,7 @@ export default {
     {
         list()
         {
-           this.getResource( `periodo/calendario/${this.calendario}` ).then( data =>  this.items = data )
+           this.getResource( `periodo/calendario/${this.calendario.id}` ).then( data =>  this.items = data )
            this.getResource( `materia/grupo/${this.alumno.grupo.id}` ).then( data =>  this.materias = data )
         }
 

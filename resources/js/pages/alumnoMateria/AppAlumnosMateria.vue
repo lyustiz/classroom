@@ -125,6 +125,14 @@ export default {
         this.list()
     },
 
+    computed: 
+    {
+        calendario()
+        {
+            return this.$store.getters['getCalendario']
+        }
+    },
+
     data() {
         return {
             resource: 'grado/MateriaAlumno',

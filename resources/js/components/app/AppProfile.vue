@@ -5,9 +5,7 @@
        <v-card-text class="text-center">
 
             <v-list-item class="indigo lighten-5 mb-2 rounded-lg">
-                <v-list-item-title>
-                    Administrador
-                </v-list-item-title>
+                <v-list-item-title v-text="user.nb_nombres"></v-list-item-title>
                 <v-list-item-action>
                     <v-btn icon>
                         <v-icon>mdi-dots-vertical</v-icon>
@@ -33,10 +31,15 @@
 export default {
     computed: {
 
-        foto() {
-                return this.$store.getters['getFoto']
-            },
+        foto() 
+        {
+            return this.$store.getters['getFoto']
+        },
 
+        user()
+        {
+            return this.$store.getters['getUser']
+        },
     }
 
 }

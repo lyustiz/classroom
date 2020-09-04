@@ -52,10 +52,17 @@ export default {
         this.list()
     },
 
+    computed:
+    {
+        docente()
+        {
+            return this.$store.getters['getDocente']
+        }
+    },
+
     data () 
 	{
         return {
-            docente: 1, //TODO: docente
             events: [],
             items: [],
             evaluaciones: []
@@ -71,7 +78,7 @@ export default {
                 this.events = data.data
             })
 
-            this.getResource( 'evaluacion/docente/' + this.docente ).then( (data) => 
+            this.getResource( 'evaluacion/docente/' + this.docente.id ).then( (data) => 
             { 
                 this.items = data
                 

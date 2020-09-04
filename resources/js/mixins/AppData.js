@@ -6,6 +6,11 @@ export default
     
     computed: 
     {
+        idUser()
+        {
+            return this.$store.getters['getUserid']
+        },
+        
         fullUrl() 
         {
             return this.apiUrl + this.path;
@@ -21,7 +26,6 @@ export default
     {
         return {
             apiUrl:  this.$App.apiUrl,
-            idUser:  this.$store.getters.getUserid,
             loading: false,
             items:   [],
             search:  null,

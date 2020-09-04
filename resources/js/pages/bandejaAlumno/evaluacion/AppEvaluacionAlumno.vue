@@ -82,11 +82,18 @@ export default {
         this.fillSelects()
     },
 
+    computed:
+    {
+        grupo()
+        {
+            return this.$store.getters['getAlumnoGrupo']
+        }
+    },
+
     data () {
         return {
 
             title:    'Evaluaciones',
-            grupo:    1,  //TODO: agregar grupo
             periodo:  null,
             headers:  [
                 { text: ' ',        value: 'expand'},
@@ -102,7 +109,7 @@ export default {
     {
         getMaterias(periodo)
         {
-           this.getResource( `materia/grupo/${this.grupo}` ).then( data =>  this.items = data )
+           this.getResource( `materia/grupo/${this.grupo.id}` ).then( data =>  this.items = data )
         }
     }
 }

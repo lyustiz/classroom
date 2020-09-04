@@ -81,6 +81,11 @@ export default {
         {
             return (this.weekend) ? [ 1, 2, 3, 4, 5, 6, 0] : [ 1, 2, 3, 4, 5] 
         },
+
+        docente()
+        {
+            return this.$store.getters['getDocente']
+        }
     },
 
     mounted()
@@ -93,8 +98,6 @@ export default {
     data()
     {
         return{
-                docente: 1, //TODO:DOCENTE
-
                 horario:    [],
                 allEvents:  [],
                 today:      new Date().toISOString().substr(0, 10),
@@ -105,7 +108,7 @@ export default {
                 start:      null,
                 end:        null,
                 type:       'month',
-                endDate:    '2020-07-31',
+                endDate:    '2020-07-31', //TODO:enddate calendario
                 event:      {},
                 date:       {},
                 dialogShow: false,
@@ -116,7 +119,7 @@ export default {
 
         list()
         {
-            this.getResource( 'horario/docente/' + this.docente ).then( (data) => 
+            this.getResource( 'horario/docente/' + this.docente.id ).then( (data) => 
             { 
                 this.horario = data
                 const { lastStart, lastEnd } = this.$refs.calendar

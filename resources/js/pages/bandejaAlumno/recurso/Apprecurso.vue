@@ -97,10 +97,17 @@ export default {
        this.list()
     },
 
+    computed:
+    {
+        grupo()
+        {
+            return this.$store.getters['getAlumnoGrupo']
+        }
+    },
+
     data () {
         return {
             file:     0,
-            grupo:    1,  //TODO: agregar grupo
             headers:  [
                 { text: ' ',        value: 'expand'},
                 { text: 'Materia',  value: 'nb_materia' },
@@ -127,7 +134,7 @@ export default {
     {
         list()
         {
-            this.getResource( `recurso/grupo/${this.grupo}` ).then( data =>  {
+            this.getResource( `recurso/grupo/${this.grupo.id}` ).then( data =>  {
                this.recursos = data
                this.file     = 0
             })

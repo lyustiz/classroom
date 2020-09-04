@@ -110,7 +110,7 @@ export default {
             },
             default:
             {
-                id_usuario_ed: 1 //TODO idUsser
+                id_usuario_ed: this.idUser
             }
         }
     },

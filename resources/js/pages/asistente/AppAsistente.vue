@@ -114,9 +114,12 @@ export default {
 
     watch:
     {
-        perfil()
+        perfil(perfil)
         {
-            this.list()
+            if(perfil)
+            {
+                this.list()
+            }
         }
     },
 

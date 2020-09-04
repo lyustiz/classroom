@@ -59,10 +59,17 @@ export default {
         this.getMaterias()
     },
 
+    computed:
+    {
+        grupo()
+        {
+            return this.$store.getters['getAlumnoGrupo']
+        }
+    },
+
     data () {
         return {
             tarea: null,
-            grupo:    1,  //TODO: agregar grupo
             periodo:  null,
             headers:  [
                 { text: ' ',        value: 'expand'},
@@ -83,7 +90,7 @@ export default {
     {
         getMaterias()
         {
-           this.getResource( `materia/grupo/${this.grupo}` ).then( data =>  this.items = data )
+           this.getResource( `materia/grupo/${this.grupo.id}` ).then( data =>  this.items = data )
         }
     }
 }

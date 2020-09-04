@@ -29,7 +29,6 @@ export default
     data() 
     {
         return {
-            idUser:      1, //TODO:this.$store.getters.idUser,
             valid:       true,
             calendar:    false,
             dates:       {},
@@ -63,6 +62,11 @@ export default
 
 	computed: 
 	{
+        idUser()
+        {
+            return this.$store.getters['getUserid']
+        },
+        
         apiUrl() 
 		{
             return this.$App.apiUrl;

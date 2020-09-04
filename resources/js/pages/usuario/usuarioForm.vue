@@ -12,46 +12,37 @@
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
-                v-model="form.nb_usuario"
+                v-model="item.nb_usuario"
                 label="Usuario"
-                placeholder="Indique Usuario"
+                hint="Usuario de la cuenta no se puede editar"
                 dense
+                readonly
             ></v-text-field>
         </v-col>
-                  
+
         <v-col cols="12" md="6">
             <v-text-field
-                :rules="[rules.required]"
-                v-model="form.password"
-                label="Password"
-                placeholder="Indique Password"
-                dense
-            ></v-text-field>
-        </v-col>
-                  
-        <v-col cols="12" md="6">
-            <v-text-field
-                :rules="[rules.required]"
+                :rules="rules.email"
                 v-model="form.tx_email"
                 label="Email"
                 placeholder="Indique Email"
                 dense
             ></v-text-field>
         </v-col>
-                          
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.status"
-            item-text="nb_status"
-            item-value="id"
-            v-model="form.id_status"
-            :rules="[rules.select]"
-            label="Status"
-            :loading="loading"
-            dense
-            ></v-select>
+                  
+        <v-col cols="12" md="12">
+             <v-text-field
+                    prepend-inner-icon="mdi-lock"
+                    :append-icon="show ? 'visibility_off' : 'visibility'"
+                    @click:append="show = !show"
+                    label="Password"
+                    hint="Debe contener letras y numeros y una longitud minima de 8 caracteres"
+                    :type="show ? 'text' : 'password'"
+                    v-model="form.tx_password"
+                    :rules="rules.password"
+                    >
+                </v-text-field>
         </v-col>
-         
 
         </v-row>
 
@@ -87,31 +78,14 @@ export default {
     data() {
         return {
             resource: 'usuario',
-            dates:
-            {
-                email_verified_at: 	 null,
-            },
-            pickers:
-            {
-                email_verified_at: 	 null,
-            },
             form:
             {
                 id: 	         null,
-				nb_usuario: 	 null,
 				password: 	     null,
                 tx_email: 	     null,
-                id_tipo_usuario: null,
-				id_status: 	     null,
 				id_usuario: 	 null,
             },
-            selects:
-            {
-	 	 	 	status: 	 [],
-            },
-            default:{
-                id_tipo_usuario: 1
-            }
+            show: false,  
         }
     },
 

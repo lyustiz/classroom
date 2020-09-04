@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -140,53 +140,26 @@ class UsuarioController extends Controller
     {
         $validate = request()->validate([
 
-            'nb_nombres'        => 'required',
-            'fe_nacimiento'     => 'required',
-            'tx_foto'           => 'required',
-            'tx_sexo'           => 'required',
-            'tx_src'            => 'nullable',
-            'id_usuario'        => 'required',
-            
-        ],
-        [
-            'tx_foto.required'   => 'La foto es requerida',
+            'tx_email'        => 'required',
+            'tx_password'     => 'required',
+            'id_usuario'      => 'required',
         ]);
-        
-        $filename = $this->getFilename($request->input('tx_foto'), $usuario->id);
-        
-        if($request->filled('tx_src'))
+
+        if($usuario->id_tipo_usuario = 1)
         {
-            $photo    = $this->storePhoto($request->input('tx_src'), $filename);
+            throw ValidationException::withMessages(['adminNotEdit' => "No es posible editar al usuario Administrador"]);
         }
 
-        $request->merge(['tx_foto' => $filename]);
-  
-        $usuario  = $usuario->update($request->except('tx_src'));
+        $usuario  = $usuario->update([
+            'tx_email'      => $request->tx_email,
+            'tx_password'   => Hash::make($request->tx_password),
+            'id_usuario'    => $request->id_usuario,
+        ]);
+        
 
         return [ 'msj' => 'Usuario Actualizado' , compact('usuario')];
     }
 
-
-    private function storePhoto($fileSrc, $filename)
-	{
-        $srcFoto  = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $fileSrc));
-
-        $stored = Storage::disk('account')->put($filename, $srcFoto);
-
-        return $stored;
-    }
-    
-    
-    private function getFilename($file, $id_usuario)
-    {
-        $extension = explode(".", $file)[1];
-
-        $filetypes = ['jpg', 'png', 'bmp'];
-
-        $extension = in_array($extension, $filetypes) ?  $extension : 'jpg'; 
-
-        return "$id_usuario.$extension"; 
-    }
 
     public function updateEmail(Request $request, Usuario $usuario)
     {
@@ -233,9 +206,6 @@ class UsuarioController extends Controller
 
             return  response()->json(['errors' => ['password' => 'El Password Actual no coincide']], 422);
         }
-
-    
-        
     }
     
     /**
