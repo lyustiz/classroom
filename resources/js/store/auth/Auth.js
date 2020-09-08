@@ -98,6 +98,7 @@ export default
 			state.modules	= modules
 			localStorage.setItem("modules", (modules)  ? JSON.stringify(modules): null	)
 		},
+
     },
     
     actions:
@@ -220,6 +221,28 @@ export default
 			})
 		},
 
+		updateEmail( { commit, state  }, form )
+		{
+			return new Promise((resolve, reject) => 
+			{
+				axios.put(`/api/v1/usuario/${form.id_usuario}/email` , form) 
+				.then( response =>
+				{
+					let user      =  JSON.parse(JSON.stringify(state.user));
+
+					user.tx_email = form.tx_new_email
+												
+					commit('setUser' , user);
+					
+					resolve(response)
+				})
+				.catch( error =>
+				{
+					reject(error)
+				})
+			})
+		},
+
 		autenticate({ commit, dispatch }, data)
 		{
 			commit('setUser'  	 , data.user);
@@ -228,8 +251,9 @@ export default
 			commit('setProfiles' , data.profiles);
 			commit('setAuth'  	 , true);
 
-			commit('setColegio'     , data.user.colegio )
-			commit('setCalendario'  , data.user.colegio.calendario )
+			commit('setColegio'       , data.user.colegio )
+			commit('setCalendario'    , data.user.colegio.calendario )
+			commit('setPeriodoActivo' , data.user.colegio.calendario.periodo_activo )
 		},
 
 		unatenticate({ commit })
@@ -241,11 +265,13 @@ export default
 			commit('setProfiles' , []);
 			commit('setAuth'  	 , false);
 
-			commit('setColegio'    , null )
-			commit('setCalendario' , null )
+			commit('setColegio'       , null )
+			commit('setCalendario'    , null )
+			commit('setPeriodoActivo' , null )
 
 			localStorage.clear()
 			localStorage.setItem("auth", 	false)
+			
 		}
 
     }

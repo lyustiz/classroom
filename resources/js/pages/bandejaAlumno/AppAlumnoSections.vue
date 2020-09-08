@@ -30,7 +30,7 @@
         </v-card-text>
     
         <v-dialog v-model="dialog" content-class="rounded-xl" scrollable :max-width="sectionWidth"> 
-            <component :alumno="alumno" :is="component" inDialog @closeModal="dialog=false"></component>
+            <component v-if="dialog" :alumno="alumno" :is="component" inDialog @closeModal="closeSection('dialog', $event)"></component>
         </v-dialog> 
 
     </v-card>
@@ -74,8 +74,8 @@ export default {
             sections: [
             
                 { label: 'Recursos', icon: 'mdi-book-open-page-variant', component: 'recurso-alumno', color: 'purple', sectionWidth: '700' },
-                { label: 'Pruebas', icon: 'mdi-order-bool-descending-variant', component: 'prueba-alumno', color: 'red', sectionWidth: '85vw' },
-                { label: 'Evaluaciones', icon: 'mdi-table-check', component: 'evaluacion-alumno', color: 'indigo', sectionWidth: '95vw' },             
+                { label: 'Evaluaciones', icon: 'mdi-notebook', component: 'evaluacion-alumno', color: 'indigo', sectionWidth: '95vw' },   
+                { label: 'Pruebas', icon: 'mdi-order-bool-descending-variant', component: 'prueba-alumno', color: 'red', sectionWidth: '85vw' },          
                 { label: 'Calificaciones', icon: 'mdi-clipboard-list', component: 'materia-alumno', color: 'amber', sectionWidth: '700' },
                 /*  { label: 'Tareas', icon: 'mdi-notebook', component: 'tarea-alumno', color: 'blue', sectionWidth: '700' }, */
                 /*  { label: 'Aula Virtual (En Construccion)', icon: 'mdi-google-classroom', component: 'clase-alumno', color: 'green', sectionWidth: '700' }, */
@@ -92,6 +92,18 @@ export default {
             this.sectionTitle = section.label
             this.sectionWidth = section.sectionWidth
         },
+
+        closeSection(dialog, action)
+        {
+            this.dialog = false
+            
+            if(action.goTo)
+            {
+                let section = this.sections.find( (sect) => sect.component == action.goTo)
+
+                this.showSection(section)
+            }
+        }
     }
 }
 </script>

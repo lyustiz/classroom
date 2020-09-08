@@ -15,29 +15,30 @@ class PeriodoController extends Controller
      */
     public function index()
     {
-        $periodo = Periodo::with(['calendario:id,nb_calendario'])
+        return Periodo::with(['calendario:id,nb_calendario'])
                           ->get();
-        
-        return $periodo;
     }
 
     public function list()
     {
-        $periodo = Periodo::select('id','nb_periodo')
+        return Periodo::select('id','nb_periodo')
                           ->activo()
                           ->get();
-        
-        return $periodo;
     }
 
     public function periodoCalendario($idCalendario)
     {
-        $periodo = Periodo::with(['calendario:id,nb_calendario'])
+        return Periodo::with(['calendario:id,nb_calendario'])
                     ->where('id_calendario', $idCalendario)
                     ->activo()
                     ->get();
-        
-        return $periodo;
+    }
+
+    public function periodoActivo()
+    {
+        return Periodo::with(['calendario:id,nb_calendario'])
+                    ->activo()
+                    ->get();
     }
 
     /**
@@ -59,9 +60,44 @@ class PeriodoController extends Controller
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
-        $periodo = periodo::create($request->all());
+        $periodo       = Periodo::create($request->all());
 
-        return [ 'msj' => 'Periodo Agregado Correctamente', compact('periodo') ];
+        $periodoActivo = $this->setPeriodoActivo($periodo, 'ins');
+
+        return [ 'msj' => 'Periodo Agregado Correctamente', compact('periodo', 'periodoActivo') ];
+    }
+
+    public function setPeriodoActivo($periodo, $method)
+    {
+        $periodoActivo = Periodo::where('id', '<>', $periodo->id)->where('id_status', 1)->first();
+
+        $hasActivo     = ($periodoActivo) ? true : false;
+                
+        if($method == 'ins' or $method == 'upd')
+        {
+            if($periodo->id_status == 1 and $hasActivo){
+
+                return $periodoActivo->update(['id_status' => 2]);
+
+            }elseif($periodo->id_status == 2 and !$hasActivo){
+
+                return $periodo->fill(['id_status' => 1]);
+            }
+        }
+
+        if($method == 'del')
+        {
+            if($periodo->id_status == 1){
+
+                return Periodo::where('id', '<>', $periodo->id)
+                              ->latest()
+                              ->first()
+                              ->update(['id_status' => 1]);
+
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -94,9 +130,25 @@ class PeriodoController extends Controller
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
-        $periodo = $periodo->update($request->all());
+        $update = $periodo->update($request->all());
 
-        return [ 'msj' => 'Periodo Editado' , compact('periodo')];
+        $periodoActivo = $this->setPeriodoActivo($periodo, 'upd');
+
+        return [ 'msj' => 'Periodo Editado' , compact('update','periodoActivo')];
+    }
+
+    public function updateStatus(Request $request, Periodo $periodo)
+    {
+        $validate = request()->validate([
+			'id_status'         => 	'required|integer|max:999999999',
+			'id_usuario'        => 	'required|integer|max:999999999',
+        ]);
+
+        $update = $periodo->update($request->only('id_status', 'id_usuario'));
+
+        $periodoActivo = $this->setPeriodoActivo($periodo, 'upd');
+
+        return [ 'msj' => 'Status actualizado' , compact('update','periodoActivo')];
     }
 
     /**
@@ -107,8 +159,10 @@ class PeriodoController extends Controller
      */
     public function destroy(Periodo $periodo)
     {
-        $periodo = $periodo->delete();
- 
+        $periodoActivo = $this->setPeriodoActivo($periodo, 'del');
+        
+        $periodo       = $periodo->delete();
+        
         return [ 'msj' => 'Periodo Eliminado' , compact('periodo')];
     }
 }

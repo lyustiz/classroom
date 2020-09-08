@@ -34,13 +34,18 @@
 						<td class="text-xs-left">{{ item.fe_inicio | formatDate }}</td>
 						<td class="text-xs-left">{{ item.fe_fin | formatDate }}</td>
 						<td class="text-xs-left">
-                            <status-switch 
+                              <v-switch 
+                                inset 
+                                dense
+                                hide-details
+                                :readonly="loading"
                                 :loading="loading" 
-                                :item="item"
-                                :resource="resource"
-                                @onStatusChanging="loading=true"
-                                @onStatusChanged="loading=false">
-                            </status-switch>
+                                :true-value="1"
+                                :false-value="0"
+                                color="green"
+                                :input-value="item.id_status"
+                                @change="updStatus($event, item)">
+                            </v-switch>
                         </td>
                         
                         <td class="text-xs-left">
@@ -93,18 +98,67 @@ export default {
         title:    'Periodo',
         resource: 'periodo',
         headers: [
-            { text: 'Periodo',   value: 'nb_periodo' },
-            { text: 'Numero',   value: 'nu_periodo' },
-            { text: 'Calendario',  value: 'calendario.nb_calendario' },
-			{ text: 'Inicio',   value: 'fe_inicio' },
-			{ text: 'Fin',      value: 'fe_fin' },
-			{ text: 'Status',   value: 'id_status' },
-            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
+            { text: 'Periodo',    value: 'nb_periodo' },
+            { text: 'Orden',      value: 'nu_periodo' },
+            { text: 'Calendario', value: 'calendario.nb_calendario' },
+			{ text: 'Inicio',     value: 'fe_inicio' },
+			{ text: 'Fin',        value: 'fe_fin' },
+			{ text: 'Status',     value: 'id_status' },
+            { text: 'Acciones',   value: 'actions', sortable: false, filterable: false },
         ],
     }
     },
     methods:
     {
+
+        list()
+        {
+            let url = this.listUrl()
+            
+            this.loading = true
+
+/*             this.items = [];
+ */
+            axios.get(url)
+            .then(response => 
+            {
+                this.items = response.data
+            })
+            .catch(error => 
+            {
+                this.showError(error)
+            })
+            .finally( () => 
+            {
+                this.loading = false
+            });
+        },
+
+        updStatus(status, periodo)        
+        {
+            let form = {
+                            id_usuario: this.idUser,
+                            id_status : (status) ? 1 : 0
+                       } 
+            
+            this.loading = true            
+            
+            axios.put( `${this.fullUrl}/${periodo.id}/status`, form )
+            .then(response => 
+            {
+                this.showMessage(response.data.msj)
+            })
+            .catch(error => 
+            {
+                this.showError(error)
+
+            }).finally( () => 
+            {
+                this.loading = false
+                this.list()
+            });
+        }
+
         
     }
 }

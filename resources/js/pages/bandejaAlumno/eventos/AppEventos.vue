@@ -43,7 +43,6 @@ export default {
             today:      new Date().toISOString().substr(0, 10),
             dialogShow: false,
             eventsShow: [],
-            
         }
     },
 
@@ -88,8 +87,6 @@ export default {
 
             this.dialogShow  = false
         }
-
-
     }
 
 }

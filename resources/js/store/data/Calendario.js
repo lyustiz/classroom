@@ -9,6 +9,8 @@ export default
 
 			calendarioById: null,
 
+			periodoActivo: null
+
 		}
 	},
 
@@ -23,6 +25,8 @@ export default
 		getCalendarioId: state =>  (state.calendario) ? state.calendario.id : null,
 	
 		getCalendarioById: state => state.calendarioById,
+
+		getPeriodoActivo: state => state.periodoActivo,
 
 	},
 
@@ -51,9 +55,13 @@ export default
 		
 		setCalendariobyId (state, calendario)
         {
-			state.calendarioById 	= calendario
+			state.calendarioById  = calendario
 			state.calendarios     = [calendario]
 		},
 
+		setPeriodoActivo (state, periodo)
+        {
+			state.periodoActivo = periodo
+		},
 	},
 }

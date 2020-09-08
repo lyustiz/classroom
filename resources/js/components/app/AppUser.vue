@@ -35,6 +35,16 @@
                     <v-list-item-subtitle>{{ user.tx_email }}</v-list-item-subtitle>
                 </v-list-item-content>
 
+                <v-list-item-action>
+                    <item-menu 
+                        :menus="itemsMenu" 
+                        iconColor="grey" 
+                        btnColor="white" 
+                        :item="user"
+                        @onItemMenu="onItemMenu($event)" 
+                    ></item-menu>
+                </v-list-item-action>
+
             </v-list-item>
 
         <v-list-item-group>
@@ -74,17 +84,35 @@
         
     </v-card>
     </v-dialog>
+
+    <v-dialog v-model="dialogUpdateAccount" max-width="500" content-class="rounded-xl">
+        <app-account v-if="dialogUpdateAccount" @closeDialog="closeDialog($event,'dialogUpdateAccount')"></app-account>
+    </v-dialog>
+
 </div>
 </template>
 
 <script>
+
+    import AppAccount from '@components/account/AppAccount'
+
     export default {
+
+        components:
+        {
+            'app-account' :    AppAccount
+        },
+
         data () {
             return {
                 showDialog: false,
                 loading: false,
                 comercioActivo: false,
                 rol: 'Secretaria',
+                itemsMenu: [
+                    { action: 'updateAccount',    icon: 'mdi-account-edit',  label: 'Editar Cuenta' },
+                ],
+                dialogUpdateAccount: false
             }
         },
         computed:
@@ -163,15 +191,19 @@
 
             },
 
-            administrar()
-            {
-                this.$router.push('/cuenta').catch(()=>{});
-                this.showDialog = false
-            },
-
             setFoto(foto)
             {
                 this.$store.commit('setFoto', foto)
+            },
+
+            updateAccount()
+            {
+                this.dialogUpdateAccount = true 
+            },
+
+            closeDialog(dialog)
+            {
+                this.dialogUpdateAccount = false
             }
 
         }

@@ -110,6 +110,12 @@ class Usuario extends Authenticatable implements MustVerifyEmail, JWTSubject
         return $this->belongsTo('App\Models\TipoUsuario',  'id_tipo_usuario');
 	}
 
+	public function notificacion()
+    {
+        return $this->HasMany('App\Models\Notificacion',  'id_usuario', 'id_destinatario');
+	}
+
+
 
 	
 }

@@ -1,12 +1,14 @@
 <template>
 
-    <div>
+    <div >
         <v-tooltip bottom :color="color">
             <template v-slot:activator="{ on }">
                 <v-icon v-on="on" 
                     :color="color" 
                     v-text="icon"
-                    class="pointer">
+                    class="pointer" 
+                    @click="$emit('click', $event)"
+                    :size="size">
                 </v-icon>
             </template>
             <span v-text="label"></span>
@@ -44,6 +46,11 @@ export default
         label: {
             type: String,
             default: null
+        },
+
+        size:{
+            type: Number,
+            default: 24
         }
     },
 

@@ -84,8 +84,13 @@ class Evaluacion extends Model
         return $this->BelongsTo('App\Models\EvaluacionMetodo',  'id_evaluacion_metodo');
     }
 
+    public function evaluacionAlumno()
+    {
+        return $this->hasMany('App\Models\EvaluacionAlumno',  'id_evaluacion');
+    }
+
     public function archivo()
     {
-        return $this->hasMany('App\Models\Archivo',  'tx_origen_id', 'id')->where('id_tipo_archivo', 1);
+        return $this->hasMany('App\Models\Archivo',  'tx_origen_id', 'id')->where('id_tipo_archivo', 2);
     }
 }

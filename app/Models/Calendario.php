@@ -54,7 +54,7 @@ class Calendario extends Model
 
     public function periodoActivo(){
 
-        return $this->hasMany('App\Models\Periodo', 'id_calendario')->where('id_status', 1);
+        return $this->hasOne('App\Models\Periodo', 'id_calendario')->where('id_status', 1);
 
     }
 

@@ -26,6 +26,7 @@ class CreateNotificacionTable extends Migration
             $table->date('fe_notificacion');
             $table->time('hh_inicio')->nullable();
             $table->time('hh_fin')->nullable();
+            $table->date('fe_lectura');
             $table->string('tx_observaciones', 100)->nullable();
             $table->integer('id_status');
             $table->integer('id_usuario');

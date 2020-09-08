@@ -164,13 +164,10 @@ class UsuarioController extends Controller
     public function updateEmail(Request $request, Usuario $usuario)
     {
         $validate = request()->validate([
-            
             'tx_email'      => 'required',
             'tx_new_email'  => 'required',
-            'tx_ret_email'  => 'required',
             'id_usuario'    => 'required',
         ]);
-
 
         $usuario  = $usuario->update([
             'tx_email'      => $request->input('tx_new_email'),
@@ -186,17 +183,16 @@ class UsuarioController extends Controller
             
             'tx_password'   => 'required',
             'tx_new_pass'   => 'required',
-            'tx_ret_pass'   => 'required',
             'id_usuario'    => 'required',
         ],
         [
             'tx_password.required' => 'el password es obligatorio'
         ]);
 
-        if (\Hash::check($request->input('tx_new_pass'), $usuario->password)) {
+        if (\Hash::check($request->input('tx_password'), $usuario->password)) {
             
             $usuario  = $usuario->update([
-                'tx_password'   => $request->input('tx_password'),
+                'tx_password'   => Hash::make($request->tx_new_pass),
                 'id_usuario'    => $request->input('id_usuario'),
             ]);
 
@@ -204,7 +200,7 @@ class UsuarioController extends Controller
 
         }else {
 
-            return  response()->json(['errors' => ['password' => 'El Password Actual no coincide']], 422);
+            throw ValidationException::withMessages(['passwordNotMatch' => "Password Actual no coincide con nuestros registros"]);
         }
     }
     

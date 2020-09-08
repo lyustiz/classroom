@@ -125,11 +125,17 @@ return [
             'visibility' => 'public',
         ],
 
-
         'guia' => [
             'driver' => 'local',
             'root' => storage_path('app/public/recurso/guia'),
             'url' => env('APP_URL').'/storage/recurso/guia',
+            'visibility' => 'public',
+        ],
+
+        'tarea' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/tarea'),
+            'url' => env('APP_URL').'/storage/tarea',
             'visibility' => 'public',
         ],
 

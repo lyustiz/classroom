@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\PlanEvaluacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 
 class PlanEvaluacionController extends Controller
 {
@@ -56,6 +57,8 @@ class PlanEvaluacionController extends Controller
 
     public function planEvaluacionDocentePeriodo($idDocente, $idPeriodo)
     {
+        
+        
         return PlanEvaluacion::with([
                                     'grupo.alumno:alumno.id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2,tx_documento',
                                 ])
@@ -74,6 +77,81 @@ class PlanEvaluacionController extends Controller
                                 ->orderBy('nb_grupo', 'asc')
                                 ->orderBy('nb_materia', 'asc')
                                 ->get();
+    }
+
+    public function planEvaluacionAlumno($idAlumno)
+    {
+    
+        return PlanEvaluacion::with([
+                                    'materia:id,nb_materia',
+                                    'evaluacion',
+                                    'evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion',
+                                    'evaluacion.archivo',
+                                    'evaluacion.evaluacionAlumno'
+                                ])
+                                ->select(   'plan_evaluacion.id',
+                                            'plan_evaluacion.id_grupo',
+                                            'plan_evaluacion.id_periodo',
+                                            'plan_evaluacion.id_materia',
+                                            'plan_evaluacion.id_docente',
+                                            'plan_evaluacion.id_status',
+                                        )
+                                ->has('periodoActivo')
+                                ->whereHas('grupo.alumno', function (Builder $query) use($idAlumno) {
+                                    $query->where('alumno.id', $idAlumno);
+                                })   
+                                ->whereHas('materia.alumno', function (Builder $query) use($idAlumno) {
+                                    $query->where('alumno.id', $idAlumno);
+                                })                                
+                                ->get();
+    }
+
+
+    public function PlanEvaluacionCalificacionAlumno($idAlumno)
+    {
+      
+        return  PlanEvaluacion::with([
+                                        'evaluacion',
+                                        'evaluacion.evaluacionAlumno'=> function($query) use ( $idAlumno ){
+                                            $query->where('id_alumno', $idAlumno);
+                                        },
+                                        'evaluacion.evaluacionAlumno.calificacion',
+                                    ])
+                                    ->whereHas('grupo.alumno', function ($query) use ($idAlumno) {
+                                        $query->where('alumno.id', $idAlumno);
+                                    })
+                                    ->whereHas('materia.alumno', function ($query) use ($idAlumno) {
+                                        $query->where('alumno.id', $idAlumno);
+                                    })
+                                    ->has('periodoActivo')
+                                    ->activo()
+                                    ->get();
+    }
+
+    public function PlanEvaluacionCalificacionGrupo($idAlumno)
+    {
+      
+        /* return  PlanEvaluacion::with([
+                        'planEvaluacion' => function($query) use ( $idAlumno ){
+                            $query->whereHas('grupo.alumno', function ($query) use ($idAlumno) {
+                                $query->where('alumno.id', $idAlumno);
+                            })->has('periodoActivo')
+                            ->activo();
+                        },
+                        'planEvaluacion.evaluacion',
+                        'planEvaluacion.evaluacion.evaluacionAlumno'=> function($query) use ( $idAlumno ){
+                            $query->where('id_alumno', $idAlumno);
+                        },
+                        'planEvaluacion.evaluacion.evaluacionAlumno.calificacion',
+                    ])
+                    ->comboData()
+                    ->whereHas('alumno', function ($query) use ($idAlumno) {
+                        $query->where('alumno.id', $idAlumno);
+                    }) 
+                    ->has('planEvaluacion')
+                    ->orderBY('nb_materia')
+                    ->get(); */
+
     }
 
     /**

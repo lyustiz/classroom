@@ -53,6 +53,11 @@ class PlanEvaluacion extends Model
         return $this->BelongsTo('App\Models\Periodo', 'id_periodo');
     }
 
+    public function periodoActivo()
+    {
+        return $this->BelongsTo('App\Models\Periodo', 'id_periodo')->where('id_status', 1);
+    }
+
     public function materia()
     {
         return $this->BelongsTo('App\Models\Materia', 'id_materia');

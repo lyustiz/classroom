@@ -8,7 +8,7 @@
         dense
     >
         <!-- Logo -->
-        <v-avatar size="32" color="white" @click="navegateTo('/home')">
+        <v-avatar size="32" color="white">
             <v-img src="/images/logo-sm.png" class="logo-holder" ></v-img>
         </v-avatar>
 
@@ -18,7 +18,7 @@
                 text 
                 :color="$App.theme.textTitle" 
                 v-text="$App.title" 
-                @click="navegateTo('/home')">
+                >
             </v-btn>
         </v-toolbar-title>
 

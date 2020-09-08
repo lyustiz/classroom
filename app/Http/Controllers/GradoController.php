@@ -60,7 +60,8 @@ class GradoController extends Controller
                         }, 
                         'grupo.planEvaluacion' => function ($query) use($idDocente) {
                             $query->select('plan_evaluacion.id','id_grupo','id_materia','id_periodo','id_docente','id_status')
-                                  ->where('id_docente', $idDocente);
+                                  ->where('id_docente', $idDocente)
+                                  ->has('periodoActivo');
                         }, 
                         'grupo.planEvaluacion.materia'=> function ($query) use($idDocente) {
                             $query->select('materia.id','nb_materia')
@@ -91,22 +92,20 @@ class GradoController extends Controller
     }
 
     public function gradoGrupoDocente($idDocente)
-    {
-        $idPeriodo = 1; //TODO: periodo
-        
+    {        
         return Grado::with([
                                 'grupo' => function ($query) use($idDocente, $idPeriodo) {
                                     $query->select('grupo.id', 'nb_grupo', 'id_grado')
                                     ->whereHas('planEvaluacion', function (Builder $query) use($idDocente, $idPeriodo) {
                                         $query->where('plan_evaluacion.id_docente', $idDocente)
-                                              ->where('plan_evaluacion.id_periodo', $idPeriodo);
+                                              ->has('periodoActivo');
                                     });
                                 },     
                                    
                             ])
                             ->whereHas('grupo.planEvaluacion', function (Builder $query) use($idDocente, $idPeriodo) {
                                 $query->where('plan_evaluacion.id_docente', $idDocente)
-                                      ->where('plan_evaluacion.id_periodo', $idPeriodo);
+                                      ->has('periodoActivo');
                             })
                             ->get();
     }

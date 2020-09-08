@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evaluacion;
+use App\Models\EvaluacionAlumno;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
@@ -29,7 +30,7 @@ class EvaluacionController extends Controller
                                             'planEvaluacion.grupo:id,nb_grupo', 
                                             'planEvaluacion.periodo:id,nb_periodo', 
                                             'tipoEvaluacion:id,nb_tipo_evaluacion',
-                                            'archivo:id,id_tipo_archivo,tx_origen_id',
+                                            'archivo:id,id_tipo_archivo,tx_origen_id,created_at',
                                             'status:status.id,nb_status,tx_icono,tx_color',
                                             'evaluacionMetodo:id,nb_evaluacion_metodo,tx_icono,tx_color'
                                         ])
@@ -97,6 +98,17 @@ class EvaluacionController extends Controller
         return $evaluaciones;
     }
 
+    public function evaluacionEvaluacionAlumno($idEvaluacion)
+    {
+        return Evaluacion:: with([
+                                    'evaluacionAlumno',
+                                    'evaluacionAlumno.alumno',
+                                    'evaluacionAlumno.archivo',
+                                ])
+                                ->find($idEvaluacion);
+
+    }
+
       /**
      * Store a newly created resource in storage.
      *
@@ -159,10 +171,10 @@ class EvaluacionController extends Controller
     }
 
     public function asignar(Request $request, Evaluacion $evaluacion)
-    {
+    {       
         $validate = request()->validate([
             'id_evaluacion_metodo'  =>  'required|integer|max:999999999',
-            'fe_evaluacion'         =>  'required|date|after:fe_planificada',
+            'fe_evaluacion'         =>  'required|date|after_or_equal:fe_planificada',
             'hh_inicio'             => 	'nullable|date_format:"H:i"|before:hh_fin"',
             'hh_fin'                => 	'nullable|date_format:"H:i"',
 			'tx_observaciones'      =>  'nullable|string|max:100',
@@ -171,9 +183,34 @@ class EvaluacionController extends Controller
 
         $request->merge( ['id_status' => $evaluacion->asignada()] );
 
+        $evaluacionAlumnos = $this->asignarEvaluacionAlumnos($evaluacion);
+
         $evaluacion = $evaluacion->update($request->all());
 
-        return [ 'msj' => 'Evaluacion Actualizada' , compact('evaluacion')];
+        return [ 'msj' => 'Evaluacion Actualizada' , compact('evaluacion','evaluacionAlumnos')];
+    }
+
+    public function asignarEvaluacionAlumnos($evaluacion)
+    {
+        if(count($evaluacion->evaluacionAlumno) < 1)
+        {
+            $alumnos =  $evaluacion->planEvaluacion->grupo->alumno;
+
+            $evaluacionAlumnos = [];
+
+            foreach ($alumnos as $key => $alumno) 
+            {
+                $evaluacionAlumnos[] = [
+                                        'id_evaluacion' => $evaluacion->id,
+                                        'id_alumno'     => $alumno->id,
+                                        'id_usuario'    => $evaluacion->id_usuario,
+                                        'id_status'     => 1,
+                                    ];
+            }
+
+            return EvaluacionAlumno::insert($evaluacionAlumnos);
+        }
+        return false;
     }
 
     public function evaluar(Request $request, Evaluacion $evaluacion)

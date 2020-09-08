@@ -113,7 +113,7 @@ export default {
             this.dialogNotificacion = true
 
             this.notificacion = {
-                tipoDestinatario:  3,
+                tipoDestinatario: 3,
                 tipoNotificacion: 1,
                 tipoPrioridad:    1,
                 idDestinatario:   alumno.id,

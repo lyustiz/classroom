@@ -17,7 +17,6 @@
                 <v-list-item-title v-text="data.destinatario.nb_corto"></v-list-item-title>
                 <v-list-item-subtitle >{{data.tipoDestinatario.nb_tipo_destinatario}}</v-list-item-subtitle>
                 </v-list-item-content>
-
   
                 <v-list-item-action color="grey lighten-4">
                     <v-menu :close-on-content-click="false" left bottom offset-x width="200px" content-class="white rounded-xl">

@@ -18,7 +18,6 @@ Route::group(['middleware' => 'guest:api'], function () {
 
     //registro
     Route::post('register',         'Auth\RegisterController@register');
-    Route::post('register-commerce','Auth\RegisterController@registerCommerce');
 
     //Autenticacion
     Route::post('login',            'Auth\LoginController@login');
@@ -28,8 +27,8 @@ Route::group(['middleware' => 'guest:api'], function () {
 });
 
 
-Route::get('/crud/schemas', 'Crud@schemas');
-Route::post('/crud/tables', 'Crud@tables');
+Route::get('/crud/schemas',   'Crud@schemas');
+Route::post('/crud/tables',   'Crud@tables');
 Route::post('/crud/generate', 'Crud@generate');
 
 
@@ -141,10 +140,11 @@ Route::apiResource('/docenteMateria',           'DocenteMateriaController', ['pa
 // -- GESTION ACADEMICA -- //
 Route::GET('/periodo/calendario/{calendario}',  'PeriodoController@periodoCalendario');
 Route::get('/periodo/list',                     'PeriodoController@list');
+Route::put('/periodo/{periodo}/status',         'PeriodoController@updateStatus');
 Route::apiResource('/periodo',                  'PeriodoController');
 Route::apiResource('/nivel',                    'NivelController');
 Route::get('/grado/planEvaluacion/docente/{docente}/periodo/{periodo}', 'GradoController@gradoPlanEvaluacionDocentePeriodo');
-Route::get('/grado/planEvaluacion/docente/{docente}',    'GradoController@GradoPlanEvaluacionDocente');
+Route::get('/grado/planEvaluacion/docente/{docente}',   'GradoController@GradoPlanEvaluacionDocente');
 Route::get('/grado/grupo/docente/{docente}',    'GradoController@gradoGrupoDocente');
 Route::get('/grado/materia/docente/{docente}',  'GradoController@gradoMateriaDocente');
 Route::get('/grado/MateriaAlumno',              'GradoController@gradoMateriaAlumno');
@@ -167,6 +167,7 @@ Route::get('/materia/docente/alumno/{alumno}',  'MateriaController@materiaDocent
 Route::get('/materia/grado/{grado}',            'MateriaController@materiaGrado');
 Route::get('/materia/grupo/{grupo}',            'MateriaController@materiaGrupo');
 Route::get('/materia/grupo/{grupo}/docente/{docente}',  'MateriaController@materiaGrupoDocente');
+Route::get('/materia/evaluacion/alumno/{alumno}',       'MateriaController@materiaEvaluacionAlumno');
 Route::get('/materia/alumno/{alumno}',          'MateriaController@materiaAlumno');
 Route::apiResource('/materia',                  'MateriaController', ['parameters' => ['materia' => 'materia']]);
 Route::apiResource('/clase',                    'ClaseController');
@@ -191,10 +192,10 @@ Route::apiResource('/horario',                  'HorarioController');
 
 // -- PLAN EVALUACION -- //
 Route::get('/planEvaluacion/grupo/{grupo}/periodo/{periodo}/materia/{materia}',  'PlanEvaluacionController@planEvaluacionGrupoPeriodoMateria');
-Route::get('/planEvaluacion/grupo/{grupo}/periodo/{periodo}',  'PlanEvaluacionController@planEvaluacionGrupoPeriodo');
-Route::get('/planEvaluacion/docente/{docente}/periodo/{periodo}',  'PlanEvaluacionController@planEvaluacionDocentePeriodo');
-
-Route::put('/planEvaluacion/status/{planEvaluacion}',  'PlanEvaluacionController@updateStatus');
+Route::get('/planEvaluacion/grupo/{grupo}/periodo/{periodo}',     'PlanEvaluacionController@planEvaluacionGrupoPeriodo');
+Route::get('/planEvaluacion/docente/{docente}/periodo/{periodo}', 'PlanEvaluacionController@planEvaluacionDocentePeriodo');
+Route::get('/planEvaluacion/alumno/{alumno}',  'PlanEvaluacionController@planEvaluacionAlumno');
+Route::put('/planEvaluacion/status/{planEvaluacion}',     'PlanEvaluacionController@updateStatus');
 Route::apiResource('/planEvaluacion',           'PlanEvaluacionController');
 Route::apiResource('/tipoEvaluacion',           'TipoEvaluacionController');
 
@@ -206,7 +207,8 @@ Route::get('/evaluacion/grupo/{grupo}',         'EvaluacionController@evaluacion
 Route::get('/evaluacion/docente/{docente}',     'EvaluacionController@evaluacionDocente');
 Route::put('/evaluacion/asignar/{evaluacion}',  'EvaluacionController@asignar');
 Route::apiResource('/evaluacion',               'EvaluacionController');
-Route::apiResource('/evaluacionMetodo',     'EvaluacionMetodoController');
+Route::apiResource('/evaluacionMetodo',         'EvaluacionMetodoController');
+Route::get('/evaluacionAlumno/evaluacion/{evaluacion}',   'EvaluacionAlumnoController@evaluacionAlumnoEvaluacion');
 Route::apiResource('/evaluacionAlumno',         'EvaluacionAlumnoController');
 
 // -- AGENDA -- //
@@ -235,6 +237,9 @@ Route::apiResource('/recurso',                  'RecursoController');
 Route::apiResource('/tipoUsuario',              'TipoUsuarioController');
 
 Route::get('/usuario/lote/tipo/{tipo}',         'UsuarioController@usuarioLoteTipo');
+
+Route::put('/usuario/{usuario}/email',          'UsuarioController@updateEmail');
+Route::put('/usuario/{usuario}/password',       'UsuarioController@updatePassword');
 Route::apiResource('/usuario',                  'UsuarioController');
 
 Route::apiResource('/perfil',                   'PerfilController');
@@ -246,9 +251,16 @@ Route::get('/menu/combo',                       'MenuController@combo');
 Route::apiResource('/menu',                     'MenuController');
 
 //Notificaciones
+Route::get('/notificacion/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/read',   'NotificacionController@read');
+Route::get('/notificacion/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/unread', 'NotificacionController@unread');
+Route::put('/notificacion/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/markreadall', 'NotificacionController@markReadAll');
+Route::put('/notificacion/{notificacion}/unread', 'NotificacionController@markUnread');
+Route::put('/notificacion/{notificacion}/read',   'NotificacionController@markRead');
+
 Route::get('/notificacion/combos',              'NotificacionController@combos');
 Route::get('/notificacion/destinatario/{tipoDestinatario}',  'NotificacionController@destinatario');
 Route::get('/notificacion/destinatario/{tipoDestinatario}/{idDestinatario}',  'NotificacionController@destinatarioById');
+
 Route::apiResource('/notificacion',             'NotificacionController');
 Route::apiResource('/tipoNotificacion',         'TipoNotificacionController');
 Route::apiResource('/tipoPrioridad',            'TipoPrioridadController');
@@ -303,7 +315,6 @@ Route::post('/reporte/generate',                'Reportes\ReporteController@gene
 Route::post('/reporte/execute',                 'Reportes\ReporteController@execute');
 Route::post('/reporte/execute/excel',           'Reportes\ReporteController@executeExcel');
 
-
 //Meet
 Route::get('meet/{usuario}',                    'MeetController@index');
 Route::post('meet/auth/{usuario}',              'MeetController@auth');
@@ -311,7 +322,7 @@ Route::post('meet/auth/{usuario}',              'MeetController@auth');
 //asistente
 Route::get('/asistente/perfil/{perfil}',        'AsistenteController@asistentePerfil');
 Route::apiResource('/asistente',                'AsistenteController');
-Route::apiResource('/asistenteDetalle',                 'AsistenteDetalleController');
+Route::apiResource('/asistenteDetalle',         'AsistenteDetalleController');
 //newRoutes
 
 Route::fallback(function () {

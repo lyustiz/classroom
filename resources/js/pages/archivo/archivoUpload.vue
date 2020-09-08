@@ -192,16 +192,8 @@ export default {
                 }
             ],
             itemsMenu: [
-                {
-                    label: 'Cerrar',
-                    icon:  'mdi-close',
-                    action: 'close'
-                },
-                {
-                    label: 'Refrescar',
-                    icon:  'mdi-table-refresh',
-                    action: 'refresh'
-                }
+                { label: 'Cerrar',    icon:  'mdi-close',         action: 'close' },
+                { label: 'Refrescar', icon:  'mdi-table-refresh', action: 'refresh' }
             ]
         }
     },

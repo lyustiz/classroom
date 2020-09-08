@@ -19,7 +19,8 @@ class Notificacion extends Model
 	 	 	 	 	 	 	'id_tipo_prioridad',
 	 	 	 	 	 	 	'fe_notificacion',
 	 	 	 	 	 	 	'hh_inicio',
-	 	 	 	 	 	 	'hh_fin',
+                            'hh_fin',
+                            'fe_lectura',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'
@@ -33,6 +34,16 @@ class Notificacion extends Model
     public function scopeActivo($query)
     {
         return $query->where('id_status', 1);
+    }
+    
+    public function scopeRead($query)
+    {
+        return $query->whereNotNull('fe_lectura');
+    }
+    
+    public function scopeUnread($query)
+    {
+        return $query->whereNull('fe_lectura');
 	}
 
 	public function scopeComboData($query)
@@ -49,4 +60,26 @@ class Notificacion extends Model
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
     }
+
+    public function destinatario()
+    {
+        return $this->BelongsTo('App\Models\Usuario', 'id_destinatario');
+    }
+
+    public function tipoNotificacion()
+    {
+        return $this->BelongsTo('App\Models\TipoNotificacion', 'id_tipo_notificacion');
+    }
+
+    public function tipoDestinatario()
+    {
+        return $this->BelongsTo('App\Models\TipoDestinatario', 'id_tipo_destinatario');
+    }
+
+    public function tipoPrioridad()
+    {
+        return $this->BelongsTo('App\Models\TipoPrioridad', 'id_tipo_prioridad');
+    }
+
+
 }

@@ -24,9 +24,13 @@ class Archivo extends Model
 	 	 	 	 	 	 	'updated_at'
                             ];
    
-    protected $appends = ['nb_real'];
+    protected $appends = ['nb_real', 'fe_archivo'];
 
-    
+    public function getFeArchivoAttribute()
+    {
+        return $this->created_at->format('d/m/Y h:i a');
+    }
+
     public function scopeActivo($query)
     {
         return $query->where('id_status', 1);

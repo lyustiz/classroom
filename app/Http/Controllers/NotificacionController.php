@@ -10,6 +10,7 @@ use App\Models\TipoDestinatario;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class NotificacionController extends Controller
 {
@@ -24,6 +25,34 @@ class NotificacionController extends Controller
                     ->get();
         
         return $notificacion;
+    }
+
+    public function unRead($idDestinatario, $idTipoDestinatario)
+    {
+        return Notificacion::with([ 'usuario:usuario.id,nb_usuario,nb_nombres', 
+                                    'tipoNotificacion:tipo_notificacion.id,nb_tipo_notificacion,tx_icono',
+                                    'tipoPrioridad:tipo_prioridad.id,nb_tipo_prioridad,tx_color'
+                                   ])
+                           ->where( 'id_destinatario', $idDestinatario )
+                           ->where( 'id_tipo_destinatario', $idTipoDestinatario )
+                           ->unread()
+                           ->latest()
+                           ->limit(30)
+                           ->get();
+    }
+
+    public function read($idDestinatario, $idTipoDestinatario)
+    {
+        return Notificacion::with([ 'usuario:usuario.id,nb_usuario,nb_nombres', 
+                                    'tipoNotificacion:tipo_notificacion.id,nb_tipo_notificacion,tx_icono',
+                                    'tipoPrioridad:tipo_prioridad.id,nb_tipo_prioridad,tx_color'
+                                ])
+                            ->where( 'id_destinatario', $idDestinatario )
+                            ->where( 'id_tipo_destinatario', $idTipoDestinatario )
+                            ->read()
+                            ->latest()
+                            ->limit(30)
+                            ->get();
     }
 
     public function combos()
@@ -95,9 +124,9 @@ class NotificacionController extends Controller
 			'id_usuario'            => 	'required|integer|max:999999999',
         ]);
 
-        $request->merge(['co_notificacion' => Str::random(16)]);
+        $request->merge(['co_notificacion' =>   strtoupper ( Str::random(3). '-' .Str::random(3). '-' .Str::random(3). '-' .Str::random(3) ) ]);
 
-        $notificacion = notificacion::create($request->all());
+        $notificacion = Notificacion::create($request->all());
 
         return [ 'msj' => 'Notificacion Creada Correctamente', compact('notificacion') ];
     }
@@ -143,6 +172,30 @@ class NotificacionController extends Controller
         return [ 'msj' => 'Notificacion Editado' , compact('notificacion')];
     }
 
+    public function markRead(Request $request, Notificacion $notificacion)
+    {
+        $notificacion = $notificacion->update(['fe_lectura' => Carbon::now()]);
+
+        return [ 'msj' => 'Leida' , compact('notificacion')];
+    }
+
+    public function markReadAll($idDestinatario, $idTipoDestinatario)
+    {
+        $notificacion = Notificacion::where('id_destinatario',      $idDestinatario)
+                                    ->where('id_tipo_destinatario', $idTipoDestinatario)
+                                    ->whereNull('fe_lectura')
+                                    ->update(['fe_lectura' => Carbon::now()]);
+
+        return [ 'msj' => 'Todas han sido marcadas como leidas' , compact('notificacion')];
+    }
+
+    public function markUnread(Request $request, Notificacion $notificacion)
+    {
+        $notificacion = $notificacion->update(['fe_lectura' => null]);
+
+        return [ 'msj' => 'Leida' , compact('notificacion')];
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -153,6 +206,6 @@ class NotificacionController extends Controller
     {
         $notificacion = $notificacion->delete();
  
-        return [ 'msj' => 'Notificacion Eliminado' , compact('notificacion')];
+        return [ 'msj' => 'Notificacion Eliminada' , compact('notificacion')];
     }
 }

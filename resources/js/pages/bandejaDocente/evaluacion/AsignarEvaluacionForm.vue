@@ -55,6 +55,10 @@
             label="Metodo Evaluacion"
             :loading="loading"
             dense
+            :hint="(isMetodoPrueba) ? `Solo se permite metodo de evaluacion prueba` : 'indique metodo'"
+            :readonly="isMetodoPrueba"
+            :persistent-hint="isMetodoPrueba"
+            :color="(isMetodoPrueba) ? `amber` : null"
             ></v-select>
         </v-col>
 
@@ -162,7 +166,19 @@
 import Appform from '@mixins/Appform';
 
 export default {
+
     mixins: [Appform],
+
+    created()
+    {
+        if(this.item.id_tipo_evaluacion == 1)
+        {
+            this.isMetodoPrueba = true
+
+            this.defaultForm.id_evaluacion_metodo = 1
+        }
+    },
+
     data() {
         return {
             resource: 'evaluacion/asignar',
@@ -191,6 +207,10 @@ export default {
             {
                 evaluacionMetodo: 	 [],
             },
+            defaultForm: {
+                id_evaluacion_metodo: null
+            },
+            isMetodoPrueba: false
         }
     },
 

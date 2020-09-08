@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Materia;
+use App\Models\Periodo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -86,13 +87,12 @@ class MateriaController extends Controller
 
     public function materiaDocenteAlumno($idAlumno)
     {
-        $idPeriodo = 1; //TODO    = \Auth::user();//->colegio->calendario->periodoActivo->nb_periodo;
         
         $materia = Materia::with([
                         'planEvaluacion' => function($query) use ( $idPeriodo, $idAlumno ){
                             $query->whereHas('grupo.alumno', function ($query) use ($idPeriodo, $idAlumno) {
                                 $query->where('alumno.id', $idAlumno);
-                            })->where('id_periodo',$idPeriodo )->activo();
+                            })->has('periodoActivo');
                         },
                         'planEvaluacion.materia'=> function($query) use ( $idAlumno ){
                             $query->has('alumno');
@@ -110,6 +110,41 @@ class MateriaController extends Controller
 
                 return $materia;
     }
+
+    public function materiaEvaluacionAlumno($idAlumno)
+    {
+      
+        return  Materia::with([
+                        'planEvaluacion' => function($query) use ( $idAlumno ){
+                            $query->whereHas('grupo.alumno', function ($query) use ($idAlumno) {
+                                $query->where('alumno.id', $idAlumno);
+                            })->has('periodoActivo')
+                            ->activo();
+                        },
+                        'planEvaluacion.docente:docente.id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',
+                        'planEvaluacion.evaluacion',
+                        'planEvaluacion.evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion',
+                        'planEvaluacion.evaluacion.evaluacionMetodo:id,nb_evaluacion_metodo,tx_icono,tx_color',
+                        'planEvaluacion.evaluacion.archivo',
+                        'planEvaluacion.evaluacion.archivo.tipoArchivo:id,tx_base_path',
+                        'planEvaluacion.evaluacion.evaluacionAlumno'=> function($query) use ( $idAlumno ){
+                            $query->where('id_alumno', $idAlumno);
+                        },
+                        'planEvaluacion.evaluacion.evaluacionAlumno.archivo',
+                        'planEvaluacion.evaluacion.evaluacionAlumno.calificacion',
+                        'planEvaluacion.evaluacion.status:id,nb_status,tx_icono,tx_color'
+                    ])
+                    ->comboData()
+                    ->whereHas('alumno', function ($query) use ($idAlumno) {
+                        $query->where('alumno.id', $idAlumno);
+                    }) 
+                    ->has('planEvaluacion')
+                    ->orderBY('nb_materia')
+                    ->get();
+
+    }
+
+    
 
     /**
      * Store a newly created resource in storage.

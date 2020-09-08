@@ -12,13 +12,23 @@
             <v-col cols="12" class="pt-3">
                 <v-list subheader dense width="100%"> 
 
-                    <v-list-item v-for="(alumno, idx) in alumnos" :key="idx" :value="alumno.id">
+                    <v-subheader>
+                        <v-row  dense>
+                            <v-col>Evaluacion: {{evaluacion.tipo_evaluacion.nb_tipo_evaluacion}}</v-col>
+                            <v-col>Tema: {{evaluacion.tx_tema}}</v-col>
+                            <v-col>Peso: {{evaluacion.nu_peso}}%</v-col>
+                        </v-row>
+                    </v-subheader>
+
+                    <v-list-item v-for="(evaluacionAlumno, idx) in evaluacionAlumnos" :key="idx" :value="evaluacionAlumno.id">
+
                         <v-list-item-avatar>
                             <v-icon color="indigo" size="36">mdi-school</v-icon>
                         </v-list-item-avatar>
+
                         <v-list-item-content>
-                            <v-list-item-title v-text="alumno.nb_alumno"></v-list-item-title>
-                            <v-list-item-subtitle v-text="alumno.tx_documento"></v-list-item-subtitle>
+                            <v-list-item-title v-text="evaluacionAlumno.alumno.nb_alumno"></v-list-item-title>
+                            <v-list-item-subtitle v-text="evaluacionAlumno.alumno.tx_documento"></v-list-item-subtitle>
                         </v-list-item-content>
 
                         <v-list-item-action>
@@ -28,7 +38,8 @@
                         <v-list-item-action>
 
                             <template v-if="evaluacion.id_evaluacion_metodo == 3">
-                                <app-archivo color="red" icono="mdi-notebook" origen="evaluacion_alumno" :origenId="1" :tipoArchivo="1" :hasArchivo="0 > 0"></app-archivo>
+                                <list-simple-icon :size="34" v-if="evaluacionAlumno.archivo" :label="`${evaluacionAlumno.archivo.nb_archivo} subido: ${evaluacionAlumno.archivo.fe_archivo }`" color="green" icon="mdi-file-download" depressed @click="download(evaluacionAlumno.archivo)"></list-simple-icon>
+                                <list-simple-icon :size="34" v-else label="No se ha cargado el docuemnto" color="red" icon="mdi-file-cancel" depressed></list-simple-icon> 
                             </template>
 
                             <template v-else>
@@ -42,35 +53,56 @@
                             <v-chip outlined v-if="evaluacion.id_evaluacion_metodo == 1">Ver Modulo de pruebas</v-chip>
 
                             <v-edit-dialog
-                                :return-value.sync="alumno.id"
+                                :return-value.sync="evaluacionAlumno.id"
                                 persistent large
                                 cancel-text="Cancelar"
                                 save-text="Guardar"
-                                @open="setDataForm(alumno)"
-                                @save="updateData(alumno)"
+                                @open="setDataForm(evaluacionAlumno)"
+                                @save="updateEvaluacion(evaluacionAlumno)"
                                 @cancel="clearForm()"
                                 v-else
                             >
-                                <v-text-field
-                                    :value="(alumno.evaluacion_alumno.length > 0) ? alumno.evaluacion_alumno[0].nu_calificacion : null"
-                                    readonly                                    
-                                    single-line
-                                    hide-details
-                                    dense
-                                    filled
-                                    type="number"
-                                    class="field-evaluation"
-                                ></v-text-field>
+                                
+                                
+                                <v-tooltip bottom color="green">
+                                    <template v-slot:activator="{ on }">
+                                        <v-text-field
+                                            v-on="on"
+                                            :value="(evaluacionAlumno.calificacion) ? evaluacionAlumno.calificacion.nu_calificacion : '-'"
+                                            readonly                                    
+                                            single-line
+                                            hide-details
+                                            dense
+                                            filled
+                                            type="number"
+                                            class="field-evaluation body-2 text-center"
+                                            suffix='Pts'
+                                        ></v-text-field>
+                                    </template>
 
+                                    <template v-if="evaluacionAlumno.calificacion">
+                                            Letra: {{ evaluacionAlumno.calificacion.nb_calificacion }} Ptos Acumulados: {{ evaluacionAlumno.nu_calificacion }}
+                                    </template>
+                                    <template v-else>
+                                        <span>Sin Calificacion</span>
+                                    </template>
+                                </v-tooltip>
+                                
                                 <template v-slot:input>
                                     
-                                        <v-text-field
-                                            v-model="form.nu_calificacion"
-                                            :rules="[rules.minNum(0), rules.maxNum(100)]" 
-                                            label="Calificacion"
-                                            type="number"
+                                        <v-select
+                                            v-model="form.id_calificacion"
+                                            :items="calificaciones"
+                                            item-text="nu_calificacion"
+                                            item-value="id"
+                                            :rules="[rules.select]"
+                                            label="calificacion"
+                                            :loading="loading"
+                                            dense
+                                            full-width
                                             autofocus
-                                        ></v-text-field>
+                                        ></v-select>
+
                                         <v-text-field
                                             v-model="form.tx_observaciones"
                                             :rules="[rules.max(80)]"
@@ -84,6 +116,8 @@
 
                     </v-list-item>
                 </v-list>
+
+                <a ref="download" target="_blank" rel="noopener noreferrer" class="d-none"></a>
             </v-col>
 
         </v-row>
@@ -133,14 +167,15 @@ export default {
 
     data() {
         return {
-            alumnos:         [],
+            evaluacionAlumnos: [],
+            calificaciones: [],
             confirm:         false,
             confirmEvaluar:  false,
             form:
             {
                 id_alumno:         null,
                 id_evaluacion:     null,
-                nu_calificacion:   null,
+                id_calificacion:   null,
                 tx_observaciones:  null
             }
         }
@@ -149,26 +184,19 @@ export default {
     methods:
     {
         list()
-        {
-            let resource = `alumno/evaluacion/${this.evaluacion.id}/grupo/${this.evaluacion.plan_evaluacion.id_grupo}/materia/${this.evaluacion.plan_evaluacion.id_materia}`
-            this.getResource( resource ).then( data =>  this.alumnos = data )
+        {           
+            let resource = `evaluacionAlumno/evaluacion/${this.evaluacion.id}`
+            this.getResource( resource ).then( data =>  this.evaluacionAlumnos = data )
+
+            this.getResource( `calificacion` ).then( data =>  this.calificaciones = data )
+
         },
 
-        updateData(alumno)
+        updateEvaluacion(evaluacionAlumno)
         {
-            if(this.form.nu_calificacion == null)  return
+            if(this.form.id_calificacion == null)  return
 
-            if(alumno.evaluacion_alumno.length > 0)
-            {
-                this.updateEvaluacion(alumno.evaluacion_alumno[0].id)
-            } else {
-                this.storeEvaluacion()
-            }
-        },
-
-        storeEvaluacion()
-        {
-            this.storeResource( `evaluacionAlumno`, this.form).then( data =>{
+            this.updateResource( `evaluacionAlumno/${evaluacionAlumno.id}`, this.form).then( data =>{
                 this.showMessage(data.msj)
             }).finally( () =>{
                 this.clearForm()
@@ -176,24 +204,11 @@ export default {
             });
         },
 
-        updateEvaluacion(idEvaluacion)
+        setDataForm(evaluacionAlumno)
         {
-            this.updateResource( `evaluacionAlumno/${idEvaluacion}`, this.form).then( data =>{
-                this.showMessage(data.msj)
-            }).finally( () =>{
-                this.clearForm()
-                this.list()
-            });
-        },
-
-        setDataForm(alumno)
-        {
-            if(alumno.evaluacion_alumno.length > 0)
-            {
-                this.form.nu_calificacion  = alumno.evaluacion_alumno[0].nu_calificacion
-                this.form.tx_observaciones = alumno.evaluacion_alumno[0].tx_observaciones
-            }
-            this.form.id_alumno        = alumno.id
+            this.form.id_calificacion  = evaluacionAlumno.id_calificacion
+            this.form.tx_observaciones = evaluacionAlumno.tx_observaciones
+            this.form.id_alumno        = evaluacionAlumno.alumno.id 
         },
 
         clearForm()
@@ -203,12 +218,25 @@ export default {
             this.form.tx_observaciones = null
         },
 
+        download(archivo)
+        {            
+            var href = archivo.tipo_archivo.tx_base_path + archivo.tx_path
+
+            this.$refs['download'][0].setAttribute('download', archivo.nb_real);
+
+            this.$refs['download'][0].setAttribute('href', href);
+
+            this.$refs['download'][0].click();
+
+            this.showMessage(`Descargando archivo ...`)
+        },
+
     }
 }
 </script>
 
 <style scoped>
 .field-evaluation{
-    width: 100px;
+    width: 90px;
 }
 </style>

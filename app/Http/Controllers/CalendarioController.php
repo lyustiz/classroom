@@ -15,8 +15,10 @@ class CalendarioController extends Controller
      */
     public function index()
     {
-        $calendario = Calendario::with([])
-                    ->get();
+        $calendario = Calendario::with(['periodo:id,nb_periodo,id_calendario',
+                                        'periodoActivo:id,nb_periodo,id_calendario'
+                                        ])
+                                    ->get();
         
         return $calendario;
     }

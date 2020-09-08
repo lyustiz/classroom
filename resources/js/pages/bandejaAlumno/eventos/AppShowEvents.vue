@@ -84,6 +84,14 @@ export default {
         },
     },
 
+    computed:
+    {
+        user() 
+        {
+            return this.$store.getters['getUser']
+        },
+    },
+
     data()
     {
         return{
@@ -100,10 +108,10 @@ export default {
         addNotificacion(event)
         {
             this.notificacion = {
-                tipoDestinatario: 3,
+                tipoDestinatario: this.user.id_tipo_usuario,
                 tipoNotificacion: 2,
                 tipoPrioridad:    1,
-                idDestinatario:   1,//,
+                idDestinatario:   this.user.id,
                 asunto:           event.name,
                 mensaje:          event.description,
                 lugar:            'N/A',
