@@ -21,8 +21,13 @@
                             <v-list-item-subtitle v-text="alumno.tx_documento"></v-list-item-subtitle>
                         </v-list-item-content>
 
-                        <v-list-item-action>
-                            <span class="mr-1">{{alumno.prueba_alumno[0].nu_calificacion}}</span>
+                        <v-list-item-action v-if="alumno.prueba_alumno[0].calificacion">
+                            <v-tooltip bottom color="green">
+                                <template v-slot:activator="{ on }">
+                                    <span v-on="on" class="mr-1 px-1 green rounded-xl white--text">{{alumno.prueba_alumno[0].calificacion.nu_calificacion}}</span>
+                                </template>
+                                <span>Letra {{alumno.prueba_alumno[0].calificacion.nb_calificacion}} Puntos Obtenidos {{alumno.prueba_alumno[0].nu_calificacion}}</span>
+                            </v-tooltip>
                         </v-list-item-action>
 
                         <v-list-item-action>
@@ -134,8 +139,8 @@ export default {
             alumno:          null,
             alumnoSelected:  null,
             dialogRespuesta: false,
-            confirm:       false,
-            confirmEvaluar: false,
+            confirm:         false,
+            confirmEvaluar:  false,
         }
     },
 

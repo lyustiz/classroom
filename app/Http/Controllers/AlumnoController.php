@@ -149,6 +149,7 @@ class AlumnoController extends Controller
                                 'pruebaAlumno' => function($query) use ( $idPrueba ){
                                     $query->where('id_prueba' , $idPrueba);
                                 },
+                                'pruebaAlumno.calificacion:id,nb_calificacion,nu_calificacion'
                             ])
                             ->comboData()
                             ->ordenApellido()

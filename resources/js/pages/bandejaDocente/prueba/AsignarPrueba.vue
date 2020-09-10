@@ -12,58 +12,58 @@
 
                 <v-col cols="12" md="4" class="px-2">
                     <v-select
-                    :items="grados"
-                    item-text="nb_grado"
-                    item-value="id"
-                    v-model="grado"
-                    :rules="[rules.select]"
-                    label="Grados"
-                    :loading="loading"
-                    dense
-                    filled
-                    outlined
-                    rounded
-                    color="indigo lighten-3"
-                    return-object
-                    @change="getGrupos($event)"
+                        :items="grados"
+                        item-text="nb_grado"
+                        item-value="id"
+                        v-model="grado"
+                        :rules="[rules.select]"
+                        label="Grados"
+                        :loading="loading"
+                        dense
+                        filled
+                        outlined
+                        rounded
+                        color="indigo lighten-3"
+                        return-object
+                        @change="getGrupos($event)"
                     ></v-select>
                 </v-col>
 
                 <v-col cols="12" md="4" class="px-2">
                     <v-select
-                    :items="grupos"
-                    item-text="nb_grupo"
-                    item-value="id"
-                    v-model="grupo"
-                    :rules="[rules.select]"
-                    label="Grupos"
-                    :loading="loading"
-                    dense
-                    filled
-                    outlined
-                    rounded
-                    color="indigo lighten-3"
-                    @change="getMaterias($event)"
-                    :disabled="grupos.length < 1"
+                        :items="grupos"
+                        item-text="nb_grupo"
+                        item-value="id"
+                        v-model="grupo"
+                        :rules="[rules.select]"
+                        label="Grupos"
+                        :loading="loading"
+                        dense
+                        filled
+                        outlined
+                        rounded
+                        color="indigo lighten-3"
+                        @change="getMaterias($event)"
+                        :disabled="grupos.length < 1"
                     ></v-select>
                 </v-col>
 
                 <v-col cols="12" md="4" class="px-2">
                     <v-select
-                    :items="materias"
-                    item-text="nb_materia"
-                    item-value="id"
-                    v-model="materia"
-                    :rules="[rules.select]"
-                    label="Materias"
-                    :loading="loading"
-                    dense
-                    filled
-                    outlined
-                    rounded
-                    color="indigo lighten-3"
-                    @change="getPruebas($event)"
-                    :disabled="materias.length < 1"
+                        :items="materias"
+                        item-text="nb_materia"
+                        item-value="id"
+                        v-model="materia"
+                        :rules="[rules.select]"
+                        label="Materias"
+                        :loading="loading"
+                        dense
+                        filled
+                        outlined
+                        rounded
+                        color="indigo lighten-3"
+                        @change="getPruebas($event)"
+                        :disabled="materias.length < 1"
                     ></v-select>
                 </v-col>
 

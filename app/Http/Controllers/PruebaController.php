@@ -379,14 +379,14 @@ class PruebaController extends Controller
 
         if($pruebasPendientes > 0)
         {
-            throw ValidationException::withMessages(['pendientes' => "Existen $pruebasPendientes pruebas por evaluar"]);
+            throw ValidationException::withMessages(['pendientes' => "Existe(n) $pruebasPendientes prueba(s) por evaluar"]);
         }
-
-        $prueba = $prueba->update($request->all());
-
+        
         $this->setEvaluacionAlumno($prueba);
 
-        return [ 'msj' => 'Prueba Cerrada' , compact('prueba')];
+        $update = $prueba->update($request->all());
+
+        return [ 'msj' => 'Prueba Cerrada' , compact('update')];
     }
 
 
@@ -394,7 +394,7 @@ class PruebaController extends Controller
     {
         $evaluaciones = [];
 
-        foreach ($prueba->pruebaAlumnos as $key => $pruebaAlumno) {
+        foreach ($prueba->pruebaAlumno as $key => $pruebaAlumno) {
             $evaluaciones[] =   [
                                     'id_evaluacion'    => $prueba->id_evaluacion,
                                     'id_alumno'        => $pruebaAlumno->id_alumno,
@@ -405,7 +405,7 @@ class PruebaController extends Controller
                                 ];
         }
 
-        return EvaluacionAlumno::insert([$evaluaciones]);
+        return EvaluacionAlumno::insert($evaluaciones);
         
     }
     
