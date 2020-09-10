@@ -98,7 +98,7 @@ class EvaluacionAlumnoController extends Controller
     }
 
 
-    public function calcularCalificacion($evaluacion, $idCalificacion)
+    public function calcularCalificacion($evaluacion, $idCalificacion) //TODO TRAIT
     {
         //TODO: check grupo calificacion
         

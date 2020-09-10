@@ -394,6 +394,11 @@ class PruebaController extends Controller
     {
         $evaluaciones = [];
 
+        $evaluacion      = $prueba->evaluacion;
+
+        $maxCalificacion  = Calificacion::max('nu_calificacion');
+
+        //todo  update
         foreach ($prueba->pruebaAlumno as $key => $pruebaAlumno) {
             $evaluaciones[] =   [
                                     'id_evaluacion'    => $prueba->id_evaluacion,
@@ -403,10 +408,40 @@ class PruebaController extends Controller
                                     'id_status'        => 1,
                                     'id_usuario'       => $prueba->id_usuario
                                 ];
+
+            $calculo = $this->calcularCalificacion($evaluacion, $pruebaAlumno->calificacion, $maxCalificacion);
+
+            $evaluaciones[] = EvaluacionAlumno::where('id_evaluacion', $prueba->id_evaluacion)
+                                              ->where('id_alumno',     $pruebaAlumno->id_alumno)
+                                              ->update([
+                                                'nu_calificacion'  => $calculo['puntos'],
+                                                'id_calificacion'  => $calculo['calificacion']->id
+                                              ]);
+                                
         }
 
         return EvaluacionAlumno::insert($evaluaciones);
         
+    }
+
+    public function calcularCalificacion($evaluacion, $calificacion, $maxCalificacion) //TODO TRAIT
+    {
+
+        $calificacion     = $calificacion->nu_calificacion;
+
+        $peso             = $evaluacion->nu_peso;
+
+        //calculo   maxnota * %peso * %calificacion  eje: 20 * 25% * 50%  = 2.5  == 20 * (25/100) * (10/20) = 2.5
+
+        $percPeso          = $peso / 100; 
+
+        $percCalificacion  = $calificacion  / $maxCalificacion; 
+        
+        $puntos            = round(($maxCalificacion * $percPeso * $percCalificacion), 2, PHP_ROUND_HALF_UP);
+
+        $calificacion      =  Calificacion::where('nu_calificacion', '>=', (round($puntos, 0, PHP_ROUND_HALF_UP )) )->first();
+        
+        return ['calificacion' => $calificacion, 'puntos' => $puntos];
     }
     
     /**

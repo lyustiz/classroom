@@ -80,7 +80,8 @@ class PeriodoController extends Controller
                 return $periodoActivo->update(['id_status' => 2]);
 
             }elseif($periodo->id_status == 2 and !$hasActivo){
-
+                
+                \Cache::put('periodoActivo', $periodo);
                 return $periodo->fill(['id_status' => 1]);
             }
         }
@@ -89,10 +90,13 @@ class PeriodoController extends Controller
         {
             if($periodo->id_status == 1){
 
-                return Periodo::where('id', '<>', $periodo->id)
-                              ->latest()
-                              ->first()
-                              ->update(['id_status' => 1]);
+                $periodoActivo =  Periodo::where('id', '<>', $periodo->id)
+                                    ->latest()
+                                    ->first();
+
+                \Cache::put('periodoActivo', $periodoActivo);     
+
+                return $periodoActivo->update(['id_status' => 1]);
 
             }
         }
