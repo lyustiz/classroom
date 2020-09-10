@@ -94,16 +94,16 @@ class GradoController extends Controller
     public function gradoGrupoDocente($idDocente)
     {        
         return Grado::with([
-                                'grupo' => function ($query) use($idDocente, $idPeriodo) {
+                                'grupo' => function ($query) use($idDocente) {
                                     $query->select('grupo.id', 'nb_grupo', 'id_grado')
-                                    ->whereHas('planEvaluacion', function (Builder $query) use($idDocente, $idPeriodo) {
+                                    ->whereHas('planEvaluacion', function (Builder $query) use($idDocente) {
                                         $query->where('plan_evaluacion.id_docente', $idDocente)
                                               ->has('periodoActivo');
                                     });
                                 },     
                                    
                             ])
-                            ->whereHas('grupo.planEvaluacion', function (Builder $query) use($idDocente, $idPeriodo) {
+                            ->whereHas('grupo.planEvaluacion', function (Builder $query) use($idDocente) {
                                 $query->where('plan_evaluacion.id_docente', $idDocente)
                                       ->has('periodoActivo');
                             })

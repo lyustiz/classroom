@@ -123,6 +123,26 @@ class AlumnoController extends Controller
 
     }
 
+    public function alumnoPruebaEvaluacion($idPrueba, $idEvaluacion)
+    {
+        return  Alumno::with([
+                                'pruebaAlumno'=> function($query) use ( $idPrueba ){
+                                    $query->where('id_prueba' , $idPrueba);
+                                },
+                            ])
+                            ->whereHas('evaluacionAlumno', function (Builder $query) use($idEvaluacion) {
+                                $query->where('id_evaluacion', $idEvaluacion);
+                            })
+                            ->whereDoesntHave('prueba', function (Builder $query) use($idPrueba, $idEvaluacion) {
+                                $query->where('prueba.id', '<>', $idPrueba)
+                                      ->where('id_evaluacion', $idEvaluacion);
+                            })
+                            ->comboData()
+                            ->ordenApellido()
+                            ->activo()
+                            ->get();
+    }
+
     public function alumnoPrueba($idPrueba)
     {
         return  Alumno::with([

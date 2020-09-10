@@ -22,7 +22,7 @@ class PlanEvaluacion extends Model
                             'created_at',
 	 	 	 	 	 	 	'updated_at'
                             ];
-
+    
     public function scopeActivo($query)
     {
         return $query->where('id_status', 1);

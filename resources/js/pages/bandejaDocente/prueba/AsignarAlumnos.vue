@@ -7,9 +7,9 @@
         </v-card-title>
 
         <v-card-title dense class="pa-0">
-            <v-toolbar color="grey lighten-4 subtitle-2" flat>
+            <v-toolbar color="grey lighten-4 subtitle-2" flat dense>
                 <v-icon color="orange" class="mr-1">mdi-account-plus</v-icon>
-                <div class="indigo--text">{{ alumnosSelected }}</div> 
+                <div class="indigo--text">Asignar Alumnos</div> 
                 <v-spacer></v-spacer>
                 <v-checkbox label="Todos" :value="isSelectAll" :disabled="loading" class="mt-5" @click.stop="setAll(isSelectAll)"></v-checkbox>
             </v-toolbar>
@@ -19,7 +19,7 @@
         <v-row justify="center" no-gutters>
         <v-col cols="12" class="pt-3">
 
-            <v-list subheader dense width="100%"> 
+            <v-list subheader dense width="100%" class="rounded-xl" rounded> 
 
                 <v-list-item-group v-model="alumnosSelected" multiple >
                 <v-list-item v-for="(alumno, idx) in alumnos" :key="idx" :value="alumno.id" @click.stop="asignacionAlumno(alumno)" :hasMateria="hasPrueba(alumno)">
@@ -115,7 +115,8 @@ export default {
 
         list()
         {
-            this.getResource( `alumno/prueba/${this.prueba.id}/grupo/${this.grupo}/materia/${this.materia}`)
+            console.log('liss')
+            this.getResource( `alumno/prueba/${this.prueba.id}/evaluacion/${this.prueba.id_evaluacion}`)
             .then( data =>  this.alumnos = data )
         },
 

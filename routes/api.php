@@ -103,6 +103,7 @@ Route::post('/alumno/asignacion/search',        'AlumnoController@alumnoSearch')
 
 Route::get('/alumno/prueba/{prueba}/grupo/{grupo}/materia/{materia}',  'AlumnoController@alumnoPruebaGrupoMateria');
 Route::get('/alumno/prueba/{prueba}',           'AlumnoController@alumnoPrueba');
+Route::get('/alumno/prueba/{prueba}/evaluacion/{evaluacion}',   'AlumnoController@alumnoPruebaEvaluacion');
 
 Route::get('/alumno/evaluacion/{evaluacion}/grupo/{grupo}/materia/{materia}',  'AlumnoController@alumnoEvaluacionGrupoMateria');
 Route::get('/alumno/evaluacion/{evaluacion}',   'AlumnoController@alumnoPrueba');
@@ -195,6 +196,7 @@ Route::get('/planEvaluacion/grupo/{grupo}/periodo/{periodo}/materia/{materia}', 
 Route::get('/planEvaluacion/grupo/{grupo}/periodo/{periodo}',     'PlanEvaluacionController@planEvaluacionGrupoPeriodo');
 Route::get('/planEvaluacion/docente/{docente}/periodo/{periodo}', 'PlanEvaluacionController@planEvaluacionDocentePeriodo');
 Route::get('/planEvaluacion/alumno/{alumno}',  'PlanEvaluacionController@planEvaluacionAlumno');
+Route::get('/planEvaluacion/calificacion/alumno/{alumno}','PlanEvaluacionController@PlanEvaluacionCalificacionAlumno');
 Route::put('/planEvaluacion/status/{planEvaluacion}',     'PlanEvaluacionController@updateStatus');
 Route::apiResource('/planEvaluacion',           'PlanEvaluacionController');
 Route::apiResource('/tipoEvaluacion',           'TipoEvaluacionController');
@@ -281,6 +283,7 @@ Route::get('/prueba/docente/{docente}/ejecutar','PruebaController@pruebaDocenteE
 Route::get('/prueba/docente/{docente}/evaluar', 'PruebaController@pruebaDocenteEvaluar');
 
 Route::put('/prueba/asignar/{prueba}',          'PruebaController@asignar');
+Route::put('/prueba/remover/{prueba}',          'PruebaController@remover');
 Route::put('/prueba/ejecutar/{prueba}',         'PruebaController@ejecutar');
 Route::put('/prueba/cancelar/{prueba}',         'PruebaController@cancelar');
 Route::put('/prueba/reiniciar/{prueba}',        'PruebaController@reiniciar');

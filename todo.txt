@@ -21,8 +21,8 @@ autenticacion
 plan evaluacion grupos sin grados asignados - cierre de modal evaluacion
 materias asignara grado replicar a grupos y alumnos
 evaluacion observaciones agregar update
-junta directiva combo cargos  
-
+junta directiva combo cargos recarga
+horario evitar reasignacion de hora/dia
 
 
 ->
@@ -31,17 +31,8 @@ TAMAÑO DE CAMPO TELEFONO 80CARACTERES VALIDACION DEL CAMPO Y MOSTARR ERRORES
 COLEGIO COMUNA BUSQUEDA                                      MOTARR EL ERROR
 
 
-DOCENTE: AMPLIAR PANTALLA
-
-ADMINISTRADOR COLEGIO
-INFORMACION DEL COLEGIO
-
 
 libros del 
-
-
-
-
  / AMINITRADOR GLOBAL
 
 
@@ -51,7 +42,6 @@ VER CIUDAD Y OCULTAR CODIGOS
 
 
 PERFILES
-ADMINISTRADOR  LIBROS 
 VENTAS     
 
 

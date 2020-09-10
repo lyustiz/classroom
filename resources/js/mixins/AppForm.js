@@ -93,7 +93,7 @@ export default
                 {
                     if(this.form.hasOwnProperty(key))
                     {
-                        if(key.includes('fe_') && this.item[key].length > 9)
+                        if(key.includes('fe_') && ((this.item[key]) ? this.item[key].length : 0 > 9))
                         {
                             this.dates[key] =  this.formatDate(this.item[key]);
 							

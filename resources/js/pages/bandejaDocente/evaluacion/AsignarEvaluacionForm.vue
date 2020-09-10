@@ -55,10 +55,11 @@
             label="Metodo Evaluacion"
             :loading="loading"
             dense
-            :hint="(isMetodoPrueba) ? `Solo se permite metodo de evaluacion prueba` : 'indique metodo'"
+            :hint="(isMetodoPrueba) ? `Solo permite metodo prueba` : 'indique metodo'"
             :readonly="isMetodoPrueba"
             :persistent-hint="isMetodoPrueba"
             :color="(isMetodoPrueba) ? `amber` : null"
+            :prepend-icon="(isMetodoPrueba) ? `mdi-lock` : null"
             ></v-select>
         </v-col>
 
@@ -169,13 +170,16 @@ export default {
 
     mixins: [Appform],
 
-    created()
+    watch:
     {
-        if(this.item.id_tipo_evaluacion == 1)
+        item()
         {
-            this.isMetodoPrueba = true
+            if(this.item.id_tipo_evaluacion == 1)
+            {
+                this.isMetodoPrueba = true
 
-            this.defaultForm.id_evaluacion_metodo = 1
+                this.form.id_evaluacion_metodo = 1
+            }
         }
     },
 
@@ -207,9 +211,6 @@ export default {
             {
                 evaluacionMetodo: 	 [],
             },
-            defaultForm: {
-                id_evaluacion_metodo: null
-            },
             isMetodoPrueba: false
         }
     },
@@ -219,8 +220,8 @@ export default {
         onCreateForm()
         {
             this.form.fe_evaluacion = this.item.fe_planificada
-        },
 
+        },
     }
 }
 </script>

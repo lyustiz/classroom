@@ -39,21 +39,21 @@
 
 <script>
 
-import TareaAlumno      from './tarea/AppTarea'
-import RecursoAlumno    from './recurso/Apprecurso'
-import EvaluacionAlumno from './evaluacion/AppEvaluacionAlumno'
-import PruebaAlumno     from './prueba/PruebaAlumno'
-import MateriaAlumno    from './materia/AppMateria'
-import ClaseAlumno      from './clase/AppClase'
+import TareaAlumno         from './tarea/AppTarea'
+import RecursoAlumno       from './recurso/Apprecurso'
+import EvaluacionAlumno    from './evaluacion/AppEvaluacionAlumno'
+import PruebaAlumno        from './prueba/PruebaAlumno'
+import CalificacionAlumno  from './calificacion/AppCalificacion'
+import ClaseAlumno         from './clase/AppClase'
 export default {
 
     components: {
-        'tarea-alumno':      TareaAlumno,
-        'recurso-alumno':    RecursoAlumno,
-        'evaluacion-alumno': EvaluacionAlumno,
-        'prueba-alumno':     PruebaAlumno,
-        'materia-alumno':    MateriaAlumno,
-        'clase-alumno':      ClaseAlumno,
+        'tarea-alumno':        TareaAlumno,
+        'recurso-alumno':      RecursoAlumno,
+        'evaluacion-alumno':   EvaluacionAlumno,
+        'prueba-alumno':       PruebaAlumno,
+        'calificacion-alumno': CalificacionAlumno,
+        'clase-alumno':        ClaseAlumno,
     },
 
     computed:
@@ -76,7 +76,7 @@ export default {
                 { label: 'Recursos', icon: 'mdi-book-open-page-variant', component: 'recurso-alumno', color: 'purple', sectionWidth: '700' },
                 { label: 'Evaluaciones', icon: 'mdi-notebook', component: 'evaluacion-alumno', color: 'indigo', sectionWidth: '95vw' },   
                 { label: 'Pruebas', icon: 'mdi-order-bool-descending-variant', component: 'prueba-alumno', color: 'red', sectionWidth: '85vw' },          
-                { label: 'Calificaciones', icon: 'mdi-clipboard-list', component: 'materia-alumno', color: 'amber', sectionWidth: '700' },
+                { label: 'Calificaciones', icon: 'mdi-clipboard-list', component: 'calificacion-alumno', color: 'amber', sectionWidth: '700' },
                 /*  { label: 'Tareas', icon: 'mdi-notebook', component: 'tarea-alumno', color: 'blue', sectionWidth: '700' }, */
                 /*  { label: 'Aula Virtual (En Construccion)', icon: 'mdi-google-classroom', component: 'clase-alumno', color: 'green', sectionWidth: '700' }, */
             ]

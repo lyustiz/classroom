@@ -15,7 +15,7 @@ class Prueba extends Model
                             'id_grupo',
                             'id_materia',
                             'id_docente',
-	 	 	 	 	 	 	'id_evaluacion_detalle',
+	 	 	 	 	 	 	'id_evaluacion',
 	 	 	 	 	 	 	'bo_ver_resultado',
 	 	 	 	 	 	 	'nu_minutos',
 	 	 	 	 	 	 	'fe_prueba',
@@ -153,6 +153,11 @@ class Prueba extends Model
     public function pregunta()
     {
         return $this->HasMany('App\Models\Pregunta', 'id_prueba');
+    }
+
+    public function evaluacion()
+    {
+        return $this->BelongsTo('App\Models\Evaluacion', 'id_evaluacion');
     }
 
     public function pruebaAlumno()

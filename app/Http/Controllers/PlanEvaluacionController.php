@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\PlanEvaluacion;
+use App\Models\Calificacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
@@ -109,9 +110,10 @@ class PlanEvaluacionController extends Controller
 
     public function PlanEvaluacionCalificacionAlumno($idAlumno)
     {
-      
-        return  PlanEvaluacion::with([
+        $planEvaluacion =   PlanEvaluacion::with([
+                                        'materia',
                                         'evaluacion',
+                                        'evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion',
                                         'evaluacion.evaluacionAlumno'=> function($query) use ( $idAlumno ){
                                             $query->where('id_alumno', $idAlumno);
                                         },
@@ -126,6 +128,49 @@ class PlanEvaluacionController extends Controller
                                     ->has('periodoActivo')
                                     ->activo()
                                     ->get();
+
+        $calificaciones = $this->calcularCalificaciones($planEvaluacion);
+
+        return [ 'calificaciones' => $calificaciones, 'planEvaluacion' => $planEvaluacion ];
+    }
+
+    public function calcularCalificaciones($planEvaluacion)
+    {
+        $calificaciones = Calificacion::with(['nivelCalificacion:id,nb_nivel_calificacion'])->get();
+                                 
+        
+        $calificacion = [];
+
+        foreach ($planEvaluacion as $key => $plan) {
+
+            $materiaId = $plan->id_materia;
+            $materia   = $plan->materia->nb_materia;
+            
+            $calificacion[$materiaId] = [
+                                            'id_materia'      => $materiaId,
+                                            'nb_materia'      => $materia,
+                                            'nu_calificacion' => 0 , 
+                                            'calificacion'    => [],
+                                        ];
+
+            foreach ($plan->evaluacion as $key => $evaluacion) {
+
+                foreach ($evaluacion->evaluacionAlumno as $key => $evaluacionAlumno) {
+                    $calificacion[$materiaId]['nu_calificacion'] += ($evaluacionAlumno->nu_calificacion != null) ? $evaluacionAlumno->nu_calificacion : 0;
+                }    
+            }
+
+            $calificacion[$materiaId]['calificacion'] = $this->getTipoCalificacion($calificaciones, $calificacion[$materiaId]['nu_calificacion']);
+        }
+
+        return $calificacion;
+    }
+
+    public function getTipoCalificacion($calificaciones, $nuCalificacion)
+    {
+        $nuCalificacion =  round($nuCalificacion, 0, PHP_ROUND_HALF_UP );  //TODO METODO REDONDEO
+
+        return $calificaciones->firstWhere('nu_calificacion', $nuCalificacion);
     }
 
     public function PlanEvaluacionCalificacionGrupo($idAlumno)

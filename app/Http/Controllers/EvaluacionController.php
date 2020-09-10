@@ -76,7 +76,7 @@ class EvaluacionController extends Controller
                                     ->where('id_grupo', $idGrupo)
                                     ->activo();
                         })
-                        ->where('id_tipo_evaluacion', 1)
+                        ->where('id_evaluacion_metodo', 1)
                         ->get();
 
     }

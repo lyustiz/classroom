@@ -8,7 +8,7 @@
             <app-simple-toolbar title="Asignar Prueba" @closeModal="$emit('closeModal', true)"></app-simple-toolbar>
         </v-card-title>
 
-        <v-card-text>
+        <v-card-text class="mt-4">
 
         <v-row>
 
@@ -17,24 +17,14 @@
                 :items="selects.evaluacion"
                 item-text="tx_tema"
                 item-value="id"
-                v-model="form.id_evaluacion_detalle"
+                v-model="form.id_evaluacion"
                 :rules="[rules.select]"
                 label="Evaluacion"
-                hint="Asociar Evaluacion"
+                hint="Asignar Evaluacion del tipo 'Prueba' (Ver modulo Evaluaciones)"
                 persistent-hint
                 :loading="loading"
                 dense
                 ></v-select>
-            </v-col>
-
-            <v-col cols="12">
-                <v-text-field
-                    :rules="[rules.max(100)]"
-                    v-model="form.tx_observaciones"
-                    label="Observaciones"
-                    placeholder="Indique Observaciones"
-                    dense
-                ></v-text-field>
             </v-col>
                                     
         </v-row>
@@ -81,11 +71,11 @@ export default {
             resource: 'prueba/asignar',
             form:
             {
-                id: 	               null,
-                id_grupo:              null,
-				id_evaluacion_detalle: null,
-				tx_observaciones: 	   null,
-				id_usuario: 	       null,
+                id: 	          null,
+                id_grupo:         null,
+				id_evaluacion:    null,
+				tx_observaciones: null,
+				id_usuario: 	  null,
             },
             selects:
             {

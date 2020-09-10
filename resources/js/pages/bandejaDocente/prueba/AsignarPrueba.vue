@@ -90,7 +90,7 @@
                 </v-col>
 
                 <v-col class="text-center">
-                    <app-button :disabled="!prueba" color="success" icon="mdi-text-box-check" label="Asignar Grupo" :loading="loading" @click="asignarPrueba()"></app-button>
+                    <app-button :disabled="!prueba" color="success" icon="mdi-text-box-check-outline" label="Asignar Grupo" :loading="loading" @click="asignarPrueba()"></app-button>
 
                     <v-dialog v-model="dialogAsignarPrueba" max-width="500" content-class="rounded-xl" scrollable>
                         <asignar-prueba-form 
@@ -123,9 +123,9 @@
                         <template v-slot:item="{ item }">
                             <tr>
                                 <td class="text-xs-left">{{ item.nb_prueba }}</td>
-                                <td class="text-xs-left">{{ item.grado.nb_grado }}</td>
                                 <td class="text-xs-left">{{ item.grupo.nb_grupo }}</td>
                                 <td class="text-xs-left">{{ item.materia.nb_materia }}</td>
+                                <td class="text-xs-left">{{ item.evaluacion.tx_tema }}</td>
                                 <td class="text-xs-left">{{ item.alumno.length }}</td>
                             
                                 <td class="text-xs-left py-1">
@@ -134,19 +134,16 @@
                                         icon="mdi-account-multiple-plus" 
                                         label="Asignar Alumnos" 
                                         :loading="loading" 
-                                        @click="asignarAlumnos()">
+                                        @click="asignarAlumnos(item)">
                                     </app-button>
-
-                                    <v-dialog v-model="dialogoAlumnos" max-width="700" content-class="rounded-xl" scrollable>
-                                        <asignar-alumnos 
-                                            :grupo="grupo"
-                                            :materia="materia"
-                                            :prueba="item"
-                                            v-if="dialogoAlumnos" 
-                                            @closeModal="closeDialog($event,'dialogoAlumnos')">
-                                        </asignar-alumnos>
-                                    </v-dialog>
-
+                                    <app-button  
+                                        v-if="item.id_status == 4"
+                                        color="red" 
+                                        icon="mdi-text-box-remove-outline" 
+                                        label="Remover Asignacion" 
+                                        :loading="loading" 
+                                        @click="removerAsignacion(item)">
+                                    </app-button>
                                 </td>
                             </tr>
                         </template>
@@ -158,7 +155,15 @@
             
         </v-card-text>
 
-        
+        <v-dialog v-model="dialogoAlumnos" max-width="700" content-class="rounded-xl" scrollable>
+            <asignar-alumnos 
+                :grupo="grupo"
+                :materia="materia"
+                :prueba="prueba"
+                v-if="dialogoAlumnos" 
+                @closeModal="closeDialog($event,'dialogoAlumnos')">
+            </asignar-alumnos>
+        </v-dialog>
 
         <pre v-if="$App.debug">{{ $data }}</pre>
 
@@ -206,12 +211,12 @@ export default {
             materia: null,
             prueba:  null,
             headers: [
-                { text: 'Prueba',           value: 'nb_prueba' },
-                { text: 'Grado',            value: 'grado.nb_grado' },
-                { text: 'Grupo',            value: 'grupo.nb_grupo' },
-                { text: 'Materia',          value: 'materia.nb_materia' },
-                { text: 'Alumnos',          value: 'alumno' },
-                { text: 'Acciones',         value: 'actions', sortable: false, filterable: false },
+                { text: 'Prueba',     value: 'nb_prueba' },
+                { text: 'Grupo',      value: 'grupo.nb_grupo' },
+                { text: 'Materia',    value: 'materia.nb_materia' },
+                { text: 'Evaluacion', value: 'evaluacion.tx_tema' },
+                { text: 'Alumnos',    value: 'alumno' },
+                { text: 'Acciones',   value: 'actions', sortable: false, filterable: false },
             ],
             validateForm:        false,
             dialogAsignarPrueba: false,
@@ -221,7 +226,6 @@ export default {
 
     methods:
     {
-
         list()
         {
            this.getResource( `grado/grupo/docente/${this.docente.id}`).then( data =>  this.grados = data )
@@ -246,7 +250,6 @@ export default {
 
             if(!this.grupo) return
             this.getResource( `materia/grupo/${grupo}/docente/${this.docente.id}`).then( data =>  this.materias = data )
-            
         },
 
         getPruebas()
@@ -280,12 +283,21 @@ export default {
                 this.showError('Favor seleccionar una Prueba');
                 return
             }
-
             this.dialogAsignarPrueba = true;
         },
 
-        asignarAlumnos()
+        removerAsignacion(prueba)
         {
+            let form = { id_usuario: this.idUser}
+            this.updateResource(`prueba/remover/${prueba.id}`, form).then( data =>  {
+                this.showMessage(data.msj);
+                this.getPruebasAsignadas();
+            })  
+        },
+
+        asignarAlumnos(prueba)
+        {
+            this.prueba         = prueba
             this.dialogoAlumnos = true
         },
 

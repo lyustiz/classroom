@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Prueba;
 use App\Models\PruebaAlumno;
+use App\Models\EvaluacionAlumno;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 
 
 class PruebaController extends Controller
@@ -43,16 +45,7 @@ class PruebaController extends Controller
                       ->where('id_docente', $idDocente)
                       ->where('id_grado', $idGrado)
                       ->where('id_materia', $idMateria)
-                      ->get();
-    }
-
-    public function pruebaDocenteGradoMateriaPendiente($idDocente, $idGrado, $idMateria)
-    {
-        return  Prueba::with(['grado:id,nb_grado','materia:id,nb_materia'])
-                      ->where('id_docente', $idDocente)
-                      ->where('id_grado', $idGrado)
-                      ->where('id_materia', $idMateria)
-                      ->pendiente()
+                      ->orderBy('created_at', 'desc')
                       ->get();
     }
 
@@ -64,17 +57,34 @@ class PruebaController extends Controller
                       ->get();
     }
 
+    public function pruebaDocenteGradoMateriaPendiente($idDocente, $idGrado, $idMateria)
+    {
+        return  Prueba::with([  'grado:id,nb_grado',
+                                'materia:id,nb_materia',
+                            ])
+                      ->where('id_docente', $idDocente)
+                      ->where('id_grado', $idGrado)
+                      ->where('id_materia', $idMateria)
+                      ->pendiente()
+                      ->get();
+    }
+
     public function pruebaDocenteGradoMateriaAsignada($idDocente, $idGrado, $idMateria)
     {
         return  Prueba::with([
                             'grado:grado.id,nb_grado', 
                             'grupo:grupo.id,nb_grupo',
                             'materia:materia.id,nb_materia', 
+                            'evaluacion:id,id_tipo_evaluacion,tx_tema',
+                            'evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion',
                             'alumno:alumno.id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2,tx_documento'
                        ])
                       ->where('id_docente', $idDocente)
                       ->where('id_grado', $idGrado)
                       ->where('id_materia', $idMateria)
+                      ->whereHas('evaluacion.planEvaluacion', function (Builder $query) {
+                            $query->has('periodoActivo');
+                      })
                       ->asignada()
                       ->get();
     }
@@ -156,21 +166,21 @@ class PruebaController extends Controller
     public function store(Request $request)
     {        
         $validate = request()->validate([
-            'nb_prueba'         => 	  'required|string|max:100',
-            'id_grado'          => 	  'required|integer|max:999999999',
-            'id_grupo'          => 	  'nullable|integer|max:999999999',
-            'id_materia'        => 	  'required|integer|max:999999999',
-            'id_docente'        => 	  'required|integer|max:999999999',
-			'id_evaluacion_detalle'=> 'nullable|integer|max:999999999',
-			'bo_ver_resultado'  => 	  'required|boolean',
-			'nu_minutos'        => 	  'nullable|integer|max:999999999',
-			'fe_prueba'         => 	  'nullable|date',
-			'hh_inicio'         =>    'nullable|date_format:"H:i"|before:hh_fin"',
-            'hh_fin'            =>    'nullable|date_format:"H:i"',
-			'nu_valor_total'    => 	  'nullable|integer|max:999999999',
-			'tx_observaciones'  => 	  'nullable|string|max:100',
-			'id_status'         => 	  'required|integer|max:999999999',
-			'id_usuario'        => 	  'required|integer|max:999999999',
+            'nb_prueba'        =>  'required|string|max:100',
+            'id_grado'         =>  'required|integer|max:999999999',
+            'id_grupo'         =>  'nullable|integer|max:999999999',
+            'id_materia'       =>  'required|integer|max:999999999',
+            'id_docente'       =>  'required|integer|max:999999999',
+			'id_evaluacion'    =>  'nullable|integer|max:999999999',
+			'bo_ver_resultado' =>  'required|boolean',
+			'nu_minutos'       =>  'nullable|integer|max:999999999',
+			'fe_prueba'        =>  'nullable|date',
+			'hh_inicio'        =>  'nullable|date_format:"H:i"|before:hh_fin"',
+            'hh_fin'           =>  'nullable|date_format:"H:i"',
+			'nu_valor_total'   =>  'nullable|integer|max:999999999',
+			'tx_observaciones' =>  'nullable|string|max:100',
+			'id_status'        =>  'required|integer|max:999999999',
+			'id_usuario'       =>  'required|integer|max:999999999',
         ]);
 
         $prueba = prueba::create($request->all());
@@ -199,21 +209,21 @@ class PruebaController extends Controller
     public function update(Request $request, Prueba $prueba)
     {
         $validate = request()->validate([
-            'nb_prueba'         => 	  'required|string|max:100',
-            'id_grado'          => 	  'required|integer|max:999999999',
-            'id_grupo'          => 	  'nullable|integer|max:999999999',
-            'id_materia'        => 	  'required|integer|max:999999999',
-            'id_docente'        => 	  'required|integer|max:999999999',
-			'id_evaluacion_detalle'=> 'nullable|integer|max:999999999',
-			'bo_ver_resultado'  => 	  'required|boolean',
-			'nu_minutos'        => 	  'nullable|integer|max:999999999',
-			'fe_prueba'         => 	  'nullable|date',
-			'hh_inicio'         =>    'nullable|date_format:"H:i"|before:hh_fin"',
-            'hh_fin'            =>    'nullable|date_format:"H:i"',
-			'nu_valor_total'    => 	  'nullable|integer|max:999999999',
-			'tx_observaciones'  => 	  'nullable|string|max:100',
-			'id_status'         => 	  'required|integer|max:999999999',
-			'id_usuario'        => 	  'required|integer|max:999999999',
+            'nb_prueba'        =>  'required|string|max:100',
+            'id_grado'         =>  'required|integer|max:999999999',
+            'id_grupo'         =>  'nullable|integer|max:999999999',
+            'id_materia'       =>  'required|integer|max:999999999',
+            'id_docente'       =>  'required|integer|max:999999999',
+			'id_evaluacion'    =>  'nullable|integer|max:999999999',
+			'bo_ver_resultado' =>  'required|boolean',
+			'nu_minutos'       =>  'nullable|integer|max:999999999',
+			'fe_prueba'        =>  'nullable|date',
+			'hh_inicio'        =>  'nullable|date_format:"H:i"|before:hh_fin"',
+            'hh_fin'           =>  'nullable|date_format:"H:i"',
+			'nu_valor_total'   =>  'nullable|integer|max:999999999',
+			'tx_observaciones' =>  'nullable|string|max:100',
+			'id_status'        =>  'required|integer|max:999999999',
+			'id_usuario'       =>  'required|integer|max:999999999',
         ]);
 
         $prueba = $prueba->update($request->all());
@@ -224,18 +234,73 @@ class PruebaController extends Controller
     public function asignar(Request $request, Prueba $prueba)
     {
         $validate = request()->validate([
-            'id_evaluacion_detalle' =>    'required|integer|max:999999999',
-            'id_grupo'              => 	  'required|integer|max:999999999',
-			'id_usuario'            => 	  'required|integer|max:999999999',
+            'id_evaluacion' =>  'required|integer|max:999999999',
+            'id_grupo'      =>  'required|integer|max:999999999',
+			'id_usuario'    =>  'required|integer|max:999999999',
         ]);
 
         $request->merge(['id_status' => $prueba->asignada()]);
+        
+        $hasAsignados  = $this->asignarAlumnos($prueba, $request->id_evaluacion);
+        
+        if($hasAsignados)
+        {
+            $update  = $prueba->update($request->all());
+        } else {
+            throw ValidationException::withMessages(['noAsignable' => "La evaluacion seleccionada, tiene todos los alumnos asignados"]);
+        }
 
-        $prueba = $prueba->update($request->all());
-
-        return [ 'msj' => 'Prueba Asignada' , compact('prueba')];
+        return [ 'msj' => 'Prueba Asignada' , compact('update')];
     }
 
+    public function asignarAlumnos($prueba, $idEvaluacion)
+    {
+        $totalAlumnos =  $prueba->evaluacion->evaluacionAlumno->pluck('id_alumno')->toArray();
+
+        $aignados = PruebaAlumno::whereHas('prueba', function (Builder $query) use($prueba, $idEvaluacion) {
+                                        $query->where('id_evaluacion', $idEvaluacion)
+                                              ->where('id','<>', $prueba->id);
+                                    })
+                                    ->get()->pluck('id_alumno')->toArray();
+
+        $porAsignar = array_diff($totalAlumnos, $aignados);
+
+        if(count($porAsignar) > 0)
+        {
+            $alumnos   = [];
+
+            foreach ($porAsignar as $key => $idAlumno) {
+               
+                $alumnos[] = [
+                    'id_prueba'  =>  $prueba->id,
+                    'id_alumno'  =>  $idAlumno,
+                    'id_usuario' =>  $prueba->id_usuario,
+                    'id_status'  =>  1,
+                ];
+            }
+
+            return PruebaAlumno::insert($alumnos);
+
+        } else {
+        
+            return false;
+        }
+    }
+
+    public function remover(Request $request, Prueba $prueba)
+    {
+        $validate = request()->validate([
+			'id_usuario'    =>  'required|integer|max:999999999',
+        ]);
+
+        $request->merge(['id_status' => $prueba->pendiente()]);
+
+        $delete = PruebaAlumno::where('id_prueba', $prueba->id)->delete();
+
+        $update = $prueba->update($request->all());
+
+        return [ 'msj' => 'Prueba pendiente por Asignacion' , compact('update', 'delete')];
+    }
 
     public function ejecutar(Request $request, Prueba $prueba)
     {
@@ -319,7 +384,29 @@ class PruebaController extends Controller
 
         $prueba = $prueba->update($request->all());
 
+        $this->setEvaluacionAlumno($prueba);
+
         return [ 'msj' => 'Prueba Cerrada' , compact('prueba')];
+    }
+
+
+    public function setEvaluacionAlumno($prueba)
+    {
+        $evaluaciones = [];
+
+        foreach ($prueba->pruebaAlumnos as $key => $pruebaAlumno) {
+            $evaluaciones[] =   [
+                                    'id_evaluacion'    => $prueba->id_evaluacion,
+                                    'id_alumno'        => $pruebaAlumno->id_alumno,
+                                    'nu_calificacion'  => $pruebaAlumno->nu_calificacion,
+                                    'id_calificacion'  => $pruebaAlumno->id_calificacion,
+                                    'id_status'        => 1,
+                                    'id_usuario'       => $prueba->id_usuario
+                                ];
+        }
+
+        return EvaluacionAlumno::insert([$evaluaciones]);
+        
     }
     
     /**
