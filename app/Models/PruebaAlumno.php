@@ -15,7 +15,8 @@ class PruebaAlumno extends Model
 	 	 	 	 	 	 	'fe_prueba',
 	 	 	 	 	 	 	'hh_inicio',
 	 	 	 	 	 	 	'hh_fin',
-	 	 	 	 	 	 	'nu_calificacion',
+                            'nu_calificacion',
+                            'id_calificacion',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'
@@ -67,6 +68,11 @@ class PruebaAlumno extends Model
         return $this->BelongsTo('App\Models\Alumno', 'id_alumno');
     }
 
+    public function calificacion()
+    {
+        return $this->BelongsTo('App\Models\Calificacion', 'id_calificacion');
+    }
+
     public function pregunta()
     {
         return $this->hasMany('App\Models\Pregunta', 'id_prueba', 'id_prueba');
@@ -76,6 +82,8 @@ class PruebaAlumno extends Model
     {
         return $this->hasMany('App\Models\RespuestaAlumno', 'id_prueba', 'id_prueba');
     }
+
+
 
 
 }

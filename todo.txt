@@ -1,8 +1,8 @@
 google catcha
 https://mega.nz/#!KYMV1AJL!DpN7W8RTaBxy4r92r69Z8jrRaoRYG2eQstbtp86nWL8
 
-php artisan storage link
-
+php artisan storage:link
+php artisan confi:cache
 
 configuracion
 calendario 
@@ -16,7 +16,7 @@ autenticacion
 
     probar apitoken
 
-
+usuario tipo secretaria tipo 6
 
 plan evaluacion grupos sin grados asignados - cierre de modal evaluacion
 materias asignara grado replicar a grupos y alumnos
@@ -29,7 +29,7 @@ horario evitar reasignacion de hora/dia
 COLEGIO
 TAMAÑO DE CAMPO TELEFONO 80CARACTERES VALIDACION DEL CAMPO Y MOSTARR ERRORES
 COLEGIO COMUNA BUSQUEDA                                      MOTARR EL ERROR
-
+CONFIGURARCION ADMINISTRADOR
 
 
 libros del 

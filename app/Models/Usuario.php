@@ -39,6 +39,8 @@ class Usuario extends Authenticatable implements MustVerifyEmail, JWTSubject
 	protected $casts = [
         'email_verified_at' => 'datetime',
 	];
+
+
 	
     public function getJWTIdentifier()
     {
@@ -48,6 +50,38 @@ class Usuario extends Authenticatable implements MustVerifyEmail, JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+	}
+
+	public function getIsAdminAttribute()
+    {
+        return $this->id_usuario == 1;
+	}
+
+
+	public function getIsDocenteAttribute()
+    {
+        return $this->id_usuario == 2;
+	}
+
+
+	public function getIsAlumnoAttribute()
+    {
+        return $this->id_usuario == 3;
+	}
+
+	public function getIsAcudienteAttribute()
+    {
+        return $this->id_usuario == 4;
+	}
+
+	public function getIsEmpleadoAttribute()
+    {
+        return $this->id_usuario == 5;
+	}
+
+	public function getIsSecretariaAttribute()
+    {
+        return $this->id_usuario == 6;
 	}
 	
 	public function scopeActivo($query)

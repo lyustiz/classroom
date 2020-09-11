@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PruebaAlumno;
 use App\Models\RespuestaAlumno;
+use App\Models\Calificacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
@@ -170,7 +171,7 @@ class PruebaAlumnoController extends Controller
                                      ->where('id_prueba', $pruebaAlumno->id_prueba)
                                      ->get(); 
 
-        $calificacion = 0;
+        $nuCalificacion = 0;
       
         foreach ($respuestas as $key => $repuesta) 
         {
@@ -182,17 +183,20 @@ class PruebaAlumnoController extends Controller
                 $repuesta->update(['nu_valor' => $valorEvaluada ]);
             }
 
-            $calificacion += ($repuesta->nu_valor !== null) ?  $repuesta->nu_valor : 0;
+            $nuCalificacion += ($repuesta->nu_valor !== null) ?  $repuesta->nu_valor : 0;
         }
-
+       
+        $calificacion   =  Calificacion::where('nu_calificacion', '>=', (round($nuCalificacion, 0, PHP_ROUND_HALF_UP )) )->first(); //TODO grupo calificacion
+        
         $request->merge([
-            'nu_calificacion' => $calificacion,
+            'nu_calificacion' => $nuCalificacion,
+            'id_calificacion' => $calificacion->id,
             'id_status'       => 7
         ]);
       
         $pruebaAlumno = $pruebaAlumno->update($request->except('respuestas'));
 
-        return [ 'msj' => 'Prueba Evaluada' , compact('pruebaAlumno')];
+        return [ 'msj' => 'Prueba Evaluada' , compact('pruebaAlumno','calificacion')];
     }
 
     /**
