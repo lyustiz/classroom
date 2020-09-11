@@ -395,18 +395,15 @@ class PruebaController extends Controller
         $evaluaciones = [];
 
         foreach ($prueba->pruebaAlumnos as $key => $pruebaAlumno) {
-            $evaluaciones[] =   [
-                                    'id_evaluacion'    => $prueba->id_evaluacion,
-                                    'id_alumno'        => $pruebaAlumno->id_alumno,
-                                    'nu_calificacion'  => $pruebaAlumno->nu_calificacion,
-                                    'id_calificacion'  => $pruebaAlumno->id_calificacion,
-                                    'id_status'        => 1,
-                                    'id_usuario'       => $prueba->id_usuario
-                                ];
-        }
 
-        return EvaluacionAlumno::insert([$evaluaciones]);
-        
+            $update[] = EvaluacionAlumno::where('id_evaluacion', $prueba->id_evaluacion)
+                                        ->update([ 
+                                                    'nu_calificacion'  => $pruebaAlumno->nu_calificacion,
+                                                    'id_calificacion'  => $pruebaAlumno->id_calificacion,
+                                                    'id_usuario'       => $prueba->id_usuario 
+                                                ]);
+        }
+        return $update;
     }
     
     /**
