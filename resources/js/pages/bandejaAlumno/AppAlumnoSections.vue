@@ -41,6 +41,7 @@
 
 import TareaAlumno         from './tarea/AppTarea'
 import RecursoAlumno       from './recurso/Apprecurso'
+import HorarioAlumno       from '@pages/bandejaAlumno/horario/HorarioAlumno'
 import EvaluacionAlumno    from './evaluacion/AppEvaluacionAlumno'
 import PruebaAlumno        from './prueba/PruebaAlumno'
 import CalificacionAlumno  from './calificacion/AppCalificacion'
@@ -49,6 +50,7 @@ export default {
 
     components: {
         'tarea-alumno':        TareaAlumno,
+        'horario-alumno':      HorarioAlumno,
         'recurso-alumno':      RecursoAlumno,
         'evaluacion-alumno':   EvaluacionAlumno,
         'prueba-alumno':       PruebaAlumno,
@@ -74,6 +76,7 @@ export default {
             sections: [
             
                 { label: 'Recursos', icon: 'mdi-book-open-page-variant', component: 'recurso-alumno', color: 'purple', sectionWidth: '700' },
+                { label: 'Horario', icon: 'mdi-calendar-multiselect', component: 'horario-alumno', color: 'green', width: '90vw' },
                 { label: 'Evaluaciones', icon: 'mdi-notebook', component: 'evaluacion-alumno', color: 'indigo', sectionWidth: '95vw' },   
                 { label: 'Pruebas', icon: 'mdi-order-bool-descending-variant', component: 'prueba-alumno', color: 'red', sectionWidth: '85vw' },          
                 { label: 'Calificaciones', icon: 'mdi-clipboard-list', component: 'calificacion-alumno', color: 'amber', sectionWidth: '700' },

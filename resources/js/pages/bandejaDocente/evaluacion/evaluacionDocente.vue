@@ -90,8 +90,9 @@
 </template>
 
 <script>
-import DataHelper from '@mixins/AppData';
-import AsignarEvaluacion  from './AsignarEvaluacion';
+
+import DataHelper        from '@mixins/AppData';
+import AsignarEvaluacion from './AsignarEvaluacion';
 
 export default {
 
@@ -126,6 +127,7 @@ export default {
            planesEvaluacion: []
         }
     },
+
     methods:
     {
         list()
@@ -151,14 +153,6 @@ export default {
         {
             this.planesEvaluacion = grupo.plan_evaluacion
         } 
-
-       
     }
-
-
 }
 </script>
-
-<style>
-
-</style>

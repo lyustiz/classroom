@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Prueba;
 use App\Models\PruebaAlumno;
 use App\Models\EvaluacionAlumno;
+use App\Models\Calificacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
@@ -21,15 +22,13 @@ class PruebaController extends Controller
      */
     public function index()
     {
-        $prueba = Prueba::with([
+        return Prueba::with([
                                 'grado:id,nb_grado', 
                                 'grupo:id,nb_grupo', 
                                 'materia:id,nb_materia',
                                 'docente:id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2'
-                                ])
-                                ->get();
-        
-        return $prueba;
+                            ])
+                            ->get();
     }
 
     public function pruebaDocente($idDocente)
@@ -419,9 +418,7 @@ class PruebaController extends Controller
                                               ]);
                                 
         }
-
-        return EvaluacionAlumno::insert($evaluaciones);
-        
+        return $evaluaciones;
     }
 
     public function calcularCalificacion($evaluacion, $calificacion, $maxCalificacion) //TODO TRAIT

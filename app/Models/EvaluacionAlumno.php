@@ -62,6 +62,4 @@ class EvaluacionAlumno extends Model
     {
         return $this->hasOne('App\Models\Archivo',  'tx_origen_id', 'id')->where('id_tipo_archivo', 11);
     }
-
-
 }

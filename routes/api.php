@@ -208,6 +208,7 @@ Route::get('/evaluacion/materia/{materia}/grupo/{grupo}/prueba',  'EvaluacionCon
 Route::get('/evaluacion/grupo/{grupo}',         'EvaluacionController@evaluacionGrupo');
 Route::get('/evaluacion/docente/{docente}',     'EvaluacionController@evaluacionDocente');
 Route::put('/evaluacion/asignar/{evaluacion}',  'EvaluacionController@asignar');
+Route::put('/evaluacion/cerrar/{evaluacion}',   'EvaluacionController@cerrar');
 Route::apiResource('/evaluacion',               'EvaluacionController');
 Route::apiResource('/evaluacionMetodo',         'EvaluacionMetodoController');
 Route::get('/evaluacionAlumno/evaluacion/{evaluacion}',   'EvaluacionAlumnoController@evaluacionAlumnoEvaluacion');

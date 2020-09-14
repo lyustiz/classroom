@@ -50,68 +50,89 @@
 
                         <v-list-item-action>
 
-                            <v-chip outlined v-if="evaluacion.id_evaluacion_metodo == 1">Ver Modulo de pruebas</v-chip>
-
-                            <v-edit-dialog
-                                :return-value.sync="evaluacionAlumno.id"
-                                persistent large
-                                cancel-text="Cancelar"
-                                save-text="Guardar"
-                                @open="setDataForm(evaluacionAlumno)"
-                                @save="updateEvaluacion(evaluacionAlumno)"
-                                @cancel="clearForm()"
-                                v-else
-                            >
-                                
-                                
-                                <v-tooltip bottom color="green">
+                            <template v-if="evaluacion.id_status == 11">
+                                <v-tooltip bottom color="red">
                                     <template v-slot:activator="{ on }">
-                                        <v-text-field
-                                            v-on="on"
-                                            :value="(evaluacionAlumno.calificacion) ? evaluacionAlumno.calificacion.nu_calificacion : '-'"
-                                            readonly                                    
-                                            single-line
-                                            hide-details
-                                            dense
-                                            filled
-                                            type="number"
-                                            class="field-evaluation body-2 text-center"
-                                            suffix='Pts'
-                                        ></v-text-field>
+                                        <v-chip v-on="on" outlined class="field-evaluation body-2">
+                                            {{evaluacionAlumno.calificacion.nu_calificacion }}
+                                        </v-chip>
                                     </template>
-
-                                    <template v-if="evaluacionAlumno.calificacion">
-                                            Letra: {{ evaluacionAlumno.calificacion.nb_calificacion }} Ptos Acumulados: {{ evaluacionAlumno.nu_calificacion }}
-                                    </template>
-                                    <template v-else>
-                                        <span>Sin Calificacion</span>
-                                    </template>
+                                    <span>Evaluacion Cerrada</span>
                                 </v-tooltip>
-                                
-                                <template v-slot:input>
-                                    
-                                        <v-select
-                                            v-model="form.id_calificacion"
-                                            :items="calificaciones"
-                                            item-text="nu_calificacion"
-                                            item-value="id"
-                                            :rules="[rules.select]"
-                                            label="calificacion"
-                                            :loading="loading"
-                                            dense
-                                            full-width
-                                            autofocus
-                                        ></v-select>
+                            </template>
 
-                                        <v-text-field
-                                            v-model="form.tx_observaciones"
-                                            :rules="[rules.max(80)]"
-                                            label="Observaciones"
-                                            single-line
-                                        ></v-text-field>
-                                 
-                                </template>
-                            </v-edit-dialog>
+                            <template v-else>  
+                                    <template v-if="evaluacion.id_evaluacion_metodo == 1" >
+                                        <v-tooltip bottom color="amber">
+                                            <template v-slot:activator="{ on }">
+                                                <v-chip v-on="on" outlined class="field-evaluation body-2">
+                                                    {{(evaluacionAlumno.calificacion) ? evaluacionAlumno.calificacion.nu_calificacion : 'pendiente'}}
+                                                </v-chip>
+                                            </template>
+                                            <span>Ir al Modulo de Pruebas</span>
+                                        </v-tooltip>
+                                    </template>
+                                
+                                    <v-edit-dialog
+                                        :return-value.sync="evaluacionAlumno.id"
+                                        persistent large
+                                        cancel-text="Cancelar"
+                                        save-text="Guardar"
+                                        @open="setDataForm(evaluacionAlumno)"
+                                        @save="updateEvaluacion(evaluacionAlumno)"
+                                        @cancel="clearForm()"
+                                        v-else
+                                    >
+                                        
+                                        <v-tooltip bottom color="green">
+                                            <template v-slot:activator="{ on }">
+                                                <v-text-field
+                                                    v-on="on"
+                                                    :value="(evaluacionAlumno.calificacion) ? evaluacionAlumno.calificacion.nu_calificacion : '-'"
+                                                    readonly                                    
+                                                    single-line
+                                                    hide-details
+                                                    dense
+                                                    filled
+                                                    type="number"
+                                                    class="field-evaluation body-2 text-center"
+                                                    suffix='Pts'
+                                                ></v-text-field>
+                                            </template>
+
+                                            <template v-if="evaluacionAlumno.calificacion">
+                                                    Letra: {{ evaluacionAlumno.calificacion.nb_calificacion }} Ptos Acumulados: {{ evaluacionAlumno.nu_calificacion }}
+                                            </template>
+                                            <template v-else>
+                                                <span>Sin Calificacion</span>
+                                            </template>
+                                        </v-tooltip>
+                                        
+                                        <template v-slot:input>
+                                            
+                                                <v-select
+                                                    v-model="form.id_calificacion"
+                                                    :items="calificaciones"
+                                                    item-text="nu_calificacion"
+                                                    item-value="id"
+                                                    :rules="[rules.select]"
+                                                    label="calificacion"
+                                                    :loading="loading"
+                                                    dense
+                                                    full-width
+                                                    autofocus
+                                                ></v-select>
+
+                                                <v-text-field
+                                                    v-model="form.tx_observaciones"
+                                                    :rules="[rules.max(80)]"
+                                                    label="Observaciones"
+                                                    single-line
+                                                ></v-text-field>
+                                        
+                                        </template>
+                                    </v-edit-dialog>
+                            </template>
                         </v-list-item-action>
 
                     </v-list-item>
@@ -122,6 +143,33 @@
 
         </v-row>
         </v-card-text>
+
+        <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn fab depressed x-small color="error" @click="$emit('closeModal', true)" class="mr-1">
+               <v-icon>mdi-reply</v-icon>
+            </v-btn>
+
+            <v-tooltip bottom color="amber">
+                <template v-slot:activator="{ on }">
+                    <v-btn v-on="on" fab depressed small color="success" :disabled="!valid" :loading="loading" @click="confirm = true" v-if="evaluacion.id_status != 11"> 
+                        <v-icon>mdi-lock</v-icon>
+                    </v-btn>
+                    <v-btn v-on="on" fab depressed small color="error" :disabled="!valid" :loading="loading" v-else> 
+                        <v-icon>mdi-lock-check</v-icon>
+                    </v-btn>
+                </template>
+                <span>{{ (evaluacion.id_status == 11) ? 'Evaluacin Cerrada' : 'Cerrar Evaluacion' }}</span>
+            </v-tooltip>
+            
+        </v-card-actions>
+
+        <app-confirm 
+            :confirm="confirm" 
+            titulo="Cerrar Evaluacion" 
+            mensaje="Desea Cerrar la Evaluacion?" 
+            @closeConfirm="closeConfirm($event, 'confirm')">
+        </app-confirm>
 
         <v-overlay
             absolute
@@ -186,10 +234,10 @@ export default {
         list()
         {           
             let resource = `evaluacionAlumno/evaluacion/${this.evaluacion.id}`
+            
             this.getResource( resource ).then( data =>  this.evaluacionAlumnos = data )
 
             this.getResource( `calificacion` ).then( data =>  this.calificaciones = data )
-
         },
 
         updateEvaluacion(evaluacionAlumno)
@@ -231,6 +279,20 @@ export default {
             this.showMessage(`Descargando archivo ...`)
         },
 
+        closeConfirm(confirm, dialog)
+        {           
+            this[dialog]   = false;
+            if(confirm)   this.cerrarEvaluacion()
+        },
+
+        cerrarEvaluacion()
+        {
+            let data = {id_usuario: this.idUser}
+            this.updateResource( `evaluacion/cerrar/${this.evaluacion.id}`, data).then( data =>{
+                this.showMessage(data.msj)
+                this.$emit('closeModal', true)
+            })
+        }
     }
 }
 </script>

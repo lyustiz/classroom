@@ -47,19 +47,19 @@
 
         <v-col cols="12" md="6">
             <v-select
-            :items="selects.evaluacionMetodo"
-            item-text="nb_evaluacion_metodo"
-            item-value="id"
-            v-model="form.id_evaluacion_metodo"
-            :rules="[rules.select]"
-            label="Metodo Evaluacion"
-            :loading="loading"
-            dense
-            :hint="(isMetodoPrueba) ? `Solo permite metodo prueba` : 'indique metodo'"
-            :readonly="isMetodoPrueba"
-            :persistent-hint="isMetodoPrueba"
-            :color="(isMetodoPrueba) ? `amber` : null"
-            :prepend-icon="(isMetodoPrueba) ? `mdi-lock` : null"
+                :items="selects.evaluacionMetodo"
+                item-text="nb_evaluacion_metodo"
+                item-value="id"
+                v-model="form.id_evaluacion_metodo"
+                :rules="[rules.select]"
+                label="Metodo Evaluacion"
+                :loading="loading"
+                dense
+                :hint="(isMetodoPrueba) ? `Solo permite metodo prueba` : 'indique metodo'"
+                :readonly="isMetodoPrueba"
+                :persistent-hint="isMetodoPrueba"
+                :color="(isMetodoPrueba) ? `amber` : null"
+                :prepend-icon="(isMetodoPrueba) ? `mdi-lock` : null"
             ></v-select>
         </v-col>
 
@@ -85,12 +85,12 @@
                 ></v-text-field>
                 </template>
                 <v-time-picker
-                ampm-in-title
-                scrollable
-                v-if="pickers.hh_inicio"
-                v-model="form.hh_inicio"
-                full-width
-                @click:minute="$refs.pickers1.save(form.hh_inicio)"
+                    ampm-in-title
+                    scrollable
+                    v-if="pickers.hh_inicio"
+                    v-model="form.hh_inicio"
+                    full-width
+                    @click:minute="$refs.pickers1.save(form.hh_inicio)"
                 ></v-time-picker>
             </v-menu>
         </v-col> 
@@ -116,12 +116,12 @@
                 ></v-text-field>
                 </template>
                 <v-time-picker
-                ampm-in-title
-                scrollable
-                v-if="pickers.hh_fin"
-                v-model="form.hh_fin"
-                full-width
-                @click:minute="$refs.pickers2.save(form.hh_fin)"
+                    ampm-in-title
+                    scrollable
+                    v-if="pickers.hh_fin"
+                    v-model="form.hh_fin"
+                    full-width
+                    @click:minute="$refs.pickers2.save(form.hh_fin)"
                 ></v-time-picker>
             </v-menu>
         </v-col> 
@@ -136,7 +136,6 @@
             ></v-text-field>
         </v-col>
          
-
         </v-row>
 
         </v-card-text>
@@ -220,7 +219,46 @@ export default {
         onCreateForm()
         {
             this.form.fe_evaluacion = this.item.fe_planificada
+        },
 
+        extraActions(method)
+        {
+            
+        },
+
+        update() 
+		{
+            console.log(this.item)
+            
+            if(this.item.id_status == 11 )
+            {
+                this.showError('La Evaluacion esta Cerrada')
+                return
+            }
+            
+            if (!this.$refs.form.validate())  return 
+
+            this.setDefaults()
+
+            this.loading = true;
+
+            this.form.id_usuario = this.idUser
+            
+            axios.put(this.fullUrlId, this.form)
+            .then(response => 
+            {
+                this.validResponse(response)
+            })
+            .catch(error =>
+            {
+                this.showError(error);
+            })
+            .finally( () =>
+            {
+                this.loading = false
+
+                this.postResponse()
+            }); 
         },
     }
 }

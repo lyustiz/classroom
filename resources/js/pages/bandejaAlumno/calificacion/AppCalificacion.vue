@@ -34,8 +34,8 @@
                     </td>
                     <td>
                         <template v-if="calificacion.calificacion">
-                            <list-simple-icon v-if="calificacion.calificacion.bo_aprobado == 1" label="Aprobado" icon="mdi-checkbox-marked-outline" color="success" ></list-simple-icon>
-                            <list-simple-icon v-else label="Reprobado" icon="mdi-checkbox-blank-off-outline" color="error" ></list-simple-icon>
+                            <list-simple-icon v-if="calificacion.calificacion.bo_aprobado == 1" label="Aprobado" icon="mdi-checkbox-marked-circle-outline" color="success" ></list-simple-icon>
+                            <list-simple-icon v-else label="Reprobado" icon="mdi-close-circle-outline" color="error" ></list-simple-icon>
                         </template>
                         <template v-else>-</template>
                     </td>
@@ -75,17 +75,17 @@ export default {
         'calificacion-detalle':  CalificacionDetalle,
     },
 
+    props:
+    {
+        alumno:{
+            type: Object,
+            default: () => this.$store.getters['getAlumno']
+        }
+    },
+
     created()
     {
         this.list()
-    },
-
-    computed:
-    {
-        alumno()
-        {
-            return this.$store.getters['getAlumno']
-        },
     },
 
     data () {
@@ -97,10 +97,12 @@ export default {
             planEvaluacion: null
         }
     },
+
     methods:
     {
         list()
         {
+           if( !this.alumno ) return
            this.getResource( `planEvaluacion/calificacion/alumno/${this.alumno.id}` ).then( data => {
                 this.planes = data.planEvaluacion
                 this.calificaciones = data.calificaciones

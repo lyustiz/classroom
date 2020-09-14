@@ -292,6 +292,7 @@ export default {
             this.updateResource(`prueba/remover/${prueba.id}`, form).then( data =>  {
                 this.showMessage(data.msj);
                 this.getPruebasAsignadas();
+                this.getPruebasPendientes()
             })  
         },
 

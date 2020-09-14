@@ -154,8 +154,6 @@ export default {
            {
                return this.showError('Indique metodo de evaluacion y fecha de realizacion de la evaluacion')
            }
-
-           console.log(evaluacion)
            this.evaluacion    = evaluacion
            this.dialogEvaluar = true;
         },

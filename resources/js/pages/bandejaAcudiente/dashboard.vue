@@ -46,9 +46,6 @@
                                 <v-col cols="4"><v-icon class="mr-2" color="green">mdi-numeric</v-icon>{{alumnoSelected.grado.nb_grado}}</v-col>
                                 <v-col cols="4"><v-icon class="mr-2" color="orange">mdi-alphabetical-variant</v-icon>{{alumnoSelected.grupo.nb_grupo}}</v-col>
                             </v-row>
-                            <v-alert  type="warning" icon="mdi-gesture-tap" v-else dense class="mt-4 subtitle-2">
-                                Seleccione Alumno
-                            </v-alert > 
                         </v-toolbar>
 
                         <v-card-text>
@@ -70,6 +67,9 @@
                                     </v-col>
                                     </v-row>
                                 </v-scroll-y-transition> 
+                                <v-alert  type="warning" icon="mdi-gesture-tap" v-else class="mt-4 subtitle-2" prominent ou>
+                                    Seleccione Alumno
+                                </v-alert > 
                             </v-row>
 
                             <v-dialog v-model="dialogSection" content-class="rounded-xl dialog-section" scrollable :max-width="sectionWidth"> 
@@ -108,7 +108,7 @@ import CalendarioAcudiente from './calendario/CalendarioAcudiente'
 import SeccionAcudiente    from './SeccionAcudiente'
 import HorarioAlumno       from '@pages/bandejaAlumno/horario/HorarioAlumno'
 import ItinerarioAlumno    from '@pages/bandejaAlumno/itinerario/ItinerarioAlumno'
-import MateriaAlumno       from '@pages/bandejaAlumno/materia/AppMateria'
+import CalificacionAlumno  from '@pages/bandejaAlumno/calificacion/AppCalificacion'
 import IncidenciaAlumno    from './incidencia/IncidenciaAlumno'
 import DocenteAlumno       from './docentes/DocenteAlumno'
 import PartnersAlumno      from '@pages/bandejaAlumno/partners/PartnersAlumno'
@@ -123,7 +123,7 @@ export default {
         'seccion-acudiente':    SeccionAcudiente,
         'horario-alumno':       HorarioAlumno,
         'itinerario-alumno':    ItinerarioAlumno,
-        'materia-alumno':       MateriaAlumno,
+        'calificacion-alumno':  CalificacionAlumno,
         'incidencia-alumno':    IncidenciaAlumno,
         'docente-alumno':       DocenteAlumno,
         'partners-alumno':      PartnersAlumno
@@ -151,7 +151,7 @@ export default {
             sections: [
                 { label: 'Horario', icon: 'mdi-calendar-multiselect', component: 'horario-alumno', color: 'indigo', width: '90vw' },
                 { label: 'Itinerario', icon: 'mdi-calendar-clock', component: 'itinerario-alumno', color: 'green', width: '700' },
-                { label: 'Calificaciones', icon: 'mdi-clipboard-list', component: 'materia-alumno', color: 'purple', width: '800' },
+                { label: 'Calificaciones', icon: 'mdi-clipboard-list', component: 'calificacion-alumno', color: 'purple', width: '700' },
                 { label: 'Faltas y Sanciones', icon: 'mdi-account-alert', component: 'incidencia-alumno', color: 'red', width: '90vw' },
                 { label: 'Docentes', icon: 'mdi-account-tie', component: 'docente-alumno', color: 'orange', width: '500' },
                 { label: 'Compañeros', icon: 'mdi-school', component: 'partners-alumno', color: 'blue', width: '500' },

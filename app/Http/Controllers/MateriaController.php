@@ -89,8 +89,8 @@ class MateriaController extends Controller
     {
         
         $materia = Materia::with([
-                        'planEvaluacion' => function($query) use ( $idPeriodo, $idAlumno ){
-                            $query->whereHas('grupo.alumno', function ($query) use ($idPeriodo, $idAlumno) {
+                        'planEvaluacion' => function($query) use ( $idAlumno ){
+                            $query->whereHas('grupo.alumno', function ($query) use ( $idAlumno) {
                                 $query->where('alumno.id', $idAlumno);
                             })->has('periodoActivo');
                         },
@@ -141,10 +141,7 @@ class MateriaController extends Controller
                     ->has('planEvaluacion')
                     ->orderBY('nb_materia')
                     ->get();
-
     }
-
-    
 
     /**
      * Store a newly created resource in storage.

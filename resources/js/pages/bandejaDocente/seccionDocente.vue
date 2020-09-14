@@ -77,7 +77,6 @@ export default {
                     { label: 'Plan Evaluacion', icon: 'mdi-table-clock', component: 'plan-evaluacion', color: 'indigo', sectionWidth: '700' },
                     { label: 'Evaluaciones', icon: 'mdi-table-check', component: 'evaluacion-docente', color: 'amber', sectionWidth: '95vw' },
                     { label: 'Pruebas', icon: 'mdi-order-bool-descending-variant', component: 'menu-prueba', color: 'red', sectionWidth: '700' },
-                    { label: 'Aula Virtual (En Construccion)', icon: 'mdi-google-classroom', component: 'clase-alumno', color: 'green', sectionWidth: '700' },
                 ]
         }
     },

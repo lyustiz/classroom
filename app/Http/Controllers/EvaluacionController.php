@@ -7,6 +7,7 @@ use App\Models\EvaluacionAlumno;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Validation\ValidationException;
 
 class EvaluacionController extends Controller
 {
@@ -25,35 +26,31 @@ class EvaluacionController extends Controller
 
     public function evaluacionPlan($idPlanEvaluacion)
     {
-        $planEvaluacion = Evaluacion::with([
-                                            'planEvaluacion',
-                                            'planEvaluacion.grupo:id,nb_grupo', 
-                                            'planEvaluacion.periodo:id,nb_periodo', 
-                                            'tipoEvaluacion:id,nb_tipo_evaluacion',
-                                            'archivo:id,id_tipo_archivo,tx_origen_id,created_at',
-                                            'status:status.id,nb_status,tx_icono,tx_color',
-                                            'evaluacionMetodo:id,nb_evaluacion_metodo,tx_icono,tx_color'
-                                        ])
-                                        ->where('id_plan_evaluacion', $idPlanEvaluacion)
-                                        ->get();
-        
-        return $planEvaluacion;
+        return Evaluacion::with([
+                            'planEvaluacion',
+                            'planEvaluacion.grupo:id,nb_grupo', 
+                            'planEvaluacion.periodo:id,nb_periodo', 
+                            'tipoEvaluacion:id,nb_tipo_evaluacion',
+                            'archivo:id,id_tipo_archivo,tx_origen_id,created_at',
+                            'status:status.id,nb_status,tx_icono,tx_color',
+                            'evaluacionMetodo:id,nb_evaluacion_metodo,tx_icono,tx_color'
+                        ])
+                        ->where('id_plan_evaluacion', $idPlanEvaluacion)
+                        ->get();
     }
 
     public function evaluacionGrupo($idGrupo)
     {
-        $evaluaciones = Evaluacion:: with([
-                                            'tipoEvaluacion:id,nb_tipo_evaluacion',
-                                            'planEvaluacion:id,id_materia',
-                                            'planEvaluacion.materia:id,nb_materia,id_area_estudio',
-                                            'planEvaluacion.materia.areaEstudio:id,tx_color'
-                                    ])
-                                    ->whereHas('planEvaluacion', function (Builder $query) use($idGrupo) {
-                                        $query->where('id_grupo', $idGrupo)->where('id_status', 1);
-                                    })
-                                    ->get();
-
-        return $evaluaciones;
+        return Evaluacion::with([
+                                'tipoEvaluacion:id,nb_tipo_evaluacion',
+                                'planEvaluacion:id,id_materia',
+                                'planEvaluacion.materia:id,nb_materia,id_area_estudio',
+                                'planEvaluacion.materia.areaEstudio:id,tx_color'
+                        ])
+                        ->whereHas('planEvaluacion', function (Builder $query) use($idGrupo) {
+                            $query->where('id_grupo', $idGrupo)->where('id_status', 1);
+                        })
+                        ->get();
     }
 
     public function evaluacionMateriaGrupo($idMateria, $idGrupo)
@@ -65,7 +62,6 @@ class EvaluacionController extends Controller
                                     ->activo();
                         })
                         ->get();
-
     }
 
     public function evaluacionMateriaGrupoPrueba($idMateria, $idGrupo)
@@ -78,24 +74,21 @@ class EvaluacionController extends Controller
                         })
                         ->where('id_evaluacion_metodo', 1)
                         ->get();
-
     }
 
     public function evaluacionDocente($idDocente)
     {
-        $evaluaciones = Evaluacion:: with([
-                                            'tipoEvaluacion:id,nb_tipo_evaluacion',
-                                            'planEvaluacion:id,id_materia,id_grupo',
-                                            'planEvaluacion.materia:id,nb_materia,id_area_estudio',
-                                            'planEvaluacion.materia.areaEstudio:id,tx_color',
-                                            'planEvaluacion.grupo:id,nb_grupo'
-                                    ])
-                                    ->whereHas('planEvaluacion.grupo.docente', function (Builder $query) use($idDocente) {
-                                        $query->where('id_docente', $idDocente);
-                                    })
-                                    ->get();
-
-        return $evaluaciones;
+        return Evaluacion::with([
+                                'tipoEvaluacion:id,nb_tipo_evaluacion',
+                                'planEvaluacion:id,id_materia,id_grupo',
+                                'planEvaluacion.materia:id,nb_materia,id_area_estudio',
+                                'planEvaluacion.materia.areaEstudio:id,tx_color',
+                                'planEvaluacion.grupo:id,nb_grupo'
+                            ])
+                            ->whereHas('planEvaluacion.grupo.docente', function (Builder $query) use($idDocente) {
+                                $query->where('id_docente', $idDocente);
+                            })
+                            ->get();
     }
 
     public function evaluacionEvaluacionAlumno($idEvaluacion)
@@ -106,7 +99,6 @@ class EvaluacionController extends Controller
                                     'evaluacionAlumno.archivo',
                                 ])
                                 ->find($idEvaluacion);
-
     }
 
       /**
@@ -207,23 +199,31 @@ class EvaluacionController extends Controller
                                         'id_status'     => 1,
                                     ];
             }
-
             return EvaluacionAlumno::insert($evaluacionAlumnos);
         }
         return false;
     }
 
-    public function evaluar(Request $request, Evaluacion $evaluacion)
+    public function cerrar(Request $request, Evaluacion $evaluacion)
     {
         $validate = request()->validate([
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
+        $evaluacionesPendientes = EvaluacionAlumno::whereNull('id_calificacion')
+                                                   ->where('id_evaluacion', $evaluacion->id)
+                                                   ->count();
+
+        if($evaluacionesPendientes > 0)
+        {
+            throw ValidationException::withMessages(['EvalPendientes' => "Existe(n) $evaluacionesPendientes evaluciones(s) pendientes"]);
+        }
+
         $request->merge( ['id_status' => $evaluacion->evaluada()] );
 
         $evaluacion = $evaluacion->update($request->all());
 
-        return [ 'msj' => 'Evaluacion Actualizada' , compact('evaluacion')];
+        return [ 'msj' => 'Evaluacion Cerrada' , compact('evaluacion')];
     }
 
     /**

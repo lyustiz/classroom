@@ -93,10 +93,10 @@ export default {
 
     props:
     {
-        alumno: {
-            type:       Object,
-            default:    () => {}
-        },
+        alumno:{
+            type: Object,
+            default: () => this.$store.getters['getAlumno']
+        }
     },
 
     watch:

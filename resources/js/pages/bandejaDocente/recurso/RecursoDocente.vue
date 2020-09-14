@@ -56,7 +56,7 @@
                                             </v-list-item-content>
 
                                             <v-list-item-action>
-                                                <menu-items :itemsMenu="filesMenu" :item="archivo" iconColor="green lighten-5" @onMenu="onMenu($event)"></menu-items>
+                                                 <menu-items :itemsMenu="filesMenu" :item="archivo" iconColor="green lighten-5" @onMenu="onMenu($event)"></menu-items>
                                             </v-list-item-action>
 
                                         

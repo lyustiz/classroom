@@ -44,7 +44,6 @@
                                         <th class="text-left">Status</th>
                                         <th class="text-left">Tipo</th>
                                         <th class="text-center yellow lighten-4">Accion</th>
-                                        <th class="text-center">Calificacion</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -78,7 +77,7 @@
                                             <template v-if="evaluacion.evaluacion_metodo">
                                                
                                                 <template v-if="evaluacion.evaluacion_metodo.id == 1 ">
-                                                    <list-simple-icon label="Ir al modulo de Pruebas" icon="mdi-order-bool-descending-variant" color="amber" @click="goPruebas()"></list-simple-icon>
+                                                    <list-simple-icon label="Ir al modulo de Pruebas" icon="mdi-resize" color="amber" @click="goPruebas()"></list-simple-icon>
                                                 </template>
                                                 
                                                 <template v-else-if="evaluacion.evaluacion_metodo.id == 2 ">
@@ -89,12 +88,6 @@
                                                     <list-simple-icon label="Enviar Archivo" icon="mdi-file-upload" :size="32" color="green" @click="addFile(evaluacion.evaluacion_alumno[0])"></list-simple-icon>
                                                 </template>
                                             
-                                            </template>
-                                        </td>
-                                        <td class="text-center caption">
-                                            <template v-if="evaluacion.evaluacion_alumno[0]">
-                                                {{ (evaluacion.evaluacion_alumno[0].id_calificacion) ? evaluacion.evaluacion_alumno[0].calificacion.nu_calificacion : '-' }} / 
-                                                {{(evaluacion.evaluacion_alumno[0].nu_calificacion)  ? evaluacion.evaluacion_alumno[0].nu_calificacion + ' Pts.' : '-'  }} 
                                             </template>
                                         </td>
                                     </tr>

@@ -6,7 +6,7 @@
                 <v-icon size="38" color="success" >mdi-plus-circle</v-icon>
             </v-btn>
         </template>
-        <span>{{ mensaje }}</span>
+        <span>{{ label }}</span>
     </v-tooltip>
 
 </template>
@@ -15,7 +15,7 @@
 export default {
     props:
     {
-        mensaje: {
+        label: {
             type:     String,
             default:  'Nuevo Item'
         },
