@@ -14,6 +14,8 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
+use App\Models\Colegio;
+
 class ExcelReportClass implements FromCollection, WithHeadings, ShouldAutoSize, WithEvents, WithCustomStartCell, WithDrawings, WithStyles 
 { 
     private $collection; 
@@ -21,13 +23,24 @@ class ExcelReportClass implements FromCollection, WithHeadings, ShouldAutoSize, 
     private $logo;
     private $institute;
     private $title;
+    private $colegio;
      
     public function __construct($dataArray, $headers, $logo='/images/logo-colegio.png', $title = 'Reporte', $institute = 'UNIDAD EDUCATIVA FUENTE DE JACOB') 
     { 
+        
+        $DIR = DIRECTORY_SEPARATOR;
+        
+        $colegio =  Colegio::with(['foto:id,tx_src,id_origen'])->find(1);
+
+        if($colegio->foto)
+        {
+            $logo = storage_path('app'. $DIR .'public'. $DIR . 'colegio'. $DIR .  'foto' . $DIR . $colegio->id . $DIR .  $colegio->foto->tx_src);
+        }
+
         $this->collection = collect($dataArray); 
         $this->headers    = $headers;
-        $this->logo       = $logo;
-        $this->institute  = $institute;
+        $this->logo       = $logo; 
+        $this->institute  = $colegio->nb_colegio;
         $this->title      = $title;
     } 
 
@@ -41,7 +54,7 @@ class ExcelReportClass implements FromCollection, WithHeadings, ShouldAutoSize, 
         $drawing = new Drawing();
         $drawing->setName('Logo');
         $drawing->setDescription('Logo del Colegio');
-        $drawing->setPath(public_path($this->logo));
+        $drawing->setPath($this->logo);
         $drawing->setHeight(90);
         $drawing->setCoordinates('A1');
 
@@ -84,17 +97,19 @@ class ExcelReportClass implements FromCollection, WithHeadings, ShouldAutoSize, 
             { 
                 $event->sheet->getDelegate()->getRowDimension('1')->setRowHeight(75);
                 $event->sheet->getDelegate()->getRowDimension('5')->setRowHeight(3);
+                $event->sheet->getDelegate()->mergeCells('A2:B2');
+                $event->sheet->getDelegate()->mergeCells('A4:B4');
+ 
                 $event->sheet->getDelegate()->setCellValue('A2', $this->institute);
                 $event->sheet->getDelegate()->setCellValue('A4', $this->title);
+
                 $event->sheet->getDelegate()->getStyle('4')->getFill()
                 ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
                 ->getStartColor()->setARGB('F0EEEEEE');
+
                 $event->sheet->getDelegate()->getStyle('5')->getFill()
                 ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
                 ->getStartColor()->setARGB('C0C0C0C0');
-               
-                
-
             }, 
         ]; 
     } 

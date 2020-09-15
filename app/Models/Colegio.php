@@ -98,7 +98,10 @@ class Colegio extends Model
 	public function calendario()
 	{
         return $this->BelongsTo('App\Models\Calendario', 'id_calendario');
-    }
-
-
+	}
+	
+	public function foto()
+    {
+        return $this->hasOne('App\Models\Foto',  'id_origen', 'id')->where('id_tipo_foto', 1);
+	}
 }

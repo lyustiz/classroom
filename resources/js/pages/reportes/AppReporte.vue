@@ -1,24 +1,17 @@
 <template>
 
-    <v-dialog scrollable fullscreen persistent v-model="dialog">
-
-    <template v-slot:activator="{ on, attrs }">
-        <v-btn fab color="grey lighten-5" v-bind="attrs" v-on="on" x-small depressed>
-            <v-icon color="indigo">mdi-printer</v-icon>
-        </v-btn>
-    </template>
+    <v-dialog scrollable fullscreen persistent v-model="show">
 
     <v-card flat class="report-container">
 
          <v-card-title class="pa-0">
-            <app-simple-toolbar :title="title" @closeModal="dialog = false"></app-simple-toolbar>
+            <app-simple-toolbar :title="title" @closeModal="$emit('onCloseReport')"></app-simple-toolbar>
         </v-card-title>
         
         <v-form ref="form" v-model="valid" lazy-validation>
         <v-toolbar class="elevation-0 grey lighten-5">
         
             <v-row>
-
                 <v-col cols="10">
                     <v-select
                         :items="campos"
@@ -149,9 +142,14 @@ export default {
 
     props: 
     {
+        show: {
+            type: Boolean,
+            default: false
+        },
+
         tableName: {
             type: String,
-            default: 'vw_alumno'
+            default: null
         },
 
         title: {
@@ -175,18 +173,15 @@ export default {
         },
     },
 
-    watch:
+    created()
     {
-        dialog(active)
+        if(this.tableName)
         {
-            if(active)
-            {
-                this.form.tableName  = this.tableName
-                this.form.hiddenCols = this.hiddenCols
-                this.form.showCols   = this.showCols
-                this.form.nameCols   = this.nameCols
-                this.list();
-            }
+            this.form.tableName  = this.tableName
+            this.form.hiddenCols = this.hiddenCols
+            this.form.showCols   = this.showCols
+            this.form.nameCols   = this.nameCols
+            this.list();
         }
     },
 

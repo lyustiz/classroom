@@ -3,8 +3,12 @@
     <list-container :title="title" :head-color="$App.theme.headList" :itemsMenu="listMenu" @onMenu="onListMenu($event)" :inDialog="inDialog">
 
         <template slot="HeadTools">
-            <add-button @insItem="insertForm()"></add-button>
-            <app-reporte tableName="vw_alumno" title="Lista Alumnos" class="mx-1"></app-reporte>
+            <v-col cols="auto">
+                <add-button @insItem="insertForm()"></add-button>
+            </v-col>
+            <v-col cols="auto">
+                <report-menu :reports="reports" @onReport="onReport($event)"></report-menu>
+            </v-col>
         </template>
 
             <v-col cols="12" md="6">
@@ -124,6 +128,10 @@
                 @deleteCancel="deleteCancel()"
             ></form-delete>
 
+            <app-reporte :tableName="report.table" :title="report.title" :show="report.show" v-if="report.show" @onCloseReport="onCloseReport()"></app-reporte>
+
+            <pre >{{ report }}</pre>
+            
             <pre v-if="$App.debug">{{ $data }}</pre>
 
     </list-container>
@@ -175,8 +183,13 @@ export default {
             ],
             listMenu:[
                 { action: 'list',   icon: 'mdi-table-refresh', label: 'Refrescar' },
-                { action: 'print',   icon: 'mdi-printer', label: 'Reporte Alumnos' },
                 { action: 'addMateriasAlumnos',   icon: 'mdi-bookshelf', label: 'Agregar Materias Alumnos' },
+            ],
+            reports:[
+                { table: 'vw_alumno',               title: 'Alumnos (Datos Personales)' },
+                { table: 'vw_alumno_matricula',     title: 'Alumnos (Con Matricula)' },
+                { table: 'vw_alumno_sin_matricula', title: 'Alumnos (Sin Matricula)' },
+                { table: 'vw_alumno_acudiente',     title: 'Alumnos (Acudientes)' },
             ],
             dialogMatricula:      false,
             dialogAlumnoMateria:  false,
@@ -190,10 +203,7 @@ export default {
     },
     methods:
     {
-        print()
-        {
-            alert('print')
-        },
+
 
         addMatricula(alumno)
         {

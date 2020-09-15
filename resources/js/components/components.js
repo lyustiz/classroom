@@ -25,6 +25,8 @@ import StatusSwitch   from '@components/list/StatusSwitch'
 import ListMenu       from '@components/list/ListMenu'
 import ItemMenu       from '@components/list/ItemMenu'
     
+import ReportMenu     from '@components/report/ReportMenu'
+
 import FormModal      from '@components/form/FormModal'
 import FormButtons    from '@components/form/FormButton'
 import FormDelete     from '@components/form/FormDelete'
@@ -49,6 +51,8 @@ Vue.component('list-container',   ListContainer);
 Vue.component('status-switch',    StatusSwitch);
 Vue.component('list-menu',        ListMenu);
 Vue.component('item-menu',        ItemMenu);
+
+Vue.component('report-menu',      ReportMenu);
 
 Vue.component('form-modal',       FormModal);
 Vue.component('form-buttons',     FormButtons);

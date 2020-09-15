@@ -10,7 +10,7 @@
 
                             <v-toolbar flat dense :class="headColor" v-if="!inDialog">
 
-                                <v-toolbar-title v-html="title"></v-toolbar-title>
+                                <v-toolbar-title v-text="title"></v-toolbar-title>
 
                                 <v-spacer></v-spacer>
 

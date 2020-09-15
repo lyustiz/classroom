@@ -3,6 +3,11 @@ export default
     data()
     {
         return{
+            report: {
+                show:  false,
+                table: null,
+                title: null 
+            }
         }
     },
 
@@ -67,6 +72,25 @@ export default
              }
          },
 
-        
+        onReport(report)
+        {
+            if(this.report)
+            {
+                this.report.show  = true
+                this.report.table = report.table
+                this.report.title = report.title
+            } else{
+                this.report.show  = false
+                this.report.table = null
+                this.report.title = null
+            }
+        },
+
+        onCloseReport()
+        {
+            this.report.show  = false
+            this.report.table = null
+            this.report.title = null
+        }
     }
 }
