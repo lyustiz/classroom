@@ -8,6 +8,7 @@
             </v-col>
             <v-col cols="auto">
                 <report-menu :reports="reports" @onReport="onReport($event)"></report-menu>
+                <app-report :tableName="report.table" :title="report.title" :show="report.show" v-if="report.show" @onCloseReport="onCloseReport()"></app-report>
             </v-col>
         </template>
 
@@ -127,11 +128,7 @@
                 @deleteItem="deleteItem()"
                 @deleteCancel="deleteCancel()"
             ></form-delete>
-
-            <app-reporte :tableName="report.table" :title="report.title" :show="report.show" v-if="report.show" @onCloseReport="onCloseReport()"></app-reporte>
-
-            <pre >{{ report }}</pre>
-            
+          
             <pre v-if="$App.debug">{{ $data }}</pre>
 
     </list-container>
@@ -146,7 +143,7 @@ import AppAlumnoMateria    from '@pages/alumnoMateria/AppAlumnoMateria';
 import AppAlumnosMateria   from '@pages/alumnoMateria/AppAlumnosMateria';
 import AppAlumnoPariente   from '@pages/alumnoPariente/AppAlumnoPariente';
 import AppAlumnoIncidencia from '@pages/incidencia/AppIncidencia';
-import AppReporte          from '@pages/reportes/AppReporte'
+
 export default {
     
     mixins:     [ listHelper],
@@ -158,7 +155,6 @@ export default {
                     'alumnos-materia'   : AppAlumnosMateria,
                     'alumno-pariente'   : AppAlumnoPariente,
                     'alumno-incidencia' : AppAlumnoIncidencia,
-                    'app-reporte'       : AppReporte
                 },
 
     data () {

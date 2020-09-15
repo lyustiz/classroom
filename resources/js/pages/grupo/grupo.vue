@@ -3,7 +3,13 @@
     <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)" :inDialog="inDialog">
 
         <template slot="HeadTools">
-            <add-button @insItem="insertForm()"></add-button>
+            <v-col cols="auto">
+                <add-button @insItem="insertForm()"></add-button>
+            </v-col>
+            <v-col cols="auto">
+                <report-menu :reports="reports" @onReport="onReport($event)"></report-menu>
+                <app-report :tableName="report.table" :title="report.title" :show="report.show" v-if="report.show" @onCloseReport="onCloseReport()"></app-report>
+            </v-col>
         </template>
 
             <v-col cols="12" md="6">
@@ -124,8 +130,12 @@ export default {
             itemsMenu: [
                 { action: 'addMateriaGrupo',   icon: 'mdi-bookshelf', label: 'Asignar Materia' },
             ],
+            reports:[
+                { table: 'vw_grupo',               title: 'Grupo (Grado)' },
+                { table: 'vw_grupo_materia',       title: 'Grupo (Materias)' },
+            ],
             dialogMateria: false,
-            grupo:              null,
+            grupo:         null,
         }
     },
     methods:
