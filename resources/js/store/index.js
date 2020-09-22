@@ -16,6 +16,9 @@ import Calendario from '@store/data/Calendario';
 import Auth       from '@store/auth/Auth';
 import Pusher     from '@store/auth/Pusher';
 
+//meet
+import AppMeet    from '@store/app/AppMeet';
+
 const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
@@ -33,6 +36,9 @@ export default new Vuex.Store({
         //Auth
         Auth,
         Pusher,
+
+        //meet
+        AppMeet
     },
     strict: debug
 })

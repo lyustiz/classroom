@@ -222,6 +222,11 @@ export default {
                 {value: 0, icon: 'mdi-eye-off', color: 'grey',    label: 'No'},
                 {value: 1, icon: 'mdi-eye',     color: 'success', label: 'Si'}
             ],
+            calificacionIcons:
+            [
+                {value: 1, icon: 'mdi-checkbox-marked-circle-outline', color: 'success', label: 'Aprobado'},
+                {value: 0, icon: 'mdi-close-circle-outline',           color: 'error',   label: 'Reprobado'}
+            ],
             selectMinutos: [
                 5,10,15,20,25,30,35,40,45,50,60,65,70,75,80,85,90,95,100,105,110,120
             ],

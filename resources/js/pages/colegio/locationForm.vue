@@ -94,9 +94,9 @@
 
         </v-row>
                         
-                    </v-card-text>
+    </v-card-text>
 
-                     <v-card-actions>
+        <v-card-actions>
             <v-spacer></v-spacer>
             <form-buttons
                 @store="update()"
@@ -105,13 +105,12 @@
                 remove-cancel
             ></form-buttons>
         </v-card-actions>
-                </v-card>
-            </v-col>
+    </v-card>
+</v-col>
 
-    </v-row>
+</v-row>
     </v-container>
     <v-overlay
-            absolute
             :opacity="0.3"
             :value="loading"
             :z-index="10">

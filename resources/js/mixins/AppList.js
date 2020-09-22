@@ -143,7 +143,6 @@ export default
             this.loading = true
             setInterval(() => { 
                     this.loading = false
-                
             }, 3000);
             console.log('changeStatus', payload)
         },

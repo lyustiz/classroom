@@ -66,7 +66,7 @@
             item-value="id"
             v-model="form.id_docente"
             :rules="[rules.select]"
-            label="Docente"
+            label="Coordinador"
             :loading="loading"
             dense
             ></v-select>
@@ -104,7 +104,6 @@
             dense
             ></v-select>
         </v-col>
-         
 
         </v-row>
 

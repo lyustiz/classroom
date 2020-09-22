@@ -37,6 +37,12 @@
                         <td class="text-xs-left">{{ item.nb_grado }}</td>
 						<td class="text-xs-left">{{ item.nu_grado }}</td>
 						<td class="text-xs-left">{{ item.nivel.nb_nivel }}</td>
+                        <td class="text-xs-left">
+                            <item-detail icon="mdi-alphabetical-variant" :items="item.grupo" item-text="nb_grupo" v-if="item.grupo.length> 0"></item-detail>
+                        </td>
+                        <td class="text-xs-left">
+                            <item-detail icon="mdi-bookshelf" :items="item.materia" item-text="nb_materia" v-if="item.materia.length> 0"></item-detail>
+                        </td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -89,7 +95,7 @@
                 @deleteCancel="deleteCancel()"
             ></form-delete>
 
-            <v-dialog v-model="dialogMateria" max-width="600" content-class="rounded-xl">
+            <v-dialog v-model="dialogMateria" max-width="600" content-class="rounded-xl" scrollable>
                 <grado-materia-form :grado="grado" v-if="dialogMateria" @closeModal="closeDialog($event,'dialogMateria')"></grado-materia-form>
             </v-dialog>
             <pre v-if="$App.debug">{{ $data }}</pre>
@@ -117,13 +123,15 @@ export default {
             resource: 'grado',
             headers: [
                 { text: 'Grado',    value: 'nb_grado' },
-                { text: 'Orden',   value: 'nu_grado' },
+                { text: 'Orden',    value: 'nu_grado' },
                 { text: 'Nivel',    value: 'nivel.nb_nivel' },
+                { text: 'Grupos',   value: 'nivel.nb_nivel' },
+                { text: 'Materias', value: 'nivel.nb_nivel' },
                 { text: 'Status',   value: 'id_status' },
                 { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
             ],
             ItemsMenu: [
-                { action: 'addMateria', icon: 'mdi-file-cad-box', label: 'Asignar Materia' }
+                { action: 'addMateria', icon: 'mdi-bookshelf', label: 'Asignar Materia' }
             ],
             reports:[
                 { table: 'vw_grupo',               title: 'Grado (Grupos)' },
@@ -139,6 +147,13 @@ export default {
         {
             this.grado         = grado
             this.dialogMateria = true
+        },
+
+        closeDialog(refresh, dialog)
+        {
+            this.grupo    = null
+            this[dialog]  = false
+            if(refresh)   this.list()
         }
     }
 }

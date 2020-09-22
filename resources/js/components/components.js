@@ -24,6 +24,7 @@ import ListContainer  from '@components/list/ListContainer'
 import StatusSwitch   from '@components/list/StatusSwitch'
 import ListMenu       from '@components/list/ListMenu'
 import ItemMenu       from '@components/list/ItemMenu'
+import ItemDetail     from '@components/list/ItemDetail'
     
 import ReportMenu     from '@components/report/ReportMenu'
 
@@ -51,6 +52,7 @@ Vue.component('list-container',   ListContainer);
 Vue.component('status-switch',    StatusSwitch);
 Vue.component('list-menu',        ListMenu);
 Vue.component('item-menu',        ItemMenu);
+Vue.component('item-detail',      ItemDetail);
 
 Vue.component('report-menu',      ReportMenu);
 

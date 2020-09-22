@@ -1,7 +1,8 @@
 <template>
 
     <v-container fluid class="grey darken-4 meet-container pt-0">
-            
+        <get-devices ></get-devices>
+     <!--        
         <v-row>
             <v-col cols="12" md="3">
 
@@ -40,13 +41,14 @@
             </v-col>
 
         </v-row>
-
+ -->
     </v-container>
        
 </template>
 
 <script>
 import AppData     from '@mixins/AppData';
+import GetDevices  from '../components/localVideo/videoContainer';
 import Pusher      from 'pusher-js';
 import Peer        from 'simple-peer';
 import Chat        from '../ChatRoom';
@@ -64,7 +66,8 @@ export default {
         'draw-board':   Draw,
         'local-video':  LocalVideo,
         'remote-video': RemoteVideo,
-        'list-members': Listmembers
+        'list-members': Listmembers,
+        'get-devices':  GetDevices
     },
 
     created()
@@ -109,16 +112,19 @@ export default {
         media:       { audio: false,  video: false },
         classChanel: 'presence-clasrrorm-1-2-3-25082020',
         sections: [
-                { label: 'Asistencia', icon: 'mdi-account-check', component: 'tarea-alumno', color: 'blue', sectionWidth: '700' },
-                { label: 'Recursos', icon: 'mdi-book-open-page-variant', component: 'recurso-alumno', color: 'purple', sectionWidth: '700' },
+                { label: 'Asistencia',   icon: 'mdi-account-check', component: 'tarea-alumno', color: 'blue', sectionWidth: '700' },
+                { label: 'Recursos',     icon: 'mdi-book-open-page-variant', component: 'recurso-alumno', color: 'purple', sectionWidth: '700' },
                 { label: 'Presentacion', icon: 'mdi-presentation', component: 'recurso-alumno', color: 'green', sectionWidth: '700' },
             ]
     }),
 
     methods:
     {
-        async list()
+        list()
         {
+
+
+           
            /*  await this.getInstance();
 
             Pusher.logToConsole = true;
@@ -128,7 +134,7 @@ export default {
                 this.setChanels()
             } */
 
-            this.setupVideoChat()
+            //this.setupVideoChat()
         },
 
         async getInstance()

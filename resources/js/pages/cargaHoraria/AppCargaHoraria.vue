@@ -6,16 +6,6 @@
             <add-button @insItem="insertForm()"></add-button>
         </template>
 
-            <v-col cols="12" md="6">
-                <v-text-field
-                    v-model="search"
-                    append-icon="search"
-                    label="Buscar"
-                    hide-details
-                    clearable
-                ></v-text-field>
-            </v-col>
-
             <v-data-table
                 :headers="headers"
                 :items  ="items"
@@ -23,19 +13,23 @@
                 item-key="id"
                 :loading="loading"
                 sort-by=""
-                dense
-                single-expand
             >
 
-                <template v-slot:item="{ item, expand, isExpanded }">
-                    <tr :class="(isExpanded) ? 'green lighten-4 ': ''">
-                       <td class="text-xs-left"> 
-                            <v-btn icon color="green" @click="expand(!isExpanded)">
-                                <v-icon color="green">{{ (isExpanded) ? 'mdi-arrow-down-drop-circle-outline' : 'mdi-arrow-right-drop-circle-outline'}}</v-icon>
-                            </v-btn> 
+                <template v-slot:item="{ item }">
+                    <tr>
+                        <td class="text-xs-left">{{ item.nu_orden }}</td>
+                        <td class="text-xs-left" :class="{ 'green--text font-weight-bold': item.bo_receso  }"> 
+                            {{ item.nb_carga_horaria }}
+                         </td>
+						<td class="text-xs-left">{{ item.hh_inicio | formatTime }}</td>
+						<td class="text-xs-left">{{ item.hh_fin | formatTime }}</td>
+						<td class="text-xs-left">{{ item.turno.nb_turno }}</td>
+						<td class="text-xs-center">
+                            <v-icon 
+                                color="success"
+                                v-text="(item.bo_receso) ? 'mdi-coffee': 'mdi-coffee-off-outline'">
+                            </v-icon>
                         </td>
-                        <td class="text-xs-left">{{ item.nb_grupo_calificacion }}</td>
-						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -55,12 +49,6 @@
                     </tr>
                 </template>
 
-                <template v-slot:expanded-item="{ headers, item }">
-                    <td :colspan="headers.length">
-                        <app-calificacion :grupoCalificacion="item"></app-calificacion>
-                    </td>
-                </template>
-
             </v-data-table>
 
             <app-modal
@@ -69,11 +57,12 @@
                 :head-color="$App.theme.headModal"
                 :title="title"
             >
-                <grupo-calificacion-form
+                <carga-horaria-form
                     :action="action"
                     :item="item"
                     @closeModal="closeModal()"
-                ></grupo-calificacion-form>
+                    :horaAcademica="horaAcademica"
+                ></carga-horaria-form>
 
             </app-modal>
 
@@ -92,35 +81,59 @@
 </template>
 
 <script>
-import listHelper            from '@mixins/Applist';
-import grupoCalificacionForm from './grupoCalificacionForm';
-import AppCalificacion       from '@pages/calificacion/AppCalificacion';
+import listHelper from '@mixins/Applist';
+import cargaHorariaForm  from './cargaHorariaForm';
 export default {
 
     mixins:     [ listHelper],
 
     components: { 
-        'grupo-calificacion-form': grupoCalificacionForm,
-        'app-calificacion':        AppCalificacion
+        'carga-horaria-form': cargaHorariaForm 
+    },
+
+    watch:
+    {
+        horaAcademica(grupo)
+        {
+            if(grupo)
+            {
+                this.list()
+            }
+        }
+    },
+
+    props:{
+
+        horaAcademica:
+        {
+            type:   Object,
+            default: () => {}
+        }
     },
 
     data () {
-
         return {
-            title:    'Calificaciones',
-            resource: 'grupoCalificacion',
-            headers: [     
-                { text: null,                   value: 'toggle', sortable: false, filterable: false },
-                { text: 'Grupo Calificacion',   value: 'nb_grupo_calificacion' },
-                { text: 'Observaciones',        value: 'tx_observaciones' },
-                { text: 'Status',               value: 'id_status' },
-                { text: 'Acciones',             value: 'actions', sortable: false, filterable: false },
+            title:    `CargaHoraria - ${this.horaAcademica.nb_hora_academica}`,
+            resource: 'cargaHoraria',
+            headers: [
+                { text: 'Orden',         value: 'nu_orden' },
+                { text: 'Descripcion',   value: 'nb_carga_horaria' },
+                { text: 'Inicio',        value: 'hh_inicio' },
+                { text: 'Fin',           value: 'hh_fin' },
+                { text: 'Turno',         value: 'turno.nb_turno' },
+                { text: 'Receso',        value: 'bo_receso' },
+                { text: 'Status',        value: 'id_status' },
+                { text: 'Acciones',      value: 'actions', sortable: false, filterable: false },
             ],
         }
     },
+
     methods:
     {
-     
+        listUrl()
+        {
+            return `${this.apiUrl}cargaHoraria/${this.horaAcademica.id}`
+        },
     }
 }
 </script>

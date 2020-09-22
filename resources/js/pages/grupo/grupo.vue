@@ -38,7 +38,12 @@
 						<td class="text-xs-left">{{ item.grado.nb_grado }}</td>
 						<td class="text-xs-left">{{ item.turno.nb_turno }}</td>
 						<td class="text-xs-left">{{ item.calendario.nb_calendario }}</td>
-						<td class="text-xs-left">{{ item.docente.nb_docente }}</td>
+						<td class="text-xs-left">
+                            <list-simple-icon :label="item.coordinador.nb_docente" icon="mdi-account-tie"  v-if="item.coordinador"></list-simple-icon>
+                        </td>
+                        <td class="text-xs-left">
+                            <item-detail icon="mdi-bookshelf" :items="item.materia" item-text="nb_materia" v-if="item.materia.length> 0"></item-detail>
+                        </td>
 						<td class="text-xs-left">{{ item.nu_orden }}</td>
 						<td class="text-xs-left">
                             <status-switch 
@@ -81,7 +86,6 @@
                     :item="item"
                     @closeModal="closeModal()"
                 ></grupo-form>
-
             </app-modal>
 
             <form-delete
@@ -106,29 +110,34 @@
 import listHelper from '@mixins/Applist';
 import grupoForm  from './grupoForm';
 import AppGrupoMateria from '@pages/grupoMateria/AppGrupoMateria'
+
 export default {
+
     mixins:     [ listHelper],
+
     components: { 
         'grupo-form'   : grupoForm,
         'grupo-materia': AppGrupoMateria 
     },
+    
     data () 
     {
         return {
             title:    'Grupo',
             resource: 'grupo',
             headers: [
-                { text: 'Grupo',      value: 'nb_grupo' },
-                { text: 'Grado',      value: 'grado.nb_grado' },
-                { text: 'Turno',      value: 'turno.nb_turno' },
-                { text: 'Calendario', value: 'calendario.nb_calendario' },
-                { text: 'Docente',    value: 'docente.nb_docente' },
-                { text: 'Orden',      value: 'nu_orden' },
-                { text: 'Status',     value: 'id_status' },
-                { text: 'Acciones',   value: 'actions', sortable: false, filterable: false },
+                { text: 'Grupo',       value: 'nb_grupo' },
+                { text: 'Grado',       value: 'grado.nb_grado' },
+                { text: 'Turno',       value: 'turno.nb_turno' },
+                { text: 'Calendario',  value: 'calendario.nb_calendario' },
+                { text: 'Coordinador', value: 'coordinador.nb_docente' },
+                { text: 'Materias',    value: 'materias' },
+                { text: 'Orden',       value: 'nu_orden' },
+                { text: 'Status',      value: 'id_status' },
+                { text: 'Acciones',    value: 'actions', sortable: false, filterable: false },
             ],
             itemsMenu: [
-                { action: 'addMateriaGrupo',   icon: 'mdi-bookshelf', label: 'Asignar Materia' },
+                { action: 'addMateria',   icon: 'mdi-bookshelf', label: 'Asignar Materia' },
             ],
             reports:[
                 { table: 'vw_grupo',               title: 'Grupo (Grado)' },
@@ -140,7 +149,7 @@ export default {
     },
     methods:
     {
-        addMateriaGrupo(grupo)
+        addMateria(grupo)
         {
             this.grupo         = grupo.id 
             this.dialogMateria = true
@@ -150,7 +159,7 @@ export default {
         {
             this.grupo    = null
             this[dialog]  = false
-            if(refresh)   this.list()
+            this.list()
         }
    
     }

@@ -16,6 +16,8 @@ autenticacion
 
     probar apitoken
 
+    periodo -> calendario activo
+
 usuario tipo secretaria tipo 6
 
 plan evaluacion grupos sin grados asignados - cierre de modal evaluacion

@@ -153,7 +153,7 @@ Route::get('/grado/planEvaluacion',             'GradoController@gradoPlanEvalua
 Route::get('/grado/list',                       'GradoController@list');
 Route::apiResource('/grado',                    'GradoController');
 Route::get('/gradoMateria/grado/{grado}/asignacion',   'GradoMateriaController@gradoMateriaAsignacion');
-Route::apiResource('/gradoMateria',             'GradoMateriaController');
+Route::apiResource('/gradoMateria',             'GradoMateriaController', ['parameters' => ['gradoMateria' => 'gradoMateria']]);
 
 Route::get('/grupo/grado/{grado}',              'GrupoController@grupoGrado');
 Route::get('/grupo/alumnos/docente/{docente}',  'GrupoController@grupoAlumnosDocente');
@@ -172,6 +172,7 @@ Route::get('/materia/evaluacion/alumno/{alumno}',       'MateriaController@mater
 Route::get('/materia/alumno/{alumno}',          'MateriaController@materiaAlumno');
 Route::apiResource('/materia',                  'MateriaController', ['parameters' => ['materia' => 'materia']]);
 Route::apiResource('/clase',                    'ClaseController');
+Route::get('/calificacion/{grupoCalificacion}', 'CalificacionController@calificacionGrupo');
 Route::apiResource('/calificacion',             'CalificacionController');
 Route::apiResource('/tipoCalificacion',         'TipoCalificacionController');
 Route::apiResource('/nivelCalificacion',        'NivelCalificacionController');;
@@ -181,6 +182,7 @@ Route::apiResource('/grupoCalificacion',        'GrupoCalificacionController');
 // -- HORARIO -- // 
 Route::apiResource('/horaAcademica',            'HoraAcademicaController');
 Route::get('/cargaHoraria/horario/{horario}',   'CargaHorariaController@cargaHorariaHorario');
+Route::get('/cargaHoraria/{horaAcademica}',     'CargaHorariaController@cargaHorariaHoraAcademica');
 Route::apiResource('/cargaHoraria',             'CargaHorariaController', ['parameters' => ['cargaHoraria' => 'cargaHoraria']]);
 
 Route::get('/detalleHorario/horario/{horario}', 'DetalleHorarioController@detalleByHorarioId');

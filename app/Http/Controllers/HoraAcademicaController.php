@@ -15,7 +15,7 @@ class HoraAcademicaController extends Controller
      */
     public function index()
     {
-        $horaAcademica = HoraAcademica::with(['nivel:id,nb_nivel'])
+        $horaAcademica = HoraAcademica::with(['nivel:id,nb_nivel', 'cargaHoraria:id,nb_carga_horaria,id_hora_academica'])
                     ->get();
         
         return $horaAcademica;
@@ -31,12 +31,16 @@ class HoraAcademicaController extends Controller
     {
         $validate = request()->validate([
             'nb_hora_academica' => 	'required|string|max:80',
-            'id_nivel'          => 	'required|integer|max:999999999',
-            'bo_receso'         => 	'required|boolean',
+            'id_nivel'          => 	'nullable|integer|max:999999999',
+            'bo_receso'         => 	'nullable|boolean',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
+
+        if (!$request->filled('id_nivel')) {
+            $request->merge(['id_nivel' => 0]);
+        }
 
         $horaAcademica = horaAcademica::create($request->all());
 
@@ -65,12 +69,16 @@ class HoraAcademicaController extends Controller
     {
         $validate = request()->validate([
             'nb_hora_academica' => 	'required|string|max:80',
-            'id_nivel'          => 	'required|integer|max:999999999',
-            'bo_receso'         => 	'required|boolean',
+            'id_nivel'          => 	'nullable|integer|max:999999999',
+            'bo_receso'         => 	'nullable|boolean',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
+
+        if (!$request->filled('id_nivel')) {
+            $request->merge(['id_nivel' => 0]);
+        }
 
         $horaAcademica = $horaAcademica->update($request->all());
 

@@ -436,8 +436,10 @@ class PruebaController extends Controller
         
         $puntos            = round(($maxCalificacion * $percPeso * $percCalificacion), 2, PHP_ROUND_HALF_UP);
 
-        $calificacion      =  Calificacion::where('nu_calificacion', '>=', (round($puntos, 0, PHP_ROUND_HALF_UP )) )->first();
-        
+        $calificacion      =  Calificacion::where('nu_desde', '>=', $puntos )
+                                          ->where('nu_hasta', '<=', $puntos )
+                                          ->first();
+                             
         return ['calificacion' => $calificacion, 'puntos' => $puntos];
     }
     

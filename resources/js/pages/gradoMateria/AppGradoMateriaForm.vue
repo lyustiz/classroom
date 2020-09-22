@@ -4,7 +4,7 @@
     
         <v-form ref="form" v-model="valid" lazy-validation>
         <v-card-title class="pa-0">
-            <app-simple-toolbar title="AsignarMateria" @closeModal="$emit('closeModal', true)"></app-simple-toolbar>
+            <app-simple-toolbar :title="`Materias Grado: ${grado.nb_grado}`" @closeModal="$emit('closeModal', true)"></app-simple-toolbar>
         </v-card-title>
 
         <v-card-text>
@@ -32,29 +32,29 @@
 
         <v-col>
 
-        <v-list subheader>
-        <v-subheader>Materias</v-subheader>
+            <v-list subheader>
+            <v-subheader>Materias</v-subheader>
 
-            <v-list-item
-                v-for="materia in materias"
-                :key="materia.id"
-            >
-                <v-list-item-avatar>
-                    <v-avatar color="info white--text" >{{ materia.nb_materia | initLeter }}</v-avatar>
-                </v-list-item-avatar>
+                <v-list-item
+                    v-for="materia in materias"
+                    :key="materia.id"
+                >
+                    <v-list-item-avatar>
+                        <v-avatar color="info white--text" >{{ materia.nb_materia | initLeter }}</v-avatar>
+                    </v-list-item-avatar>
 
-                <v-list-item-content>
-                <v-list-item-title v-text="materia.nb_materia"></v-list-item-title>
-                </v-list-item-content>
+                    <v-list-item-content>
+                    <v-list-item-title v-text="materia.nb_materia"></v-list-item-title>
+                    </v-list-item-content>
 
-                <v-list-item-action>
-                    <v-btn small class="grey lighten-4" icon @click="deleteMateria(materia)">
-                        <v-icon color="red">mdi-delete</v-icon>
-                    </v-btn>
-                </v-list-item-action>
-            </v-list-item>
+                    <v-list-item-action>
+                        <v-btn small class="grey lighten-4" icon @click="deleteMateria(materia)">
+                            <v-icon color="red">mdi-delete</v-icon>
+                        </v-btn>
+                    </v-list-item-action>
+                </v-list-item>
 
-        </v-list>
+            </v-list>
 
         </v-col>
           
@@ -134,8 +134,12 @@ export default {
             this.storeResource(this.resource, this.form).then( (data) =>  
             {
                 this.showMessage(data.msj)
-                
-                this.selects.materia = this.selects.materia.filter( (materias) => materias.id != materia.id)
+
+                this.selects.materia = this.selects.materia.filter( (materias) =>{ 
+                    materias.id != materia.id
+                })
+
+                console.log(data)
 
                 this.materias.push({ 
                     id: data.gradoMateria.id , 

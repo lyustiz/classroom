@@ -86,7 +86,6 @@
         ></form-delete>
 
         <v-overlay
-            absolute
             :opacity="0.3"
             :value="loading"
             :z-index="10">

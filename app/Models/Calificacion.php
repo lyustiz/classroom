@@ -10,7 +10,8 @@ class Calificacion extends Model
 
     protected $fillable   = [
                             'nb_calificacion',
-	 	 	 	 	 	 	'nu_calificacion',
+							'nu_desde',
+							'nu_hasta',
 	 	 	 	 	 	 	'co_calificacion',
 	 	 	 	 	 	 	'bo_aprobado',
 	 	 	 	 	 	 	'nu_orden',

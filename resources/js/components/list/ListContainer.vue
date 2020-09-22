@@ -69,7 +69,7 @@ export default
             type: Array,
             default: () => [
                 {
-                    label: 'Refrescar',
+                    label: 'Actualizar',
                     icon:  'mdi-table-refresh',
                     action: 'refresh'
                 }

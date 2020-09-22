@@ -24,15 +24,13 @@
             item-text="nb_nivel"
             item-value="id"
             v-model="form.id_nivel"
-            :rules="[rules.select]"
             label="Nivel"
             :loading="loading"
             dense
+            clearable
             ></v-select>
         </v-col>
 
-    
-                          
         <v-col cols="12" md="6">
             <v-select
             :items="selects.status"

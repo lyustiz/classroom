@@ -415,16 +415,6 @@ export default new Router({
                 visible: true,
                 component: HoraAcademica
             },
-
-            { 
-                path: 'carga-horaria',
-                name: 'carga-horaria',
-                label: 'Carga Horaria',
-                icon: 'mdi-clock',
-                profile: 'secretaria',
-                visible: true,
-                component: CargaHoraria
-            },
             { 
                 path: 'nivel',
                 name: 'nivel',
@@ -471,24 +461,6 @@ export default new Router({
                 component: Materia
             },
             { 
-                path: 'grado-materia',
-                name: 'grado-materia',
-                label: 'Grado Materias',
-                icon: 'mdi-square-root',
-                profile: 'secretaria',
-                visible: true,
-                component: GradoMateria
-            },
-            { 
-                path: 'grupo-calificacion',
-                name: 'grupo-calificacion',
-                label: 'Grupo Calificaciones',
-                icon: 'mdi-check-box-multiple-outline',
-                profile: 'secretaria',
-                visible: true,
-                component: GrupoCalificacion
-            },
-            { 
                 path: 'nivel-calificacion',
                 name: 'nivel-calificacion',
                 label: 'Nivel Calificaciones',
@@ -504,7 +476,7 @@ export default new Router({
                 icon: 'mdi-check-box-outline',
                 profile: 'secretaria',
                 visible: true,
-                component: Calificacion
+                component: GrupoCalificacion
             },
             { 
                 path: 'tipo-evaluacion',
@@ -977,7 +949,7 @@ export default new Router({
                 path: 'asistente',
                 name: 'asistente',
                 label: 'Asistente',
-                icon: 'mdi-account-voice',
+                icon: 'mdi-head-cog',
                 profile: 'secretaria',
                 visible: true,
                 component: Asistente

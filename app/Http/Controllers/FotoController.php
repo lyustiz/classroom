@@ -141,8 +141,11 @@ class FotoController extends Controller
 
         }else
         {
-            return response('Error al Eliminar la Foto', 403) ;
+            $foto = $foto->delete();
+            return [ 'msj' => 'Foto Eliminada' , compact('foto')]; //TODO msj
         }
+
+        
     }
 
     public function deleteImage( $storage, $path )

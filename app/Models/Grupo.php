@@ -60,6 +60,11 @@ class Grupo extends Model
         return $this->BelongsTo('App\Models\Calendario', 'id_calendario');
     }
 
+    public function calendarioActivo()
+    {
+        return $this->BelongsTo('App\Models\Calendario', 'id_calendario')->has('colegio');
+    }
+
     public function coordinador() 
     {
         return $this->BelongsTo('App\Models\Docente', 'id_docente');

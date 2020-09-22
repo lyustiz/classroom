@@ -22,6 +22,13 @@ class CargaHorariaController extends Controller
         return $cargaHoraria;
     }
 
+    public function cargaHorariaHoraAcademica($idHoraAcademica)
+    {
+        return  CargaHoraria::with(['turno:id,nb_turno', 'horaAcademica:id,nb_hora_academica'])
+                            ->where('id_hora_academica', $idHoraAcademica)
+                            ->get();
+        
+    }
 
     public function cargaHorariaHorario($idHorario)
     {

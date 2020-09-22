@@ -74,9 +74,9 @@ class GradoMateriaController extends Controller
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
-        $gradoMateria = gradoMateria::create($request->all());
+        $gradoMateria = gradoMateria::create($request->all())->load('materia');
 
-        return [ 'msj' => 'GradoMateria Agregado Correctamente', compact('gradoMateria') ];
+        return [ 'msj' => 'Materia Agregada Correctamente', 'gradoMateria' => $gradoMateria  ];
     }
 
     /**
@@ -109,7 +109,7 @@ class GradoMateriaController extends Controller
 
         $gradoMateria = $gradoMateria->update($request->all());
 
-        return [ 'msj' => 'GradoMateria Editado' , compact('gradoMateria')];
+        return [ 'msj' => 'Materia Editada' , compact('gradoMateria')];
     }
 
     /**
@@ -122,6 +122,6 @@ class GradoMateriaController extends Controller
     {
         $gradoMateria = $gradoMateria->delete();
  
-        return [ 'msj' => 'GradoMateria Eliminado' , compact('gradoMateria')];
+        return [ 'msj' => 'Materia Eliminada' , compact('gradoMateria')];
     }
 }

@@ -13,7 +13,7 @@
                 :rules="[rules.required]"
                 v-model="form.nu_orden"
                 label="Orden"
-                placeholder="Indique Orden"
+                placeholder="1"
                 dense
                 type="number"
             ></v-text-field>
@@ -81,20 +81,7 @@
             </v-menu>
         </v-col> 
 
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.horaAcademica"
-            item-text="nb_hora_academica"
-            item-value="id"
-            v-model="form.id_hora_academica"
-            :rules="[rules.select]"
-            label="Grupo"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
-
-        <v-col cols="12" md="6">
+        <v-col cols="12">
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.nb_carga_horaria"
@@ -126,6 +113,7 @@
                   :false-value="0"
                   prepend-icon="mdi-coffee"
                   :indeterminate="(form.bo_receso== null)"
+                  class="my-1"
                   dense
             ></v-checkbox>
         </v-col>
@@ -183,7 +171,18 @@
 import Appform from '@mixins/Appform';
 
 export default {
+
     mixins: [Appform],
+
+    props:{
+
+        horaAcademica:
+        {
+            type:   Object,
+            default: () => {}
+        }
+    },
+
     data() {
         return {
             resource: 'cargaHoraria',
@@ -199,27 +198,27 @@ export default {
             },
             form:
             {
-                id: 	          null,
-				nb_carga_horaria: null,
-				nu_orden: 	      null,
-				hh_inicio: 	      null,
-				hh_fin: 	      null,
-				id_turno: 	      null,
-				bo_receso: 	      null,
-				tx_observaciones: null,
-				id_status: 	      null,
-				id_usuario: 	  null,
+                id: 	           null,
+				nb_carga_horaria:  null,
+				nu_orden: 	       null,
+				hh_inicio: 	       null,
+                hh_fin: 	       null,
+                id_hora_academica: null,
+				id_turno: 	       null,
+				bo_receso: 	       null,
+				tx_observaciones:  null,
+				id_status: 	       null,
+				id_usuario: 	   null,
             },
             selects:
             {
                 turno: 	       [],
                 status: 	   [],
-                horaAcademica: [] 
             },
-            defaultForm:{
-
-                bo_receso: 0
-
+            defaultForm:
+            {
+                bo_receso: 0,
+                id_hora_academica: this.horaAcademica.id
             }
         }
     },

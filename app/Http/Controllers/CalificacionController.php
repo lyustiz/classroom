@@ -15,14 +15,23 @@ class CalificacionController extends Controller
      */
     public function index()
     {
-        $calificacion = Calificacion::with(['grupoCalificacion:id,nb_grupo_calificacion', 
-                                            'tipoCalificacion:id,nb_tipo_calificacion', 
-                                            'nivelCalificacion:id,nb_nivel_calificacion'
-                                            ])
-                                            ->orderBy('nu_orden', 'asc')
-                                        ->get();
-        
-        return $calificacion;
+       return  Calificacion::with([
+                                    'grupoCalificacion:id,nb_grupo_calificacion', 
+                                    'nivelCalificacion:id,nb_nivel_calificacion'
+                            ])
+                            ->orderBy('nu_orden', 'asc')
+                            ->get();
+    }
+
+    public function calificacionGrupo($idGrupoCalificacion)
+    {
+        return Calificacion::with([
+                                'grupoCalificacion:id,nb_grupo_calificacion', 
+                                'nivelCalificacion:id,nb_nivel_calificacion'
+                            ])
+                            ->where('id_grupo_calificacion', $idGrupoCalificacion)
+                            ->orderBy('nu_orden', 'asc')
+                            ->get();
     }
 
     /**
@@ -35,7 +44,8 @@ class CalificacionController extends Controller
     {
         $validate = request()->validate([
             'nb_calificacion'       => 'nullable|string|max:30',
-            'nu_calificacion'       => 'required|numeric',
+            'nu_desde'              => 'required|between:0,100.00',
+            'nu_hasta'              => 'required|between:0,100.00',
             'co_calificacion'       => 'nullable|string|max:20',
             'bo_aprobado'           => 'required|boolean',
             'nu_orden'              => 'required|integer',
@@ -49,7 +59,7 @@ class CalificacionController extends Controller
 
         $calificacion = calificacion::create($request->all());
 
-        return [ 'msj' => 'Calificacion Agregado Correctamente', compact('calificacion') ];
+        return [ 'msj' => 'Calificacion Agregada Correctamente', compact('calificacion') ];
     }
 
     /**
@@ -74,7 +84,8 @@ class CalificacionController extends Controller
     {
         $validate = request()->validate([
             'nb_calificacion'       => 'nullable|string|max:30',
-            'nu_calificacion'       => 'required|numeric',
+            'nu_desde'              => 'required|between:0,100.00',
+            'nu_hasta'              => 'required|between:0,100.00',
             'co_calificacion'       => 'nullable|string|max:20',
             'bo_aprobado'           => 'required|boolean',
             'nu_orden'              => 'required|integer',
@@ -88,7 +99,7 @@ class CalificacionController extends Controller
 
         $calificacion = $calificacion->update($request->all());
 
-        return [ 'msj' => 'Calificacion Editado' , compact('calificacion')];
+        return [ 'msj' => 'Calificacion Editada' , compact('calificacion')];
     }
 
     /**
@@ -101,6 +112,6 @@ class CalificacionController extends Controller
     {
         $calificacion = $calificacion->delete();
  
-        return [ 'msj' => 'Calificacion Eliminado' , compact('calificacion')];
+        return [ 'msj' => 'Calificacion Eliminada' , compact('calificacion')];
     }
 }

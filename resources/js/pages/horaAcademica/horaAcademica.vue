@@ -24,12 +24,18 @@
                 :loading="loading"
                 sort-by=""
                 dense
+                single-expand
             >
 
-                <template v-slot:item="{ item }">
-                    <tr>
+               <template v-slot:item="{ item, expand, isExpanded }">
+                    <tr :class="(isExpanded) ? 'green lighten-4 ': ''">
+                        <td class="text-xs-left"> 
+                            <v-btn icon color="green" @click="expand(!isExpanded)">
+                                <v-icon color="green">{{ (isExpanded) ? 'mdi-arrow-down-drop-circle-outline' : 'mdi-arrow-right-drop-circle-outline'}}</v-icon>
+                            </v-btn> 
+                        </td>
                         <td class="text-xs-left">{{ item.nb_hora_academica }}</td>
-                        <td class="text-xs-left">{{ item.nivel.nb_nivel }}</td>
+                        <td class="text-xs-left">{{ (item.nivel) ? item.nivel.nb_nivel : 'General' }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -43,10 +49,18 @@
                         <td class="text-xs-left">
                             <list-buttons 
                                 @update="updateForm(item)" 
-                                @delete="deleteForm(item)" >
+                                @delete="deleteForm(item)" 
+                                :del="!hasCargaHoraria(item)"
+                                >
                             </list-buttons>
                         </td>
                     </tr>
+                </template>
+
+                <template v-slot:expanded-item="{ headers, item }">
+                    <td :colspan="headers.length">
+                        <carga-horaria :horaAcademica="item"></carga-horaria>
+                    </td>
                 </template>
 
             </v-data-table>
@@ -82,24 +96,36 @@
 <script>
 import listHelper from '@mixins/Applist';
 import horaAcademicaForm  from './horaAcademicaForm';
+import AppCargaHoraria  from '@pages/cargaHoraria/AppCargaHoraria';
+
 export default {
+
     mixins:     [ listHelper],
-    components: { 'hora-academica-form': horaAcademicaForm },
-    data () {
-    return {
-        title:    'Hora Academica',
-        resource: 'horaAcademica',
-        headers: [
-            { text: 'Descripcion', value: 'nb_hora_academica' },
-            { text: 'Nivel',       value: 'nivel.nb_nivel' },
-			{ text: 'Status',      value: 'id_status' },
-            { text: 'Acciones',    value: 'actions', sortable: false, filterable: false },
-        ],
-    }
+
+    components: { 
+        'hora-academica-form': horaAcademicaForm,
+        'carga-horaria':       AppCargaHoraria  
     },
-    methods:
-    {
-        
+
+    data () {
+        return {
+            title:    'Hora Academica',
+            resource: 'horaAcademica',
+            headers: [
+                { text: null,          value: 'toggle', sortable: false, filterable: false },
+                { text: 'Descripcion', value: 'nb_hora_academica' },
+                { text: 'Nivel',       value: 'nivel.nb_nivel' },
+                { text: 'Status',      value: 'id_status' },
+                { text: 'Acciones',    value: 'actions', sortable: false, filterable: false },
+            ],
+        }
+    },
+
+    methods: {
+        hasCargaHoraria(item)
+        {
+            return (item.carga_horaria.length > 0 )
+        }    
     }
 }
 </script>

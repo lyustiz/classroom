@@ -51,8 +51,15 @@ class HoraAcademica extends Model
         return $this->BelongsTo('App\Models\Nivel', 'id_nivel');
     }
 
+    public function cargaHoraria()
+    {
+        return $this->hasMany('App\Models\CargaHoraria', 'id_hora_academica');
+    }
+
     public function horario()
     {
         return $this->hasMany('App\Models\Horario', 'id_hora_academica');
     }
+
+
 }

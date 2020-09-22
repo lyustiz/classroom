@@ -21,7 +21,8 @@ class GrupoController extends Controller
         $grupo = Grupo::with(['grado:grado.id,nb_grado',
                               'turno:turno.id,nb_turno',
                               'calendario:calendario.id,nb_calendario',
-                              'docente:docente.id,nb_nombre,nb_apellido'])
+                              'materia:materia.id,nb_materia',
+                              'coordinador:docente.id,nb_nombre,nb_apellido'])
                     ->orderBy('id_calendario', 'asc')
                     ->orderBy('id_grado', 'asc')
                     ->get();

@@ -34,34 +34,28 @@ class Calendario extends Model
         return $query->where('id_status', 1);
     }
                             
-    public function status(){
-
+    public function status()
+    {
         return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');
-
     }
                            
-    public function usuario(){
-
+    public function usuario()
+    {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
-
     }
 
-    public function periodo(){
+    public function colegio()
+    {
+        return $this->hasOne('App\Models\Colegio', 'id_calendario');
+    }
 
+    public function periodo()
+    {
         return $this->hasMany('App\Models\Periodo', 'id_calendario');
-
     }
 
-    public function periodoActivo(){
-
+    public function periodoActivo()
+    {
         return $this->hasOne('App\Models\Periodo', 'id_calendario')->where('id_status', 1);
-
-    }
-
-    
-
-                           
-    //
-
-
+    }                  
 }

@@ -34,8 +34,9 @@
                     </td>
                     <td>
                         <template v-if="calificacion.calificacion">
-                            <list-simple-icon v-if="calificacion.calificacion.bo_aprobado == 1" label="Aprobado" icon="mdi-checkbox-marked-circle-outline" color="success" ></list-simple-icon>
-                            <list-simple-icon v-else label="Reprobado" icon="mdi-close-circle-outline" color="error" ></list-simple-icon>
+
+                            <list-icon :data="calificacionIcons" :value="calificacion.calificacion.bo_aprobado"></list-icon>
+                           
                         </template>
                         <template v-else>-</template>
                     </td>

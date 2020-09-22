@@ -2,7 +2,7 @@
 
     <div class="mb-2">
 
-    <video class="rounded-lg mb-n2 elevation-3 player" ref="player" autoplay playsinline></video>
+    <video class="rounded-lg mb-n2 elevation-3 player" ref="player" autoplay playsinline controls></video>
         
     <v-toolbar color="rgba(0,0,0,0.1)" class="mt-n16 elevation-0 text-center rounded-b-lg">
 

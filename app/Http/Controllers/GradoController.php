@@ -16,8 +16,12 @@ class GradoController extends Controller
      */
     public function index()
     {
-        $grado = Grado::with(['nivel:id,nb_nivel'])
-                    ->get();
+        $grado = Grado::with([
+                                'nivel:nivel.id,nb_nivel', 
+                                'materia:materia.id,nb_materia', 
+                                'grupo:grupo.id,nb_grupo,id_grado'
+                            ])
+                        ->get();
         
         return $grado;
     }
