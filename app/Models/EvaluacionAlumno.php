@@ -30,7 +30,7 @@ class EvaluacionAlumno extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->addSelect('id', 'nb_');
+        return $query->addSelect('id', 'id_evaluacion', 'id_alumno');
     }
 
     public function status()

@@ -31,7 +31,7 @@ class Zona extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->addSelect('id', 'nb_');
+        return $query->addSelect('id', 'nb_zona', 'id_ciudad');
     }
     
     public function status()

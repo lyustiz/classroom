@@ -29,7 +29,7 @@ class TipoNotificacion extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->addSelect('id', 'nb_');
+        return $query->addSelect('id', 'nb_tipo_notificacion');
     }
     
     public function status()

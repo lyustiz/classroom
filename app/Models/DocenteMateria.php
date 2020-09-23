@@ -30,7 +30,7 @@ class DocenteMateria extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->addSelect('id', 'nb_');
+        return $query->addSelect('id', 'id_docente',  'id_materia');
     }
     
     public function status()

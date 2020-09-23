@@ -40,8 +40,6 @@ class Usuario extends Authenticatable implements MustVerifyEmail, JWTSubject
         'email_verified_at' => 'datetime',
 	];
 
-
-	
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -62,7 +60,6 @@ class Usuario extends Authenticatable implements MustVerifyEmail, JWTSubject
     {
         return $this->id_usuario == 2;
 	}
-
 
 	public function getIsAlumnoAttribute()
     {
@@ -91,9 +88,9 @@ class Usuario extends Authenticatable implements MustVerifyEmail, JWTSubject
 
 	public function scopeComboData($query)
     {
-        return $query->addSelect('id', 'nb_');
+        return $query->addSelect('id', 'nb_usuario', 'nb_nombres', 'id_tipo_usuario', 'id_origen');
     }
-	
+
 	public function status()
 	{
         return $this->belongsTo('App\Models\Status', 'id_status');

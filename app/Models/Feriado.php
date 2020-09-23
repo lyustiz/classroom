@@ -30,7 +30,7 @@ class Feriado extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->addSelect('id', 'nb_');
+        return $query->addSelect('id', 'nb_feriado');
     }
     
     public function status()

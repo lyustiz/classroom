@@ -34,7 +34,7 @@ class Matricula extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->addSelect('id', 'nb_');
+        return $query->addSelect('id', 'id_calendario', 'id_alumno', 'id_grado', 'id_grupo');
     }
   
     public function status()

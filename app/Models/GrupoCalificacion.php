@@ -19,6 +19,11 @@ class GrupoCalificacion extends Model
                             'created_at',
 	 	 	 	 	 	 	'updated_at'
                             ];
+    
+    public function scopeComboData($query)
+    {
+        return $query->addSelect('id', 'nb_grupo_calificacion');
+    }
 
     public function status()
     {

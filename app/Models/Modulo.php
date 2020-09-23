@@ -29,6 +29,11 @@ class Modulo extends Model
         return $query->where('id_status', 1);
     }
 
+    public function scopeComboData($query)
+    {
+        return $query->addSelect('id', 'nb_modulo');
+    }
+
     public function status()
     {
         return $this->BelongsTo('App\Models\Status', 'id_status');

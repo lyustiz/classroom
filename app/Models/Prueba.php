@@ -89,6 +89,11 @@ class Prueba extends Model
     
         return false;
     }
+
+    public function scopeComboData($query)
+    {
+        return $query->addSelect('id', 'nb_prueba', 'id_prueba', 'id_evaluacion');
+    }
     
     public function scopePendiente($query)
     {

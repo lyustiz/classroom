@@ -38,7 +38,7 @@ class Archivo extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->addSelect('id', 'nb_');
+        return $query->addSelect('id', 'nb_archivo');
     }
     
     public function getNbRealAttribute()

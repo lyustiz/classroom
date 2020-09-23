@@ -28,7 +28,7 @@ class GradoMateria extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->addSelect('id', 'nb_');
+        return $query->addSelect('id', 'id_grado', 'id_materia');
     }
     
     public function status()
