@@ -124,7 +124,7 @@ export default {
             selects:
             {
                 comercio: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

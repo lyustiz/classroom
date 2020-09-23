@@ -143,7 +143,7 @@ export default {
                 alumno: 	 [],
                 grado: 	 [],
 	 	 	 	materia: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

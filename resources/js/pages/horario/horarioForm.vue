@@ -125,7 +125,7 @@ export default {
             {
                 grupo: 	        [],
 	 	 	 	horaAcademica: 	[],
-	 	 	 	status: 	    [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

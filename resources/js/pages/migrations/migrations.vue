@@ -13,6 +13,7 @@
                     label="Buscar"
                     hide-details
                     clearable
+                    dense
                 ></v-text-field>
             </v-flex>
 

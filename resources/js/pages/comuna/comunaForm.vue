@@ -120,30 +120,23 @@ export default {
     data() {
         return {
             resource: 'comuna',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
+
             form:
             {
-                id: 	null,
-				co_comuna: 	null,
-				nb_comuna: 	null,
-				id_zona: 	null,
-				tx_latitud: 	null,
-				tx_longitud: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
+                id: 	          null,
+				co_comuna: 	      null,
+				nb_comuna: 	      null,
+				id_zona: 	      null,
+				tx_latitud: 	  null,
+				tx_longitud: 	  null,
+				tx_observaciones: null,
+				id_status: 	      null,
+				id_usuario: 	  null,
             },
             selects:
             {
                 zona: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

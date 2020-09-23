@@ -122,7 +122,7 @@ export default {
             {
                 alumno: 	 [],
 	 	 	 	pariente: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

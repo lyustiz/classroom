@@ -153,34 +153,27 @@ export default {
     data() {
         return {
             resource: 'contacto',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
+
             form:
             {
-                id: 	null,
-				id_tipo_contacto: 	null,
-				id_entidad: 	null,
-				tx_email: 	null,
-				tx_sitio_web: 	null,
-				tx_facebook: 	null,
-				tx_twitter: 	null,
-				tx_instagram: 	null,
-				tx_youtube: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
+                id: 	           null,
+				id_tipo_contacto:  null,
+				id_entidad: 	   null,
+				tx_email: 	       null,
+				tx_sitio_web: 	   null,
+				tx_facebook: 	   null,
+				tx_twitter: 	   null,
+				tx_instagram: 	   null,
+				tx_youtube: 	   null,
+				tx_observaciones:  null,
+				id_status: 	       null,
+				id_usuario: 	   null,
             },
             selects:
             {
                 tipo_contacto: 	 [],
 	 	 	 	entidad: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

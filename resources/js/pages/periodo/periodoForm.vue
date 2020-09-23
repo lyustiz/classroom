@@ -171,7 +171,7 @@ export default {
             },
             selects:
             {
-                status: 	 [],
+                status: 	     ['/grupo/GRAL'],
                 calendario:  []
             },
         }

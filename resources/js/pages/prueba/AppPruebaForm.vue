@@ -134,7 +134,7 @@ export default {
             selects:
             {
                 grado: 	     [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

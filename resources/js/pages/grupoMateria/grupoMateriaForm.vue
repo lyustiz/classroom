@@ -114,7 +114,7 @@ export default {
             {
                 grupo: 	 [],
 	 	 	 	materia: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

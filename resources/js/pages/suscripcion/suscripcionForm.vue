@@ -143,7 +143,7 @@ export default {
             selects:
             {
                 colegio: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

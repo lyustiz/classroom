@@ -8,9 +8,6 @@
 
         <v-row>
         
-        
-        
-        
         <v-col cols="12" md="6">
             <v-select
             :items="selects.tipoDirectiva"
@@ -47,7 +44,6 @@
             ></v-text-field>
         </v-col>
                   
-          
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
@@ -115,31 +111,23 @@ export default {
     data() {
         return {
             resource: 'directiva',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
             form:
             {
-                id: 	null,
-				id_colegio: 	1,
-				nb_directiva: 	null,
-				id_tipo_directiva: 	null,
-				tx_documento: 	null,
-				nb_cargo: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
+                id: 	           null,
+				id_colegio: 	   1,
+				nb_directiva: 	   null,
+				id_tipo_directiva: null,
+				tx_documento: 	   null,
+				nb_cargo: 	       null,
+				tx_observaciones:  null,
+				id_status: 	       null,
+				id_usuario: 	   null,
             },
             selects:
             {
-                cargo: 	         [],   
-                tipoDirectiva: 	 [],
-	 	 	 	status: 	     [],
+                cargo: 	         ['/list'],   
+                tipoDirectiva: 	 ['/list'],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
             default:
             {

@@ -125,7 +125,7 @@ export default {
             {
                 subcripcion: 	 [],
 	 	 	 	tipo_pago: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

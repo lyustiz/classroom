@@ -1,11 +1,13 @@
 <template>
 
-    <v-form ref="form" v-model="valid" lazy-validation>
+    <v-card :loading="loading" flat class="rounded-xl" height="70vh">
 
-    <v-card :loading="loading" flat class="rounded-xl">
+        <v-card-title class="pa-0" v-if="!inDialog">
+            <app-simple-toolbar title="Asignar Actividad" @closeModal="$emit('closeModal')"></app-simple-toolbar>
+        </v-card-title>
 
-        <v-card-text>
-
+        <v-card-text class="mt-4">
+        <v-form ref="form" v-model="valid" lazy-validation>
         <v-row no-gutters="">
 
         <v-col cols="12">
@@ -18,8 +20,9 @@
             label="Materia"
             :loading="loading"
             dense
-            outlined
-            prepend-inner-icon='mdi-file-cad-box'
+            filled
+            rounded
+            prepend-inner-icon='mdi-bookshelf'
             @change="getDocentes($event)"
             ></v-select>
         </v-col>
@@ -35,7 +38,8 @@
             :loading="loading"
             :disabled="docentes.length<1"
             dense
-            outlined
+            filled
+            rounded
             prepend-inner-icon="mdi-account-tie"
             ></v-select>
         </v-col>
@@ -50,7 +54,8 @@
             label="Aula"
             :loading="loading"
             dense
-            outlined
+            filled
+            rounded
             prepend-inner-icon='mdi-chair-school'
             ></v-select>
         </v-col>
@@ -77,7 +82,7 @@
         </v-input>
            
         </v-row>
-
+        </v-form>
         </v-card-text>
 
         <v-card-actions>
@@ -94,13 +99,12 @@
             ></form-buttons>
         </v-card-actions>
 
-        
         <pre v-if="$App.debug">{{ $data }}</pre>
 
     </v-card>
 
     
-    </v-form>
+    
 
 </template>
 
@@ -131,6 +135,18 @@ export default {
     {
         this.materias = this.horario.grupo.grado.materia
     },
+
+    watch:
+    {
+        action(action)
+        {
+            if( action == "upd")
+            {
+               this.getDocentes(this.item.id_materia)
+            }
+        }
+    },
+
     data() {
         return {
             resource: 'detalleHorario',

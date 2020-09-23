@@ -165,7 +165,7 @@ export default {
                 estudiante: 	 [],
 	 	 	 	grado_materia: 	 [],
 	 	 	 	grupo: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

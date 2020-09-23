@@ -13,6 +13,7 @@
                     label="Buscar"
                     hide-details
                     clearable
+                    dense
                 ></v-text-field>
             </v-col>
 
@@ -32,18 +33,6 @@
 						<td class="text-xs-left">{{ item.tx_sexo }}</td>
 						<td class="text-xs-left">{{ item.tx_documento }}</td>
 						<td class="text-xs-left">{{ item.cargo.nb_cargo }}</td>
-						<td class="text-xs-left"> 
-                            <v-tooltip bottom>
-                                <template v-slot:activator="{ on }">
-                                   <v-icon v-on="on" 
-                                        :color="personColor(item.bo_profesor)" 
-                                        v-text="personIcon(item.bo_profesor)">
-                                    </v-icon>
-                                </template>
-                                <span v-text="personLabel(item.bo_profesor)"></span>
-                            </v-tooltip>
-                            
-                             </td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -109,27 +98,12 @@ export default {
 			{ text: 'Sexo',   value: 'tx_sexo' },
 			{ text: 'Documento',   value: 'tx_documento' },
 			{ text: 'Cargo',   value: 'cargo.nb_cargo' },
-			{ text: 'Tipo',   value: 'bo_profesor' },
 			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
     }
     },
-    methods:
-    {
-        personIcon(isProfesor)
-        {
-            return (isProfesor == 1) ? 'mdi-account-tie' : 'mdi-badge-account' 
-        },
-        personColor(isProfesor)
-        {
-            return (isProfesor == 1) ? 'green' : 'cyan' 
-        },
-        personLabel(isProfesor)
-        {
-            return (isProfesor == 1) ? 'profesor' : 'empleado' 
-        }
-    }
+
 }
 </script>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TipoColegio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class TipoColegioController extends Controller
 {
@@ -81,6 +82,11 @@ class TipoColegioController extends Controller
      */
     public function destroy(TipoColegio $tipoColegio)
     {
+        if( count($tipoColegio->colegio) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeColegio' => "Posee Colegio asignado"]);
+        }
+        
         $tipoColegio = $tipoColegio->delete();
  
         return [ 'msj' => 'TipoColegio Eliminado' , compact('tipoColegio')];

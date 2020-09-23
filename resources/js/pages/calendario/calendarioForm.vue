@@ -136,14 +136,6 @@ export default {
     data() {
         return {
             resource: 'calendario',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
             form:
             {
                 id: 	          null,
@@ -157,7 +149,7 @@ export default {
             },
             selects:
             {
-                status: 	 [],
+                status: 	     ['/grupo/GRAL'],
             },
         }
     },

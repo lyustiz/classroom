@@ -175,7 +175,7 @@ export default {
                 alumno: 	 [],
 	 	 	 	tipoFalta: 	 [],
 	 	 	 	tipoSancion: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

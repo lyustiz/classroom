@@ -129,7 +129,7 @@ export default {
                 tipoRecurso: 	 [],
 	 	 	 	grado: 	 [],
 	 	 	 	grupo: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

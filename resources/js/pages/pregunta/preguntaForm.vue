@@ -143,7 +143,7 @@ export default {
             selects:
             {
                 tipoPregunta: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
             default:{
                 nu_orden: 1

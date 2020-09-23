@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cargo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class CargoController extends Controller
 {
@@ -19,6 +20,13 @@ class CargoController extends Controller
                     ->get();
         
         return $cargo;
+    }
+
+    public function list()
+    {
+        return Cargo::comboData()
+                    ->activo()
+                    ->get();
     }
 
     /**
@@ -81,6 +89,17 @@ class CargoController extends Controller
      */
     public function destroy(Cargo $cargo)
     {
+        
+        if( count($cargo->directiva) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeDirectiva' => "Posee Directiva asignado"]);
+        }
+
+        if( count($cargo->empleado) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeEmpleado' => "Posee Empleado asignado"]);
+        }
+        
         $cargo = $cargo->delete();
  
         return [ 'msj' => 'Cargo Eliminado' , compact('cargo')];

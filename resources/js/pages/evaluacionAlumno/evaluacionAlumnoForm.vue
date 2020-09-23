@@ -129,7 +129,7 @@ export default {
                 evaluacion: 	 [],
 	 	 	 	alumno: 	 [],
 	 	 	 	calificacion: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

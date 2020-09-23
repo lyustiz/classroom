@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Calendario;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class CalendarioController extends Controller
 {
@@ -21,6 +22,13 @@ class CalendarioController extends Controller
                                     ->get();
         
         return $calendario;
+    }
+
+    public function list()
+    {
+        return Calendario::comboData()
+                         ->activo()
+                         ->get();
     }
 
     /**
@@ -89,8 +97,13 @@ class CalendarioController extends Controller
      */
     public function destroy(Calendario $calendario)
     {
+        if( count($calendario->periodo) > 0 )
+        {
+            throw ValidationException::withMessages(['poseePeriodo' => "Posee Periodo asignado"]);
+        }
+
         $calendario = $calendario->delete();
- 
+        
         return [ 'msj' => 'Calendario Eliminado' , compact('calendario')];
     }
 }

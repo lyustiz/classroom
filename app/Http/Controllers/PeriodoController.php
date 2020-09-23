@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Periodo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class PeriodoController extends Controller
 {
@@ -163,10 +164,15 @@ class PeriodoController extends Controller
      */
     public function destroy(Periodo $periodo)
     {
+        if( count($periodo->planEvaluacion) > 0 )
+        {
+            throw ValidationException::withMessages(['poseePlanEvaluacion' => "Posee Plan de Evaluacion asignado"]);
+        }
+        
         $periodoActivo = $this->setPeriodoActivo($periodo, 'del');
         
         $periodo       = $periodo->delete();
         
-        return [ 'msj' => 'Periodo Eliminado' , compact('periodo')];
+        return [ 'msj' => 'Periodo Eliminado' , compact('periodo')]; 
     }
 }

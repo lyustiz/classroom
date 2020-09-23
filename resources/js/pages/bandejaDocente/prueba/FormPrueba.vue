@@ -143,7 +143,7 @@ export default {
             },
             selects:
             {
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
             default:
             {

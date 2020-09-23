@@ -34,6 +34,7 @@ export default
         {
             return this.apiUrl + this.resource;
         },
+
         fullUrlId() 
         {
             return this.fullUrl + '/' + this.item.id
@@ -78,6 +79,8 @@ export default
 
         deleteItem ()
         {
+            this.onDelete()
+            
             if(!this.deleteValidation()) return
             
             this.loading = true
@@ -107,13 +110,10 @@ export default
             return true
         },
 
-        deleteUrl()
-        {
-            return this.fullUrlId
-        },
-
         list()
         {
+            this.onList()
+            
             let url = this.listUrl()
             
             this.loading = true
@@ -133,12 +133,33 @@ export default
             });
         },
 
+        //route setup
+
         listUrl()
         {
             return this.fullUrl
         },
 
-        changeStatus(payload) //deprecated
+        deleteUrl()
+        {
+            return this.fullUrlId
+        },
+
+        //hooks
+
+        onList()
+        {
+            return true
+        },
+
+        onDelete()
+        {
+            return true
+        },
+
+        //deprecated
+        
+        changeStatus(payload) 
         {
             this.loading = true
             setInterval(() => { 

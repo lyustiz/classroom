@@ -198,7 +198,7 @@ export default {
 	 	 	 	grupo: 	 [],
 	 	 	 	tipoCondicion: 	 [],
 	 	 	 	colegioOrigen: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

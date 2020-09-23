@@ -212,18 +212,6 @@
             dense
             ></v-select>
         </v-col>
-         
-        <v-col cols="6" md="3"> 
-            <v-checkbox
-                  :rules="[rules.check]"
-                  v-model="form.bo_profesor"
-                  label="Profesor"
-                  :true-value="1"
-                  :false-value="0"
-                  :indeterminate="(form.bo_profesor== null)"
-                  dense
-            ></v-checkbox>
-        </v-col>
  
         <v-col cols="6" md="3">
             <v-text-field

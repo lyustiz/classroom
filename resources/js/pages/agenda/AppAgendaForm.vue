@@ -233,7 +233,7 @@ export default {
             {
                 tipoAgenda: 	 [],
                 tipoActividad: 	 [],
-	 	 	 	status: 	     [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
             default:
             {

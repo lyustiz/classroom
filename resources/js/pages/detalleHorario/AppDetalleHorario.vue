@@ -64,9 +64,7 @@
         </v-sheet>
 
         <v-dialog
-            v-model="modal"
-            max-width="400px" 
-            content-class="rounded-xl">
+            v-model="modal" max-width="500px"  content-class="rounded-xl" scrollable>
                 <detalle-horario-form
                     :action="action"
                     :item="item"

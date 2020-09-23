@@ -28,26 +28,30 @@ class Aula extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->where('id_status', 1);
+        return $query->addSelect('id', 'nb_aula');
     }
 
-    public function status(){
-
+    public function status()
+    {
         return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');
-
     }
                             
-    public function usuario(){
-
+    public function usuario()
+    {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
-
     }
 
-    public function estructura(){
-
+    public function estructura()
+    {
         return $this->BelongsTo('App\Models\Estructura', 'id_estructura');
-
     }
+
+    public function detalleHorario()
+    {
+        return $this->BelongsTo('App\Models\DetalleHorario', 'id');
+    }
+
+
 
 
 }

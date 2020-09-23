@@ -13,6 +13,7 @@
                     label="Buscar"
                     hide-details
                     clearable
+                    dense
                 ></v-text-field>
             </v-col>
 
@@ -87,7 +88,7 @@ export default {
     components: { 'tipo-directiva-form': tipoDirectivaForm },
     data () {
     return {
-        title:    'TipoDirectiva',
+        title:    'Tipo Directiva',
         resource: 'tipoDirectiva',
         headers: [
             { text: 'Tipo Directiva',   value: 'nb_tipo_directiva' },

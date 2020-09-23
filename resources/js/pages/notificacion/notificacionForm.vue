@@ -234,7 +234,7 @@ export default {
 	 	 	 	destinatario: 	 [],
 	 	 	 	tipoNotificacion: 	 [],
 	 	 	 	tipoPriodidad: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

@@ -12,6 +12,7 @@
             </v-col>
         </template>
 
+        <v-row>
             <v-col cols="12" md="6">
                 <v-text-field
                     v-model="search"
@@ -19,8 +20,23 @@
                     label="Buscar"
                     hide-details
                     clearable
+                    dense
                 ></v-text-field>
             </v-col>
+
+            <v-col cols="12" md="6">
+                <v-select
+                :items="filter.calendario"
+                item-text="nb_calendario"
+                item-value="nb_calendario"
+                v-model="search"
+                label="Calendario"
+                :loading="loading"
+                dense
+                clearable
+                ></v-select>
+            </v-col>
+        </v-row>
 
             <v-data-table
                 :headers="headers"
@@ -136,6 +152,10 @@ export default {
                 { text: 'Status',      value: 'id_status' },
                 { text: 'Acciones',    value: 'actions', sortable: false, filterable: false },
             ],
+            filter:
+            {
+                calendario: []
+            },
             itemsMenu: [
                 { action: 'addMateria',   icon: 'mdi-bookshelf', label: 'Asignar Materia' },
             ],
@@ -149,6 +169,16 @@ export default {
     },
     methods:
     {
+        
+        onList()
+        {
+            axios.get(`${this.apiUrl}calendario/list`)
+            .then(response => 
+            {
+                this.filter.calendario = response.data
+            })
+        },
+        
         addMateria(grupo)
         {
             this.grupo         = grupo.id 

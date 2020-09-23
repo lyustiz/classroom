@@ -1,4 +1,2 @@
-${{modelInstance}} = {{modelName}}::with([{{foreingnsTables}}])
+return {{modelName}}::with([{{foreingnsTables}}])
                     ->get();
-        
-        return ${{modelInstance}};

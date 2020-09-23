@@ -30,25 +30,27 @@ class Estructura extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->where('id_status', 1);
+        return $query->addSelect('id', 'nb_estructura');
     }
     
-    public function status(){
-
+    public function status()
+    {
         return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');
-
     }
                             
-    public function usuario(){
-
+    public function usuario()
+    {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
-
     }
 
-    public function estructuraPadre(){
-
+    public function estructuraPadre()
+    {
         return $this->BelongsTo(self::class, 'id_padre');
+    }
 
+    public function estructuraHijo()
+    {
+        return $this->hasMany(self::class, 'id_padre', 'id');
     }
 
 

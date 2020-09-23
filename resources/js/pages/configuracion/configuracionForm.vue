@@ -97,27 +97,19 @@ export default {
     data() {
         return {
             resource: 'configuracion',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
             form:
             {
-                id: 	null,
-				nb_configuracion: 	null,
-				tx_valor: 	null,
-				tx_modulo: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
+                id: 	           null,
+				nb_configuracion:  null,
+				tx_valor: 	       null,
+				tx_modulo: 	       null,
+				tx_observaciones:  null,
+				id_status: 	       null,
+				id_usuario: 	   null,
             },
             selects:
             {
-                status: 	 [],
+                status: 	     ['/grupo/GRAL'],
             },
         }
     },

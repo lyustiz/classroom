@@ -31,7 +31,7 @@ class Periodo extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->where('id_status', 1);
+        return $query->addSelect('id', 'nb_');
     }
     
     public function status()
@@ -48,6 +48,13 @@ class Periodo extends Model
     {
         return $this->BelongsTo('App\Models\Calendario', 'id_calendario');
     }
+
+    public function planEvaluacion()
+    {
+        return $this->hasMany('App\Models\PlanEvaluacion', 'id_periodo');
+    }
+
+
 
                            
     //

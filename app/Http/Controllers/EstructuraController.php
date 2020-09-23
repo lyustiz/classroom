@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Estructura;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
+
 
 class EstructuraController extends Controller
 {
@@ -15,7 +17,7 @@ class EstructuraController extends Controller
      */
     public function index()
     {
-        $estructura = Estructura::with(['estructuraPadre:id,nb_estructura'])
+        $estructura = Estructura::with(['estructuraPadre:id,nb_estructura,id_padre', 'estructuraHijo:id,nb_estructura,id_padre'])
                     ->get();
         
         return $estructura;
@@ -44,7 +46,7 @@ class EstructuraController extends Controller
 
         $estructura = estructura::create($request->all());
 
-        return [ 'msj' => 'Estructura Agregado Correctamente', compact('estructura') ];
+        return [ 'msj' => 'Estructura Agregada Correctamente', compact('estructura') ];
     }
 
     public function getPath($idPadre, $nbEstructura)
@@ -86,7 +88,7 @@ class EstructuraController extends Controller
 
         $estructura = $estructura->update($request->all());
 
-        return [ 'msj' => 'Estructura Editado' , compact('estructura')];
+        return [ 'msj' => 'Estructura Editada' , compact('estructura')];
     }
 
     /**
@@ -97,8 +99,14 @@ class EstructuraController extends Controller
      */
     public function destroy(Estructura $estructura)
     {
+        
+        if( count($estructura->estructuraHijo) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeHijo' => "Posee Estructura asociadas"]);
+        }
+        
         $estructura = $estructura->delete();
  
-        return [ 'msj' => 'Estructura Eliminado' , compact('estructura')];
+        return [ 'msj' => 'Estructura Eliminada' , compact('estructura')];
     }
 }

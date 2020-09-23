@@ -131,13 +131,15 @@ class ArchivoController extends Controller
 
         if($this->deleteFile( $storage, $path ))
         {
-            $archivo = $archivo->delete();
-            return [ 'msj' => 'Archivo Eliminado' , compact('archivo')];
+            
 
         }else
         {
-            return response('Error al Eliminar el Archivo', 403) ;
+            //return response('Error al Eliminar el Archivo', 403) ; //TODO: if file no found
         }
+
+        $archivo = $archivo->delete();
+        return [ 'msj' => 'Archivo Eliminado' , compact('archivo')];
 
     }
 

@@ -152,7 +152,7 @@ export default {
             selects:
             {
                 tipoFeriado: 	 [],
-	 	 	 	status: 	     [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

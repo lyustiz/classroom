@@ -125,7 +125,7 @@ export default {
             {
                 colegio: 	 [],
 	 	 	 	padre: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

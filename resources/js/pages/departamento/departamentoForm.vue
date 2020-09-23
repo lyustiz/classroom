@@ -120,30 +120,22 @@ export default {
     data() {
         return {
             resource: 'departamento',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
             form:
             {
-                id: 	null,
-				co_departamento: 	null,
-				nb_departamento: 	null,
-				id_pais: 	null,
-				tx_latitud: 	null,
-				tx_longitud: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
+                id: 	          null,
+				co_departamento:  null,
+				nb_departamento:  null,
+				id_pais: 	      null,
+				tx_latitud: 	  null,
+				tx_longitud: 	  null,
+				tx_observaciones: null,
+				id_status: 	      null,
+				id_usuario: 	  null,
             },
             selects:
             {
                 pais: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

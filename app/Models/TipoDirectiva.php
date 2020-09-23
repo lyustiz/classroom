@@ -27,7 +27,7 @@ class TipoDirectiva extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->where('id_status', 1);
+        return $query->addSelect('id', 'nb_tipo_directiva');
     }
     
     public function status()
@@ -38,6 +38,11 @@ class TipoDirectiva extends Model
     public function usuario()
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
+    }
+
+    public function directiva()
+    {
+        return $this->HasMany('App\Models\Directiva', 'id_tipo_directiva');
     }
 
                            

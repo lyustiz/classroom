@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TipoDirectiva;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class TipoDirectivaController extends Controller
 {
@@ -19,6 +20,13 @@ class TipoDirectivaController extends Controller
                     ->get();
         
         return $tipoDirectiva;
+    }
+
+    public function list()
+    {
+        return TipoDirectiva::comboData()
+                            ->activo()
+                            ->get();
     }
 
     /**
@@ -81,8 +89,13 @@ class TipoDirectivaController extends Controller
      */
     public function destroy(TipoDirectiva $tipoDirectiva)
     {
+        if( count($tipoDirectiva->directiva) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeDirectiva' => "Posee Directiva asignadas"]);
+        }
+        
         $tipoDirectiva = $tipoDirectiva->delete();
  
-        return [ 'msj' => 'TipoDirectiva Eliminado' , compact('tipoDirectiva')];
+        return [ 'msj' => 'TipoDirectiva Eliminado' , compact('tipoDirectiva')]; 
     }
 }

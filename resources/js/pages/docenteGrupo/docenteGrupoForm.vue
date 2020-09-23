@@ -114,7 +114,7 @@ export default {
             {
                 docente: 	 [],
 	 	 	 	grupo: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

@@ -160,7 +160,7 @@ export default {
             {
                 prueba: 	 [],
 	 	 	 	calificacion: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

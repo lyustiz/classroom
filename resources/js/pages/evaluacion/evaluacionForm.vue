@@ -156,7 +156,7 @@ export default {
             selects:
             {
                 detalleEvaluacion: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

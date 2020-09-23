@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Aula;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class AulaController extends Controller
 {
@@ -39,7 +40,7 @@ class AulaController extends Controller
 
         $aula = aula::create($request->all());
 
-        return [ 'msj' => 'Aula Agregado Correctamente', compact('aula') ];
+        return [ 'msj' => 'Aula Agregada Correctamente', compact('aula') ];
     }
 
     /**
@@ -72,7 +73,7 @@ class AulaController extends Controller
 
         $aula = $aula->update($request->all());
 
-        return [ 'msj' => 'Aula Editado' , compact('aula')];
+        return [ 'msj' => 'Aula Editada' , compact('aula')];
     }
 
     /**
@@ -83,8 +84,13 @@ class AulaController extends Controller
      */
     public function destroy(Aula $aula)
     {
+        if( count($aula->detalleHorario) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeHorario' => "Posee Horario asignado"]);
+        }
+        
         $aula = $aula->delete();
  
-        return [ 'msj' => 'Aula Eliminado' , compact('aula')];
+        return [ 'msj' => 'Aula Eliminada' , compact('aula')];
     }
 }

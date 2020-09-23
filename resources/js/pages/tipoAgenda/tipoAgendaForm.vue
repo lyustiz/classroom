@@ -115,7 +115,7 @@ export default {
             },
             selects:
             {
-                status: 	 [],
+                status: 	     ['/grupo/GRAL'],
             },
             defaultForm: {
                 tx_color: 'cyan' 

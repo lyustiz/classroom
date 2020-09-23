@@ -35,6 +35,7 @@ class GrupoController extends Controller
         return Grupo::select('id', 'nb_grupo')
                     ->orderBy('id_calendario', 'asc')
                     ->orderBy('id_grado', 'asc')
+                    ->has('calendarioActivo')
                     ->get();
     }
 
@@ -49,6 +50,7 @@ class GrupoController extends Controller
                     ->whereHas('planEvaluacion', function (Builder $query) use($idDocente) {
                         $query->where('id_docente', $idDocente);
                     })
+                    ->has('calendarioActivo')
                     ->get();
     }
 
@@ -57,6 +59,7 @@ class GrupoController extends Controller
         return Grupo::select('id', 'nb_grupo')
                     ->where('id_grado', $idGrado)
                     ->where('id_status', 1)
+                    ->has('calendarioActivo')
                     ->get();
     }
 

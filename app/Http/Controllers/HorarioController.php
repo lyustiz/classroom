@@ -7,6 +7,7 @@ use App\Models\Grupo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Validation\ValidationException;
 
 class HorarioController extends Controller
 {
@@ -168,6 +169,11 @@ class HorarioController extends Controller
      */
     public function destroy(Horario $horario)
     {
+        if( count($horario->detalleHorario) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeActividades' => "Posee Actividades asignadas"]);
+        }
+        
         $horario = $horario->delete();
  
         return [ 'msj' => 'Horario Eliminado' , compact('horario')];

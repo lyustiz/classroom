@@ -120,30 +120,22 @@ export default {
     data() {
         return {
             resource: 'barrio',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
             form:
             {
-                id: 	null,
-				co_barrio: 	null,
-				nb_barrio: 	null,
-				id_comuna: 	null,
-				tx_latitud: 	null,
-				tx_longitud: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
+                id: 	           null,
+				co_barrio: 	       null,
+				nb_barrio: 	       null,
+				id_comuna: 	       null,
+				tx_latitud: 	   null,
+				tx_longitud: 	   null,
+				tx_observaciones:  null,
+				id_status: 	       null,
+				id_usuario: 	   null,
             },
             selects:
             {
-                comuna: 	 [],
-	 	 	 	status: 	 [],
+                comuna:  [],
+	 	 	 	status:   ['/grupo/GRAL'],
             },
         }
     },

@@ -152,7 +152,7 @@ export default {
             {
                 prueba: 	 [],
 	 	 	 	respuesta: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

@@ -133,7 +133,7 @@ export default {
             {
                 tipo_foto: 	 [],
 	 	 	 	entidad: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

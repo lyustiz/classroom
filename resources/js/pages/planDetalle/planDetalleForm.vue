@@ -160,7 +160,7 @@ export default {
             {
                 planEvaluacion: 	 [],
 	 	 	 	tipoEvaluacion: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

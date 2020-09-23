@@ -105,7 +105,7 @@ export default {
             selects:
             {
                 perfil: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
 	 	 	 	usuario: 	 [],
             },
             default:

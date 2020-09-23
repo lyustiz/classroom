@@ -121,7 +121,7 @@ export default {
             selects:
             {
                 nivel: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status:  ['/grupo/GRAL'],
             },
         }
     },

@@ -27,7 +27,7 @@ class Cargo extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->where('id_status', 1);
+        return $query->addSelect('id', 'nb_cargo');
     }
 
     public function status()
@@ -35,10 +35,18 @@ class Cargo extends Model
         return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');
     }
                             
-    public function usuario(){
-
+    public function usuario()
+    {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
-
     }
 
+    public function directiva()
+    {
+        return $this->HasMany('App\Models\Directiva', 'id_cargo');
+    }
+
+    public function empleado()
+    {
+        return $this->HasMany('App\Models\Empleado', 'id_cargo');
+    }
 }

@@ -38,6 +38,14 @@
                 <span>Ayuda</span>
             </v-tooltip>
 
+            <!-- Mail -->
+            <v-tooltip bottom>
+                <template v-slot:activator="{ on }">
+                    <v-icon v-on="on">mail</v-icon>
+                </template>
+                <span>Mensaje</span>
+            </v-tooltip>
+
             <!-- Notificaciones -->
             <v-tooltip bottom>
                 <template v-slot:activator="{ on }">

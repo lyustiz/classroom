@@ -30,7 +30,7 @@ class PlanEvaluacion extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->where('id_status', 1);
+        return $query->addSelect('id', 'nb_');
     }
     
     public function status()

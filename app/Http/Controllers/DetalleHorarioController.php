@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Validation\ValidationException;
 
 class DetalleHorarioController extends Controller
 {
@@ -95,10 +96,20 @@ class DetalleHorarioController extends Controller
 
         $registros = $nu_carga_horaria;
 
-        $coDetalleHorario = Str::random(64); 
+        $coDetalleHorario = 'H' . $request->id_horario . 
+                            'M' . $request->id_materia .  
+                            'D' . $request->id_docente .
+                            'S' . $request->id_dia_semana . 
+                            'I' . $request->hh_inicio .
+                            'F' . $request->hh_fin; 
+
+        
 
         foreach ($cargaHoraria as $key => $row) {
             
+            
+            $this->comprobarDisponibilidad($request, $row->hh_inicio, $row->hh_fin);
+
             if( $row->bo_receso == 1 )
             {
                 $nu_carga_horaria = $registros;
@@ -132,6 +143,27 @@ class DetalleHorarioController extends Controller
         }
 
         return [ 'msj' => 'Horario Actualizado', compact('detalleHorario') ];
+    }
+
+    public function comprobarDisponibilidad($detalleHorario, $hh_inicio, $hh_fin)
+    {
+        $horarios =  DetalleHorario::where('id_dia_semana', $detalleHorario->id_dia_semana)
+                                   ->whereTime('hh_inicio', '>= ', $hh_inicio)
+                                   ->whereTime('hh_fin', '<= ', $hh_fin)
+                                   ->get();
+       
+        foreach ($horarios as $key => $horario) 
+        {
+            if( $detalleHorario->id_docente == $horario->id_docente )
+            {
+                throw ValidationException::withMessages(['docenteAsignado' => "El docente ya tiene asignacion para esa Hora/Dia"]);
+            }
+
+            if( $detalleHorario->id_aula == $horario->id_aula )
+            {
+                throw ValidationException::withMessages(['aulaAsignada' => "El aula ya tiene asignacion para esa Hora/Dia"]);
+            }
+        }
     }
 
     /**
@@ -173,9 +205,9 @@ class DetalleHorarioController extends Controller
 
         $detalleHorario =  DetalleHorario::where('co_detalle_horario', $detalleHorario->co_detalle_horario)
                         ->update([
-                        'id_materia'    => $request->id_materia,
-                        'id_docente'    => $request->id_docente,
-                        'id_aula'       => $request->id_aula,
+                            'id_materia'    => $request->id_materia,
+                            'id_docente'    => $request->id_docente,
+                            'id_aula'       => $request->id_aula,
                         ]);
         
 

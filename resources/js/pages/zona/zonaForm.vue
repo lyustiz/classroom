@@ -143,7 +143,7 @@ export default {
             selects:
             {
                 ciudad: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

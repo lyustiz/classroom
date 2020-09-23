@@ -129,7 +129,7 @@ export default {
             selects:
             {
                 pregunta: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

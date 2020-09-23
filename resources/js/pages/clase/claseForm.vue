@@ -143,21 +143,21 @@ export default {
             },
             form:
             {
-                id: 	null,
-				id_grado_materia: 	null,
-				id_grupo: 	null,
-				id_profesor: 	null,
-				fe_clase: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
+                id: 	           null,
+				id_grado_materia:  null,
+				id_grupo: 	       null,
+				id_profesor: 	   null,
+				fe_clase: 	       null,
+				tx_observaciones:  null,
+				id_status: 	       null,
+				id_usuario: 	   null,
             },
             selects:
             {
-                grado_materia: 	 [],
-	 	 	 	grupo: 	 [],
-	 	 	 	profesor: 	 [],
-	 	 	 	status: 	 [],
+                grado_materia: [],
+	 	 	 	grupo: 	       [],
+	 	 	 	profesor: 	   [],
+	 	 	 	status: 	   ['/grupo/GRAL'],
             },
         }
     },

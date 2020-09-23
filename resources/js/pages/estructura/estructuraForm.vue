@@ -110,7 +110,7 @@ export default {
             selects:
             {
 	 	 	 	estructura: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
             default:
             {

@@ -232,45 +232,39 @@ export default {
     mixins: [Appform],
     data() {
         return {
+
             resource: 'colegio',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
+
             form:
             {
-                id: 	null,
-				nb_colegio: 	null,
-				id_tipo_colegio: 	null,
-				tx_codigo: 	null,
-				tx_descripcion: 	null,
-				id_departamento: 	null,
-				id_ciudad: 	null,
-				id_zona: 	null,
-				id_comuna: 	null,
-				id_barrio: 	null,
-				tx_direccion: 	null,
-				tx_telefono: 	null,
-				nu_estudiantes: 	null,
-				nu_latitud: 	null,
-				nu_longitud: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
+                id: 	          null,
+				nb_colegio: 	  null,
+				id_tipo_colegio:  null,
+				tx_codigo: 	      null,
+				tx_descripcion:   null,
+				id_departamento:  null,
+				id_ciudad: 	      null,
+				id_zona: 	      null,
+				id_comuna: 	      null,
+				id_barrio: 	      null,
+				tx_direccion: 	  null,
+				tx_telefono: 	  null,
+				nu_estudiantes:   null,
+				nu_latitud: 	  null,
+				nu_longitud: 	  null,
+				tx_observaciones: null,
+				id_status: 	      null,
+				id_usuario: 	  null,
             },
             selects:
             {
                 tipoColegio: 	 [],
 	 	 	 	departamento: 	 [],
 	 	 	 	ciudad: 	 [],
-	 	 	 	zona: 	 [],
+	 	 	 	zona: 	     [],
 	 	 	 	comuna: 	 [],
 	 	 	 	barrio: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	 ['/grupo/GRAL'],
             },
         }
     },

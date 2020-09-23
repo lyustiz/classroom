@@ -172,7 +172,6 @@ export default {
             {
                 tipoColegio: 	 [],
                 calendario:      [],
-	 	 	 	status: 	     [],
             },
             default: {
                 id_status:      1,

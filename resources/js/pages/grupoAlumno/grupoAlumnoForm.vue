@@ -113,7 +113,7 @@ export default {
             {
                 grupo: 	     [],
 	 	 	 	alumno: 	 ['/sinGrupo'],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

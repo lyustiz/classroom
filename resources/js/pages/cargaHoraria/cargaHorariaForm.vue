@@ -213,7 +213,7 @@ export default {
             selects:
             {
                 turno: 	       [],
-                status: 	   [],
+                status: 	     ['/grupo/GRAL'],
             },
             defaultForm:
             {

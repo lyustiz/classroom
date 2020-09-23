@@ -48,13 +48,12 @@ Route::apiResource('/home',                 'HomeController');
 
 // -- DATOS MAESTROS -- //
 Route::put('/status/resource',                  'StatusController@updateResource');
+Route::get('/status/grupo/{grupo}',             'StatusController@statusGrupo');
 Route::apiResource('/status',                   'StatusController');
 Route::apiResource('/tipoColegio',              'TipoColegioController');
-Route::apiResource('/calendario',               'CalendarioController');
 Route::apiResource('/turno',                    'TurnoController');
 Route::apiResource('/jornada',                  'JornadaController');
 Route::apiResource('/tipoContacto',             'TipoContactoController');
-Route::apiResource('/tipoDirectiva',            'TipoDirectivaController');
 Route::apiResource('/tipoPago',                 'TipoPagoController');
 Route::apiResource('/telefono',                 'TelefonoController');
 Route::apiResource('/tipoTelefono',             'TipoTelefonoController');
@@ -73,7 +72,10 @@ Route::apiResource('/suscripcion',              'SuscripcionController');
 Route::apiResource('/pago',                     'PagoController');
 Route::apiResource('/estructura',               'EstructuraController');
 Route::apiResource('/aula',                     'AulaController');
+Route::get('/cargo/list',                       'CargoController@list');
 Route::apiResource('/cargo',                    'CargoController');
+Route::get('/tipoDirectiva/list',               'TipoDirectivaController@list');
+Route::apiResource('/tipoDirectiva',            'TipoDirectivaController');
 Route::apiResource('/directiva',                'DirectivaController');
 Route::apiResource('/empleado',                 'EmpleadoController');
 
@@ -139,6 +141,8 @@ Route::get('/docenteMateria/docente/{docente}', 'DocenteMateriaController@docent
 Route::apiResource('/docenteMateria',           'DocenteMateriaController', ['parameters' => ['docenteMateria' => 'docenteMateria']]);
 
 // -- GESTION ACADEMICA -- //
+Route::get('/calendario/list',                  'CalendarioController@list');
+Route::apiResource('/calendario',               'CalendarioController');
 Route::GET('/periodo/calendario/{calendario}',  'PeriodoController@periodoCalendario');
 Route::get('/periodo/list',                     'PeriodoController@list');
 Route::put('/periodo/{periodo}/status',         'PeriodoController@updateStatus');

@@ -121,7 +121,7 @@ export default {
             selects:
             {
                 tipo_documento: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

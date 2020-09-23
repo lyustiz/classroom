@@ -31,7 +31,7 @@ class Calendario extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->where('id_status', 1);
+        return $query->addSelect('id', 'nb_calendario', 'aa_escolar');
     }
                             
     public function status()

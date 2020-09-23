@@ -143,7 +143,7 @@ export default {
             selects:
             {
                 tipoArchivo: [],
-                status: 	 [],
+                status: 	     ['/grupo/GRAL'],
             },
             colors: [
                     'purple',

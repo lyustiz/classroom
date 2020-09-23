@@ -101,11 +101,10 @@ class ColegioController extends Controller
         $colegio = tap($colegio)->update($request->all());
 
         \Cache::put('colegio', $colegio );
-        \Cache::put('calendario', $calendario);
+        \Cache::put('calendario', $colegio->calendario);
 
         return [ 'msj' => 'Colegio Actualizado' , compact('colegio')];
     }
-
 
     public function location(Request $request, Colegio $colegio)
     {

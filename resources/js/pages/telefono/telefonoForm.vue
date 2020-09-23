@@ -133,7 +133,7 @@ export default {
             {
                 tipo_telefono: 	 [],
 	 	 	 	entidad: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

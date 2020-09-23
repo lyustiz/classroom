@@ -120,14 +120,6 @@ export default {
     data() {
         return {
             resource: 'ciudad',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
             form:
             {
                 id: 	null,
@@ -143,7 +135,7 @@ export default {
             selects:
             {
                 departamento: 	 [],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

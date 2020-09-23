@@ -127,7 +127,7 @@ export default {
             selects:
             {
                 areaEstudio: 	 [],
-	 	 	 	status: 	     [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

@@ -114,7 +114,7 @@ export default {
             {
                 grado: 	      [],
 	 	 	 	alumno: 	 ['/sinGrado'],
-	 	 	 	status: 	 [],
+	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },
