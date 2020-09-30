@@ -6,3 +6,10 @@
       - ajustes en la barra de herramientas del calendario, ahora se muestran un tooltip con las acciones de los botones   
 - format maxleng string
 -add ponter a list icon
+
+
+28/09
+- agregado ver calificaciones bndeja docente /lista alumno
+- agregar lista mensajes
+- simplificar notificaciones 
+

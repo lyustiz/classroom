@@ -173,6 +173,33 @@ class PlanEvaluacionController extends Controller
         return $calificaciones->firstWhere('nu_calificacion', $nuCalificacion);
     }
 
+    public function PlanEvaluacionCalificacionAlumnoDocente($idAlumno, $idDocente)
+    {
+        $planEvaluacion =   PlanEvaluacion::with([
+                                        'materia',
+                                        'evaluacion',
+                                        'evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion',
+                                        'evaluacion.evaluacionAlumno'=> function($query) use ( $idAlumno ){
+                                            $query->where('id_alumno', $idAlumno);
+                                        },
+                                        'evaluacion.evaluacionAlumno.calificacion',
+                                    ])
+                                    ->whereHas('grupo.alumno', function ($query) use ($idAlumno) {
+                                        $query->where('alumno.id', $idAlumno);
+                                    })
+                                    ->whereHas('materia.alumno', function ($query) use ($idAlumno) {
+                                        $query->where('alumno.id', $idAlumno);
+                                    })
+                                    ->where('id_docente', $idDocente)
+                                    ->has('periodoActivo')
+                                    ->activo()
+                                    ->get();
+
+        $calificaciones = $this->calcularCalificaciones($planEvaluacion);
+
+        return [ 'calificaciones' => $calificaciones, 'planEvaluacion' => $planEvaluacion ];
+    }
+
     public function PlanEvaluacionCalificacionGrupo($idAlumno)
     {
       

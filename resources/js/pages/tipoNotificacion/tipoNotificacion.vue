@@ -87,7 +87,7 @@ export default {
     components: { 'tipo-notificacion-form': tipoNotificacionForm },
     data () {
     return {
-        title:    'TipoNotificacion',
+        title:    'Tipo Notificacion',
         resource: 'tipoNotificacion',
         headers: [
             { text: 'Tipo Notificacion',   value: 'nb_tipo_notificacion' },

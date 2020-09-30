@@ -203,6 +203,7 @@ Route::get('/planEvaluacion/grupo/{grupo}/periodo/{periodo}',     'PlanEvaluacio
 Route::get('/planEvaluacion/docente/{docente}/periodo/{periodo}', 'PlanEvaluacionController@planEvaluacionDocentePeriodo');
 Route::get('/planEvaluacion/alumno/{alumno}',  'PlanEvaluacionController@planEvaluacionAlumno');
 Route::get('/planEvaluacion/calificacion/alumno/{alumno}','PlanEvaluacionController@PlanEvaluacionCalificacionAlumno');
+Route::get('/planEvaluacion/calificacion/alumno/{alumno}/docente/{docente}','PlanEvaluacionController@PlanEvaluacionCalificacionAlumnoDocente');
 Route::put('/planEvaluacion/status/{planEvaluacion}',     'PlanEvaluacionController@updateStatus');
 Route::apiResource('/planEvaluacion',           'PlanEvaluacionController');
 Route::apiResource('/tipoEvaluacion',           'TipoEvaluacionController');
@@ -260,20 +261,34 @@ Route::get('/menu/combo',                       'MenuController@combo');
 Route::apiResource('/menu',                     'MenuController');
 
 //Notificaciones
-Route::get('/notificacion/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/read',   'NotificacionController@read');
-Route::get('/notificacion/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/unread', 'NotificacionController@unread');
+Route::get('/notificacion/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/read',        'NotificacionController@read');
+Route::get('/notificacion/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/unread',      'NotificacionController@unread');
 Route::put('/notificacion/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/markreadall', 'NotificacionController@markReadAll');
 Route::put('/notificacion/{notificacion}/unread', 'NotificacionController@markUnread');
 Route::put('/notificacion/{notificacion}/read',   'NotificacionController@markRead');
 
-Route::get('/notificacion/combos',              'NotificacionController@combos');
-Route::get('/notificacion/destinatario/{tipoDestinatario}',  'NotificacionController@destinatario');
-Route::get('/notificacion/destinatario/{tipoDestinatario}/{idDestinatario}',  'NotificacionController@destinatarioById');
+Route::get('/notificacion/combos',                                           'NotificacionController@combos');
+Route::get('/notificacion/destinatario/{tipoDestinatario}',                  'NotificacionController@destinatario');
+Route::get('/notificacion/destinatario/{tipoDestinatario}/{idDestinatario}', 'NotificacionController@destinatarioById');
 
 Route::apiResource('/notificacion',             'NotificacionController');
 Route::apiResource('/tipoNotificacion',         'TipoNotificacionController');
 Route::apiResource('/tipoPrioridad',            'TipoPrioridadController');
 Route::apiResource('/tipoDestinatario',         'TipoDestinatarioController');
+
+//MENSAJE
+Route::get('/mensaje/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/read',   'MensajeController@read');
+Route::get('/mensaje/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/unread', 'MensajeController@unread');
+Route::put('/mensaje/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/markreadall', 'MensajeController@markReadAll');
+Route::put('/mensaje/{mensaje}/unread', 'MensajeController@markUnread');
+Route::put('/mensaje/{mensaje}/read',   'MensajeController@markRead');
+
+Route::get('/mensaje/combos',                                           'MensajeController@combos');
+Route::get('/mensaje/destinatario/{tipoDestinatario}',                  'MensajeController@destinatario');
+Route::get('/mensaje/destinatario/{tipoDestinatario}/{idDestinatario}', 'MensajeController@destinatarioById');
+Route::apiResource('/mensaje',                                          'MensajeController');
+Route::apiResource('/tipoMensaje',              'TipoMensajeController');
+
 
 // --  CONFIGURACION  -- //
 Route::apiResource('/configuracion',            'ConfiguracionController');
@@ -333,6 +348,7 @@ Route::post('meet/auth/{usuario}',              'MeetController@auth');
 Route::get('/asistente/perfil/{perfil}',        'AsistenteController@asistentePerfil');
 Route::apiResource('/asistente',                'AsistenteController');
 Route::apiResource('/asistenteDetalle',         'AsistenteDetalleController');
+
 //newRoutes
 
 Route::fallback(function () {

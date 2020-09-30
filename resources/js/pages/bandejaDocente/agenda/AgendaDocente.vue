@@ -31,6 +31,7 @@
         @change="updateRange"
         @click:event="showEvent"
         @click:date="setType('day')"
+        @click:more="setType('day')"
     > 
         <template v-slot:event="{ event }">
             <v-icon size="18" class="white--text mx-2" v-text="event.icon"></v-icon>{{event.name}}
@@ -107,7 +108,7 @@ export default {
                 weekend:    null,
                 start:      null,
                 end:        null,
-                type:       'month',
+                type:       'week',
                 endDate:    '2020-07-31', //TODO:enddate calendario
                 event:      {},
                 date:       {},

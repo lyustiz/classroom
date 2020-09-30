@@ -24,8 +24,8 @@
                 <span v-text="section.label"></span>
             </v-tooltip>
 
-            
-            <meet-room :usuario="2"></meet-room>
+                <biblioteca-alumno></biblioteca-alumno>
+               <meet-room :usuario="2"></meet-room>
 
         </v-card-text>
     
@@ -46,6 +46,7 @@ import EvaluacionAlumno    from './evaluacion/AppEvaluacionAlumno'
 import PruebaAlumno        from './prueba/PruebaAlumno'
 import CalificacionAlumno  from './calificacion/AppCalificacion'
 import ClaseAlumno         from './clase/AppClase'
+import BibliotecaAlumno    from './biblioteca/AppBiblioteca'
 export default {
 
     components: {
@@ -55,6 +56,7 @@ export default {
         'evaluacion-alumno':   EvaluacionAlumno,
         'prueba-alumno':       PruebaAlumno,
         'calificacion-alumno': CalificacionAlumno,
+        'biblioteca-alumno':   BibliotecaAlumno,
         'clase-alumno':        ClaseAlumno,
     },
 
@@ -80,7 +82,8 @@ export default {
                 { label: 'Evaluaciones', icon: 'mdi-notebook', component: 'evaluacion-alumno', color: 'indigo', sectionWidth: '95vw' },   
                 { label: 'Pruebas', icon: 'mdi-order-bool-descending-variant', component: 'prueba-alumno', color: 'red', sectionWidth: '85vw' },          
                 { label: 'Calificaciones', icon: 'mdi-clipboard-list', component: 'calificacion-alumno', color: 'amber', sectionWidth: '700' },
-                /*  { label: 'Tareas', icon: 'mdi-notebook', component: 'tarea-alumno', color: 'blue', sectionWidth: '700' }, */
+                /* { label: 'Biblioteca', icon: 'mdi-library', component: 'biblioteca-alumno', color: 'red', sectionWidth: '98vw' },
+                  { label: 'Tareas', icon: 'mdi-notebook', component: 'tarea-alumno', color: 'blue', sectionWidth: '700' }, */
                 /*  { label: 'Aula Virtual (En Construccion)', icon: 'mdi-google-classroom', component: 'clase-alumno', color: 'green', sectionWidth: '700' }, */
             ]
         }

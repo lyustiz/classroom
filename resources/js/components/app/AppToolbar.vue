@@ -38,10 +38,10 @@
                 <span>Ayuda</span>
             </v-tooltip>
 
-            <!-- Mail -->
+            <!-- Mensajes -->
             <v-tooltip bottom>
                 <template v-slot:activator="{ on }">
-                    <v-icon v-on="on">mail</v-icon>
+                    <app-mensajes v-on="on"></app-mensajes>
                 </template>
                 <span>Mensaje</span>
             </v-tooltip>
@@ -64,8 +64,10 @@
 
 </template>
 <script>
+
     import { mapMutations } from 'vuex';
     export default {
+
         computed: {
             auth()
             {

@@ -146,8 +146,11 @@ import RespuestaAlumno  from '@pages/respuestaAlumno/respuestaAlumno.vue';
 //notificaciones
 import TipoDestinatario from '@pages/tipoDestinatario/tipoDestinatario.vue';
 import TipoPrioridad    from '@pages/tipoPrioridad/tipoPrioridad.vue';
-import TipoNotificacion from '@pages/TipoNotificacion/TipoNotificacion.vue';
+import TipoNotificacion from '@pages/tipoNotificacion/TipoNotificacion.vue';
 import Notificacion     from '@pages/notificacion/notificacion.vue';
+
+import TipoMensaje      from '@pages/tipoMensaje/TipoMensaje.vue';
+import Mensaje          from '@pages/mensaje/Mensaje.vue';
 
 import MeetDocente      from '@components/meet/docente/meetDocente.vue';
 import MeetAlumno       from '@components/meet/alumno/meetAlumno.vue';
@@ -943,6 +946,28 @@ export default new Router({
                 profile: 'secretaria',
                 visible: true,
                 component: Notificacion
+            },
+
+            /**  MENSAJE  */
+
+            { 
+                path: 'tipo-mensaje',
+                name: 'tipo-mensaje',
+                label: 'Tipo Mensaje',
+                icon: 'mdi-email-multiple',
+                profile: 'secretaria',
+                visible: true,
+                component: TipoMensaje
+            },
+
+            { 
+                path: 'mensaje',
+                name: 'mensaje',
+                label: 'Mensajes',
+                icon: 'mdi-email',
+                profile: 'secretaria',
+                visible: true,
+                component: Mensaje
             },
 
             { 

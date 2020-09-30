@@ -41,6 +41,7 @@ import AppHelp        from '@components/app/AppHelp'
 import AppUser        from '@components/app/AppUser'
 
 import AppNotifications   from '@components/app/AppNotifications'
+import AppMensajes        from '@components/app/AppMensajes'
 import AppSimpleToolbar   from '@components/app/AppSimpleToolbar'
 
 Vue.component('list-icon',        ListIcon);
@@ -68,9 +69,10 @@ Vue.component('app-confirm',      AppConfirm);
 Vue.component('app-help',         AppHelp);
 Vue.component('app-user',         AppUser);
 
-Vue.component('app-notifications',    AppNotifications);
-Vue.component('app-simple-toolbar',   AppSimpleToolbar);
-Vue.component('app-button',           AppButton);
+Vue.component('app-notifications',  AppNotifications);
+Vue.component('app-mensajes',       AppMensajes);
+Vue.component('app-simple-toolbar', AppSimpleToolbar);
+Vue.component('app-button',         AppButton);
 
 //Tools Components
 import AppFoto          from '@pages/foto/appFoto'

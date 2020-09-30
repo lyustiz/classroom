@@ -116,7 +116,7 @@
                   
         <v-col cols="12" md="12">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[rules.max(80)]"
                 v-model="form.tx_lugar"
                 label="Lugar"
                 placeholder="Indique Lugar"

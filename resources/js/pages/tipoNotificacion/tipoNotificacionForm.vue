@@ -48,6 +48,8 @@
                   
         <v-col cols="12" md="6">
             <v-text-field
+                :prepend-icon="(form.tx_icono) ? form.tx_icono: null"
+                :color="(form.tx_color) ? form.tx_color: null"
                 :rules="[rules.required]"
                 v-model="form.tx_icono"
                 label="Icono"

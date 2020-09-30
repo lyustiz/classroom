@@ -34,7 +34,6 @@
 						<td class="text-xs-left">{{ item.id_pais }}</td>
 						<td class="text-xs-left">{{ item.tx_latitud }}</td>
 						<td class="text-xs-left">{{ item.tx_longitud }}</td>
-						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -95,12 +94,11 @@ export default {
         title:    'Departamento',
         resource: 'departamento',
         headers: [
-            { text: 'Departamento',   value: 'co_departamento' },
+            { text: 'Codigo',   value: 'co_departamento' },
 			{ text: 'Departamento',   value: 'nb_departamento' },
 			{ text: 'Pais',   value: 'id_pais' },
 			{ text: 'Latitud',   value: 'tx_latitud' },
 			{ text: 'Longitud',   value: 'tx_longitud' },
-			{ text: 'Observaciones',   value: 'tx_observaciones', sortable: false, filterable: false },
 			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],

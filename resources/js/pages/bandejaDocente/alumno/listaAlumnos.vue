@@ -48,15 +48,19 @@
 
         </v-card-text>   
 
-        <v-dialog v-model="dialogNotificacion" max-width="600" content-class="rounded-xl">
-            <app-notificacion 
-                :tipo-destinatario="notificacion.tipoDestinatario"
-                :tipo-notificacion="notificacion.tipoNotificacion"
-                :tipo-prioridad="notificacion.tipoPrioridad"
-                :id-destinatario="notificacion.idDestinatario"
-                v-if="dialogNotificacion" 
-                @closeModal="closeDialog('dialogNotificacion')">
-            </app-notificacion>
+        <v-dialog v-model="dialogMensaje" max-width="600" content-class="rounded-xl">
+            <app-mensaje 
+                :tipo-destinatario="mensaje.tipoDestinatario"
+                :tipo-mensaje="mensaje.tipoMensaje"
+                :tipo-prioridad="mensaje.tipoPrioridad"
+                :id-destinatario="mensaje.idDestinatario"
+                v-if="dialogMensaje" 
+                @closeModal="closeDialog('dialogMensaje')">
+            </app-mensaje>
+        </v-dialog>
+
+        <v-dialog v-model="dialogCalificaciones" max-width="600" content-class="rounded-xl">
+            <calificacion-alumno :alumno="alumno" @closeModal="closeDialog('dialogCalificaciones')"></calificacion-alumno>
         </v-dialog>
 
     </v-card>
@@ -65,7 +69,8 @@
 
 <script>
 import AppData from '@mixins/AppData';
-import AppNotificacion from '@pages/notificacion/AppNotificacion';
+import AppMensaje from '@pages/mensaje/AppMensaje';
+import CalificacionAlumno from './calificacion/CalificacionAlumno';
 
 export default {
 
@@ -73,7 +78,8 @@ export default {
 
     components:
     {
-        'app-notificacion' : AppNotificacion
+        'app-mensaje' :         AppMensaje,
+        'calificacion-alumno' : CalificacionAlumno
     },
 
     created()
@@ -94,11 +100,13 @@ export default {
             section: null,
             grupos:   [],
             itemsMenu: [
-                { label: 'Evaluaciones Alumno', icon: 'mdi-notebook', action: 'addEvaluacion' },
-                { label: 'Notificar Alumno', icon: 'mdi-bell-alert', action: 'addNotificacion' },
+                { label: 'Calificaciones', icon: 'mdi-clipboard-list', action: 'showCalificaciones' },
+                { label: 'Enviar Mensaje', icon: 'mdi-mail', action: 'addMensaje' },
             ],
-            dialogNotificacion: false,
-            notificacion:       {}
+            dialogMensaje: false,
+            dialogCalificaciones: false,
+            alumno: null,
+            mensaje:       {}
         }
     },
     methods:
@@ -108,13 +116,19 @@ export default {
            this.getResource( `grupo/alumnos/docente/${this.docente.id}` ).then( data => this.grupos = data )
         },
 
-        addNotificacion(alumno)
+        showCalificaciones(alumno)
         {
-            this.dialogNotificacion = true
+            this.alumno = alumno
+            this.dialogCalificaciones = true
+        },
 
-            this.notificacion = {
+        addMensaje(alumno)
+        {
+            this.dialogMensaje = true
+
+            this.mensaje = {
                 tipoDestinatario: 3,
-                tipoNotificacion: 1,
+                tipoMensaje: 1,
                 tipoPrioridad:    1,
                 idDestinatario:   alumno.id,
                 asunto:           null,
@@ -128,7 +142,7 @@ export default {
         closeDialog(dialog)
         {
             this[dialog] = false
-            this.notificacion = {}
+            this.mensaje = {}
         }
 
     }

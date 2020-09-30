@@ -157,7 +157,7 @@ export default {
             loading: false,
             notificaciones: [],
             itemsMenu: [
-                /* { action: 'reply',    icon: 'mdi-reply', label: 'Responder' }, */
+                { action: 'reply',    icon: 'mdi-reply', label: 'Responder' }, 
                 { action: 'delete',   icon: 'mdi-delete', label: 'Eliminar' },
             ],
             notificacion: null,
@@ -202,6 +202,7 @@ export default {
 
         markReadAll()
         {
+            if(this.mensajes.length < 1) return
             this.updateResource(`notificacion/destinatario/${this.user.id}/tipoDestinatario/${this.user.id_tipo_usuario}/markreadall`)
             .then( data =>{
                 this.notificaciones.forEach( (notif, idx) => this.notificaciones[idx].fe_lectura  = 1  )

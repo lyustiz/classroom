@@ -19,7 +19,6 @@
                 <template v-slot:item="{ item }">
                     <tr>
                         <td class="text-xs-left">{{ item.nu_orden }}</td>
-                        <td class="text-xs-left">{{ item.grupo_calificacion.nb_grupo_calificacion }}</td>
                         <td class="text-xs-left">{{ item.nb_calificacion }}</td>
 						<td class="text-xs-left">{{ item.nu_desde }}</td>
                         <td class="text-xs-left">{{ item.nu_hasta }}</td>

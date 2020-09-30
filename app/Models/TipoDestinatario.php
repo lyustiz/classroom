@@ -30,7 +30,7 @@ class TipoDestinatario extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->addSelect('id', 'nb_tipo_destinatario');
+        return $query->addSelect('id', 'nb_tipo_destinatario', 'tx_icono', 'tx_color' );
     }
 
     public function status()
