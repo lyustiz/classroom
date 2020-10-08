@@ -2,8 +2,19 @@
 
     <v-tooltip bottom :color="color">
         <template v-slot:activator="{ on }">
-            <v-btn v-on="on" fab dark x-small :color="color" :loading="loading" @click="$emit('click', $event)" :disabled="disabled" :depressed="depressed">
-                <v-icon size="24" v-text="icon"></v-icon>
+            <v-btn 
+            v-on="on" 
+            fab 
+            dark 
+            :x-small="!small" 
+            :small="small" 
+            :color="color" 
+            :loading="loading"
+             @click="$emit('click', $event)" 
+             :disabled="disabled" 
+             :depressed="depressed" 
+             :class="innerClass">
+                <v-icon :size="size" v-text="icon"></v-icon>
             </v-btn>
         </template>
         <span v-text="label"></span>
@@ -37,6 +48,11 @@ export default {
             default:  'mdi-plus'
         },
 
+        size:{
+            type:     Number,
+            default:  24
+        },
+
         label:{
             type:     String,
             default:  null
@@ -47,9 +63,20 @@ export default {
             default:  false
         },
 
+
         disabled:{
             type:     Boolean,
             default:  false
+        },
+
+        small:{
+            type:     Boolean,
+            default:  false
+        },
+
+        innerClass:{
+            type:     String,
+            default:  true
         }
     }
 }

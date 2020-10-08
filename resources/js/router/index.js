@@ -44,7 +44,6 @@ import Feriado           from '@pages/feriado/feriado.vue';
 
 
 import TipoAgenda        from '@pages/tipoAgenda/tipoAgenda.vue';
-import TipoActividad     from '@pages/tipoActividad/tipoActividad.vue';
 import Agenda            from '@pages/Agenda/Agenda.vue';
 
 import HoraAcademica     from '@pages/horaAcademica/horaAcademica.vue';
@@ -141,6 +140,22 @@ import Pregunta         from '@pages/pregunta/pregunta.vue';
 import Respuesta        from '@pages/respuesta/respuesta.vue';
 import PruebaAlumno     from '@pages/pruebaAlumno/pruebaAlumno.vue';
 import RespuestaAlumno  from '@pages/respuestaAlumno/respuestaAlumno.vue';
+
+
+//libros
+import Tema             from  '@pages/tema/tema.vue'; 
+import Libro            from  '@pages/libro/libro.vue';  
+import Pagina            from  '@pages/pagina/pagina.vue';   
+import Actividad        from  '@pages/actividad/actividad.vue';      
+import ActividadRecurso from  '@pages/actividadRecurso/actividadRecurso.vue';       
+import TipoActividad    from  '@pages/tipoActividad/tipoActividad.vue';    
+import AccionPagina     from  '@pages/accionPagina/accionPagina.vue';        
+import AccionTema       from  '@pages/accionTema/accionTema.vue';          
+import TipoAccion       from  '@pages/tipoAccion/tipoAccion.vue';        
+       
+      
+
+
 
 
 //notificaciones
@@ -382,15 +397,7 @@ export default new Router({
                 component: TipoAgenda
             }, 
 
-            { 
-                path: 'tipo-actividad',
-                name: 'tipo-actividad',
-                label: 'Tipo Actividad ',
-                icon: 'mdi-clipboard-text-multiple',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoActividad
-            }, 
+            
             { 
                 path: 'agenda',
                 name: 'agenda',
@@ -1038,6 +1045,90 @@ export default new Router({
                 visible: true,
                 component: RespuestaAlumno
             },
+
+
+            //libro
+            { 
+                path: 'tema',
+                name: 'tema',
+                label: 'Tema',
+                icon: 'mdi-card-text-outline',
+                profile: 'secretaria',
+                visible: true,
+                component: Tema
+            }, 
+
+            { 
+                path: 'libro',
+                name: 'libro',
+                label: 'Libro',
+                icon: 'mdi-book',
+                profile: 'secretaria',
+                visible: true,
+                component: Libro
+            }, 
+
+            { 
+                path: 'pagina',
+                name: 'pagina',
+                label: 'Pagina',
+                icon: 'mdi-file-document',
+                profile: 'secretaria',
+                visible: true,
+                component: Pagina
+            }, 
+
+            { 
+                path: 'actividad',
+                name: 'actividad',
+                label: 'Actividad',
+                icon: 'mdi-head-question',
+                profile: 'secretaria',
+                visible: true,
+                component: Actividad
+            }, 
+
+            { 
+                path: 'tipo-actividad',
+                name: 'Tipo-actividad',
+                label: 'Tipo Actividad ',
+                icon: 'mdi-head-plus',
+                profile: 'secretaria',
+                visible: true,
+                component: TipoActividad
+            }, 
+            { 
+                path: 'tipo-accion',
+                name: 'tipo-accion',
+                label: 'Tipo Accion',
+                icon: 'mdi-rocket',
+                profile: 'secretaria',
+                visible: true,
+                component: TipoAccion
+            }, 
+
+            { 
+                path: 'accion-pagina',
+                name: 'accion-pagina',
+                label: 'Accion Pagina',
+                icon: 'mdi-rocket-launch',
+                profile: 'secretaria',
+                visible: true,
+                component: AccionPagina
+            }, 
+
+            { 
+                path: 'accion-tema',
+                name: 'accion-tema',
+                label: 'mdi-rocket-launch',
+                icon: 'mdi-rocket-launch-outline',
+                profile: 'secretaria',
+                visible: true,
+                component: AccionTema
+            }, 
+
+            //CONFIGURACION
+
 
             { 
                 path: 'configuracion',

@@ -1,6 +1,6 @@
 <template>
 
-    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)" :inDialog="inDialog">
+    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)">
 
         <template slot="HeadTools">
             <add-button @insItem="insertForm()"></add-button>
@@ -29,14 +29,15 @@
                 <template v-slot:item="{ item }">
                     <tr>
                         <td class="text-xs-left">{{ item.nb_tipo_actividad }}</td>
-						<td class="text-xs-left"><v-icon size="30" color="indigo" v-text="item.tx_icono"></v-icon></td>
+						<td class="text-xs-left"><v-icon :color="item.tx_color">{{item.tx_icono}}</v-icon></td>
+						<td class="text-xs-left"><v-chip small label :color="item.tx_color"></v-chip></td>
+						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
-                                :item="item"
-                                :resource="resource"
-                                @onStatusChanging="loading=true"
-                                @onStatusChanged="loading=false">
+                                :resource="resource" 
+                                :item="item" 
+                                @onChangeStatus="changeStatus($event)">
                             </status-switch>
                         </td>
                         
@@ -72,7 +73,7 @@
                 @deleteItem="deleteItem()"
                 @deleteCancel="deleteCancel()"
             ></form-delete>
-
+            
             <pre v-if="$App.debug">{{ $data }}</pre>
 
     </list-container>
@@ -91,7 +92,9 @@ export default {
         resource: 'tipoActividad',
         headers: [
             { text: 'Tipo Actividad',   value: 'nb_tipo_actividad' },
-			{ text: 'Icono',   value: 'tx_icono', sortable: false, filterable: false },
+			{ text: 'Icono',   value: 'tx_icono' },
+			{ text: 'Color',   value: 'tx_color' },
+			{ text: 'Observaciones',   value: 'tx_observaciones' },
 			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],

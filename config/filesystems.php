@@ -111,24 +111,38 @@ return [
             'visibility' => 'public',
         ],
 
-        'libro' => [
+        'recurso-libro' => [
             'driver' => 'local',
             'root' => storage_path('app/public/recurso/libro'),
             'url' => env('APP_URL').'/storage/recurso/libro',
             'visibility' => 'public',
         ],
 
-        'video' => [
+        'recurso-video' => [
             'driver' => 'local',
             'root' => storage_path('app/public/recurso/video'),
             'url' => env('APP_URL').'/storage/recurso/video',
             'visibility' => 'public',
         ],
 
-        'guia' => [
+        'recurso-guia' => [
             'driver' => 'local',
             'root' => storage_path('app/public/recurso/guia'),
             'url' => env('APP_URL').'/storage/recurso/guia',
+            'visibility' => 'public',
+        ],
+
+        'recurso-libro' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/recurso/libro'),
+            'url' => env('APP_URL').'/storage/libro',
+            'visibility' => 'public',
+        ],
+
+        'libro' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/libro'),
+            'url' => env('APP_URL').'/storage/libro',
             'visibility' => 'public',
         ],
 

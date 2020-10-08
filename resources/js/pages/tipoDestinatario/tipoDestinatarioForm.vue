@@ -38,6 +38,8 @@
                 dense
                 append-outer-icon="mdi-shape-outline"
                 @click:append-outer="$refs.icons.click()"
+                :prepend-icon="form.tx_icono"
+                :color="form.tx_color"
             ></v-text-field>
             <a  class="d-none" ref="icons" rel="noreferrer noopener" href="/icons/"  target="_blank"></a>
         </v-col>

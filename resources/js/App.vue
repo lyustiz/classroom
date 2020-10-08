@@ -42,6 +42,12 @@ export default {
             let userID = this.$store.getters['getUserid']
             this.$store.dispatch('apiColegioUsuario', userID)
         }
+
+        if (this.$workbox) {
+            this.$workbox.addEventListener("waiting", () => {
+                this.showUpgradeUI = true;
+            });
+        }
         
     },
     computed: 
@@ -75,6 +81,11 @@ export default {
            }
 
            return this.$store.getters['getLayout']
+        },
+        
+        async accept() {
+            this.showUpgradeUI = false
+            await this.$workbox.messageSW({ type: "SKIP_WAITING" });
         }
     },
 

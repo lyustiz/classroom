@@ -224,6 +224,30 @@ export default
             this.form.id_usuario = this.idUser
         },
 
+        getResource(resource)
+        {
+            this.loading = true
+      
+            return new Promise((resolve, reject) => 
+			{
+				axios.get(this.apiUrl + resource)
+				.then(response => 
+				{
+                    resolve(response.data)
+				})
+				.catch(error => 
+				{
+                    this.showError(error)
+                    reject(error)
+                })
+                .finally( () => 
+                {
+                    this.loading = false
+                });
+			})
+
+        },
+
         onCreateForm()
         {
             //acciones al crearse el formulario

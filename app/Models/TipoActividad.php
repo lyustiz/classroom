@@ -11,6 +11,7 @@ class TipoActividad extends Model
     protected $fillable   = [
                             'nb_tipo_actividad',
 	 	 	 	 	 	 	'tx_icono',
+	 	 	 	 	 	 	'tx_color',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'
@@ -21,19 +22,21 @@ class TipoActividad extends Model
 	 	 	 	 	 	 	'updated_at'
                             ];
 
+
+
     public function scopeActivo($query)
     {
         return $query->where('id_status', 1);
-	}
-
-	public function scopeComboData($query)
-    {
-        return $query->addSelect('id', 'nb_tipo_actividad');
     }
-    
+
+    public function scopeComboData($query)
+    {
+        return $query->addSelect('id', 'nb_');
+    }
+
     public function status()
     {
-        return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');
+        return $this->BelongsTo('App\Models\Status', 'id_status');
     }
                            
     public function usuario()

@@ -13,6 +13,7 @@ mix.webpackConfig({
        '@images'    : path.resolve(__dirname, './resources/js/assets/img'),
      },
    },
+   node: { fs: 'empty' }
  })
 
 let productionSourceMaps = !mix.inProduction(); productionSourceMaps, 'source-map'
@@ -24,6 +25,7 @@ mix.js('resources/js/app.js', 'public/js')
   if (mix.inProduction()) {
       mix.version()
   } 
+
 
 //mix.copyDirectory('resources/img', 'public/images');
 

@@ -4,7 +4,7 @@
 
         <template v-slot:activator="{ on, attrs }">
             <v-btn fab dark depressed v-bind="attrs" v-on="on" color="orange" class="ml-1">
-                <v-icon size="32">mdi-notebook</v-icon>
+                <v-icon size="32">mdi-library</v-icon>
             </v-btn>
         </template>
 
@@ -28,15 +28,17 @@
                 </v-toolbar>
                <v-slide-group
                     v-model="libroSelected"
-                    class="pa-4"
+                    class="pa-4 item-container"
                     active-class="warning"
                     show-arrows
                     center-active
+                    @change="showBook($event)"
                     >
                     <v-slide-item
-                        v-for="materia in materias"
-                        :key="materia.id"
+                        v-for="libro in libros"
+                        :key="libro.id"
                         v-slot:default="{ active, toggle }"
+                        :value="libro"
                     >
                         <v-card
                         :color="active ? undefined : 'primary'"
@@ -46,19 +48,26 @@
                         @click="toggle"
                         elevation="3"
                         >
-
-                        <v-row justify="center" no-gutters class="fill-height align-stretch" > 
-                            <v-col cols="12"><v-icon color="white" size="80" class="ml-n3 mt-n1">mdi-bookmark</v-icon></v-col>
-                            
-                            <v-col cols="12" class="white--text text-center text-capitalize font-weight-medium title">
-                                {{ materia.nb_materia}}
-                                <v-divider dark inset></v-divider>
-      
-                            </v-col>
-                        </v-row>
+                            <v-row justify="center" no-gutters class="fill-height align-stretch" > 
+                                <v-col cols="12"><v-icon color="white" size="80" class="ml-n3 mt-n1">mdi-bookmark</v-icon></v-col>
+                                <v-col cols="12" class="white--text text-center text-capitalize font-weight-medium title">
+                                    {{ libro.materia.nb_materia}}
+                                    <v-divider dark inset></v-divider>
+                                </v-col>
+                            </v-row>
                         </v-card>
                     </v-slide-item>
+
+                    <v-overlay 
+                        absolute
+                        :opacity="0.3"
+                        :value="libros.length < 1"
+                        :z-index="10">
+                        <v-icon size="40" class="mdi-spin">mdi-loading</v-icon>
+                    </v-overlay>
                     </v-slide-group>
+
+
 
                 <v-toolbar color="green" flat dense dark class="title">
                    <v-icon class="mr-3">mdi-clipboard-multiple-outline</v-icon> Guias
@@ -66,7 +75,7 @@
 
                 <v-slide-group
                     v-model="guiaSelected"
-                    class="pa-4"
+                    class="pa-4 item-container"
                     active-class="warning"
                     show-arrows
                     center-active
@@ -96,6 +105,13 @@
                         </v-row>
                         </v-card>
                     </v-slide-item>
+                    <v-overlay 
+                        absolute
+                        :opacity="0.3"
+                        :value="materias.length < 1"
+                        :z-index="10">
+                        <v-icon size="40" class="mdi-spin">mdi-loading</v-icon>
+                    </v-overlay>
                     </v-slide-group>
 
                 <v-toolbar color="purple" flat dense dark class="title">
@@ -104,7 +120,7 @@
 
                 <v-slide-group
                     v-model="videoSelected"
-                    class="pa-4"
+                    class="pa-4 item-container"
                     active-class="warning"
                     show-arrows
                     center-active
@@ -131,72 +147,19 @@
                             </v-row>
                         </v-card>
                     </v-slide-item>
+                    <v-overlay 
+                        absolute
+                        :opacity="0.3"
+                        :value="materias.length < 1"
+                        :z-index="10">
+                        <v-icon size="40" class="mdi-spin">mdi-loading</v-icon>
+                    </v-overlay>
                     </v-slide-group>
             </v-sheet>
-
-
-
-
-
-         <!--        <v-expansion-panels  focusable class="rounded-xl" accordion>
-
-                    <v-expansion-panel v-for="recurso in recursos" :key="recurso.id">
-
-                        <v-expansion-panel-header>
-
-                            <div>
-                                <v-icon :color="recurso.tipo_recurso.tx_color" class="mr-1">{{ recurso.tipo_recurso.tx_icono }}</v-icon> {{recurso.tipo_recurso.nb_tipo_recurso}}
-                            </div>
-                            
-                        </v-expansion-panel-header>
-
-                            <v-expansion-panel-content>
-                                    
-                                <v-list dense two-line>
-                                    <v-subheader>{{recurso.tipo_recurso.nb_tipo_recurso}}</v-subheader>
-                                    <v-list-item-group v-model="file" :color="recurso.tipo_recurso.tx_color">
-
-                                        <v-list-item v-for="archivo in recurso.archivo" :key="archivo.id">
-
-                                            <v-list-item-avatar :color="recurso.tipo_recurso.tx_color">
-                                                    <v-tooltip right color="green lighten-2" open-on-click>
-                                                    <template v-slot:activator="{ on }">
-                                                        <v-icon 
-                                                            v-on="on"
-                                                            color="white"
-                                                            v-text="recurso.tipo_recurso.tx_icono"
-                                                        ></v-icon>
-                                                    </template>
-                                                    <span>{{archivo.tx_observaciones }}</span>
-                                                </v-tooltip>
-                                            </v-list-item-avatar>
-
-                                            <v-list-item-content>
-                                                <v-list-item-title v-text="archivo.nb_archivo"></v-list-item-title>
-                                                <v-list-item-subtitle v-text="archivo.nb_real"></v-list-item-subtitle>
-                                            </v-list-item-content>
-
-                                            <v-list-item-action>
-                                                <menu-items :itemsMenu="filesMenu" :item="archivo" iconColor="green lighten-5" @onMenu="onMenu($event)"></menu-items>
-                                            </v-list-item-action>
-
-                                        
-                                        </v-list-item>
-
-                                    </v-list-item-group>
-                                </v-list>
-                                  
-                            </v-expansion-panel-content>
-
-                    </v-expansion-panel>
-
-                </v-expansion-panels>
- -->
-
         </v-card-text>
 
-        <v-dialog v-model="libroSelected" fullscreen content-class="rounded-t-xl">
-            <visor-libros :fileUrl="fileUrl" :fileType="fileType" :title="title" @closeModal="closeModal()"></visor-libros>
+        <v-dialog v-model="libroDialog" fullscreen  content-class="amber lighten-2">
+            <visor-libros :libro="libro" @closeModal="closeDialog('libroDialog')" v-if="libro"></visor-libros>
         </v-dialog>  
 
     </v-card>
@@ -226,6 +189,11 @@ export default {
             return this.$store.getters['getAlumnoGrupo']
         },
 
+        grado()
+        {
+            return this.$store.getters['getAlumnoGrado']
+        },
+
         calendario()
         {
             return this.$store.getters['getCalendario']
@@ -240,8 +208,7 @@ export default {
             {
                 this.list()
             }
-        }
-
+        },
     },
 
     data () {
@@ -254,20 +221,10 @@ export default {
 
             recursos: [],
             materias:[],
+            libros: [],
+            libroDialog: false,
 
-            filesMenu: [
-                {
-                    label: 'Ver Archivo',
-                    icon:  'mdi-file-eye',
-                    action: 'showfile'
-                },
-            ],
-
-            file:{
-                fileUrl: 1,
-                fileType: 1,
-                title: 'Libro Prueba'
-            },
+            libro: null,
 
             dialog: false,
             active: false,
@@ -276,11 +233,6 @@ export default {
             libroSelected: false,
             videoSelected: false,
             guiaSelected:  false,
-
-            //visor
-            fileUrl:  '/storage/recurso/libro/1/1593656676_Integra-Sociales.pdf',
-            fileType: 'PDF',
-            title:    'Libro Texto 1 Grado'
 
         }
     },
@@ -292,40 +244,27 @@ export default {
                this.recursos = data
                this.file     = 0
             })
+
             this.getResource( `materia/grupo/${this.grupo.id}` ).then( data =>  this.materias = data )
+            this.getResource( `libro/grado/${this.grado.id}` ).then( data =>  this.libros = data )
         },
 
         closeModal()
         {
-            this.fileUrl  = null
-            this.fileType = null
-            this.title    = null
             this.dialog   = false
         },
 
-        showFile(file)
+        showBook(book)
         {
-            this.fileUrl  = file.tipo_archivo.tx_base_path + file.tx_origen_id + '/' + file.tx_path
-            this.fileType = file.tx_mimetype
-            this.title    = file.nb_archivo
-            this.dialog   = true
+            this.libro = book
+            this.libroDialog = true
         },
 
-        onMenu(payload)
+        closeDialog(dialog)
         {
-            switch (payload.action) {
-
-                case 'refresh':
-                    this.list()
-                    break;
-                
-                case 'showfile':
-                    this.showFile(payload.item)
-                    break;
-            
-                default:
-                    break;
-            }
+            this[dialog] = false
+            this.libro   = false
+            this.libroSelected = false
         }
 
     }
@@ -333,4 +272,7 @@ export default {
 </script>
 
 <style>
+.item-container{
+    min-height: 240px;
+}
 </style>

@@ -349,10 +349,21 @@ Route::get('/asistente/perfil/{perfil}',        'AsistenteController@asistentePe
 Route::apiResource('/asistente',                'AsistenteController');
 Route::apiResource('/asistenteDetalle',         'AsistenteDetalleController');
 
+Route::apiResource('/actividad',                'ActividadController');
+Route::get('/libro/grado/{grado}',              'LibroController@libroGrado');
+Route::apiResource('/libro',                    'LibroController');
+Route::apiResource('/pagina',                   'PaginaController', ['parameters' => ['pagina' => 'pagina']]);
+Route::apiResource('/tipoActividad',            'TipoActividadController');
+Route::apiResource('/tipoAccion',               'TipoAccionController');
+Route::apiResource('/actividadRecurso',         'ActividadRecursoController');
+Route::apiResource('/tema',                     'TemaController');
+Route::apiResource('/accionPagina',             'AccionPaginaController');
+Route::apiResource('/accionTema',               'AccionTemaController');
+
 //newRoutes
 
 Route::fallback(function () {
-    return response('Ruta Invalida', 200);
+    return response('Ruta Invalida', 403);
 });
 
 });
