@@ -83,11 +83,19 @@
 
         <v-col cols="4">
 
-            <v-carousel :show-arrows="false" :show-arrows-on-hover="true"  height="600" width="200" class="rounded-xl" hide-delimiter-background continuous cycle>
-                <v-carousel-item src="/images/actividad/actividad5.png" h></v-carousel-item>
-                <v-carousel-item src="/images/actividad/actividad2.png"></v-carousel-item>
-                <v-carousel-item src="/images/actividad/actividad3.png"></v-carousel-item>
-                <v-carousel-item src="/images/actividad/actividad4.png"></v-carousel-item>
+            <v-carousel :show-arrows="false" :show-arrows-on-hover="true"  height="550" width="100%" class="rounded-lg white" continuous cycle>
+                <v-carousel-item >
+                    <v-img src="/images/actividad/actividad2.png"></v-img>
+                </v-carousel-item>
+                <v-carousel-item>
+                    <v-img src="/images/actividad/actividad3.png"></v-img>
+                </v-carousel-item>
+                <v-carousel-item >
+                     <v-img src="/images/actividad/actividad4.png"></v-img>
+                </v-carousel-item>
+                <v-carousel-item >
+                     <v-img src="/images/actividad/actividad5.png"></v-img>
+                </v-carousel-item>
             </v-carousel>
 
         </v-col>

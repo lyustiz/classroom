@@ -59,6 +59,7 @@
                     </v-slide-item>
 
                     <v-overlay 
+                        color="amber"
                         absolute
                         :opacity="0.3"
                         :value="libros.length < 1"
@@ -106,6 +107,7 @@
                         </v-card>
                     </v-slide-item>
                     <v-overlay 
+                        color="amber"
                         absolute
                         :opacity="0.3"
                         :value="materias.length < 1"
@@ -148,6 +150,7 @@
                         </v-card>
                     </v-slide-item>
                     <v-overlay 
+                        color="amber"
                         absolute
                         :opacity="0.3"
                         :value="materias.length < 1"

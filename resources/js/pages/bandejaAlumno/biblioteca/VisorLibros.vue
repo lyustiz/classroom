@@ -5,59 +5,29 @@
       <v-row dense class="fill-height">
 
         <v-col cols="auto" class="amber lighten-2">
+
             <v-row no-gutters class="flex-column">
 
                 <app-button small :size="30" innerClass="ma-1" color="green" label="Volver al Inicio" icon="mdi-home" @click="$emit('closeModal')" ></app-button>
-                <app-button small :size="30" innerClass="ma-1" color="orange" label="Lista de Temas" icon="mdi-format-list-bulleted-square" ></app-button>
+                <select-tema temas="temas"></select-tema> 
+             
+                <v-spacer class="my-3"></v-spacer>
+
+                <select-actividad :actividades="actividades" @showActividad="dialogActividad = true"></select-actividad>
+               
+                <v-spacer class="my-3"></v-spacer>
+
+                <select-previo :previos="previos"></select-previo>
+                <select-lectura :lecturas="lecturas"></select-lectura>
+                <select-guia :guias="guias"></select-guia>
 
                 <v-spacer class="my-3"></v-spacer>
 
-                <v-menu offset-x absolute content-class="rounded-lg" min-width="40vw" left>
-                    <template v-slot:activator="{ on }">
-                        <app-button v-on="on" small :size="32" innerClass="ma-1" color="deep-purple" label="Actividad" icon="mdi-file-edit" ></app-button>
-                    </template>
-
-                   
-                    <v-list-item-group
-                        color="deep-purple" 
-                    >
-                    <v-list nav>
-                         <v-toolbar color="deep-purple lighten-1 subtitle-2" dense dark class="rounded-t-lg" flat>
-                        Actividades
-                    </v-toolbar>
-                      
-                            <v-list-item color="deep-purple" @click="dialogActividad = true">
-                            <v-list-item-avatar color="white" size="65">
-                                <v-icon size="60">mdi-file-edit</v-icon>
-                            </v-list-item-avatar>
-                            <v-list-item-content>
-                                <v-list-item-title>Actividad 1</v-list-item-title>
-                                <v-list-item-subtitle>Descripcion de la Actividad</v-list-item-subtitle>
-                            </v-list-item-content>
-                            <v-list-item-action>
-                                <v-btn icon>
-                                    <v-icon size="35" color="red lighten-1">mdi-open-in-new</v-icon>
-                                </v-btn>
-                            </v-list-item-action>
-                            </v-list-item>
-                        </v-list>
-                    </v-list-item-group>
-                </v-menu>
-
-    
-                <v-spacer class="my-3"></v-spacer>
-
-
-                <app-button small :size="32" innerClass="ma-1" color="indigo" label="Conocimiento Previo" icon="mdi-head-lightbulb" ></app-button>
-                <app-button small :size="28" innerClass="ma-1" color="purple" label="Lectura Complementaria" icon="mdi-book-plus-multiple" ></app-button>
-                <app-button small :size="28" innerClass="ma-1" color="teal" label="Descubre Mas" icon="mdi-book-search" ></app-button>
-
-                <v-spacer class="my-3"></v-spacer>
-
-                <app-button small :size="30" innerClass="ma-1" color="red" label="Contenido Multimedia" icon="mdi-play-box-multiple" ></app-button>
-                <app-button small :size="32" innerClass="ma-1" color="blue" label="Enlaces de Intentnet" icon="mdi-earth" ></app-button>
+                <select-multimedia :multimedias="multimedias"></select-multimedia>
+                <select-enlace :enlaces="enlaces"></select-enlace>
 
             </v-row>
+
         </v-col>
         
         <v-col class="grey lighten-4 text-center rounded-lg">
@@ -72,12 +42,7 @@
             ></v-slider>
 
             <div class="book-holder">
-                <canvas ref="book" id="book" :class="cursor" @click="setZoom($event)" class="rounded-lg">
-
-                    <v-btn fab dark x-small color="green"  fixed  right>
-                    <v-icon>mdi-invert-colors</v-icon>
-                </v-btn>
-                </canvas>
+                <canvas ref="book" id="book" :class="cursor" @click="setZoom($event)" class="rounded-lg"></canvas>
 
                 <v-speed-dial
                     v-model="tools"
@@ -113,17 +78,35 @@
                     <v-icon v-if="cursor == 'zoom-out'" size="42" color="green" @click="zomOut()">mdi-magnify-minus-outline</v-icon>
                 </v-btn>
 
-                <v-btn color="success" icon fixed left bottom class="ml-14 mb-16" @click="prev()"><v-icon size="48" color="green">mdi-menu-left</v-icon></v-btn>
-                <v-btn color="success" icon fixed right bottom class="mr-5 mb-16" @click="netx()"><v-icon size="48" color="green">mdi-menu-right</v-icon></v-btn>
+                <v-btn color="success" icon fixed left bottom class="ml-14 mb-16" @click="prev()" :disabled="loading"><v-icon size="48" color="green">mdi-menu-left</v-icon></v-btn>
+                <v-btn color="success" icon fixed right bottom class="mr-5 mb-16" @click="netx()" :disabled="loading"> <v-icon size="48" color="green">mdi-menu-right</v-icon></v-btn>
+
+                <v-overlay 
+                    absolute
+                    color="amber"
+                    :opacity="0.3"
+                    :value="loading"
+                    :z-index="10">
+                    <v-icon size="40" class="mdi-spin">mdi-loading</v-icon>
+                </v-overlay>
 
             </div>
         </v-col>
 
     </v-row>
-
-    <v-dialog v-model="dialogActividad" fullscreen  content-class="amber lighten-2">
+ 
+    <v-dialog v-model="dialogActividad" fullscreen  content-class="cyan lighten-3">
         <app-actividad :actividad="actividad" @closeModal="closeDialog('dialogActividad')" v-if="dialogActividad"></app-actividad>
     </v-dialog>
+
+    <v-dialog v-model="dialogVideo" width="80vw"  content-class="black rounded-xl">
+        <visor-video :video="{src: '/storage/recurso/guia/3/1596209029_virtualin.mp4'}" @closeModal="closeDialog('dialogVideo')" v-if="dialogVideo"></visor-video>
+    </v-dialog>
+
+     <v-dialog v-model="dialogAudio"  width="450" content-class="rounded-xl primary" hide-overlay >
+        <visor-audio :audio="{src: '/storage/recurso/audio/1/fundamentos_macroeconomia.mp3'}" @closeModal="closeDialog('dialogAudio')" v-if="dialogAudio"></visor-audio>
+    </v-dialog>
+                
                 
     </v-container>
   
@@ -131,14 +114,32 @@
 
 <script>
 import AppActividad from './AppActividad'
+import VisorVideo   from './VisorVideo'
+import VisorAudio   from './VisorAudio'
 
+//selects
+import SelectTema       from './SelectTema'
+import SelectActividad  from './SelectActividad'
+import SelectPrevio     from './SelectPrevio'
+import SelectLectura    from './SelectLectura'
+import SelectGuia       from './SelectGuia'
+import SelectEnlace     from './SelectEnlace'
+import SelectMultimedia from './SelectMultimedia'
 
 export default {
 
      components: { 
-        'app-actividad': AppActividad,
+        'app-actividad':     AppActividad,
+        'visor-video':       VisorVideo,
+        'visor-audio':       VisorAudio,
+        'select-tema':       SelectTema,
+        'select-actividad':  SelectActividad,
+        'select-previo':     SelectPrevio,
+        'select-lectura':    SelectLectura,
+        'select-guia':       SelectGuia,
+        'select-enlace':     SelectEnlace,
+        'select-multimedia': SelectMultimedia,
     },
-
 
     mounted()
     {
@@ -210,9 +211,21 @@ export default {
             drawLeft:    false,
             drawRigth:   false,
 
+            loading:     false,
+
             //
             actividad:       false,
-            dialogActividad: false
+            dialogActividad: false,
+            dialogVideo:     false,
+            dialogAudio:     false,
+
+            temas:       [],
+            actividades: [],
+            previos:     [],
+            lecturas:    [],
+            guias:       [],
+            enlaces:     [],
+            multimedias: [],
         }
     },
     
@@ -239,10 +252,13 @@ export default {
 
         drawPages()
         {
+            this.loading = true
+            
             if(this.drawLeft && this.drawRigth)
             {
                 this.context.drawImage(this.pageLeft, 0, 0, this.pageLeft.width, this.pageLeft.height) 
                 this.context.drawImage(this.pageRight, this.pageLeft.width, 0, this.pageRight.width, this.pageRight.height)
+                this.loading = false 
             }
         },
 
@@ -281,9 +297,7 @@ export default {
         zomOut(position) {
 
             this.book.height = this.book.height / 2 
-
             this.loadBook()
-
             this.cursor = 'pointer'
         },
 
@@ -314,12 +328,8 @@ export default {
         closeDialog(dialog)
         {
             this[dialog] = false
-            this.libro   = false
             this.libroSelected = false
         }
-
-
-
     }
 
 }
