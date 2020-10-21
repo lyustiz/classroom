@@ -5,7 +5,7 @@
     <v-menu offset-x absolute content-class="rounded-lg" min-width="40vw" left>
 
         <template v-slot:activator="{ on }">
-            <app-button v-on="on" small :size="32" innerClass="ma-1" color="deep-purple" label="Actividades" icon="mdi-file-edit" ></app-button>
+            <app-button v-on="on" small :size="32" innerClass="ma-1" color="deep-purple" label="Actividades" icon="mdi-rocket-launch" ></app-button>
         </template>
 
         <v-list-item-group color="deep-purple" mandatory>
@@ -17,7 +17,7 @@
                 
                 <v-list-item color="deep-purple" v-for="actividad in actividades" :key="actividad.id" @click="dialogActividad = true">
                     <v-list-item-avatar color="white" size="55">
-                        <v-icon size="45">mdi-file-edit</v-icon>
+                        <v-icon size="45">mdi-rocket</v-icon>
                     </v-list-item-avatar>
                     <v-list-item-content>
                         <v-list-item-title>{{ actividad.nb_actividad }}</v-list-item-title>

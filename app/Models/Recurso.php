@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Recurso extends Model
 {
@@ -11,7 +12,7 @@ class Recurso extends Model
     protected $fillable   = [
                             'id_tipo_recurso',
 	 	 	 	 	 	 	'id_grado',
-	 	 	 	 	 	 	'id_grupo',
+	 	 	 	 	 	 	'id_tema',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'
@@ -21,6 +22,16 @@ class Recurso extends Model
                             'created_at',
 	 	 	 	 	 	 	'updated_at'
                             ];
+    
+    protected static function booted()
+    {
+        static::addGlobalScope('archivo', function (Builder $builder) {
+            $builder->with([    
+                                'archivo',
+                                'archivo.tipoArchivo:id,nb_tipo_archivo,tx_origen,tx_base_path'
+                            ]);
+        });
+    }
 
     public function scopeActivo($query)
     {
@@ -52,13 +63,13 @@ class Recurso extends Model
         return $this->BelongsTo('App\Models\Grado', 'id_grado');
     }
 
-    public function grupo()
-    {
-        return $this->BelongsTo('App\Models\Grupo', 'id_grupo');
-    }
-
     public function archivo()
     {
-        return $this->hasMany('App\Models\Archivo',  'tx_origen_id', 'id')->whereIn('id_tipo_archivo', [8, 9, 10]);
+        return $this->hasOne('App\Models\Archivo',  'tx_origen_id', 'id')->whereIn('id_tipo_archivo', [8, 9, 10]);
+    }
+
+    public function tema()
+    {
+        return $this->BelongsTo('App\Models\Tema', 'id_tema');
     }
 }

@@ -111,10 +111,10 @@ return [
             'visibility' => 'public',
         ],
 
-        'recurso-libro' => [
+        'recurso-audio' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/recurso/libro'),
-            'url' => env('APP_URL').'/storage/recurso/libro',
+            'root' => storage_path('app/public/recurso/audio'),
+            'url' => env('APP_URL').'/storage/recurso/audio',
             'visibility' => 'public',
         ],
 

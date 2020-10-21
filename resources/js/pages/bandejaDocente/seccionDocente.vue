@@ -25,6 +25,7 @@
             </v-tooltip>
 
             <meet-room :usuario="3"></meet-room>
+            <app-asignar></app-asignar>
 
         </v-card-text>
 
@@ -43,6 +44,7 @@ import PlanEvaluacion    from './evaluacion/PlanEvaluacion'
 import EvaluacionDocente from './evaluacion/EvaluacionDocente'
 import ClaseAlumno       from '@pages/bandejaAlumno/clase/AppClase'
 import MenuPrueba        from './prueba/MenuPrueba.vue'
+import AppAsignar        from './asignacion/AppAsignar'
 
 export default {
 
@@ -53,6 +55,7 @@ export default {
         'evaluacion-docente': EvaluacionDocente,
         'menu-prueba':        MenuPrueba,
         'clase-alumno':       ClaseAlumno, 
+        'app-asignar':       AppAsignar, 
     },
 
     computed:

@@ -34,7 +34,7 @@ class Tema extends Model
 
     public function scopeComboData($query)
     {
-        return $query->addSelect('id', 'nb_');
+        return $query->addSelect('id', 'nb_tema');
     }
 
     public function status()
@@ -56,4 +56,10 @@ class Tema extends Model
     {
         return $this->BelongsTo('App\Models\Grado', 'id_grado');
     }
+
+    public function actividad()
+    {
+        return $this->BelongsTo('App\Models\Actividad', 'id_tema');
+    }
+
 }

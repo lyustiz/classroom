@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recurso;
+use App\Models\TipoArchivo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
+use App\Http\Controllers\Traits\ArchivoTrait;
 
 class RecursoController extends Controller
 {
+    use ArchivoTrait;
+    
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +23,7 @@ class RecursoController extends Controller
         $recurso = Recurso::with([
                                     'tipoRecurso:id,nb_tipo_recurso,id_tipo_archivo', 
                                     'grado:id,nb_grado', 
-                                    'grupo:id,nb_grupo', 
+                                    'tema:id,nb_tema', 
                                     'archivo'
                                 ])
                                 ->get();
@@ -27,13 +31,27 @@ class RecursoController extends Controller
         return $recurso;
     }
 
+    public function recursoTipoRecursoTema($idTipoRecurso, $idTema)
+    {
+        return Recurso:: with([
+                                    'tipoRecurso:id,nb_tipo_recurso,id_tipo_archivo,tx_icono,tx_color', 
+                                    'grado:id,nb_grado', 
+                                    'tema:id,nb_tema', 
+                                    'archivo',
+                                    'archivo.tipoArchivo:id,nb_tipo_archivo,tx_origen,tx_base_path'
+                                ])
+                                ->where('id_tema', $idTema)
+                                ->where('id_tipo_recurso', $idTipoRecurso)
+                                ->get();
+
+    }
 
     public function recursoGrado($idGrado)
     {
         $recurso = Recurso:: with([
                                     'tipoRecurso:id,nb_tipo_recurso,id_tipo_archivo,tx_icono,tx_color', 
                                     'grado:id,nb_grado', 
-                                    'grupo:id,nb_grupo', 
+                                    'tema:id,nb_tema', 
                                     'archivo',
                                     'archivo.tipoArchivo:id,nb_tipo_archivo,tx_origen,tx_base_path'
                                 ])
@@ -52,7 +70,9 @@ class RecursoController extends Controller
                                     'archivo',
                                     'archivo.tipoArchivo:id,nb_tipo_archivo,tx_origen,tx_base_path'
                                 ])
-                                ->where('id_grupo', $idGrupo)
+                                ->whereHas('grado.grupo', function (Builder $query) use($idGrupo) {
+                                    $query->where('id_grupo', $idGrupo);
+                                })
                                 ->get();
 
         return $recurso;
@@ -86,15 +106,40 @@ class RecursoController extends Controller
         $validate = request()->validate([
             'id_tipo_recurso'   => 	'required|integer|max:999999999',
 			'id_grado'          => 	'required|integer|max:999999999',
-			'id_grupo'          => 	'required|integer|max:999999999',
+			'id_tema'          => 	'required|integer|max:999999999',
 			'tx_observaciones'  => 	'nullable|string|max:200',
 			'id_status'         => 	'required|integer|max:999999999',
-			'id_usuario'        => 	'required|integer|max:999999999',
+            'id_usuario'        => 	'required|integer|max:999999999',
+            //archivo
+            'nb_archivo'        => 	'required|string|max:30',
+            'id_tipo_archivo'   => 	'required|integer|max:999999999',
+            'tx_path'           => 	'required|string|max:255',
+            'tx_mimetype'       => 	'required|string|max:30',
+            'tx_file_source'    => 	'required|string',
         ]);
 
         $recurso = recurso::create($request->all());
 
-        return [ 'msj' => 'Recurso Agregado Correctamente', compact('recurso') ];
+        $archivo = $recurso->archivo()->create([
+            'nb_archivo'        => $request->nb_archivo,
+			'id_tipo_archivo'   => $request->id_tipo_archivo,
+            'tx_path'           => $request->tx_path,
+            'tx_mimetype'       => $request->tx_mimetype,
+			'tx_observaciones'  => $request->tx_observaciones,
+			'id_status'         => $request->id_status,
+            'id_usuario'        => $request->id_usuario,
+        ]);
+
+        $tipoArchivo = TipoArchivo::where('id', $request->id_tipo_archivo)->first();
+
+        $fileSource = $request->tx_file_source;
+        $storage    = $tipoArchivo->tx_storage;
+        $fileName   = $request->tx_path;
+        $folder     = $recurso->id;
+
+        $file = ArchivoTrait::writeFile($fileSource, $storage, $fileName, $folder);
+
+        return [ 'msj' => 'Archivo Agregado Correctamente', [ 'recurso' => $recurso, 'archivo' => $archivo, 'file' =>  $file ] ];
     }
 
     /**
@@ -120,7 +165,7 @@ class RecursoController extends Controller
         $validate = request()->validate([
             'id_tipo_recurso'   => 	'required|integer|max:999999999',
 			'id_grado'          => 	'required|integer|max:999999999',
-			'id_grupo'          => 	'required|integer|max:999999999',
+			'id_tema'          => 	'required|integer|max:999999999',
 			'tx_observaciones'  => 	'nullable|string|max:200',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',

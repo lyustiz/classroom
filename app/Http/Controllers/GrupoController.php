@@ -39,6 +39,19 @@ class GrupoController extends Controller
                     ->get();
     }
 
+    public function grupoDocente($idDocente)
+    {
+        return Grupo::with([
+                            'grado:id,nb_grado'
+                        ])
+                        ->select('grupo.id', 'nb_grupo', 'id_grado')
+                        ->whereHas('planEvaluacion', function (Builder $query) use($idDocente) {
+                            $query->where('id_docente', $idDocente);
+                        })
+                        ->has('calendarioActivo')
+                        ->get();
+    }
+
     public function grupoAlumnosDocente($idDocente)
     {
         return Grupo::with([

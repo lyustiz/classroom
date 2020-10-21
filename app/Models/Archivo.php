@@ -26,6 +26,8 @@ class Archivo extends Model
    
     protected $appends = ['nb_real', 'fe_archivo'];
 
+   
+
     public function getFeArchivoAttribute()
     {
         return $this->created_at->format('d/m/Y h:i a');

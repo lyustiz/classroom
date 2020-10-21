@@ -98,24 +98,13 @@
     <v-dialog v-model="dialogActividad" fullscreen  content-class="cyan lighten-3">
         <app-actividad :actividad="actividad" @closeModal="closeDialog('dialogActividad')" v-if="dialogActividad"></app-actividad>
     </v-dialog>
-
-    <v-dialog v-model="dialogVideo" width="80vw"  content-class="black rounded-xl">
-        <visor-video :video="{src: '/storage/recurso/guia/3/1596209029_virtualin.mp4'}" @closeModal="closeDialog('dialogVideo')" v-if="dialogVideo"></visor-video>
-    </v-dialog>
-
-     <v-dialog v-model="dialogAudio"  width="450" content-class="rounded-xl primary" hide-overlay >
-        <visor-audio :audio="{src: '/storage/recurso/audio/1/fundamentos_macroeconomia.mp3'}" @closeModal="closeDialog('dialogAudio')" v-if="dialogAudio"></visor-audio>
-    </v-dialog>
-                
-                
+    
     </v-container>
   
 </template>
 
 <script>
 import AppActividad from './AppActividad'
-import VisorVideo   from './VisorVideo'
-import VisorAudio   from './VisorAudio'
 
 //selects
 import SelectTema       from './SelectTema'
@@ -130,8 +119,6 @@ export default {
 
      components: { 
         'app-actividad':     AppActividad,
-        'visor-video':       VisorVideo,
-        'visor-audio':       VisorAudio,
         'select-tema':       SelectTema,
         'select-actividad':  SelectActividad,
         'select-previo':     SelectPrevio,

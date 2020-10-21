@@ -43,4 +43,22 @@ class Actividad extends Model
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
     }
+
+    public function tema()
+    {
+        return $this->BelongsTo('App\Models\Tema', 'id_tema');
+    }
+
+    public function asignacion()
+    {
+        return $this->mortpMany('App\Models\Asignacion', 'tx_origen');
+    }
+
+    /*
+      public function asignacion()
+    {
+        return $this->hasMany('App\Models\Asignacion', 'id_origen')->where('origen', 'actividad');
+    } 
+    */
+
 }

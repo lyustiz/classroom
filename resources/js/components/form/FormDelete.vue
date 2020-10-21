@@ -32,6 +32,15 @@
             <v-card-actions>
 
                 <v-spacer></v-spacer>
+
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                        <v-btn fab x-small class="warning mx-1" :loadin="loading" v-on="on" @click="$emit('deleteCancel')">
+                            <v-icon>reply</v-icon>
+                        </v-btn>
+                    </template>
+                    <span>Volver</span>
+                </v-tooltip>
                 
                 <v-tooltip bottom>
                     <template v-slot:activator="{ on }">
@@ -40,15 +49,6 @@
                         </v-btn>
                     </template>
                     <span>Eliminar</span>
-                </v-tooltip>
-
-                <v-tooltip bottom>
-                    <template v-slot:activator="{ on }">
-                        <v-btn fab small class="warning mx-1" :loadin="loading" v-on="on" @click="$emit('deleteCancel')">
-                            <v-icon>reply</v-icon>
-                        </v-btn>
-                    </template>
-                    <span>Regresar</span>
                 </v-tooltip>
 
             </v-card-actions>

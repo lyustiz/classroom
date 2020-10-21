@@ -19,6 +19,14 @@ class TemaController extends Controller
                     ->get();
     }
 
+    public function temaGradoMateria( $idGrado, $idMateria )
+    {
+        return Tema::comboData()
+                    ->where('id_grado',   $idGrado)
+                    ->where('id_materia', $idMateria)
+                    ->get();
+    }
+
     /**
      * Store a newly created resource in storage.
      *

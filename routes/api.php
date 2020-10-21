@@ -160,6 +160,7 @@ Route::get('/gradoMateria/grado/{grado}/asignacion',   'GradoMateriaController@g
 Route::apiResource('/gradoMateria',             'GradoMateriaController', ['parameters' => ['gradoMateria' => 'gradoMateria']]);
 
 Route::get('/grupo/grado/{grado}',              'GrupoController@grupoGrado');
+Route::get('/grupo/docente/{docente}',          'GrupoController@grupoDocente');
 Route::get('/grupo/alumnos/docente/{docente}',  'GrupoController@grupoAlumnosDocente');
 Route::get('/grupo/list',                       'GrupoController@list');
 Route::apiResource('/grupo',                    'GrupoController');
@@ -227,21 +228,6 @@ Route::apiResource('/feriado',                  'FeriadoController');
 Route::apiResource('/tipoAgenda',               'TipoAgendaController');
 Route::apiResource('/agenda',                   'AgendaController');
 Route::apiResource('/tipoActividad',            'TipoActividadController');
-
-// -- FOTOS / ARCHIVOS -- //
-Route::get('/foto/tipoFoto/{tipoFoto}/origen/{origenId}',  'FotoController@fotoTipoOrigen');
-Route::apiResource('/foto',                     'FotoController');
-Route::apiResource('/tipoFoto',                 'TipoFotoController');
-
-Route::get('/archivo/tipoArchivo/{tipoArchivo}/origen/{origenId}', 'ArchivoController@archivoTipoOrigen');
-Route::apiResource('/archivo',                  'ArchivoController');
-Route::apiResource('/tipoArchivo',              'TipoArchivoController');
-
-Route::apiResource('/tipoRecurso',              'TipoRecursoController');
-Route::get('/recurso/grado/{grado}',            'RecursoController@recursoGrado');
-Route::get('/recurso/grupo/{grupo}',            'RecursoController@recursoGrupo');
-Route::get('/recurso/docente/{docente}',        'RecursoController@recursoDocente');
-Route::apiResource('/recurso',                  'RecursoController');
 
 // -- GESTION USUARIO -- //
 Route::apiResource('/tipoUsuario',              'TipoUsuarioController');
@@ -349,17 +335,52 @@ Route::get('/asistente/perfil/{perfil}',        'AsistenteController@asistentePe
 Route::apiResource('/asistente',                'AsistenteController');
 Route::apiResource('/asistenteDetalle',         'AsistenteDetalleController');
 
+
+// -- FOTOS / ARCHIVOS -- //
+Route::get('/foto/tipoFoto/{tipoFoto}/origen/{origenId}',  'FotoController@fotoTipoOrigen');
+Route::apiResource('/foto',                     'FotoController');
+Route::apiResource('/tipoFoto',                 'TipoFotoController');
+
+Route::get('/archivo/tipoArchivo/{tipoArchivo}/origen/{origenId}', 'ArchivoController@archivoTipoOrigen');
+Route::apiResource('/archivo',                  'ArchivoController');
+Route::apiResource('/tipoArchivo',              'TipoArchivoController');
+
+Route::apiResource('/tipoRecurso',              'TipoRecursoController');
+Route::get('/recurso/grado/{grado}',            'RecursoController@recursoGrado');
+Route::get('/recurso/grupo/{grupo}',            'RecursoController@recursoGrupo');
+Route::get('/recurso/docente/{docente}',        'RecursoController@recursoDocente');
+Route::get('/recurso/tipoRecurso/{tipoRecurso}/tema/{tema}',  'RecursoController@recursoTipoRecursoTema');
+Route::apiResource('/recurso',                  'RecursoController');
+
+
+Route::get('/actividad/tema/{tema}',            'ActividadController@actividadTema');
 Route::apiResource('/actividad',                'ActividadController');
+
+Route::apiResource('/tipoActividad',            'TipoActividadController');
 Route::get('/libro/grado/{grado}',              'LibroController@libroGrado');
 Route::apiResource('/libro',                    'LibroController');
 Route::apiResource('/pagina',                   'PaginaController', ['parameters' => ['pagina' => 'pagina']]);
-Route::apiResource('/tipoActividad',            'TipoActividadController');
+
+Route::get('/tema/grado/{grado}/materia/{materia}', 'TemaController@temaGradoMateria');
+Route::apiResource('/tema',                     'TemaController', ['parameters' => ['tema' => 'tema']]);
+
+Route::apiResource('/temaEnlace',               'TemaEnlaceController');
+Route::apiResource('/temaRecurso',              'TemaRecursoController');
+Route::apiResource('/recursoCategoria',         'RecursoCategoriaController', ['parameters' => ['recursoCategoria' => 'recursoCategoria']]);
+
+Route::get('/enlace/tipoEnlace/{tipoEnlace}/tema/{tema}',               'EnlaceController@enlaceTipoEnlaceTema');
+Route::apiResource('/enlace',                   'EnlaceController');
+Route::apiResource('/tipoEnlace',               'TipoEnlaceController');
+
+/* 
 Route::apiResource('/tipoAccion',               'TipoAccionController');
 Route::apiResource('/actividadRecurso',         'ActividadRecursoController');
-Route::apiResource('/tema',                     'TemaController');
 Route::apiResource('/accionPagina',             'AccionPaginaController');
-Route::apiResource('/accionTema',               'AccionTemaController');
-
+Route::apiResource('/accionTema',               'AccionTemaController'); 
+*/
+Route::get('/asignacion/grupo/{grupo}',         'AsignacionController@asignacionGrupo');
+Route::apiResource('/asignacion',               'AsignacionController');
+Route::apiResource('/tipoAsignacion',           'TipoAsignacionController');
 //newRoutes
 
 Route::fallback(function () {

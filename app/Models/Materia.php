@@ -100,6 +100,13 @@ class Materia extends Model
 		);
     }
 
+    public function tema()
+    {
+        return $this->HasMany('App\Models\Tema', 'id_materia');
+    }
+
+
+
    /*  public function grado()
     {
         return $this->hasManyThrough('App\Models\Grado', 'App\Models\GradoMateria', 'id_materia', 'id_grado', 'id', 'id');

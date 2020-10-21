@@ -145,17 +145,20 @@ import RespuestaAlumno  from '@pages/respuestaAlumno/respuestaAlumno.vue';
 //libros
 import Tema             from  '@pages/tema/tema.vue'; 
 import Libro            from  '@pages/libro/libro.vue';  
-import Pagina            from  '@pages/pagina/pagina.vue';   
+import Pagina           from  '@pages/pagina/pagina.vue';   
 import Actividad        from  '@pages/actividad/actividad.vue';      
+/*
 import ActividadRecurso from  '@pages/actividadRecurso/actividadRecurso.vue';       
 import TipoActividad    from  '@pages/tipoActividad/tipoActividad.vue';    
 import AccionPagina     from  '@pages/accionPagina/accionPagina.vue';        
 import AccionTema       from  '@pages/accionTema/accionTema.vue';          
-import TipoAccion       from  '@pages/tipoAccion/tipoAccion.vue';        
-       
-      
-
-
+import TipoAccion       from  '@pages/tipoAccion/tipoAccion.vue';   
+*/      
+import TemaEnlace       from  '@pages/temaEnlace/temaEnlace.vue';     
+import TemaRecurso      from  '@pages/temaRecurso/temaRecurso.vue';     
+import RecursoCategoria from  '@pages/recursoCategoria/recursoCategoria.vue';     
+import Enlace           from  '@pages/enlace/enlace.vue';     
+import TipoEnlace       from  '@pages/tipoEnlace/tipoEnlace.vue';     
 
 
 //notificaciones
@@ -1052,10 +1055,61 @@ export default new Router({
                 path: 'tema',
                 name: 'tema',
                 label: 'Tema',
-                icon: 'mdi-card-text-outline',
+                icon: 'mdi-card-text',
                 profile: 'secretaria',
                 visible: true,
                 component: Tema
+            }, 
+
+            { 
+                path: 'tema-enlace',
+                name: 'tema-enlace',
+                label: 'Tema Enlace',
+                icon:  'mdi-link-variant-plus',
+                profile: 'secretaria',
+                visible: true,
+                component: TemaEnlace
+            }, 
+
+            { 
+                path: 'tipo-enlace',
+                name: 'tipo-enlace',
+                label: 'Tipo Enlace',
+                icon: 'mdi-link-variant-plus', 
+                profile: 'secretaria',
+                visible: true,
+                component: TipoEnlace
+            }, 
+
+            { 
+                path: 'enlace',
+                name: 'enlace',
+                label: 'Enlace',
+                icon: 'mdi-link-variant',
+                profile: 'secretaria',
+                visible: true,
+                component: Enlace
+            }, 
+
+
+            { 
+                path: 'recurso-categoria',
+                name: 'recurso-categoria',
+                label: 'Recurso Categoria',
+                icon: 'mdi-book-open-page-variant',
+                profile: 'secretaria',
+                visible: true,
+                component: RecursoCategoria
+            }, 
+
+            { 
+                path: 'tema-recurso',
+                name: 'tema-recurso',
+                label: 'Tema Recurso',
+                icon: 'mdi-book-open-page-variant',
+                profile: 'secretaria',
+                visible: true,
+                component: TemaRecurso
             }, 
 
             { 
@@ -1082,13 +1136,23 @@ export default new Router({
                 path: 'actividad',
                 name: 'actividad',
                 label: 'Actividad',
-                icon: 'mdi-head-question',
+                icon: 'mdi-rocket',
                 profile: 'secretaria',
                 visible: true,
                 component: Actividad
             }, 
 
-            { 
+
+
+            /////
+            
+
+           
+
+            
+            
+
+    /*         { 
                 path: 'tipo-actividad',
                 name: 'Tipo-actividad',
                 label: 'Tipo Actividad ',
@@ -1096,8 +1160,8 @@ export default new Router({
                 profile: 'secretaria',
                 visible: true,
                 component: TipoActividad
-            }, 
-            { 
+            },  */
+            /* { 
                 path: 'tipo-accion',
                 name: 'tipo-accion',
                 label: 'Tipo Accion',
@@ -1105,9 +1169,9 @@ export default new Router({
                 profile: 'secretaria',
                 visible: true,
                 component: TipoAccion
-            }, 
+            },  */
 
-            { 
+            /* { 
                 path: 'accion-pagina',
                 name: 'accion-pagina',
                 label: 'Accion Pagina',
@@ -1125,7 +1189,7 @@ export default new Router({
                 profile: 'secretaria',
                 visible: true,
                 component: AccionTema
-            }, 
+            },  */
 
             //CONFIGURACION
 

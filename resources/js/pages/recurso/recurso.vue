@@ -30,7 +30,7 @@
                     <tr>
                         <td class="text-xs-left">{{ item.tipo_recurso.nb_tipo_recurso }}</td>
 						<td class="text-xs-left">{{ item.grado.nb_grado }}</td>
-						<td class="text-xs-left">{{ item.grupo.nb_grupo }}</td>
+						<td class="text-xs-left">{{ item.tema.nb_tema }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -123,7 +123,7 @@ export default {
             headers: [
                 { text: 'Tipo Recurso',   value: 'tipo_recurso.nb_tipo_recurso' },
                 { text: 'Grado',   value: 'grado.nb_grado' },
-                { text: 'Grupo',   value: 'grupo.nb_grupo' },
+                { text: 'Tema',   value: 'tema.nb_tema' },
                 { text: 'Status',   value: 'id_status' },
                 { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
             ],

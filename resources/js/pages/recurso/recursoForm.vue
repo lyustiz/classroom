@@ -24,12 +24,12 @@
                   
         <v-col cols="12" md="6">
             <v-select
-            :items="selects.grado"
-            item-text="nb_grado"
+            :items="selects.tema"
+            item-text="nb_tema"
             item-value="id"
-            v-model="form.id_grado"
+            v-model="form.id_tema"
             :rules="[rules.select]"
-            label="Grado"
+            label="Tema"
             :loading="loading"
             dense
             ></v-select>
@@ -58,20 +58,6 @@
             ></v-text-field>
         </v-col>
                           
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.status"
-            item-text="nb_status"
-            item-value="id"
-            v-model="form.id_status"
-            :rules="[rules.select]"
-            label="Status"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
-         
-
         </v-row>
 
         </v-card-text>
@@ -118,7 +104,7 @@ export default {
             {
                 id: 	null,
 				id_tipo_recurso: 	null,
-				id_grado: 	null,
+				id_tema: 	null,
 				id_grupo: 	null,
 				tx_observaciones: 	null,
 				id_status: 	null,
@@ -127,9 +113,8 @@ export default {
             selects:
             {
                 tipoRecurso: 	 [],
-	 	 	 	grado: 	 [],
+	 	 	 	tema: 	 [],
 	 	 	 	grupo: 	 [],
-	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

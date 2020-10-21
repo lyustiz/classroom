@@ -50,10 +50,10 @@ Vue.prototype.$App = Object.freeze({
         }
 })
 
-import wb from "./registerServiceWorker";
+/* import wb from "./registerServiceWorker";
 
 Vue.prototype.$workbox = wb;
-
+ */
 /** Components Autoload **/
 import './components/components'
 

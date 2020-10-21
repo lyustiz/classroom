@@ -19,6 +19,12 @@ class ActividadController extends Controller
                     ->get();
     }
 
+    public function actividadTema($idTema)
+    {
+        return Actividad::where('id_tema', $idTema)
+                    ->get();
+    }
+
     /**
      * Store a newly created resource in storage.
      *
