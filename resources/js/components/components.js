@@ -79,7 +79,6 @@ import AppFoto          from '@pages/foto/appFoto'
 import AppFotoCuenta    from '@pages/foto/appFotoCuenta'
 import AppAgendaToolbar from '@components/app/AppAgendaToolbar'
 
-
 Vue.component('app-foto',           AppFoto);
 Vue.component('app-foto-cuenta',    AppFotoCuenta);
 Vue.component('app-agenda-toolbar', AppAgendaToolbar);
@@ -95,3 +94,18 @@ Vue.component('app-report', AppReport);
 
 import MeetRoom from '@components/meet/MeetRoom'
 Vue.component('meet-room', MeetRoom);
+
+//Visor
+
+import VisorAudio  from '@components/visor/VisorAudio'
+import VisorVideo  from '@components/visor/VisorVideo'
+import VisorEnlace from '@components/visor/VisorEnlace'
+import VisorLibro  from '@components/visor/VisorLibro'
+import VisorPdf    from '@components/visor/VisorPdf'
+
+Vue.component('visor-audio' , VisorAudio);
+Vue.component('visor-video' , VisorVideo);
+Vue.component('visor-enlace', VisorEnlace);
+Vue.component('visor-libro' , VisorLibro);
+Vue.component('visor-pdf'   , VisorPdf);
+

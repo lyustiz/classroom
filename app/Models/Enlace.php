@@ -55,4 +55,9 @@ class Enlace extends Model
     {
         return $this->BelongsTo('App\Models\Tema', 'id_tema');
     }
+
+    public function asignacion()
+    {
+        return $this->morphMany('App\Asignacion', 'id_origen');
+    }
 }

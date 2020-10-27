@@ -32,10 +32,15 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         Relation::morphMap([
+            //Asignaciones
             'actividad' => 'App\Models\Actividad',
             'enlace'    => 'App\Models\Enlace',
             'recurso'   => 'App\Models\Recurso',
             'libro'     => 'App\Models\Libro',
+            //Evaluaciones
+            'prueba'     => 'App\Models\Prueba',
+            'tarea'      => 'App\Models\Tarea',
+            'rasgos'     => 'App\Models\Rasgos',
         ]);
     }
 }

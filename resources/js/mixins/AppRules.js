@@ -33,8 +33,8 @@ export default
 
                 youtube:   v => /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|\?v=)([^#&?]*).*/i.test( v ) || 'url de yutube invalida',
 
-                file: v => !!v || 'Archivo Requerido',
-                
+                file:      v => v instanceof File  || 'Archivo Requerido',
+                  
                 number: v => /^(?:-?\d+|-?\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/.test( v ) || 'numero no valido',
 
                 digits: v => /^\d+$/.test( v ) || 'solo se permiten digitos',

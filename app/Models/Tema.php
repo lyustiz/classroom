@@ -59,7 +59,21 @@ class Tema extends Model
 
     public function actividad()
     {
-        return $this->BelongsTo('App\Models\Actividad', 'id_tema');
+        return $this->HasMany('App\Models\Actividad', 'id_tema');
     }
+
+    public function recurso()
+    {
+        return $this->HasMany('App\Models\Recurso', 'id_tema');
+    }
+
+    public function enlace()
+    {
+        return $this->HasMany('App\Models\Enlace', 'id_tema');
+    }
+
+    
+
+
 
 }

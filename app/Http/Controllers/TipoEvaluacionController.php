@@ -16,10 +16,7 @@ class TipoEvaluacionController extends Controller
      */
     public function index()
     {
-        $tipoEvaluacion = TipoEvaluacion::with([])
-                    ->get();
-        
-        return $tipoEvaluacion;
+        return TipoEvaluacion::activo()->get();  
     }
 
     /**

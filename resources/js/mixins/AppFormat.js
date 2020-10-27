@@ -94,6 +94,20 @@ export default {
             return `${day}/${month}/${year}`
         },
 
+        dayFromDate(date)
+        {
+            if (!date) return null
+            const [year, month, day] = date.split('-')
+            return day
+        },
+
+        monthFromDate(date)
+        {
+            if (!date) return null
+            const [year, month, day] = date.split('-')
+            return month
+        },
+
         monthDayFromDate(date)
         {
             if (!date) return null
@@ -106,6 +120,13 @@ export default {
             if (!date) return null
             const [year, month, day] = date.split('-')
             return year
+        },
+
+        monthNameFromDate(date)
+        {
+            if (!date) return null
+            const [year, month, day] = date.split('-')
+            return  this.months[month-1]
         },
 
         formatTime(time)

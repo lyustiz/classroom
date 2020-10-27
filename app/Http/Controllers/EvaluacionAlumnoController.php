@@ -34,7 +34,34 @@ class EvaluacionAlumnoController extends Controller
                                 ->get();
     }
 
-    
+    public function evaluacionAlumnoAlumno($idAlumno) 
+    {
+
+        $evaluaciones = EvaluacionAlumno::with([
+                                    'evaluacion:id,id_tipo_evaluacion,tx_origen,id_origen,id_grupo,id_materia,nu_peso,fe_inicio,fe_fin,hh_inicio,hh_fin,nu_minutos',
+                                    'evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion,tx_icono,tx_color',
+                                    'evaluacion.materia:id,nb_materia',
+                                    'evaluacion.origen'
+                            ])
+                            ->where('id_alumno', $idAlumno)
+                            ->get(); 
+
+        return $this->formatData($evaluaciones);
+    }
+
+    public function formatData($evaluacinesAlumno)
+    {
+        $data = [];
+
+        foreach ($evaluacinesAlumno as $evaluacionAlumno) //data[tipo]
+        { 
+            $tipo       = $evaluacionAlumno->evaluacion->tipoEvaluacion->nb_tipo_evaluacion;
+
+            $data[$tipo][] = $evaluacionAlumno;
+        }
+
+        return $data;
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -129,6 +156,10 @@ class EvaluacionAlumnoController extends Controller
      */
     public function destroy(EvaluacionAlumno $evaluacionAlumno)
     {
+        
+        
+        
+        
         $evaluacionAlumno = $evaluacionAlumno->delete();
  
         return [ 'msj' => 'EvaluacionAlumno Eliminado' , compact('evaluacionAlumno')];

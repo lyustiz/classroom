@@ -15,8 +15,7 @@ class TipoAsignacionController extends Controller
      */
     public function index()
     {
-        return TipoAsignacion::with([])
-                    ->get();
+        return TipoAsignacion::activo()->get();  
     }
 
     /**

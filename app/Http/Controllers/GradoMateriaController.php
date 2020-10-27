@@ -76,6 +76,8 @@ class GradoMateriaController extends Controller
 
         $gradoMateria = gradoMateria::create($request->all())->load('materia');
 
+        $gradoMateria->materia;   
+
         return [ 'msj' => 'Materia Agregada Correctamente', 'gradoMateria' => $gradoMateria  ];
     }
 

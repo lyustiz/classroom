@@ -74,5 +74,10 @@ class Asignacion extends Model
         return $this->morphTo(null,'tx_origen','id_origen', 'id');
     }
 
+    public function asignacionAlumno()
+    {
+        return $this->HasMany('App\Models\AsignacionAlumno', 'id_asignacion');
+    }
+
 
 }

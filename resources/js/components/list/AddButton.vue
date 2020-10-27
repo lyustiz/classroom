@@ -2,7 +2,7 @@
 
     <v-tooltip bottom>
         <template v-slot:activator="{ on }">
-            <v-btn icon dark small v-on="on" @click="insItem()" class="elevation-5" :loading="loading">
+            <v-btn icon dark small v-on="on" @click="insItem()" :class="innerClass" :loading="loading">
                 <v-icon size="38" color="success" >mdi-plus-circle</v-icon>
             </v-btn>
         </template>
@@ -23,6 +23,11 @@ export default {
         loading: {
             type:     Boolean,
             default:  false
+        },
+
+        innerClass: {
+            type:     String,
+            default:  'elevation-5'
         }
     },
     methods:

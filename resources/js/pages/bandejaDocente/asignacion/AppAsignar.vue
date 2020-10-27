@@ -3,14 +3,14 @@
 <v-dialog scrollable fullscreen persistent v-model="dialog">
 
         <template v-slot:activator="{ on, attrs }">
-            <v-btn fab dark depressed v-bind="attrs" v-on="on" color="teal" class="ml-1 mt-1">
+            <v-btn fab dark depressed v-bind="attrs" v-on="on" color="deep-orange" class="ml-1 mt-1">
                 <v-icon size="32">mdi-clipboard-check-outline</v-icon>
             </v-btn>
         </template>
 
     <v-card class="green lighten-5">
 
-        <component :is="component" v-if="component" @closeModal="dialog=false"></component>
+        <component :is="component" v-if="component" @closeModal="dialog=false" @closeDialog="dialog=false"></component>
 
     </v-card>
 

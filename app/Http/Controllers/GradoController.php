@@ -117,16 +117,38 @@ class GradoController extends Controller
     public function gradoMateriaDocente($idDocente)
     {
         return Grado::with([
-                            'materia.docente' => function ($query) use($idDocente) {
-                                $query->comboData()->where('id_docente', $idDocente);
-                            },                          
-                    ])
-                    ->select('grado.id', 'nb_grado')
-                    ->whereHas('grupo.planEvaluacion', function (Builder $query) use($idDocente) {
-                        $query->where('id_docente', $idDocente);
-                    })
-                    ->get();
+                                'materia' => function ($query) use($idDocente) {
+                                    $query->select('materia.id', 'nb_materia')
+                                    ->whereHas('docente', function (Builder $query) use($idDocente) {
+                                        $query->where('docente.id', $idDocente);
+                                    });
+                                },                           
+                            ])
+                            ->select('grado.id', 'nb_grado')
+                            ->whereHas('grupo.planEvaluacion', function (Builder $query) use($idDocente) {
+                                $query->where('id_docente', $idDocente)
+                                ->has('periodoActivo');
+                            })
+                            ->get();
     }
+
+ /*    public function gradoMateriaDocente($idDocente)
+    {        
+        return Grado::with([
+                                'materia' => function ($query) use($idDocente) {
+                                    $query->select('materia.id', 'nb_materia')
+                                    ->whereHas('docente', function (Builder $query) use($idDocente) {
+                                        $query->where('docente.id', $idDocente);
+                                    });
+                                },   
+
+                            ])
+                            ->whereHas('grupo.planEvaluacion', function (Builder $query) use($idDocente) {
+                                $query->where('plan_evaluacion.id_docente', $idDocente)
+                                      ->has('periodoActivo');
+                            })
+                            ->get();
+    } */
 
     public function grupoGrado($idGrado)
     {

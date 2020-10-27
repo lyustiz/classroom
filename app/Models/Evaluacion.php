@@ -9,18 +9,20 @@ class Evaluacion extends Model
     protected $table 	  = 'evaluacion';
 
     protected $fillable   = [
-                            'id_plan_evaluacion',
-                            'id_tipo_evaluacion',
-                            'id_evaluacion_metodo',
-                            'nu_peso',
-                            'fe_planificada',
-                            'fe_evaluacion',
-                            'hh_inicio',
-	 	 	 	 	 	 	'hh_fin',
-	 	 	 	 	 	 	'tx_tema',
-	 	 	 	 	 	 	'tx_observaciones',
-	 	 	 	 	 	 	'id_status',
-	 	 	 	 	 	 	'id_usuario'
+                                'id_tipo_evaluacion',
+                                'id_grupo',
+                                'id_materia',
+                                'tx_origen',
+                                'id_origen',
+                                'nu_peso',
+                                'fe_inicio',
+                                'fe_fin',
+                                'hh_inicio',
+                                'hh_fin',
+                                'nu_minutos',
+                                'tx_observaciones',
+                                'id_status',
+                                'id_usuario',
                             ]; 
     
     protected $hidden     = [
@@ -79,9 +81,14 @@ class Evaluacion extends Model
         return $this->BelongsTo('App\Models\PlanEvaluacion', 'id_plan_evaluacion');
     }
 
-    public function evaluacionMetodo()
+    public function grupo()
     {
-        return $this->BelongsTo('App\Models\EvaluacionMetodo',  'id_evaluacion_metodo');
+        return $this->BelongsTo('App\Models\Grupo', 'id_grupo');
+    }
+
+    public function materia()
+    {
+        return $this->BelongsTo('App\Models\Materia', 'id_materia');
     }
 
     public function evaluacionAlumno()
@@ -92,5 +99,10 @@ class Evaluacion extends Model
     public function archivo()
     {
         return $this->hasMany('App\Models\Archivo',  'tx_origen_id', 'id')->where('id_tipo_archivo', 2);
+    }
+
+    public function origen()
+    {
+        return $this->morphTo(null,'tx_origen','id_origen', 'id');
     }
 }

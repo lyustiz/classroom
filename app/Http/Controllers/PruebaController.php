@@ -56,6 +56,14 @@ class PruebaController extends Controller
                       ->get();
     }
 
+    public function pruebaGradoMateria($idGrado, $idMateria)
+    {
+        return  Prueba::with(['grado:id,nb_grado', 'materia:id,nb_materia'])
+                      ->where('id_grado', $idGrado)
+                      ->where('id_materia', $idMateria)
+                      ->get();
+    }
+
     public function pruebaDocenteGradoMateriaPendiente($idDocente, $idGrado, $idMateria)
     {
         return  Prueba::with([  'grado:id,nb_grado',

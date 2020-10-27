@@ -24,8 +24,10 @@
                 <span v-text="section.label"></span>
             </v-tooltip>
 
-            <meet-room :usuario="3"></meet-room>
+            
             <app-asignar></app-asignar>
+            <gestion-tema></gestion-tema>
+            <meet-room :usuario="3"></meet-room>
 
         </v-card-text>
 
@@ -45,6 +47,7 @@ import EvaluacionDocente from './evaluacion/EvaluacionDocente'
 import ClaseAlumno       from '@pages/bandejaAlumno/clase/AppClase'
 import MenuPrueba        from './prueba/MenuPrueba.vue'
 import AppAsignar        from './asignacion/AppAsignar'
+import GestionTemas      from './tema/GestionTema'
 
 export default {
 
@@ -55,7 +58,8 @@ export default {
         'evaluacion-docente': EvaluacionDocente,
         'menu-prueba':        MenuPrueba,
         'clase-alumno':       ClaseAlumno, 
-        'app-asignar':       AppAsignar, 
+        'app-asignar':        AppAsignar, 
+        'gestion-tema':       GestionTemas, 
     },
 
     computed:
@@ -76,9 +80,9 @@ export default {
             sections: [
 
                     { label: 'Alumnos', icon: 'mdi-school', component: 'lista-alumno', color: 'blue', sectionWidth: '700' },
-                    { label: 'Recursos', icon: 'mdi-book-open-page-variant', component: 'recurso-docente', color: 'purple', sectionWidth: '700' },
+                  /*   { label: 'Recursos', icon: 'mdi-book-open-page-variant', component: 'recurso-docente', color: 'purple', sectionWidth: '700' }, */
                     { label: 'Plan Evaluacion', icon: 'mdi-table-clock', component: 'plan-evaluacion', color: 'indigo', sectionWidth: '700' },
-                    { label: 'Evaluaciones', icon: 'mdi-table-check', component: 'evaluacion-docente', color: 'amber', sectionWidth: '95vw' },
+                 /*    { label: 'Evaluaciones', icon: 'mdi-table-check', component: 'evaluacion-docente', color: 'amber', sectionWidth: '95vw' }, */
                     { label: 'Pruebas', icon: 'mdi-order-bool-descending-variant', component: 'menu-prueba', color: 'red', sectionWidth: '700' },
                 ]
         }

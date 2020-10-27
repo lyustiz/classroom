@@ -27,6 +27,18 @@ class TemaController extends Controller
                     ->get();
     }
 
+    public function temaRecursos($idTema)
+    {
+        return Tema::with([
+                          'enlace:enlace.id,nb_enlace,id_tipo_enlace,id_tema,tx_descripcion,tx_url',
+                          'enlace.tipoEnlace:tipo_enlace.id,nb_tipo_enlace,tx_icono,tx_color',  
+                          'recurso',
+                          'actividad:actividad.id,nb_actividad,id_tema,tx_descripcion'
+                    ])
+                    ->comboData()
+                    ->find($idTema);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

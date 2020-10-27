@@ -15,6 +15,7 @@
     </v-card-title>
 
     <v-card-text>
+    <v-form ref="form" v-model="valid" lazy-validation>
 
         <v-row justify="center">
 
@@ -30,11 +31,23 @@
                     :loading="loading"
                     :disabled="loading"
                     @change="setFiles()"
+                    :rules="[rules.file]"
                     rounded
                     filled
-                    :rules="[rules.file]"
-                    >
+                    v-if="action=='ins'">
                 </v-file-input>
+
+                <v-text-field 
+                    :prepend-icon="tipo.tx_icono"
+                    v-model="form.tx_path"
+                    :color="tipo.tx_color"
+                    :loading="loading"
+                    :disabled="loading"
+                    readonly
+                    rounded
+                    filled
+                    v-if="action=='upd'">
+                </v-text-field>
 
             </v-col>
 
@@ -64,6 +77,7 @@
 
         </v-row>
 
+    </v-form>
     </v-card-text>
 
     <v-card-actions>
@@ -72,8 +86,8 @@
                 @update="update()"
                 @store="store()"
                 @clear="clear()"
-                @cancel="cancel()"
-                action="ins"
+                @cancel="$emit('closeDialog')"
+                :action="action"
                 :valid="valid"
                 :loading="loading"
             ></form-buttons>
@@ -95,15 +109,20 @@
 </template>
 
 <script>
-import AppData      from '@mixins/AppData';
+import AppForm from '@mixins/Appform'
 import AppMimeTypes from '@mixins/AppMimeTypes';
 
 export default {
 
-    mixins:     [ AppData, AppMimeTypes ],
+    mixins:     [ AppForm, AppMimeTypes ],
 
     props:
     {
+        recurso: {
+            type: Object,
+            default: () => {}
+        },
+        
         tipoRecurso: {
             type: Number,
             default: null
@@ -111,7 +130,7 @@ export default {
 
         tipo: {
             type: Object,
-            default: null
+            default: () => {}
         },
 
         tema: {
@@ -122,32 +141,20 @@ export default {
         grado: {
             type: Number,
             default: null
-        } 
+        }, 
     },
 
-    created()
+    computed:
     {
-        if( this.tipo.nb_tipo_asignacion == 'audio' )  {
-            this.fileType             = this.fileTypesByName('Audio')
-            this.accept               = this.getTypeAccept()
-            this.form.id_tipo_archivo = 8
-            this.form.id_tipo_recurso = 1
-            this.form.tx_mimetype     = 'Audio'
-        }
-
-        if( this.tipo.nb_tipo_asignacion == 'lectura' )  {
-            this.fileType             = this.fileTypesByName('PDF')
-            this.accept               = this.getTypeAccept()
-            this.form.id_tipo_archivo = 10
-            this.form.id_tipo_recurso = 3
-            this.form.tx_mimetype     = 'PDF'
-        }
-        this.form.id_tema  = this.tema
-        this.form.id_grado = this.grado
+        fullUrlId() 
+		{
+            return this.fullUrl + '/' + this.recurso.id
+        },
     },
 
     data () {
         return {
+            resource: 'recurso',
             accept:   null,
             mimes:    [],
             file:     [],
@@ -175,6 +182,36 @@ export default {
     },
     methods:
     {
+        onCreateForm()
+        {
+             if( this.tipo.nb_tipo_asignacion == 'audio' )  {
+                this.fileType             = this.fileTypesByName('Audio')
+                this.accept               = this.getTypeAccept()
+                this.form.id_tipo_archivo = 8
+                this.form.id_tipo_recurso = 1
+                this.form.tx_mimetype     = 'Audio'
+            }
+
+            if( this.tipo.nb_tipo_asignacion == 'lectura' )  {
+                this.fileType             = this.fileTypesByName('PDF')
+                this.accept               = this.getTypeAccept()
+                this.form.id_tipo_archivo = 10
+                this.form.id_tipo_recurso = 3
+                this.form.tx_mimetype     = 'PDF'
+            }
+        },
+
+        extraActions(method)
+        {           
+            this.form.id_tema         = this.tema
+            this.form.id_grado        = this.grado 
+            this.form.id_tipo_recurso = this.tipoRecurso
+            if(!this.form.tx_path){
+                this.showError('Favor cargar el archivo')
+                return false
+            }
+        },
+
         setFiles()
         {
            if(this.file)
@@ -223,6 +260,7 @@ export default {
         validType()
         {
             let valid = this.mimes.includes(this.file.type)
+
             if( !valid ) {
                this.showError(`Tipo de Archivo no Permitido` )
                this.loading = false
@@ -232,13 +270,10 @@ export default {
             return valid
         },
 
-        store()
+        postResponse()
         {
-            this.storeResource('recurso', this.form).then( data => {
-                this.showMessage(data.msj)
-                this.$emit('closeDialog', true)
-            })
-        }
+            this.$emit('closeDialog', true)
+        },
     }
 }
 </script>

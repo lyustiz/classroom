@@ -43,13 +43,10 @@ class EvaluacionController extends Controller
     {
         return Evaluacion::with([
                                 'tipoEvaluacion:id,nb_tipo_evaluacion',
-                                'planEvaluacion:id,id_materia',
-                                'planEvaluacion.materia:id,nb_materia,id_area_estudio',
-                                'planEvaluacion.materia.areaEstudio:id,tx_color'
+                                'materia:id,nb_materia',
+                                'origen',
                         ])
-                        ->whereHas('planEvaluacion', function (Builder $query) use($idGrupo) {
-                            $query->where('id_grupo', $idGrupo)->where('id_status', 1);
-                        })
+                        ->where('id_grupo',$idGrupo)
                         ->get();
     }
 
@@ -110,20 +107,45 @@ class EvaluacionController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-            'id_plan_evaluacion'=> 	'required|integer|max:999999999',
-			'id_tipo_evaluacion'=> 	'required|integer|max:999999999',
-			'nu_peso'           => 	'nullable|integer|max:999999999',
-			'fe_planificada'    => 	'nullable|date',
-			'tx_tema'           => 	'nullable|string|max:100',
-			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_usuario'        => 	'required|integer|max:999999999',
+            'id_tipo_evaluacion' => 'required|integer|max:999999999',
+            'id_grupo'           => 'required|integer|max:999999999',
+            'id_materia'         => 'required|integer|max:999999999',
+            'tx_origen'          => 'required|string|max:30',
+            'id_origen'          => 'required|integer|max:999999999',
+            'nu_peso'            => 'nullable|integer|max:999999999',
+            'fe_inicio'          => 'required|date|before_or_equal:fe_fin',
+		    'fe_fin'             => 'required|date',
+            'hh_inicio'          => 'required|date_format:"H:i"',
+            'hh_fin'             => 'required|date_format:"H:i"',
+            'nu_minutos'         => 'required||integer|max:999999999',
+            'tx_observaciones'   => 'nullable|string|max:999999999',
+            'id_status'          => 'required|integer|max:999999999',
+            'id_usuario'         => 'required|integer|max:999999999',
+            'alumnos'            => 'required|array'
         ]);
-
-        $request->merge( ['id_status' => 9] );
 
         $evaluacion = evaluacion::create($request->all());
 
-        return [ 'msj' => 'Evaluacion Agregada Correctamente', compact('evaluacion') ];
+        $evaluacionAlumno = $this->asignarEvaluacionAlumnos($evaluacion, $request->alumnos);
+        
+        return [ 'msj' => 'Evaluacion Agregada Correctamente', compact('evaluacion', 'evaluacionAlumno') ]; 
+    }
+
+    public function asignarEvaluacionAlumnos(Evaluacion $evaluacion, $alumnos)
+    {
+        $evaluacionAlumnos = [];
+
+        foreach ($alumnos as $idAlumno) 
+        {
+            $evaluacionAlumnos[] = [
+                                    'id_evaluacion' => $evaluacion->id,
+                                    'id_alumno'     => $idAlumno,
+                                    'id_usuario'    => $evaluacion->id_usuario,
+                                    'id_status'     => 1,
+                                ];
+        }
+
+        return EvaluacionAlumno::insert($evaluacionAlumnos);
     }
 
     /**
@@ -180,28 +202,6 @@ class EvaluacionController extends Controller
         $evaluacion = $evaluacion->update($request->all());
 
         return [ 'msj' => 'Evaluacion Actualizada' , compact('evaluacion','evaluacionAlumnos')];
-    }
-
-    public function asignarEvaluacionAlumnos($evaluacion)
-    {
-        if(count($evaluacion->evaluacionAlumno) < 1)
-        {
-            $alumnos =  $evaluacion->planEvaluacion->grupo->alumno;
-
-            $evaluacionAlumnos = [];
-
-            foreach ($alumnos as $key => $alumno) 
-            {
-                $evaluacionAlumnos[] = [
-                                        'id_evaluacion' => $evaluacion->id,
-                                        'id_alumno'     => $alumno->id,
-                                        'id_usuario'    => $evaluacion->id_usuario,
-                                        'id_status'     => 1,
-                                    ];
-            }
-            return EvaluacionAlumno::insert($evaluacionAlumnos);
-        }
-        return false;
     }
 
     public function cerrar(Request $request, Evaluacion $evaluacion)

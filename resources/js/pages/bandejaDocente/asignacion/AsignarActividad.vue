@@ -154,7 +154,7 @@ export default {
 
         tipoAsignaciones:{
             type: Array,
-            default: []
+            default: () => []
         },
 
         tipo:{

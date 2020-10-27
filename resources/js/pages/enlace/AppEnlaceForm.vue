@@ -45,7 +45,7 @@
 
         <v-col cols="12" v-if="tipo.nb_tipo_asignacion == 'video'">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[rules.required, rules.max(150)]"
                 v-model="form.tx_url"
                 label="Url"
                 placeholder="Indique Url de Youtube"
@@ -74,15 +74,14 @@
             <form-buttons
                 @update="update()"
                 @store="store()"
-                @clear="clear()"
-                @cancel="cancel()"
+                @cancel="$emit('closeDialog')"
                 :action="action"
                 :valid="valid"
                 :loading="loading"
             ></form-buttons>
         </v-card-actions>
 
-        <pre v-if="$App.debug">{{ $data }}</pre>
+        <pre v-if="$App.debug">{{ $props }}</pre>
 
     </v-card>
     
@@ -126,6 +125,19 @@ export default {
         this.form.id_status      = 1
     },
 
+    watch:
+    {
+        action(action)
+        {
+            if(action)
+            {
+                this.form.id_tipo_enlace = this.tipoEnlace
+                this.form.id_tema        = this.tema
+                this.form.id_status      = 1
+            }
+        }
+    },
+
     data() {
         return {
             resource: 'enlace',
@@ -136,7 +148,7 @@ export default {
                 id_tipo_enlace:    null,
                 id_tema:           null,
 				descripcion: 	   null,
-				url: 	           null,
+				tx_url: 	       null,
 				tx_observaciones:  null,
 				id_status: 	       null,
 				id_usuario: 	   null,

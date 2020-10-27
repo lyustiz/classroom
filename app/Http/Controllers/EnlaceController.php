@@ -40,7 +40,7 @@ class EnlaceController extends Controller
             'id_tipo_enlace'    => 	'required|integer|max:999999999',
             'id_tema'           => 	'required|integer|max:999999999',
 			'tx_descripcion'    => 	'nullable|string|max:100',
-			'tx_url'            => 	'required|string|max:100',
+			'tx_url'            => 	'required|string|max:150',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
@@ -48,7 +48,9 @@ class EnlaceController extends Controller
 
         $enlace = enlace::create($request->all());
 
-        return [ 'msj' => 'Enlace Agregado Correctamente', compact('enlace') ];
+        $tipo = ($request->id_tipo_enlace == 1) ? 'Enlace' : 'Video';
+
+        return [ 'msj' => "$tipo Agregado Correctamente", compact('enlace') ];
     }
 
     /**
@@ -76,7 +78,7 @@ class EnlaceController extends Controller
             'id_tipo_enlace'    => 	'required|integer|max:999999999',
             'id_tema'           => 	'required|integer|max:999999999',
 			'tx_descripcion'    => 	'nullable|string|max:100',
-			'tx_url'            => 	'required|string|max:100',
+			'tx_url'            => 	'required|string|max:150',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
@@ -84,7 +86,9 @@ class EnlaceController extends Controller
 
         $enlace = $enlace->update($request->all());
 
-        return [ 'msj' => 'Enlace Editado' , compact('enlace')];
+        $tipo = ($request->id_tipo_enlace == 1) ? 'Enlace' : 'Video';
+
+        return [ 'msj' => "$tipo Actualizado" , compact('enlace')];
     }
 
     /**
@@ -95,8 +99,10 @@ class EnlaceController extends Controller
      */
     public function destroy(Enlace $enlace)
     {
+        $tipo = ($enlace->id_tipo_enlace == 1) ? 'Enlace' : 'Video';
+        
         $enlace = $enlace->delete();
  
-        return [ 'msj' => 'Enlace Eliminado' , compact('enlace')];
+        return [ 'msj' => "$tipo Eliminado" , compact('enlace')];
     }
 }

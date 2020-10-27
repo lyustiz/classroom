@@ -41,20 +41,7 @@ trait ArchivoTrait
             'id_usuario'        => 	'required|integer|max:999999999',
             'tx_file_source'    => 	'required|string',
         ]);
-/* 
-        id" => null
-      "nb_archivo" => "GSGSG"
-      "id_tipo_archivo" => 8
-      "tx_mimetype" => "Audio"
-      "tx_file_source" => "data:text/plain;base64,ZGZoZGhkaGRo"
-      "tx_path" => "prueba.txt"
-      "id_tipo_recurso" => 1
-      "id_tema" => 1
-      "id_grupo" => 1
-      "id_status" => 1
-      "id_usuario" => 1
-      "tx_observaciones" => "SGSG"
- */
+
         return $validate;
     }
     

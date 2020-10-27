@@ -150,6 +150,7 @@ Route::apiResource('/periodo',                  'PeriodoController');
 Route::apiResource('/nivel',                    'NivelController');
 Route::get('/grado/planEvaluacion/docente/{docente}/periodo/{periodo}', 'GradoController@gradoPlanEvaluacionDocentePeriodo');
 Route::get('/grado/planEvaluacion/docente/{docente}',   'GradoController@GradoPlanEvaluacionDocente');
+Route::get('/grado/materia/docente/{docente}',          'GradoController@gradoMateriaDocente');
 Route::get('/grado/grupo/docente/{docente}',    'GradoController@gradoGrupoDocente');
 Route::get('/grado/materia/docente/{docente}',  'GradoController@gradoMateriaDocente');
 Route::get('/grado/MateriaAlumno',              'GradoController@gradoMateriaAlumno');
@@ -210,6 +211,8 @@ Route::apiResource('/planEvaluacion',           'PlanEvaluacionController');
 Route::apiResource('/tipoEvaluacion',           'TipoEvaluacionController');
 
 // -- EVALUACION -- //
+
+
 Route::get('/evaluacion/planEvaluacion/{planEvaluacion}',  'EvaluacionController@evaluacionPlan');
 Route::get('/evaluacion/materia/{materia}/grupo/{grupo}',  'EvaluacionController@evaluacionMateriaGrupo');
 Route::get('/evaluacion/materia/{materia}/grupo/{grupo}/prueba',  'EvaluacionController@evaluacionMateriaGrupoPrueba');
@@ -219,6 +222,8 @@ Route::put('/evaluacion/asignar/{evaluacion}',  'EvaluacionController@asignar');
 Route::put('/evaluacion/cerrar/{evaluacion}',   'EvaluacionController@cerrar');
 Route::apiResource('/evaluacion',               'EvaluacionController');
 Route::apiResource('/evaluacionMetodo',         'EvaluacionMetodoController');
+
+Route::get('/evaluacionAlumno/alumno/{alumno}', 'EvaluacionAlumnoController@evaluacionAlumnoAlumno');
 Route::get('/evaluacionAlumno/evaluacion/{evaluacion}',   'EvaluacionAlumnoController@evaluacionAlumnoEvaluacion');
 Route::apiResource('/evaluacionAlumno',         'EvaluacionAlumnoController');
 
@@ -282,6 +287,7 @@ Route::apiResource('/configuracion',            'ConfiguracionController');
 // --  PRUEBA  -- //
 
 Route::get('/prueba/grado/{grado}',             'PruebaController@pruebaGrado');
+Route::get('/prueba/grado/{grado}/materia/{materia}',  'PruebaController@pruebaGradoMateria');
 Route::get('/prueba/docente/{docente}/grado/{grado}/materia/{materia}',  'PruebaController@pruebaDocenteGradoMateria');
 Route::get('/prueba/docente/{docente}',         'PruebaController@pruebaDocente');
 
@@ -362,6 +368,7 @@ Route::apiResource('/libro',                    'LibroController');
 Route::apiResource('/pagina',                   'PaginaController', ['parameters' => ['pagina' => 'pagina']]);
 
 Route::get('/tema/grado/{grado}/materia/{materia}', 'TemaController@temaGradoMateria');
+Route::get('/tema/{tema}/recursos',              'TemaController@temaRecursos');
 Route::apiResource('/tema',                     'TemaController', ['parameters' => ['tema' => 'tema']]);
 
 Route::apiResource('/temaEnlace',               'TemaEnlaceController');
@@ -381,6 +388,8 @@ Route::apiResource('/accionTema',               'AccionTemaController');
 Route::get('/asignacion/grupo/{grupo}',         'AsignacionController@asignacionGrupo');
 Route::apiResource('/asignacion',               'AsignacionController');
 Route::apiResource('/tipoAsignacion',           'TipoAsignacionController');
+Route::get('/asignacionAlumno/alumno/{alumno}', 'AsignacionAlumnoController@asignacionAlumnoAlumno');
+Route::apiResource('/asignacionAlumno',         'AsignacionAlumnoController');
 //newRoutes
 
 Route::fallback(function () {

@@ -2,9 +2,11 @@
   <v-card height="76vh" flat class="rounded-xl">
 
     <app-agenda-toolbar 
+        dark
         :title="title" 
         :type="type" 
         :weekend="weekend"
+        text-color="white"
         @OnPrev="prev()"
         @OnNext="next()"
         @OnToday="setToday()"

@@ -4,7 +4,9 @@
 
         <v-col cols="auto" >
 
-            <v-row  class="flex-column" dense>
+            <v-row  class="flex-column" justify="center" dense>
+
+                <app-button small :size="30" innerClass="mx-auto mt-2"  color="green" label="Volver al Inicio" icon="mdi-home" @click="$emit('closeDialog')" ></app-button>
                  
                 <v-item-group active-class="deep-purple" v-model="grupoSelected" class="group-container" >
 
@@ -31,7 +33,7 @@
 
         <v-col class="pa-1"> 
             <v-row no-gutters justify="center">
-                <app-calendar :grupo="grupoSelected"></app-calendar>
+                <app-calendar :grupo="grupoSelected" :tipoAsignacion="tipoAsignacion" :tipoEvaluacion="tipoEvaluacion" ></app-calendar>
             </v-row>
         </v-col>
 
@@ -66,7 +68,9 @@ export default {
     data() {
         return {
             grupos:        [],
-            grupoSelected: null
+            grupoSelected: null,
+            tipoAsignacion: [],
+            tipoEvaluacion: [],
         }
     },
 
@@ -75,6 +79,8 @@ export default {
         list()
         {
             this.getResource( `grupo/docente/${this.docente.id}` ).then( data =>  this.grupos = data)
+            this.getResource( `tipoAsignacion` ).then( data => this.tipoAsignacion = data)
+            this.getResource( `tipoEvaluacion` ).then( data => this.tipoEvaluacion = data)
         },
     }
 }
