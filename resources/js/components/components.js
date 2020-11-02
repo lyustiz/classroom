@@ -103,9 +103,13 @@ import VisorEnlace from '@components/visor/VisorEnlace'
 import VisorLibro  from '@components/visor/VisorLibro'
 import VisorPdf    from '@components/visor/VisorPdf'
 
+import VisorGoogle from '@components/visor/VisorGoogleMeet'
+
 Vue.component('visor-audio' , VisorAudio);
 Vue.component('visor-video' , VisorVideo);
 Vue.component('visor-enlace', VisorEnlace);
 Vue.component('visor-libro' , VisorLibro);
 Vue.component('visor-pdf'   , VisorPdf);
+
+Vue.component('visor-google-meet'   , VisorGoogle);
 

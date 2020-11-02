@@ -92,6 +92,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -223,7 +224,7 @@ __webpack_require__.r(__webpack_exports__);
         id_usuario: null
       },
       selects: {
-        status: []
+        status: ['/grupo/GRAL']
       }
     };
   },
@@ -286,7 +287,8 @@ var render = function() {
               "append-icon": "search",
               label: "Buscar",
               "hide-details": "",
-              clearable: ""
+              clearable: "",
+              dense: ""
             },
             model: {
               value: _vm.search,

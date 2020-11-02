@@ -65,16 +65,16 @@ export default {
         
         list()
         {
-            this.getResource( 'agenda' ).then( (data) => 
+            /* this.getResource( 'agenda' ).then( (data) => 
             { 
                 this.events = data.data
-            })
+            }) */
 
-            this.getResource( 'evaluacion/grupo/1' ).then( (data) => 
+           /*  this.getResource( 'evaluacion/grupo/1' ).then( (data) => 
             { 
                 this.evaluaciones = data
                 this.getEventEvaluations()
-            })
+            }) */
         },
 
         getEventEvaluations()

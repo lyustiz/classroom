@@ -16,9 +16,18 @@ class TipoPreguntaController extends Controller
     public function index()
     {
         $tipoPregunta = TipoPregunta::with([])
+                    ->activo()
                     ->get();
         
         return $tipoPregunta;
+    }
+
+    public function tipoPreguntaActividad()
+    {
+        return  TipoPregunta::whereIn('id', [2, 3])
+                    ->activo()
+                    ->get();
+        
     }
 
     /**

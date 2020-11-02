@@ -32,6 +32,10 @@ import BandejaAlumno         from '@pages/bandejaAlumno/dashboard.vue';
 import EvaluacionAlumno      from '@pages/bandejaAlumno/evaluacion/AppEvaluacionAlumno';
 
 import BandejaDocente       from '@pages/BandejaDocente/dashboard.vue';
+import ClaseDocente         from '@pages/clase/AppClaseDocente.vue';
+import Clase                from '@pages/clase/AppClase.vue';
+
+
 import BandejaAcudiente     from '@pages/bandejaAcudiente/dashboard.vue';
 
 // loading on demand
@@ -77,7 +81,13 @@ import TipoFalta         from '@pages/tipoFalta/tipoFalta.vue';
 import TipoSancion       from '@pages/tipoSancion/tipoSancion.vue';
 
 import Ciudad            from '@pages/ciudad/ciudad.vue';
-import Clase             from '@pages/clase/clase.vue';
+
+
+
+
+
+
+
 import AppColegio        from '@pages/colegio/AppColegio.vue';
 import Comuna            from '@pages/comuna/comuna.vue';
 
@@ -220,7 +230,29 @@ export default new Router({
                     profile: 'docente',
                     visible: true,
                     component: BandejaDocente,
-                }
+                },
+
+                {
+                    path: 'clase',
+                    name: 'clase',
+                    label: 'Clase',
+                    icon:   'mdi-google-classroom',
+                    profile: 'docente',
+                    visible: true,
+                    component: Clase,
+                },
+
+                
+
+                { 
+                    path: 'meet-docente',
+                    name: 'meet-docente',
+                    label: 'Aula Virtual',
+                    icon: 'mdi-google-classroom',
+                    profile: 'secretaria',
+                    visible: true,
+                    component: MeetDocente
+                },
             ]
         },
         {
@@ -615,7 +647,7 @@ export default new Router({
                 component: Clase
             },  */
 
-            { 
+           /*  { 
                 path: 'inasistencia',
                 name: 'Inasistencia',
                 label: 'Asistencia',
@@ -623,7 +655,7 @@ export default new Router({
                 profile: 'secretaria',
                 visible: true,
                 component: Inasistencia
-            },
+            }, */
 
             { 
                 path: 'parentesco',
@@ -1204,15 +1236,7 @@ export default new Router({
                 component: Configuracion
             },
 
-            { 
-                path: 'meet-docente',
-                name: 'meet-docente',
-                label: 'Clase Docente',
-                icon: 'mdi-google-classroom',
-                profile: 'secretaria',
-                visible: true,
-                component: MeetDocente
-            },
+            
 
             { 
                 path: 'meet-alumno',

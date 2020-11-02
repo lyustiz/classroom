@@ -6,13 +6,15 @@
         <div class="youtube-container mb-1">
             <iframe class="responsive-iframe rounded-lg" @load="loading = false" :src="url" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        </v-row>
         <v-overlay 
-        :opacity="0.3"
-        :value="loading"
-        :z-index="10">
-        <v-icon size="40" class="mdi-spin">mdi-loading</v-icon>
+            absolute
+            :opacity="0.3"
+            :value="loading"
+            :z-index="10">
+            <v-icon size="40" class="mdi-spin">mdi-loading</v-icon>
         </v-overlay>
+        </v-row>
+        
     </div>
 
 </template>

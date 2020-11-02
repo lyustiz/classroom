@@ -54,11 +54,16 @@ class Actividad extends Model
         return $this->mortpMany('App\Models\Asignacion', 'tx_origen');
     }
 
-    /*
-      public function asignacion()
+    public function actividadPregunta()
     {
-        return $this->hasMany('App\Models\Asignacion', 'id_origen')->where('origen', 'actividad');
-    } 
-    */
+        return $this->hasMany('App\Models\ActividadPregunta', 'id_actividad');
+    }
+
+    public function foto()
+    {
+        return $this->hasMany('App\Models\Foto', 'id_origen', 'id')->where('id_tipo_foto', 6);
+    }
+
+
 
 }

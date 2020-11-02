@@ -1,6 +1,6 @@
 <template>
 
-    <v-card class="rounded-xl">
+    <v-card class="rounded-xl" min-height="200px">
         <v-card-title class="pa-0">
             <tema-toolbar label="Videos" color="red" icon="mdi-play-box-multiple" @on-add="insert()"></tema-toolbar>
         </v-card-title>

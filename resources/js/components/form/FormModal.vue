@@ -1,8 +1,8 @@
 <template>
 
-<v-dialog v-model="modal" fullscreen  >
+<v-dialog v-model="modal" fullscreen scrollable >
 
-    <v-card class="rounded-xl" flat>
+    <v-card class="rounded-xl" flat height="85vh">
 
         <v-toolbar dark flat dense :color="(HeadColor) ? HeadColor : $App.theme.headModal">
 

@@ -55,7 +55,7 @@ class EvaluacionAlumnoController extends Controller
 
         foreach ($evaluacinesAlumno as $evaluacionAlumno) //data[tipo]
         { 
-            $tipo       = $evaluacionAlumno->evaluacion->tipoEvaluacion->nb_tipo_evaluacion;
+            $tipo          = $evaluacionAlumno->evaluacion->tipoEvaluacion->nb_tipo_evaluacion;
 
             $data[$tipo][] = $evaluacionAlumno;
         }
@@ -156,10 +156,6 @@ class EvaluacionAlumnoController extends Controller
      */
     public function destroy(EvaluacionAlumno $evaluacionAlumno)
     {
-        
-        
-        
-        
         $evaluacionAlumno = $evaluacionAlumno->delete();
  
         return [ 'msj' => 'EvaluacionAlumno Eliminado' , compact('evaluacionAlumno')];

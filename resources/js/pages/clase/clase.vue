@@ -1,6 +1,6 @@
 <template>
 
-    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)" :inDialog="inDialog">
+    <list-container :title="title" :head-color="$App.theme.headList" @onMenu="onMenu($event)">
 
         <template slot="HeadTools">
             <add-button @insItem="insertForm()"></add-button>
@@ -24,23 +24,23 @@
                 item-key="id"
                 :loading="loading"
                 sort-by=""
-                dense
             >
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.id_grado_materia }}</td>
+                        <td class="text-xs-left">{{ item.id_grado }}</td>
 						<td class="text-xs-left">{{ item.id_grupo }}</td>
-						<td class="text-xs-left">{{ item.id_profesor }}</td>
+						<td class="text-xs-left">{{ item.id_materia }}</td>
+						<td class="text-xs-left">{{ item.id_docente }}</td>
 						<td class="text-xs-left">{{ item.fe_clase }}</td>
+						<td class="text-xs-left">{{ item.fe_completada }}</td>
 						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
-                                :item="item"
-                                :resource="resource"
-                                @onStatusChanging="loading=true"
-                                @onStatusChanged="loading=false">
+                                :resource="resource" 
+                                :item="item" 
+                                @onChangeStatus="changeStatus($event)">
                             </status-switch>
                         </td>
                         
@@ -76,7 +76,7 @@
                 @deleteItem="deleteItem()"
                 @deleteCancel="deleteCancel()"
             ></form-delete>
-
+            
             <pre v-if="$App.debug">{{ $data }}</pre>
 
     </list-container>
@@ -94,11 +94,13 @@ export default {
         title:    'Clase',
         resource: 'clase',
         headers: [
-            { text: 'Grado Materia',   value: 'id_grado_materia' },
+            { text: 'Grado',   value: 'id_grado' },
 			{ text: 'Grupo',   value: 'id_grupo' },
-			{ text: 'Profesor',   value: 'id_profesor' },
+			{ text: 'Materia',   value: 'id_materia' },
+			{ text: 'Docente',   value: 'id_docente' },
 			{ text: 'Clase',   value: 'fe_clase' },
-			{ text: 'Observaciones',   value: 'tx_observaciones', sortable: false, filterable: false },
+			{ text: 'Completada',   value: 'fe_completada' },
+			{ text: 'Observaciones',   value: 'tx_observaciones' },
 			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
         ],
@@ -106,10 +108,16 @@ export default {
     },
     methods:
     {
-        
+   
     }
 }
 </script>
 
 <style>
+html{
+    min-height: 100%;
+}
+body{
+    min-height: 100%;
+}
 </style>

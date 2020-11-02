@@ -1,6 +1,6 @@
 <template>
 
-    <v-container fluid class="grey darken-4 meet-container pt-0">
+    <v-container fluid class="white darken-4 meet-container pt-0">
         <get-devices ></get-devices>
      <!--        
         <v-row>
@@ -79,6 +79,11 @@ export default {
         this.members.push({ id: 4, nb_nombres: "luisa tovar", nb_usuario: "ltovar" })
     },
 
+    beforeDestroy()
+    {
+
+    },
+
     computed:
     {
         credentials()
@@ -122,7 +127,12 @@ export default {
     {
         list()
         {
-
+                /*
+                vid.pause();
+       vid.src = "";
+       localstream.stop();
+                
+                */
 
            
            /*  await this.getInstance();

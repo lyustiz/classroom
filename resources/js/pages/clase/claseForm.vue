@@ -2,26 +2,23 @@
 
     <v-form ref="form" v-model="valid" lazy-validation>
 
-    <v-card :loading="loading" flat >
+    <v-card :loading="loading" flat>
 
         <v-card-text>
 
         <v-row>
 
-                         
+                 
         <v-col cols="12" md="6">
-            <v-select
-            :items="selects.grado_materia"
-            item-text="nb_grado_materia"
-            item-value="id"
-            v-model="form.id_grado_materia"
-            :rules="[rules.select]"
-            label="Grado Materia"
-            :loading="loading"
-            dense
-            ></v-select>
+            <v-text-field
+                :rules="[rules.required]"
+                v-model="form.id_grado"
+                label="Grado"
+                placeholder="Indique Grado"
+                dense
+            ></v-text-field>
         </v-col>
-                  
+                          
         <v-col cols="12" md="6">
             <v-select
             :items="selects.grupo"
@@ -37,47 +34,79 @@
                   
         <v-col cols="12" md="6">
             <v-select
-            :items="selects.profesor"
-            item-text="nb_profesor"
+            :items="selects.materia"
+            item-text="nb_materia"
             item-value="id"
-            v-model="form.id_profesor"
+            v-model="form.id_materia"
             :rules="[rules.select]"
-            label="Profesor"
+            label="Materia"
+            :loading="loading"
+            dense
+            ></v-select>
+        </v-col>
+                  
+        <v-col cols="12" md="6">
+            <v-select
+            :items="selects.docente"
+            item-text="nb_docente"
+            item-value="id"
+            v-model="form.id_docente"
+            :rules="[rules.select]"
+            label="Docente"
             :loading="loading"
             dense
             ></v-select>
         </v-col>
          
-        <v-col cols="12" md="3">
+        <v-col cols="12" md="6">
             <v-menu
-                ref="picker"
                 v-model="pickers.fe_clase"
+                :close-on-content-click="false"
                 min-width="290px"
-                readonly
             >
                 <template v-slot:activator="{ on }">
                     <v-text-field
-                        v-on="on"
                         v-model="dates.fe_clase"
-                        :rules="rules.etapaCo"
+                        :rules="[rules.fecha]"
                         label="Clase"
                         prepend-icon="event"
                         readonly
+                        v-on="on"
                         dense
                     ></v-text-field>
                 </template>
-
                 <v-date-picker 
                     v-model="form.fe_clase" 
-                    locale="es"
-                    @input="dates.fe_clase = formatDate( form.fe_clase )"
-                ></v-date-picker>
+                    @input="dates.fe_clase = formatPicker(form.fe_clase, 'fe_clase')">
+                </v-date-picker>
             </v-menu>
         </v-col>
- 
+        <v-col cols="12" md="6">
+            <v-menu
+                v-model="pickers.fe_completada"
+                :close-on-content-click="false"
+                min-width="290px"
+            >
+                <template v-slot:activator="{ on }">
+                    <v-text-field
+                        v-model="dates.fe_completada"
+                        :rules="[rules.fecha]"
+                        label="Completada"
+                        prepend-icon="event"
+                        readonly
+                        v-on="on"
+                        dense
+                    ></v-text-field>
+                </template>
+                <v-date-picker 
+                    v-model="form.fe_completada" 
+                    @input="dates.fe_completada = formatPicker(form.fe_completada, 'fe_completada')">
+                </v-date-picker>
+            </v-menu>
+        </v-col> 
         <v-col cols="12" md="6">
             <v-text-field
-                :rules="[]"
+                :rules="[rules.required]"
                 v-model="form.tx_observaciones"
                 label="Observaciones"
                 placeholder="Indique Observaciones"
@@ -136,28 +165,33 @@ export default {
             dates:
             {
                 fe_clase: 	 null,
+	 	 	 	fe_completada: 	 null,
             },
             pickers:
             {
                 fe_clase: 	 null,
+	 	 	 	fe_completada: 	 null,
             },
             form:
             {
-                id: 	           null,
-				id_grado_materia:  null,
-				id_grupo: 	       null,
-				id_profesor: 	   null,
-				fe_clase: 	       null,
-				tx_observaciones:  null,
-				id_status: 	       null,
-				id_usuario: 	   null,
+                id: 	null,
+				id_grado: 	null,
+				id_grupo: 	null,
+				id_materia: 	null,
+				id_docente: 	null,
+				fe_clase: 	null,
+				fe_completada: 	null,
+				tx_observaciones: 	null,
+				id_status: 	null,
+				id_usuario: 	null,
             },
             selects:
             {
-                grado_materia: [],
-	 	 	 	grupo: 	       [],
-	 	 	 	profesor: 	   [],
-	 	 	 	status: 	   ['/grupo/GRAL'],
+                grado: 	 [],
+	 	 	 	grupo: 	 [],
+	 	 	 	materia: 	 [],
+	 	 	 	docente: 	 [],
+	 	 	 	status: 	 [],
             },
         }
     },

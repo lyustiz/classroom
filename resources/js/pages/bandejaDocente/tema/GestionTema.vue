@@ -10,13 +10,11 @@
 
         <v-card> 
 
-
         <v-card-title class="pa-0">
             <app-simple-toolbar title="Gestión de temas" @closeModal="dialog=false" dense></app-simple-toolbar>
         </v-card-title>
         
         <v-card-text class="pt-3" >
-
 
             <v-row>
 
@@ -73,65 +71,31 @@
 
             <v-row  v-if="tema">
 
-                <v-col cols="4" >
-
-                     <v-card class="rounded-xl">
-                        <v-card-title class="pa-0">
-                            <tema-toolbar label="Actividad" color="amber" icon="mdi-rocket-launch" @on-add="addItem()"></tema-toolbar>
-                        </v-card-title>
-                        <v-card-text class="px-1 my-1">
-                             <v-list dense class="my-">
-                                <v-list-item color="amber" v-for="actividad in actividades" :key="actividad.id" link @click="verRecurso(actividad, 'actividad')">
-                                    <v-list-item-avatar color="white" size="35">
-                                        <v-icon size="30" color="amber">mdi-rocket-launch</v-icon>
-                                    </v-list-item-avatar>
-                                    <v-list-item-content>
-                                        <v-list-item-title>{{ actividad.nb_actividad }}</v-list-item-title>
-                                    </v-list-item-content>
-
-                                    <v-list-item-action>
-                                        <v-btn icon>
-                                            <v-icon size="20" color="orange lighten-1" @click.stop="editar(actividad, 'actividad')">mdi-lead-pencil</v-icon>
-                                        </v-btn>
-                                    </v-list-item-action>
-                                    <v-list-item-action>
-                                        <v-btn icon>
-                                            <v-icon size="20" color="red lighten-1" @click.stop="confirmEliminar(actividad, 'actividad')">mdi-delete</v-icon>
-                                        </v-btn>
-                                    </v-list-item-action>
-                                </v-list-item>
-                            </v-list>
-                        </v-card-text>
-                    </v-card>
- 
-                </v-col>
-
-                <v-col cols="4" > 
-
+                <v-col cols="12" lg="4"  md="6" sm="12" > 
                     <gestion-video :videos="videos" :tema="tema" @onUpdateData="getRecursos()"></gestion-video>
-
                 </v-col>
 
-                <v-col cols="4" >
-
+                <v-col cols="12" lg="4"  md="6" sm="12" >
                    <gestion-enlace :enlaces="enlaces" :tema="tema" @onUpdateData="getRecursos()" ></gestion-enlace>
-
                 </v-col>
 
-                <v-col cols="4" >
-
+                <v-col cols="12" lg="4"  md="6" sm="12">
                    <gestion-audio :audios="audios" :tema="tema" :grado="grado" @onUpdateData="getRecursos()" ></gestion-audio>
-
                 </v-col>
 
-                <v-col cols="4" >
-
+                <v-col cols="12" lg="4"  md="6" sm="12">
                    <gestion-lectura :lecturas="lecturas" :tema="tema" :grado="grado" @onUpdateData="getRecursos()" ></gestion-lectura>
-
                 </v-col>
+
+                 <v-col cols="12" lg="4" md="6" sm="12" >
+                    <gestion-actividad :actividades="actividades" :tema="tema" @onUpdateData="getRecursos()"></gestion-actividad>
+                </v-col>
+
+                <v-overlay class="rounded-lg" absolute :opacity="0.3" :value="loading">
+                    <v-icon size="40" class="mdi-spin">mdi-loading</v-icon>
+                </v-overlay>
 
             </v-row>
-
 
         </v-card-text>
        
@@ -150,21 +114,23 @@ import AppActividad from '@pages/actividad/AppActividad';
 import TemaToolbar  from './component/TemaToolbar'
 
 // Gestion
-import GestionVideo    from './GestionVideo'
-import GestionEnlace   from './GestionEnlace'
-import GestionAudio    from './GestionAudio'
-import GestionLectura  from './GestionLectura'
+import GestionVideo     from './GestionVideo'
+import GestionEnlace    from './GestionEnlace'
+import GestionAudio     from './GestionAudio'
+import GestionLectura   from './GestionLectura'
+import GestionActividad from './GestionActividad'
 
 
 export default {
 
     components: { 
-        'app-actividad':   AppActividad,
-        'tema-toolbar':    TemaToolbar,
-        'gestion-video':   GestionVideo,
-        'gestion-enlace':  GestionEnlace,
-        'gestion-audio':   GestionAudio,
-        'gestion-lectura': GestionLectura,
+        'app-actividad':     AppActividad,
+        'tema-toolbar':      TemaToolbar,
+        'gestion-video':     GestionVideo,
+        'gestion-enlace':    GestionEnlace,
+        'gestion-audio':     GestionAudio,
+        'gestion-lectura':   GestionLectura,
+        'gestion-actividad': GestionActividad,
     },
 
     mixins:     [ DataHelper ],
@@ -200,24 +166,8 @@ export default {
             grado:      null,
             materia:    null,
             tema:       null,
-            
-            libroSelected:     null,
-            actividadSelected: null,
-            audioSelected:     null,
-            videoSelected:     null,
-            enlaceSelected:    null,
-            lecturaSelected:   null,
-            cuestionarioSelected:    null,
-
-            dialogLlibro:      false,
-            dialogActividad:   false,
-            dialogAudio:       false,
-            dialogVideo:       false,
-            dialogEnlace:      false,
-            dialogLectura:     false,
 
             libros:        [],
-
             actividades:   [],
             enlaces:       [],
             videos:        [],
@@ -290,24 +240,6 @@ export default {
         {
             this.dialog   = false
         },
-
-        confirmEliminar()
-        {
-
-        },
-
-        edit()
-        {
-
-        },
-
-        addItem()
-        {
-            alert('nvo item')
-        }
-
-
-
     }
 }
 </script>

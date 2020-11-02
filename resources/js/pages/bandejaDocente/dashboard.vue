@@ -73,17 +73,17 @@ export default {
         
         list()
         {
-            this.getResource( 'agenda' ).then( (data) => 
+            /* this.getResource( 'agenda' ).then( (data) => 
             { 
                 this.events = data.data
-            })
+            }) */
 
-            this.getResource( 'evaluacion/docente/' + this.docente.id ).then( (data) => 
+          /*   this.getResource( 'evaluacion/docente/' + this.docente.id ).then( (data) => 
             { 
                 this.items = data
                 
                 this.getEvaluaciones()
-            })
+            }) */
         },
 
         getEvaluaciones()

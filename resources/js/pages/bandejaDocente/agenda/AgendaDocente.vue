@@ -5,6 +5,7 @@
         :title="title" 
         :type="type" 
         :weekend="weekend"
+        text-color="white"
         @OnPrev="prev()"
         @OnNext="next()"
         @OnToday="setToday()"

@@ -10,13 +10,13 @@
             <v-spacer></v-spacer>
             <v-col cols="auto">
                 <v-tooltip bottom>
-                <template v-slot:activator="{ on }">
-                    <v-btn fab color="success" x-small v-on="on" @click="$emit('on-add')" :loading="loading">
-                        <v-icon size="30"  >mdi-plus</v-icon>
-                    </v-btn>
-                </template>
-                <span>Agregar {{ label }}</span>
-            </v-tooltip>
+                    <template v-slot:activator="{ on }">
+                        <v-btn fab color="success" x-small v-on="on" @click="$emit('on-add')" :loading="loading">
+                            <v-icon size="30">mdi-plus</v-icon>
+                        </v-btn>
+                    </template>
+                    <span>Agregar {{ label }}</span>
+                </v-tooltip>
             </v-col>
         </v-row>
     </v-toolbar>

@@ -23,6 +23,13 @@ export default {
             return date
         },
 
+        monthFromDate(date)
+        {
+            if (!date) return null
+            const [year, month, day] = date.split('-')
+            return `${this.months[month-1]}`
+        },
+
         monthDayFromDate(date)
         {
             if (!date) return null

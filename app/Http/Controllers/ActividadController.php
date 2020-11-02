@@ -36,15 +36,13 @@ class ActividadController extends Controller
         $validate = request()->validate([
             'nb_actividad'      => 	'required|string|max:100',
 			'id_tema'           => 	'required|integer|max:999999999',
-			'tx_descripcion'    => 	'nullable|string|max:300',
-			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
         $actividad = actividad::create($request->all());
 
-        return [ 'msj' => 'Actividad Agregado Correctamente', compact('actividad') ];
+        return [ 'msj' => 'Actividad Agregada Correctamente', compact('actividad') ];
     }
 
     /**
@@ -55,7 +53,13 @@ class ActividadController extends Controller
      */
     public function show(Actividad $actividad)
     {
-        return $actividad;
+        return $actividad->load([
+                                    'actividadPregunta',
+                                    'actividadPregunta.tipoPregunta',
+                                    'actividadPregunta.actividadRespuesta',
+                                    'foto:id,tx_src,id_tipo_foto,id_origen',
+                                    'foto.tipoFoto:id,tx_base_path',
+                                ]);
     }
 
     /**
@@ -70,7 +74,7 @@ class ActividadController extends Controller
         $validate = request()->validate([
             'nb_actividad'      => 	'required|string|max:100',
 			'id_tema'           => 	'required|integer|max:999999999',
-			'tx_descripcion'    => 	'nullable|string|max:300',
+			'tx_descripcion'    => 	'nullable|string|max:2000',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
@@ -78,7 +82,7 @@ class ActividadController extends Controller
 
         $actividad = $actividad->update($request->all());
 
-        return [ 'msj' => 'Actividad Editado' , compact('actividad')];
+        return [ 'msj' => 'Actividad actualizada' , compact('actividad')];
     }
 
     /**
@@ -91,6 +95,6 @@ class ActividadController extends Controller
     {
         $actividad = $actividad->delete();
  
-        return [ 'msj' => 'Actividad Eliminado' , compact('actividad')];
+        return [ 'msj' => 'Actividad Eliminada' , compact('actividad')];
     }
 }

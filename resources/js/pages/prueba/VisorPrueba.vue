@@ -50,14 +50,14 @@
                                     </v-list-item-content>
                                     <v-list-item-icon>
                                         <v-icon :color="(respuesta.bo_correcta) ? 'success' : 'error' ">
-                                            {{ (respuesta.bo_correcta) ? 'mdi-checkbox-marked-circle' : 'error' }}
+                                            {{ (respuesta.bo_correcta) ? 'mdi-checkbox-marked-circle' : 'mdi-close-circle-outline' }}
                                         </v-icon>
                                     </v-list-item-icon>
                                 </v-list-item>
                             </v-list> 
 
                             <v-alert type="info" v-if="pregunta.tipo_pregunta.nb_tipo_pregunta == 'Desarrollo'" prominent>
-                                Las Preguntas tipo desarrollo requiere de la revision y ponderacion manual por parte del docente 
+                                Las preguntas tipo desarrollo requiere de la revision y ponderacion manual por parte del docente 
                             </v-alert>
                         </v-card-text>
                     </v-card>

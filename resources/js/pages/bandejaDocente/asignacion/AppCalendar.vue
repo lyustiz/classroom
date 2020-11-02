@@ -97,7 +97,6 @@
 
                 <div v-for="(materias, tipo) in getEventsDay(day)" :key="tipo" class="caption row no-gutters justify-center mt-2" >
                     
-                    
                     <v-col cols="auto" v-if="tipo == 'cuestionario'" class="mx-n2" v-show="filter.cuestionario">
 
                         <v-menu offset-y absolute content-class="rounded-lg" min-width="200px" right>
@@ -716,11 +715,18 @@ export default {
                     break;
                 
                 case 'lectura':
+
+                    console.log(asignacion)
                     this.lectura  =   {   name: asignacion.origen.archivo.nb_archivo,
-                                          src: `${asignacion.origen.archivo.tipo_archivo.tx_base_path}/${asignacion.origen.id}/${asignacion.origen.tx_path}` 
+                                          src: `${asignacion.origen.archivo.tipo_archivo.tx_base_path}${asignacion.origen.id}/${asignacion.origen.archivo.tx_path}` 
                                     }
                     this.dialogLectura = true 
                     break;
+
+                    /* this.lectura  =   {   name: lectura.archivo.nb_archivo,
+                                src: `${lectura.archivo.tipo_archivo.tx_base_path}${lectura.id}/${lectura.archivo.tx_path}` 
+                            }
+            this.dialogLectura  = true  */
             
                 default:
                     break;

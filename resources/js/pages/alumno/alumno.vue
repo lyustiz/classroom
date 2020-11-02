@@ -75,8 +75,7 @@
                                     iconColor="white" 
                                     btnColor="cyan" 
                                     :item="item"
-                                    @onItemMenu="onItemMenu($event)" 
-                                    
+                                    @onItemMenu="onItemMenu($event)"
                                 ></item-menu>
 
                             </list-buttons>
