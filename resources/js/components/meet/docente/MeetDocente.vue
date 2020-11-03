@@ -1,21 +1,38 @@
 <template>
 
-    <v-container fluid class="white darken-4 meet-container pt-0">
-        <get-devices ></get-devices>
-     <!--        
+    <v-container fluid class="grey lighten-5 meet-container pt-0">
+        
         <v-row>
             <v-col cols="12" md="3">
 
                 <v-row dense>
 
-                    <v-col cols="12">
-                        <local-video :stream="stream" @onPlayer="playerAction($event)" @toggleVideo="toggleVideo()"></local-video>
+                    <v-col cols="12" class="local-video-container">
+
+                        <v-row justify="center" align="center" class="local-video-player grey lighten-3 rounded-lg ma-1" v-if="!isStarted">
+                            <v-col cols="auto">
+                                <v-btn fab large dark color="success" @click="startClass()" ><v-icon>mdi-flag-checkered</v-icon></v-btn>
+                            </v-col>
+                        </v-row>
+
+                        <template v-else>
+                            <local-video 
+                                :stream="stream" 
+                                :outMedia="media"
+                                @onLocalStream="setLocalStream($event)" 
+                                @onFinishClass="finishClass()"
+                                @onToggleVideo="toggleVideo()" 
+                                @onToggleMicrophone="toggleMicrophone()"
+                                @onEndClass="endClass()" 
+                            ></local-video>
+                        </template>
+
                     </v-col>
 
                     <v-col cols="12">
                         <list-members :members="members">
                             <template v-slot:video="member">  
-                                <remote-video :stream="stream" :ref="`remote-video-${member.id}`"></remote-video>
+                                <remote-video :stream="remoteStream[member.id]" :ref="`remote-video-${member.id}`"></remote-video>
                             </template>
                         </list-members>
                     </v-col>
@@ -41,19 +58,18 @@
             </v-col>
 
         </v-row>
- -->
+ 
     </v-container>
        
 </template>
 
 <script>
 import AppData     from '@mixins/AppData';
-import GetDevices  from '../components/localVideo/videoContainer';
 import Pusher      from 'pusher-js';
 import Peer        from 'simple-peer';
 import Chat        from '../ChatRoom';
 import Draw        from '../DrawBoard'
-import LocalVideo  from '../LocalVideo'
+import LocalVideo  from '../components/localVideo/videoPlayer'
 import RemoteVideo from '../RemoteVideo'
 import Listmembers from '../ListMember'
 export default {
@@ -67,16 +83,11 @@ export default {
         'local-video':  LocalVideo,
         'remote-video': RemoteVideo,
         'list-members': Listmembers,
-        'get-devices':  GetDevices
     },
 
     created()
     {
-        this.list()
-        this.members.push({ id: 1, nb_nombres: "luis yustiz", nb_usuario: "lyustiz" })
-        this.members.push({ id: 2, nb_nombres: "luisa tovar", nb_usuario: "ltovar" })
-        this.members.push({ id: 3, nb_nombres: "luisa tovar", nb_usuario: "ltovar" })
-        this.members.push({ id: 4, nb_nombres: "luisa tovar", nb_usuario: "ltovar" })
+        this.members.push({ id: 1, nb_nombres: "usuario prueba", nb_usuario: "prueba" })
     },
 
     beforeDestroy()
@@ -100,51 +111,68 @@ export default {
         {
             return this.$store.getters['getUsers']
         },
-
     },
 
-    data: () => ({
-        instance:    null,
-        channel:     null,
-        members:     [],
-        personalMsg: [],
-        chatMsg:     [],
-        dialog:      false,
-        stream:      null,
-        boardStream: null,
-        peers:       {},
-        board:       false,
-        media:       { audio: false,  video: false },
-        classChanel: 'presence-clasrrorm-1-2-3-25082020',
-        sections: [
-                { label: 'Asistencia',   icon: 'mdi-account-check', component: 'tarea-alumno', color: 'blue', sectionWidth: '700' },
-                { label: 'Recursos',     icon: 'mdi-book-open-page-variant', component: 'recurso-alumno', color: 'purple', sectionWidth: '700' },
-                { label: 'Presentacion', icon: 'mdi-presentation', component: 'recurso-alumno', color: 'green', sectionWidth: '700' },
-            ]
+    data: () => 
+    ({
+        isStarted:    false,
+         
+        instance:     null,
+        channel:      null,
+        members:      [],
+        peers:        {},
+        classChanel:  'presence-clasrrorm-1-2-3-25082020',
+        chatMsg :     [],
+ 
+        stream:       null,
+        localStream:  null,
+        remoteStream: [],
+        media:        { audio: false,  video: false, muted: true },
+        boardStream:  null,
     }),
 
     methods:
     {
-        list()
+        startClass()
         {
-                /*
-                vid.pause();
-       vid.src = "";
-       localstream.stop();
-                
-                */
+            this.isStarted = true
+            this.list()
 
-           
-           /*  await this.getInstance();
+        },
+
+        endClass()
+        {
+            this.stream.getTracks().forEach(function(track) {
+                track.stop();
+            });
+            this.stream       = null
+            this.remoteStream = []
+            this.isStarted    = false
+            this.endMeet()
+        },
+        
+        
+        async list()
+        {
+            await this.getInstance();
 
             Pusher.logToConsole = true;
 
             if(!this.chanel)
             {
                 this.setChanels()
-            } */
+            } 
 
-            //this.setupVideoChat()
+        },
+
+        setLocalStream(localStream)
+        {
+            this.media  = localStream.media
+            this.stream = localStream.stream
+        },
+
+        videoBoard(boardStream){
+            this.boardStream = boardStream
         },
 
         async getInstance()
@@ -161,7 +189,6 @@ export default {
 
             if(!this.instance)
             {
-
                 await this.$store.dispatch('instance', this.idUser).then(pusher => {
                     this.instance = pusher
                     console.log('Creada Instancia de Pusher')
@@ -201,7 +228,7 @@ export default {
             this.channel.bind(`client-chat-room`, (mensaje) => 
             {
                 console.log('chat recibido...', mensaje)  
-                this.chatMsg.push(mensaje)                                  //mensajes tipo:  chat
+                this.chatMsg.unshift(mensaje)                                  //mensajes tipo:  chat
             }); 
 
             /* Members Presence */
@@ -259,7 +286,7 @@ export default {
                 })
                 .on('stream', (stream) => {
                     console.log('Se ha estRecibiendo stream')
-                    this.$refs[`remote-video-${userId}`][0].srcObject = stream;
+                    this.remoteStream[`remote-video-${userId}`] = stream
                 })
                 .on('close', () => {
                     const peer = this.peers[userId];
@@ -287,7 +314,7 @@ export default {
             let user    = this.channel.members.me.info
             let mensage = { type: 'chat', text, user} 
             this.channel.trigger(`client-chat-room`, mensage );
-            this.chatMsg.push(mensage)
+            this.chatMsg.unshift(mensage)
             console.log('chat enviado..',text)
         },
 
@@ -298,7 +325,6 @@ export default {
         startMeet()
         {
             this.setChanels()
-            this.setupVideoChat()
         },
 
         endMeet()
@@ -313,9 +339,6 @@ export default {
                 }
             }
 
-            this.$refs['local-video'].pause()
-
-            this.stream.getTracks().forEach( (track) => track.stop());
         },
 
         async setupVideoChat() {
@@ -324,57 +347,9 @@ export default {
             {
                this.showError('El navegador No soporta videollamadas se recomienda versiones actuaalizadas de Firefox y Chrome')
             } 
-
-            await this.getMediaDevices();
-
-            await this.getVideoStream();
-
         },
 
-        getMediaDevices() 
-        {
-            return navigator.mediaDevices.enumerateDevices().then((devices) => {
-                devices.forEach(function(device) 
-                {
-                    if(device.kind == 'audioinput')
-                    {
-                        this.media.audio = true;
-                    }
-
-                    if(device.kind == 'videoinput')
-                    {
-                        this.media.video = { width: 435, height: 310, frameRate: { ideal: 10, max: 15 } };
-                    }
-                }, this);
-            })
-            .catch((error) => {
-                this.showError(error.name + ": " + error.message)
-            });
-        },
-
-        getVideoStream()
-        {          
-            return navigator.mediaDevices.getUserMedia(this.media)
-            .then((stream) => {
-                this.stream = stream
-            })
-            .catch((error) => {
-                this.showError(error)
-            })
-        },
-
-        toggleAudio()
-        {
-            if(this.$refs['local-video'].muted )
-            {
-                this.$refs['local-video'].muted = false
-            }else{
-                this.$refs['local-video'].muted = true
-            }
-            
-            this.player.muted = this.$refs['local-video'].muted
-        },
-
+       
         toggleVideo()
         {
             let videoTracks = this.stream.getVideoTracks()
@@ -384,11 +359,12 @@ export default {
                 if(videoTracks[0].enabled)
                 {
                     videoTracks[0].enabled = false
+                    this.media.video       = false
                     
                 } else{
                     videoTracks[0].enabled = true
+                    this.media.video       = true
                 }
-                this.media.video   = videoTracks[0].enabled 
             }
         },
 
@@ -401,23 +377,13 @@ export default {
                 if(audioTracks[0].enabled)
                 {
                     audioTracks[0].enabled = false
+                    this.media.audio       = false
                 } else{
                     audioTracks[0].enabled = true
+                    this.media.audio       = true
                 }
-
-                this.media.audio  = audioTracks[0].enabled 
             }
         },
-
-        videoFullscreen(refVideo)
-        {
-            this.$ref[refVideo].requestFullscreen()
-        },
-
-        videoBoard(stream)
-        {
-            //this.$refs['video-board'].srcObject = stream
-        }
        
     }
 }
@@ -430,6 +396,13 @@ export default {
 }
 .meet-container{
     min-height: 100%;
+}
+.local-video-container{
+    min-height: 250px;
+}
+
+.local-video-player{
+    min-height: 246px;
 }
 
 </style>

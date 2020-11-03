@@ -1,10 +1,19 @@
 <template>
 
 <v-card>
-    <v-card-text>
+    <v-card-text class="py-4 px-8">
 
-        <v-row>
+        <v-row dense>
             <v-col>
+                <v-subheader class="deep-purple--text">CONFIGURACION AUDIO VIDEO</v-subheader>
+            </v-col>
+            <v-col cols="auto">
+                <v-btn icon><v-icon color="deep-purple" @click="$emit('closeDialog')">mdi-close-circle-outline</v-icon></v-btn>
+            </v-col>
+        </v-row>
+
+        <v-row class="mt-2">
+            <v-col cols="12">
                 <v-select
                     :items="audioInputs"
                     item-text="label"
@@ -21,15 +30,8 @@
                     :error-messages="(!microphone) ? 'No se han detectado Microfono' : null"
                 ></v-select>
             </v-col>
-            <v-col cols="auto">
-              <v-btn icon color="primary" disabled>
-                  <v-icon>mdi-dots-vertical</v-icon>
-              </v-btn>
-            </v-col>
-        </v-row>
 
-        <v-row>
-            <v-col>
+            <v-col cols="12">
                 <v-select
                     :items="videoInputs"
                     item-text="label"
@@ -46,15 +48,8 @@
                     :error-messages="(!camera) ? 'No se han detectado camara' : null"
                 ></v-select>
             </v-col>
-            <v-col cols="auto">
-              <v-btn icon color="primary" disabled>
-                  <v-icon>mdi-dots-vertical</v-icon>
-              </v-btn>
-            </v-col>
-        </v-row>
 
-        <v-row>
-            <v-col >
+            <v-col cols="12" >
                 <v-select
                     :items="audioOutputs"
                     item-text="label"
@@ -71,21 +66,11 @@
                     :error-messages="(!speaker) ? 'No se han detectado Cornetas' : null"
                 ></v-select>
             </v-col>
-            <v-col cols="auto">
-              <v-btn icon color="primary" disabled>
-                  <v-icon>mdi-dots-vertical</v-icon>
-              </v-btn>
-            </v-col>
-        </v-row>
-
-        <v-row>
-            <v-col cols="auto">
-                <v-btn fab color="success" depressed x-small @click="refreshDevices()">
-                    <v-icon>mdi-reload</v-icon>
+    
+            <v-col cols="12" class="px-6">
+                <v-btn block color="success" depressed @click="refreshDevices()" rounded :loading="loading">
+                    <v-icon class="mr-1">mdi-cog-refresh</v-icon> Detectar nuevamente dispositivos
                 </v-btn>
-            </v-col>
-            <v-col class="my-1">
-                Detectar nuevamente los dispositivos
             </v-col>
         </v-row>
              
@@ -102,9 +87,14 @@ export default {
 
     mixins: [ AppRules ],
 
-    created()
+    mounted()
     {
-        this.setupDevices()
+         this.$nextTick().then( () => 
+        {
+            this.setupDevices()
+        })
+        
+        
     },
 
     data() 
@@ -126,6 +116,8 @@ export default {
         
         setupDevices()
         {
+            this.loading = true
+            
             this.getDevices()
 
             navigator.mediaDevices.ondevicechange =  this.updateDevices
@@ -161,6 +153,7 @@ export default {
                         }
                     }
                 }
+                this.loading = false
                 this.$emit('onDevices', {  microphone: this.microphone, camera: this.camera, speaker: this.speaker  })
 
             })
@@ -172,6 +165,7 @@ export default {
 
         updateDevices()
         {
+            this.loading    = true
             this.showMessage(`Cambio en dispositivo audio/video`)
             this.microphone = null
             this.camera     = null
@@ -181,6 +175,7 @@ export default {
 
         refreshDevices()
         {
+            this.loading    = true
             this.showMessage(`Actualizando dispositivo audio/video`)
             this.microphone = null
             this.camera     = null

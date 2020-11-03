@@ -16,7 +16,7 @@
                             :small="false"
                             :menus="menus"
                             @onItemMenu="onItemMenu($event)">
-                    </item-menu>
+                        </item-menu>
                     </v-col>
                 </v-row>
             </v-toolbar>

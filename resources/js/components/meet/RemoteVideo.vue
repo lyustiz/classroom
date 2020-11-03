@@ -2,7 +2,7 @@
 
     <div class="player">
                                                 
-        <video class="rounded-lg mb-n5 elevation-3 grey darken-4 player" ref="player" width="125" height="90" autoplay playsinline></video>
+        <video class="rounded-lg mb-n5 info darken-3 player" ref="player" width="125" height="90" autoplay playsinline></video>
         
         <v-hover v-slot:default="{ hover }">
         

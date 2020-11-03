@@ -105,7 +105,7 @@
 
                            <v-tooltip bottom color="red">
                                 <template v-slot:activator="{ on }">
-                                    <v-btn v-on="on" fab dark color="red" :loading="loading" link href="https://meet.google.com/" target="_blank">
+                                    <v-btn v-on="on" fab dark color="red" :loading="loading" target="popup" @click="popup('https://meet.google.com/')">
                                         <v-icon :size="30">mdi-google</v-icon>
                                     </v-btn>
                                 </template>
@@ -114,7 +114,7 @@
 
                             <v-tooltip bottom color="#0e71eb">
                                 <template v-slot:activator="{ on }">
-                                    <v-btn v-on="on" fab dark color="#0e71eb" :loading="loading" link href=" https://zoom.us/join" target="_blank">
+                                    <v-btn v-on="on" fab dark color="#0e71eb" :loading="loading" target="popup" @click="popup('https://zoom.us/join')">
                                         <v-icon :size="30">mdi-video</v-icon>
                                     </v-btn>
                                 </template>
@@ -123,17 +123,12 @@
 
                             <v-tooltip bottom color="amber">
                                 <template v-slot:activator="{ on }" >
-                                    <v-btn v-on="on" fab dark color="amber" :loading="loading" @click="navegateTo('meet-docente')">
+                                    <v-btn v-on="on" fab dark color="amber" :loading="loading" @click="initVirtualinMeet()">
                                         <v-icon :size="30">mdi-video-check-outline</v-icon>
                                     </v-btn>
                                 </template>
                                 <span >Virtualin</span>
                             </v-tooltip>
-
-                            <v-dialog v-model="dialogGoogleMeet" fullscreen scrollable>
-                                <visor-google-meet v-if="dialogGoogleMeet" @closeDialog="closeDialog('dialogGoogleMeet')" ></visor-google-meet>
-                            </v-dialog>
-
 
                         </v-col>
                     </v-sheet>
@@ -223,7 +218,10 @@ export default {
 
                 dia: null,
 
-                dialogAsistencia: false
+                dialogAsistencia: false,
+
+                windowsMeet: false,
+                windowsUrl: false
             }
     },
 
@@ -273,7 +271,36 @@ export default {
             {
                 this.list();
             }
+        },
+
+        popup(url){
+            
+            let width  = window.innerWidth * 90 / 100
+            let height = window.innerHeight * 90 / 100
+            let left   = window.innerWidth  * 10 / 100 / 2
+            let top    = window.innerHeight * 10 / 100 / 2
+
+            
+            if( this.windowsMeet === false || this.windowsMeet.closed) {
+                this.windowsMeet = window.open(url, 'googlemeet', `width=${width},height=${height},left=${left},top=${top},menubar=0,toolbar=0`);
+                this.windowsMeet.document.title = "Virtualin Meet";
+                this.windowsMeet.focus();
+            }else
+            {
+                this.windowsMeet.focus();
+            }
+            
+        },
+
+        initVirtualinMeet()
+        {
+            if(this.windowsMeet){ this.windowsMeet.close() }
+
+            
+            this.navegateTo('meet-docente')
         }
+
+ 
     }
 }
 </script>

@@ -191,11 +191,11 @@ export default {
 
         position(event)
         {
-           this.coordinates.x = event.clientX - (this.container.offsetLeft + this.canvas.offsetLeft); 
+           var ClientRect = this.canvas.getBoundingClientRect();
 
-           let top = ((this.container.offsetParent) ? this.container.offsetParent.offsetTop : 0) + this.container.offsetTop  + this.canvas.offsetTop
-
-           this.coordinates.y = event.clientY - (top);
+            this.coordinates.x = Math.round(event.clientX - ClientRect.left)
+            let top = ((this.container.offsetParent) ? this.container.offsetParent.offsetTop : 0) + this.container.offsetTop  + this.canvas.offsetTop
+            this.coordinates.y = Math.round(event.clientY - top)
         },
 
         startDraw(event){ 

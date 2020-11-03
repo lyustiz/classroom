@@ -1,8 +1,10 @@
 <template>
+
+    <v-card color="info darken-3 rounded-lg elevation-3"> 
         
-    <v-list subheader dense width="100%" color="grey darken-3" class="rounded-lg" dark>
+    <v-list subheader dense width="100%" color="info darken-3" class="rounded-lg" dark>
             
-        <v-subheader dark inset class="rounded-t-lg ">
+        <v-subheader dark class="rounded-t-lg ">
             Chat
         </v-subheader>
         <v-divider dark></v-divider>
@@ -53,6 +55,8 @@
         </v-row>
     <!-- </v-card>   -->     
     </v-list>
+
+    </v-card>
 
 </template>
 
