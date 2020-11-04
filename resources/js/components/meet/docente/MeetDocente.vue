@@ -136,7 +136,7 @@ export default {
         startClass()
         {
             this.isStarted = true
-            //this.list()
+            this.list()
 
         },
 
