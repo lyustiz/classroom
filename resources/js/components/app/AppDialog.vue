@@ -30,7 +30,18 @@
 
 <script>
 export default {
-    props: ['dialog', 'mensaje'],
+    props: {
+
+        dialog: {
+            type: Boolean,
+            default: false
+        },
+
+        message: {
+            type: String,
+            default: null
+        },
+    },
     methods:
     {
         delItem()

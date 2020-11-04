@@ -45,6 +45,13 @@
         
     </v-toolbar>
 
+    <app-confirm 
+        :confirm="confirm" 
+        :titulo="title" 
+        :mensaje="message"
+        @closeConfirm="confirmDevice($event)"
+    ></app-confirm>
+
     </div>
 </template>
 
@@ -117,6 +124,10 @@ export default {
             { action: 'fullScreen',  icon: 'mdi-fullscreen',  label: 'Pantalla Completa' },
         ],
         dialogDevices: false,
+
+        confirm:  false,
+        message:  null,
+        title:    null
     }),
 
     methods: 
@@ -156,12 +167,12 @@ export default {
 
         getVideoStream()
         {          
-            return navigator.mediaDevices.getUserMedia(this.media)
+            navigator.mediaDevices.getUserMedia(this.media)
             .then((stream) => {
                 this.$emit('onLocalStream', {stream, media: this.media} )
             })
-            .catch((error) => {
-                this.showError(error)
+            .catch((mediaError) => {
+                this.handleMediaError(mediaError)
             })
         },
 
@@ -187,6 +198,45 @@ export default {
         endClass()
         {
             this.$emit('onEndClass')
+        },
+
+        handleMediaError(mediaError)
+        {
+            switch (mediaError.name) {
+                case 'NotAllowedError':
+                    this.confirm = true
+                    this.title   = 'Microfono/Camara Bloqueado.'
+                    this.message = 'Favor autorizar el uso de Microfono/Camara y presione "Confirmar"'
+                    console.log(mediaError.message)
+                    break;
+                case 'NotFoundError':
+                    console.log(mediaError.message)
+                    break;
+                case 'SecurityError':
+                    this.showError('Error al acceder a dispositivo')
+                    console.log(mediaError.message)
+                    break;
+                case 'TypeError':
+                    this.showError('No se han definido dispositivos')
+                    console.log(mediaError.message)
+                    break;
+                default:
+                    this.showError('Error en dispositivo audio/video')
+                    console.log(mediaError.name, '--', mediaError.message)
+                    break;
+            }
+        },
+
+        confirmDevice(retry)
+        {
+            if(retry)
+            {
+                this.getVideoStream()
+            }
+            else{
+                this.showError('No es posible iniciar Videoconferencia')
+            }
+            this.confirm = false
         }
     }
 }

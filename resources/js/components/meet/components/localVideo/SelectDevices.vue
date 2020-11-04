@@ -76,6 +76,7 @@
              
     </v-card-text>
 
+    
 </v-card>
   
 </template>
@@ -93,21 +94,26 @@ export default {
         {
             this.setupDevices()
         })
-        
-        
     },
 
     data() 
     {
         return {
-            loading:     false,
+            loading:      false,
             devices:      [],
             audioInputs:  [],
             audioOutputs: [],
             videoInputs:  [],
-            microphone:  null,
-            speaker:     null,
-            camera:      null
+            microphone:   null,
+            speaker:      null,
+            camera:       null,
+
+            permissions: {
+                camera:     false,
+                microphone: false
+            },
+
+
         }
     },
 
@@ -116,17 +122,57 @@ export default {
         
         setupDevices()
         {
-            this.loading = true
-            
-            this.getDevices()
+           this.checkPermission()
 
-            navigator.mediaDevices.ondevicechange =  this.updateDevices
+           navigator.mediaDevices.ondevicechange = this.updateDevices
+        },
+
+        async checkPermission(){
+
+            for (const permission in this.permissions) {
+
+                let status = await navigator.permissions.query( { name: permission } )
+                
+                this.permissions[permission] = (status == 'granted') ? true : false
+            }
+
+            if( !this.permissions.camera)
+            {
+                await navigator.mediaDevices.getUserMedia({ video: true}).then( stream => {
+                    
+                    if(this.stream)
+                    {
+                        this.stream.getTracks().forEach( (track) => track.stop() )
+                    }
+                    
+                }).catch((mediaError) => {
+
+                    console.log(mediaError)
+                })
+            }
+
+            if( !this.permissions.microphone)
+            {
+                await navigator.mediaDevices.getUserMedia({ audio: true}).then( stream => {
+
+                    if(this.stream)
+                    {
+                        this.stream.getTracks().forEach( (track) => track.stop() )
+                    }
+
+                }).catch((mediaError) => {
+
+                    console.log(mediaError)
+                })
+            }
+
+            this.getDevices()
         },
         
         getDevices() {
          
             navigator.mediaDevices.enumerateDevices().then((devices) => {
-             
+                             
                 for (const device of devices) {
 
                     if( device.kind == 'audioinput' ) {
@@ -200,27 +246,6 @@ export default {
             this.$store.commit('setSpeaker', speaker)
             this.$emit('onSpeaker', speaker)
         },
-
-        handleMediaError(mediaError)
-        {
-            switch (mediaError.name) {
-                case 'NotAllowedError':
-                    this.showError('Dispositivo Bloqueado por el Usuario')
-                    console.log(mediaError.message)
-                    break;
-                case 'NotFoundError':
-                    console.log(mediaError.message)
-                    break;
-                case 'SecurityErro':
-                    this.showError('Aeeror al acceder a dispositivo')
-                    console.log(mediaError.message)
-                    break;
-                default:
-                    this.showError('Error en dispositivo audio/video')
-                    console.log(mediaError.message)
-                    break;
-            }
-        }
 
     }
 }

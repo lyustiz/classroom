@@ -136,15 +136,19 @@ export default {
         startClass()
         {
             this.isStarted = true
-            this.list()
+            //this.list()
 
         },
 
         endClass()
         {
-            this.stream.getTracks().forEach(function(track) {
-                track.stop();
-            });
+            if(this.stream)
+            {
+                this.stream.getTracks().forEach(function(track) {
+                    track.stop();
+                });
+            }
+            
             this.stream       = null
             this.remoteStream = []
             this.isStarted    = false
@@ -329,7 +333,11 @@ export default {
 
         endMeet()
         {
-            this.instance.unsubscribe(this.classChanel);
+            if(this.instance)
+            {
+                this.instance.unsubscribe(this.classChanel);
+            }
+            
             this.chanel = null
             
             for (const userId in this.peers) {
