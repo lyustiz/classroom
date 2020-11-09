@@ -53,8 +53,8 @@
                 <v-col class="pa-3">
                     <v-subheader class="text-capitalize deep-purple rounded-t-lg" dark >{{tipo.nb_tipo_evaluacion}}s</v-subheader>
                     <v-list dense class="evaluacion-container" subheader color="grey lighten-5 rounded-b-lg">
-                        <v-list-item-group v-model="form.id_origen" color="info darken-3">
-                            <v-list-item v-for="(prueba, i) in evaluaciones" :key="i" :value="prueba.id">
+                        <v-list-item-group v-model="prueba" color="info darken-3">
+                            <v-list-item v-for="(prueba, i) in evaluaciones" :key="i" :value="prueba">
                                 <template v-slot:default="{ active }" >
                                     <v-list-item-icon>
                                         <v-icon>{{tipo.tx_icono}}</v-icon>
@@ -453,7 +453,8 @@ export default {
                 alumnos:    [],
                 id_grupo: 	        null,
 				id_tipo_evaluacion: null,
-				id_materia: 	    null,
+                id_materia: 	    null,
+                id_tema: 	        null,
 				id_origen: 	        null,
 				tx_origen: 	        null,
 				tx_observaciones: 	null,
@@ -463,6 +464,7 @@ export default {
             default: {
                 id_status: 1
             },
+            prueba:        null,
             materias:      [],
             evaluaciones:  [],
             alumnos:       [],
@@ -498,6 +500,11 @@ export default {
 
         store()
         {
+            if(this.prueba){ 
+                this.form.id_origen = this.prueba.id
+                this.form.id_tema   = this.prueba.id_tema
+            }
+            
             if(!this.validate()) return
             
             this.storeResource('evaluacion', this.form).then( data =>{

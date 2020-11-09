@@ -62,8 +62,8 @@
 
         <!-- form  -->
 
-        <v-dialog v-model="dialogPrueba" fullscreen scrollable persistent>
-            <!-- <app-actividad v-if="dialogPrueba" :evaluacion="evaluacion"  @closeDialog="closeDialog('dialogPrueba')" ></app-actividad> -->
+        <v-dialog v-model="dialogPrueba" fullscreen scrollable>
+            <visor-prueba v-if="dialogPrueba" :prueba="prueba"  @closeDialog="closeDialog('dialogPrueba')" ></visor-prueba>
         </v-dialog>
 
         <v-dialog v-model="dialogForm" fullscreen scrollable>
@@ -90,13 +90,14 @@
 import DataHelper     from '@mixins/AppData';
 import TemaToolbar    from './component/TemaToolbar'
 import AppPruebaForm  from '@pages/prueba/AppPruebaForm'
+import VisorPrueba    from '@pages/prueba/VisorPrueba'
 
 export default {
 
     components: { 
-        'tema-toolbar':   TemaToolbar,
-        'prueba-form':    AppPruebaForm,
-
+        'tema-toolbar': TemaToolbar,
+        'prueba-form':  AppPruebaForm,
+        'visor-prueba': VisorPrueba
     },
 
     mixins:     [ DataHelper ],
@@ -243,6 +244,7 @@ export default {
 
         show(prueba)
         {
+            console.log(prueba)
             this.prueba       = prueba 
             this.dialogPrueba = true 
         }

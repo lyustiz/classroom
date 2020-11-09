@@ -16,18 +16,18 @@
                 <v-col>
 
                      <v-list-item  >
-                            <v-list-item-avatar color="teal" size="70">
-                                <v-icon color="white" size="40">mdi-order-bool-descending-variant</v-icon>
+                            <v-list-item-avatar color="teal" size="60">
+                                <v-icon color="white" size="46">mdi-order-bool-descending-variant</v-icon>
                             </v-list-item-avatar>
                             <v-list-item-content>
                                 <v-list-item-title v-text="evaluacion.evaluacion.origen.nb_prueba"></v-list-item-title>
-                                <v-list-item-subtitle v-text="evaluacion.evaluacion.materia.nb_materia"></v-list-item-subtitle>
-                                <v-list-item-subtitle v-text="evaluacion.evaluacion.tema.nb_tema"></v-list-item-subtitle>
+                                <v-list-item-subtitle >Tema: {{evaluacion.evaluacion.tema.nb_tema}} - {{evaluacion.evaluacion.materia.nb_materia}}</v-list-item-subtitle>
                             </v-list-item-content>
                     </v-list-item>
 
                 </v-col>
             </v-row>
+                                     
 
             <v-row>
 

@@ -110,6 +110,7 @@ class EvaluacionController extends Controller
             'id_tipo_evaluacion' => 'required|integer|max:999999999',
             'id_grupo'           => 'required|integer|max:999999999',
             'id_materia'         => 'required|integer|max:999999999',
+            'id_tema'            => 'required|integer|max:999999999',
             'tx_origen'          => 'required|string|max:30',
             'id_origen'          => 'required|integer|max:999999999',
             'nu_peso'            => 'nullable|integer|max:999999999',

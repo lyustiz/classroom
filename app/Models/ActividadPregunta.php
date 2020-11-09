@@ -60,7 +60,7 @@ class ActividadPregunta extends Model
 
     public function actividadRespuesta()
     {
-        return $this->hasMany('App\Models\Actividadrespuesta', 'id_actividad_pregunta');
+        return $this->hasMany('App\Models\ActividadRespuesta', 'id_actividad_pregunta');
     }
 
     
