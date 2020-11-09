@@ -2,22 +2,14 @@
 
     <v-card :loading="loading" flat height="85vh">
         
-        <v-card-title class="pa-0">
-            <app-simple-toolbar title="Preguntas" @closeModal="$emit('closeModal', true)"></app-simple-toolbar>
-        </v-card-title>
-
         <v-card-title class="pa-0 grey lighten-4">
-                <v-col cols="10">
-                    <v-avatar color="grey lighten-3 mx-4" size="38">
-                        <v-icon color="blue">mdi-clipboard-text</v-icon>
-                    </v-avatar>
-                   <span class="subtitle-2">{{ prueba.nb_prueba }}</span> 
-                </v-col>
-                <v-spacer></v-spacer>
-                <v-col cols="2" class="text-center" >
-                    <app-button color="primary" icon="mdi-table-sync" label="refrescar" @click="list()"></app-button>
-                    <add-button @insItem="insertForm()"></add-button>
-                </v-col>
+            <v-col  class="text-center">
+                 <span>Preguntas</span>
+            </v-col>
+            <v-col cols="auto" class="text-center" >
+                <app-button color="primary" icon="mdi-table-sync" label="refrescar" @click="list()" inner-class="mx-1"></app-button>
+                <add-button @insItem="insertForm()"></add-button>
+            </v-col>
         </v-card-title>
 
         <v-card-text>        
@@ -34,6 +26,16 @@
             >
                 <template v-slot:item="{ item, expand, isExpanded }">
                     <tr :class="(isExpanded) ? 'green lighten-3 ': ''">
+                        <td>
+                             <app-foto-pregunta 
+                                :origenId="item.id" 
+                                :maxItems="1" 
+                                :tipoFoto="7" 
+                                :foto="item.foto"
+                                :aspectRatio="16/9"
+                                >
+                            </app-foto-pregunta> 
+                        </td>
                         <td class="text-xs-left">{{ item.nu_orden }}</td>
                         <td class="text-xs-left">{{ item.nb_pregunta | maxStringLength(80)}}</td>
 						<td class="text-xs-left"> 
@@ -42,9 +44,6 @@
                                 :color="item.tipo_pregunta.tx_color" 
                                 :label="item.tipo_pregunta.nb_tipo_pregunta"
                             ></list-simple-icon> 
-                        </td>
-						<td class="text-xs-left">
-                            <list-icon :data="statusIcons" :value="item.bo_opcional"></list-icon>
                         </td>
 
                         <td class="text-xs-left subtitle-2">{{ (item.respuesta) ? item.respuesta.length: 0  }}</td>
@@ -130,17 +129,19 @@
 </template>
 
 <script>
-import listHelper from '@mixins/Applist';
+import listHelper       from '@mixins/Applist';
 import AppPreguntaForm  from './AppPreguntaForm';
-import AppRespuesta  from '@pages/respuesta/AppListRespuesta';
+import AppRespuesta     from '@pages/respuesta/AppListRespuesta';
+import AppFotoPregunta  from '@pages/foto/AppFotoPregunta';
 
 export default {
 
     mixins:     [ listHelper],
 
     components: { 
-        'pregunta-form': AppPreguntaForm,
-        'app-respuesta': AppRespuesta
+        'pregunta-form':     AppPreguntaForm,
+        'app-respuesta':     AppRespuesta,
+        'app-foto-pregunta': AppFotoPregunta
     },
 
     props: 
@@ -164,10 +165,10 @@ export default {
             title:    'Pregunta',
             resource: 'pregunta',
             headers: [
+                { text: 'Foro',          value: 'tx_foto' },
                 { text: 'Orden',         value: 'nu_orden' },
                 { text: 'Pregunta',      value: 'nb_pregunta' },
                 { text: 'Tipo Pregunta', value: 'id_tipo_pregunta' },
-                { text: 'Opcional',      value: 'bo_opcional' },
                 { text: 'Respuestas',    value: 'respuesta' },
                 { text: 'Puntos',        value: 'nu_valor' },
                 { text: 'Ayuda',         value: 'tx_observaciones' },

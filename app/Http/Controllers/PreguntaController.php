@@ -27,7 +27,9 @@ class PreguntaController extends Controller
     {
        return Pregunta::with([
                         'respuesta:id,nb_respuesta,bo_correcta,id_pregunta',
-                        'tipoPregunta:id,nb_tipo_pregunta,tx_icono,tx_color,tx_observaciones'
+                        'tipoPregunta:id,nb_tipo_pregunta,tx_icono,tx_color,tx_observaciones',
+                        'foto:id,tx_src,id_tipo_foto,id_origen',
+                        'foto.tipoFoto:id,tx_base_path',
                         ])
                     ->where('id_prueba', $idPrueba)
                     ->get();
@@ -39,7 +41,9 @@ class PreguntaController extends Controller
         return Pregunta::with([
                         'respuesta:id,nb_respuesta,id_pregunta',
                         'respuestaAlumno:respuesta_alumno.id,id_pregunta,id_respuesta,tx_respuesta',
-                        'tipoPregunta:id,nb_tipo_pregunta,tx_icono,tx_color,tx_observaciones'
+                        'tipoPregunta:id,nb_tipo_pregunta,tx_icono,tx_color,tx_observaciones',
+                        'foto:id,tx_src,id_tipo_foto,id_origen',
+                        'foto.tipoFoto:id,tx_base_path',
                         ])
                     ->where('id_prueba', $idPrueba)
                     ->whereDoesntHave('respuestaAlumno', function ($query) use ($idAlumno, $idPrueba) {
@@ -55,7 +59,9 @@ class PreguntaController extends Controller
         return Pregunta::with([
                         'respuesta:id,nb_respuesta,id_pregunta',
                         'respuestaAlumno:respuesta_alumno.id,id_pregunta,id_respuesta,tx_respuesta',
-                        'tipoPregunta:id,nb_tipo_pregunta,tx_icono,tx_color,tx_observaciones'
+                        'tipoPregunta:id,nb_tipo_pregunta,tx_icono,tx_color,tx_observaciones',
+                        'foto:id,tx_src,id_tipo_foto,id_origen',
+                        'foto.tipoFoto:id,tx_base_path',
                         ])
                     ->where('id_prueba', $idPrueba)
                     ->where('nu_orden', $idOrden)

@@ -45,10 +45,14 @@ export default {
     {
         this.$nextTick().then( () => 
         {
+            console.log('iniciado remote', this.member, this.stream)
             this.player       = this.$refs.player
             this.player.muted = true
-            this.play()
-            this.statusMedia()
+            if(this.stream)
+            {
+                this.play()
+                this.statusMedia()
+            }
         })
     },
 
@@ -64,6 +68,8 @@ export default {
     {
         stream(stream)
         {
+            
+            console.log('watch remote', stream);
             if(stream)
             {
                 this.play()

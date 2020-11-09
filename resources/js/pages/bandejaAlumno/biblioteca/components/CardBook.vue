@@ -9,7 +9,8 @@
         @click="$emit('onSelect')"
     >
         <v-row justify="center" no-gutters class="fill-height align-stretch" > 
-            <v-col cols="12"><v-icon color="white" :size="iconSize" class="">{{ icon }}</v-icon></v-col>
+            <v-col cols="6"><v-icon color="white" :size="iconSize" class="">{{ icon }}</v-icon></v-col>
+            <v-col cols="6" class="text-right mt-1"><v-icon color="white" :size="40" v-if="completed">mdi-checkbox-marked-circle-outline</v-icon></v-col>
             <v-col cols="12" class="white--text text-center text-capitalize font-weight-medium title-1">
                 {{ label }}
             </v-col>
@@ -42,6 +43,11 @@ export default {
         },
 
         active: {
+            type: Boolean,
+            default: false
+        },
+
+        completed: {
             type: Boolean,
             default: false
         }

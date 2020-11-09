@@ -24,7 +24,12 @@
 </template>
 
 <script>
+
+import AppVisor   from '@mixins/AppVisor';
+
 export default {
+
+    mixins: [AppVisor],
 
     props:
     {

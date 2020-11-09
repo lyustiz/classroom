@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class AsignacionController extends Controller
 {
@@ -43,6 +44,83 @@ class AsignacionController extends Controller
                                 'origen',
                         ])
                         ->where('id_grupo',$idGrupo)
+                        ->orderBy('fe_inicio', 'asc')
+                        ->get();
+
+                        return [
+                            'plan'   => $this->formatData($asignacion, $evaluacion),
+                        ];
+    }
+
+    public function asignacionGrupoAlumnos($idGrupo)  //TODO  Extraer Querys
+    {
+        $asignacion =   Asignacion::with([
+                                    'asignacionAlumno:asignacion_alumno.id,id_alumno,fe_completado,fe_acceso,nu_accesos',
+                                    'asignacionAlumno.alumno:alumno.id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',
+                                    'tipoAsignacion:id,nb_tipo_asignacion,tx_icono,tx_color',
+                                    'materia:id,nb_materia',
+                                    'tema:id,nb_tema',
+                                    'origen'
+                            ])
+                            ->where('id_grupo', $idGrupo)
+                            ->orderBy('fe_inicio', 'asc')
+                            ->get();
+
+                            
+        $evaluacion = Evaluacion::with([
+                                'evaluacionAlumno:evaluacion_alumno.id,id_alumno,fe_evaluacion',
+                                'evaluacionAlumno.alumno:alumno.id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',
+                                'tipoEvaluacion:id,nb_tipo_evaluacion',
+                                'materia:id,nb_materia',
+                                'origen',
+                        ])
+                        ->where('id_grupo',$idGrupo)
+                        ->orderBy('fe_inicio', 'asc')
+                        ->get();
+
+                        return [
+                            'plan'   => $this->formatData($asignacion, $evaluacion),
+                        ];
+    }
+
+    public function asignacionAlumno($idAlumno)  //TODO  Extraer Querys
+    {
+        $asignacion =   Asignacion::with([
+                                    'tipoAsignacion:tipo_asignacion.id,nb_tipo_asignacion,tx_icono,tx_color',
+                                    'asignacionAlumno' => function($query) use ( $idAlumno ){
+                                        $query->where('asignacion_alumno.id_alumno' , $idAlumno);
+                                    },
+                                    'materia:materia.id,nb_materia',
+                                    'tema:tema.id,nb_tema',
+                                    'origen' => function (MorphTo $morphTo) {
+                                        $morphTo->morphWith([
+                                            Enlace::class    => ['enlace:id:nb_enlace'],
+                                            Recurso::class   => ['recurso:recurso.id'],
+                                            Actividad::class => ['actividad:actividad.id']
+                                        ]);
+                                    }
+                            ])
+                            ->whereHas('grupo.alumno', function (Builder $query) use($idAlumno) {
+                                $query->where('alumno.id', $idAlumno);
+                            })
+                            ->orderBy('fe_inicio', 'asc')
+                            ->get(); 
+                            
+        $evaluacion = Evaluacion::with([
+                                'tipoEvaluacion:tipo_evaluacion.id,nb_tipo_evaluacion',
+                                'evaluacionAlumno' => function($query) use ( $idAlumno ){
+                                    $query->where('evaluacion_alumno.id_alumno' , $idAlumno);
+                                },
+                                'materia:materia.id,nb_materia',
+                                'origen' => function (MorphTo $morphTo) {
+                                    $morphTo->morphWith([
+                                        Prueba::class => ['prueba:id:nb_prueba'],
+                                    ]);
+                                }
+                        ])
+                        ->whereHas('grupo.alumno', function (Builder $query) use($idAlumno) {
+                            $query->where('alumno.id', $idAlumno);
+                        })
                         ->orderBy('fe_inicio', 'asc')
                         ->get();
 

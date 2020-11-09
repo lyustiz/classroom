@@ -24,11 +24,53 @@
                 <span v-text="section.label"></span>
             </v-tooltip>
 
-            
-            <app-asignar></app-asignar>
-            <gestion-tema></gestion-tema>
-            <meet-room :usuario="3"></meet-room>
+                <v-tooltip top color="orange">
+                    <template v-slot:activator="{ on }">
+                    <v-btn fab dark depressed v-on="on" color="orange" class="ml-1 mt-1 " @click="navegateToName('gestion-tema')">
+                        <v-icon size="32">mdi-inbox-multiple</v-icon>
+                    </v-btn>
+                    </template>
+                    <span>Gestion de Contenidos</span>
+                </v-tooltip>
 
+                <v-tooltip top color="red">
+                    <template v-slot:activator="{ on }">
+                    <v-btn fab dark depressed v-on="on" color="red" class="ml-1 mt-1" @click="navegateToName('planificador-docente')">
+                        <v-icon size="32">mdi-calendar-multiselect</v-icon>
+                    </v-btn>
+                    </template>
+                    <span>Planificador</span>
+                </v-tooltip>
+
+                <v-tooltip top color="green">
+                    <template v-slot:activator="{ on }">
+                    <v-btn fab dark depressed v-on="on" color="green" class="ml-1 mt-1" @click="navegateToName('seguimiento-actividades')">
+                        <v-icon size="32">mdi-calendar-search</v-icon>
+                    </v-btn>
+                    </template>
+                    <span>Seguimiento</span>
+                </v-tooltip>
+
+                <v-tooltip top color="cyan">
+                    <template v-slot:activator="{ on }">
+                    <v-btn fab dark depressed v-on="on" color="cyan" class="ml-1 mt-1" @click="navegateToName('clase-docente')">
+                        <v-icon size="32">mdi-google-classroom</v-icon>
+                    </v-btn>
+                    </template>
+                    <span>Clase</span>
+                </v-tooltip>
+
+                <v-tooltip top color="amber">
+                    <template v-slot:activator="{ on }">
+                    <v-btn fab dark depressed v-on="on" color="amber" class="ml-1 mt-1" @click="navegateToName('meet-docente')">
+                        <v-icon size="32">mdi-video-plus</v-icon>
+                    </v-btn>
+                    </template>
+                    <span>Aula Virtual</span>
+                </v-tooltip>
+
+
+            
         </v-card-text>
 
             <v-dialog v-model="dialog" content-class="rounded-xl" scrollable :max-width="sectionWidth"> 
@@ -53,10 +95,8 @@ export default {
 
     components: {
         'lista-alumno':       ListaAumno,
-        'recurso-docente':    RecursoDocente,
         'plan-evaluacion':    PlanEvaluacion,
         'evaluacion-docente': EvaluacionDocente,
-        'menu-prueba':        MenuPrueba,
         'clase-alumno':       ClaseAlumno, 
         'app-asignar':        AppAsignar, 
         'gestion-tema':       GestionTemas, 
@@ -80,10 +120,7 @@ export default {
             sections: [
 
                     { label: 'Alumnos', icon: 'mdi-school', component: 'lista-alumno', color: 'blue', sectionWidth: '700' },
-                  /*   { label: 'Recursos', icon: 'mdi-book-open-page-variant', component: 'recurso-docente', color: 'purple', sectionWidth: '700' }, */
                     { label: 'Plan Evaluacion', icon: 'mdi-table-clock', component: 'plan-evaluacion', color: 'indigo', sectionWidth: '700' },
-                 /*    { label: 'Evaluaciones', icon: 'mdi-table-check', component: 'evaluacion-docente', color: 'amber', sectionWidth: '95vw' }, */
-                    { label: 'Pruebas', icon: 'mdi-order-bool-descending-variant', component: 'menu-prueba', color: 'red', sectionWidth: '700' },
                 ]
         }
     },

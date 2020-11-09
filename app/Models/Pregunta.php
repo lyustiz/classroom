@@ -78,6 +78,11 @@ class Pregunta extends Model
         return $this->HasMany('App\Models\RespuestaAlumno', 'id_pregunta');
     }
 
+    public function foto()
+    {
+        return $this->hasOne('App\Models\Foto',  'id_origen', 'id')->where('id_tipo_foto', 7);
+	}
+
 
 
 

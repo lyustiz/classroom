@@ -4,22 +4,17 @@
 
     <v-card :loading="loading" flat>
 
-        <v-card-title class="tile pa-0">
-            <app-simple-toolbar title="Cuestionario" backgroundColor="red" dense dark @closeModal="$emit('closeDialog')" ></app-simple-toolbar>
-        </v-card-title>
+        <v-card-text>
 
-        <v-card-text class="mt-3">
-
-        <v-row dense>
+        <v-row>
 
         <v-col cols="8">
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.nb_prueba"
-                label="Nombre"
+                label="Nombre de la Prueba"
+                placeholder="Indique Nombre de la Prueba"
                 dense
-                rounded
-                filled
             ></v-text-field>
         </v-col>
 
@@ -41,13 +36,17 @@
         </template>
         <span>Indica si se muestran lo resultados de la prueba al finalizar</span>
        </v-tooltip>
-                                                        
-        </v-row>
-
-        <v-row>
-            <v-col>
-                <app-pregunta :prueba="prueba"></app-pregunta>
-            </v-col>
+                                                             
+        <v-col cols="12">
+            <v-text-field
+                :rules="[rules.max(100)]"
+                v-model="form.tx_observaciones"
+                label="Observaciones"
+                placeholder="Indique Observaciones"
+                dense
+            ></v-text-field>
+        </v-col>
+                          
         </v-row>
 
         </v-card-text>
@@ -59,7 +58,7 @@
                 @store="store()"
                 @clear="clear()"
                 @cancel="cancel()"
-                action="upd"
+                :action="action"
                 :valid="valid"
                 :loading="loading"
             ></form-buttons>
@@ -75,39 +74,25 @@
 
 <script>
 
-import AppData     from '@mixins/AppData';
-import AppPregunta from '@pages/pregunta/AppPregunta';
+import Appform from '@mixins/Appform';
 
 export default {
 
-    mixins: [AppData],
-
-    props:
-    {
-        prueba:{
-            type: Object,
-            default: true
-        },
-    },
-
-    components: {
-        'app-pregunta': AppPregunta
-    },
-
-    created()
-    {
-        this.form.nb_prueba     = this.prueba.nb_prueba
-        this.form.bo_resultados = this.prueba.bo_resultados
-    },
+    mixins: [Appform],
 
     data() {
         return {
-            form: {
-                nb_prueba: null,
-                id_status: null,
-                id_usuario: null
+            resource: 'prueba',
+            form:
+            {
+                id: 	               null,
+                nb_prueba: 	           null,
+				bo_ver_resultado: 	   null,
+				tx_observaciones: 	   null,
+				id_status: 	           null,
+				id_usuario: 	       null,
             },
-            menuAyudaOpcional: false
+            menuAyudaVerResultado: false
         }
     },
 

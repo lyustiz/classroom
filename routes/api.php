@@ -381,10 +381,16 @@ Route::get('/enlace/tipoEnlace/{tipoEnlace}/tema/{tema}',               'EnlaceC
 Route::apiResource('/enlace',                   'EnlaceController');
 Route::apiResource('/tipoEnlace',               'TipoEnlaceController');
 
+
+Route::get('/asignacion/grupo/{grupo}/alumnos', 'AsignacionController@asignacionGrupoAlumnos');
 Route::get('/asignacion/grupo/{grupo}',         'AsignacionController@asignacionGrupo');
+Route::get('/asignacion/alumno/{alumno}',       'AsignacionController@asignacionAlumno');
 Route::apiResource('/asignacion',               'AsignacionController');
 Route::apiResource('/tipoAsignacion',           'TipoAsignacionController');
+Route::get('/asignacionAlumno/grupo/{grupo}', 'AsignacionAlumnoController@asignacionAlumnoGrupo');
 Route::get('/asignacionAlumno/alumno/{alumno}', 'AsignacionAlumnoController@asignacionAlumnoAlumno');
+Route::put('/asignacionAlumno/{asignacionAlumno}/completada', 'AsignacionAlumnoController@completada');
+Route::put('/asignacionAlumno/{asignacionAlumno}/acceso',     'AsignacionAlumnoController@acceso');
 Route::apiResource('/asignacionAlumno',         'AsignacionAlumnoController');
 
 Route::get('/actividadPregunta/actividad/{actividad}',     'ActividadPreguntaController@actividadPreguntaActividad');

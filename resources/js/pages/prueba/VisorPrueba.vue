@@ -3,7 +3,7 @@
     <v-card :loading="loading" flat height="80vh" color="grey lighten-5" >
 
         <v-card-title class="pa-0">
-            <v-toolbar color="deep-purple" dark dense>
+            <v-toolbar color="teal" dark dense>
                 <v-row dense>
                 <v-col>
                     <v-icon size="30" class="ml-4" dark >mdi-order-bool-descending-variant</v-icon>
@@ -27,7 +27,7 @@
                 <v-col cols="4" v-for="pregunta in preguntas" :key="pregunta.id">
                     <v-card min-height="487" class="rounded-lg">
                         
-                        <v-img class="white--text align-end" height="200px" src="/storage/foto/prueba/1/preguta1.png"></v-img> 
+                        <v-img class="white--text align-end" height="200px" src="/images/cuestionario.jpg"></v-img> 
                         
                         <v-card-title>
 

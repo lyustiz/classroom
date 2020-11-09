@@ -1,25 +1,31 @@
 <template>
 
-<v-dialog scrollable fullscreen persistent v-model="dialog">
-
-        <template v-slot:activator="{ on, attrs }">
-            <v-btn fab dark depressed v-bind="attrs" v-on="on" color="orange" class="ml-1">
-                <v-icon size="32">mdi-book-open-page-variant</v-icon>
-            </v-btn>
-        </template>
-
         <v-card> 
 
-        <v-card-title class="pa-0">
-            <app-simple-toolbar title="Biblioteca" @closeModal="dialog=false" dense></app-simple-toolbar>
-        </v-card-title>
-        
+        <v-subheader class="grey lighten-3">
+            <v-row no-gutters>
+                <v-col cols="auto">
+                    <v-btn icon small class="mx-2 my-1" depressed  @click="navegateToName('bandeja-alumno')">
+                        <v-icon size="30">mdi-home</v-icon>
+                    </v-btn>
+                </v-col>
+                <v-col class="my-2">
+                    Biblioteca
+                </v-col>
+                <v-col cols="auto">
+                    <v-btn icon x-small class="mx-1 my-2" depressed  @click="list()" :loading="loading">
+                        <v-icon size="25">mdi-refresh</v-icon>
+                    </v-btn>
+                </v-col>
+            </v-row>
+        </v-subheader>
+
         <v-card-text class="pt-3" >
 
             <v-sheet
                 class="mx-auto rounded-xl"
                 elevation="8"
-                max-width="95vw"
+                max-width="98vw"
                 color="amber lighten-4"
             >
     
@@ -72,7 +78,7 @@
       
                 <v-row no-gutters>
                     <v-col cols="auto">
-                         <status-task :loading="loading" :total="actividades.length" :completed="getCompletadas('evaluaciones', cuestionarios)"></status-task>
+                         <status-task :loading="loading" :total="(cuestionarios) ? cuestionarios.length: 0" :completed="getCompletadas('evaluaciones', cuestionarios)"></status-task>
                     </v-col>
                     <v-col>
                         <v-slide-group class="pa-4 item-container"  show-arrows center-active>
@@ -82,7 +88,8 @@
                                 color="teal" 
                                 :label="cuestionario.evaluacion.origen.nb_prueba" 
                                 icon="mdi-order-bool-descending-variant" 
-                                @onSelect="verEvaluacion(cuestionario, 'cuestionario')">
+                                @onSelect="verEvaluacion(cuestionario, 'cuestionario')"
+                                :completed="(cuestionario.fe_evaluacion) ? true: false">
                             </card-book>
                             </v-slide-item> 
                             <v-overlay color="amber rounded-lg" absolute :opacity="0.3" :value="loading">
@@ -97,7 +104,7 @@
       
                 <v-row no-gutters>
                     <v-col cols="auto">
-                         <status-task :loading="loading" :total="actividades.length" :completed="getCompletadas('asignaciones', actividades)"></status-task>
+                         <status-task :loading="loading" :total="(actividades) ? actividades.length: 0" :completed="getCompletadas('asignaciones', actividades)"></status-task>
                     </v-col>
                     <v-col>
                         <v-slide-group class="pa-4 item-container"  show-arrows center-active>
@@ -107,7 +114,8 @@
                                 color="amber" 
                                 :label="actividad.asignacion.origen.nb_actividad" 
                                 icon="mdi-rocket-launch" 
-                                @onSelect="verAsignacion(actividad, 'actividad')">
+                                @onSelect="verAsignacion(actividad, 'actividad')"
+                                :completed="(actividad.fe_completado) ? true: false">
                             </card-book>
                             </v-slide-item> 
                             <v-overlay color="amber rounded-lg" absolute :opacity="0.3" :value="loading">
@@ -121,7 +129,7 @@
       
                 <v-row no-gutters>
                     <v-col cols="auto">
-                         <status-task :loading="loading" :total="enlaces.length" :completed="getCompletadas('asignaciones', enlaces)"></status-task>
+                         <status-task :loading="loading" :total="(enlaces) ? enlaces.length: 0" :completed="getCompletadas('asignaciones', enlaces)"></status-task>
                     </v-col>
                     <v-col>
                         <v-slide-group class="pa-4 item-container"  show-arrows center-active>
@@ -131,7 +139,8 @@
                                     color="blue" 
                                     :label="enlace.asignacion.origen.nb_enlace" 
                                     icon="mdi-earth" 
-                                    @onSelect="verAsignacion(enlace, 'enlace')">
+                                    @onSelect="verAsignacion(enlace, 'enlace')"
+                                    :completed="(enlace.fe_completado) ? true: false">
                                 </card-book>
                             </v-slide-item> 
                             <v-overlay color="amber rounded-lg" absolute :opacity="0.3" :value="loading">
@@ -145,7 +154,7 @@
       
                 <v-row no-gutters>
                     <v-col cols="auto">
-                         <status-task :loading="loading" :total="videos.length" :completed="getCompletadas('asignaciones', videos)"></status-task>
+                         <status-task :loading="loading" :total="(videos) ? videos.length: 0" :completed="getCompletadas('asignaciones', videos)"></status-task>
                     </v-col>
                     <v-col>
                         <v-slide-group class="pa-4 item-container"  show-arrows center-active>
@@ -155,7 +164,8 @@
                                     color="red" 
                                     :label="video.asignacion.origen.nb_enlace" 
                                     icon="mdi-play-box-multiple" 
-                                    @onSelect="verAsignacion(video, 'video')">
+                                    @onSelect="verAsignacion(video, 'video')"
+                                    :completed="(video.fe_completado) ? true: false">
                                 </card-book>
                             </v-slide-item> 
                             <v-overlay color="amber rounded-lg" absolute :opacity="0.3" :value="loading">
@@ -169,7 +179,7 @@
       
                 <v-row no-gutters>
                     <v-col cols="auto">
-                         <status-task :loading="loading" :total="audios.length" :completed="getCompletadas('asignaciones', audios)"></status-task>
+                         <status-task :loading="loading" :total="(audios) ? audios.length: 0" :completed="getCompletadas('asignaciones', audios)"></status-task>
                     </v-col>
                     <v-col>
                         <v-slide-group class="pa-4 item-container"  show-arrows center-active>
@@ -179,7 +189,8 @@
                                     color="orange" 
                                     :label="audio.asignacion.origen.archivo.nb_archivo" 
                                     icon="mdi-music-box-multiple" 
-                                    @onSelect="verAsignacion(audio, 'audio')">
+                                    @onSelect="verAsignacion(audio, 'audio')"
+                                    :completed="(audio.fe_completado) ? true: false">
                                 </card-book>
                             </v-slide-item> 
                             <v-overlay color="amber rounded-lg" absolute :opacity="0.3" :value="loading">
@@ -193,7 +204,7 @@
       
                 <v-row no-gutters>
                     <v-col cols="auto">
-                         <status-task :loading="loading" :total="lecturas.length" :completed="getCompletadas('asignaciones', lecturas)"></status-task>
+                         <status-task :loading="loading" :total="(lecturas) ? lecturas.length: 0" :completed="getCompletadas('asignaciones', lecturas)"></status-task>
                     </v-col>
                     <v-col>
                         <v-slide-group class="pa-4 item-container"  show-arrows center-active>
@@ -203,7 +214,8 @@
                                     color="purple" 
                                     :label="lectura.asignacion.origen.archivo.nb_archivo" 
                                     icon="mdi-library" 
-                                    @onSelect="verAsignacion(lectura, 'lectura')">
+                                    @onSelect="verAsignacion(lectura, 'lectura')"
+                                    :completed="(lectura.fe_completado) ? true: false">
                                 </card-book>
                             </v-slide-item> 
                             <v-overlay color="amber rounded-lg" absolute :opacity="0.3" :value="loading">
@@ -216,37 +228,41 @@
             </v-sheet>
 
         </v-card-text>
-       
-    </v-card>
 
-        <v-dialog v-model="libroDialog" fullscreen  content-class="amber lighten-2">
+         <v-dialog v-model="libroDialog" fullscreen  content-class="amber lighten-2">
             <visor-libros :libro="libro" @closeModal="closeDialog('libroDialog')" v-if="libro"></visor-libros>
         </v-dialog>  
+
+        <v-dialog v-model="dialogPrueba" fullscreen>
+            <app-prueba v-if="dialogPrueba" :evaluacion="evaluacion" @closeDialog="closeDialog('dialogPrueba')" ></app-prueba>
+        </v-dialog>
 
         <v-dialog v-model="dialogActividad" fullscreen>
             <app-actividad v-if="dialogActividad" :actividad="actividadSelected"  @closeDialog="closeDialog('dialogActividad')" ></app-actividad>
         </v-dialog>
 
         <v-dialog v-model="dialogAudio" width="450" content-class="rounded-xl primary" hide-overlay>
-            <visor-audio v-if="dialogAudio" :audio="audioSelected"  @closeDialog="closeDialog('dialogAudio')" ></visor-audio>
+            <visor-audio v-if="dialogAudio" :audio="audioSelected" :asignacion="asignacion" evaluar @onClomplete="getAsignaciones()" @closeDialog="closeDialog('dialogAudio')" ></visor-audio>
         </v-dialog>
 
         <v-dialog v-model="dialogVideo" width="80vw" content-class="rounded-xl black">
-            <visor-video v-if="dialogVideo" :video="videoSelected"  @closeDialog="closeDialog('dialogVideo')" ></visor-video>
+            <visor-video v-if="dialogVideo" :video="videoSelected" :asignacion="asignacion" evaluar @onClomplete="getAsignaciones()" @closeDialog="closeDialog('dialogVideo')" ></visor-video>
         </v-dialog>
 
         <v-dialog v-model="dialogEnlace" fullscreen scrollable>
-            <visor-enlace v-if="dialogEnlace" :enlace="enlaceSelected"  @closeDialog="closeDialog('dialogEnlace')" ></visor-enlace>
+            <visor-enlace v-if="dialogEnlace" :enlace="enlaceSelected" :asignacion="asignacion" evaluar @onClomplete="getAsignaciones()" @closeDialog="closeDialog('dialogEnlace')" ></visor-enlace>
         </v-dialog>
 
         <v-dialog v-model="dialogLectura" width="95vw" content-class="rounded-xl">
-            <visor-pdf v-if="dialogLectura" :pdf="lecturaSelected" @closeDialog="closeDialog('dialogLectura')" ></visor-pdf>
+            <visor-pdf v-if="dialogLectura" :pdf="lecturaSelected" :asignacion="asignacion" evaluar @onClomplete="getAsignaciones()" @closeDialog="closeDialog('dialogLectura')" ></visor-pdf>
         </v-dialog>
 
         <pre>{{$data.peers}}</pre>
 
-    </v-dialog>  
+       
+    </v-card>
 
+       
 </template>
 
 <script>
@@ -254,6 +270,7 @@ import DataHelper   from '@mixins/AppData';
 import MenuItems    from '@components/list/ListMenu'
 import VisorLibros  from './VisorLibros'
 
+import AppPrueba    from '@pages/prueba/AppEjecutarPrueba';
 import AppActividad from '@pages/actividad/AppActividad';
 
 import CardBook     from './components/CardBook'
@@ -267,6 +284,7 @@ export default {
     components: { 
         'menu-items':    MenuItems,
         'visor-libros':  VisorLibros,
+        'app-prueba':    AppPrueba,
         'app-actividad': AppActividad,
         'card-book':     CardBook,
         'status-task':   StatusTasks,
@@ -298,37 +316,36 @@ export default {
         }
     },
 
-    watch:
+    created()
     {
-        dialog(dialog)
-        {
-            if(dialog)
-            {
-                this.list()
-            }
-        },
+        this.list()
     },
 
     data () {
         return {
-            file:     0,
 
             libros: [],
             libroDialog: false,
+            libro:    null,
 
-            libro: null,
-
-            dialog: false,
-            active: false,
+            dialog:   false,
+            active:   false,
             selected: false,
 
+            asignacion: null,
+            evaluacion: null,
+
             libroSelected:     false,
+            pruebaSelected:    null,
+            tareaSelected:     null,
             actividadSelected: null,
             audioSelected:     null,
             videoSelected:     null,
             enlaceSelected:    null,
             lecturaSelected:   null,
 
+            dialogPrueba:    false,
+            dialogTarea:     false,
             dialogActividad: false,
             dialogAudio:     false,
             dialogVideo:     false,
@@ -352,8 +369,18 @@ export default {
     {
         list()
         {
-            this.getResource( `libro/grado/${this.grado.id}` ).then( data =>  this.libros = data )
+           this.getLibros()
+           this.getAsignaciones()
+           this.getEvaluaciones()
+        },
 
+        getLibros()
+        {
+            this.getResource( `libro/grado/${this.grado.id}` ).then( data =>  this.libros = data )
+        },
+
+        getAsignaciones()
+        {
             this.getResource( `asignacionAlumno/alumno/${this.alumno.id}` ).then( data => {
                 this.asignaciones = data
                 this.actividades  = data.actividad
@@ -362,7 +389,10 @@ export default {
                 this.audios       = data.audio
                 this.lecturas     = data.lectura
             })
+        },
 
+        getEvaluaciones()
+        {
             this.getResource( `evaluacionAlumno/alumno/${this.alumno.id}` ).then( data =>  {
                 this.evaluaciones = data
                 this.cuestionarios  = data.cuestionario
@@ -374,7 +404,7 @@ export default {
         {
             if(tipo == 'asignaciones')
             {
-               return items.filter( item => item.fe_completado).length
+               return  (items)  ? items.filter( item => item.fe_completado).length : 0
             }
         },
 
@@ -400,7 +430,8 @@ export default {
 
         verAsignacion(asignacion, tipo)
         {
-            asignacion = asignacion.asignacion
+            this.asignacion = asignacion
+            asignacion  = asignacion.asignacion
            
            switch (tipo ) {
 
@@ -446,17 +477,18 @@ export default {
 
         verEvaluacion(evaluacion, tipo)
         {
+            this.evaluacion = evaluacion
             evaluacion = evaluacion.evaluacion
             
             switch (tipo ) {
 
                 case 'cuestionario':
-                    this.prueba     = evaluacion.origen
-                    this.dialogPrueba = true
+                    this.pruebaSelected  = evaluacion.origen
+                    this.dialogPrueba    = true
                     break;
                 
                 case 'tarea':
-                    this.tarea     = evaluacion.origen
+                    this.tareaSelected     = evaluacion.origen
                     this.dialogTarea = true
                     break;                  
                     break;

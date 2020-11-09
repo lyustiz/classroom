@@ -38,9 +38,10 @@ class EvaluacionAlumnoController extends Controller
     {
 
         $evaluaciones = EvaluacionAlumno::with([
-                                    'evaluacion:id,id_tipo_evaluacion,tx_origen,id_origen,id_grupo,id_materia,nu_peso,fe_inicio,fe_fin,hh_inicio,hh_fin,nu_minutos',
+                                    'evaluacion:id,id_tipo_evaluacion,tx_origen,id_origen,id_grupo,id_materia,id_tema,nu_peso,fe_inicio,fe_fin,hh_inicio,hh_fin,nu_minutos',
                                     'evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion,tx_icono,tx_color',
                                     'evaluacion.materia:id,nb_materia',
+                                    'evaluacion.tema:id,nb_tema',
                                     'evaluacion.origen'
                             ])
                             ->where('id_alumno', $idAlumno)

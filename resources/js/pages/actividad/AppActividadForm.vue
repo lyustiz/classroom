@@ -2,7 +2,7 @@
 
     <v-card :loading="loading" flat height="90vh" color="white" >
 
-        <v-card-title class="red pa-0">
+        <v-card-title class="amber pa-0">
             <app-simple-toolbar title="Actividad" backgroundColor="red" dense dark @closeModal="$emit('closeDialog')" ></app-simple-toolbar>
         </v-card-title>
 

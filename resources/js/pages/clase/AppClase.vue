@@ -94,6 +94,15 @@
                                 <span >Nueva Clase</span> 
                             </v-tooltip>
 
+                            <v-tooltip bottom color="success">
+                                <template v-slot:activator="{ on }">
+                                   <v-btn v-on="on" fab color="success" :loading="loading" @click="navegateToName('bandeja-docente')">
+                                        <v-icon :size="30">mdi-home</v-icon>
+                                    </v-btn>
+                                </template>
+                                <span >Volver al Inicio</span> 
+                            </v-tooltip>
+
                             <v-tooltip bottom color="info">
                                 <template v-slot:activator="{ on }">
                                     <v-btn v-on="on" fab color="info" :loading="loading" @click="list()">

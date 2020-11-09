@@ -2,25 +2,38 @@
 
     <div>
         <app-simple-toolbar :title="video.name" backgroundColor="red" dense dark @closeModal="$emit('closeDialog')" ></app-simple-toolbar>
-        <v-row no-gutters justify="center">
-        <div class="youtube-container mb-1">
-            <iframe class="responsive-iframe rounded-lg" @load="loading = false" :src="url" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <v-overlay 
-            absolute
-            :opacity="0.3"
-            :value="loading"
-            :z-index="10">
-            <v-icon size="40" class="mdi-spin">mdi-loading</v-icon>
-        </v-overlay>
-        </v-row>
-        
+        <v-card color="black">
+            <v-row no-gutters justify="center">
+                <div class="youtube-container mb-1">
+                    <iframe 
+                        class="responsive-iframe rounded-lg" 
+                        @load="loading = false" 
+                        :src="url" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <v-overlay 
+                    absolute
+                    :opacity="0.3"
+                    :value="loading"
+                    :z-index="10">
+                    <v-icon size="50" color="white" class="mdi-spin">mdi-loading</v-icon>
+                </v-overlay>
+            </v-row>
+        </v-card>
     </div>
 
 </template>
 
 <script>
+import AppVisor   from '@mixins/AppVisor';
+
 export default {
+
+    mixins: [AppVisor],  
+
     props:
     {
         video:{

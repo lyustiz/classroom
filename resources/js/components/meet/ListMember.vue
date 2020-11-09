@@ -20,7 +20,7 @@
             
             <v-list-item v-for="(member, idx) in members" :key="idx" v-else class> 
                 
-                <v-list-item-action tile class="mr-2 ml-n2 mt-0 mb-1">
+                <v-list-item-action tile class="mr-2 ml-n2 mt-0 mb-1" :prueba="show(member)">
                     <slot name="video" :member="member"></slot>
                 </v-list-item-action>
 
@@ -62,14 +62,19 @@ export default {
         },
 
     },
+    methods: {
+        show(member){
+            console.log('joder', member)
+        }
+    }
 
 }
 </script>
 
 <style scoped>
 .members-container{
-    height: 60vh;
-    max-height: 60vh;
+    height: 43vh;
+    max-height: 43vh;
     display: block;
     overflow-y: auto;
 }

@@ -3,192 +3,196 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 
-//import Admin            from  '@pages/admin/Dashboard.vue';
+//import Admin            from  '@pages/admin/Dashboard';
 
 /*
-import SelectCuenta     from  '@pages/registro/SelectCuenta.vue';
-import RegistroComercio from  '@pages/registro/RegistroComercio.vue';
-import RegistroUsuario  from  '@pages/registro/RegistroUsuario.vue';
-import Verify           from  '@pages/registro/Verify.vue';
-import Authentication   from  '@pages/login/Authentication.vue';
+import SelectCuenta     from  '@pages/registro/SelectCuenta';
+import RegistroComercio from  '@pages/registro/RegistroComercio';
+import RegistroUsuario  from  '@pages/registro/RegistroUsuario';
+import Verify           from  '@pages/registro/Verify';
+import Authentication   from  '@pages/login/Authentication';
 */
 
 
 
-import Login                 from  '@pages/login/login.vue';
-import RecoverPassword       from  '@pages/login/RecoverPassword.vue'; 
+import Login                 from  '@pages/login/login';
+import RecoverPassword       from  '@pages/login/RecoverPassword'; 
 
-import Welcome               from  '@pages/welcome/Welcome.vue';
-import Home                  from  '@pages/home/home.vue';
+import Welcome               from  '@pages/welcome/Welcome';
+import Home                  from  '@pages/home/home';
 
-import MenuAdmin             from '@pages/admin/index.vue'; 
-import MenuAlumno            from '@pages/bandejaAlumno/index.vue'; 
-import MenuProfesor          from '@pages/bandejaDocente/index.vue'; 
-import MenuAcudiente         from '@pages/bandejaAcudiente/index.vue'; 
+import MenuAdmin             from '@pages/admin/index'; 
+import MenuAlumno            from '@pages/bandejaAlumno/index'; 
+import MenuProfesor          from '@pages/bandejaDocente/index'; 
+import MenuAcudiente         from '@pages/bandejaAcudiente/index'; 
 
-import BandejaAdmin          from '@pages/admin/dashboard.vue';
+import BandejaAdmin          from '@pages/admin/dashboard';
 
-import BandejaAlumno         from '@pages/bandejaAlumno/dashboard.vue';
-import EvaluacionAlumno      from '@pages/bandejaAlumno/evaluacion/AppEvaluacionAlumno';
+import BandejaAlumno         from '@pages/bandejaAlumno/dashboard';
+import AsignacionAlumno      from '@pages/bandejaAlumno/asignacion/AppAsignacionAlumno';
+import BibliotecaAlumno      from '@pages/bandejaAlumno/biblioteca/AppBiblioteca';
 
-import BandejaDocente       from '@pages/BandejaDocente/dashboard.vue';
-import ClaseDocente         from '@pages/clase/AppClaseDocente.vue';
-import Clase                from '@pages/clase/AppClase.vue';
+import BandejaDocente        from '@pages/BandejaDocente/dashboard';
+import ClaseDocente          from '@pages/clase/AppClaseDocente';
+import Clase                 from '@pages/clase/AppClase';
+import GestionTema           from '@pages/BandejaDocente/tema/GestionTema';
+import AppPlanificador       from '@pages/BandejaDocente/asignacion/AppPlanificador';
+import AsignacionSeguimiento from '@pages/BandejaDocente/asignacion/AsignacionSeguimiento';
 
 
-import BandejaAcudiente     from '@pages/bandejaAcudiente/dashboard.vue';
+import BandejaAcudiente     from '@pages/bandejaAcudiente/dashboard';
 
 // loading on demand
-import Asistente         from '@pages/asistente/asistente.vue';
-import TipoColegio       from '@pages/tipoColegio/tipoColegio.vue';
-//import Jornada         from '@pages/jornada/jornada.vue';
-import Calendario        from '@pages/calendario/calendario.vue';
-import Turno             from '@pages/turno/turno.vue';
-import Feriado           from '@pages/feriado/feriado.vue';
+import Asistente         from '@pages/asistente/asistente';
+import TipoColegio       from '@pages/tipoColegio/tipoColegio';
+//import Jornada         from '@pages/jornada/jornada';
+import Calendario        from '@pages/calendario/calendario';
+import Turno             from '@pages/turno/turno';
+import Feriado           from '@pages/feriado/feriado';
 
 
-import TipoAgenda        from '@pages/tipoAgenda/tipoAgenda.vue';
-import Agenda            from '@pages/Agenda/Agenda.vue';
+import TipoAgenda        from '@pages/tipoAgenda/tipoAgenda';
+import Agenda            from '@pages/Agenda/Agenda';
 
-import HoraAcademica     from '@pages/horaAcademica/horaAcademica.vue';
-import CargaHoraria      from '@pages/cargaHoraria/cargaHoraria.vue';
+import HoraAcademica     from '@pages/horaAcademica/horaAcademica';
+import CargaHoraria      from '@pages/cargaHoraria/cargaHoraria';
 
-import Grado             from '@pages/grado/grado.vue';
-import Cargos            from '@pages/cargo/cargo.vue';
-import Empleado          from '@pages/empleado/empleado.vue';
+import Grado             from '@pages/grado/grado';
+import Cargos            from '@pages/cargo/cargo';
+import Empleado          from '@pages/empleado/empleado';
 
-import Estructura        from '@pages/estructura/estructura.vue';
-import Aula              from '@pages/aula/aula.vue';
+import Estructura        from '@pages/estructura/estructura';
+import Aula              from '@pages/aula/aula';
 
-import GrupoCalificacion from '@pages/grupoCalificacion/grupoCalificacion.vue';
-import NivelCalificacion from '@pages/nivelCalificacion/nivelCalificacion.vue';
-import Calificacion      from '@pages/calificacion/calificacion.vue';
+import GrupoCalificacion from '@pages/grupoCalificacion/grupoCalificacion';
+import NivelCalificacion from '@pages/nivelCalificacion/nivelCalificacion';
+import Calificacion      from '@pages/calificacion/calificacion';
 
-import TipoEvaluacion    from '@pages/tipoEvaluacion/tipoEvaluacion.vue';
-import MetodoEvaluacion  from '@pages/evaluacionMetodo/evaluacionMetodo.vue';
-import PlanEvaluacion    from '@pages/planEvaluacion/planEvaluacion.vue'; 
-import AppPlanEvaluacion from '@pages/planEvaluacion/AppPlanEvaluacion.vue';
+import TipoEvaluacion    from '@pages/tipoEvaluacion/tipoEvaluacion';
+import MetodoEvaluacion  from '@pages/evaluacionMetodo/evaluacionMetodo';
+import PlanEvaluacion    from '@pages/planEvaluacion/planEvaluacion'; 
+import AppPlanEvaluacion from '@pages/planEvaluacion/AppPlanEvaluacion';
 
-import AreaEstudio       from '@pages/areaEstudio/areaEstudio.vue';
-import Materia           from '@pages/materia/materia.vue';
+import AreaEstudio       from '@pages/areaEstudio/areaEstudio';
+import Materia           from '@pages/materia/materia';
 
-import Docente           from '@pages/docente/docente.vue';
+import Docente           from '@pages/docente/docente';
 
-import TipoCondicion     from '@pages/tipoCondicion/tipoCondicion.vue';
-import Alumno            from '@pages/alumno/alumno.vue';
+import TipoCondicion     from '@pages/tipoCondicion/tipoCondicion';
+import Alumno            from '@pages/alumno/alumno';
 
-import TipoFalta         from '@pages/tipoFalta/tipoFalta.vue';
-import TipoSancion       from '@pages/tipoSancion/tipoSancion.vue';
+import TipoFalta         from '@pages/tipoFalta/tipoFalta';
+import TipoSancion       from '@pages/tipoSancion/tipoSancion';
 
-import Ciudad            from '@pages/ciudad/ciudad.vue';
-
-
-
+import Ciudad            from '@pages/ciudad/ciudad';
 
 
 
 
-import AppColegio        from '@pages/colegio/AppColegio.vue';
-import Comuna            from '@pages/comuna/comuna.vue';
 
 
-import TipoContacto      from '@pages/tipoContacto/tipoContacto.vue';
-import Contacto          from '@pages/contacto/contacto.vue';
 
-import Departamento      from '@pages/departamento/departamento.vue';
-import Directiva         from '@pages/directiva/directiva.vue';
-import Documento         from '@pages/documento/documento.vue';
-import Foto              from '@pages/foto/foto.vue';
-import GradoMateria      from '@pages/gradoMateria/gradoMateria.vue';
-import Grupo             from '@pages/grupo/grupo.vue';
-import Horario           from '@pages/horario/horario.vue';
-import Inasistencia      from '@pages/inasistencia/inasistencia.vue';
-import Nivel             from '@pages/nivel/nivel.vue';
-import Pago              from '@pages/pago/pago.vue';
-import Pais              from '@pages/pais/pais.vue';
-import Pariente          from '@pages/pariente/pariente.vue';
-import Periodo           from '@pages/periodo/periodo.vue';
-import Status            from '@pages/status/status.vue';
-import Suscripcion       from '@pages/suscripcion/suscripcion.vue';
-import Telefono          from '@pages/telefono/telefono.vue';
+import AppColegio        from '@pages/colegio/AppColegio';
+import Comuna            from '@pages/comuna/comuna';
+
+
+import TipoContacto      from '@pages/tipoContacto/tipoContacto';
+import Contacto          from '@pages/contacto/contacto';
+
+import Departamento      from '@pages/departamento/departamento';
+import Directiva         from '@pages/directiva/directiva';
+import Documento         from '@pages/documento/documento';
+import Foto              from '@pages/foto/foto';
+import GradoMateria      from '@pages/gradoMateria/gradoMateria';
+import Grupo             from '@pages/grupo/grupo';
+import Horario           from '@pages/horario/horario';
+import Inasistencia      from '@pages/inasistencia/inasistencia';
+import Nivel             from '@pages/nivel/nivel';
+import Pago              from '@pages/pago/pago';
+import Pais              from '@pages/pais/pais';
+import Pariente          from '@pages/pariente/pariente';
+import Periodo           from '@pages/periodo/periodo';
+import Status            from '@pages/status/status';
+import Suscripcion       from '@pages/suscripcion/suscripcion';
+import Telefono          from '@pages/telefono/telefono';
  
-import TipoDirectiva     from '@pages/tipoDirectiva/tipoDirectiva.vue';
-import TipoFoto          from '@pages/tipoFoto/tipoFoto.vue';
-import TipoPago          from '@pages/tipoPago/tipoPago.vue';
-import TipoTelefono      from '@pages/tipoTelefono/tipoTelefono.vue';
-import TipoUsuario       from '@pages/tipoUsuario/tipoUsuario.vue';
+import TipoDirectiva     from '@pages/tipoDirectiva/tipoDirectiva';
+import TipoFoto          from '@pages/tipoFoto/tipoFoto';
+import TipoPago          from '@pages/tipoPago/tipoPago';
+import TipoTelefono      from '@pages/tipoTelefono/tipoTelefono';
+import TipoUsuario       from '@pages/tipoUsuario/tipoUsuario';
 
-import Zona              from '@pages/zona/zona.vue';
-
-
-import TipoDocumento     from '@pages/tipoDocumento/tipoDocumento.vue';
-
-import TipoArchivo       from '@pages/tipoArchivo/tipoArchivo.vue';
-import Archivo           from '@pages/archivo/archivo.vue';
-import Configuracion     from '@pages/configuracion/configuracion.vue';
-
-import TipoRecurso       from '@pages/tipoRecurso/tipoRecurso.vue';
-import Recurso           from '@pages/recurso/recurso.vue';
-
-import EstadoCivil       from '@pages/estadoCivil/estadoCivil.vue';
-const Parentesco         =  () => import('@pages/parentesco/parentesco.vue');
+import Zona              from '@pages/zona/zona';
 
 
+import TipoDocumento     from '@pages/tipoDocumento/tipoDocumento';
 
-import Usuario          from '@pages/usuario/usuario.vue';
-import Modulo           from '@pages/modulo/modulo.vue';
-import Menu             from '@pages/menu/menu.vue';
-import Perfil           from '@pages/perfil/perfil.vue';
-import UsuarioPerfil    from '@pages/usuarioPerfil/usuarioPerfil.vue';
-import Permiso          from '@pages/permiso/permiso.vue';
+import TipoArchivo       from '@pages/tipoArchivo/tipoArchivo';
+import Archivo           from '@pages/archivo/archivo';
+import Configuracion     from '@pages/configuracion/configuracion';
+
+import TipoRecurso       from '@pages/tipoRecurso/tipoRecurso';
+import Recurso           from '@pages/recurso/recurso';
+
+import EstadoCivil       from '@pages/estadoCivil/estadoCivil';
+const Parentesco         =  () => import('@pages/parentesco/parentesco');
+
+
+
+import Usuario          from '@pages/usuario/usuario';
+import Modulo           from '@pages/modulo/modulo';
+import Menu             from '@pages/menu/menu';
+import Perfil           from '@pages/perfil/perfil';
+import UsuarioPerfil    from '@pages/usuarioPerfil/usuarioPerfil';
+import Permiso          from '@pages/permiso/permiso';
 
 
 //prueba
-import TipoPregunta     from '@pages/tipoPregunta/tipoPregunta.vue'; 
-import Prueba           from '@pages/prueba/prueba.vue';
-import Pregunta         from '@pages/pregunta/pregunta.vue';
-import Respuesta        from '@pages/respuesta/respuesta.vue';
-import PruebaAlumno     from '@pages/pruebaAlumno/pruebaAlumno.vue';
-import RespuestaAlumno  from '@pages/respuestaAlumno/respuestaAlumno.vue';
+import TipoPregunta     from '@pages/tipoPregunta/tipoPregunta'; 
+import Prueba           from '@pages/prueba/prueba';
+import Pregunta         from '@pages/pregunta/pregunta';
+import Respuesta        from '@pages/respuesta/respuesta';
+import PruebaAlumno     from '@pages/pruebaAlumno/pruebaAlumno';
+import RespuestaAlumno  from '@pages/respuestaAlumno/respuestaAlumno';
 
 
 //libros
-import Tema             from  '@pages/tema/tema.vue'; 
-import Libro            from  '@pages/libro/libro.vue';  
-import Pagina           from  '@pages/pagina/pagina.vue';   
-import Actividad        from  '@pages/actividad/actividad.vue';      
+import Tema             from  '@pages/tema/tema'; 
+import Libro            from  '@pages/libro/libro';  
+import Pagina           from  '@pages/pagina/pagina';   
+import Actividad        from  '@pages/actividad/actividad';      
 /*
-import ActividadRecurso from  '@pages/actividadRecurso/actividadRecurso.vue';       
-import TipoActividad    from  '@pages/tipoActividad/tipoActividad.vue';    
-import AccionPagina     from  '@pages/accionPagina/accionPagina.vue';        
-import AccionTema       from  '@pages/accionTema/accionTema.vue';          
-import TipoAccion       from  '@pages/tipoAccion/tipoAccion.vue';   
+import ActividadRecurso from  '@pages/actividadRecurso/actividadRecurso';       
+import TipoActividad    from  '@pages/tipoActividad/tipoActividad';    
+import AccionPagina     from  '@pages/accionPagina/accionPagina';        
+import AccionTema       from  '@pages/accionTema/accionTema';          
+import TipoAccion       from  '@pages/tipoAccion/tipoAccion';   
 */      
-import TemaEnlace       from  '@pages/temaEnlace/temaEnlace.vue';     
-import TemaRecurso      from  '@pages/temaRecurso/temaRecurso.vue';     
-import RecursoCategoria from  '@pages/recursoCategoria/recursoCategoria.vue';     
-import Enlace           from  '@pages/enlace/enlace.vue';     
-import TipoEnlace       from  '@pages/tipoEnlace/tipoEnlace.vue';     
+import TemaEnlace       from  '@pages/temaEnlace/temaEnlace';     
+import TemaRecurso      from  '@pages/temaRecurso/temaRecurso';     
+import RecursoCategoria from  '@pages/recursoCategoria/recursoCategoria';     
+import Enlace           from  '@pages/enlace/enlace';     
+import TipoEnlace       from  '@pages/tipoEnlace/tipoEnlace';     
 
 
 //notificaciones
-import TipoDestinatario from '@pages/tipoDestinatario/tipoDestinatario.vue';
-import TipoPrioridad    from '@pages/tipoPrioridad/tipoPrioridad.vue';
-import TipoNotificacion from '@pages/tipoNotificacion/TipoNotificacion.vue';
-import Notificacion     from '@pages/notificacion/notificacion.vue';
+import TipoDestinatario from '@pages/tipoDestinatario/tipoDestinatario';
+import TipoPrioridad    from '@pages/tipoPrioridad/tipoPrioridad';
+import TipoNotificacion from '@pages/tipoNotificacion/TipoNotificacion';
+import Notificacion     from '@pages/notificacion/notificacion';
 
-import TipoMensaje      from '@pages/tipoMensaje/TipoMensaje.vue';
-import Mensaje          from '@pages/mensaje/Mensaje.vue';
+import TipoMensaje      from '@pages/tipoMensaje/TipoMensaje';
+import Mensaje          from '@pages/mensaje/Mensaje';
 
-import MeetDocente      from '@components/meet/docente/meetDocente.vue';
-import MeetAlumno       from '@components/meet/alumno/meetAlumno.vue';
+import MeetDocente      from '@components/meet/docente/meetDocente';
+import MeetAlumno       from '@components/meet/alumno/meetAlumno';
 
 //report
-/* import AppReporte       from '@pages/reportes/AppReporte.vue' */
+/* import AppReporte       from '@pages/reportes/AppReporte' */
 
 //tools
-import PageNotFound     from  '@pages/404/NotFound.vue'
-import Crud             from  '@pages/crud/crud.vue'
+import PageNotFound     from  '@pages/404/NotFound'
+import Crud             from  '@pages/crud/crud'
 
 let isAuthenticated = true;
 export default new Router({
@@ -232,9 +236,39 @@ export default new Router({
                     component: BandejaDocente,
                 },
 
+                { 
+                    path: 'gestion-tema',
+                    name: 'gestion-tema',
+                    label: 'Gestion de Contenidos',
+                    icon:  'mdi-inbox-multiple',
+                    profile: 'docente',
+                    visible: true,
+                    component: GestionTema
+                },
+
+                { 
+                    path: 'planificador-docente',
+                    name: 'planificador-docente',
+                    label: 'Planificador',
+                    icon:  'mdi-calendar-multiselect',
+                    profile: 'docente',
+                    visible: true,
+                    component: AppPlanificador
+                },
+
+                { 
+                    path: 'seguimiento-actividades',
+                    name: 'seguimiento-actividades',
+                    label: 'Seguimiento',
+                    icon: 'mdi-calendar-search',
+                    profile: 'docente',
+                    visible: true,
+                    component: AsignacionSeguimiento
+                },
+
                 {
-                    path: 'clase',
-                    name: 'clase',
+                    path: 'clase-docente',
+                    name: 'clase-docente',
                     label: 'Clase',
                     icon:   'mdi-google-classroom',
                     profile: 'docente',
@@ -242,14 +276,12 @@ export default new Router({
                     component: Clase,
                 },
 
-                
-
                 { 
                     path: 'meet-docente',
                     name: 'meet-docente',
                     label: 'Aula Virtual',
-                    icon: 'mdi-google-classroom',
-                    profile: 'secretaria',
+                    icon: 'mdi-video-plus',
+                    profile: 'docente',
                     visible: true,
                     component: MeetDocente
                 },
@@ -273,15 +305,26 @@ export default new Router({
                     visible: true,
                     component: BandejaAlumno,
                 },
+
                 {
-                    path: 'alumno-evaluacion-alumno',
-                    name: 'alumno-evaluacion-alumno',
-                    label: 'Evaluaciones',
-                    icon:   'mdi-clipboard-check-multiple-outline',
+                    path:    'asignacion-alumno',
+                    name:    'asignacion-alumno',
+                    label:   'Planificador',
+                    icon:    'mdi-calendar-multiselect',
                     profile: 'alumno',
                     visible: true,
-                    component: EvaluacionAlumno,
-                }
+                    component: AsignacionAlumno,
+                },
+
+                {
+                    path:    'biblioteca-alumno',
+                    name:    'biblioteca-alumno',
+                    label:   'Biblioteca',
+                    icon:    'mdi-book-open-page-variant',
+                    profile: 'alumno',
+                    visible: true,
+                    component: BibliotecaAlumno,
+                },
                 
             ]
         },
@@ -563,7 +606,7 @@ export default new Router({
                 path: 'horario',
                 name: 'horario',
                 label: 'Horario',
-                icon: 'mdi-calendar-multiselect',
+                icon: 'mdi-calendar-clock',
                 profile: 'secretaria',
                 visible: true,
                 component: Horario

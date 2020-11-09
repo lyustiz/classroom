@@ -10,8 +10,11 @@ class Evaluacion extends Model
 
     protected $fillable   = [
                                 'id_tipo_evaluacion',
+                                'nb_evaluacion',
+                                'tx_descripcion',
                                 'id_grupo',
                                 'id_materia',
+                                'id_tema',
                                 'tx_origen',
                                 'id_origen',
                                 'nu_peso',
@@ -89,6 +92,11 @@ class Evaluacion extends Model
     public function materia()
     {
         return $this->BelongsTo('App\Models\Materia', 'id_materia');
+    }
+
+    public function tema()
+    {
+        return $this->BelongsTo('App\Models\Tema', 'id_tema');
     }
 
     public function evaluacionAlumno()

@@ -1,10 +1,13 @@
 <template>
 
-<v-card fluid class="grey lighten-4">
+<v-card fluid class="cyan lighten-1">
 
-    <v-card-title class="pa-0">
+    <v-card-title class="pa-0 elevation-1">
         <v-row justify="center" class="red px-4" dense>
-            <v-col class="red white--text headline my-2"> {{ title }}</v-col>
+            <v-col cols="auto">
+                <v-icon color="white" class="mt-2" size="30">mdi-rocket-launch</v-icon>
+            </v-col>
+            <v-col class="white--text title my-2"> {{ title }}</v-col>
             <v-spacer></v-spacer>
             <v-col cols="auto">
                 <app-button small :size="30" innerClass="ma-1" color="green" label="Volver al Inicio" icon="mdi-home" @click="$emit('closeDialog')" ></app-button>
@@ -74,7 +77,7 @@
         </v-col>
 
         <v-col cols="4">
-            <v-carousel :show-arrows="false" :show-arrows-on-hover="true"  width="100%" class="rounded-lg white" continuous cycle>
+            <v-carousel :show-arrows="false" :show-arrows-on-hover="true"  width="100%" class="rounded-lg white elevation-3" continuous cycle>
                 <v-carousel-item v-for="(foto, idx) in fotos" :key="idx">
                     <v-img :src="foto.full_url"></v-img>
                 </v-carousel-item>

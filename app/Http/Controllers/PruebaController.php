@@ -175,16 +175,11 @@ class PruebaController extends Controller
         $validate = request()->validate([
             'nb_prueba'        =>  'required|string|max:100',
             'id_grado'         =>  'required|integer|max:999999999',
-            'id_grupo'         =>  'nullable|integer|max:999999999',
             'id_materia'       =>  'required|integer|max:999999999',
-            'id_docente'       =>  'required|integer|max:999999999',
-			'id_evaluacion'    =>  'nullable|integer|max:999999999',
-			'bo_ver_resultado' =>  'required|boolean',
-			'nu_minutos'       =>  'nullable|integer|max:999999999',
-			'fe_prueba'        =>  'nullable|date',
-			'hh_inicio'        =>  'nullable|date_format:"H:i"|before:hh_fin"',
-            'hh_fin'           =>  'nullable|date_format:"H:i"',
-			'nu_valor_total'   =>  'nullable|integer|max:999999999',
+            'id_tema'          =>  'required|integer|max:999999999',
+			'bo_ver_resultado' =>  'nullable|boolean',
+            'nu_minutos'       =>  'nullable|integer|max:999999999',
+            'nu_minutos'       =>  'nullable|integer|max:999999999',
 			'tx_observaciones' =>  'nullable|string|max:100',
 			'id_status'        =>  'required|integer|max:999999999',
 			'id_usuario'       =>  'required|integer|max:999999999',
@@ -192,7 +187,7 @@ class PruebaController extends Controller
 
         $prueba = prueba::create($request->all());
 
-        return [ 'msj' => 'Prueba Creada Correctamente', compact('prueba') ];
+        return [ 'msj' => 'Cuestionario Creado Correctamente', compact('prueba') ];
     }
 
     /**
@@ -218,16 +213,11 @@ class PruebaController extends Controller
         $validate = request()->validate([
             'nb_prueba'        =>  'required|string|max:100',
             'id_grado'         =>  'required|integer|max:999999999',
-            'id_grupo'         =>  'nullable|integer|max:999999999',
             'id_materia'       =>  'required|integer|max:999999999',
-            'id_docente'       =>  'required|integer|max:999999999',
-			'id_evaluacion'    =>  'nullable|integer|max:999999999',
-			'bo_ver_resultado' =>  'required|boolean',
-			'nu_minutos'       =>  'nullable|integer|max:999999999',
-			'fe_prueba'        =>  'nullable|date',
-			'hh_inicio'        =>  'nullable|date_format:"H:i"|before:hh_fin"',
-            'hh_fin'           =>  'nullable|date_format:"H:i"',
-			'nu_valor_total'   =>  'nullable|integer|max:999999999',
+            'id_tema'          =>  'required|integer|max:999999999',
+			'bo_ver_resultado' =>  'nullable|boolean',
+            'nu_minutos'       =>  'nullable|integer|max:999999999',
+            'nu_minutos'       =>  'nullable|integer|max:999999999',
 			'tx_observaciones' =>  'nullable|string|max:100',
 			'id_status'        =>  'required|integer|max:999999999',
 			'id_usuario'       =>  'required|integer|max:999999999',

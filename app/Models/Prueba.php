@@ -12,16 +12,11 @@ class Prueba extends Model
     protected $fillable   = [
                             'nb_prueba',
                             'id_grado',
-                            'id_grupo',
                             'id_materia',
-                            'id_docente',
-	 	 	 	 	 	 	'id_evaluacion',
+                            'id_tema',
 	 	 	 	 	 	 	'bo_ver_resultado',
 	 	 	 	 	 	 	'nu_minutos',
-	 	 	 	 	 	 	'fe_prueba',
-	 	 	 	 	 	 	'hh_inicio',
-	 	 	 	 	 	 	'hh_fin',
-	 	 	 	 	 	 	'nu_valor_total',
+	 	 	 	 	 	 	'nu_peso',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'
@@ -140,19 +135,14 @@ class Prueba extends Model
         return $this->BelongsTo('App\Models\Grado', 'id_grado');
     }
 
-    public function grupo()
-    {
-        return $this->BelongsTo('App\Models\Grupo', 'id_grupo');
-    }
-
     public function materia()
     {
         return $this->BelongsTo('App\Models\Materia', 'id_materia');
     }
 
-    public function docente()
+    public function tema()
     {
-        return $this->BelongsTo('App\Models\Docente', 'id_docente');
+        return $this->BelongsTo('App\Models\Tema', 'id_tema');
     }
 
     public function pregunta()

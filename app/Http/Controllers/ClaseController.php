@@ -134,7 +134,9 @@ class ClaseController extends Controller
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
-        $clase = $clase->update($validate);
+        $request->merge([ 'fe_completada' => date("Y-m-d H:i:s") ]);
+
+        $clase = $clase->update($request->all());
 
         return [ 'msj' => 'Clase Culminada' , compact('clase')];
     }

@@ -30,9 +30,9 @@
                     </v-col>
 
                     <v-col cols="12">
-                        <list-members :members="members">
-                            <template v-slot:video="member">  
-                                <remote-video :stream="remoteStream[member.id]" :ref="`remote-video-${member.id}`"></remote-video>
+                        <list-members :members="members" :streams="remoteStream">
+                            <template v-slot:video="{member}">  
+                               <video class="rounded-lg mb-n3 elevation-3 grey darken-4" :ref="`remote-video-${member.id}`" width="125" height="90" autoplay playsinline></video>
                             </template>
                         </list-members>
                     </v-col>
@@ -70,7 +70,6 @@ import Peer        from 'simple-peer';
 import Chat        from '../ChatRoom';
 import Draw        from '../DrawBoard'
 import LocalVideo  from '../components/localVideo/videoPlayer'
-import RemoteVideo from '../RemoteVideo'
 import Listmembers from '../ListMember'
 export default {
 
@@ -81,13 +80,12 @@ export default {
         'chat-room':    Chat,
         'draw-board':   Draw,
         'local-video':  LocalVideo,
-        'remote-video': RemoteVideo,
         'list-members': Listmembers,
     },
 
     created()
     {
-        this.members.push({ id: 1, nb_nombres: "usuario prueba", nb_usuario: "prueba" })
+        
     },
 
     beforeDestroy()
@@ -239,6 +237,7 @@ export default {
 
             this.channel.bind("pusher:subscription_succeeded", (members) =>
             {
+                console.log('suscripcion', members)
                 this.members =  []
                 members.each((member) => {
                     if(member.id != this.idUser)
@@ -260,7 +259,6 @@ export default {
             {
                 this.showMessage(`salio ${member.info.nb_usuario} (${member.info.nb_nombres})`)
                 this.members = this.members.filter((membr) => { return membr.id != member.id})
-                delete this.peers[member.info.id];
             });
 
             console.log(this.instance, this.channel)
@@ -277,8 +275,12 @@ export default {
                                     });
 
                 peer.on('error', err => {
-                    console.log('peer error', err)
-                    this.showError(err)
+                    console.log('peer error1', err, )
+                    console.log('peer error2', err.errorDetail )
+                    console.log('peer error3', err.receivedAlert )
+                    console.log('peer error4',err.sctpCauseCode )
+                    console.log('peer error5',err.sdpLineNumber, err.sentAlert )
+                    this.showError(err.code)
                 })
 
                 peer.on('signal', (data) => {
@@ -289,8 +291,8 @@ export default {
                     console.log('Se ha establecido la conexion')
                 })
                 .on('stream', (stream) => {
-                    console.log('Se ha estRecibiendo stream')
-                    this.remoteStream[`remote-video-${userId}`] = stream
+                    console.log('Se ha recibido stream', userId,stream )
+                    this.$refs[`remote-video-${userId}`].srcObject = stream;
                 })
                 .on('close', () => {
                     const peer = this.peers[userId];
@@ -338,7 +340,13 @@ export default {
                 this.instance.unsubscribe(this.classChanel);
             }
             
-            this.chanel = null
+            this.chanel      = null
+
+            this.members     = []
+
+            this.localStream = []
+
+            this.chatMsg =     []
             
             for (const userId in this.peers) {
                 if (this.peers.hasOwnProperty(userId)) {

@@ -1,110 +1,123 @@
 <template>
 
-<v-dialog scrollable fullscreen persistent v-model="dialog">
+    <v-card flat min-height="82vh">  
 
-        <template v-slot:activator="{ on, attrs }">
-            <v-btn fab dark depressed v-bind="attrs" v-on="on" color="green" class="ml-1">
-                <v-icon size="32">mdi-inbox-multiple</v-icon>
-            </v-btn>
-        </template>
-
-        <v-card> 
-
-        <v-card-title class="pa-0">
-            <app-simple-toolbar title="Gestión de temas" @closeModal="dialog=false" dense></app-simple-toolbar>
-        </v-card-title>
+    <v-subheader class="grey lighten-3">
+        <v-row no-gutters>
+            <v-col cols="auto">
+                <v-btn icon small class="mx-2 my-1" depressed  @click="navegateToName('bandeja-docente')">
+                    <v-icon size="30">mdi-home</v-icon>
+                </v-btn>
+            </v-col>
+            <v-col class="my-2">
+                Gestion de Contenidos
+            </v-col>
+            <v-col cols="auto">
+                <v-btn icon x-small class="mx-1 my-2" depressed  @click="list()" :loading="loading">
+                    <v-icon size="25">mdi-refresh</v-icon>
+                </v-btn>
+            </v-col>
+        </v-row>
+    </v-subheader>
         
-        <v-card-text class="pt-3" >
+    <v-card-text class="pt-3" >
 
-            <v-row>
+        <v-row dense>
 
-                <v-col cols="12" md="6">
-                    <v-select
-                        :items="grados"
-                        v-model="grado"
-                        item-text="nb_grado"
-                        item-value="id"
-                        label="Grado"
-                        hint="Seleccione Grado"
-                        persistent-hint
-                        :loading="loading"
-                        dense
-                        @change="getMaterias($event)"
-                        return-object
-                    ></v-select>
-                </v-col>
+            <v-col cols="12" md="6">
+                <v-select
+                    :items="grados"
+                    v-model="grado"
+                    item-text="nb_grado"
+                    item-value="id"
+                    label="Grado"
+                    hint="Seleccione Grado"
+                    persistent-hint
+                    :loading="loading"
+                    dense
+                    filled
+                    rounded
+                    @change="getMaterias($event)"
+                    return-object
+                ></v-select>
+            </v-col>
 
-                <v-col cols="12" md="6">
-                    <v-select
-                        :items="materias"
-                        v-model="materia"
-                        item-text="nb_materia"
-                        item-value="id"
-                        label="Materia"
-                        hint="Seleccione materia"
-                        persistent-hint
-                        :loading="loading"
-                        :disabled="materias.length < 1"
-                        dense
-                        @change="getTemas($event)"
-                        return-object
-                    ></v-select>
-                </v-col>
+            <v-col cols="12" md="6">
+                <v-select
+                    :items="materias"
+                    v-model="materia"
+                    item-text="nb_materia"
+                    item-value="id"
+                    label="Materia"
+                    hint="Seleccione materia"
+                    persistent-hint
+                    :loading="loading"
+                    :disabled="materias.length < 1"
+                    dense
+                    filled
+                    rounded
+                    @change="getTemas($event)"
+                    return-object
+                ></v-select>
+            </v-col>
 
-                <v-col cols="12" >
-                    <v-select
-                        :items="temas"
-                        v-model="tema"
-                        item-text="nb_tema"
-                        item-value="id"
-                        label="Tema"
-                        hint="Seleccione Tema"
-                        persistent-hint
-                        :loading="loading"
-                        :disabled="temas.length < 1"
-                        dense
-                        @change="getRecursos($event)"
-                        return-object
-                    ></v-select>
-                </v-col>
-            </v-row>
+            <v-col cols="12" >
+                <v-select
+                    :items="temas"
+                    v-model="tema"
+                    item-text="nb_tema"
+                    item-value="id"
+                    label="Tema"
+                    hint="Seleccione Tema"
+                    persistent-hint
+                    :loading="loading"
+                    :disabled="temas.length < 1"
+                    dense
+                    filled
+                    rounded
+                    @change="getRecursos($event)"
+                    return-object
+                ></v-select>
+            </v-col>
+        </v-row>
 
-            <v-row  v-if="tema">
+        <v-row  v-if="tema">
 
-                <v-col cols="12" lg="4"  md="6" sm="12" > 
-                    <gestion-video :videos="videos" :tema="tema" @onUpdateData="getRecursos()"></gestion-video>
-                </v-col>
+            <v-col cols="12" lg="4"  md="6" sm="12" > 
+                <gestion-video :videos="videos" :tema="tema" @onUpdateData="getRecursos()"></gestion-video>
+            </v-col>
 
-                <v-col cols="12" lg="4"  md="6" sm="12" >
-                   <gestion-enlace :enlaces="enlaces" :tema="tema" @onUpdateData="getRecursos()" ></gestion-enlace>
-                </v-col>
+            <v-col cols="12" lg="4"  md="6" sm="12" >
+                <gestion-enlace :enlaces="enlaces" :tema="tema" @onUpdateData="getRecursos()" ></gestion-enlace>
+            </v-col>
 
-                <v-col cols="12" lg="4"  md="6" sm="12">
-                   <gestion-audio :audios="audios" :tema="tema" :grado="grado" @onUpdateData="getRecursos()" ></gestion-audio>
-                </v-col>
+            <v-col cols="12" lg="4"  md="6" sm="12">
+                <gestion-audio :audios="audios" :tema="tema" :grado="grado" @onUpdateData="getRecursos()" ></gestion-audio>
+            </v-col>
 
-                <v-col cols="12" lg="4"  md="6" sm="12">
-                   <gestion-lectura :lecturas="lecturas" :tema="tema" :grado="grado" @onUpdateData="getRecursos()" ></gestion-lectura>
-                </v-col>
+            <v-col cols="12" lg="4"  md="6" sm="12">
+                <gestion-lectura :lecturas="lecturas" :tema="tema" :grado="grado" @onUpdateData="getRecursos()" ></gestion-lectura>
+            </v-col>
 
-                 <v-col cols="12" lg="4" md="6" sm="12" >
-                    <gestion-actividad :actividades="actividades" :tema="tema" @onUpdateData="getRecursos()"></gestion-actividad>
-                </v-col>
+            <v-col cols="12" lg="4" md="6" sm="12" >
+                <gestion-actividad :actividades="actividades" :tema="tema" @onUpdateData="getRecursos()"></gestion-actividad>
+            </v-col>
 
-                <v-overlay class="rounded-lg" absolute :opacity="0.3" :value="loading">
-                    <v-icon size="40" class="mdi-spin">mdi-loading</v-icon>
-                </v-overlay>
+            <v-col cols="12" lg="4" md="6" sm="12" >
+                <gestion-cuestionario :cuestionarios="cuestionarios" :tema="tema" :grado="grado" :materia="materia" @onUpdateData="getRecursos()"></gestion-cuestionario>
+            </v-col>
 
-            </v-row>
+            <v-overlay class="rounded-lg" absolute :opacity="0.3" :value="loading">
+                <v-icon size="40" class="mdi-spin">mdi-loading</v-icon>
+            </v-overlay>
 
-        </v-card-text>
-       
+        </v-row>
+
+    </v-card-text>
+
+    <pre>{{$data.peers}}</pre>
+
     </v-card>
-
-       
-        <pre>{{$data.peers}}</pre>
-
-    </v-dialog>  
 
 </template>
 
@@ -114,23 +127,25 @@ import AppActividad from '@pages/actividad/AppActividad';
 import TemaToolbar  from './component/TemaToolbar'
 
 // Gestion
-import GestionVideo     from './GestionVideo'
-import GestionEnlace    from './GestionEnlace'
-import GestionAudio     from './GestionAudio'
-import GestionLectura   from './GestionLectura'
-import GestionActividad from './GestionActividad'
+import GestionVideo        from './GestionVideo'
+import GestionEnlace       from './GestionEnlace'
+import GestionAudio        from './GestionAudio'
+import GestionLectura      from './GestionLectura'
+import GestionActividad    from './GestionActividad'
+import GestionCuestionario from './GestionCuestionario'
 
 
 export default {
 
     components: { 
-        'app-actividad':     AppActividad,
-        'tema-toolbar':      TemaToolbar,
-        'gestion-video':     GestionVideo,
-        'gestion-enlace':    GestionEnlace,
-        'gestion-audio':     GestionAudio,
-        'gestion-lectura':   GestionLectura,
-        'gestion-actividad': GestionActividad,
+        'tema-toolbar':         TemaToolbar,
+        'app-actividad':        AppActividad,
+        'gestion-video':        GestionVideo,
+        'gestion-audio':        GestionAudio,
+        'gestion-enlace':       GestionEnlace,
+        'gestion-lectura':      GestionLectura,
+        'gestion-actividad':    GestionActividad,
+        'gestion-cuestionario': GestionCuestionario,
     },
 
     mixins:     [ DataHelper ],
@@ -143,15 +158,9 @@ export default {
         },
     },
 
-    watch:
+    created()
     {
-        dialog(dialog)
-        {
-            if(dialog)
-            {
-                this.list()
-            }
-        },
+        this.list()
     },
 
     data () {
@@ -174,7 +183,9 @@ export default {
             audios:        [],
             lecturas:      [],
 
-            cuestionarios: []
+            evaluaciones:  [],
+            cuestionarios: [],
+            tareas:        []
         }
     },
 
@@ -205,14 +216,14 @@ export default {
 
         getRecursos(tema)
         {
-             this.getResource( `tema/${this.tema.id}/recursos` ).then( data => { 
+            this.getResource( `tema/${this.tema.id}/recursos` ).then( data => { 
                 this.recursos = data 
                 this.actividades = this.recursos.actividad
                 this.getVideos(this.recursos.enlace)
                 this.getEnlaces(this.recursos.enlace)
                 this.getAudios(this.recursos.recurso)
                 this.getLecturas(this.recursos.recurso)
-               
+                this.getCuestionarios(data.prueba)
             });
         },
 
@@ -234,6 +245,16 @@ export default {
         getLecturas(recursos)
         {
             this.lecturas = recursos.filter( recurso => recurso.id_tipo_recurso == 3)
+        },
+
+        getCuestionarios(cuestionarios)
+        {
+            this.cuestionarios = cuestionarios
+        },
+
+        getTareas(evaluaciones)
+        {
+            this.tareas = evaluaciones.filter( evaluacion => evaluacion.id_tipo_evaluacion == 2)
         },
 
         closeModal()

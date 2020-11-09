@@ -138,6 +138,7 @@
             </v-col>
 
             <v-col cols="auto">
+                <app-timer :width="8" :size="70" :minutes="0" :seconds="tiempo*60"></app-timer>
                 <v-progress-circular width="8" :rotate="-90" color="red" :size="70" value="90" class="white rounded-circle">00:0{{tiempo}}</v-progress-circular>
             </v-col>
             </v-row>
