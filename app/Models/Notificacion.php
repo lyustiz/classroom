@@ -9,21 +9,15 @@ class Notificacion extends Model
     protected $table 	  = 'notificacion';
 
     protected $fillable   = [
-                            'co_notificacion',
 	 	 	 	 	 	 	'id_tipo_destinatario',
 	 	 	 	 	 	 	'id_destinatario',
-	 	 	 	 	 	 	'tx_asunto',
 	 	 	 	 	 	 	'tx_mensaje',
-	 	 	 	 	 	 	'tx_lugar',
 	 	 	 	 	 	 	'id_tipo_notificacion',
-	 	 	 	 	 	 	'id_tipo_prioridad',
-	 	 	 	 	 	 	'fe_notificacion',
-	 	 	 	 	 	 	'hh_inicio',
-                            'hh_fin',
+                            'fe_notificacion',
                             'fe_lectura',
-	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
-	 	 	 	 	 	 	'id_usuario'
+                            'id_usuario',
+                            'created_at'
                             ]; 
     
     protected $hidden     = [
@@ -75,11 +69,5 @@ class Notificacion extends Model
     {
         return $this->BelongsTo('App\Models\TipoDestinatario', 'id_tipo_destinatario');
     }
-
-    public function tipoPrioridad()
-    {
-        return $this->BelongsTo('App\Models\TipoPrioridad', 'id_tipo_prioridad');
-    }
-
 
 }

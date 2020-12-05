@@ -24,9 +24,12 @@ class Archivo extends Model
 	 	 	 	 	 	 	'updated_at'
                             ];
    
-    protected $appends = ['nb_real', 'fe_archivo'];
+    protected $appends = ['nb_real', 'fe_archivo', 'full_url'];
 
-   
+    public function getFullUrlAttribute()
+    {
+        return "{$this->tipoArchivo->tx_base_path}{$this->tx_origen_id}/{$this->tx_path}";
+    }
 
     public function getFeArchivoAttribute()
     {

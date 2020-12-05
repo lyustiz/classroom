@@ -64,25 +64,7 @@
            
             ></v-select>
         </v-col>
-        
-        <v-tooltip right v-model="menuAyudaOpcional" color="success" >
-        <template v-slot:activator="{ on }">
-            <v-checkbox
-                v-on="on"
-                :rules="[rules.check]"
-                v-model="form.bo_opcional"
-                label="Opcional"
-                :true-value="1"
-                :false-value="0"
-                :indeterminate="(form.bo_opcional== null)"
-                dense
-                class="col-auto  ml-3"
-                append-icon="mdi-help-rhombus"
-                @click:append="menuAyudaOpcional =!menuAyudaOpcional "
-            ></v-checkbox>
-        </template>
-        <span>Indica si la pregunta debe ser obligatoria o no para el total de la calificacion</span>
-       </v-tooltip>
+
             
         <v-col cols="12">
             <v-textarea
@@ -180,6 +162,9 @@ export default {
             selects:
             {
                 tipoPregunta: 	 [],
+            },
+            default: {
+                bo_opcional:  0,
             },
             defaultForm:{
                 bo_opcional:  0,

@@ -1,6 +1,6 @@
 <template>
   <div >
-      <v-toolbar color="grey lighten-3"  flat class="mt-2 mx-2" rounded> 
+      <v-toolbar color="grey lighten-3"  flat class="mt-2 mx-2" rounded dense> 
             
             <v-row>
                 <v-col>
@@ -160,9 +160,9 @@
 </template>
 
 <script>
-import AppData from '@mixins/AppData';
-import AppAgendaForm  from './AppAgendaForm'
-import AppAgendaEvento  from './AppAgendaEvento'
+import AppData         from '@mixins/AppData';
+import AppAgendaForm   from './AppAgendaForm'
+import AppAgendaEvento from './AppAgendaEvento'
 
 export default {
 

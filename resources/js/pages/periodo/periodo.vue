@@ -117,9 +117,7 @@ export default {
             let url = this.listUrl()
             
             this.loading = true
-
-/*             this.items = [];
- */
+            
             axios.get(url)
             .then(response => 
             {

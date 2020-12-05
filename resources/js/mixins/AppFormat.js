@@ -30,6 +30,13 @@ export default {
             return `${this.months[month-1]}`
         },
 
+        monthShortNameFromDate(date)
+        {
+            if (!date) return null
+            const [year, month, day] = date.split('-')
+            return  this.months[month-1].substr(0, 3)
+        },
+
         monthDayFromDate(date)
         {
             if (!date) return null
@@ -134,6 +141,13 @@ export default {
             if (!date) return null
             const [year, month, day] = date.split('-')
             return  this.months[month-1]
+        },
+
+        monthShortNameFromDate(date)
+        {
+            if (!date) return null
+            const [year, month, day] = date.split('-')
+            return  this.months[month-1].substr(0, 3)
         },
 
         formatTime(time)
@@ -242,7 +256,7 @@ export default {
             ],
             statusIcons:
             [
-                {value: 0, icon: 'mdi-checkbox-blank-circle-outline', color: 'error',   label: 'No'},
+                {value: 0, icon: 'mdi-close-circle-outline', color: 'error',   label: 'No'},
                 {value: 1, icon: 'mdi-checkbox-marked-circle',        color: 'success', label: 'Si'}
             ],
             visibleIcons:
@@ -264,6 +278,11 @@ export default {
                 { id: 1, nb_grupo: 'alumno'},
                 { id: 1, nb_grupo: 'acudiente'},
                 { id: 1, nb_grupo: 'empleado'},
+            ],
+            letras:[
+                'a','b','c','d','e','f','g','h','i','j',
+                'k','l','m','n','o','p','q','r','s','t',
+                'u','v','w','x','y','z'            
             ]
         }
     },

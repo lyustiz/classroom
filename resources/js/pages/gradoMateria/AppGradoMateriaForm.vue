@@ -17,7 +17,8 @@
                 :items="selects.materia"
                 item-text="nb_materia"
                 item-value="id"
-                outlined
+                filled
+                rounded
                 label="Materias"
                 :disabled="loading"
                 :loading="loading"
@@ -33,7 +34,7 @@
         <v-col>
 
             <v-list subheader>
-            <v-subheader>Materias</v-subheader>
+            <v-subheader>Materias Asignadas</v-subheader>
 
                 <v-list-item
                     v-for="materia in materias"
@@ -135,11 +136,18 @@ export default {
             {
                 this.showMessage(data.msj)
 
-                this.selects.materia = this.selects.materia.filter( (materias) =>{ 
-                    materias.id != materia.id
-                })
+                let materias = [];
 
-                console.log(data)
+                for (const select of this.selects.materia) {
+                    if(select.id != materia.id)
+                    {
+                        materias.push(select)
+                    }
+                }
+                
+                this.selects.materia = materias
+
+                console.log(this.selects.materia,  materia.id, data)
 
                 this.materias.push({ 
                     id: data.gradoMateria.id , 

@@ -107,7 +107,7 @@ export default {
                         this.time--
                     } else {
                             clearInterval(this.timer)
-                            //this.sound.play()
+                            this.$emit('onEndTime')
                             this.reset()
                     }
                 }, 1000 )

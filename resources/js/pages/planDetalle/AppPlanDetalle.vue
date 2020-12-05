@@ -1,236 +1,147 @@
 <template>
 
-<v-row no-gutters class="pt-2">
+    <v-card>
 
-    <v-col cols="12">
-        <v-form ref="formAdd" v-model="valid" lazy-validation class="d-flex">
+        <v-card-title class="pa-0">
+            <app-simple-toolbar title="Plan Evaluacion" @closeModal="$emit('closeDialog')" dense></app-simple-toolbar>
+        </v-card-title>
+        <v-card-text>
 
-            <v-select
-                :items="selects.tipoEvaluacion"
-                item-text="nb_tipo_evaluacion"
-                item-value="id"
-                v-model="tipoEvaluacion"
-                label="Tipo Evaluacion"
-                :rules="[rules.select]"
-                :loading="loading"
-                dense
-                class="col-6"
-            ></v-select> 
-
-            <v-btn dark fab x-small :loading="loading" color="green" @click="addEvaluacion()" :disabled=" !valid">
-                <v-icon size="30">mdi-plus</v-icon>
-            </v-btn>
-
-        </v-form>
-    </v-col>
-
-    <v-col>
-        <v-data-table
-            :headers="headers"
-            :items  ="evaluaciones"
-            :search ="search"
-            item-key="id"
-            :loading="loading"
-            sort-by=""
-            disable-filtering
-            disable-pagination
-            disable-sort
-            hide-default-footer
-            dense
-        >
-            <template v-slot:item="{ item }">
+        <v-form ref="form" v-model="valid" lazy-validation>
+            <v-row>
+                <v-col>
+                    <v-select
+                    v-model="temasAsignado"
+                    :items="temasAsignar"
+                    item-text="nb_tema"
+                    item-value="id"
+                    :rules="[rules.select]"
+                    multiple
+                    chips
+                    deletable-chips
+                    label="Temas"
+                    :loading="loading"
+                    :readonly="loading"
+                    dense
+                    filled
+                    rounded
+                    no-data-text="No existen temas disponibles"
+                    ></v-select>
+                </v-col>
                 
-                <tr>
-                    <td class="text-xs-left">
-                        {{item.tipo_evaluacion.nb_tipo_evaluacion}}
-                    </td>
+                <v-col cols="auto">
+                    <v-tooltip bottom>
+                        <template v-slot:activator="{ on }">
+                            <v-btn v-on="on" fab small :color="$App.theme.button.update" @click="update()" :disabled="loading" class="mt-1">
+                            <v-icon>edit</v-icon>
+                            </v-btn>
+                        </template>
+                        <span>Editar</span>
+                    </v-tooltip>
+                </v-col>
+                
+            </v-row>
+        </v-form>
 
-                    <td class="text-xs-left">
+        <v-row no-gutters justify="center" class="mt-n6">
+
+            <v-col cols="12" md="8" sd="10">
+
+                <v-list dense color="grey lighten-5 rounded-xl" subheader>
+
+                    <template v-for="(item, idx) in items">
+                         <v-subheader 
+                            dark 
+                            :class="(idx == 0) ? 'indigo rounded-t-xl white--text subtitle-1 pl-6': 'indigo white--text subtitle-1 pl-6'" 
+                            :key="'sh'+item.id" 
+                            v-if="hasHead(item.tx_origen, idx)"
+                            >
+                            {{getHeadName(item.tx_origen)}}
+                         </v-subheader>
                         
-                        <v-edit-dialog
-                            :return-value.sync="item.nu_peso"
-                            persistent large
-                            cancel-text="Cancelar"
-                            save-text="Guardar"
-                            @save="updateEvaluacion(item)"
-                        >
-                            <v-chip label outlined link class="percent-field">
-                                {{item.nu_peso}}
-                                <v-icon size="18" right>mdi-percent</v-icon>
-                            </v-chip>
-                        
-                            <template v-slot:input>
+                        <v-list-item :key="item.id">
+                            
+                            <v-list-item-avatar color="white" size="30">
+                                <v-icon :color="item.origen.tx_color" class="" size="25">{{item.origen.tx_icono}}</v-icon>
+                            </v-list-item-avatar>
+                            <v-list-item-content>
+                                <v-list-item-title class="ml-5 subtitle-2">
+                                    <template v-if="item.tx_origen == 'tipo_evaluacion'">
+                                      {{item.origen.nb_tipo_evaluacion}}
+                                    </template>
+                                    <template v-else-if="item.tx_origen == 'tipo_asignacion'">
+                                       {{item.origen.nb_tipo_asignacion}}
+                                    </template>
+                                    <template v-if="item.tx_origen == 'rasgo'">
+                                      {{item.origen.nb_rasgo}}
+                                    </template>
+                                </v-list-item-title>
+                            </v-list-item-content>
+                            <v-list-item-action-text>
                                 <v-text-field
+                                    :rules="[rules.required]"
                                     v-model="item.nu_peso"
-                                    label="Peso (%)"
-                                    :rules="[rules.required, rules.maxNum(100), rules.minNum(1)]"
-                                    single-line
-                                    type="number"
+                                    placeholder="0"
+                                    suffix="%"
                                     dense
                                     outlined
-                                    autofocus
-                                    lass="percent-field"
+                                    hide-details
+                                    type="number"
+                                    class="percent-field white"
+                                    :loading="loading"
+                                    :readonly="loading"
+                                    :error="total > 100"
                                 ></v-text-field>
-                            </template>
-                        </v-edit-dialog>
-                    </td>
+                            </v-list-item-action-text>
+                           
+                        </v-list-item>
 
-                    <td class="text-xs-left">
 
-                        <v-edit-dialog
-                            :return-value.sync="item.fe_evaluacion"
-                            persistent large
-                            cancel-text="Cancelar"
-                            save-text="Guardar"
-                            @save="updateEvaluacion(item)"
-                        >
-                            <v-chip label outlined link class="date-field text-xs-left">
-                                {{item.fe_evaluacion | formatDate }}
-                                <v-icon size="18" right>mdi-calendar</v-icon>
-                            </v-chip>
-                        
-                            <template v-slot:input>
-                                    <v-date-picker 
-                                    v-model="item.fe_evaluacion" >
-                                </v-date-picker>
-                            </template>
-                        </v-edit-dialog>
+                    </template>
 
-                    </td>
+                     <v-list-item dark class="indigo rounded-b-xl mb-n2 mt-1" v-if="items.length > 0">
 
-                    <td class="text-xs-left">
+                        <v-list-item-content>
+                            <v-list-item-title class="ml-5 subtitle-1">
+                                TOTAL
+                            </v-list-item-title>
+                        </v-list-item-content>
+                        <v-list-item-action-text>
+                             <v-text-field
+                                :rules="[rules.required]"
+                                :value="total"
+                                readonly
+                                label="Peso"
+                                placeholder="0"
+                                suffix="%"
+                                dense
+                                solo-inverted
+                                hide-details
+                                type="number"
+                                class="percent-field my-2"
+                                :error="total > 100"
+                            ></v-text-field>
+                        </v-list-item-action-text>
+                    </v-list-item>
 
-                        <v-edit-dialog
-                            :return-value.sync="item.tx_tema"
-                            persistent large
-                            cancel-text="Cancelar"
-                            save-text="Guardar"
-                            @save="updateEvaluacion(item)"
-                        >
-                            <v-chip label outlined link class="tema-field">
-                                {{item.tx_tema}}
-                                <v-icon size="18" right>mdi-event</v-icon>
-                            </v-chip>
-                        
-                            <template v-slot:input>
-                                <v-text-field
-                                    v-model="item.tx_tema"
-                                    :rules="[rules.max(80)]"
-                                    label="Tema"
-                                    single-line
-                                    counter
-                                    autofocus
-                                ></v-text-field>
-                            </template>
-                        </v-edit-dialog>
-                        
-                    </td>
+                    <div v-else class="text-center">
+                        <v-icon size="50" class="mdi-spin">mdi-loading</v-icon>
+                    </div>
+                   
+                </v-list>
 
-                    <td class="text-xs-left">
+            </v-col>
 
-                        <v-edit-dialog
-                            :return-value.sync="item.tx_observaciones"
-                            persistent large
-                            cancel-text="Cancelar"
-                            save-text="Guardar"
-                        >
-                            <v-chip label outlined link class="tema-field">
-                                {{item.tx_observaciones}}
-                                <v-icon size="18" right>mdi-event</v-icon>
-                            </v-chip>
-                        
-                            <template v-slot:input>
-                                <v-text-field
-                                    v-model="item.tx_observaciones"
-                                    :rules="[rules.max(80)]"
-                                    label="Observaciones"
-                                    single-line
-                                    counter
-                                    autofocus
-                                ></v-text-field>
-                            </template>
-                        </v-edit-dialog>
-                        
-                    </td>
+        </v-row>
 
-                    <td class="text-xs-left">
-
-                        <v-badge left color="red" :value=" (item.archivo) ?    item.archivo.length > 0  : 0" overlap dot bordered >
-                            <v-btn fab class="my-1" dark x-small color="cyan lighten-2" @click="addFile(item)" :loading="loading" v-if="item.id">
-                                <v-icon>mdi-paperclip</v-icon>
-                            </v-btn>
-                        </v-badge>
-
-                        <v-btn fab class="my-1" x-small :color="$App.theme.button.delete" @click="deleteEvaluacion(item)" :loading="loading" v-if="item.id">
-                            <v-icon>delete</v-icon>
-                        </v-btn>
-
-                        <v-btn fab class="my-1" x-small :color="$App.theme.button.insert" @click="storeEvaluacion(item)" :loading="loading" v-if="!item.id">
-                            <v-icon>mdi-check</v-icon>
-                        </v-btn>
-
-                        <v-btn fab class="my-1" x-small :color="$App.theme.button.delete" @click="cancelEvaluacion(item)" :loading="loading" v-if="!item.id">
-                            <v-icon>mdi-window-close</v-icon>
-                        </v-btn>
-
-                    </td>
-                    </tr>
-            </template>
-
-            <template v-slot:body.append="{ items }">
-                <tr class="grey lighten-2"> 
-                    <td class="font-weight-bold">
-                        Total Peso:
-                    </td>
-                    <td>
-                        <v-chip 
-                            label outlined 
-                            class="percent-field my-1" 
-                            :color=" (getTotalPeso(items) > 100) ?  'error': 'green' ">
-                            {{ getTotalPeso(items) }}
-                            <v-icon size="18" right>mdi-percent</v-icon>
-                        </v-chip>
-                    </td>
-                    <td colspan="4" class="font-weight-bold">
-                        Total Evaluaciones: 
-                        <v-chip label outlined>
-                            {{ (items) ? items.length : 0}}
-                        </v-chip>
-                    </td>
-                </tr>
-            </template>
-
-        </v-data-table> 
-
-        <v-dialog
-            v-model="modal"
-            max-width="500px"
-            content-class="rounded-xl"
-        >
-            <archivo-upload 
-                origen="detalleEvaluacion"
-                :origenId="detalleEvaluacionId"
-                :tipoArchivo="1"
-                :maxItems="2"
-                @closeModal="closeModal()"
-            ></archivo-upload>
-        </v-dialog>
-
-    </v-col>
-
-</v-row>
+        </v-card-text>
+    </v-card>
   
 </template>
 
 <script>
 import AppData from '@mixins/AppData';
-import ArchivoUpload from '@pages/archivo/archivoUpload';
 export default {
-
-    components: 
-    {
-        'archivo-upload': ArchivoUpload
-    },
 
     mixins:     [ AppData ],
 
@@ -245,37 +156,47 @@ export default {
     watch: {
         planEvaluacion()
         {
-            this.evaluaciones = []
             this.list()
         }
     },
 
     created()
     {
-        this.getTiposEvaluacion()
         this.list()
+    },
+
+    computed:
+    {
+        total()
+        {
+            let total = 0
+            if(this.items.length > 0)
+            {
+                this.items.forEach(item => {
+                    total += parseInt(item.nu_peso)
+                })
+   
+            }
+            return total
+        }
     },
 
     data()
     {
         return{
             search: null,
-            newRowExist: false,
             selects: {
-                tipoEvaluacion: []
+                tipoEvaluacion: [],
+                tipoAsignacion: [],
+                rasgo: [],
             },
-            tipoEvaluacion: null,
-            evaluaciones: [],
-             headers: [
-                { text: 'Tipo Evaluacion', value: 'tipoEvaluacion' },
-                { text: 'Peso',   value: 'nu_peso' },
-                { text: 'Fecha',   value: 'fe_evaluacion' },
-                { text: 'Tema',   value: 'tx_tema' },
-                { text: 'Observaciones',   value: 'tx_observaciones' },
-                { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
-            ],
-            validateForm: false,
-            detalleEvaluacionId: null
+            temasAsignado: [],
+            temasAsignar: [],
+            cantidad:{
+                evaluaciones: 0,
+                asignaciones: 0,
+                rasgos:       0
+            }
         }
     },
 
@@ -283,147 +204,93 @@ export default {
     {
         list()
         {
-            this.getResource('planDetalle/planEvaluacion/' + this.planEvaluacion.id  )
-            .then( data =>  this.evaluaciones = data )
-
-            this.newRowExist = false
-        },
-        
-        getTiposEvaluacion()
-        {
-            this.getResource('tipoEvaluacion').then( data =>  this.selects.tipoEvaluacion = data )
-        },
-
-        addEvaluacion()
-        {
-            if( !this.$refs.formAdd.validate() ) return
-            
-            if( this.newRowExist ) return
-
-            if( this.getTotalPeso() > 99 ) return
-
-            let detalleEvaluacion = {
-                id:                 null,
-                id_tipo_evaluacion: this.tipoEvaluacion,
-                tipo_evaluacion:    this.getTipoEvaluacion(this.tipoEvaluacion),
-                nu_peso:            null, 
-                tx_tema:            null, 
-                tx_obsevaciones:    null,  
-                id_plan_evaluacion: this.planEvaluacion.id,
-                id_status:          1,
-            }
-
-            this.evaluaciones.push( detalleEvaluacion );
-
-            this.$refs.formAdd.resetValidation()
-
-            this.newRowExist = true
-
-            this.tipoEvaluacion = null;
-        },
-
-        getTipoEvaluacion(id)
-        {
-            const tipoEvaluacion = (id) ? 
-                                   this.selects.tipoEvaluacion.filter( evaluacion => evaluacion.id == id) 
-                                   : [{nb_tipo_evaluacion: null}];
-
-            return tipoEvaluacion[0];
-        },
-
-        getTotalPeso()
-        {
-            let totalPeso = 0
-
-            this.evaluaciones.forEach(item => {
-                totalPeso += ( item.nu_peso ) ? parseInt(item.nu_peso) : 0
-            });
-            
-            return totalPeso
-        },
-
-        deleteEvaluacion(evaluacion)
-        {
-            if(!evaluacion.id) return 
-
-            this.deleteResource('planDetalle/' + evaluacion.id )
-            .then( (data) => {
-                this.showMessage(data.msj)
-                this.list();
+           this.getResource(`planTema/planEvaluacion/${this.planEvaluacion.id}/grupo/${this.planEvaluacion.id_grupo}/materia/${this.planEvaluacion.id_materia}` )
+            .then( data =>  {
+                this.loading = true
+                for (const asignado of data.temasAsignados) {
+                    this.temasAsignado.push(asignado.id_tema)
+                } 
+                this.temasAsignar   = data.temasAsignar
             })
-        },
+           
 
-        storeEvaluacion(evaluacion)
-        {
-            if(!this.validEvaluacion(evaluacion)) return
-
-            evaluacion.id_usuario = this.idUser,
-
-            this.storeResource('planDetalle', evaluacion )
-            .then( (data) => {
-                this.showMessage(data.msj)
-                this.list();
-            })
-        },
-
-        updateEvaluacion(evaluacion)
-        {
-            if(!evaluacion.id) return
-            
-            if(!this.validEvaluacion(evaluacion)) 
-            { 
-                this.list();
-                return
-            }
-
-            evaluacion.id_usuario = this.idUser,
-
-            this.updateResource('planDetalle/' + evaluacion.id, evaluacion )
-            .then( (data) => {
-                this.showMessage(data.msj)
-                this.list();
-            })
-        },
-
-        validEvaluacion(evaluacion)
-        {
-            if(evaluacion.nu_peso < 1)
+            this.getResource(`planDetalle/planEvaluacion/${this.planEvaluacion.id}`).then( data => 
             {
-                this.showError('Indicar porcentaje valido de la Evaluacion')
+                this.items = data.planDetalle;
+                this.selects.tipoEvaluacion = data.combos.tipoEvaluacion
+                this.selects.tipoAsignacion = data.combos.tipoAsignacion
+                this.selects.rasgo          = data.combos.rasgo
+            })
+
+        },
+
+        setCantidades(data)
+        {
+            this.cantidad.evaluaciones = 0
+            this.cantidad.asignaciones = 0
+            this.cantidad.rasgos       = 0
+
+            for (const item of this.items) {
+                switch (true) {
+                    case item.tx_origen == 'tipo_evaluacion':
+                        this.cantidad.evaluaciones++
+                        break;
+                    case item.tx_origen == 'tipo_asignacion':
+                        this.cantidad.asignaciones++
+                        break;
+                    case item.tx_origen == 'rasgo':
+                        this.cantidad.rasgos++
+                        break;
+                    default:
+                        break;
+                }
+            }
+        },
+
+        hasHead(origen, idx)
+        {
+            return  [0,2,7].includes(idx)
+        },
+
+        getHeadName(origen)
+        {
+            return ( origen == 'rasgo') ? origen + 's' : origen.replace('tipo_', '') + 'es';
+        },
+
+        update(item)
+        {
+           if(!this.validate) return
+
+            let form = {
+                detalles:   this.items,
+                temas:      this.temasAsignado,
+                id_usuario: this.idUser
+            }
+ 
+            this.updateResource(`planDetalle/planEvaluacion/${this.planEvaluacion.id}/grupo/${this.planEvaluacion.id_grupo}`, form).then( data =>{
+                this.showMessage(data.msj)
+            }) 
+        },
+
+        validate()
+        {
+            if(this.total > 100)  {
+                this.showError('La planificacion esta sobre el 100%')
                 return false
             }
 
-            if(this.getTotalPeso() > 100)
-            {
-                this.showError('El porcentaje total de la evaluacion no debe sobrepasar el 100%')
+            if(this.total < 100) {
+                this.showError('La planificacion esta por debajo de 100%')
                 return false
             }
 
-            if(evaluacion.tx_tema == null)
-            {
-                this.showError('Indicar tema de la Evaluacion')
+            if(this.temasAsignado.length < 1) { 
+                this.showError('Favor asignar temas a la planificacion')
                 return false
             }
+
             return true
-        },
-
-        cancelEvaluacion(item)
-        {
-            this.evaluaciones = this.evaluaciones.filter( evaluacion => evaluacion.id !== null) 
-            this.newRowExist = false
-        },
-
-        addFile(item)
-        {
-            this.detalleEvaluacionId = item.id
-            this.modal = true
-        },
-
-        closeModal()
-        {
-            this.modal = false
         }
-        
     }
 
 }
@@ -431,14 +298,6 @@ export default {
 
 <style scoped>
     .percent-field {
-        width: 25;
-    }
-    .date-field{
-        width: 120px;
-    }
-    .tema-field{
-        min-width: 180px;
-        max-width: 180px;
-        text-overflow: ellipsis;
+        width: 82px;
     }
 </style>

@@ -2,193 +2,158 @@ import Vue    from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
 
+//secciones
+import Login                 from '@pages/login/login';
+import RecoverPassword       from '@pages/login/RecoverPassword'; 
+import Welcome               from '@pages/welcome/Welcome';
+import Home                  from '@pages/home/home';
 
-//import Admin            from  '@pages/admin/Dashboard';
-
-/*
-import SelectCuenta     from  '@pages/registro/SelectCuenta';
-import RegistroComercio from  '@pages/registro/RegistroComercio';
-import RegistroUsuario  from  '@pages/registro/RegistroUsuario';
-import Verify           from  '@pages/registro/Verify';
-import Authentication   from  '@pages/login/Authentication';
-*/
-
-
-
-import Login                 from  '@pages/login/login';
-import RecoverPassword       from  '@pages/login/RecoverPassword'; 
-
-import Welcome               from  '@pages/welcome/Welcome';
-import Home                  from  '@pages/home/home';
-
-import MenuAdmin             from '@pages/admin/index'; 
-import MenuAlumno            from '@pages/bandejaAlumno/index'; 
-import MenuProfesor          from '@pages/bandejaDocente/index'; 
+//acudiente
+import BandejaAcudiente      from '@pages/bandejaAcudiente/dashboard';
 import MenuAcudiente         from '@pages/bandejaAcudiente/index'; 
 
-import BandejaAdmin          from '@pages/admin/dashboard';
-
+//alumno
 import BandejaAlumno         from '@pages/bandejaAlumno/dashboard';
+import MenuAlumno            from '@pages/bandejaAlumno/index'; 
 import AsignacionAlumno      from '@pages/bandejaAlumno/asignacion/AppAsignacionAlumno';
 import BibliotecaAlumno      from '@pages/bandejaAlumno/biblioteca/AppBiblioteca';
 
+//docente
 import BandejaDocente        from '@pages/BandejaDocente/dashboard';
-import ClaseDocente          from '@pages/clase/AppClaseDocente';
+import MenuProfesor          from '@pages/bandejaDocente/index'; 
 import Clase                 from '@pages/clase/AppClase';
 import GestionTema           from '@pages/BandejaDocente/tema/GestionTema';
 import AppPlanificador       from '@pages/BandejaDocente/asignacion/AppPlanificador';
 import AsignacionSeguimiento from '@pages/BandejaDocente/asignacion/AsignacionSeguimiento';
 
+//admin
+import BandejaAdmin          from '@pages/admin/dashboard';
+import MenuAdmin             from '@pages/admin/index'; 
 
-import BandejaAcudiente     from '@pages/bandejaAcudiente/dashboard';
+//colegio
+import AppColegio            from '@pages/colegio/AppColegio';
+import TipoColegio           from '@pages/tipoColegio/tipoColegio';
+import Estructura            from '@pages/estructura/estructura';
+import Aula                  from '@pages/aula/aula';
+import Cargos                from '@pages/cargo/cargo';
+import TipoDirectiva         from '@pages/tipoDirectiva/tipoDirectiva';
+import Directiva             from '@pages/directiva/directiva';
+import Empleado              from '@pages/empleado/empleado';
+import Calendario            from '@pages/calendario/calendario';
+import Periodo               from '@pages/periodo/periodo';
+import Turno                 from '@pages/turno/turno';
+//import Jornada             from '@pages/jornada/jornada';
 
-// loading on demand
-import Asistente         from '@pages/asistente/asistente';
-import TipoColegio       from '@pages/tipoColegio/tipoColegio';
-//import Jornada         from '@pages/jornada/jornada';
-import Calendario        from '@pages/calendario/calendario';
-import Turno             from '@pages/turno/turno';
-import Feriado           from '@pages/feriado/feriado';
+//localizacion-contacto
+import Pais                  from '@pages/pais/pais';
+import Departamento          from '@pages/departamento/departamento';
+import Ciudad                from '@pages/ciudad/ciudad';
+import Zona                  from '@pages/zona/zona';
+import Comuna                from '@pages/comuna/comuna';
+import Contacto              from '@pages/contacto/contacto';
+//import TipoContacto          from '@pages/tipoContacto/tipoContacto';
+//import Telefono              from '@pages/telefono/telefono';
+//import TipoTelefono          from '@pages/tipoTelefono/tipoTelefono';
 
+//agenda
+import Agenda                from '@pages/Agenda/Agenda';
+import TipoAgenda            from '@pages/tipoAgenda/tipoAgenda';
+import AgendaActividad       from '@pages/agendaActividad/agendaActividad';
+import Feriado               from '@pages/feriado/feriado';
 
-import TipoAgenda        from '@pages/tipoAgenda/tipoAgenda';
-import Agenda            from '@pages/Agenda/Agenda';
+//Gestion Academica
+import Nivel                 from '@pages/nivel/nivel';
+import Grado                 from '@pages/grado/grado';
+import Grupo                 from '@pages/grupo/grupo';
+import AreaEstudio           from '@pages/areaEstudio/areaEstudio';
+import Materia               from '@pages/materia/materia';
+import GrupoCalificacion     from '@pages/grupoCalificacion/grupoCalificacion';
+import NivelCalificacion     from '@pages/nivelCalificacion/nivelCalificacion';
+import HoraAcademica         from '@pages/horaAcademica/horaAcademica';
+import Horario               from '@pages/horario/horario';
+//import GradoMateria          from '@pages/gradoMateria/gradoMateria';
+//import CargaHoraria          from '@pages/cargaHoraria/cargaHoraria';
+//import Calificacion          from '@pages/calificacion/calificacion';
 
-import HoraAcademica     from '@pages/horaAcademica/horaAcademica';
-import CargaHoraria      from '@pages/cargaHoraria/cargaHoraria';
+//evaluacion
+import TipoEvaluacion        from '@pages/tipoEvaluacion/tipoEvaluacion';
+import AppPlanEvaluacion     from '@pages/planEvaluacion/AppPlanEvaluacion';
+//import PlanEvaluacion        from '@pages/planEvaluacion/planEvaluacion'; 
 
-import Grado             from '@pages/grado/grado';
-import Cargos            from '@pages/cargo/cargo';
-import Empleado          from '@pages/empleado/empleado';
+//docente
+import Docente               from '@pages/docente/docente';
 
-import Estructura        from '@pages/estructura/estructura';
-import Aula              from '@pages/aula/aula';
+//alumno
+import Alumno                from '@pages/alumno/alumno';
+import TipoCondicion         from '@pages/tipoCondicion/tipoCondicion';
+import TipoFalta             from '@pages/tipoFalta/tipoFalta';
+import TipoSancion           from '@pages/tipoSancion/tipoSancion';
+import Pariente              from '@pages/pariente/pariente';
+const Parentesco             =  () => import('@pages/parentesco/parentesco');
 
-import GrupoCalificacion from '@pages/grupoCalificacion/grupoCalificacion';
-import NivelCalificacion from '@pages/nivelCalificacion/nivelCalificacion';
-import Calificacion      from '@pages/calificacion/calificacion';
+//general
+import Asistente             from '@pages/asistente/asistente';
+import EstadoCivil           from '@pages/estadoCivil/estadoCivil';
+import Status                from '@pages/status/status';
+import Configuracion         from '@pages/configuracion/configuracion';
 
-import TipoEvaluacion    from '@pages/tipoEvaluacion/tipoEvaluacion';
-import MetodoEvaluacion  from '@pages/evaluacionMetodo/evaluacionMetodo';
-import PlanEvaluacion    from '@pages/planEvaluacion/planEvaluacion'; 
-import AppPlanEvaluacion from '@pages/planEvaluacion/AppPlanEvaluacion';
+//subscripcion-pago
+//import Suscripcion           from '@pages/suscripcion/suscripcion';
+//import TipoPago              from '@pages/tipoPago/tipoPago';
+//import Pago                  from '@pages/pago/pago';
 
-import AreaEstudio       from '@pages/areaEstudio/areaEstudio';
-import Materia           from '@pages/materia/materia';
+//archivos
+import Archivo               from '@pages/archivo/archivo';
+import TipoArchivo           from '@pages/tipoArchivo/tipoArchivo';
+import Documento             from '@pages/documento/documento';
+import TipoDocumento         from '@pages/tipoDocumento/tipoDocumento';
+import Foto                  from '@pages/foto/foto';
+import TipoFoto              from '@pages/tipoFoto/tipoFoto';
+import TipoRecurso           from '@pages/tipoRecurso/tipoRecurso';
+import Recurso               from '@pages/recurso/recurso';
 
-import Docente           from '@pages/docente/docente';
-
-import TipoCondicion     from '@pages/tipoCondicion/tipoCondicion';
-import Alumno            from '@pages/alumno/alumno';
-
-import TipoFalta         from '@pages/tipoFalta/tipoFalta';
-import TipoSancion       from '@pages/tipoSancion/tipoSancion';
-
-import Ciudad            from '@pages/ciudad/ciudad';
-
-
-
-
-
-
-
-import AppColegio        from '@pages/colegio/AppColegio';
-import Comuna            from '@pages/comuna/comuna';
-
-
-import TipoContacto      from '@pages/tipoContacto/tipoContacto';
-import Contacto          from '@pages/contacto/contacto';
-
-import Departamento      from '@pages/departamento/departamento';
-import Directiva         from '@pages/directiva/directiva';
-import Documento         from '@pages/documento/documento';
-import Foto              from '@pages/foto/foto';
-import GradoMateria      from '@pages/gradoMateria/gradoMateria';
-import Grupo             from '@pages/grupo/grupo';
-import Horario           from '@pages/horario/horario';
-import Inasistencia      from '@pages/inasistencia/inasistencia';
-import Nivel             from '@pages/nivel/nivel';
-import Pago              from '@pages/pago/pago';
-import Pais              from '@pages/pais/pais';
-import Pariente          from '@pages/pariente/pariente';
-import Periodo           from '@pages/periodo/periodo';
-import Status            from '@pages/status/status';
-import Suscripcion       from '@pages/suscripcion/suscripcion';
-import Telefono          from '@pages/telefono/telefono';
- 
-import TipoDirectiva     from '@pages/tipoDirectiva/tipoDirectiva';
-import TipoFoto          from '@pages/tipoFoto/tipoFoto';
-import TipoPago          from '@pages/tipoPago/tipoPago';
-import TipoTelefono      from '@pages/tipoTelefono/tipoTelefono';
-import TipoUsuario       from '@pages/tipoUsuario/tipoUsuario';
-
-import Zona              from '@pages/zona/zona';
-
-
-import TipoDocumento     from '@pages/tipoDocumento/tipoDocumento';
-
-import TipoArchivo       from '@pages/tipoArchivo/tipoArchivo';
-import Archivo           from '@pages/archivo/archivo';
-import Configuracion     from '@pages/configuracion/configuracion';
-
-import TipoRecurso       from '@pages/tipoRecurso/tipoRecurso';
-import Recurso           from '@pages/recurso/recurso';
-
-import EstadoCivil       from '@pages/estadoCivil/estadoCivil';
-const Parentesco         =  () => import('@pages/parentesco/parentesco');
-
-
-
-import Usuario          from '@pages/usuario/usuario';
-import Modulo           from '@pages/modulo/modulo';
-import Menu             from '@pages/menu/menu';
-import Perfil           from '@pages/perfil/perfil';
-import UsuarioPerfil    from '@pages/usuarioPerfil/usuarioPerfil';
-import Permiso          from '@pages/permiso/permiso';
-
-
-//prueba
-import TipoPregunta     from '@pages/tipoPregunta/tipoPregunta'; 
-import Prueba           from '@pages/prueba/prueba';
-import Pregunta         from '@pages/pregunta/pregunta';
-import Respuesta        from '@pages/respuesta/respuesta';
-import PruebaAlumno     from '@pages/pruebaAlumno/pruebaAlumno';
-import RespuestaAlumno  from '@pages/respuestaAlumno/respuestaAlumno';
-
+//gestion usuario
+import TipoUsuario           from '@pages/tipoUsuario/tipoUsuario';
+import Usuario               from '@pages/usuario/usuario';
+import Modulo                from '@pages/modulo/modulo';
+import Menu                  from '@pages/menu/menu';
+import Perfil                from '@pages/perfil/perfil';
+import UsuarioPerfil         from '@pages/usuarioPerfil/usuarioPerfil';
+import Permiso               from '@pages/permiso/permiso';
 
 //libros
-import Tema             from  '@pages/tema/tema'; 
-import Libro            from  '@pages/libro/libro';  
-import Pagina           from  '@pages/pagina/pagina';   
-import Actividad        from  '@pages/actividad/actividad';      
-/*
-import ActividadRecurso from  '@pages/actividadRecurso/actividadRecurso';       
-import TipoActividad    from  '@pages/tipoActividad/tipoActividad';    
-import AccionPagina     from  '@pages/accionPagina/accionPagina';        
-import AccionTema       from  '@pages/accionTema/accionTema';          
-import TipoAccion       from  '@pages/tipoAccion/tipoAccion';   
-*/      
-import TemaEnlace       from  '@pages/temaEnlace/temaEnlace';     
-import TemaRecurso      from  '@pages/temaRecurso/temaRecurso';     
-import RecursoCategoria from  '@pages/recursoCategoria/recursoCategoria';     
-import Enlace           from  '@pages/enlace/enlace';     
-import TipoEnlace       from  '@pages/tipoEnlace/tipoEnlace';     
+import Tema                  from  '@pages/tema/tema'; 
+import Libro                 from  '@pages/libro/libro';  
+import Pagina                from  '@pages/pagina/pagina'; 
 
+//prueba
+import TipoPregunta          from '@pages/tipoPregunta/tipoPregunta'; 
+import Prueba                from '@pages/prueba/prueba';
+import Pregunta              from '@pages/pregunta/pregunta';
+import Respuesta             from '@pages/respuesta/respuesta';
+import PruebaAlumno          from '@pages/pruebaAlumno/pruebaAlumno';
+import RespuestaAlumno       from '@pages/respuestaAlumno/respuestaAlumno';
+
+import Actividad             from  '@pages/actividad/actividad';      
+import Enlace                from  '@pages/enlace/enlace';     
+import TipoEnlace            from  '@pages/tipoEnlace/tipoEnlace';     
 
 //notificaciones
-import TipoDestinatario from '@pages/tipoDestinatario/tipoDestinatario';
-import TipoPrioridad    from '@pages/tipoPrioridad/tipoPrioridad';
-import TipoNotificacion from '@pages/tipoNotificacion/TipoNotificacion';
-import Notificacion     from '@pages/notificacion/notificacion';
+import TipoDestinatario      from '@pages/tipoDestinatario/tipoDestinatario';
+import TipoPrioridad         from '@pages/tipoPrioridad/tipoPrioridad';
+import TipoNotificacion      from '@pages/tipoNotificacion/TipoNotificacion';
+import Notificacion          from '@pages/notificacion/notificacion';
 
-import TipoMensaje      from '@pages/tipoMensaje/TipoMensaje';
-import Mensaje          from '@pages/mensaje/Mensaje';
+//mensajes
+import TipoMensaje           from '@pages/tipoMensaje/TipoMensaje';
+import Mensaje               from '@pages/mensaje/Mensaje';
 
-import MeetDocente      from '@components/meet/docente/meetDocente';
-import MeetAlumno       from '@components/meet/alumno/meetAlumno';
+//meeet
+import MeetDocente           from '@components/meet/docente/meetDocente';
+import MeetAlumno            from '@components/meet/alumno/meetAlumno';
 
 //report
-/* import AppReporte       from '@pages/reportes/AppReporte' */
+/* import AppReporte         from '@pages/reportes/AppReporte' */
 
 //tools
 import PageNotFound     from  '@pages/404/NotFound'
@@ -200,7 +165,7 @@ export default new Router({
   base: process.env.BASE_URL,
     routes: [
         {
-          path: '/',
+            path: '/',
           name: 'welcome',
           label: 'Welcome',
           icon: 'mdi-home',
@@ -375,6 +340,7 @@ export default new Router({
                 visible: true,
                 component: AppColegio
             },
+            
             { 
                 path: 'tipoColegio',
                 name: 'tipoColegio',
@@ -469,12 +435,21 @@ export default new Router({
                 path: 'tipo-agenda',
                 name: 'tipo-agenda',
                 label: 'Tipo Agenda ',
-                icon: 'mdi-clipboard-text-multiple',
+                icon: 'mdi-clipboard-text-multiple-outline',
                 profile: 'secretaria',
                 visible: true,
                 component: TipoAgenda
             }, 
 
+            { 
+                path: 'agenda-actividad',
+                name: 'genda-actividad',
+                label: 'Agenda Tipo Actividad ',
+                icon: 'mdi-clipboard-text-multiple-outline',
+                profile: 'secretaria',
+                visible: true,
+                component: AgendaActividad
+            }, 
             
             { 
                 path: 'agenda',
@@ -575,24 +550,7 @@ export default new Router({
                 visible: true,
                 component: TipoEvaluacion
             },
-            { 
-                path: 'metodo-evaluacion',
-                name: 'metodo-evaluacion',
-                label: 'Metodo Evaluacion',
-                icon: 'mdi-clipboard-check-multiple-outline',
-                profile: 'secretaria',
-                visible: true,
-                component: MetodoEvaluacion
-            },
-           /*  { 
-                path: 'plan-evaluacion',
-                name: 'plan-evaluacion',
-                label: 'Plan Evaluacion',
-                icon: 'mdi-clipboard-check-multiple-outline',
-                profile: 'secretaria',
-                visible: true,
-                component: PlanEvaluacion
-            }, */
+
             { 
                 path: 'plan-evaluacion',
                 name: 'plan-evaluacion',
@@ -620,11 +578,6 @@ export default new Router({
                 visible: true,
                 component: Docente
             },
-
-
-            /**************************** */
-            
-            
 
             { 
                 path: 'tipo-condicion',
@@ -675,31 +628,6 @@ export default new Router({
                 component: TipoSancion
             },
 
-
-            
-
-
-
-            /* { 
-                path: 'clase',
-                name: 'clase',
-                label: 'Clase',
-                icon: 'mdi-google-classroom',
-                profile: 'secretaria',
-                visible: true,
-                component: Clase
-            },  */
-
-           /*  { 
-                path: 'inasistencia',
-                name: 'Inasistencia',
-                label: 'Asistencia',
-                icon: 'mdi-format-list-checks',
-                profile: 'secretaria',
-                visible: true,
-                component: Inasistencia
-            }, */
-
             { 
                 path: 'parentesco',
                 name: 'parentesco',
@@ -719,17 +647,6 @@ export default new Router({
                 visible: true,
                 component: EstadoCivil
             },
-
-            { 
-                path: 'tipoTelefono',
-                name: 'tipoTelefono',
-                label: 'Tipo Telefono',
-                icon: 'mdi-phone-log',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoTelefono
-            },
-
             
             { 
                 path: 'pais',
@@ -859,29 +776,7 @@ export default new Router({
                 visible: true,
                 component: Foto
             },
-            
            
-          /*   { 
-                path: 'pago',
-                name: 'pago',
-                label: 'Pago',
-                icon: 'mdi-credit-card-settings',
-                profile: 'secretaria',
-                visible: true,
-                component: Pago
-            }, */
-            
-   
-          
-           /*  { 
-                path: 'tipo-contacto',
-                name: 'tipo-contacto',
-                label: 'Tipo Contacto',
-                icon: 'mdi-contacts',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoContacto 
-            }, */
             { 
                 path: 'contacto',
                 name: 'contacto',
@@ -891,6 +786,7 @@ export default new Router({
                 visible: true,
                 component: Contacto
             },
+
             { 
                 path: 'status',
                 name: 'status',
@@ -900,24 +796,7 @@ export default new Router({
                 visible: true,
                 component: Status
             },
-           /*  { 
-                path: 'suscripcion',
-                name: 'suscripcion',
-                label: 'Suscripcion',
-                icon: 'mdi-file-document-edit',
-                profile: 'secretaria',
-                visible: true,
-                component: Suscripcion
-            }, */
-         /*    { 
-                path: 'telefono',
-                name: 'telefono',
-                label: 'Telefono',
-                icon: 'mdi-phone',
-                profile: 'secretaria',
-                visible: true,
-                component: Telefono
-            }, */
+
             { 
                 path: 'tipoFoto',
                 name: 'tipoFoto',
@@ -926,20 +805,7 @@ export default new Router({
                 profile: 'secretaria',
                 visible: true,
                 component: TipoFoto
-            },
-          /*   { 
-                path: 'tipoPago',
-                name: 'tipoPago',
-                label: 'Tipo Pago',
-                icon: 'mdi-credit-card-multiple',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoPago
-            }, */
-           
-           
-           
-            
+            },           
 
             { 
                 path: 'tipo-documento',
@@ -1065,10 +931,8 @@ export default new Router({
                 component: Asistente
             },
             
-            /********************** */
 
             /** prueba **/
-
             { 
                 path: 'tipo-pregunta',
                 name: 'tipo-pregunta',
@@ -1136,15 +1000,6 @@ export default new Router({
                 component: Tema
             }, 
 
-            { 
-                path: 'tema-enlace',
-                name: 'tema-enlace',
-                label: 'Tema Enlace',
-                icon:  'mdi-link-variant-plus',
-                profile: 'secretaria',
-                visible: true,
-                component: TemaEnlace
-            }, 
 
             { 
                 path: 'tipo-enlace',
@@ -1164,27 +1019,6 @@ export default new Router({
                 profile: 'secretaria',
                 visible: true,
                 component: Enlace
-            }, 
-
-
-            { 
-                path: 'recurso-categoria',
-                name: 'recurso-categoria',
-                label: 'Recurso Categoria',
-                icon: 'mdi-book-open-page-variant',
-                profile: 'secretaria',
-                visible: true,
-                component: RecursoCategoria
-            }, 
-
-            { 
-                path: 'tema-recurso',
-                name: 'tema-recurso',
-                label: 'Tema Recurso',
-                icon: 'mdi-book-open-page-variant',
-                profile: 'secretaria',
-                visible: true,
-                component: TemaRecurso
             }, 
 
             { 
@@ -1218,56 +1052,7 @@ export default new Router({
             }, 
 
 
-
-            /////
-            
-
-           
-
-            
-            
-
-    /*         { 
-                path: 'tipo-actividad',
-                name: 'Tipo-actividad',
-                label: 'Tipo Actividad ',
-                icon: 'mdi-head-plus',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoActividad
-            },  */
-            /* { 
-                path: 'tipo-accion',
-                name: 'tipo-accion',
-                label: 'Tipo Accion',
-                icon: 'mdi-rocket',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoAccion
-            },  */
-
-            /* { 
-                path: 'accion-pagina',
-                name: 'accion-pagina',
-                label: 'Accion Pagina',
-                icon: 'mdi-rocket-launch',
-                profile: 'secretaria',
-                visible: true,
-                component: AccionPagina
-            }, 
-
-            { 
-                path: 'accion-tema',
-                name: 'accion-tema',
-                label: 'mdi-rocket-launch',
-                icon: 'mdi-rocket-launch-outline',
-                profile: 'secretaria',
-                visible: true,
-                component: AccionTema
-            },  */
-
             //CONFIGURACION
-
 
             { 
                 path: 'configuracion',

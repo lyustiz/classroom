@@ -51,7 +51,46 @@ class CalendarioController extends Controller
 
         $calendario = calendario::create($request->all());
 
+        $calendarioActivo = $this->setCalendarioActivo($calendario, 'ins');
+
         return [ 'msj' => 'Calendario Agregado Correctamente', compact('calendario') ];
+    }
+
+    public function setCalendarioActivo($calendario, $method)
+    {
+        $calendarioActivo = Calendario::where('id', '<>', $calendario->id)->where('id_status', 1)->first();
+
+        $hasActivo     = ($calendarioActivo) ? true : false;
+                
+        if($method == 'ins' or $method == 'upd')
+        {
+            if($calendario->id_status == 1 and $hasActivo){
+
+                return $calendarioActivo->update(['id_status' => 2]);
+
+            }elseif($calendario->id_status == 2 and !$hasActivo){
+                
+                \Cache::put('calendarioActivo', $calendario);
+                return $calendario->fill(['id_status' => 1]);
+            }
+        }
+
+        if($method == 'del')
+        {
+            if($calendario->id_status == 1){
+
+                $calendarioActivo =  Calendario::where('id', '<>', $calendario->id)
+                                    ->latest()
+                                    ->first();
+
+                \Cache::put('calendarioActivo', $calendarioActivo);     
+
+                return $calendarioActivo->update(['id_status' => 1]);
+
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -86,8 +125,25 @@ class CalendarioController extends Controller
 
         $calendario = $calendario->update($request->all());
 
+        $calendarioActivo = $this->setCalendarioActivo($calendario, 'upd');
+
         return [ 'msj' => 'Calendario Editado' , compact('calendario')];
     }
+
+    public function updateStatus(Request $request, Calendario $calendario)
+    {
+        $validate = request()->validate([
+			'id_status'         => 	'required|integer|max:999999999',
+			'id_usuario'        => 	'required|integer|max:999999999',
+        ]);
+
+        $update = $calendario->update($request->only('id_status', 'id_usuario'));
+
+        $calendarioActivo = $this->setCalendarioActivo($calendario, 'upd');
+
+        return [ 'msj' => 'Status del Calendario actualizado' , compact('update','calendarioActivo')];
+    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -101,6 +157,8 @@ class CalendarioController extends Controller
         {
             throw ValidationException::withMessages(['poseePeriodo' => "Posee Periodo asignado"]);
         }
+
+        $calendarioActivo = $this->setCalendarioActivo($calendario, 'del');
 
         $calendario = $calendario->delete();
         

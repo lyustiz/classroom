@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tema;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 
 class TemaController extends Controller
 {
@@ -27,6 +28,16 @@ class TemaController extends Controller
                     ->get();
     }
 
+    public function temaGrupoMateria( $idGrupo, $idMateria )
+    {
+        return Tema::comboData()
+                    ->whereHas('grado.grupo', function (Builder $query) use($idGrupo) {
+                        $query->where('id_grupo', $idGrupo)->activo();
+                    })
+                    ->where('id_materia', $idMateria)
+                    ->get();
+    }
+
     public function temaRecursos($idTema)
     {
         return Tema::with([
@@ -35,6 +46,7 @@ class TemaController extends Controller
                           'recurso',
                           'actividad:actividad.id,nb_actividad,id_tema,tx_descripcion',
                           'prueba',
+                          'tarea',
                     ])
                     ->comboData()
                     ->find($idTema);

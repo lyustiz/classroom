@@ -1,10 +1,9 @@
 <template>
-<v-container grid-list-xs>
+<v-container >
     
-
 <v-row justify="center">
 
-    <v-card width="80%">
+    <v-card width="100%" class="rounded-xl">
         
         <v-card-text>
 
@@ -30,7 +29,7 @@
 
         <v-list rounded v-else>
 
-        <v-list-group prepend-icon="mdi-numeric" v-for="grado in grados" :key="grado.id" color="green" ripple>
+        <v-list-group prepend-icon="mdi-numeric" v-for="grado in grados" :key="grado.id" color="green" class="grey lighten-5 rounded-xl mb-2" ripple>
 
             <template v-slot:activator>
                 <v-list-item-title v-text="grado.nb_grado"></v-list-item-title>
@@ -55,7 +54,7 @@
                 </v-list-item-action>
             </v-list-item>
 
-            <v-list-group  sub-group v-for="grupo in grado.grupo" :key="grupo.id" color="amber" >
+            <v-list-group  sub-group v-for="grupo in grado.grupo" :key="grupo.id" color="amber" class="amber lighten-5 rounded-xl mb-2">
                 
                 <template v-slot:activator >
                     <v-list-item-icon><v-icon>mdi-alphabetical-variant</v-icon></v-list-item-icon>
@@ -72,7 +71,7 @@
                       <v-list-item-action>
                     <v-tooltip top>
                         <template v-slot:activator="{ on }">
-                            <v-btn v-on="on" fab x-small @click="navegateTo('grado-materia')" color="success">
+                            <v-btn v-on="on" fab x-small @click="navegateTo('grupo')" color="success">
                                 <v-icon>mdi-bookshelf</v-icon>
                             </v-btn>
                         </template>
@@ -106,23 +105,11 @@
                                 @onUpdate="loading = false"
                             ></plan-evaluacion-form>
 
-                            <v-dialog max-width="90vw" height="95vh" content-class="rounded-xl">
-                                
-                                <template v-slot:activator="data">
-                                    <v-btn fab x-small color="success" dark :loading="loading" v-bind="data.attrs" v-on="data.on">
-                                        <v-icon>mdi-text-box-search</v-icon> 
-                                    </v-btn>
-                                </template>
-
-                                <v-card>
-                                    <app-simple-toolbar title="Evaluaciones"></app-simple-toolbar>
-                                    <v-card-text>
-                                        <evaluacion :planEvaluacion="getPlanEvaluacion(grupo, materia)[0]"></evaluacion>
-                                    </v-card-text>
-                                </v-card>
-
-                            </v-dialog>
-
+                         
+                            <v-btn fab x-small color="success" dark :loading="loading" @click="detalleEvaluacion(grupo, materia)">
+                                <v-icon>mdi-text-box-search</v-icon> 
+                            </v-btn>
+                               
                         </v-col>
 
                         <v-col class="col-1">
@@ -176,20 +163,24 @@
 
 
     </v-row>
+
+    <v-dialog v-model="detalleDialog" fullscreen scrollable>
+           <plan-detalle v-if="detalleDialog" :planEvaluacion="plan" @closeDialog="closeDialog('detalleDialog', $event)"></plan-detalle>
+    </v-dialog>
     </v-container>
   
 </template>
 
 <script>
 import DataHelper from '@mixins/AppData';
-import evaluacion  from '@pages/evaluacion/AppEvaluacion';
+import AppPlanDetalle  from '@pages/planDetalle/AppPlanDetalle';
 import AppPlanEvaluacionForm  from './AppPlanEvaluacionForm';
 export default {
 
     mixins:     [ DataHelper ],
 
     components: { 
-        'evaluacion':  evaluacion,
+        'plan-detalle':  AppPlanDetalle,
         'plan-evaluacion-form': AppPlanEvaluacionForm
     },
 
@@ -218,6 +209,8 @@ export default {
 				id_status: 	      2,
 				id_usuario: 	  this.idUser,
             },
+            detalleDialog: false,
+            plan: null
         }
     },
 
@@ -278,6 +271,18 @@ export default {
                 this.getGradoDetalle()
             })
         },
+
+        detalleEvaluacion(grupo, materia)
+        {
+            this.plan = this.planEvaluacion[`${grupo.id}-${materia.id}`][0]
+            this.detalleDialog = true
+        },
+
+        closeDialog(dialog, refresh)
+        {
+            if(refresh) this.list()
+            this[dialog] = false
+        }
     }
 
 }

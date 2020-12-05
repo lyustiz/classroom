@@ -153,7 +153,13 @@ return [
             'visibility' => 'public',
         ],
 
-
+        'tarea-alumno' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/tarea/alumno'),
+            'url' => env('APP_URL').'/storage/tarea/alumno',
+            'visibility' => 'public',
+        ],
+        
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

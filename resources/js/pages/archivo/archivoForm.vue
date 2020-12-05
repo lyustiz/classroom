@@ -162,7 +162,6 @@ export default {
 
         mapForm()
         {
-            
             this.form.tx_origen_id    = this.origenId
             this.form.id_tipo_archivo = this.tipoArchivo
             
@@ -174,9 +173,12 @@ export default {
             {
                 this.form.tx_mimetype     = this.fileType.name
             }
+        },
 
-            
-        }
+        postResponse()
+        {
+            this.$emit('onUpdateFiles', {action: this.action, file: this.form})
+        },
     }
 
 }

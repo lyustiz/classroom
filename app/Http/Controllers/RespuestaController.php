@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Respuesta;
+use App\Models\Pregunta;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -47,14 +48,21 @@ class RespuestaController extends Controller
         ]);
         
 
-        if($request->bo_correcta == 1)
+        /* if($request->bo_correcta == 1)
         {
             $this->removeRespuestasCorrectas($request->id_pregunta);
         }
         
         $respuesta = Respuesta::create($request->all());
 
-        return [ 'msj' => 'Respuesta Agregado Correctamente', compact('respuesta') ];
+        return [ 'msj' => 'Respuesta Agregado Correctamente', compact('respuesta') ]; */
+        $this->validateCorecta($request->id_pregunta, $request->bo_correcta);
+        
+        $store      = Respuesta::create($request->all());
+
+        $respuestas = $this->respuestaPregunta($request->id_pregunta);
+
+        return [ 'msj' => 'Respuesta agregada correctamente', 'store' => $store, 'respuestas' => $respuestas ];
     }
 
 
@@ -105,8 +113,49 @@ class RespuestaController extends Controller
 
         $respuesta = $respuesta->update($request->all());
 
-        return [ 'msj' => 'Respuesta Editado' , compact('respuesta')];
+        return [ 'msj' => 'Respuesta Editada' , compact('respuesta')];
     }
+
+    public function updateNombre(Request $request, Respuesta $respuesta)
+    {
+        $validate = request()->validate([
+            'nb_respuesta'  => 'required|string|max:600',
+            'id_pregunta'   => 'required|integer|max:999999999',
+            'id_usuario'    => 'required|integer|max:999999999',
+        ]);
+
+        $update     = $respuesta->update($validate);
+
+        $respuestas = $this->respuestaPregunta($respuesta->id_pregunta);
+
+        return [ 'msj' => 'Respuesta Actualizada' , 'update' => $update,'respuestas' => $respuestas ];
+    }
+
+    public function updateCorrecta(Request $request, Respuesta $respuesta)
+    {
+        $validate = request()->validate([
+            'bo_correcta' => 	'required|boolean',
+            'id_pregunta' => 	'required|integer|max:999999999',
+            'id_usuario'  => 	'required|integer|max:999999999',
+        ]);
+
+        $this->validateCorecta($request->id_pregunta, $request->bo_correcta);
+        
+        $update     = $respuesta->update($validate);
+
+        $respuestas = $this->respuestaPregunta($respuesta->id_pregunta);
+
+        return [ 'msj' => 'Respuesta Actualizada' , 'update' => $update,'respuestas' => $respuestas];
+    }
+
+    public function validateCorecta($idPregunta, $boCorrecta)
+    {
+        if(Pregunta::find($idPregunta)->id_tipo_pregunta == 2 and $boCorrecta == 1)
+        {
+            Respuesta::where( ['id_pregunta' =>$idPregunta ])->update(['bo_correcta' => 0]);
+        }
+    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -118,6 +167,6 @@ class RespuestaController extends Controller
     {
         $respuesta = $respuesta->delete();
  
-        return [ 'msj' => 'Respuesta Eliminado' , compact('respuesta')];
+        return [ 'msj' => 'Respuesta Eliminada' , compact('respuesta')];
     }
 }

@@ -10,6 +10,7 @@
 
             <v-col cols="12">
                 <v-select
+                    v-model="gradoSelected"
                     :items="grados"
                     item-text="nb_grado"
                     item-value="id"
@@ -26,6 +27,7 @@
 
             <v-col cols="12">
                 <v-select
+                    v-model="grupoSelected"
                     :items="grupos"
                     item-text="nb_grupo"
                     item-value="id"
@@ -127,6 +129,9 @@ export default {
             resource:   'clase',
             grupos:     [],
             materias:   [],
+            gradoSelected: null,
+            grupoSelected: null,
+            materiaSelected: null,
             dates:
             {
                 fe_clase: 	 null,
@@ -158,25 +163,31 @@ export default {
     {
         onCreateForm()
         {
-            this.form.id_grado   = (this.grado) ? this.grado.id : null
-            this.form.id_grupo   = (this.grupo) ? this.grupo.id : null
-            this.form.id_materia = (this.materia) ? this.materia.id : null
-        },
-        
-        extraActions(method)
-        {
-             //acciones extra antes de ejecutar insert/update methods
+            if(this.grado) { 
+                this.form.id_grado = this.grado.id 
+                this.gradoSelected = this.grado
+                this.getGrupos(this.grado) 
+            }
+            if(this.grupo) { 
+                this.form.id_grupo = this.grupo.id 
+                this.grupoSelected = this.grupo 
+                this.getMaterias(this.grupo) 
+            }
+            if(this.materia) { 
+                this.form.id_materia = this.materia.id 
+            }
         },
         
         getGrupos(grado)
         {
-            this.grupos   = grado.grupo
-            this.form.id_grado = grado.id
+            this.grupos          = grado.grupo
+            this.form.id_grado   = grado.id
+            this.form.id_materia = null
         },
 
         getMaterias(grupo)
         {           
-            this.materias  = grupo.materia
+            this.materias      = grupo.materia
             this.form.id_grupo = grupo.id
         },
 

@@ -26,11 +26,11 @@
 
             <v-col cols="12" md="6">
                 <v-select
-                :items="filter.calendario"
-                item-text="nb_calendario"
-                item-value="nb_calendario"
+                :items="filter.grado"
+                item-text="nb_grado"
+                item-value="nb_grado"
                 v-model="search"
-                label="Calendario"
+                label="Grado"
                 :loading="loading"
                 dense
                 clearable
@@ -154,7 +154,7 @@ export default {
             ],
             filter:
             {
-                calendario: []
+                grado: []
             },
             itemsMenu: [
                 { action: 'addMateria',   icon: 'mdi-bookshelf', label: 'Asignar Materia' },
@@ -172,10 +172,10 @@ export default {
         
         onList()
         {
-            axios.get(`${this.apiUrl}calendario/list`)
+            axios.get(`${this.apiUrl}grado/list`)
             .then(response => 
             {
-                this.filter.calendario = response.data
+                this.filter.grado = response.data
             })
         },
         

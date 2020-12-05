@@ -57,22 +57,9 @@
 
                                         <v-col class="col-1"> 
 
-                                             <v-dialog max-width="90vw" height="95vh" content-class="rounded-xl">
-                                
-                                                <template v-slot:activator="data">
-                                                    <v-btn fab x-small color="success" dark :loading="loading" v-bind="data.attrs" v-on="data.on">
-                                                        <v-icon>mdi-text-box-search</v-icon> 
-                                                    </v-btn>
-                                                </template>
-
-                                                <v-card>
-                                                    <app-simple-toolbar title="Evaluaciones"></app-simple-toolbar>
-                                                    <v-card-text>
-                                                        <evaluacion :planEvaluacion="planEvaluacion"></evaluacion>
-                                                    </v-card-text>
-                                                </v-card>
-
-                                            </v-dialog>
+                                             <v-btn fab x-small color="success" dark :loading="loading" @click="editDetallePlan(planEvaluacion)">
+                                                <v-icon>mdi-text-box-search</v-icon> 
+                                            </v-btn>
                             
                                         </v-col> 
 
@@ -111,20 +98,30 @@
 
         </v-card-text>   
 
+        <v-dialog max-width="90vw" height="95vh" content-class="rounded-xl" v-model="dialogDetallePlan">
+
+                <plan-detalle 
+                    :planEvaluacion="planEvaluacion" 
+                    @closeDialog="dialogDetallePlan=false" 
+                    v-if="dialogDetallePlan" >
+                </plan-detalle>
+
+        </v-dialog>
+
     </v-card>
 
 </template>
 
 <script>
 import DataHelper from '@mixins/AppData';
-import evaluacion  from '@pages/evaluacion/AppEvaluacion';
+import PlanDetalle  from '@pages/planDetalle/AppPlanDetalle';
 
 export default {
 
     mixins:     [ DataHelper ],
 
     components: { 
-        'evaluacion':  evaluacion,
+        'plan-detalle':  PlanDetalle,
     },
 
     created()
@@ -145,6 +142,8 @@ export default {
            periodos: [],
            periodo:  null,
            grados:   [],
+           planEvaluacion: null,
+           dialogDetallePlan: false
         }
     },
     methods:
@@ -164,6 +163,12 @@ export default {
         getPlanesEvaluacion(planesEvaluacion)
         {
             return planesEvaluacion.filter(plan => plan.id_periodo == this.periodo)
+        },
+
+        editDetallePlan(planEvaluacion)
+        {
+            this.dialogDetallePlan = true
+            this.planEvaluacion = planEvaluacion
         }
 
        

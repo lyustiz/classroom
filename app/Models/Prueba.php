@@ -29,47 +29,10 @@ class Prueba extends Model
 
     protected $appends = ['bo_culminado'];
 
-    protected $pendiente = 3;
-
-    protected $asignada  = 4;
-
-    protected $ejecucion = 5;
-
-    protected $ejecutada = 6;
-
-    protected $evaluada  = 7;
-
-    protected $cerrada   = 8;
-
-    public function pendiente()
+    public function scopeActivo($query)
     {
-        return $this->pendiente;
-    }
-
-    public function asignada()
-    {
-        return $this->asignada;
-    }
-
-    public function ejecutada()
-    {
-        return $this->ejecutada;
-    }
-
-    public function ejecucion()
-    {
-        return $this->ejecucion;
-    }
-
-    public function evaluada()
-    {
-        return $this->evaluada;
-    }
-
-    public function cerrada()
-    {
-        return $this->cerrada;
-    }
+        return $query->where('id_status', 1);
+	}
 
     public function getBoCulminadoAttribute()
     {
@@ -122,7 +85,7 @@ class Prueba extends Model
 
     public function status()
     {
-        return $this->BelongsTo('App\Models\Status', 'id_status')->whereIn( 'co_grupo', ['PRUEBA'] );
+        return $this->BelongsTo('App\Models\Status', 'id_status')->whereIn( 'co_grupo', ['GRAL'] );
     }
                            
     public function usuario()
@@ -152,12 +115,7 @@ class Prueba extends Model
 
     public function evaluacion()
     {
-        return $this->BelongsTo('App\Models\Evaluacion', 'id_evaluacion');
-    }
-
-    public function pruebaAlumno()
-    {
-        return $this->HasMany('App\Models\PruebaAlumno', 'id_prueba');
+        return $this->HasMany('App\Models\Evaluacion', 'id_origen')->where('tx_origen', 'prueba');
     }
 
     public function alumno()

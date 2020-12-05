@@ -214,8 +214,7 @@ export default {
             {
                 calendario: 	 [],
 	 	 	 	tipoAgenda: 	 [],
-	 	 	 	origen: 	 [],
-	 	 	 	status: 	     ['/grupo/GRAL'],
+	 	 	 	origen: 	     [],
             },
         }
     },

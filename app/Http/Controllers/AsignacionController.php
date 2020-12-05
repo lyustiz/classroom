@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use App\Http\Controllers\Traits\NotificacionTrait;
 
 class AsignacionController extends Controller
 {
@@ -171,6 +172,7 @@ class AsignacionController extends Controller
 
         $asignaciones        = [];
         $asignacionesAlumnos = [];
+        $notificacion        = [];
         
         foreach ($validate['id_origen'] as $id_origen) {
             $data = $validate;
@@ -178,9 +180,18 @@ class AsignacionController extends Controller
             $asignacion          = Asignacion::create($data);
             $asignaciones[]      = $asignacion;
             $asignacionesAlumnos = $this->asignacionAlumnos($asignacion);
+
+            $notificacion = NotificacionTrait::asignacion([ 
+                'id_tipo_asignacion' => $request->id_tipo_asignacion, 
+                'tx_origen'          => $request->tx_origen,
+                'alumnos'            => $asignacionesAlumnos['alumnos'],
+                'id_materia'         => $request->id_materia,
+                'fe_inicio'          => $request->fe_inicio,
+                'id_usuario'         => $request->id_usuario
+            ]);
         }
 
-        return [ 'msj' => 'Asignacion Agregada Correctamente', compact('asignaciones', 'asignacionesAlumnos') ];
+        return [ 'msj' => 'Asignacion Agregada Correctamente', compact('asignaciones') ];
     }
 
     public function asignacionAlumnos(Asignacion $asignacion)
@@ -201,10 +212,11 @@ class AsignacionController extends Controller
                                     'id_alumno'     => $alumno->id,
                                     'id_usuario'    => $asignacion->id_usuario,
                                     'id_status'     => 1,
+                                    'created_at'    => date('Y-m-d H:i:s'),
                                 ];
         }
 
-        return AsignacionAlumno::insert($asignacionAlumnos);
+        return [ 'asignacionAlumno' => AsignacionAlumno::insert($asignacionAlumnos), 'alumnos' => $alumnos ] ;
     }
 
     /**

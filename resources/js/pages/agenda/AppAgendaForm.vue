@@ -38,10 +38,10 @@
 
         <v-col cols="12" md="6">
             <v-select
-            :items="selects.tipoActividad"
-            item-text="nb_tipo_actividad"
+            :items="selects.agendaActividad"
+            item-text="nb_agenda_actividad"
             item-value="id"
-            v-model="form.id_tipo_actividad"
+            v-model="form.id_agenda_actividad"
             :rules="[rules.select]"
             label="Tipo Actividad"
             :loading="loading"
@@ -49,7 +49,7 @@
             >
             <template v-slot:item="{ item }">
                     <v-icon color="indigo" v-text="item.tx_icono"></v-icon>
-                    <span class="body-2 ml-2" v-text="item.nb_tipo_actividad"></span>
+                    <span class="body-2 ml-2" v-text="item.nb_agenda_actividad"></span>
                 </template>
             </v-select>
         </v-col>
@@ -142,7 +142,7 @@
           
         <v-col cols="12">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[rules.max(80)]"
                 v-model="form.tx_observaciones"
                 label="Descripcion"
                 placeholder="Indique Descripcion"
@@ -216,24 +216,23 @@ export default {
             },
             form:
             {
-                id: 	           null,
-				nb_agenda: 	       null,
-				id_calendario: 	   null,
-                id_tipo_agenda:    null,
-                id_tipo_actividad: null,
-				fe_agenda: 	       null,
-				hh_inicio: 	       null,
-				hh_fin: 	       null,
-				id_origen: 	       null,
-				tx_observaciones:  null,
-				id_status: 	       null,
-				id_usuario: 	   null,
+                id: 	             null,
+				nb_agenda: 	         null,
+				id_calendario: 	     null,
+                id_tipo_agenda:      null,
+                id_agenda_actividad: null,
+				fe_agenda: 	         null,
+				hh_inicio: 	         null,
+				hh_fin: 	         null,
+				id_origen: 	         null,
+				tx_observaciones:    null,
+				id_status: 	         null,
+				id_usuario: 	     null,
             },
             selects:
             {
-                tipoAgenda: 	 [],
-                tipoActividad: 	 [],
-	 	 	 	status: 	     ['/grupo/GRAL'],
+                tipoAgenda: 	     [],
+                agendaActividad: 	 [],
             },
             default:
             {
@@ -259,7 +258,7 @@ export default {
             this.form.id                = this.item.id,
 			this.form.nb_agenda         = this.item.name,
             this.form.id_tipo_agenda    = this.item.categoryId,
-            this.form.id_tipo_actividad = this.item.typeId,
+            this.form.id_agenda_actividad = this.item.typeId,
             this.form.hh_inicio         = this.item.startHour.substr(0, 5),
 			this.form.hh_fin            = this.item.endHour.substr(0, 5),
 			this.dates.hh_inicio        = this.formatTime(this.item.startHour),

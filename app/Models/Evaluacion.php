@@ -26,6 +26,8 @@ class Evaluacion extends Model
                                 'tx_observaciones',
                                 'id_status',
                                 'id_usuario',
+                                'created_at',
+	 	 	 	 	 	 	    'updated_at'
                             ]; 
     
     protected $hidden     = [

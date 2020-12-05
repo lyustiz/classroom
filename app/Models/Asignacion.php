@@ -19,7 +19,8 @@ class Asignacion extends Model
 	 	 	 	 	 	 	'fe_fin',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
-	 	 	 	 	 	 	'id_usuario'
+                            'id_usuario',
+                            'created_at'
                             ]; 
     
     protected $hidden     = [

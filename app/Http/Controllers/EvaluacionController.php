@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\ValidationException;
+use App\Http\Controllers\Traits\NotificacionTrait;
 
 class EvaluacionController extends Controller
 {
@@ -118,7 +119,7 @@ class EvaluacionController extends Controller
 		    'fe_fin'             => 'required|date',
             'hh_inicio'          => 'required|date_format:"H:i"',
             'hh_fin'             => 'required|date_format:"H:i"',
-            'nu_minutos'         => 'required||integer|max:999999999',
+            'nu_minutos'         => 'required|integer|max:999999999',
             'tx_observaciones'   => 'nullable|string|max:999999999',
             'id_status'          => 'required|integer|max:999999999',
             'id_usuario'         => 'required|integer|max:999999999',
@@ -128,8 +129,16 @@ class EvaluacionController extends Controller
         $evaluacion = evaluacion::create($request->all());
 
         $evaluacionAlumno = $this->asignarEvaluacionAlumnos($evaluacion, $request->alumnos);
+
+        $notificacion = NotificacionTrait::evaluacion([ 
+            'id_tipo_evaluacion' => $request->id_tipo_evaluacion, 
+            'alumnos'            => $request->alumnos,
+            'id_materia'         => $request->id_materia,
+            'fe_inicio'          => $request->fe_inicio,
+            'id_usuario'         => $request->id_usuario 
+        ]);
         
-        return [ 'msj' => 'Evaluacion Agregada Correctamente', compact('evaluacion', 'evaluacionAlumno') ]; 
+        return [ 'msj' => 'Evaluacion Agregada Correctamente', compact('evaluacion', 'evaluacionAlumno', 'notificacion') ]; 
     }
 
     public function asignarEvaluacionAlumnos(Evaluacion $evaluacion, $alumnos)
@@ -142,7 +151,8 @@ class EvaluacionController extends Controller
                                     'id_evaluacion' => $evaluacion->id,
                                     'id_alumno'     => $idAlumno,
                                     'id_usuario'    => $evaluacion->id_usuario,
-                                    'id_status'     => 1,
+                                    'id_status'     => 3,
+                                    'created_at'    => date('Y-m-d H:i:s'),
                                 ];
         }
 
@@ -235,8 +245,10 @@ class EvaluacionController extends Controller
      */
     public function destroy(Evaluacion $evaluacion)
     {
-        $evaluacion = $evaluacion->delete();
+        $evaluacionAlumno = EvaluacionAlumno::where('id_evaluacion', $evaluacion->id)->delete();
+        
+        $delete = $evaluacion->delete();
  
-        return [ 'msj' => 'Evaluacion Eliminada' , compact('evaluacion')];
+        return [ 'msj' => 'Evaluacion Eliminada' , compact('delete', 'evaluacionAlumno')];
     }
 }

@@ -26,9 +26,9 @@ class AgendaResource extends JsonResource
             'color'       => $this->tipoAgenda->tx_color,
             'category'    => $this->tipoAgenda->nb_tipo_agenda,
             'categoryId'  => $this->id_tipo_agenda,
-            'type'        => $this->tipoActividad->nb_tipo_actividad,
-            'typeId'      => $this->id_tipo_actividad,
-            'icon'        => $this->tipoActividad->tx_icono,
+            'type'        => $this->agendaActividad->nb_agenda_actividad,
+            'typeId'      => $this->id_agenda_actividad,
+            'icon'        => $this->agendaActividad->tx_icono,
             'description' => $this->tx_observaciones
         ];
     }

@@ -15,7 +15,7 @@
             <template v-else-if="action == 'ins'">
 
                 <v-btn fab x-small color="red" dark v-on="on" :loading="isLoading">
-                    <v-icon>mdi-account-tie</v-icon> 
+                    <v-icon>mdi-account-off</v-icon> 
                 </v-btn>
 
             </template>
@@ -24,9 +24,7 @@
 
         <v-card class="rounded-xl">
 
-            <v-toolbar color="indigo" dark dense flat>
-                Asignar Docente
-            </v-toolbar>
+            <app-simple-toolbar title="Asignar Docente" @closeModal="menu=false" dense></app-simple-toolbar>
 
             <v-card-text>
 

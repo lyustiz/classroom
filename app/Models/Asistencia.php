@@ -15,7 +15,8 @@ class Asistencia extends Model
 	 	 	 	 	 	 	'bo_asistencia',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
-	 	 	 	 	 	 	'id_usuario'
+                            'id_usuario',
+                            'created_at'
                             ]; 
     
     protected $hidden     = [

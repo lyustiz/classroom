@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 use Carbon\Carbon;
+use App\Http\Controllers\Traits\NotificacionTrait;
 
 class ClaseController extends Controller
 {
@@ -62,7 +63,14 @@ class ClaseController extends Controller
 
         $asistencia = $this->asistenciaClase($clase);
 
-        return [ 'msj' => 'Clase Iniciada Correctamente', 'clase' => $clase, 'asistencia' => $asistencia ];
+        $notificacion = NotificacionTrait::clase([ 
+            'id_grupo'   => $request->id_alumno, 
+            'alumnos'    => $asistencia['alumnos'],
+            'id_materia' => $request->id_materia, 
+            'id_usuario' => $request->id_usuario 
+        ]);
+
+        return [ 'msj' => 'Clase Iniciada Correctamente', 'clase' => $clase ];
     }
 
     public function asistenciaClase(Clase $clase)
@@ -83,10 +91,11 @@ class ClaseController extends Controller
                                 'id_alumno'  => $alumno->id,
                                 'id_usuario' => $clase->id_usuario,
                                 'id_status'  => 1,
+                                'created_at' => date('Y-m-d H:i:s'),
                             ];
         }
 
-        return Asistencia::insert($asistencias);
+        return [ 'asistencia' => Asistencia::insert($asistencias), 'alumnos' => $alumnos];
     }
     
     /**

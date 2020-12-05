@@ -4,19 +4,19 @@
 
         <v-col cols="auto" >
 
-            <v-row  class="flex-column" justify="center" dense>
+            <v-row  class="flex-column" justify="center" no-gutters>
 
-                <app-button small :size="30" innerClass="mx-auto mt-2"  color="green" label="Volver al Inicio" icon="mdi-home" @click="$emit('closeDialog')" ></app-button>
+                <app-button small :size="30" innerClass="mx-auto my-0"  color="green" label="Volver al Inicio" icon="mdi-home" @click="$emit('closeDialog')" ></app-button>
                  
-                <v-item-group active-class="deep-purple" v-model="grupoSelected" class="group-container" >
+                <v-item-group active-class="deep-purple" v-model="grupoSelected" class="group-container py-0" >
 
-                    <v-item v-slot:default="{ active, toggle }" v-for="(grupo, i) in grupos" :key="i" class="pointer" :value="grupo">
+                    <v-item v-slot:default="{ active, toggle }" v-for="(grupo, i) in grupos" :key="i" class="pointer pa-0" :value="grupo">
         
                         <v-col @click="toggle">
 
                             <div>
-                                <v-avatar :color="(active) ? 'deep-purple': 'deep-purple lighten-4'" size="90" >
-                                    <v-icon size="70" color="white">mdi-account-group</v-icon> 
+                                <v-avatar :color="(active) ? 'deep-purple': 'deep-purple lighten-4'" size="80" >
+                                    <v-icon size="60" color="white">mdi-account-group</v-icon> 
                                 </v-avatar>
                                 <v-card-title v-text="grupo.nb_grupo" class="caption my-n2"></v-card-title>
                             </div>

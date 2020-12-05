@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\PlanDetalle;
+use App\Models\TipoEvaluacion;
+use App\Models\TipoAsignacion;
+use App\Models\Rasgo;
+use App\Models\PlanTema;
+
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -21,19 +27,27 @@ class PlanDetalleController extends Controller
         return $planDetalle;
     }
 
-    public function detallePlanEvaluacion($idPlanEvaluacion)
+    public function combos()
     {
-        $planEvaluacion = PlanDetalle::with([
-                                            'planEvaluacion',
-                                            'planEvaluacion.grupo:id,nb_grupo', 
-                                            'planEvaluacion.periodo:id,nb_periodo', 
-                                            'tipoEvaluacion:id,nb_tipo_evaluacion',
-                                            'archivo:id,id_tipo_archivo,tx_origen_id'
+        $tipoEvaluacion = TipoEvaluacion::comboData()->activo()->get(); 
+
+        $tipoAsignacion = TipoAsignacion::comboData()->activo()->get(); 
+
+        $rasgo = Rasgo::comboData()->activo()->get(); 
+
+        return compact('tipoEvaluacion', 'tipoAsignacion', 'rasgo');
+    }
+
+
+    public function planDetallePlanEvaluacion($idPlanEvaluacion)
+    {
+        $planDetalle = PlanDetalle::with([
+                                            'origen',
                                         ])
                                         ->where('id_plan_evaluacion', $idPlanEvaluacion)
                                         ->get();
         
-        return $planEvaluacion;
+        return ['planDetalle' => $planDetalle, 'combos' => $this->combos()];
     }
 
     /**
@@ -94,6 +108,53 @@ class PlanDetalleController extends Controller
         $planDetalle = $planDetalle->update($request->all());
 
         return [ 'msj' => 'Evaluacion Actualizada' , compact('planDetalle')];
+    }
+
+    public function updatePlanesDetalle(Request $request, $idPlanEvaluacion, $idGrupo)
+    {
+        $validate = request()->validate([
+            'detalles'      => 	'required|array',
+			'temas'         => 	'required|array',
+			'id_usuario'    => 	'required|integer|max:999999999',
+        ]);
+
+        $planDetalles = PlanDetalle::where('id_plan_evaluacion', $idPlanEvaluacion)->get();
+
+        foreach ($planDetalles as $planDetalle) {
+
+            $dataUpdate = $this->getDataUpdate($planDetalle->id, $request->detalles);
+            $planDetalle->nu_peso = $dataUpdate['nu_peso'];
+            $planDetalle->save();
+        }
+
+        $temas = $this->updateTema($idPlanEvaluacion, $request->temas, $request->id_usuario, $idGrupo);
+
+        return [ 'msj' => 'Plan Actualizado' , compact('planDetalles', 'temas')];
+    }
+
+    public function getDataUpdate($idPlanDetalle, $dataUpdate)
+    {
+        foreach ($dataUpdate as $data) {
+            if($data['id'] == $idPlanDetalle) return $data;
+        }
+    }
+
+    public function updateTema($idPlanEvaluacion, $temas, $idUsuario, $idGrupo)
+    {
+        $delete   = PlanTema::where('id_plan_evaluacion',$idPlanEvaluacion)->delete();
+        $planTema = [];
+        
+        foreach ($temas as $tema) {
+            $planTema[] = [
+                'id_plan_evaluacion' => $idPlanEvaluacion,
+                'id_grupo'           => $idGrupo,
+                'id_tema'            => $tema,
+                'id_status'          => 1,
+                'id_usuario'         => $idUsuario
+            ];
+        }
+
+        return PlanTema::insert($planTema);
     }
 
     /**

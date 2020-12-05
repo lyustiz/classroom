@@ -5,10 +5,12 @@
             scrollable
             full-width
             v-model="today"
+            :events="events"
             color="indigo"
             class="rounded-xl"
             elevation="3"
             @change="$emit('onUpdateDate', $event)"
+            :first-day-of-week="1"
         ></v-date-picker>
 
 </template>
@@ -24,55 +26,52 @@ export default {
         },
     },
 
+    created()
+    {
+        if(this.clases)
+        {
+            this.setEvents()
+        }
+    },
+
+    watch:
+    {
+        clases()
+        {
+            if(this.clases)
+            {
+                this.setEvents()
+            }
+        }
+    },
+
     data()
     {
         return {
             today:      new Date().toISOString().substr(0, 10),
+            events:     []
         }
     },
 
     methods: 
     {
-        getEvent(date)
+        setEvents()
         {
-          /*  let colors = []
+            for (const clase of this.clases) {
 
-           this.clases.map( (event) => {
-               if(event.date == date )
-               {
-                   colors.push(clases.color);
-               }
-           })
-           return colors */
+                this.events.push(clase.fe_clase.substr(0, 10)
 
-           
-        },
-
-        datesEvents()
-        {
-            let dates = []
-
-            this.events.map( (event) => dates.push(event.date))
-
-            return dates
-        },
-
-        showEvent(date)
-        {
-            this.eventsShow  = this.events.filter((event) => event.date == date);
-            
-            if(this.eventsShow.length > 0)
-            {
-                this.dialogShow  = true
+                  /*   {
+                        id:    clase.id,
+                        name:  `${clase.materia.nb_materia} - ${clase.grupo.nb_grupo}`,
+                        date:  clase.fe_clase.substr(0, 10),
+                        color: clase.materia.area_estudio.tx_color,
+                    }  */
+                )
             }
-        },
-
-        closeModal()
-        {
-            this.eventsShow  = []
-
-            this.dialogShow  = false
         }
+            
+            
     }
 
 }

@@ -57,4 +57,15 @@ class PlanDetalle extends Model
     {
         return $this->hasMany('App\Models\Archivo',  'tx_origen_id', 'id')->where('id_tipo_archivo', 1);
     }
+
+    public function planTema()
+    {
+        return $this->HasMany('App\Models\PlanTema', 'id_plan_detalle');
+    }
+
+    public function origen()
+    {
+        return $this->morphTo(null,'tx_origen','id_origen', 'id');
+    }
+
 }

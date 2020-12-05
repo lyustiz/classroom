@@ -27,7 +27,12 @@
                 <template v-slot:item="{ item, expand, isExpanded }">
                     <tr :class="(isExpanded) ? 'green lighten-3 ': ''">
                         <td>
-                             <app-foto-pregunta 
+                            <v-btn fab x-small color="green lighten-5" depressed @click="expand(!isExpanded)">
+                                <v-icon color="green" size="26" v-text="(isExpanded) ?  'mdi-arrow-up-drop-circle-outline': 'mdi-arrow-down-drop-circle-outline'"></v-icon>
+                            </v-btn> 
+                        </td>
+                        <td>
+                            <app-foto-pregunta 
                                 :origenId="item.id" 
                                 :maxItems="1" 
                                 :tipoFoto="7" 
@@ -36,9 +41,9 @@
                                 >
                             </app-foto-pregunta> 
                         </td>
-                        <td class="text-xs-left">{{ item.nu_orden }}</td>
+                        <td class="text-xs-center">{{ item.nu_orden }}</td>
                         <td class="text-xs-left">{{ item.nb_pregunta | maxStringLength(80)}}</td>
-						<td class="text-xs-left"> 
+						<td class="text-xs-center"> 
                             <list-simple-icon 
                                 :icon="item.tipo_pregunta.tx_icono" 
                                 :color="item.tipo_pregunta.tx_color" 
@@ -46,7 +51,7 @@
                             ></list-simple-icon> 
                         </td>
 
-                        <td class="text-xs-left subtitle-2">{{ (item.respuesta) ? item.respuesta.length: 0  }}</td>
+                        <td class="text-xs-center subtitle-2">{{ (item.respuesta) ? item.respuesta.length: 0  }}</td>
 						<td class="text-xs-left">{{ item.nu_valor | formatNumber }}</td>
 						
 						<td class="text-xs-left">
@@ -62,9 +67,6 @@
                                 @update="updateForm(item)" 
                                 @delete="deleteForm(item)" 
                             >
-                                <v-btn fab x-small color="green lighten-5" depressed @click="expand(!isExpanded)">
-                                    <v-icon color="green" size="26" v-text="(isExpanded) ?  'mdi-arrow-up-drop-circle-outline': 'mdi-arrow-down-drop-circle-outline'"></v-icon>
-                                </v-btn> 
                             </list-buttons>
                         </td>
                     </tr>
@@ -72,13 +74,13 @@
 
                 <template v-slot:expanded-item="{ headers, item }">
                     <td :colspan="headers.length" class="grey lighten-5">
-                        <app-respuesta :pregunta="item"></app-respuesta>
+                        <app-respuesta :pregunta="item" @onUpdateData="list()"></app-respuesta>
                     </td>
                 </template>
 
                 <template v-slot:body.append="{ items }">
                     <tr class="grey lighten-3"> 
-                        <td colspan="4" class="font-weight-bold">
+                        <td colspan="5" class="font-weight-bold">
                             Total preguntas: 
                             <v-chip label outlined>
                                 {{(items) ? items.length : 0}}
@@ -165,10 +167,11 @@ export default {
             title:    'Pregunta',
             resource: 'pregunta',
             headers: [
-                { text: 'Foro',          value: 'tx_foto' },
+                { text: '',              value: 'id' },
+                { text: 'Foto',          value: 'tx_foto' },
                 { text: 'Orden',         value: 'nu_orden' },
                 { text: 'Pregunta',      value: 'nb_pregunta' },
-                { text: 'Tipo Pregunta', value: 'id_tipo_pregunta' },
+                { text: 'Tipo',          value: 'id_tipo_pregunta' },
                 { text: 'Respuestas',    value: 'respuesta' },
                 { text: 'Puntos',        value: 'nu_valor' },
                 { text: 'Ayuda',         value: 'tx_observaciones' },

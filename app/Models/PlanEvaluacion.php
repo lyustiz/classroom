@@ -68,6 +68,17 @@ class PlanEvaluacion extends Model
         return $this->hasMany('App\Models\Evaluacion', 'id_plan_evaluacion');
     }
 
+    public function planDetalle()
+    {
+        return $this->HasMany('App\Models\PlanDetalle', 'id_plan_evaluacion');
+    }
+
+    public function planTema()
+    {
+        return $this->HasMany('App\Models\PlanTema', 'id_plan_evaluacion');
+    }
+
+
     
 
 

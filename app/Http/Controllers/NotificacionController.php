@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Notificacion;
 use App\Models\TipoNotificacion;
-use App\Models\TipoPrioridad;
 use App\Models\TipoDestinatario;
+
+use App\Models\Grupo;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -30,8 +31,7 @@ class NotificacionController extends Controller
     public function unRead($idDestinatario, $idTipoDestinatario)
     {
         return Notificacion::with([ 'usuario:usuario.id,nb_usuario,nb_nombres', 
-                                    'tipoNotificacion:tipo_notificacion.id,nb_tipo_notificacion,tx_icono',
-                                    'tipoPrioridad:tipo_prioridad.id,nb_tipo_prioridad,tx_color'
+                                    'tipoNotificacion:tipo_notificacion.id,nb_tipo_notificacion,tx_icono,tx_color',
                                    ])
                            ->where( 'id_destinatario', $idDestinatario )
                            ->where( 'id_tipo_destinatario', $idTipoDestinatario )
@@ -44,8 +44,7 @@ class NotificacionController extends Controller
     public function read($idDestinatario, $idTipoDestinatario)
     {
         return Notificacion::with([ 'usuario:usuario.id,nb_usuario,nb_nombres', 
-                                    'tipoNotificacion:tipo_notificacion.id,nb_tipo_notificacion,tx_icono',
-                                    'tipoPrioridad:tipo_prioridad.id,nb_tipo_prioridad,tx_color'
+                                    'tipoNotificacion:tipo_notificacion.id,nb_tipo_notificacion,tx_icono,tx_color',
                                 ])
                             ->where( 'id_destinatario', $idDestinatario )
                             ->where( 'id_tipo_destinatario', $idTipoDestinatario )
@@ -59,11 +58,9 @@ class NotificacionController extends Controller
     {
         $tipoNotificacion = TipoNotificacion::comboData()->activo()->get(); 
 
-        $tipoPrioridad    = TipoPrioridad::comboData()->activo()->get(); 
-
         $tipoDestinatario = TipoDestinatario::comboData()->activo()->get(); 
 
-        return compact('tipoNotificacion','tipoPrioridad','tipoDestinatario');
+        return compact('tipoNotificacion','tipoDestinatario');
     }
 
     public function destinatario($tipoDestinatario)
@@ -111,24 +108,48 @@ class NotificacionController extends Controller
         $validate = request()->validate([
 			'id_tipo_destinatario'  => 	'required|integer|max:999999999',
 			'id_destinatario'       => 	'required|integer|max:999999999',
-			'tx_asunto'             => 	'required|string|max:100',
 			'tx_mensaje'            => 	'required|string|max:300',
-			'tx_lugar'              => 	'nullable|string|max:80',
 			'id_tipo_notificacion'  => 	'required|integer|max:999999999',
-			'id_tipo_prioridad'     => 	'required|integer|max:999999999',
-			'fe_notificacion'       => 	'required|date',
-			'hh_inicio'             => 	'nullable|date_format:"H:i"|before:hh_fin"',
-            'hh_fin'                => 	'nullable|date_format:"H:i"',
-			'tx_observaciones'      => 	'nullable|string|max:100',
-			'id_status'             => 	'required|integer|max:999999999',
 			'id_usuario'            => 	'required|integer|max:999999999',
         ]);
 
-        $request->merge(['co_notificacion' =>   strtoupper ( Str::random(3). '-' .Str::random(3). '-' .Str::random(3). '-' .Str::random(3) ) ]);
+        $request->merge(['fe_notificacion' =>  date('Y-m-d'), 'id_status' => 1 ]);
 
         $notificacion = Notificacion::create($request->all());
 
         return [ 'msj' => 'Notificacion Creada Correctamente', compact('notificacion') ];
+    }
+
+
+    public function notificarGrupo(Request $request, $IdGrupo)
+    {
+        $validate = request()->validate([
+			'id_tipo_destinatario'  => 	'required|integer|max:999999999',
+			'tx_mensaje'            => 	'required|string|max:300',
+			'id_tipo_notificacion'  => 	'required|integer|max:999999999',
+			'id_usuario'            => 	'required|integer|max:999999999',
+        ]);
+
+        $alumnos      = Grupo::find($IdGrupo)->alumno;
+        $notificacion = [];
+
+        foreach ($alumnos as $alumno) 
+        {
+            $notificacion[] = [
+                'id_tipo_destinatario' => 3,
+                'id_destinatario'      => $alumno->id,
+                'tx_mensaje'           => $request->tx_mensaje,
+                'id_tipo_notificacion' => 9,
+                'fe_notificacion'      => date('Y-m-d'), 
+                'id_status'            => 1, 
+                'id_usuario'           => $request->id_usuario,
+                'created_at'           => date('Y-m-d'),
+            ];
+        }
+
+        $notificacion = Notificacion::insert($notificacion);
+
+        return [ 'msj' => 'Notificacion enviada', compact('notificacion') ];
     }
 
     /**
@@ -156,12 +177,9 @@ class NotificacionController extends Controller
 			'id_destinatario'       => 	'required|integer|max:999999999',
 			'tx_asunto'             => 	'required|string|max:100',
 			'tx_mensaje'            => 	'required|string|max:300',
-			'tx_lugar'              => 	'nullable|string|max:80',
 			'id_tipo_notificacion'  => 	'required|integer|max:999999999',
 			'id_tipo_prioridad'     => 	'required|integer|max:999999999',
-            'fe_notificacion'       => 	'required|date',
-			'hh_inicio'             => 	'nullable|date_format:"H:i"|before:hh_fin"',
-            'hh_fin'                => 	'nullable|date_format:"H:i"',
+			'fe_notificacion'       => 	'required|date',
 			'tx_observaciones'      => 	'nullable|string|max:100',
 			'id_status'             => 	'required|integer|max:999999999',
 			'id_usuario'            => 	'required|integer|max:999999999',

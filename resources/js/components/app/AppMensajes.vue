@@ -129,7 +129,6 @@
             </app-mensaje>
         </v-dialog>
 
-
     </v-dialog>
 </template>
 

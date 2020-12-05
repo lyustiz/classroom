@@ -76,7 +76,7 @@ export default {
 
         innerClass:{
             type:     String,
-            default:  true
+            default:  ''
         }
     }
 }

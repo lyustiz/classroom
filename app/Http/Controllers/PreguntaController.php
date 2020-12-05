@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pregunta;
+use App\Models\Prueba;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -29,7 +30,6 @@ class PreguntaController extends Controller
                         'respuesta:id,nb_respuesta,bo_correcta,id_pregunta',
                         'tipoPregunta:id,nb_tipo_pregunta,tx_icono,tx_color,tx_observaciones',
                         'foto:id,tx_src,id_tipo_foto,id_origen',
-                        'foto.tipoFoto:id,tx_base_path',
                         ])
                     ->where('id_prueba', $idPrueba)
                     ->get();
@@ -43,7 +43,6 @@ class PreguntaController extends Controller
                         'respuestaAlumno:respuesta_alumno.id,id_pregunta,id_respuesta,tx_respuesta',
                         'tipoPregunta:id,nb_tipo_pregunta,tx_icono,tx_color,tx_observaciones',
                         'foto:id,tx_src,id_tipo_foto,id_origen',
-                        'foto.tipoFoto:id,tx_base_path',
                         ])
                     ->where('id_prueba', $idPrueba)
                     ->whereDoesntHave('respuestaAlumno', function ($query) use ($idAlumno, $idPrueba) {
@@ -61,7 +60,6 @@ class PreguntaController extends Controller
                         'respuestaAlumno:respuesta_alumno.id,id_pregunta,id_respuesta,tx_respuesta',
                         'tipoPregunta:id,nb_tipo_pregunta,tx_icono,tx_color,tx_observaciones',
                         'foto:id,tx_src,id_tipo_foto,id_origen',
-                        'foto.tipoFoto:id,tx_base_path',
                         ])
                     ->where('id_prueba', $idPrueba)
                     ->where('nu_orden', $idOrden)
@@ -74,7 +72,8 @@ class PreguntaController extends Controller
         return Pregunta::with([
                         'respuestaAlumno:respuesta_alumno.id,id_pregunta,id_respuesta,tx_respuesta,bo_correcta,nu_valor',
                         'respuestaAlumno.respuesta:id,nb_respuesta,id_pregunta,bo_correcta',
-                        'tipoPregunta:id,nb_tipo_pregunta,tx_icono,tx_color,tx_observaciones'
+                        'tipoPregunta:id,nb_tipo_pregunta,tx_icono,tx_color,tx_observaciones',
+                        'foto:id,tx_src,id_tipo_foto,id_origen',
                         ])
                     ->where('id_prueba', $idPrueba)
                     ->whereHas('respuestaAlumno', function ($query) use ($idAlumno, $idPrueba) {
@@ -97,7 +96,7 @@ class PreguntaController extends Controller
     {
         $validate = request()->validate([
             'id_prueba'         =>  'required|integer|max:999999999',
-            'nb_pregunta'       => 	'required|string|max:100',
+            'nb_pregunta'       => 	'required|string|max:200',
 			'id_tipo_pregunta'  => 	'required|integer|max:999999999',
 			'bo_opcional'       => 	'required|boolean',
 			'nu_valor'          => 	'required|numeric|between:1,99.99',
@@ -112,7 +111,15 @@ class PreguntaController extends Controller
 
         $pregunta = Pregunta::create($request->all());
 
+        $this->updatePesoPrueba($request->id_prueba);
+
         return [ 'msj' => 'Pregunta Agregada Correctamente', compact('pregunta') ];
+    }
+
+    public function updatePesoPrueba($idPrueba)
+    {
+        $nuValor = Pregunta::where('id_prueba', $idPrueba)->sum('nu_valor');
+        Prueba::where('id', $idPrueba)->update(['nu_peso' => $nuValor]);
     }
 
     public function importar(Request $request)
@@ -163,7 +170,7 @@ class PreguntaController extends Controller
     {
         $validate = request()->validate([
             'id_prueba'         =>  'required|integer|max:999999999',
-            'nb_pregunta'       => 	'required|string|max:100',
+            'nb_pregunta'       => 	'required|string|max:200',
 			'id_tipo_pregunta'  => 	'required|integer|max:999999999',
 			'bo_opcional'       => 	'required|boolean',
 			'nu_valor'          => 	'required|numeric|between:1,999.99',
@@ -179,6 +186,8 @@ class PreguntaController extends Controller
         }
 
         $pregunta = $pregunta->update($request->all());
+
+        $this->updatePesoPrueba($request->id_prueba);
                 
         return [ 'msj' => 'Pregunta Actualizada' , compact('pregunta')];
     }

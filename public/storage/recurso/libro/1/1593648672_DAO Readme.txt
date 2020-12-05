@@ -1,0 +1,64 @@
+                 -----------------------------------------
+                       README FOR UPDATED DAO350.DLL 
+                         FOR MICROSOFT(R) EXCEL 97
+                 
+                               March 1998
+                 -----------------------------------------
+                      (c) Microsoft Corporation, 1998
+
+
+The revised Dao350.dll file that is included in the Newdao.exe 
+file corrects a problem that prevents you from running Visual Basic(R)
+for Applications macros that use Data Access Objects (DAO). Without
+this revised Da0350.dll, the macro may fail and you may receive the 
+following error message:
+
+   Run-time error '40009':
+   No current row.
+
+NOTE: This is the same Dao350.dll that is included with Microsoft 
+Excel 97 for Windows(R). The version and date of Dao350.dll have been 
+changed to prevent Microsoft Visual Basic version 5.0 (or a Visual 
+Basic application that uses DAO) from replacing it with a version of 
+the file that has a later date but that is not fully compatible with 
+Microsoft Excel 97.
+
+To correct the problem, follow these steps:
+
+1. Close all programs.
+
+2. On the Start menu, point to Find, and click Files Or Folders.
+
+3. In the Named box, type "Dao350.dll" (without the quotation marks). 
+   In the Look In box, select "(C:)" (or the hard disk drive 
+   in which Microsoft Windows is located). Click to select the 
+   Include Subfolders check box, and then click Find Now.
+
+   One copy of the original Dao350.dll should be in the following
+   folder
+
+      <WinDrv>\Program Files\Common Files\Microsoft Shared\Dao
+
+   where <WinDrv> is the disk drive letter for the hard disk on 
+   which Windows is installed.
+
+4. Right-click each Dao350.dll file. On the shortcut menu, click 
+   Rename. Change the name of the file to "Dao350.vb5" (without 
+   the quotation marks). Press ENTER.
+
+   These files are backup copies of the existing Dao350.dll files.
+
+5. Start Microsoft(R) Windows Explorer and open the following folder
+
+      <WinDrv>\Program Files\Common Files\Microsoft Shared\Dao
+
+   where <WinDrv> is the disk drive letter for the hard disk
+   on which Windows is installed.
+
+6. Copy the downloaded Dao350.dll into the folder you opened in
+   step 5.
+
+You can now safely install Microsoft Visual Basic version 5.0 (or
+Microsoft Visual Basic applications that use DAO) without affecting
+DAO in Visual Basic for Applications.
+

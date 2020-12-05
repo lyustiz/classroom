@@ -63,7 +63,7 @@
                 </v-btn>
 
                  <v-btn fab dark x-small  class="" depressed  @click="filter.tarea = !filter.tarea" color="rgba(255,255,255,0.95)">
-                    <v-icon size="23" :color=" (filter.tarea) ? `teal` : 'teal lighten-4'">mdi-notebook</v-icon>
+                    <v-icon size="23" :color=" (filter.tarea) ? `deep-purple` : 'deep-purple lighten-4'">mdi-notebook</v-icon>
                 </v-btn>
 
                 </div>
@@ -128,6 +128,45 @@
                                         </v-list-item-avatar>
                                         <v-list-item-content>
                                             <v-list-item-title>{{ evaluacion.origen.nb_prueba }}</v-list-item-title>
+                                        </v-list-item-content>
+                                        <v-list-item-action>
+                                            <v-btn icon>
+                                                <template v-if="evaluacion.evaluacion_alumno[0].fe_evaluacion">
+                                                    <v-icon size="30" color="green">mdi-checkbox-marked-circle-outline</v-icon>
+                                                </template>
+                                                <template v-else>
+                                                    <v-icon size="30" color="amber darken-2">mdi-progress-clock</v-icon>
+                                                </template>
+                                            </v-btn>
+                                        </v-list-item-action>
+                                    </v-list-item>
+                                </v-list>
+                            </div>
+
+                        </v-menu>
+
+                    </v-col>
+
+
+                    <v-col cols="auto" v-if="tipo == 'tarea'" class="mx-n2" v-show="filter.tarea">
+
+                        <v-menu offset-y absolute content-class="rounded-lg" min-width="200px" right>
+                            <template v-slot:activator="{ on }">
+                                <v-btn icon dark color="deep-purple" depressed v-on="on">
+                                    <v-icon size="30" v-text="'mdi-notebook'"></v-icon>
+                                </v-btn>
+                            </template>
+
+                            <div v-for="(evaluaciones, materia) in materias" :key="materia" class="white">
+                                
+                                <v-list dense subheader>
+                                    <v-subheader class="">{{materia}}</v-subheader>
+                                    <v-list-item color="deep-purple" v-for="(evaluacion, materia) in evaluaciones" :key="materia" link class="my-n2" @click="verEvaluacion(evaluacion, 'tarea')">
+                                        <v-list-item-avatar color="white" size="35">
+                                            <v-icon size="30" color="deep-purple">mdi-notebook</v-icon>
+                                        </v-list-item-avatar>
+                                        <v-list-item-content>
+                                            <v-list-item-title>{{ evaluacion.origen.nb_tarea }}</v-list-item-title>
                                         </v-list-item-content>
                                         <v-list-item-action>
                                             <v-btn icon>
@@ -385,7 +424,11 @@
     <!-- evaluaciones  -->
 
     <v-dialog v-model="dialogPrueba" fullscreen scrollable>
-        <prueba-alumno v-if="dialogPrueba" :prueba="prueba" @closeDialog="closeDialog('dialogPrueba')" ></prueba-alumno>
+        <app-prueba v-if="dialogPrueba" :prueba="prueba" @closeDialog="closeDialog('dialogPrueba')" ></app-prueba>
+    </v-dialog>
+
+     <v-dialog v-model="dialogTarea" fullscreen scrollable>
+        <app-tarea v-if="dialogTarea" :evaluacion-alumno="tarea" @closeDialog="closeDialog('dialogTarea')" @onClomplete="getEvaluaciones()" ></app-tarea>
     </v-dialog>
 
     </v-card>
@@ -393,16 +436,18 @@
 
 <script>
 
-import AppData           from '@mixins/AppData';
-import AppActividad      from '@pages/actividad/AppActividad';
-import PruebaAlumno      from '@pages/bandejaAlumno/prueba/EjecucionPrueba';
+import AppData       from '@mixins/AppData';
+import AppActividad  from '@pages/actividad/AppActividad';
+import AppPrueba     from '@pages/prueba/AppPrueba';
+import AppTarea      from '@pages/tarea/AppTarea';
 
 export default {
 
     components: 
     {
-        'app-actividad':  AppActividad,
-        'prueba-alumno':  PruebaAlumno
+        'app-actividad': AppActividad,
+        'app-prueba':    AppPrueba,
+        'app-tarea':     AppTarea,
     }, 
 
     mixins: [AppData],
@@ -650,13 +695,6 @@ export default {
                                     }
                     this.dialogLectura = true 
                     break;
-
-                    /* 
-                    this.lectura  =   {   name: lectura.archivo.nb_archivo,
-                                src: `${lectura.archivo.tipo_archivo.tx_base_path}${lectura.id}/${lectura.archivo.tx_path}` 
-                            }
-                    this.dialogLectura  = true  
-                    */
             
                 default:
                     break;
@@ -669,12 +707,13 @@ export default {
             switch (tipo ) {
 
                 case 'cuestionario':
-                    this.prueba     = evaluacion.origen
+                    this.prueba       = evaluacion.origen
                     this.dialogPrueba = true
                     break;
                 
                 case 'tarea':
-                    this.tarea     = evaluacion.origen
+                    
+                    this.tarea       = evaluacion.evaluacion_alumno[0]
                     this.dialogTarea = true
                     break;                  
                     break;

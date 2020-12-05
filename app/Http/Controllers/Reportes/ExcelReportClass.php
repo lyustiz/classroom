@@ -25,17 +25,19 @@ class ExcelReportClass implements FromCollection, WithHeadings, ShouldAutoSize, 
     private $title;
     private $colegio;
      
-    public function __construct($dataArray, $headers, $logo='/images/logo-colegio.png', $title = 'Reporte', $institute = 'UNIDAD EDUCATIVA FUENTE DE JACOB') 
+    public function __construct($dataArray, $headers, $logo="/images/logo-colegio.jpg", $title = 'Reporte', $institute = 'UNIDAD EDUCATIVA FUENTE DE JACOB') 
     { 
         
         $DIR = DIRECTORY_SEPARATOR;
         
         $colegio =  Colegio::with(['foto:id,tx_src,id_origen'])->find(1);
 
-        if($colegio->foto)
+        $logo = public_path($logo);
+
+      /*   if($colegio->foto)
         {
             $logo = storage_path('app'. $DIR .'public'. $DIR . 'colegio'. $DIR .  'foto' . $DIR . $colegio->id . $DIR .  $colegio->foto->tx_src);
-        }
+        } */
 
         $this->collection = collect($dataArray); 
         $this->headers    = $headers;

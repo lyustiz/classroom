@@ -32,10 +32,11 @@ class RespuestaAlumnoController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-            'id_prueba'         => 	'required|integer|max:999999999',
-            'id_pregunta'       => 	'required|integer|max:999999999',
-            'id_alumno'         => 	'required|integer|max:999999999',
-            'id_usuario'        => 	'required|integer|max:999999999',
+            'id_prueba'            => 'required|integer|max:999999999',
+            'id_evaluacion_alumno' => 'required|integer|max:999999999',
+            'id_pregunta'          => 'required|integer|max:999999999',
+            'id_alumno'            => 'required|integer|max:999999999',
+            'id_usuario'           => 'required|integer|max:999999999',
         ]);
 
         $request->merge(['id_status'   => 1]);
@@ -91,7 +92,7 @@ class RespuestaAlumnoController extends Controller
             'bo_correcta' => $correcta,
             'nu_valor'    => $valor,
         ]);
-
+            
         return RespuestaAlumno::create($request->all());
     }
 
@@ -148,10 +149,11 @@ class RespuestaAlumnoController extends Controller
     public function update(Request $request)
     {
         $validate = request()->validate([
-            'id_prueba'         => 	'required|integer|max:999999999',
-            'id_pregunta'       => 	'required|integer|max:999999999',
-            'id_alumno'         => 	'required|integer|max:999999999',
-            'id_usuario'        => 	'required|integer|max:999999999',
+            'id_prueba'            => 'required|integer|max:999999999',
+            'id_evaluacion_alumno' => 'required|integer|max:999999999',
+            'id_pregunta'          => 'required|integer|max:999999999',
+            'id_alumno'            => 'required|integer|max:999999999',
+            'id_usuario'           => 'required|integer|max:999999999',
         ]);
 
         $pregunta = Pregunta::find($request->id_pregunta);
@@ -212,6 +214,7 @@ class RespuestaAlumnoController extends Controller
     {
         $validate = request()->validate([
             'id'            => 	'required|array',
+            'id_respuesta'  => 	'required|array',
             'id_respuesta'  => 	'required|array',
         ]);
         

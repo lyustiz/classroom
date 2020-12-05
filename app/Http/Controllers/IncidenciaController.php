@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Incidencia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\NotificacionTrait;
 
 class IncidenciaController extends Controller
 {
@@ -52,9 +53,14 @@ class IncidenciaController extends Controller
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
-        $incidencia = incidencia::create($request->all());
+        $incidencia   = incidencia::create($request->all());
 
-        return [ 'msj' => 'Incidencia Agregado Correctamente', compact('incidencia') ];
+        $notificacion = NotificacionTrait::sancion([ 
+                                                    'id_alumno' => $request->id_alumno, 
+                                                    'id_usuario' => $request->id_usuario 
+                                                  ]);
+
+        return [ 'msj' => 'Incidencia Agregado Correctamente', compact('incidencia', 'notificacion') ];
     }
 
     /**

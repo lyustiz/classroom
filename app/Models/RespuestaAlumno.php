@@ -10,6 +10,7 @@ class RespuestaAlumno extends Model
 
     protected $fillable   = [
                             'id_prueba',
+                            'id_evaluacion_alumno',
                             'id_pregunta',
                             'id_respuesta',
                             'id_alumno',

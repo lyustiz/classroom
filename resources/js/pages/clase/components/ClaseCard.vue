@@ -77,6 +77,10 @@
             <app-asistencia :clase="clase" v-if="dialogAsistencia" @closeDialog="closeDialog('dialogAsistencia', $event)" @onUpdateData="$emit('onUpdateData')"></app-asistencia>
         </v-dialog>
 
+        <v-dialog v-model="dialogNotificacion" max-width="600px" content-class="rounded-xl">
+            <clase-notificacion :clase="clase" v-if="dialogNotificacion" @closeDialog="closeDialog('dialogNotificacion')"></clase-notificacion>
+        </v-dialog>
+
         <v-dialog v-model="dialogCloseClase" max-width="400" content-class="rounded-xl" scrollable>
             
             <v-card flat>
@@ -112,6 +116,8 @@
             </v-card>
         </v-dialog>
 
+     
+
     </v-card>
 
 </template>
@@ -119,13 +125,16 @@
 <script>
 import AppData       from '@mixins/AppData';
 import AppAsistencia from '@pages/asistencia/AppAsistencia'
+import ClaseNotificacion  from './ClaseNotificacion';
+
 
 export default {
 
     mixins: [AppData],
 
     components: { 
-        'app-asistencia': AppAsistencia,
+        'app-asistencia':     AppAsistencia,
+        'clase-notificacion': ClaseNotificacion
     },
 
     props:
@@ -152,12 +161,14 @@ export default {
             title:    'Clase',
             resource: 'clase',
             menus: [
-                { action: 'addAsistencia',  icon: 'mdi-account-multiple-check',  label: 'Asistencia' },
-                { action: 'showDialogClose',  icon: 'mdi-flag-checkered',            label: 'Finalizar Clase' },
+                { action: 'addAsistencia',    icon: 'mdi-account-multiple-check',  label: 'Asistencia' },
+                { action: 'addNotificacion',  icon: 'mdi-bell-plus',               label: 'Notificar Alumnos' },
+                { action: 'showDialogClose',  icon: 'mdi-flag-checkered',          label: 'Finalizar Clase' },
             ],
             asistencia: null,
-            dialogAsistencia: false,
-            dialogCloseClase: false,
+            dialogAsistencia:   false,
+            dialogCloseClase:   false,
+            dialogNotificacion: false,
 
             form: {
                 tx_observaciones: null,
@@ -176,6 +187,11 @@ export default {
         addAsistencia()
         {
             this.dialogAsistencia = true
+        },
+
+        addNotificacion()
+        {
+            this.dialogNotificacion = true
         },
 
         showDialogClose()

@@ -23,8 +23,9 @@ class GrupoController extends Controller
                               'calendario:calendario.id,nb_calendario',
                               'materia:materia.id,nb_materia',
                               'coordinador:docente.id,nb_nombre,nb_apellido'])
-                    ->orderBy('id_calendario', 'asc')
                     ->orderBy('id_grado', 'asc')
+                    ->orderBy('nu_orden', 'asc')
+                    ->has('calendarioActivo')
                     ->get();
         
         return $grupo;

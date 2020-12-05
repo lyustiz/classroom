@@ -76,6 +76,7 @@
             :action="action"
             :item="item"
             @closeModal="closeModal()"
+            @onUpdateFiles="$emit('onUpdateFiles', $event)"
         ></archivo-form>
 
     </app-modal>
@@ -208,6 +209,7 @@ export default {
             {
                 this.showMessage(response.data.msj)
                 this.item = {};
+                this.$emit('onUpdateFiles', {action: 'delete', file: this.item})
                 this.list();
             })
             .catch(error => 
@@ -243,8 +245,6 @@ export default {
                 reader.onload = () => 
                 {
                     this.file = reader.result
-
-                    console.log(this.file )
 
                     let type = this.file.split(';')[0].split(':')[1]
 

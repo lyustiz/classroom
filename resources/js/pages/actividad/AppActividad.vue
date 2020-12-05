@@ -77,9 +77,9 @@
         </v-col>
 
         <v-col cols="4">
-            <v-carousel :show-arrows="false" :show-arrows-on-hover="true"  width="100%" class="rounded-lg white elevation-3" continuous cycle>
+            <v-carousel :show-arrows="false" :show-arrows-on-hover="true"  width="100%" height="370"  class="rounded-lg white elevation-3" continuous cycle>
                 <v-carousel-item v-for="(foto, idx) in fotos" :key="idx">
-                    <v-img :src="foto.full_url"></v-img>
+                    <v-img :src="foto.full_url" max-height="370" contain ></v-img>
                 </v-carousel-item>
             </v-carousel>
         </v-col>
@@ -189,13 +189,25 @@ export default {
 
             let respondidas = {  correcta: [],  incorrecta: []  }
 
-            for (const respuesta of this.respuestas) {
-                if(this.correctas.includes(respuesta))
-                {
-                    respondidas['correcta'].push(respuesta)
-                } else {
-                    respondidas['incorrecta'].push(respuesta)
+            if(Array.isArray(this.respuestas))
+            {
+                 for (const respuesta of this.respuestas) {
+                    if(this.correctas.includes(respuesta))
+                    {
+                        respondidas['correcta'].push(respuesta)
+                    } else {
+                        respondidas['incorrecta'].push(respuesta)
+                    }
                 }
+
+            } else 
+            {
+                if(this.correctas.includes(this.respuestas))
+                {
+                    respondidas['correcta'].push(this.respuestas)
+                } else {
+                    respondidas['incorrecta'].push(this.respuestas)
+                }            
             }
 
             if(respondidas['incorrecta'] > 0)

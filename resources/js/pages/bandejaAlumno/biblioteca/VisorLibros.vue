@@ -151,7 +151,7 @@ export default {
     {       
         currentPage(newPage, oldpPage)
         {
-           if((newPage != oldpPage)  && (oldpPage !=null) )
+            if((newPage != oldpPage)  && (oldpPage !=null) )
             {
                 this.loadBook()
             }
@@ -169,7 +169,7 @@ export default {
     computed:
     {
         basePath() {
-            return `/storage/libro/${this.libro.id_grado}/${this.libro.id_materia}/${this.libro.id}`
+            return `/storage/libro/${this.libro.id_materia}/${this.libro.id_grado}`
         },
 
         srcLeft() {

@@ -11,7 +11,7 @@
                 <v-row >
 
                 <v-col>
-                    <clase-calendar :clases="items" @onUpdateDate="updateDate($event)"></clase-calendar>
+                    <clase-calendar :clases="clases" @onUpdateDate="updateDate($event)"></clase-calendar>
                 </v-col>
 
                 <v-col cols="12">
@@ -62,6 +62,7 @@
                         filled
                         rounded
                         return-object
+                        @change="filterData()"
                     ></v-select>
                 </v-col>
 
@@ -144,7 +145,7 @@
                     
                 </v-col>
 
-                <v-col cols="6" v-for="clase in items" :key="clase.id">
+                <v-col cols="6" v-for="clase in clases" :key="clase.id">
                     <clase-card :clase="clase" :loading="loading" @onUpdateData="list()"></clase-card>
                 </v-col>
 
@@ -171,10 +172,13 @@
             :materia="materia"
             :item="null"
             action="ins"
-            @closeDialog="closeDialog('modal', $event)"
+            @closeModal="closeDialog('modal', true)"
+            v-if="modal"
         ></clase-form>
 
     </app-modal>
+
+    
 
  </v-card>
 
@@ -194,7 +198,7 @@ export default {
     components: { 
         'clase-form':     ClaseForm,
         'clase-calendar': ClaseCalendar,
-        'clase-card':     ClaseCard
+        'clase-card':     ClaseCard,
     },
 
     created()
@@ -208,7 +212,7 @@ export default {
         docente()
         {
             return this.$store.getters['getDocente']
-        }
+        },
     },
 
     data () {
@@ -216,6 +220,7 @@ export default {
                 menu: [
                     { action: 'addAsistencia',  icon: 'mdi-account-multiple-check',  label: 'Asistencia' },
                 ],
+                clases:     [],
                 grados:     [],
                 grupos:     [],
                 materias:   [],
@@ -225,7 +230,7 @@ export default {
                 clase:      null,
                 asistencia: null,
 
-                dia: null,
+                day: null,
 
                 dialogAsistencia: false,
 
@@ -240,6 +245,7 @@ export default {
         list(){
             this.getResource(`clase/docente/${this.docente.id}`).then( data =>{
                 this.items = data
+                this.filterData()
             })
         },
         
@@ -252,25 +258,46 @@ export default {
             })
         },
 
-        updateDate(dia)
+        updateDate(day)
         {
-            this.dia = updateDate
+            this.day = day
+            this.grado   = null
+            this.grupo   = null
+            this.materia = null
+            this.filterData()
         },
 
         addClase()
         {
+            if(this.hasIniciada()) {
+                this.showError('Existe una clase Iniciada favor finalizarla')
+                return
+            } 
             this.modal = true
+        },
+
+        hasIniciada()
+        {
+            for (const clase of this.items) {
+                if(!clase.fe_completada)
+                {
+                    return true
+                }
+            }
+            return false
         },
 
         getGrupos(grado)
         {
             this.grupos   = grado.grupo
             this.materia  = null
+            this.filterData()
         },
 
         getMaterias(grupo)
         {           
             this.materias  = grupo.materia
+            this.filterData()
         },
 
         closeDialog(dialog, refresh)
@@ -289,7 +316,6 @@ export default {
             let left   = window.innerWidth  * 10 / 100 / 2
             let top    = window.innerHeight * 10 / 100 / 2
 
-            
             if( this.windowsMeet === false || this.windowsMeet.closed) {
                 this.windowsMeet = window.open(url, 'googlemeet', `width=${width},height=${height},left=${left},top=${top},menubar=0,toolbar=0`);
                 this.windowsMeet.document.title = "Virtualin Meet";
@@ -304,12 +330,24 @@ export default {
         initVirtualinMeet()
         {
             if(this.windowsMeet){ this.windowsMeet.close() }
-
-            
             this.navegateTo('meet-docente')
-        }
+        },
 
- 
+        filterData()
+        {
+            this.clases =    this.items.filter( (item) => 
+            {
+                if ( (this.day) ? ( item.fe_clase.substr(0, 10)  )!= this.day : false ) return false
+
+                if ((this.grado) ? item.id_grado != this.grado.id : false ) return false
+
+                if ((this.grupo) ? item.id_grupo != this.grupo.id : false ) return false
+
+                if ((this.materia) ? item.id_materia != this.materia.id : false ) return false
+            
+                return true
+            })
+        }
     }
 }
 </script>

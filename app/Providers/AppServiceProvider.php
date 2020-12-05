@@ -33,14 +33,16 @@ class AppServiceProvider extends ServiceProvider
 
         Relation::morphMap([
             //Asignaciones
-            'actividad' => 'App\Models\Actividad',
-            'enlace'    => 'App\Models\Enlace',
-            'recurso'   => 'App\Models\Recurso',
-            'libro'     => 'App\Models\Libro',
+            'actividad'       => 'App\Models\Actividad',
+            'enlace'          => 'App\Models\Enlace',
+            'recurso'         => 'App\Models\Recurso',
+            'libro'           => 'App\Models\Libro',
+            'tipo_asignacion' => 'App\Models\TipoAsignacion',
             //Evaluaciones
-            'prueba'     => 'App\Models\Prueba',
-            'tarea'      => 'App\Models\Tarea',
-            'rasgos'     => 'App\Models\Rasgos',
+            'prueba'          => 'App\Models\Prueba',
+            'tarea'           => 'App\Models\Tarea',
+            'rasgo'           => 'App\Models\Rasgo',
+            'tipo_evaluacion' => 'App\Models\TipoEvaluacion',
         ]);
     }
 }

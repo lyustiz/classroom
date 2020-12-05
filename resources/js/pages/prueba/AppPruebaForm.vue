@@ -16,31 +16,24 @@
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.nb_prueba"
-                label="Nombre"
+                label="Nombre de la Prueba"
                 dense
                 rounded
                 filled
             ></v-text-field>
         </v-col>
 
-        <v-tooltip right v-model="menuAyudaOpcional" color="success" >
-        <template v-slot:activator="{ on }">
-            <v-checkbox
-                v-on="on"
-                :rules="[rules.check]"
-                v-model="form.bo_ver_resultado"
-                label="Mostrar Resultados"
-                :true-value="1"
-                :false-value="0"
-                :indeterminate="(form.bo_ver_resultado== null)"
-                dense
-                class="col-auto  ml-3"
-                append-icon="mdi-help-rhombus"
-                @click:append="menuAyudaVerResultado =!menuAyudaVerResultado "
-            ></v-checkbox>
-        </template>
-        <span>Indica si se muestran lo resultados de la prueba al finalizar</span>
-       </v-tooltip>
+        <v-checkbox
+            :rules="[rules.check]"
+            v-model="form.bo_ver_resultado"
+            label="Mostrar Resultados"
+            :true-value="1"
+            :false-value="0"
+            :indeterminate="(form.bo_ver_resultado== null)"
+            dense
+            class="col-auto  ml-3"
+        ></v-checkbox>
+
                                                         
         </v-row>
 
@@ -57,8 +50,8 @@
             <form-buttons
                 @update="update()"
                 @store="store()"
-                @clear="clear()"
-                @cancel="cancel()"
+                @clear="$emit('closeDialog')"
+                @cancel="$emit('closeDialog')"
                 action="upd"
                 :valid="valid"
                 :loading="loading"

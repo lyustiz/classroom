@@ -136,6 +136,16 @@ export default {
     data() {
         return {
             resource: 'calendario',
+            dates:
+            {
+                fe_inicio: 	 null,
+	 	 	 	fe_fin: 	 null,
+            },
+            pickers:
+            {
+                fe_inicio: 	 null,
+	 	 	 	fe_fin: 	 null,
+            },
             form:
             {
                 id: 	          null,

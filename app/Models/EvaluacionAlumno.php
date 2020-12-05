@@ -10,7 +10,10 @@ class EvaluacionAlumno extends Model
 
     protected $fillable   = [
                             'id_evaluacion',
-	 	 	 	 	 	 	'id_alumno',
+                            'id_alumno',
+                            'fe_evaluacion',
+                            'hh_inicio',
+                            'hh_fin',     
                             'nu_calificacion',
                             'id_calificacion',
 	 	 	 	 	 	 	'tx_observaciones',
@@ -22,6 +25,38 @@ class EvaluacionAlumno extends Model
                             'created_at',
 	 	 	 	 	 	 	'updated_at'
                             ];
+
+    protected $asignada  = 3;
+
+    protected $ejecucion = 4;
+
+    protected $ejecutada = 5;
+
+    protected $evaluada  = 6;
+
+    protected $cerradas  = 7;
+
+
+    public function asignada()
+    {
+        return $this->asignada;   
+    }
+    public function ejecucion()
+    {
+        return $this->ejecucion;   
+    }
+    public function ejecutada()
+    {
+        return $this->ejecutada;   
+    }
+    public function evaluada()
+    {
+        return $this->evaluada;   
+    }
+    public function cerradas()
+    {
+        return $this->cerradas;   
+    }
 
     public function scopeActivo($query)
     {
@@ -60,6 +95,6 @@ class EvaluacionAlumno extends Model
 
     public function archivo()
     {
-        return $this->hasOne('App\Models\Archivo',  'tx_origen_id', 'id')->where('id_tipo_archivo', 11);
+        return $this->hasOne('App\Models\Archivo',  'tx_origen_id', 'id')->where('id_tipo_archivo', 13);
     }
 }

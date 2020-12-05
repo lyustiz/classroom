@@ -1,145 +1,168 @@
 <template>
 
-    <v-card :loading="loading" flat height="80vh">
+    <v-card :loading="loading" flat height="95vh">
 
-        <v-card-title class="pa-0">
-            <app-simple-toolbar color="teal" dense title="Ejecutar Cuestionario" @closeModal="$emit('closeDialog', true)"></app-simple-toolbar>
+        <v-card-title class="pa-0 grey lighten-4" v-if="pregunta">
+
+            <v-col cols="8">
+                <v-avatar color="grey lighten-3 mx-4" size="38">
+                    <v-icon color="green">mdi-comment-question</v-icon>
+                </v-avatar>
+                <span class="subtitle-1" >{{ pregunta.nb_pregunta }}</span> 
+            </v-col>
+
+            <v-spacer></v-spacer>
+
+             <v-col cols="auto">
+                 Puntos: 
+                <span class="subtitle-1">{{ pregunta.nu_valor  }}</span> 
+            </v-col>
+
+            <v-col cols="auto">
+               <list-simple-icon icon="mdi-help" color="green" :label="(pregunta.tx_observaciones) ? pregunta.tx_observaciones: 'sin ayuda' "></list-simple-icon>
+            </v-col>
+                   
         </v-card-title>
 
-      
-        <v-card-text>
+        <v-card-text class="pregunta-container">
 
+            <v-form ref="form" v-model="valid" lazy-validation v-if="pregunta">
 
-
-            <v-row>
-
-                <v-col>
-
-                     <v-list-item  >
-                            <v-list-item-avatar color="teal" size="60">
-                                <v-icon color="white" size="46">mdi-order-bool-descending-variant</v-icon>
-                            </v-list-item-avatar>
-                            <v-list-item-content>
-                                <v-list-item-title v-text="evaluacion.evaluacion.origen.nb_prueba"></v-list-item-title>
-                                <v-list-item-subtitle >Tema: {{evaluacion.evaluacion.tema.nb_tema}} - {{evaluacion.evaluacion.materia.nb_materia}}</v-list-item-subtitle>
-                            </v-list-item-content>
-                    </v-list-item>
-
-                </v-col>
-            </v-row>
-                                     
-
-            <v-row>
-
-
-
-            <v-col cols="4">
-                          
-                <v-subheader>Desde:</v-subheader>
-                <v-sheet
-                    color="green"
-                    class="rounded-lg pa-2 pointer mx-auto"
-                    elevation="1"
-                    width="180"
-                    v-ripple
-                >
-                <v-row no-gutters>
-                    <v-col>
-                        <h3 class="white--text text-center text-uppercase">
-                            {{ (evaluacion.evaluacion.fe_fin) ? monthNameFromDate(evaluacion.evaluacion.fe_fin): '--' }} 
-                            {{ (evaluacion.evaluacion.fe_fin) ? yearFromDate(evaluacion.evaluacion.fe_fin): '--' }}
-                        </h3> 
-                    </v-col>
-                </v-row>
-                <v-row no-gutters>
-                    <v-col>
-                        <div class="display-3 white--text text-center">
-                            {{ (evaluacion.evaluacion.fe_fin) ? dayFromDate(evaluacion.evaluacion.fe_fin): '--' }} 
-                        </div>
-                    </v-col>
-                </v-row>
-                <v-row no-gutters>
-                    <v-col>
-                        <h3 class="white--text text-center">
-                            {{ evaluacion.evaluacion.hh_fin }} 
-                        </h3> 
-                    </v-col>
-                </v-row>
-                </v-sheet>
-
-
-            </v-col>
-            <v-col cols="4">
-                          
-                <v-subheader>Hasta:</v-subheader>
-                <v-sheet
-                    color="deep-orange"
-                    class="rounded-lg pa-2 pointer mx-auto"
-                    elevation="1"
-                    width="180"
-                    v-ripple
-                >
-                <v-row no-gutters>
-                    <v-col>
-                        <h3 class="white--text text-center text-uppercase">
-                            {{ (evaluacion.evaluacion.fe_fin) ? monthNameFromDate(evaluacion.evaluacion.fe_fin): '--' }} 
-                            {{ (evaluacion.evaluacion.fe_fin) ? yearFromDate(evaluacion.evaluacion.fe_fin): '--' }}
-                        </h3> 
-                    </v-col>
-                </v-row>
-                <v-row no-gutters>
-                    <v-col>
-                        <div class="display-3 white--text text-center">
-                            {{ (evaluacion.evaluacion.fe_fin) ? dayFromDate(evaluacion.evaluacion.fe_fin): '--' }} 
-                        </div>
-                    </v-col>
-                </v-row>
-                <v-row no-gutters>
-                    <v-col>
-                        <h3 class="white--text text-center">
-                            {{ evaluacion.evaluacion.hh_fin }} 
-                        </h3> 
-                    </v-col>
-                </v-row>
-                </v-sheet>
-            </v-col>
-
-            
-            <v-col cols="4">
+            <v-row  justify="center">
                 
-                <v-subheader>Tiempo Ejecucion</v-subheader>
-                <v-sheet
-                    color="info"
-                    class="rounded-lg pa-2 pointer mx-auto"
-                    elevation="1"
-                    width="180"
-                    v-ripple
-                >
-                <v-row no-gutters>
-                    <v-col class="mb-2">
-                        <h3 class="white--text text-center text-uppercase">minutos:</h3> 
-                    </v-col>
+                <v-card width="98vw" flat class="mt-4">
+                <v-card-text>
+                <v-row>
+                
+
+                <v-col cols="12" md="7" v-if="pregunta.id_tipo_pregunta == 1">
+                    <v-subheader>{{pregunta.tipo_pregunta.nb_tipo_pregunta}} : {{pregunta.tipo_pregunta.tx_observaciones}}</v-subheader>
+                    <v-textarea
+                        :rules="[rules.desarrollo]"
+                        v-model="form.tx_respuesta"
+                        rows="8"
+                        outlined
+                        name="input-7-4"
+                        label="Respuesta"
+                        hint="Indique la respuesta"
+                    ></v-textarea>
+                </v-col>
+
+                <v-col cols="12" md="7" v-if="pregunta.id_tipo_pregunta == 2">
+                   <v-list subheader dense> 
+                       <v-subheader>{{pregunta.tipo_pregunta.nb_tipo_pregunta}} : {{pregunta.tipo_pregunta.tx_observaciones}}</v-subheader>
+                        <v-list-item-group :mandatory="(form.id_respuesta) ? form.id_respuesta.length > 0 : false " v-model="form.id_respuesta">
+                        <v-list-item v-for="(respuesta, idx) in pregunta.respuesta" :key="idx" :value="respuesta.id"> 
+                            <template v-slot:default="{ active }">
+                                <v-list-item-avatar color="grey lighten-4">
+                                    <span class="indigo--text headline">{{ letras[idx]}}</span>
+                                </v-list-item-avatar>
+                                <v-list-item-content>
+                                    <v-list-item-title v-text="respuesta.nb_respuesta"></v-list-item-title>
+                                </v-list-item-content>
+                                <v-list-item-action>
+                                    <v-checkbox :input-value="active" :disabled="loading" ></v-checkbox>
+                                </v-list-item-action>
+                            </template>
+                        </v-list-item>
+                        </v-list-item-group>
+                    </v-list>
+                    <v-input :value="form.id_respuesta" :rules="[rules.option]"></v-input>
+                </v-col>
+
+                <v-col cols="12" md="7" v-if="pregunta.id_tipo_pregunta == 3">
+                   <v-list subheader dense> 
+                       <v-subheader>{{pregunta.tipo_pregunta.nb_tipo_pregunta}} : {{pregunta.tipo_pregunta.tx_observaciones}}</v-subheader>
+                        <v-list-item-group  multiple v-model="form.id_respuesta">
+                        <v-list-item v-for="(respuesta, idx) in pregunta.respuesta" :key="idx" :value="respuesta.id"> 
+                            <template v-slot:default="{ active }" >
+                                <v-list-item-avatar color="grey lighten-4">
+                                    <span class="indigo--text headline">{{ letras[idx]}}</span>
+                                </v-list-item-avatar>
+                                <v-list-item-content>
+                                    <v-list-item-title v-text="respuesta.nb_respuesta"></v-list-item-title>
+                                </v-list-item-content>
+                                <v-list-item-action>
+                                    <v-checkbox :input-value="active" :disabled="loading" ></v-checkbox>
+                                </v-list-item-action>
+                            </template>
+                        </v-list-item>
+                        </v-list-item-group>
+                    </v-list>
+                    <v-input :value="form.id_respuesta" :rules="[rules.multiple, rules.respuestas(pregunta.respuesta.length-1)]"></v-input>
+                </v-col>
+
+                 <v-col cols="12" md="5" v-if="pregunta.foto">
+                    <v-img class="rounded-lg " height="300px" :src="pregunta.foto.full_url"></v-img> 
+               </v-col>
                 </v-row>
-                <v-row no-gutters>
-                    <v-col>
-                        <div class="display-3 white--text text-center mb-3">
-                            {{evaluacion.evaluacion.nu_minutos}}
-                        </div>
-                    </v-col>
-                </v-row>
-                </v-sheet>
-            </v-col>
+                </v-card-text>
+                <v-card-actions>
+                    <v-row justify="center">
+              
+                <v-btn color="success" :loading="loading" @click="responder()">Responder</v-btn>
+           
+            </v-row>
+                </v-card-actions>
+                </v-card>
+
+            </v-row>
+
             
 
-<!--             {{evaluacion}}
- -->
-            <v-col cols="12"  class="text-center mt-12" @click="confirm=true">
-                    <v-btn large color="success"><v-icon class="mr-2">mdi-flag-checkered</v-icon>Iniciar Prueba</v-btn>
-            </v-col>
+            </v-form>
 
-</v-row>
+            <v-row justify="center" v-else >
+                <v-col cols="11" md="10" v-if="!loading">
+                    <v-alert type="warning" :value="true"  prominent outlined border="left" class="mt-12 text-justify">
+                        ¿Todas las preguntas han sido respondidas?. Puede revisar nuevamente su respuestas dando click en los numeros de la barra inferior o presione el boton "Finalizar" para finalizar la prueba.
+                    </v-alert>
+                </v-col>
+
+                <v-col cols="11" md="10" v-if="!loading" class="text-center mb-12 mt-12" @click="confirm=true">
+                    <v-btn large color="success"><v-icon class="mr-2">mdi-flag-checkered</v-icon>  Finalizar</v-btn>
+                </v-col>
+
+                <app-confirm 
+                    :confirm="confirm" 
+                    titulo="Finalizar Prueba" 
+                    mensaje="Desea finalizar la Prueba?" 
+                    @closeConfirm="closeConfirm($event, 'confirm', prueba)">
+                </app-confirm>
+            </v-row>
+
             <pre v-if="$App.debug">{{ $data }}</pre>
         </v-card-text>
+
+        <v-card-actions class="grey lighten-4">
+            <v-row no-gutters justify="space-between">
+            <v-col cols="auto">
+                <v-slide-group show-arrows   class="text-center"  >
+                    <v-stepper  class="subtitle-2 pregunta-stepper elevation-0 rounded-xl" @change="showPregunta($event)" v-model="nroPregunta" >
+                        <v-stepper-header>
+                            <v-stepper-step v-for="(pregunta, idx) in prueba.pregunta" :key="idx" :step="pregunta.nu_orden" :color="colorPregunta(pregunta.nu_orden)" editable>
+                            </v-stepper-step>
+                            <v-stepper-step step="Fin" :rules="[() => true]" editable>
+                            </v-stepper-step>
+                        </v-stepper-header>
+                    </v-stepper> 
+                </v-slide-group>
+            </v-col>
+
+            <v-col cols="auto">
+                <app-timer :width="8" :size="70" :minutes="0" :seconds="tiempo*60"></app-timer>
+            </v-col>
+            </v-row>
+
+        </v-card-actions>
+    
+        <v-overlay
+            absolute
+            :opacity="0.3"
+            :value="loading"
+            :z-index="10">
+            <v-icon size="40" class="mdi-spin">mdi-loading</v-icon>
+        </v-overlay>
 
     </v-card>
     
@@ -154,7 +177,12 @@ export default {
 
     props:
     {
-        evaluacion: {
+        evaluacionAlumno: {
+            type:    Object,
+            default: () => {}
+        },
+
+        prueba: {
             type:    Object,
             default: () => {}
         },
@@ -162,8 +190,10 @@ export default {
 
     created()
     {
-        /* this.preguntaPendiente()
-        this.setRespondidas() */
+        this.tiempo = this.evaluacionAlumno.evaluacion.nu_minutos
+       
+        this.preguntaPendiente()
+        this.setRespondidas()
     },
 
     computed()
@@ -233,6 +263,7 @@ export default {
 
     data() {
         return {
+            tiempo: null,
             timer:  true, 
             pregunta:  null,
             respuesta: null,
@@ -282,13 +313,14 @@ export default {
 
         setRespondidas()
         {
-            for (const pregunta of this.prueba.pregunta) {
+           
+           for (const pregunta of this.prueba.pregunta) {
 
                 if(pregunta.respuesta_alumno.length > 0)
                 {
                     this.respondidas.push(pregunta.nu_orden)
                 }
-            }
+            } 
         },
 
         colorPregunta(nuOrden)
@@ -300,10 +332,11 @@ export default {
         {
             if (!this.$refs.form.validate())  return 
 
-            this.form.id_prueba        = this.prueba.id
-            this.form.id_pregunta      = this.pregunta.id 
-            this.form.id_alumno        = this.alumno.id
-            this.form.id_usuario       = this.idUser 
+            this.form.id_prueba            = this.prueba.id
+            this.form.id_evaluacion_alumno = this.evaluacionAlumno.id
+            this.form.id_pregunta          = this.pregunta.id 
+            this.form.id_alumno            = this.alumno.id
+            this.form.id_usuario           = this.idUser 
 
             if(this.hasRespuesta)
             {
@@ -344,9 +377,9 @@ export default {
         {
             let data = {id_usuario: this.idUser }
             this.validateForm = false
-            this.updateResource(`pruebaAlumno/finalizar/${this.prueba.prueba_alumno[0].id}`, data).then( data => {
+            this.updateResource(`evaluacionAlumno/${this.evaluacionAlumno.id}/finalizarPrueba`, data).then( data => {
                 this.showMessage(data.msj)
-                this.$emit('closeModal', true);
+                this.$emit('onFinalizarPrueba', true);
             }) 
         },
     
@@ -357,5 +390,8 @@ export default {
 <style scoped>
 .pregunta-stepper{
     width: 100% !important;
+}
+.pregunta-container{
+    height: 70vh;
 }
 </style>

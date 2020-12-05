@@ -9,7 +9,7 @@
         <v-card-title class="grey lighten-3">
             <v-menu v-model="menu" transition="slide-x-transition" right :close-on-content-click="false" content-class="rounded-xl">
                 <template v-slot:activator="{ on }">
-                    <v-avatar v-on="on" color="red" rounded dark size="48" class="pinter">
+                    <v-avatar v-on="on" color="red" rounded dark size="48" class="pointer">
                         <h6 class="white--text" no-gutters>{{dia}}</h6>
                         <h6 class="white--text">{{ mes}}</h6>        
                     </v-avatar>

@@ -102,9 +102,13 @@
             <v-col cols="12" lg="4" md="6" sm="12" >
                 <gestion-actividad :actividades="actividades" :tema="tema" @onUpdateData="getRecursos()"></gestion-actividad>
             </v-col>
-
+            
             <v-col cols="12" lg="4" md="6" sm="12" >
                 <gestion-cuestionario :cuestionarios="cuestionarios" :tema="tema" :grado="grado" :materia="materia" @onUpdateData="getRecursos()"></gestion-cuestionario>
+            </v-col>
+
+            <v-col cols="12" lg="4" md="6" sm="12" >
+                <gestion-tarea :tareas="tareas" :tema="tema" :grado="grado" :materia="materia" @onUpdateData="getRecursos()"></gestion-tarea>
             </v-col>
 
             <v-overlay class="rounded-lg" absolute :opacity="0.3" :value="loading">
@@ -133,6 +137,7 @@ import GestionAudio        from './GestionAudio'
 import GestionLectura      from './GestionLectura'
 import GestionActividad    from './GestionActividad'
 import GestionCuestionario from './GestionCuestionario'
+import GestionTarea        from './GestionTarea'
 
 
 export default {
@@ -146,6 +151,7 @@ export default {
         'gestion-lectura':      GestionLectura,
         'gestion-actividad':    GestionActividad,
         'gestion-cuestionario': GestionCuestionario,
+        'gestion-tarea':        GestionTarea,
     },
 
     mixins:     [ DataHelper ],
@@ -195,6 +201,7 @@ export default {
         {
             this.materias = [];
             this.temas    = [];
+            this.grado    = null
             this.materia  = null
             this.tema     = null
             this.getResource( `grado/materia/docente/${this.docente.id}` ).then( data =>  this.grados = data );
@@ -224,6 +231,7 @@ export default {
                 this.getAudios(this.recursos.recurso)
                 this.getLecturas(this.recursos.recurso)
                 this.getCuestionarios(data.prueba)
+                this.getTareas(data.tarea)
             });
         },
 
@@ -252,9 +260,9 @@ export default {
             this.cuestionarios = cuestionarios
         },
 
-        getTareas(evaluaciones)
+        getTareas(tareas)
         {
-            this.tareas = evaluaciones.filter( evaluacion => evaluacion.id_tipo_evaluacion == 2)
+            this.tareas = tareas
         },
 
         closeModal()

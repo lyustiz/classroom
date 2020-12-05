@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AsignacionAlumno;
+use App\Models\EvaluacionAlumno;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
@@ -35,19 +36,40 @@ class AsignacionAlumnoController extends Controller
                             })
                             ->get(); 
 
-        return $this->formatDataAlumnos($asignaciones);
+        $evaluaciones = EvaluacionAlumno::with([
+                                'alumno:id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',
+                                'evaluacion:id,id_tipo_evaluacion,id_materia,id_tema,id_origen,tx_origen,fe_inicio,fe_fin',
+                                'evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion,tx_icono,tx_color',
+                                'evaluacion.materia:id,nb_materia',
+                                'evaluacion.tema:id,nb_tema',
+                                'evaluacion.origen'
+                            ])
+                            ->whereHas('alumno.grupo', function (Builder $query) use($idGrupo) {
+                                $query->where('grupo.id', $idGrupo);
+                            })
+                            ->get();                     
+        
+        return $this->formatDataAlumnos($asignaciones, $evaluaciones);
     }
 
-    public function formatDataAlumnos($asignacionesAlumno)
+    public function formatDataAlumnos($asignacionesAlumno, $evaluacionesAlumno)
     {
         $data = [];
+
+        foreach ($evaluacionesAlumno as $evaluacionAlumno) //data[tipo][materia]
+        { 
+            $alumno         = $evaluacionAlumno->alumno->nb_alumno;
+            $evaluacion     = $evaluacionAlumno->evaluacion;
+            $tipoEvaluacion = $evaluacion->tipoEvaluacion->nb_tipo_evaluacion;
+            $data[$alumno]['evaluacion'][$tipoEvaluacion][] = $evaluacionAlumno;
+        }
 
         foreach ($asignacionesAlumno as $asignacionAlumno) //data[tipo][materia]
         { 
             $alumno         = $asignacionAlumno->alumno->nb_alumno;
             $asignacion     = $asignacionAlumno->asignacion;
             $tipoAsignacion = $asignacion->tipoAsignacion->nb_tipo_asignacion;
-            $data[$alumno][$tipoAsignacion][] = $asignacionAlumno;
+            $data[$alumno]['asignacion'][$tipoAsignacion][] = $asignacionAlumno;
         }
 
         return $data;

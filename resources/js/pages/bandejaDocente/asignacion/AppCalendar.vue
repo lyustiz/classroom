@@ -62,7 +62,7 @@
                     <v-icon size="25">mdi-order-bool-descending-variant</v-icon>
                 </v-btn>
 
-                 <v-btn icon dark x-small :color=" (filter.tarea) ? `teal` : 'teal lighten-4'" class="mx-1" depressed  @click="filter.tarea = !filter.tarea">
+                 <v-btn icon dark x-small :color=" (filter.tarea) ? `deep-purple` : 'teal lighten-4'" class="mx-1" depressed  @click="filter.tarea = !filter.tarea">
                     <v-icon size="25">mdi-notebook</v-icon>
                 </v-btn>
 
@@ -129,6 +129,44 @@
                         </v-menu>
 
                     </v-col>
+
+
+
+                     <v-col cols="auto" v-if="tipo == 'tarea'" class="mx-n2" v-show="filter.tarea">
+
+                        <v-menu offset-y absolute content-class="rounded-lg" min-width="200px" right>
+                            <template v-slot:activator="{ on }">
+                                <v-btn icon dark color="deep-purple" depressed v-on="on">
+                                    <v-icon size="30" v-text="'mdi-notebook'"></v-icon>
+                                </v-btn>
+                            </template>
+
+                            <div v-for="(evaluaciones, materia) in materias" :key="materia" class="white">
+                                
+                                <v-list dense subheader>
+                                    <v-subheader class="">{{materia}}</v-subheader>
+                                    <v-list-item color="teal" v-for="(evaluacion, materia) in evaluaciones" :key="materia" link class="my-n2" @click="verEvaluacion(evaluacion, 'tarea')">
+                                        <v-list-item-avatar color="white" size="35">
+                                            <v-icon size="30" color="deep-purple">mdi-notebook</v-icon>
+                                        </v-list-item-avatar>
+                                        <v-list-item-content>
+                                            <v-list-item-title>{{ evaluacion.origen.nb_tarea }}</v-list-item-title>
+                                        </v-list-item-content>
+                                        <v-list-item-action>
+                                            <v-btn icon>
+                                                <v-icon size="20" color="red lighten-1" @click.stop="confirmEliminar(evaluacion, 'evaluacion')">mdi-delete</v-icon>
+                                            </v-btn>
+                                        </v-list-item-action>
+                                    </v-list-item>
+                                </v-list>
+                            </div>
+
+                        </v-menu>
+
+                    </v-col>
+
+
+
                     
                     <v-col cols="auto" v-if="tipo == 'actividad'" class="mx-n2" v-show="filter.actividad">
 
@@ -287,7 +325,7 @@
                                         </v-list-item-content>
                                         <v-list-item-action>
                                             <v-btn icon>
-                                                <v-icon size="20" color="red lighten-1" @click="confirmEliminar(asignacion)">mdi-delete</v-icon>
+                                                <v-icon size="20" color="red lighten-1" @click="confirmEliminar(asignacion, 'asignacion')">mdi-delete</v-icon>
                                             </v-btn>
                                         </v-list-item-action>
                                         
@@ -327,14 +365,6 @@
                     </v-list-item-content>
                 </v-list-item>
 
-               <!--  <v-list-item class="pointer" ripple @click="asignarEvaluacion(day, { name: 'tarea', icon: 'mdi-notebook', color: 'purple lighten-4', origen: 'tarea' })">
-                    <v-list-item-avatar color="white" size="35">
-                        <v-icon size="30" color="purple">mdi-notebook</v-icon>
-                    </v-list-item-avatar>
-                    <v-list-item-content>
-                        <v-list-item-title class="text--purple">{{'Tarea'}}</v-list-item-title>
-                    </v-list-item-content>
-                </v-list-item> -->
 
                 <v-subheader>Asignaciones</v-subheader>
 
@@ -380,7 +410,7 @@
         <asignar-evaluacion v-if="dialogEvaluacion" :grupo="grupo" :dia="dia" :tipo="tipo" @closeDialog ="closeDialog('dialogEvaluacion', $event)" ></asignar-evaluacion>
     </v-dialog>
 
-    <v-dialog v-model="dialogActividad" fullscreen>
+    <v-dialog v-model="dialogActividad" fullscreen persistent>
         <app-actividad v-if="dialogActividad" :actividad="actividad"  @closeDialog="closeDialog('dialogActividad')" ></app-actividad>
     </v-dialog>
 
@@ -406,10 +436,14 @@
         <visor-prueba v-if="dialogPrueba" :prueba="prueba" @closeDialog="closeDialog('dialogPrueba')" ></visor-prueba>
     </v-dialog>
 
+     <v-dialog v-model="dialogTarea" width="80vw" scrollable content-class="rounded-xl">
+        <tarea-form v-if="dialogTarea" :item="tarea" @closeDialog="closeDialog('dialogTarea', $event)" action="upd"></tarea-form>
+    </v-dialog>
+
     <form-delete
         :dialog="dialogEliminar"
         :loading="loading"
-        message="Desea eliminar la Asignacion Seleccionada?"
+        message="Desea eliminar la Asignacion/Evaluacion Seleccionada?"
         @deleteItem="eliminarItem()"
         @deleteCancel="cancelEliminar()"
     ></form-delete>
@@ -423,6 +457,7 @@ import AppData           from '@mixins/AppData';
 import AsignarActividad  from './AsignarActividad';
 import AsignarEvaluacion from './AsignarEvaluacion';
 import AppActividad      from '@pages/actividad/AppActividad';
+import AppTareaForm      from '@pages/tarea/AppTareaForm'
 
 import VisorPrueba      from '@pages/prueba/VisorPrueba';
 
@@ -433,7 +468,8 @@ export default {
         'asignar-actividad':  AsignarActividad,
         'asignar-evaluacion': AsignarEvaluacion,
         'app-actividad':      AppActividad,
-        'visor-prueba':       VisorPrueba
+        'visor-prueba':       VisorPrueba,
+        'tarea-form':         AppTareaForm
     }, 
 
     mixins: [AppData],
@@ -659,6 +695,7 @@ export default {
 
         confirmEliminar(item, tipoItem)
         {
+            console.log(item, tipoItem)
             this.item           = item
             this.tipoItem       = tipoItem
             this.dialogEliminar = true
@@ -673,6 +710,7 @@ export default {
 
         eliminarItem()
         {
+            
             this.deleteResource(`${this.tipoItem}/${this.item.id}`).then( data => {
                 this.showMessage(data.msj)
                 this.dialogEliminar = false
@@ -692,7 +730,8 @@ export default {
                     break;
                 
                 case 'audio':
-                    this.audio  =   {   name: asignacion.origen.archivo.nb_archivo,
+                    this.audio  =   {   
+                                        name: asignacion.origen.archivo.nb_archivo,
                                         src: `${asignacion.origen.archivo.tipo_archivo.tx_base_path}${asignacion.origen.id}/${asignacion.origen.archivo.tx_path}` 
                                     }
                     this.dialogAudio  = true                   
@@ -700,7 +739,8 @@ export default {
 
                 case 'video':
                     
-                    this.video  =   {   name: asignacion.origen.nb_enlace,
+                    this.video    = {   
+                                        name: asignacion.origen.nb_enlace,
                                         src: `${asignacion.origen.tx_url}` 
                                     } 
                                     console.log(this.video)
@@ -708,26 +748,23 @@ export default {
                     break;
 
                 case 'enlace':
-                    this.enlace        = {   name: asignacion.origen.nb_enlace,
-                                             src: `${asignacion.origen.tx_url}` 
-                                         }  
+                    this.enlace   = {   
+                                        name: asignacion.origen.nb_enlace,
+                                        src: `${asignacion.origen.tx_url}` 
+                                    }  
                     this.dialogEnlace  = true 
                     break;
                 
                 case 'lectura':
 
                     console.log(asignacion)
-                    this.lectura  =   {   name: asignacion.origen.archivo.nb_archivo,
-                                          src: `${asignacion.origen.archivo.tipo_archivo.tx_base_path}${asignacion.origen.id}/${asignacion.origen.archivo.tx_path}` 
+                    this.lectura  =  {   
+                                        name: asignacion.origen.archivo.nb_archivo,
+                                        src: `${asignacion.origen.archivo.tipo_archivo.tx_base_path}${asignacion.origen.id}/${asignacion.origen.archivo.tx_path}` 
                                     }
                     this.dialogLectura = true 
                     break;
 
-                    /* this.lectura  =   {   name: lectura.archivo.nb_archivo,
-                                src: `${lectura.archivo.tipo_archivo.tx_base_path}${lectura.id}/${lectura.archivo.tx_path}` 
-                            }
-            this.dialogLectura  = true  */
-            
                 default:
                     break;
             }
@@ -747,7 +784,6 @@ export default {
                     this.tarea     = evaluacion.origen
                     this.dialogTarea = true
                     break;                  
-                    break;
 
                 default:
                     break;

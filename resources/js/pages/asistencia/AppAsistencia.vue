@@ -63,7 +63,7 @@
                                 </v-col>
                                  <v-col cols="auto" class="my-1">
                                      <item-menu 
-                                        :item="alumno"
+                                        :item="asistencia.alumno"
                                         btn-color="transparent" 
                                         icon-color="white" 
                                         :small="false"

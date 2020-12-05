@@ -12,55 +12,18 @@
                     <v-list-item-title>{{ alumno }}</v-list-item-title>
                 </v-list-item>
             </template>
-            <v-row class="white" >
-                <v-col cols="4" v-for="(seguimiento, tipo) in tipos" :key="tipo">
-                    <v-card class="rounded-xl pb-2" >
-                        <v-toolbar :color="seguimiento[0].asignacion.tipo_asignacion.tx_color" dense dark flat>
-                            <v-row>
-                                <v-col col="1">
-                                    <v-icon size="30">{{seguimiento[0].asignacion.tipo_asignacion.tx_icono}}</v-icon>
-                                </v-col>
-                                <v-col class="headline text-left">{{ tipo }}</v-col>
-                                <v-col col="1" class="title">
-                                    {{ totalSeguimientos(seguimiento) }}
-                                </v-col>
-                            </v-row>
-                        </v-toolbar>
-                        <v-card-text class="seguimiento-container pt-0 px-1">
-                            <v-list dense>
-                            <v-list-item color="purple" link v-for="(item) in seguimiento" :key="item.id">
-                                <v-list-item-avatar color="white" size="35" >
-                                    <v-icon size="30" :color="item.asignacion.tipo_asignacion.tx_color">
-                                        {{item.asignacion.tipo_asignacion.tx_icono}}
-                                    </v-icon>
-                                </v-list-item-avatar>
-                                <v-list-item-content>
-                                    <v-list-item-title>{{ getNombre(item, tipo) }}</v-list-item-title>
-                                    <v-list-item-subtitle>
-                                        <span class="font-weight-medium"> Vistas: </span>{{item.nu_accesos}}
-                                        <span class="font-weight-medium ml-3" v-if="item.fe_acceso"> Acceso: </span>{{item.fe_acceso | formatDate}}
-                                        
-                                    </v-list-item-subtitle>
-                                </v-list-item-content>
-                                <v-list-item-action>
-                                    <v-btn icon>
-                                        <template v-if="item.fe_completado">
-                                            <v-icon size="30" color="green">mdi-checkbox-marked-circle-outline</v-icon>
-                                        </template>
-                                        <template v-else>
-                                            <v-icon size="30" color="amber darken-2">mdi-progress-clock</v-icon>
-                                        </template>
-                                    </v-btn>
-                                </v-list-item-action>
-                            </v-list-item>
-                            </v-list>
-                   
-                            
-                        </v-card-text>
-                    </v-card>
 
-                </v-col>
-            </v-row>
+            <div v-for="(seguimientos, tipo) in tipos" :key="tipo">
+                <v-row class="white"  >
+                    <v-col cols="4"  v-for="(seguimiento, idx) in seguimientos" :key="idx">
+                        
+                        <seguimiento-evaluaciones v-if="tipo =='evaluacion'"  :seguimiento="seguimiento" :tipo="tipo" @onUpdateData="list()"></seguimiento-evaluaciones> 
+
+                        <seguimiento-actividades v-else :seguimiento="seguimiento" :tipo="tipo" @onUpdateData="list()"></seguimiento-actividades>
+                        
+                    </v-col>
+                </v-row>
+            </div>
         </v-list-group>
     </v-list>
 
@@ -75,8 +38,15 @@
 
 <script>
 import DataHelper  from '@mixins/AppData';
+import SeguimientoActividades  from './SeguimientoActividades'
+import SeguimientoEvaluaciones from './SeguimientoEvaluaciones'
 
 export default {
+
+    components:{
+        SeguimientoActividades,
+        SeguimientoEvaluaciones
+    },
 
     mixins:     [ DataHelper ],
 
@@ -125,6 +95,8 @@ export default {
     data() {
         return {
             seguimientos:  [],
+            asignaciones: [],
+            evaluaciones: []
         }
     },
 
@@ -132,7 +104,7 @@ export default {
     {
         list()
         {
-            this.seguimientos = []
+            //this.seguimientos = []
             this.getResource( `asignacionAlumno/grupo/${this.grupo.id}`).then( (data) => 
             {  
                 this.seguimientos              = data

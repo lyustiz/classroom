@@ -5,9 +5,10 @@
             <span class="mt-2">{{label}}</span>
             <v-spacer></v-spacer>
 
-            <v-chip-group v-model="active" column mandatory>
-                <v-chip filter  color="amber">Pendiente <v-icon class="ml-1" size="25">mdi-progress-clock</v-icon></v-chip>
-                <v-chip filter  color="green">Completada <v-icon class="ml-1" size="25">mdi-checkbox-marked-circle-outline</v-icon></v-chip>
+            <v-chip-group v-model="active" column>
+                <v-chip filter color="amber" @change="onCompletada($event)" value="1">
+                    Ver Completadas
+                </v-chip>
             </v-chip-group>
 
         </v-row>
@@ -37,9 +38,17 @@ export default {
 
     data () {
         return {
-            active:     0,
+            active:     null,
         }
     },
+
+    methods:
+    {
+        onCompletada()
+        {
+           this.$emit('onShowComplete', !this.active )
+        }
+    }
 }
 </script>
 

@@ -27,24 +27,32 @@
                 <v-col cols="4" v-for="pregunta in preguntas" :key="pregunta.id">
                     <v-card min-height="487" class="rounded-lg">
                         
-                        <v-img class="white--text align-end" height="200px" src="/images/cuestionario.jpg"></v-img> 
+                        <v-img class="white--text align-end" height="200px" :src=" (pregunta.foto) ? pregunta.foto.full_url : '/images/cuestionario.jpg'"></v-img> 
                         
                         <v-card-title>
+                            
+                            <v-row no-gutters>
+                                <v-col cols="auto">
+                                     <list-simple-icon 
+                                    color="info" 
+                                    icon="mdi-help" 
+                                    :label="pregunta.tx_observaciones">
+                                </list-simple-icon>
+                                </v-col>
+                                <v-col class="body-2 text-justify "> 
+                                  <p class="pa-0 my-0 mx-2 normal-break">{{pregunta.nb_pregunta}}</p>  
+                                </v-col>
+                            </v-row>
 
-                            <list-simple-icon 
-                            color="info" 
-                            icon="mdi-help" 
-                            :label="pregunta.tx_observaciones"></list-simple-icon>
-                            <div class="mx-2">{{pregunta.nb_pregunta}}</div>
                         </v-card-title>
                         
                         <v-card-text>
                            <v-list dense subheader>
                                 <v-subheader class="">{{ pregunta.tipo_pregunta.tx_observaciones}} ({{pregunta.nu_valor}} Pts.)</v-subheader>
-                                <v-list-item color="teal" v-for="respuesta in pregunta.respuesta" :key="respuesta.id">
-                                    <v-list-item-icon>
-                                        <v-icon :color="pregunta.tipo_pregunta.tx_color">{{pregunta.tipo_pregunta.tx_icono}}</v-icon>
-                                    </v-list-item-icon>
+                                <v-list-item color="teal" v-for="(respuesta, idx) in pregunta.respuesta" :key="idx">
+                                    <v-list-item-avatar class="subtitle-1 indigo--text font-weight-bold" color="grey lighten-4" size="30">
+                                       {{letras[idx]}} 
+                                    </v-list-item-avatar>
                                     <v-list-item-content>
                                         <v-list-item-title>{{ respuesta.nb_respuesta }}</v-list-item-title>
                                     </v-list-item-content>

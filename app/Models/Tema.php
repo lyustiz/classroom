@@ -77,9 +77,19 @@ class Tema extends Model
         return $this->HasMany('App\Models\Prueba', 'id_tema');
     }
 
+    public function tarea()
+    {
+        return $this->HasMany('App\Models\Tarea', 'id_tema');
+    }
+
     public function evaluacion()
     {
         return $this->HasMany('App\Models\Evaluacion', 'id_tema');
+    }
+
+    public function planTema()
+    {
+        return $this->HasMany('App\Models\PlanTema', 'id_tema');
     }
 
     

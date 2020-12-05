@@ -30,8 +30,8 @@
                     <tr>
                         <td class="text-xs-left">{{ item.nb_respuesta }}</td>
 						<td class="text-xs-left">{{ item.id_pregunta }}</td>
-						<td class="text-xs-left">{{ item.bo_correcta }}</td>
-						<td class="text-xs-left">{{ item.nu_valor }}</td>
+						<td class="text-xs-center">{{ item.bo_correcta }}</td>
+						<td class="text-xs-center">{{ item.nu_valor }}</td>
 						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">
                             <status-switch 

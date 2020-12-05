@@ -13,7 +13,7 @@ class Agenda extends Model
                             'nb_agenda',
 	 	 	 	 	 	 	'id_calendario',
                             'id_tipo_agenda',
-                            'id_tipo_actividad',
+                            'id_agenda_actividad',
 	 	 	 	 	 	 	'fe_agenda',
 	 	 	 	 	 	 	'hh_inicio',
 	 	 	 	 	 	 	'hh_fin',
@@ -65,8 +65,8 @@ class Agenda extends Model
         return $this->BelongsTo('App\Models\TipoAgenda', 'id_tipo_agenda');
     }
 
-    public function tipoActividad()
+    public function agendaActividad()
     {
-        return $this->BelongsTo('App\Models\TipoActividad', 'id_tipo_actividad');
+        return $this->BelongsTo('App\Models\AgendaActividad', 'id_agenda_actividad');
     }
 }

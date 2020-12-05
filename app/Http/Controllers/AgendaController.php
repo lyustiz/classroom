@@ -18,7 +18,7 @@ class AgendaController extends Controller
     {
         $agenda = Agenda::with([
                             'tipoAgenda:id,nb_tipo_agenda,tx_color', 
-                            'tipoActividad:id,nb_tipo_actividad,tx_icono'
+                            'agendaActividad:id,nb_agenda_actividad,tx_icono'
                             ])->get();
     
         return AgendaResource::collection($agenda);
@@ -33,17 +33,17 @@ class AgendaController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-            'nb_agenda'         => 	'required|string|max:200',
-			'id_calendario'     => 	'required|integer|max:999999999',
-            'id_tipo_agenda'    => 	'required|integer|max:999999999',
-            'id_tipo_actividad' => 	'required|integer|max:999999999',
-			'fe_agenda'         => 	'required|date',
-			'hh_inicio'         => 	'required|date_format:"H:i"|before:hh_fin"',
-            'hh_fin'            => 	'required|date_format:"H:i"',
-			'id_origen'         => 	'required|integer|max:999999999',
-			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer|max:999999999',
-			'id_usuario'        => 	'required|integer|max:999999999',
+            'nb_agenda'           => 'required|string|max:200',
+			'id_calendario'       => 'required|integer|max:999999999',
+            'id_tipo_agenda'      => 'required|integer|max:999999999',
+            'id_agenda_actividad' => 'required|integer|max:999999999',
+			'fe_agenda'           => 'required|date',
+			'hh_inicio'           => 'required|date_format:"H:i"|before:hh_fin"',
+            'hh_fin'              => 'required|date_format:"H:i"',
+			'id_origen'           => 'required|integer|max:999999999',
+			'tx_observaciones'    => 'nullable|string|max:100',
+			'id_status'           => 'required|integer|max:999999999',
+			'id_usuario'          => 'required|integer|max:999999999',
         ]);
 
         $agenda = agenda::create($request->all());
@@ -72,17 +72,17 @@ class AgendaController extends Controller
     public function update(Request $request, Agenda $agenda)
     {
         $validate = request()->validate([
-            'nb_agenda'         => 	'required|string|max:200',
-			'id_calendario'     => 	'required|integer|max:999999999',
-            'id_tipo_agenda'    => 	'required|integer|max:999999999',
-            'id_tipo_actividad' => 	'required|integer|max:999999999',
-			'fe_agenda'         => 	'required|date',
-			'hh_inicio'         => 	'required|date_format:"H:i"|before:hh_fin"',
-            'hh_fin'            => 	'required|date_format:"H:i"',
-			'id_origen'         => 	'required|integer|max:999999999',
-			'tx_observaciones'  => 	'nullable|string|max:100',
-			'id_status'         => 	'required|integer|max:999999999',
-			'id_usuario'        => 	'required|integer|max:999999999',
+            'nb_agenda'           => 'required|string|max:200',
+			'id_calendario'       => 'required|integer|max:999999999',
+            'id_tipo_agenda'      => 'required|integer|max:999999999',
+            'id_agenda_actividad' => 'required|integer|max:999999999',
+			'fe_agenda'           => 'required|date',
+			'hh_inicio'           => 'required|date_format:"H:i"|before:hh_fin"',
+            'hh_fin'              => 'required|date_format:"H:i"',
+			'id_origen'           => 'required|integer|max:999999999',
+			'tx_observaciones'    => 'nullable|string|max:100',
+			'id_status'           => 'required|integer|max:999999999',
+			'id_usuario'          => 'required|integer|max:999999999',
         ]);
 
         $agenda = $agenda->update($request->all());

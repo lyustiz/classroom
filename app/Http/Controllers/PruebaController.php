@@ -145,23 +145,24 @@ class PruebaController extends Controller
     }
 
     //alumno
-    public function pruebaAlumno($idAlumno)
+    public function pruebaEvaluacionAlumno($idPrueba, $idEvaluacion, $idEvaluacionAlumno)
     {
         return  Prueba::with([
-                            'status:id,nb_status,tx_color,tx_icono',
-                            'materia:materia.id,nb_materia', 
                             'pregunta:id,id_prueba,nu_orden',
-                            'pregunta.respuestaAlumno:id,id_respuesta,id_pregunta',
-                            'pruebaAlumno' => function($query) use ( $idAlumno ) {
-                                $query->select('id', 'id_prueba', 'fe_prueba', 'hh_fin')
-                                      ->where('id_alumno' , $idAlumno);
+                            'pregunta.respuestaAlumno' => function($query) use ( $idEvaluacionAlumno ) {
+                                $query->where('id_evaluacion_alumno' , $idEvaluacionAlumno);
+                            },
+                            'evaluacion' => function($query) use ( $idEvaluacion ) {
+                                $query->find($idEvaluacion);
+                            },
+                            'evaluacion.evaluacionAlumno' => function($query) use ( $idEvaluacionAlumno ) {
+                                $query->find($idEvaluacionAlumno);
                             },
                         ])
-                        ->whereHas('pruebaAlumno', function ($query) use ($idAlumno) {
-                            $query->where('id_alumno', $idAlumno);
+                        ->whereHas('evaluacion.evaluacionAlumno', function ($query) use ($idEvaluacionAlumno) {
+                            $query->where('id', $idEvaluacionAlumno);
                         })
-                        ->ejecucion()
-                        ->get();
+                        ->find($idPrueba);
     }
 
     /**

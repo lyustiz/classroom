@@ -27,7 +27,7 @@ class TipoEvaluacion extends Model
 
 	public function scopeComboData($query)
     {
-        return $query->addSelect('id', 'nb_tipo_evaluacion');
+        return $query->addSelect('id', 'nb_tipo_evaluacion', 'tx_icono', 'tx_color');
     }
     
     public function status()

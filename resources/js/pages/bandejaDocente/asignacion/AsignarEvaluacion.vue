@@ -52,7 +52,7 @@
 
                 <v-col class="pa-3">
                     <v-subheader class="text-capitalize deep-purple rounded-t-lg" dark >{{tipo.nb_tipo_evaluacion}}s</v-subheader>
-                    <v-list dense class="evaluacion-container" subheader color="grey lighten-5 rounded-b-lg">
+                    <v-list dense class="evaluacion-container" subheader color="grey lighten-5 rounded-b-lg" v-if="tipo.tx_origen == 'prueba'">
                         <v-list-item-group v-model="prueba" color="info darken-3">
                             <v-list-item v-for="(prueba, i) in evaluaciones" :key="i" :value="prueba">
                                 <template v-slot:default="{ active }" >
@@ -69,11 +69,29 @@
                             </v-list-item>
                         </v-list-item-group>
                     </v-list>
+
+                    <v-list dense class="evaluacion-container" subheader color="grey lighten-5 rounded-b-lg" v-else>
+                        <v-list-item-group v-model="tarea" color="info darken-3">
+                            <v-list-item v-for="(tarea, i) in evaluaciones" :key="i" :value="tarea">
+                                <template v-slot:default="{ active }" >
+                                    <v-list-item-icon>
+                                        <v-icon>{{tipo.tx_icono}}</v-icon>
+                                    </v-list-item-icon>
+                                    <v-list-item-content>
+                                        <v-list-item-title>{{tarea.nb_tarea}}</v-list-item-title>
+                                    </v-list-item-content>
+                                    <v-list-item-action>
+                                        <v-checkbox :input-value="active" :disabled="loading" color="deep-purple"></v-checkbox>
+                                    </v-list-item-action>
+                                </template>
+                            </v-list-item>
+                        </v-list-item-group>
+                    </v-list>
                 </v-col>
 
                 <v-row no-gutters class="">
 
-                    <v-col cols="4">
+                    <v-col >
                            
                             <v-dialog
                                 v-model="pickers.fe_inicio"
@@ -160,7 +178,7 @@
                     </v-col>
 
 
-                    <v-col cols="4">
+                    <v-col >
                             <v-dialog
                                 v-model="pickers.fe_fin"
                                 persistent
@@ -243,7 +261,7 @@
 
                     </v-col>
 
-                    <v-col cols="4">
+                    <v-col v-if="this.tipo.tx_origen != 'tarea' ">
                         <v-dialog
                             v-model="pickers.minutos"
                             width="580px"
@@ -331,6 +349,7 @@
                     </v-list-item>
                     </v-list-item-group>
                 </v-list>
+                
             </v-col>
          
         </v-row>
@@ -465,6 +484,7 @@ export default {
                 id_status: 1
             },
             prueba:        null,
+            tarea:        null,
             materias:      [],
             evaluaciones:  [],
             alumnos:       [],
@@ -485,7 +505,9 @@ export default {
         getEvaluaciones(materia)
         {
             this.evaluaciones = []
-            this.getResource( `prueba/grado/${this.grupo.grado.id}/materia/${materia}` ).then( data =>  this.evaluaciones = data)
+
+            this.getResource( `${this.tipo.tx_origen}/grado/${this.grupo.grado.id}/materia/${materia}` )
+                            .then( data =>  this.evaluaciones = data)
         },
 
         selectAll(isSelectAll)
@@ -500,9 +522,15 @@ export default {
 
         store()
         {
+           console.log(this.prueba, this.tarea)
             if(this.prueba){ 
                 this.form.id_origen = this.prueba.id
                 this.form.id_tema   = this.prueba.id_tema
+            }
+
+            if(this.tarea){ 
+                this.form.id_origen = this.tarea.id
+                this.form.id_tema   = this.tarea.id_tema
             }
             
             if(!this.validate()) return
@@ -516,6 +544,8 @@ export default {
 
         validate()
         {
+            console.log(this.form)
+            
             if( !this.form.fe_inicio ){
                 this.showError('Favor seleccionar fecha Desde')
                 return false
@@ -537,8 +567,15 @@ export default {
             }
 
             if( this.form.nu_minutos < 1 ){
-                this.showError(`Favor Asignar tiempo de ejecucion de ${this.tipo.nb_tipo_evaluacion}`)
-                return false
+
+                if(this.tipo.tx_origen == 'tarea')
+                {
+                    this.form.nu_minutos = 0
+                } else
+                {
+                    this.showError(`Favor Asignar tiempo de ejecucion de ${this.tipo.nb_tipo_evaluacion}`)
+                    return false
+                }
             }
 
             return true

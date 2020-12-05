@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\PlanEvaluacion;
+use App\Models\PlanDetalle;
+use App\Models\PlanPlantilla;
 use App\Models\Calificacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -238,6 +240,7 @@ class PlanEvaluacionController extends Controller
             'id_grupo'          => 	'required|integer|max:999999999',
             'id_periodo'        => 	'required|integer|max:999999999',
             'id_materia'        => 	'required|integer|max:999999999',
+            'id_docente'        => 	'required|integer|max:999999999',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
@@ -245,7 +248,35 @@ class PlanEvaluacionController extends Controller
 
         $planEvaluacion = planEvaluacion::create($request->all());
 
-        return [ 'msj' => 'Plan Evaluacion Agregado Correctamente', 'planEvaluacion'  => $planEvaluacion];
+        $planDetalle = $this->setPlanDetalle($planEvaluacion);
+
+        return [ 'msj' => 'Plan de Evaluacion Agregada Correctamente', 'planEvaluacion'  => $planEvaluacion, 'planDetalle' => $planDetalle];
+    }
+
+    public function setPlanDetalle($planEvaluacion)
+    {
+        $exist       = $planEvaluacion->planDetalle;
+
+        if(count($exist)>0)
+        {
+            return false;
+        }
+
+        $detalles    = PlanPlantilla::get();
+        $planDetalle = [];
+
+        foreach ($detalles as $detalle) {
+            $planDetalle[] = [
+                'id_plan_evaluacion'    => $planEvaluacion->id,
+                'tx_origen'             => $detalle->tx_origen,
+                'id_origen'             => $detalle->id_origen,
+                'nu_peso'               => $detalle->nu_peso,
+                'id_status'             => 1,
+                'id_usuario'            => $planEvaluacion->id_usuario,
+                'created_at'            => $planEvaluacion->created_at
+            ];
+        }
+        return PlanDetalle::insert($planDetalle);
     }
 
     /**
@@ -272,14 +303,17 @@ class PlanEvaluacionController extends Controller
             'id_grupo'          => 	'required|integer|max:999999999',
             'id_periodo'        => 	'required|integer|max:999999999',
             'id_materia'        => 	'required|integer|max:999999999',
+            'id_docente'        => 	'required|integer|max:999999999',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
 
-        $planEvaluacion = $planEvaluacion->update($request->all());
+        $update      = $planEvaluacion->update($request->all());
 
-        return [ 'msj' => 'Plan  Evaluacion Actualizado' , compact('planEvaluacion')];
+        $planDetalle = $this->setPlanDetalle($planEvaluacion);
+
+        return [ 'msj' => 'Plan de Evaluacion Actualizado' , compact('update', 'planDetalle')];
     }
 
 
@@ -299,7 +333,7 @@ class PlanEvaluacionController extends Controller
         
         $planEvaluacion = $planEvaluacion->update($validate);
 
-        $status =  ($request->id_status == 1) ? 'Confirmado' : 'Inactivo';  
+        $status         = ($request->id_status == 1) ? 'Confirmado' : 'Inactivo';  
 
         return [ 'msj' => "Plan de Evaluacion $status" , 'update' => $planEvaluacion];
     }
@@ -314,6 +348,6 @@ class PlanEvaluacionController extends Controller
     {
         $planEvaluacion = $planEvaluacion->delete();
  
-        return [ 'msj' => 'PlanEvaluacion Eliminado' , compact('planEvaluacion')];
+        return [ 'msj' => 'Plan de Evaluacion Eliminado' , compact('planEvaluacion')];
     }
 }

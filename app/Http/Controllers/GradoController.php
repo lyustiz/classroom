@@ -26,6 +26,15 @@ class GradoController extends Controller
         return $grado;
     }
 
+    public function list()
+    {
+        return Grado::select('id', 'nb_grado', 'nu_grado')
+                    ->orderBy('id_nivel', 'asc')
+                    ->orderBy('nu_grado', 'asc')
+                    ->activo()
+                    ->get();
+    }
+
     public function gradoMateriaAlumno()
     {
         return Grado::with([
@@ -186,12 +195,7 @@ class GradoController extends Controller
                     ->get();
     }
 
-    public function list()
-    {
-        return Grado::select('id', 'nb_grado')
-                    ->where('id_status', 1)
-                    ->get();
-    }
+
 
     /**
      * Store a newly created resource in storage.
