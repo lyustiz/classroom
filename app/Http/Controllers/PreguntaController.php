@@ -96,7 +96,7 @@ class PreguntaController extends Controller
     {
         $validate = request()->validate([
             'id_prueba'         =>  'required|integer|max:999999999',
-            'nb_pregunta'       => 	'required|string|max:200',
+            'nb_pregunta'       => 	'required|string|max:300',
 			'id_tipo_pregunta'  => 	'required|integer|max:999999999',
 			'bo_opcional'       => 	'required|boolean',
 			'nu_valor'          => 	'required|numeric|between:1,99.99',
@@ -170,7 +170,7 @@ class PreguntaController extends Controller
     {
         $validate = request()->validate([
             'id_prueba'         =>  'required|integer|max:999999999',
-            'nb_pregunta'       => 	'required|string|max:200',
+            'nb_pregunta'       => 	'required|string|max:300',
 			'id_tipo_pregunta'  => 	'required|integer|max:999999999',
 			'bo_opcional'       => 	'required|boolean',
 			'nu_valor'          => 	'required|numeric|between:1,999.99',

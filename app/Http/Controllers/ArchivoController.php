@@ -44,7 +44,7 @@ class ArchivoController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-            'nb_archivo'        => 	'required|string|max:30',
+            'nb_archivo'        => 	'required|string|max:100',
 			'id_tipo_archivo'   => 	'required|integer|max:999999999',
 			'tx_origen_id'      => 	'required|integer|max:999999999',
             'tx_path'           => 	'required|string|max:255',
@@ -105,7 +105,7 @@ class ArchivoController extends Controller
     public function update(Request $request, Archivo $archivo)
     {
         $validate = request()->validate([
-            'nb_archivo'        => 	'required|string|max:30',
+            'nb_archivo'        => 	'required|string|max:100',
 			'tx_observaciones'  => 	'nullable|string|max:100',
             'id_usuario'        => 	'required|integer|max:999999999',
         ]);

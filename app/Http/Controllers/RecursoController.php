@@ -111,7 +111,7 @@ class RecursoController extends Controller
 			'id_status'         => 	'required|integer|max:999999999',
             'id_usuario'        => 	'required|integer|max:999999999',
             //archivo
-            'nb_archivo'        => 	'required|string|max:30',
+            'nb_archivo'        => 	'required|string|max:100',
             'id_tipo_archivo'   => 	'required|integer|max:999999999',
             'tx_path'           => 	'required|string|max:255',
             'tx_mimetype'       => 	'required|string|max:30',
@@ -163,7 +163,7 @@ class RecursoController extends Controller
     public function update(Request $request, Recurso $recurso)
     {
         $validate = request()->validate([
-            'nb_archivo'        => 	'required|string|max:30',
+            'nb_archivo'        => 	'required|string|max:100',
             'id_tipo_recurso'   => 	'required|integer|max:999999999',
 			'id_grado'          => 	'required|integer|max:999999999',
 			'id_tema'           => 	'required|integer|max:999999999',
