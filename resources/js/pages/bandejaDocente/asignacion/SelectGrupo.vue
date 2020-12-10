@@ -27,6 +27,8 @@
 
                 </v-item-group>
 
+                <v-icon size="50" class="mdi-spin" v-if="grupos.length < 1">mdi-loading</v-icon>
+
             </v-row>
 
         </v-col>

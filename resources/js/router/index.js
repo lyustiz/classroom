@@ -71,14 +71,14 @@ import GrupoCalificacion     from '@pages/grupoCalificacion/grupoCalificacion';
 import NivelCalificacion     from '@pages/nivelCalificacion/nivelCalificacion';
 import HoraAcademica         from '@pages/horaAcademica/horaAcademica';
 import Horario               from '@pages/horario/horario';
-//import GradoMateria          from '@pages/gradoMateria/gradoMateria';
-//import CargaHoraria          from '@pages/cargaHoraria/cargaHoraria';
-//import Calificacion          from '@pages/calificacion/calificacion';
+//import GradoMateria        from '@pages/gradoMateria/gradoMateria';
+//import CargaHoraria        from '@pages/cargaHoraria/cargaHoraria';
+//import Calificacion        from '@pages/calificacion/calificacion';
 
 //evaluacion
 import TipoEvaluacion        from '@pages/tipoEvaluacion/tipoEvaluacion';
 import AppPlanEvaluacion     from '@pages/planEvaluacion/AppPlanEvaluacion';
-//import PlanEvaluacion        from '@pages/planEvaluacion/planEvaluacion'; 
+//import PlanEvaluacion      from '@pages/planEvaluacion/planEvaluacion'; 
 
 //docente
 import Docente               from '@pages/docente/docente';
@@ -98,9 +98,9 @@ import Status                from '@pages/status/status';
 import Configuracion         from '@pages/configuracion/configuracion';
 
 //subscripcion-pago
-//import Suscripcion           from '@pages/suscripcion/suscripcion';
-//import TipoPago              from '@pages/tipoPago/tipoPago';
-//import Pago                  from '@pages/pago/pago';
+//import Suscripcion         from '@pages/suscripcion/suscripcion';
+//import TipoPago            from '@pages/tipoPago/tipoPago';
+//import Pago                from '@pages/pago/pago';
 
 //archivos
 import Archivo               from '@pages/archivo/archivo';
@@ -134,9 +134,9 @@ import Respuesta             from '@pages/respuesta/respuesta';
 import PruebaAlumno          from '@pages/pruebaAlumno/pruebaAlumno';
 import RespuestaAlumno       from '@pages/respuestaAlumno/respuestaAlumno';
 
-import Actividad             from  '@pages/actividad/actividad';      
-import Enlace                from  '@pages/enlace/enlace';     
-import TipoEnlace            from  '@pages/tipoEnlace/tipoEnlace';     
+import Actividad             from '@pages/actividad/actividad';      
+import Enlace                from '@pages/enlace/enlace';     
+import TipoEnlace            from '@pages/tipoEnlace/tipoEnlace';     
 
 //notificaciones
 import TipoDestinatario      from '@pages/tipoDestinatario/tipoDestinatario';

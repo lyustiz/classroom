@@ -42,9 +42,11 @@ Route::group(['prefix'=>'v1'], function()
 {
 
 // -- GRAL -- //
+
 Route::apiResource('/home',                 'HomeController');
 
 // -- DATOS MAESTROS -- //
+
 Route::put('/status/resource',                  'StatusController@updateResource');
 Route::get('/status/grupo/{grupo}',             'StatusController@statusGrupo');
 Route::apiResource('/status',                   'StatusController');
@@ -61,6 +63,7 @@ Route::apiResource('/ubicacion',                'UbicacionController');
 Route::apiResource('/estadoCivil',              'EstadoCivilController');
 
 // -- COLEGIO -- //
+
 Route::put('/colegio/location/{colegio}',       'ColegioController@location');
 Route::get('/colegio/usuario/{idUsuario}',      'ColegioController@colegioUsuario');
 Route::apiResource('/colegio',                  'ColegioController');
@@ -78,6 +81,7 @@ Route::apiResource('/directiva',                'DirectivaController');
 Route::apiResource('/empleado',                 'EmpleadoController');
 
 // -- LOCATION -- //
+
 Route::apiResource('/pais',                     'PaisController');
 Route::apiResource('/departamento',             'DepartamentoController');
 Route::get('/ciudad/departamento/{departamento}',     'CiudadController@ciudadDepartamento');
@@ -90,6 +94,7 @@ Route::get('/barrio/zona/{zona}',               'BarrioController@barrioZona');
 Route::apiResource('/barrio',                   'BarrioController');
 
 // -- ALUMNO -- //
+
 Route::get('/alumno/{alumno}/partners',               'AlumnoController@alumnoPartners');
 Route::get('/alumno/{alumno}/materias/docentes',      'AlumnoController@alumnoMateriasDocentes');
 Route::get('/alumno/grupo/{grupo}/materia/{materia}', 'AlumnoController@alumnoGrupoMateria');
@@ -113,15 +118,17 @@ Route::apiResource('/tipoCondicion',            'TipoCondicionController');
 Route::apiResource('/matricula',                'MatriculaController');
 
 // -- PARIENTE -- //
-Route::apiResource('/parentesco',               'ParentescoController');
+
 Route::get('/pariente/alumno/{alumno}',         'ParienteController@parienteAlumno');
 Route::post('/pariente/asignacion/search',      'ParienteController@parienteSearch');
 Route::post('/pariente/alumno/{alumno}',        'ParienteController@storeByAlumno');
 Route::delete('/pariente/{pariente}/alumno/{alumno}',   'ParienteController@destroyByAlumno');
+Route::apiResource('/parentesco',               'ParentescoController');
 Route::apiResource('/pariente',                 'ParienteController');
 Route::apiResource('/alumnoPariente',           'AlumnoParienteController');
 
 // -- SANCIONES -- //
+
 Route::get('/incidencia/alumno/{alumno}',       'IncidenciaController@incidenciaAlumno');
 Route::apiResource('/incidencia',               'IncidenciaController',   ['parameters' => ['incidencia' => 'incidencia']]);
 Route::apiResource('/tipoFalta',                'TipoFaltaController',     ['parameters' => ['tipoFalta' => 'tipoFalta']]);
@@ -132,23 +139,25 @@ Route::post('/alumnoMateria/storeAll',          'AlumnoMateriaController@storeAl
 Route::apiResource('/alumnoMateria',            'AlumnoMateriaController', ['parameters' => ['alumnoMateria' => 'alumnoMateria']]);
 
 // -- DOCENTE -- //
+
 Route::get('/docente/materia/{materia}',        'DocenteController@docenteMateria');
 Route::apiResource('/docente',                  'DocenteController');
 Route::get('/docenteMateria/docente/{docente}', 'DocenteMateriaController@docenteMateriaDocente');
 Route::apiResource('/docenteMateria',           'DocenteMateriaController', ['parameters' => ['docenteMateria' => 'docenteMateria']]);
 
 // -- GESTION ACADEMICA -- //
+
 Route::get('/calendario/list',                  'CalendarioController@list');
 Route::put('/calendario/{calendario}/status',   'CalendarioController@updateStatus');
 Route::apiResource('/calendario',               'CalendarioController');
-Route::GET('/periodo/calendario/{calendario}',  'PeriodoController@periodoCalendario');
+Route::get('/periodo/calendario/{calendario}',  'PeriodoController@periodoCalendario');
 Route::get('/periodo/list',                     'PeriodoController@list');
 Route::put('/periodo/{periodo}/status',         'PeriodoController@updateStatus');
 Route::apiResource('/periodo',                  'PeriodoController');
 Route::apiResource('/nivel',                    'NivelController');
 Route::get('/grado/planEvaluacion/docente/{docente}/periodo/{periodo}', 'GradoController@gradoPlanEvaluacionDocentePeriodo');
 Route::get('/grado/planEvaluacion/docente/{docente}',   'GradoController@GradoPlanEvaluacionDocente');
-Route::get('/grado/materia/docente/{docente}',          'GradoController@gradoMateriaDocente');
+Route::get('/grado/materia/docente/{docente}',  'GradoController@gradoMateriaDocente');
 Route::get('/grado/grupo/materia/alumno/docente/{docente}',    'GradoController@gradoGrupoMateriaAlumnoDocente');
 Route::get('/grado/grupo/docente/{docente}',    'GradoController@gradoGrupoDocente');
 Route::get('/grado/materia/docente/{docente}',  'GradoController@gradoMateriaDocente');
@@ -180,10 +189,10 @@ Route::get('/calificacion/{grupoCalificacion}', 'CalificacionController@califica
 Route::apiResource('/calificacion',             'CalificacionController');
 Route::apiResource('/tipoCalificacion',         'TipoCalificacionController');
 Route::apiResource('/nivelCalificacion',        'NivelCalificacionController');;
-Route::apiResource('/inasistencia',             'InasistenciaController'); //TODO: ASISTENCIA
 Route::apiResource('/grupoCalificacion',        'GrupoCalificacionController');
 
 // -- HORARIO -- // 
+
 Route::apiResource('/horaAcademica',            'HoraAcademicaController');
 Route::get('/cargaHoraria/horario/{horario}',   'CargaHorariaController@cargaHorariaHorario');
 Route::get('/cargaHoraria/{horaAcademica}',     'CargaHorariaController@cargaHorariaHoraAcademica');
@@ -198,6 +207,7 @@ Route::get('/horario/docente/{docente}',        'HorarioController@horarioDocent
 Route::apiResource('/horario',                  'HorarioController');
 
 // -- AGENDA -- //
+
 Route::apiResource('/tipoFeriado',              'TipoFeriadoController');
 Route::apiResource('/feriado',                  'FeriadoController');
 Route::apiResource('/tipoAgenda',               'TipoAgendaController');
@@ -206,6 +216,7 @@ Route::apiResource('/tipoActividad',            'TipoActividadController');
 Route::apiResource('/agendaActividad',          'AgendaActividadController');
 
 // -- GESTION USUARIO -- //
+
 Route::apiResource('/tipoUsuario',              'TipoUsuarioController');
 Route::get('/usuario/lote/tipo/{tipo}',         'UsuarioController@usuarioLoteTipo');
 Route::put('/usuario/{usuario}/email',          'UsuarioController@updateEmail');
@@ -220,7 +231,8 @@ Route::apiResource('/modulo',                   'ModuloController');
 Route::get('/menu/combo',                       'MenuController@combo');
 Route::apiResource('/menu',                     'MenuController');
 
-//Notificaciones
+// -- Notificaciones -- //
+
 Route::get('/notificacion/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/read',        'NotificacionController@read');
 Route::get('/notificacion/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/unread',      'NotificacionController@unread');
 Route::put('/notificacion/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/markreadall', 'NotificacionController@markReadAll');
@@ -238,7 +250,8 @@ Route::apiResource('/tipoNotificacion',         'TipoNotificacionController');
 Route::apiResource('/tipoPrioridad',            'TipoPrioridadController');
 Route::apiResource('/tipoDestinatario',         'TipoDestinatarioController');
 
-//MENSAJE
+// -- MENSAJE -- //
+
 Route::get('/mensaje/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/read',   'MensajeController@read');
 Route::get('/mensaje/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/unread', 'MensajeController@unread');
 Route::put('/mensaje/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/markreadall', 'MensajeController@markReadAll');
@@ -251,11 +264,12 @@ Route::get('/mensaje/destinatario/{tipoDestinatario}/{idDestinatario}', 'Mensaje
 Route::apiResource('/mensaje',                                          'MensajeController');
 Route::apiResource('/tipoMensaje',              'TipoMensajeController');
 
-
 // --  CONFIGURACION  -- //
+
 Route::apiResource('/configuracion',            'ConfiguracionController');
 
 // -- PLAN EVALUACION -- //
+
 Route::get('/planEvaluacion/grupo/{grupo}/periodo/{periodo}/materia/{materia}',  'PlanEvaluacionController@planEvaluacionGrupoPeriodoMateria');
 Route::get('/planEvaluacion/grupo/{grupo}/periodo/{periodo}',     'PlanEvaluacionController@planEvaluacionGrupoPeriodo');
 Route::get('/planEvaluacion/docente/{docente}/periodo/{periodo}', 'PlanEvaluacionController@planEvaluacionDocentePeriodo');
@@ -265,7 +279,7 @@ Route::get('/planEvaluacion/calificacion/alumno/{alumno}/docente/{docente}','Pla
 Route::put('/planEvaluacion/status/{planEvaluacion}',     'PlanEvaluacionController@updateStatus');
 Route::apiResource('/planEvaluacion',           'PlanEvaluacionController');
 Route::apiResource('/tipoEvaluacion',           'TipoEvaluacionController');
-
+Route::apiResource('/planPlantilla',     'PlanPlantillaController');
 
 Route::get('/planDetalle/combos',                                        'PlanDetalleController@combos');
 Route::get('/planDetalle/planEvaluacion/{planEvaluacion}',               'PlanDetalleController@planDetallePlanEvaluacion');
@@ -279,10 +293,9 @@ Route::apiResource('/tema',                         'TemaController', ['paramete
 
 Route::get('/planTema/planEvaluacion/{planEvaluacion}/grupo/{grupo}/materia/{materia}', 'PlanTemaController@planTemaGrupoMateria');
 Route::get('/planTema/planEvaluacion/{planEvaluacion}', 'PlanTemaController@planTemaPlanEvaluacion');
-Route::get('/planTema/detallePlan/{detallePlan}',       'PlanTemaController@planTemadetallePlan');
-Route::apiResource('/planTema',                         'PlanTemaController', ['parameters' => ['planTema' => 'planTema']]);
-
-Route::apiResource('/rasgo',     'RasgoController');
+Route::get('/planTema/detallePlan/{detallePlan}',   'PlanTemaController@planTemadetallePlan');
+Route::apiResource('/planTema',                     'PlanTemaController', ['parameters' => ['planTema' => 'planTema']]);
+Route::apiResource('/rasgo',                        'RasgoController');
 
 // -- EVALUACION -- //
 
@@ -298,7 +311,8 @@ Route::get('/evaluacionAlumno/alumno/{alumno}', 'EvaluacionAlumnoController@eval
 Route::get('/evaluacionAlumno/evaluacion/{evaluacion}',   'EvaluacionAlumnoController@evaluacionAlumnoEvaluacion');
 Route::get('/evaluacionAlumno/alumno/{alumno}', 'EvaluacionAlumnoController@evaluacionAlumnoAlumno');
 
-//PRUEBA
+// -- PRUEBA -- //
+
 Route::put('/evaluacionAlumno/{evaluacionAlumno}/iniciarPrueba',   'EvaluacionAlumnoController@iniciarPrueba');
 Route::put('/evaluacionAlumno/{evaluacionAlumno}/finalizarPrueba', 'EvaluacionAlumnoController@finalizarPrueba');
 
@@ -326,7 +340,8 @@ Route::apiResource('/pregunta',                 'PreguntaController', ['paramete
 Route::apiResource('/pruebaAlumno',             'PruebaAlumnoController');
 Route::apiResource('/respuestaAlumno',          'RespuestaAlumnoController');
 
-//TAREA
+// -- TAREA -- //
+
 Route::get('/evaluacionAlumno/{evaluacionAlumno}/archivos',       'EvaluacionAlumnoController@evaluacionAlumnoArchivo');
 Route::put('/evaluacionAlumno/{evaluacionAlumno}/finalizarTarea', 'EvaluacionAlumnoController@finalizarTarea');
 Route::get('/tarea/evaluacion/{evaluacion}/evaluacionAlumno/{evaluacionAlumno}',  'TareaController@tareaEvaluacionAlumno');
@@ -359,12 +374,12 @@ Route::put('/asignacionAlumno/{asignacionAlumno}/acceso',     'AsignacionAlumnoC
 Route::apiResource('/asignacionAlumno',         'AsignacionAlumnoController');
 
 Route::get('/actividadPregunta/actividad/{actividad}',     'ActividadPreguntaController@actividadPreguntaActividad');
-Route::apiResource('/actividadPregunta',     'ActividadPreguntaController', ['parameters' => ['actividadPregunta' => 'actividadPregunta']]);
+Route::apiResource('/actividadPregunta',        'ActividadPreguntaController', ['parameters' => ['actividadPregunta' => 'actividadPregunta']]);
 
 Route::put('/actividadRespuesta/{actividadRespuesta}/nombre',   'ActividadRespuestaController@updateNombre');
 Route::put('/actividadRespuesta/{actividadRespuesta}/correcta', 'ActividadRespuestaController@updateCorrecta');
 Route::get('/actividadRespuesta/pregunta/{pregunta}',     'ActividadRespuestaController@actividadRespuestaPregunta');
-Route::apiResource('/actividadRespuesta',    'ActividadRespuestaController', ['parameters' => ['actividadRespuesta' => 'actividadRespuesta']]);
+Route::apiResource('/actividadRespuesta',       'ActividadRespuestaController', ['parameters' => ['actividadRespuesta' => 'actividadRespuesta']]);
 
 // -- LIBRO -- //
 
@@ -410,10 +425,6 @@ Route::apiResource('/clase',                    'ClaseController');
 Route::apiResource('/asistencia',               'AsistenciaController', ['parameters' => ['asistencia' => 'asistencia']]);
 
 
-
-
-
-Route::apiResource('/planPlantilla',     'PlanPlantillaController');
 //newRoutes
 
 Route::fallback(function () {

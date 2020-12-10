@@ -114,8 +114,6 @@ class PlanEvaluacionController extends Controller
     {
         $planEvaluacion =   PlanEvaluacion::with([
                                         'materia',
-                                        'evaluacion',
-                                        'evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion',
                                         'evaluacion.evaluacionAlumno'=> function($query) use ( $idAlumno ){
                                             $query->where('id_alumno', $idAlumno);
                                         },

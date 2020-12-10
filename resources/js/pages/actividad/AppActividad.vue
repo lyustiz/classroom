@@ -3,7 +3,7 @@
 <v-card fluid class="cyan lighten-1">
 
     <v-card-title class="pa-0 elevation-1">
-        <v-row justify="center" class="red px-4" dense>
+        <v-row justify="center" class="amber darken-1 px-4" dense>
             <v-col cols="auto">
                 <v-icon color="white" class="mt-2" size="30">mdi-rocket-launch</v-icon>
             </v-col>
@@ -22,16 +22,13 @@
         <v-col cols="8">
             
             <v-row>
-
                 <v-alert elevation="2" border="left" color="amber lighten-1" icon="mdi-lightbulb-on" colored-border prominent class="white mx-6 rounded-lg text-justify" width="100%">
                     <p class="headline mx-6 font-weight-light">{{ descripcion }}</p>
                 </v-alert>
-
             </v-row>
 
             <v-row>
-
-                <v-alert colored-border border="left" color="deep-purple accent-4" elevation="2" class="white mx-6 rounded-lg text-justify" width="100%">
+                <v-alert colored-border border="left" color="deep-purple accent-4" elevation="2" class="white mx-6 rounded-lg text-justify py-2" width="100%">
                     
                     <v-container>
                     <v-row>
@@ -41,14 +38,20 @@
                             <p class="mx-1 text--secondary">{{ pregunta.nb_descripcion  }}</p>
                             <h3 class="deep-purple--text title mx-2 mb-1" >{{ idx + 1 }}.- {{  pregunta.nb_pregunta }}</h3>
                             </div>
+                            
+                            <v-subheader class="white rounded-lg mb-2">
+                                <v-icon :color="pregunta.tipo_pregunta.tx_color" v-text="pregunta.tipo_pregunta.tx_icono" class="mr-3"></v-icon>
+                                {{pregunta.tipo_pregunta.nb_tipo_pregunta}}  
+                                ({{pregunta.tipo_pregunta.tx_observaciones}})
+                            </v-subheader>
 
                             <v-list dense class="rounded-lg pa-1" nav>
                                 <v-list-item-group v-model="respuestas" :multiple="pregunta.id_tipo_pregunta == 3" color="deep-purple" class="rounded-xl">
                                     <v-list-item v-for="(respuesta, idx) in pregunta.actividad_respuesta" :key="idx" :value="respuesta.id" :disabled="hasReply">
                                         <template v-slot:default="{ active }">
-                                            <v-list-item-icon>
-                                                <v-icon class="my-3" color="deep-purple">mdi-checkbox-multiple-marked-outline</v-icon>
-                                            </v-list-item-icon>
+                                            <v-list-item-avatar size="25" color="grey lighten-5 title font-weight-bold">
+                                               {{letras[idx]}}
+                                            </v-list-item-avatar>
                                             <v-list-item-content>
                                                 <v-list-item-title class="deep-purple--text subtitle-1" v-text="respuesta.nb_respuesta"></v-list-item-title>
                                             </v-list-item-content>
@@ -67,11 +70,10 @@
                         </v-col>
 
                         <v-btn block color="success" class="mx-2" @click="responder()" v-if="!hasReply">responder</v-btn>
-                        <v-btn block color="orange" class="mx-2" @click="reintentar()" v-else dark>Intentan de nuevo</v-btn>
+                        <v-btn block color="orange" class="mx-2" @click="reintentar()" v-else dark>Intentar Nuevamente</v-btn>
                     </v-row>
                     </v-container>
                 </v-alert>
-
             </v-row>
 
         </v-col>
@@ -79,7 +81,7 @@
         <v-col cols="4">
             <v-carousel :show-arrows="false" :show-arrows-on-hover="true"  width="100%" height="370"  class="rounded-lg white elevation-3" continuous cycle>
                 <v-carousel-item v-for="(foto, idx) in fotos" :key="idx">
-                    <v-img :src="foto.full_url" max-height="370" contain ></v-img>
+                    <v-img :src="foto.full_url"  contain ></v-img>
                 </v-carousel-item>
             </v-carousel>
         </v-col>
@@ -106,13 +108,8 @@
           <v-icon size="40" color="white" class="mdi-spin">mdi-loading</v-icon>
     </v-overlay>
 
-    
 </v-card>
 
-
-
-
-  
 </template>
 
 <script>
@@ -222,12 +219,8 @@ export default {
                 return
             }
 
-
-             this.showMessage('Actividad Completada')
-             this.isCompleted = true
-
-            console.log('respondidas ', respondidas)
-            
+            this.showMessage('Actividad Completada')
+            this.isCompleted = true            
         },
 
         getCorrectas()

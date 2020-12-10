@@ -13,9 +13,32 @@
                 Gestion de Contenidos
             </v-col>
             <v-col cols="auto">
-                <v-btn icon x-small class="mx-1 my-2" depressed  @click="list()" :loading="loading">
-                    <v-icon size="25">mdi-refresh</v-icon>
-                </v-btn>
+                 <v-tooltip bottom color="green">
+                    <template v-slot:activator="{ on }">
+                    <v-btn small icon depressed v-on="on" class="ml-1 mt-1" @click="navegateToName('planificador-docente')">
+                        <v-icon size="30">mdi-calendar-multiselect</v-icon>
+                    </v-btn>
+                    </template>
+                    <span>Planificador</span>
+                </v-tooltip>
+
+                <v-tooltip bottom color="green">
+                    <template v-slot:activator="{ on }">
+                    <v-btn icon depressed v-on="on" class="ml-1 mt-1" @click="navegateToName('seguimiento-actividades')">
+                        <v-icon size="30">mdi-calendar-search</v-icon>
+                    </v-btn>
+                    </template>
+                    <span>Seguimiento</span>
+                </v-tooltip>
+
+                 <v-tooltip bottom color="green">
+                    <template v-slot:activator="{ on }">
+                    <v-btn small icon depressed v-on="on" class="ml-1 mt-1" @click="list()">
+                        <v-icon size="30">mdi-refresh</v-icon>
+                    </v-btn>
+                    </template>
+                    <span>Recargar</span>
+                </v-tooltip>
             </v-col>
         </v-row>
     </v-subheader>
@@ -34,6 +57,7 @@
                     hint="Seleccione Grado"
                     persistent-hint
                     :loading="loading"
+                    :readonly="loading"
                     dense
                     filled
                     rounded
@@ -52,6 +76,7 @@
                     hint="Seleccione materia"
                     persistent-hint
                     :loading="loading"
+                    :readonly="loading"
                     :disabled="materias.length < 1"
                     dense
                     filled
@@ -71,6 +96,7 @@
                     hint="Seleccione Tema"
                     persistent-hint
                     :loading="loading"
+                    :readonly="loading"
                     :disabled="temas.length < 1"
                     dense
                     filled

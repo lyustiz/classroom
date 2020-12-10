@@ -71,14 +71,20 @@
             </v-col>
 
             <v-col cols="auto">
-                <v-btn icon dark x-small class="mx-2 my-2 my-1" depressed  @click="list()" :loading="loading">
-                    <v-icon size="32">mdi-refresh</v-icon>
+                <v-btn icon dark x-small class="mx-2 my-2 my-1" depressed  @click="navegateToName('bandeja-alumno')" :loading="loading">
+                    <v-icon size="32">mdi-home</v-icon>
                 </v-btn>
             </v-col>
 
             <v-col cols="auto">
-                <v-btn icon dark x-small class="mx-2 my-2 my-1" depressed  @click="navegateToName('bandeja-alumno')" :loading="loading">
-                    <v-icon size="32">mdi-home</v-icon>
+                <v-btn icon dark x-small class="mx-2 my-2 my-1" depressed  @click="navegateToName('biblioteca-alumno')" :loading="loading">
+                    <v-icon size="30">mdi-book-open-page-variant</v-icon>
+                </v-btn>
+            </v-col>
+            
+            <v-col cols="auto">
+                <v-btn icon dark x-small class="mx-2 my-2 my-1" depressed  @click="list()" :loading="loading">
+                    <v-icon size="32">mdi-refresh</v-icon>
                 </v-btn>
             </v-col>
 

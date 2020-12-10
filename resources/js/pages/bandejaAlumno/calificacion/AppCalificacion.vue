@@ -34,9 +34,7 @@
                     </td>
                     <td>
                         <template v-if="calificacion.calificacion">
-
                             <list-icon :data="calificacionIcons" :value="calificacion.calificacion.bo_aprobado"></list-icon>
-                           
                         </template>
                         <template v-else>-</template>
                     </td>
@@ -105,8 +103,8 @@ export default {
         {
            if( !this.alumno ) return
            this.getResource( `planEvaluacion/calificacion/alumno/${this.alumno.id}` ).then( data => {
-                this.planes = data.planEvaluacion
-                this.calificaciones = data.calificaciones
+                /* this.planes = data.planEvaluacion
+                this.calificaciones = data.calificaciones */
             })
         },
 
