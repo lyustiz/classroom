@@ -3,14 +3,14 @@
 <v-card fluid class="cyan lighten-1">
 
     <v-card-title class="pa-0 elevation-1">
-        <v-row justify="center" class="amber darken-1 px-4" dense>
+        <v-row justify="center" class="amber darken-1 px-4" no-gutters>
             <v-col cols="auto">
-                <v-icon color="white" class="mt-2" size="30">mdi-rocket-launch</v-icon>
+                <v-icon color="white" class="mt-2 mx-2" size="30">mdi-rocket-launch</v-icon>
             </v-col>
             <v-col class="white--text title my-2"> {{ title }}</v-col>
             <v-spacer></v-spacer>
             <v-col cols="auto">
-                <app-button small :size="30" innerClass="ma-1" color="green" label="Volver al Inicio" icon="mdi-home" @click="$emit('closeDialog')" ></app-button>
+                <app-button small :size="28" innerClass="ma-1" color="green" label="Volver al Inicio" icon="mdi-home" @click="$emit('closeDialog')" ></app-button>
             </v-col>
         </v-row>
     </v-card-title>
@@ -22,17 +22,18 @@
         <v-col cols="8">
             
             <v-row>
-                <v-alert elevation="2" border="left" color="amber lighten-1" icon="mdi-lightbulb-on" colored-border prominent class="white mx-6 rounded-lg text-justify" width="100%">
-                    <p class="headline mx-6 font-weight-light">{{ descripcion }}</p>
+                <v-alert elevation="2" outlined color="amber lighten-1" icon="mdi-lightbulb-on"  prominent class="white mx-6 rounded-lg text-justify" width="100%">
+                    <p class="headline mx-6 font-weight-light black--text">{{ descripcion }}</p>
                 </v-alert>
             </v-row>
 
             <v-row>
-                <v-alert colored-border border="left" color="deep-purple accent-4" elevation="2" class="white mx-6 rounded-lg text-justify py-2" width="100%">
+                <v-card elevation="2" class="white rounded-lg text-justify mx-6" width="100%">
                     
+                    <v-card-text>
                     <v-container>
                     <v-row>
-                        <v-col cols="12" v-for="(pregunta, idx) in preguntas" :key="idx" class="rounded-lg grey lighten-4 mx-2 my-2">
+                        <v-col cols="12" v-for="(pregunta, idx) in preguntas" :key="idx" class="rounded-lg grey lighten-4">
 
                             <div class="white pa-2 rounded-lg mb-2">
                             <p class="mx-1 text--secondary">{{ pregunta.nb_descripcion  }}</p>
@@ -68,12 +69,14 @@
                                 </v-list-item-group>
                             </v-list>
                         </v-col>
-
-                        <v-btn block color="success" class="mx-2" @click="responder()" v-if="!hasReply">responder</v-btn>
-                        <v-btn block color="orange" class="mx-2" @click="reintentar()" v-else dark>Intentar Nuevamente</v-btn>
+                    </v-row>
+                    <v-row>
+                        <v-btn block color="success" class="mt-2" @click="responder()" v-if="!hasReply">responder</v-btn>
+                        <v-btn block color="orange" class="mt-2" @click="reintentar()" v-else dark>Intentar Nuevamente</v-btn>
                     </v-row>
                     </v-container>
-                </v-alert>
+                    </v-card-text>
+                </v-card>
             </v-row>
 
         </v-col>

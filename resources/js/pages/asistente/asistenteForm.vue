@@ -192,7 +192,8 @@ export default {
     {
         preActionForms()
         {
-            this.form.nu_orden = (this.action =='ins') ? this.orden + 1: this.orden
+            console.log(this.orden)
+            this.form.nu_orden = (this.action =='ins') ? this.orden + 1: this.item.nu_orden
         },
         
         defaultData(menuId)

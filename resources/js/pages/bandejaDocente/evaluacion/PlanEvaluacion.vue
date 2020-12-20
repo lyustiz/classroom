@@ -15,6 +15,7 @@
                 v-model="periodo"
                 label="Seleccione Periodo"
                 :loading="loading"
+                :disabled="loading"
                 dense
                 rounded
                 filled
@@ -98,7 +99,7 @@
 
         </v-card-text>   
 
-        <v-dialog max-width="90vw" height="95vh" content-class="rounded-xl" v-model="dialogDetallePlan">
+        <v-dialog max-width="90vw" height="95vh" content-class="rounded-xl" v-model="dialogDetallePlan" scrollable>
 
                 <plan-detalle 
                     :planEvaluacion="planEvaluacion" 

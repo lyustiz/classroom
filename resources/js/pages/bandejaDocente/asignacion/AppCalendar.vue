@@ -70,6 +70,28 @@
                 
             </v-col>
 
+            <v-col cols="auto">
+
+                <v-tooltip bottom color="green">
+                    <template v-slot:activator="{ on }">
+                    <v-btn x-small icon depressed v-on="on" class="mx-1 mt-1" @click="navegateToName('gestion-tema')">
+                        <v-icon size="28" color="white">mdi-inbox-multiple</v-icon>
+                    </v-btn>
+                    </template>
+                    <span>Contenidos</span>
+                </v-tooltip>
+
+                <v-tooltip bottom color="green">
+                    <template v-slot:activator="{ on }">
+                    <v-btn x-small icon depressed v-on="on" class="mx-1 mt-1" @click="navegateToName('seguimiento-actividades')">
+                        <v-icon size="28" color="white">mdi-calendar-search</v-icon>
+                    </v-btn>
+                    </template>
+                    <span>Seguimiento</span>
+                </v-tooltip>
+
+            </v-col>
+
         </v-row>
 
     </v-toolbar>
@@ -426,7 +448,7 @@
         <visor-enlace v-if="dialogEnlace" :enlace="enlace"  @closeDialog="closeDialog('dialogEnlace')" ></visor-enlace>
     </v-dialog>
 
-    <v-dialog v-model="dialogLectura" width="95vw" content-class="rounded-xl">
+    <v-dialog v-model="dialogLectura" fullscreen persistent>
         <visor-pdf v-if="dialogLectura" :pdf="lectura" @closeDialog="closeDialog('dialogLectura')" ></visor-pdf>
     </v-dialog>
 

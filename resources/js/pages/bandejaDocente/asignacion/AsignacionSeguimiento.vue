@@ -12,9 +12,34 @@
                 Seguimiento de Asignaciones
             </v-col>
             <v-col cols="auto">
-                <v-btn icon x-small class="mx-1 my-2" depressed  @click="list()" :loading="loading">
-                    <v-icon size="25">mdi-refresh</v-icon>
-                </v-btn>
+
+                <v-tooltip bottom color="green">
+                    <template v-slot:activator="{ on }">
+                    <v-btn x-small icon depressed v-on="on" class="ml-2 mt-1" @click="navegateToName('gestion-tema')">
+                        <v-icon size="30" >mdi-inbox-multiple</v-icon>
+                    </v-btn>
+                    </template>
+                    <span>Contenidos</span>
+                </v-tooltip>
+
+                <v-tooltip bottom color="green">
+                    <template v-slot:activator="{ on }">
+                    <v-btn small icon depressed v-on="on" class="ml-2 mt-1" @click="navegateToName('planificador-docente')">
+                        <v-icon size="30">mdi-calendar-multiselect</v-icon>
+                    </v-btn>
+                    </template>
+                    <span>Planificador</span>
+                </v-tooltip>
+
+                <v-tooltip bottom color="green">
+                    <template v-slot:activator="{ on }">
+                    <v-btn x-small icon depressed v-on="on" class="ml-2 mt-1" @click="list()" :loading="loading">
+                        <v-icon size="30" >mdi-refresh</v-icon>
+                    </v-btn>
+                    </template>
+                    <span>Recargar</span>
+                </v-tooltip>
+
             </v-col>
         </v-row>
     </v-subheader>

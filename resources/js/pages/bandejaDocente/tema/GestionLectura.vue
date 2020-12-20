@@ -29,11 +29,11 @@
 
         <!-- form  -->
 
-        <v-dialog v-model="dialogLectura" width="95vw" content-class="rounded-xl">
+        <v-dialog v-model="dialogLectura" fullscreen content-class="no-overflow">
             <visor-pdf v-if="dialogLectura" :pdf="lectura" @closeDialog="closeDialog('dialogLectura')" ></visor-pdf>
         </v-dialog>
 
-        <v-dialog v-model="dialogForm" max-width="500px" content-class="rounded-xl">
+        <v-dialog v-model="dialogForm" content-class="rounded-xl">
             <recurso-form 
                 v-if="dialogForm" 
                 :tipoRecurso="3" 
@@ -175,5 +175,7 @@ export default {
 </script>
 
 <style scoped>
-
+.no-overflow{
+    overflow-y: hidden;
+}
 </style>

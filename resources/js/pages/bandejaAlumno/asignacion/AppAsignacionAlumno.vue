@@ -71,14 +71,14 @@
             </v-col>
 
             <v-col cols="auto">
-                <v-btn icon dark x-small class="mx-2 my-2 my-1" depressed  @click="navegateToName('bandeja-alumno')" :loading="loading">
+                <v-btn icon dark x-small class="mx-2 my-2 my-1" depressed  @click="navegateToName('bandeja-alumno')" >
                     <v-icon size="32">mdi-home</v-icon>
                 </v-btn>
             </v-col>
 
             <v-col cols="auto">
-                <v-btn icon dark x-small class="mx-2 my-2 my-1" depressed  @click="navegateToName('biblioteca-alumno')" :loading="loading">
-                    <v-icon size="30">mdi-book-open-page-variant</v-icon>
+                <v-btn icon dark x-small class="mx-2 my-2 my-1" depressed  @click="navegateToName('biblioteca-alumno')" >
+                    <v-icon size="28">mdi-book-open-page-variant</v-icon>
                 </v-btn>
             </v-col>
             
@@ -408,23 +408,23 @@
     </v-overlay> 
   
     <v-dialog v-model="dialogActividad" fullscreen>
-        <app-actividad v-if="dialogActividad" :actividad="actividad"  @closeDialog="closeDialog('dialogActividad')" ></app-actividad>
+        <app-actividad v-if="dialogActividad" :actividad="actividad" evaluar @onClomplete="list()"  @closeDialog="closeDialog('dialogActividad')" ></app-actividad>
     </v-dialog>
 
     <v-dialog v-model="dialogAudio" width="450" content-class="rounded-xl primary" hide-overlay>
-        <visor-audio v-if="dialogAudio" :audio="audio"  @closeDialog="closeDialog('dialogAudio')" ></visor-audio>
+        <visor-audio v-if="dialogAudio" :audio="audio" evaluar @onClomplete="list()"  @closeDialog="closeDialog('dialogAudio')" ></visor-audio>
     </v-dialog>
 
     <v-dialog v-model="dialogVideo" width="80vw" content-class="rounded-xl black">
-        <visor-video v-if="dialogVideo" :video="video"  @closeDialog="closeDialog('dialogVideo')" ></visor-video>
+        <visor-video v-if="dialogVideo" :video="video" evaluar @onClomplete="list()"  @closeDialog="closeDialog('dialogVideo')" ></visor-video>
     </v-dialog>
 
     <v-dialog v-model="dialogEnlace" fullscreen scrollable>
-        <visor-enlace v-if="dialogEnlace" :enlace="enlace"  @closeDialog="closeDialog('dialogEnlace')" ></visor-enlace>
+        <visor-enlace v-if="dialogEnlace" :enlace="enlace" evaluar @onClomplete="list()"  @closeDialog="closeDialog('dialogEnlace')" ></visor-enlace>
     </v-dialog>
 
-    <v-dialog v-model="dialogLectura" width="95vw" content-class="rounded-xl">
-        <visor-pdf v-if="dialogLectura" :pdf="lectura" @closeDialog="closeDialog('dialogLectura')" ></visor-pdf>
+    <v-dialog v-model="dialogLectura" fullscreen>
+        <visor-pdf v-if="dialogLectura" :pdf="lectura" evaluar @onClomplete="list()" @closeDialog="closeDialog('dialogLectura')" ></visor-pdf>
     </v-dialog>
 
     <!-- evaluaciones  -->

@@ -1,12 +1,12 @@
 <template>
 
-<v-card> 
+<v-card dark> 
 
     <v-card-title class="pa-0" >
         <app-simple-toolbar :title="pdf.name" backgroundColor="info" dense dark @closeModal="$emit('closeDialog')" ></app-simple-toolbar>
     </v-card-title>
 
-    <v-card-text class="px-0">
+    <v-card-text class="pa-0">
         <div class="enlace-container">
             <embed class="file-visor" :src="pdf.src+'#toolbar=0&navpanes=0'" type="application/pdf" width="100%" @load="loading = false"  />
         </div>

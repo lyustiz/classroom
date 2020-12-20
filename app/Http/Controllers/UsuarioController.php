@@ -203,6 +203,22 @@ class UsuarioController extends Controller
             throw ValidationException::withMessages(['passwordNotMatch' => "Password Actual no coincide con nuestros registros"]);
         }
     }
+
+    public function resetPassword(Request $request, Usuario $usuario)
+    {
+        $validate = request()->validate([
+            'id_usuario'    => 'required',
+        ]);
+        
+        $password = '12345678';
+
+        $usuario  = $usuario->update([
+            'tx_password' => Hash::make($password),
+            'id_usuario'  => $request->input('id_usuario'),
+        ]);
+
+        return [ 'msj' => 'Password Reiniciado' , compact('usuario')];
+    }
     
     /**
      * Remove the specified resource from storage.

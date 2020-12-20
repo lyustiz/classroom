@@ -70,7 +70,7 @@
 <script>
 import AppData from '@mixins/AppData';
 import AppMensaje from '@pages/mensaje/AppMensaje';
-import CalificacionAlumno from './calificacion/CalificacionAlumno';
+import CalificacionAlumno from './components/CalificacionAlumno';
 
 export default {
 
@@ -79,7 +79,7 @@ export default {
     components:
     {
         'app-mensaje' :         AppMensaje,
-        'calificacion-alumno' : CalificacionAlumno
+        'calificacion-alumno' : CalificacionAlumno,
     },
 
     created()
@@ -102,6 +102,7 @@ export default {
             itemsMenu: [
                 { label: 'Calificaciones', icon: 'mdi-clipboard-list', action: 'showCalificaciones' },
                 { label: 'Enviar Mensaje', icon: 'mdi-mail', action: 'addMensaje' },
+                { label: 'Reiniciar Password', icon: 'mdi-account-key', action: 'resetPassword' },
             ],
             dialogMensaje: false,
             dialogCalificaciones: false,
@@ -143,6 +144,13 @@ export default {
         {
             this[dialog] = false
             this.mensaje = {}
+        },
+
+        resetPassword(alumno)
+        {
+            this.updateResource( `usuario/${alumno.usuario_alumno.id}/resetPassword` ).then( data => {
+                this.showMessage(data.msj)
+            });
         }
 
     }

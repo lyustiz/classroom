@@ -14,7 +14,7 @@
                 :rules="[rules.required]"
                 v-model="item.nb_usuario"
                 label="Usuario"
-                hint="Usuario de la cuenta no se puede editar"
+                hint="Usuario de la cuenta. No se puede editar"
                 dense
                 readonly
             ></v-text-field>

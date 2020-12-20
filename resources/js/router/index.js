@@ -165,7 +165,7 @@ export default new Router({
   base: process.env.BASE_URL,
     routes: [
         {
-            path: '/',
+          path: '/',
           name: 'welcome',
           label: 'Welcome',
           icon: 'mdi-home',

@@ -59,6 +59,7 @@ class GrupoController extends Controller
                             'alumno:alumno.id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2,tx_documento',
                             'alumno.foto:id,tx_src,id_tipo_foto,id_origen',
                             'alumno.foto.tipoFoto:id,tx_base_path',
+                            'alumno.usuarioAlumno:id,nb_usuario,id_origen'
                           ])
                     ->select('grupo.id', 'nb_grupo')
                     ->whereHas('planEvaluacion', function (Builder $query) use($idDocente) {

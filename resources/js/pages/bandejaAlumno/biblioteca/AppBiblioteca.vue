@@ -13,6 +13,11 @@
                     Biblioteca
                 </v-col>
                 <v-col cols="auto">
+
+                    <v-btn icon x-small class="mx-2 my-2 my-1" depressed  @click="navegateToName('asignacion-alumno')" >
+                        <v-icon size="28">mdi-calendar-multiselect</v-icon>
+                    </v-btn>
+
                     <v-btn icon x-small class="mx-1 my-2" depressed  @click="list()" :loading="loading">
                         <v-icon size="25">mdi-refresh</v-icon>
                     </v-btn>

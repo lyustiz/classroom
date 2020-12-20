@@ -60,17 +60,6 @@
                     <span>Clase</span>
                 </v-tooltip>
 
-               <!--  <v-tooltip top color="amber">
-                    <template v-slot:activator="{ on }">
-                    <v-btn fab dark depressed v-on="on" color="amber" class="ml-1 mt-1" @click="navegateToName('meet-docente')">
-                        <v-icon size="32">mdi-video-plus</v-icon>
-                    </v-btn>
-                    </template>
-                    <span>Aula Virtual</span>
-                </v-tooltip> -->
-
-
-            
         </v-card-text>
 
             <v-dialog v-model="dialog" content-class="rounded-xl" scrollable :max-width="sectionWidth"> 

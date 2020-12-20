@@ -32,7 +32,7 @@
                             <v-text-field
                                 :rules="[rules.required]"
                                 v-model="form.nb_prueba"
-                                label="Cuestionario"
+                                label="Nombre del Cuestionario"
                                 dense
                                 filled
                                 rounded

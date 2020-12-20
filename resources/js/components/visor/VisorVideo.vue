@@ -2,7 +2,7 @@
 
     <div>
         <app-simple-toolbar :title="video.name" backgroundColor="red" dense dark @closeModal="$emit('closeDialog')" ></app-simple-toolbar>
-        <v-card color="black">
+        <v-card dark>
             <v-row no-gutters justify="center">
                 <div class="youtube-container mb-1">
                     <iframe 
@@ -70,7 +70,7 @@ export default {
    position: relative;
   overflow: hidden;
   width: 90%;
-  padding-top: 40%; /* 4:3 Aspect Ratio */
+  padding-top: 47%; /* 4:3 Aspect Ratio */
 }
 
 .responsive-iframe {

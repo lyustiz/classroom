@@ -4,15 +4,24 @@
 
     <v-subheader class="grey lighten-3">
         <v-row no-gutters>
-            <v-col cols="auto">
-                <v-btn icon small class="mx-2 my-1" depressed  @click="navegateToName('bandeja-docente')">
-                    <v-icon size="30">mdi-home</v-icon>
+
+             <v-tooltip bottom color="green">
+                <template v-slot:activator="{ on }">
+                <v-btn small icon depressed v-on="on" class="ml-1 mt-1" @click="navegateToName('planificador-docente')">
+                    <v-icon size="34">mdi-home</v-icon>
                 </v-btn>
-            </v-col>
-            <v-col class="my-2">
+                </template>
+                <span>Pagina Principal</span>
+            </v-tooltip>
+           
+            <v-col class="my-2 ml-2">
                 Gestion de Contenidos
             </v-col>
+
             <v-col cols="auto">
+
+               
+
                  <v-tooltip bottom color="green">
                     <template v-slot:activator="{ on }">
                     <v-btn small icon depressed v-on="on" class="ml-1 mt-1" @click="navegateToName('planificador-docente')">

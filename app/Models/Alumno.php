@@ -90,6 +90,11 @@ class Alumno extends Model
 	{
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
 	}
+
+	public function usuarioAlumno()
+	{
+        return $this->hasOne('App\Models\Usuario', 'id_origen')->where('id_tipo_usuario', 3);
+	}
 	
 	public function tipoDocumento()
 	{
@@ -105,6 +110,8 @@ class Alumno extends Model
 	{
         return $this->BelongsTo('App\Models\Ciudad', 'id_ciudad');
 	}
+
+
 
 	public function grado()
 	{

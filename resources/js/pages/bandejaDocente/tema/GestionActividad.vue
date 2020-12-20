@@ -32,7 +32,7 @@
                             <v-text-field
                                 :rules="[rules.required]"
                                 v-model="form.nb_actividad"
-                                label="Actividad"
+                                label="Nombre de Actividad"
                                 dense
                                 filled
                                 rounded
