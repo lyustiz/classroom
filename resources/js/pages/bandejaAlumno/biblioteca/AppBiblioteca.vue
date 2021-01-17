@@ -34,7 +34,7 @@
                 color="amber lighten-4"
             >
     
-                <v-toolbar color="deep-purple" flat dense dark class="rounded-t-xl title">
+                <v-toolbar color="blue darken-4" flat dense dark class="rounded-t-xl title">
                     <v-row dense>
                         <v-col>
                             <v-icon class="mr-3">mdi-book-multiple-outline</v-icon> Libros
@@ -278,8 +278,8 @@
             <app-tarea v-if="dialogTarea" :evaluacion-alumno="evaluacion" @closeDialog="closeDialog('dialogTarea')" @onClomplete="getEvaluaciones()" ></app-tarea>
         </v-dialog>
 
-        <v-dialog v-model="dialogActividad" fullscreen>
-            <app-actividad v-if="dialogActividad" :actividad="actividadSelected"  @closeDialog="closeDialog('dialogActividad')" ></app-actividad>
+        <v-dialog v-model="dialogActividad" fullscreen persistent no-click-animation>
+            <app-actividad v-if="dialogActividad" :actividad="actividadSelected.asignacion.origen" evaluar :asignacion="actividadSelected" @onClomplete="getAsignaciones()"  @closeDialog="closeDialog('dialogActividad')" ></app-actividad>
         </v-dialog>
 
         <v-dialog v-model="dialogAudio" width="450" content-class="rounded-xl primary" hide-overlay>
@@ -489,11 +489,13 @@ export default {
         {
             this.asignacion = asignacion
             asignacion  = asignacion.asignacion
+
+            console.log(asignacion)
            
            switch (tipo ) {
 
                 case 'actividad':
-                    this.actividadSelected = asignacion.origen
+                    this.actividadSelected = this.asignacion
                     this.dialogActividad   = true
                     break;
                 

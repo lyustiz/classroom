@@ -432,7 +432,7 @@
         <asignar-evaluacion v-if="dialogEvaluacion" :grupo="grupo" :dia="dia" :tipo="tipo" @closeDialog ="closeDialog('dialogEvaluacion', $event)" ></asignar-evaluacion>
     </v-dialog>
 
-    <v-dialog v-model="dialogActividad" fullscreen persistent>
+    <v-dialog v-model="dialogActividad" fullscreen persistent no-click-animation>
         <app-actividad v-if="dialogActividad" :actividad="actividad"  @closeDialog="closeDialog('dialogActividad')" ></app-actividad>
     </v-dialog>
 

@@ -113,7 +113,7 @@ export default {
 
     data () {
         return {
-            title:    `CargaHoraria - ${this.horaAcademica.nb_hora_academica}`,
+            title:    `Carga Horaria - ${this.horaAcademica.nb_hora_academica}`,
             resource: 'cargaHoraria',
             headers: [
                 { text: 'Orden',         value: 'nu_orden' },

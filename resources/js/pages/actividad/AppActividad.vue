@@ -22,8 +22,8 @@
         <v-col cols="8">
             
             <v-row>
-                <v-alert elevation="2" outlined color="amber lighten-1" icon="mdi-lightbulb-on"  prominent class="white mx-6 rounded-lg text-justify" width="100%">
-                    <p class="headline mx-6 font-weight-light black--text">{{ descripcion }}</p>
+                <v-alert elevation="2" outlined type="warning" icon="mdi-lightbulb-on"  prominent class="white mx-6 rounded-lg text-justify" width="100%">
+                    <p class="title mx-6 font-weight-light black--text">{{ descripcion }}</p>
                 </v-alert>
             </v-row>
 
@@ -82,11 +82,17 @@
         </v-col>
 
         <v-col cols="4">
-            <v-carousel :show-arrows="false" :show-arrows-on-hover="true"  width="100%" height="370"  class="rounded-lg white elevation-3" continuous cycle>
-                <v-carousel-item v-for="(foto, idx) in fotos" :key="idx">
-                    <v-img :src="foto.full_url"  contain ></v-img>
-                </v-carousel-item>
-            </v-carousel>
+        <v-carousel :show-arrows="false" :show-arrows-on-hover="true"  width="100%" height="370"  class="rounded-lg white elevation-3" continuous cycle hide-delimiter-background>
+        <v-carousel-item v-for="(foto, idx) in fotos" :key="idx">
+            <v-row
+                class="fill-height"
+                align="center"
+                justify="center"
+            >
+                <img :src="foto.full_url" width="100%" height="auto" >
+            </v-row>
+        </v-carousel-item>
+        </v-carousel>
         </v-col>
         
     </v-row>
@@ -128,6 +134,16 @@ export default {
         actividad:{
             type:    Object,
             default: () => {}
+        },
+
+        evaluar:{
+            type:   Boolean,
+            default: false
+        },
+
+        asignacion:{
+            type:   Object,
+            default: () => {}
         }
     },
 
@@ -155,7 +171,10 @@ export default {
             fotos:       [],
             respuestas:  [],
             hasReply:    false,
-            isCompleted: false
+            isCompleted: false,
+            form: {
+                id_usuario: this.IdUser
+            }
         }
     },
 
@@ -223,7 +242,22 @@ export default {
             }
 
             this.showMessage('Actividad Completada')
-            this.isCompleted = true            
+            this.isCompleted = true 
+            
+            if(this.evaluar)
+            {
+                this.actividadCompletada()
+            }
+        },
+
+        actividadCompletada()
+        {
+            if(!this.isCompleted) return
+            
+            this.updateResource(`asignacionAlumno/${this.asignacion.id}/completada`, this.form).then( (data) => {
+                this.$emit('onClomplete')
+                //$emit('closeDialog')
+            })
         },
 
         getCorrectas()

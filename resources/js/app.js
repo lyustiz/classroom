@@ -30,13 +30,13 @@ Vue.prototype.$App = Object.freeze({
     isMobile: (isMobile.any()) ? true : false,
     device:   isMobile.any(), 
     theme:{
-            headApp:    'indigo',
+            headApp:    'blue darken-4',
             textTitle:  'white--text',
-            headForm:   'indigo',
+            headForm:   'blue darken-4',
             titleForm:  'red lighten-4',
             headList:   'grey lighten-3',
             titleList:  'black--text',
-            headModal:  'indigo',
+            headModal:  'blue darken-4',
             titleModal: 'white--text',
             button: {
                         insert:  'success',

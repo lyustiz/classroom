@@ -6,7 +6,7 @@
             <v-spacer></v-spacer>
 
             <v-chip-group v-model="active" column>
-                <v-chip filter color="amber" @change="onCompletada($event)" value="1">
+                <v-chip filter filter-icon="mdi-checkbox-marked-circle-outline" color="amber" @change="onCompletada($event)" value="1">
                     Ver Completadas
                 </v-chip>
             </v-chip-group>
@@ -27,7 +27,7 @@ export default {
 
         color:{
             type: String,
-            default: 'deep-purple'
+            default: 'blue darken-4'
         },
 
         icon:{

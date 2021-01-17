@@ -7,7 +7,7 @@
 
         <v-card-text>
 
-              <v-row v-if="tarea" justify="center" dense class="mt-4">
+              <v-row v-if="tarea" justify="center" no-gutters class="mt-4">
                 <v-col cols="10" class="mb-4">
                     <v-list-item class="amber lighten-4 rounded-lg elevation-3" >
                         <v-list-item-avatar color="deep-purple" size="60">
@@ -54,23 +54,21 @@
 
                 <v-col cols="10">
                     <v-alert type="info" :value="true" prominent border="right" color="cyan" class="elevation-3">
-                        <v-subheader>Descripcion</v-subheader>
+                        <v-subheader class="title">Descripcion</v-subheader>
                         <p class="ml-4" v-text="tarea.tx_descripcion"></p>
                     </v-alert>
                 </v-col>
 
                 <v-col cols="10">
                     <v-alert type="info" :value="true" prominent border="right" color="cyan" class="elevation-3">
-                        <v-subheader>Observaciones</v-subheader>
+                        <v-subheader class="title">Observaciones</v-subheader>
                         <p  class="ml-4"  v-text="tarea.tx_observaciones"></p>
                     </v-alert>
                 </v-col>
 
                 <v-col cols="10">
                     <v-alert  :value="true" color="amber lighten-3" dark class="elevation-3"> 
-                        <v-chip color="indigo" dark >
-                            Cargar Tarea
-                        </v-chip>
+                        <v-subheader class="title" light>Cargar Tarea</v-subheader>
                         <v-row>
                             <v-col class="text-center">
                                 <v-badge color="success" overlap :value="archivoAlumno" icon="mdi-check-bold" >

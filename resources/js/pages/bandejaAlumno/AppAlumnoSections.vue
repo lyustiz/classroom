@@ -1,10 +1,5 @@
 <template>
-
-    <v-card class="mt-3 rounded-xl">
-
-        <v-toolbar color="indigo" flat dark>
-            Secciones
-        </v-toolbar>
+  <v-card flat> 
 
         <v-card-text>
 
@@ -17,7 +12,7 @@
                         v-on="on" 
                         :color="section.color" 
                         @click="showSection(section)" 
-                        class="ml-1">
+                        class="ml-1 mx-1">
                         <v-icon size="32" v-text="section.icon"></v-icon>
                     </v-btn>
                 </template>
@@ -27,7 +22,7 @@
                
                 <v-tooltip top color="orange">
                     <template v-slot:activator="{ on }">
-                    <v-btn fab dark depressed v-on="on" color="orange" class="ml-1" @click="navegateToName('biblioteca-alumno')">
+                    <v-btn  fab dark depressed v-on="on" color="orange" class="ml-1 mx-1" @click="navegateToName('biblioteca-alumno')">
                         <v-icon size="32">mdi-book-open-page-variant</v-icon>
                     </v-btn>
                     </template>
@@ -36,7 +31,7 @@
 
                 <v-tooltip top color="orange">
                     <template v-slot:activator="{ on }">
-                    <v-btn fab dark depressed v-on="on" color="red" class="ml-1" @click="navegateToName('asignacion-alumno')">
+                    <v-btn  fab dark depressed v-on="on" color="red" class="ml-1 mx-1" @click="navegateToName('asignacion-alumno')">
                         <v-icon size="32">mdi-calendar-multiselect</v-icon>
                     </v-btn>
                     </template>
@@ -98,7 +93,7 @@ export default {
                 { label: 'Horario', icon: 'mdi-calendar-clock', component: 'horario-alumno', color: 'green', width: '90vw' },
          /*        { label: 'Evaluaciones', icon: 'mdi-notebook', component: 'evaluacion-alumno', color: 'indigo', sectionWidth: '95vw' },    */
               /*   { label: 'Pruebas', icon: 'mdi-order-bool-descending-variant', component: 'prueba-alumno', color: 'red', sectionWidth: '85vw' },         */  
-                { label: 'Calificaciones', icon: 'mdi-clipboard-list', component: 'calificacion-alumno', color: 'amber', sectionWidth: '700' },
+               /*  { label: 'Calificaciones', icon: 'mdi-clipboard-list', component: 'calificacion-alumno', color: 'amber', sectionWidth: '700' }, */
                 /* { label: 'Biblioteca', icon: 'mdi-library', component: 'biblioteca-alumno', color: 'red', sectionWidth: '98vw' },
                   { label: 'Tareas', icon: 'mdi-notebook', component: 'tarea-alumno', color: 'blue', sectionWidth: '700' }, */
                 /*  { label: 'Aula Virtual (En Construccion)', icon: 'mdi-google-classroom', component: 'clase-alumno', color: 'green', sectionWidth: '700' }, */

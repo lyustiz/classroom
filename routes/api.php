@@ -367,6 +367,8 @@ Route::get('/asignacion/grupo/{grupo}',         'AsignacionController@asignacion
 Route::get('/asignacion/alumno/{alumno}',       'AsignacionController@asignacionAlumno');
 Route::apiResource('/asignacion',               'AsignacionController');
 Route::apiResource('/tipoAsignacion',           'TipoAsignacionController');
+
+Route::get('/asignacionAlumno/evaluacion/{alumno}',   'AsignacionAlumnoController@asignacionEvaluacionAlumno');
 Route::get('/asignacionAlumno/grupo/{grupo}',   'AsignacionAlumnoController@asignacionAlumnoGrupo');
 Route::get('/asignacionAlumno/alumno/{alumno}', 'AsignacionAlumnoController@asignacionAlumnoAlumno');
 Route::put('/asignacionAlumno/{asignacionAlumno}/completada', 'AsignacionAlumnoController@completada');
@@ -425,6 +427,7 @@ Route::apiResource('/clase',                    'ClaseController');
 Route::apiResource('/asistencia',               'AsistenciaController', ['parameters' => ['asistencia' => 'asistencia']]);
 
 
+Route::apiResource('/sede',     'SedeController');
 //newRoutes
 
 Route::fallback(function () {

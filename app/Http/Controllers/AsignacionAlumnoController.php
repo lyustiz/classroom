@@ -104,6 +104,44 @@ class AsignacionAlumnoController extends Controller
         return $data;
     }
 
+    public function asignacionEvaluacionAlumno($idAlumno)  //TODO  Extraer Querys
+    {
+        $asignaciones = AsignacionAlumno::with([
+                                'asignacion:id,id_tipo_asignacion,id_materia,id_tema,id_origen,tx_origen',
+                                'asignacion.tipoAsignacion:id,nb_tipo_asignacion,tx_icono,tx_color',
+                                'asignacion.origen'
+                            ])
+                            ->where('id_alumno', $idAlumno)
+                            ->get(); 
+
+        $evaluaciones = EvaluacionAlumno::with([
+                                'evaluacion:id,id_tipo_evaluacion,id_materia,id_tema,id_origen,tx_origen',
+                                'evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion,tx_icono,tx_color',
+                                'evaluacion.origen'
+                            ])
+                            ->where('id_alumno', $idAlumno)
+                            ->get();
+
+        return $this->formatResponse($asignaciones, $evaluaciones);
+    }
+
+    public function formatResponse($asignaciones, $evaluaciones)
+    {
+        $data = [];
+
+        foreach ($asignaciones as $asignacion) 
+        { 
+            $data[$asignacion->asignacion->tipoAsignacion->nb_tipo_asignacion][] = $asignacion;
+        }
+
+        foreach ($evaluaciones as $evaluacion)
+        { 
+            $data[$evaluacion->evaluacion->tipoEvaluacion->nb_tipo_evaluacion][] = $evaluacion;
+        }
+
+        return $data;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
