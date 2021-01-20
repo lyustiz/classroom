@@ -375,7 +375,7 @@ class UsuarioController extends Controller
         return compact('msj', 'tipo', 'resend');
     }
 
-    public function resetPassword(Request $request)
+   /*  public function resetPassword(Request $request)
     {
         
         $validate = request()->validate([
@@ -415,6 +415,6 @@ class UsuarioController extends Controller
 
         return compact('msj', 'tipo');
 
-    }
+    } */
 
 }

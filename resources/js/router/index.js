@@ -354,7 +354,7 @@ export default new Router({
                 path: 'cargos',
                 name: 'cargo',
                 label: 'Cargos',
-                icon: 'mdi-account-settings',
+                icon: 'mdi-account-star',
                 profile: 'secretaria',
                 visible: true,
                 component: Cargos
@@ -686,7 +686,7 @@ export default new Router({
                 path: 'comuna',
                 name: 'comuna',
                 label: 'Comuna',
-                icon: 'mdi-map-marker-radius',
+                icon: 'mdi-home-group',
                 profile: 'secretaria',
                 visible: true,
                 component: Comuna
@@ -705,7 +705,7 @@ export default new Router({
                 path: 'modulo',
                 name: 'modulo',
                 label: 'Modulo',
-                icon: 'mdi-account',
+                icon: 'mdi-menu-open',
                 profile: 'secretaria',
                 visible: true,
                 component: Modulo
@@ -714,7 +714,7 @@ export default new Router({
                 path: 'menu',
                 name: 'menu',
                 label: 'Menu',
-                icon: 'mdi-account',
+                icon: 'mdi-menu',
                 profile: 'secretaria',
                 visible: true,
                 component: Menu
@@ -734,7 +734,7 @@ export default new Router({
                 path: 'perfil',
                 name: 'perfil',
                 label: 'Perfil',
-                icon: 'mdi-account',
+                icon: 'mdi-account-details-outline',
                 profile: 'secretaria',
                 visible: true,
                 component: Perfil
@@ -743,7 +743,7 @@ export default new Router({
                 path: 'usuario-perfil',
                 name: 'usuario-perfil',
                 label: 'Usuario Perfil',
-                icon: 'mdi-account',
+                icon: 'mdi-account-details',
                 profile: 'secretaria',
                 visible: true,
                 component: UsuarioPerfil
@@ -752,7 +752,7 @@ export default new Router({
                 path: 'permiso',
                 name: 'permiso',
                 label: 'Permiso',
-                icon: 'mdi-account',
+                icon: 'mdi-account-key',
                 profile: 'secretaria',
                 visible: true,
                 component: Permiso

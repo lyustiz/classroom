@@ -102,7 +102,14 @@ export default {
 
         getDocente(materia)
         {
-            return (materia.plan_evaluacion) ? materia.plan_evaluacion[0].docente : { nb_corto: 'Por Asignar'};
+           
+           if(materia.plan_evaluacion)
+           {
+               return (materia.plan_evaluacion.length > 0) ? materia.plan_evaluacion[0].docente : { nb_corto: 'Por Asignar'};
+           }
+           
+           return { nb_corto: 'Por Asignar'}
+           
         },
 
         addNotificacion(docente)

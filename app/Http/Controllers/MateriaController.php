@@ -75,7 +75,8 @@ class MateriaController extends Controller
 
     public function materiaAlumno($idAlumno)
     {
-        $materia = Materia::select('id', 'nb_materia')
+        $materia = Materia::with(['areaEstudio:id,tx_color'])
+                    ->select('id', 'nb_materia', 'id_area_estudio')
                     ->whereHas('alumno', function ($query) use ($idAlumno) {
                         $query->where('alumno.id', $idAlumno);
                     }) 
@@ -88,27 +89,27 @@ class MateriaController extends Controller
     public function materiaDocenteAlumno($idAlumno)
     {
         
-        $materia = Materia::with([
-                        'planEvaluacion' => function($query) use ( $idAlumno ){
-                            $query->whereHas('grupo.alumno', function ($query) use ( $idAlumno) {
-                                $query->where('alumno.id', $idAlumno);
-                            })->has('periodoActivo');
-                        },
-                        'planEvaluacion.materia'=> function($query) use ( $idAlumno ){
-                            $query->has('alumno');
-                        },
-                        'planEvaluacion.docente:docente.id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',
-                        'planEvaluacion.docente.foto:id,tx_src,id_tipo_foto,id_origen',
-                        'planEvaluacion.docente.foto.tipoFoto:id,tx_base_path',
-                    ])
-                    ->comboData()
-                    ->whereHas('alumno', function ($query) use ($idAlumno) {
-                        $query->where('alumno.id', $idAlumno);
-                    }) 
-                    ->orderBY('nb_materia')
-                    ->get();
-
-                return $materia;
+        return  Materia::with([
+                    'planEvaluacion' => function($query) use ( $idAlumno ){
+                        $query->whereHas('grupo.alumno', function ($query) use ( $idAlumno) {
+                            $query->where('alumno.id', $idAlumno);
+                        })
+                        ->has('periodoActivo');
+                    },
+                    'planEvaluacion.materia'=> function($query) use ( $idAlumno ){
+                        $query->has('alumno');
+                    },
+                    'planEvaluacion.docente:docente.id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',
+                    'planEvaluacion.docente.foto:id,tx_src,id_tipo_foto,id_origen',
+                    'planEvaluacion.docente.foto.tipoFoto:id,tx_base_path',
+                ])
+                ->comboData()
+                ->whereHas('alumno', function ($query) use ($idAlumno) {
+                    $query->where('alumno.id', $idAlumno);
+                }) 
+                ->has('planEvaluacion')
+                ->orderBY('nb_materia')
+                ->get();
     }
 
     public function materiaEvaluacionAlumno($idAlumno)

@@ -1,5 +1,5 @@
 <template>
-  <v-card flat> 
+  <v-card flat  class="mb-4 rounded-xl elevation-5"> 
 
         <v-card-text>
 

@@ -24,7 +24,7 @@
                     <v-list-item-group v-model="notificacion" flat>
                         <v-list-item v-for="(notificacion, idx) in notificaciones" :key="idx" :value="notificacion"> 
                             <v-list-item-avatar :color="notificacion.tipo_notificacion.tx_color">
-                                <v-icon dark size="30" v-text="notificacion.tipo_notificacion.tx_icono"></v-icon>
+                                <v-icon dark size="26" v-text="notificacion.tipo_notificacion.tx_icono"></v-icon>
                             </v-list-item-avatar>
                             <v-list-item-content>
                                 <v-list-item-title v-text="notificacion.tx_mensaje"></v-list-item-title>

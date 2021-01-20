@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2020-12-09 23:27:27
+Date: 2021-01-17 09:47:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,11 +30,39 @@ CREATE TABLE `actividad` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of actividad
 -- ----------------------------
+INSERT INTO `actividad` VALUES ('18', 'Mi medio ambiente', '74', 'Todos los seres vivos tienen un lugar para vivir y desarrollarse. Por ejemplo, tú tienes un lugar determinado para vivir y estableces diferentes tipos de relaciones con los organismos y elementos que te rodean.\nEl conocimiento de las relaciones que se dan entre los seres vivos y su ambiente viene de tiempos remotos. Los seres humanos primitivos manifestaron este interés. Ellos, al depender de la caza, la pesca y la recolección de frutas, necesitaban observar cuidadosamente su entorno. Las pinturas rupestres son una manifestación del conocimiento que el ser humano primitivo tenía acerca de los animales de su medio. Algunas pinturas describen en forma detallada a los animales de cuya caza el ser humano dependía. El dominio de ciertas especies por medio de la domesticación es otra manifestación del conocimiento del ser humano sobre su entorno.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('20', 'El ecosistema', '74', 'El ecosistema es el conjunto de seres vivos de un lugar, el ambiente que lo rodea\ny las relaciones que se establecen entre ellos. Al observar cualquier ecosistema encontramos diversidad de plantas, animales y condiciones del lugar como el aire, el suelo y la humedad. Por ejemplo, en el ejercicio anterior describiste los elementos que conforman el lugar donde vives y las relaciones que se dan entre esos elementos, es decir, describiste un ecosistema. Podemos definir entonces el ecosistema como el lugar donde se establecen relaciones entre los seres vivos y los seres no vivos.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('39', 'Solidos', '57', 'Un solidos es materia que tiene forma y tamaño propio, los solidos ocupan espacio y tienen masa. Las partículas en la materia sólida están muy juntas y muy ordenadas.\nEl volumen de los sólidos no puede comprimirse. Las partículas están tan próximas las unas de las otras, que no pueden acercarse más. Esto explica que no pueda comprimirse la materia sólida. La forma: las partículas de la materia sólida están tan unidas entre sí y con tanta fuerza que es muy difícil separarlas. Para poder separar la materia sólida necesitaré una fuerza externa como por ejemplo, golpear con un martillo', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('40', 'Liquidos', '57', 'La materia en estado liquido, como el agua que bebemos, no tiene forma propia,  si no que se adapta a la del recipiente que la contiene, pero mantiene su volumen. Los líquidos no se pueden comprimir y su volumen es constante, pero al aumentar la temperatura se incrementa la movilidad de las partículas, aumenta la distancia que las separa, produciéndose una cierta dilatación.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('41', 'Hablemos de los alimentos', '58', 'Los alimentos son esenciales para vivir. Los necesitamos para crecer, levantarnos por la mañana y estar sanos, por ello es tan importante alimentarse bien. Esta alimentación ha de ser variada y proporcional. La alimentación debe tomarse muy en serio ya que de ella dependemos para estar sanos y poder vivir muchos años.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('42', 'Los alimentos según su origen', '58', 'Los alimentos son todo aquello que comemos y bebemos. Es importante para nuestro cuerpo alimentarse varias veces al día, por eso si dejamos de hacerlo, sentiremos sed o hambre. Los alimentos permiten desarrollarnos físicamente, mantener nuestro cuerpo sano, mantener el calor del cuerpo, sustituir sustancias gastadas o estropeadas por otras nuevas y movernos, estudiar, hablar…', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('43', 'Los cambios en la mujer', '60', 'Estos son los cambios que van experimentando las niñas a lo largo de la pubertad:\n\nLos senos se les empiezan a desarrollar y se les redondean las caderas.\nSe inicia la aceleración de su ritmo de crecimiento en estatura.\nEl vello púbico les empieza aparecer, generalmente entre 6 y 12 meses después de que se inicie el desarrollo de los senos.\nEl útero y la vagina, así como los labios y el clítoris, aumentan de tamaño.\nEl vello púbico ya está bien establecido y los senos les crecen más.\nEl ritmo de crecimiento en estatura alcanza su pico máximo cuando hace en torno a 2 años que se ha iniciado la pubertad.\nLa menstruación empieza casi siempre después de que hayan alcanzado su pico máximo en estatura (la edad promedio son los 12,5 años)', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('44', 'Los cambios en el hombre', '60', 'Los niños empiezan a presentar los primeros cambios físicos de la pubertad cuando tienen entre 10 y 16 años de edad. Tienden a crecer más deprisa entre los 12 y los 15 años. En los niños, el estirón ocurre, como promedio, unos 2 años después que en las niñas. Cuando cumplen 16 años, la mayoría de los muchachos ya han dejado de crecer, pero sus músculos se seguirán desarrollando.\n\nOtros cambios propios de la pubertad en los muchachos son los siguientes:\n\nEl pene y los testículos aumentan de tamaño.\nAparece el vello púbico, seguido de vello axilar y facial.\nLa voz se les oscurece o vuelve más grave, a veces se les puede quebrar la voz.\nLa nuez, o cartílago de la laringe, les aumenta de tamaño.\nSus testículos empiezan a fabricar esperma.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('45', '¿Qué es un elemento y qué es un compuesto?', '62', 'Un elemento es un material compuesto de un simple tipo de átomo, un compuesto es una sustancia formada por dos o más elementos que se combinan químicamente', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('46', '¿Qué es una mezcla?', '62', 'una mezcla es la combinación de sustancias, iguales o no, que pueden ser separadas por métodos físicos', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('47', '¿De dónde proviene la energía?', '64', 'Aquí en la Tierra la principal fuente de energía es el sol. Esta energía que nos llega del Sol, se puede aprovechar de diversas maneras. La acción directa de los rayos del Sol sobre la atmósfera crea diferencias de temperaturas que originan los vientos, las olas y la lluvia. Todas éstas son fuentes de energía directa del Sol, y se denominan: eólica (cuando proviene del viento), hidráulica (cuando proviene del agua), solar térmica (cuando se aprovecha el calor de los rayos que provienen del Sol), y solar fotovoltaica (cuando se transforma la luz solar en electricidad).', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('48', '¿Podemos crear energía?', '64', 'si se logra utilizando fuentes renovables como el sol, el agua, la tierra, el viento y los desperdicios orgánicos. De esta manera, contribuyen a disminuir la contaminación, conservar los recursos naturales, son sostenibles y ofrecen una mejor calidad de vida a sus habitantes.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('51', 'El átomo', '68', 'El átomo es la partícula más pequeña de un cuerpo que conserva las propiedades de éste. La materia está constituida por átomos los cuales pueden unirse para formar moléculas; por ejemplo, una molécula de agua está formada por dos átomos de hidrógeno y uno de oxígeno. Es decir, las moléculas de todas las sustancias están constituidas por átomos.\nPero, conocer la estructura del átomo ha sido una inquietud del ser humano a través de la historia; los científicos han realizado muchos estudios y experimentos y plantearon diversas teorías para tratar de comprender y describir la naturaleza del átomo.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('52', 'Masa atómica y masa molecular', '68', 'Masa atómica\nDebido al tamaño extremadamente diminuto de los átomos, es imposible determinar su masa individual en una balanza. Los átomos son tan pequeños que para expresar su masa en gramos se recurre a fracciones de la unidad que tienen demasiados ceros a la derecha después de la coma. Por ejemplo, un átomo de carbono 12 tiene una masa real de 0.00000000000000000000002 g. Para evitar esta situación y facilitar el manejo de los valores de las masas atómicas, se estableció una unidad de masa, mucho más pequeña que el gramo y se le dio el nombre de unidad de masa atómica (uma), que se define como la doceava parte de la masa de un átomo de carbono 12. Es decir que el átomo de carbono tiene una masa de 12 uma. En esta escala, por ejemplo, la masa atómica del hidrógeno es 1 uma y del oxígeno 16 uma.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('53', 'Reproducción celular', '70', 'Todos los organismos, desde el más simple como la ameba, hasta los más complejos (caballos, plantas, seres humanos), tienen necesidades que deben satisfacer como seres biofísicos y de este modo pueden asegurar su existencia y sobrevivir. Para responder a las exigencias tanto del medio interno como del medio externo, los seres vivos cuentan con diferentes tipos de estructuras que les ayudan a desempeñar sus funciones y a adoptar comportamientos.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('54', 'Reproducción asexual y sexual', '70', 'Todos los organismos vivos presentan como característica común producir descendientes, lo que hacen a través de un proceso llamado reproducción.\nEl objetivo fundamental de la reproducción es la duplicación autocontrolada de las estructuras y funciones de dichos seres vivos. Sin embargo, no solo para eso se lleva a cabo\nla reproducción. También se realiza cuando los organismos desean reparar tejidos dañados o formar órganos nuevos. La reproducción puede ser sexual cuando tiene por objeto formar células sexuales (conocidas como gametos) tanto masculinas como femeninas mediante el proceso de la meiosis. Este proceso se lleva a cabo en los órganos sexuales, tales como los testículos, ovarios de las hembras, los ovarios de las flores, estambres y otros tipos de estructuras especializadas en otras plantas y otros animales. Y la reproducción también puede ser asexual, que sucede de manera rápida y no requiere la presencia de gametos.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('55', 'Regulación del Ph', '72', 'El pH es la relación entre iones de hidrógeno (H+) y iones hidróxilo (OH-) en una solución. Se dice que el pH es ácido cuando los iones H+ se encuentran en mayor proporción que los iones OH- ; que el pH es básico o alcalino cuando ocurre lo contrario, es decir, que los iones OH- se encuentran en mayor proporción, y que el pH es neutro cuando los dos tipos de iones se encuentran en proporciones iguales en la solución.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('56', 'Sustancias amortiguadoras', '72', 'Como decíamos anteriormente, el pH es una característica de tipo químico que presentan las sustancias; muchos de los procesos biológicos se realizan a un pH determinado y su alteración puede ocasionar traumatismos en un organismo; por lo tanto, los cuerpos tienen sustancias tampón o sustancias amortiguadoras cuya función es regular el pH; cuando este se vuelve ácido las sustancias amortiguadoras lo elevan y si está muy básico, se encargan de disminuirlo.\n\nExisten varios mecanismos íntimamente ligados a la regulación del pH, que son los sistemas buffer de los líquidos corporales, procesos mediante los cuales los riñones y los pulmones llevan a cabo sus funciones. Los sistemas buffer Son sustancias que tienen la función de aceptar o liberar átomos o moléculas y que permiten estabilizar el pH interno en un organismo. Algunas sustancias que el organismo utiliza para regular el pH son: el ión bicarbonato, el ión fosfato, la hemoglobina y los sistemas combinados, como cuando intervienen el ión fosfato y la hemoglobina al mismo tiempo.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('57', 'Este soy yo', '2', 'No solo los rasgos físicos te definen, también tus gustos y tu forma de ser es algo que te hace diferente a los demás, en la manera de cómo te comportas o reaccionas a las cosas. Hay personas muy calladas, otras muy alegres, a algunas les cuesta trabajo hacer amigos y a otras les resulta muy fácil, algunas se enojan más fácilmente, y otras son muy amables y cariñosas.\nPuede ser que coincidas en gustos con otras personas, pero siempre hay algo que los diferencia. Saber que te gusta y que no te gusta hacer, te permite conocerte a ti mismo.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('58', 'Organizaciones sociales', '3', 'La familia es el grupo de personas que comparte un mismo hogar, unidos por el cariño y por lazos de parentesco. En nuestra familia aprendemos valores y crecemos con buenos ejemplos.\nLa familia constituye la unidad básica de la sociedad, la familia es un conjunto de personas unidas por vínculos afectivos de parentesco, por matrimonio o adopción que viven junto en armonía.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('59', 'El paisaje geográfico', '41', 'Un paisaje geográfico es el área visible y natural de un territorio cualquiera. Está conformado por el terreno junto con todas sus formas, sus características naturales y sus atributos. Un buen paisaje suele integrarse de manera armoniosa con cualquier estructura creada por el hombre que esté presente en su extensión.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('60', 'El clima y el paisaje', '41', 'El paisaje es un factor decisivo en el clima de muchas regiones. La altitud refresca la temperatura y enfría las masas de aire, debido al mencionado gradiente adiabático térmico vertical negativo.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('61', 'Las expresiones de la cultura', '43', 'Las expresiones culturales tradicionales son también denominadas expresiones de folclor, pues representan todo lo que identifica a una sociedad con las raíces de sus antepasados. Incluyen los nombres de las personas y las expresiones musicales, artísticas y bailes, así como ceremonias o incluso la arquitectura de los edificios de un país.\n\nEstas expresiones representan las características culturales y sociales de una nación o sociedad, lo que las convierte en patrimonio cultural. Si bien en algunos casos el término se usa para definir tradiciones pertenecientes a culturas indígenas o civilizaciones antiguas, es más comúnmente acuñado para referirse al folclor de cada país.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('62', 'Mitos, costumbres y tradiciones', '43', 'Los mitos son relatos tradicionales de acontecimientos asombrosos, cuyos protagonistas son seres sobrenaturales o extraordinarios, tales como dioses, semidioses, héroes o monstruos. \n\nLas costumbres de un país, de una región o de una comunidad son muy importantes, a través de ellas podemos aprender acerca de hábitos, prácticas y actividades de un grupo social. \n\nLas tradiciones son legados o herencias de nuestros antepasados que se han conservado a lo largo del tiempo porque son aprendidas de generación en generación al ser consideradas valiosas para preservar la pertenencia y el vínculo a una comunidad.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('63', 'Las regiones naturales de Colombia', '45', 'Las regiones naturales son cada una de las zonas geográficas de un país o continente, que cuentan con características similares en cuanto a relieve, clima, vegetación y clases de suelo.\n\nColombia cuenta con seis regiones naturales que se definen por las características del relieve, la distancia al mar, el promedio de lluvias y las condiciones del suelo. Esas regiones son: amazonia, andina, Caribe, Insular, Pacífica y orinoquía.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('64', 'Las regiones naturales del mundo', '45', '8 regiones naturales del mundo\nLas regiones naturales se clasifican en sabana, bosque, desierto, tundra, praderas o pastizales, selva, región ecuatorial y región mediterránea.\n\nSe conoce como región natural, aquel espacio que presenta características físicas muy peculiares, las cuales, lo definen conforme a la fauna, flora, clima y el propio ecosistema presente.\n\nEs de apreciar, que cada región natural presenta sus aspectos bien definidos, que lo permiten distinguirse unos de otros, haciendo de estos, unos espacios naturales con características propias:\n\nRegión ecuatorial.\nDe pastizales tropicales sabana. \nRegión de bosque tropical caducifolio.\nDesiertos Tropicales.\nRegión mediterránea.\nRegión del margen este tipo de China\nDesiertos de latitud media tierras de estepa\nMárgenes orientales o tipo St Lawrence.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('65', 'El trabajo', '47', 'Como trabajo denominamos al conjunto de actividades que son realizadas con el objetivo de alcanzar una meta, solucionar un problema o producir bienes y servicios para atender las necesidades humanas.\n\nCon el paso del tiempo, el uso de la palabra se amplió para referirse a una actividad que causara dolor físico y se asoció al trabajo en el campo, pero su uso se extendió a otras actividades humanas.\n\nGracias al trabajo el ser humano comienza a conquistar su propio espacio, así como el respeto y la consideración de los demás, lo cual además contribuye a su autoestima, satisfacción personal y realización profesional, sin contar con el aporte que hace a la sociedad.\n\nEl significado de trabajo tiene enfoques en diversas áreas, como la economía, la física, la filosofía, etc.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('66', 'El dinero y el intercambio económico', '47', 'El dinero juega un papel fundamental en las economías basadas en el intercambio a través de los mercados. Si se piensa en la enorme cantidad de intercambios comerciales que se realizan diariamente, se aprecia de inmediato la utilidad del dinero para que estas transacciones se hagan de manera satisfactoria.\n\nEl dinero es todo medio de cambio generalmente aceptado por la sociedad\n\nEl dinero, por tanto, es aquello que utilizamos para realizar pagos, cuando compramos, y cobros, cuando vendemos. Pero, ¿y si no existiera el dinero? En ese caso nos veríamos obligados a intercambiar unos bienes por otros, es decir, a practicar el trueque.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
 
 -- ----------------------------
 -- Table structure for actividad_pregunta
@@ -55,11 +83,44 @@ CREATE TABLE `actividad_pregunta` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of actividad_pregunta
 -- ----------------------------
+INSERT INTO `actividad_pregunta` VALUES ('103', 'Pepín se pregunta: “si tengo $5,000 ¿alcanzo a pagar la deuda?”.', 'Pepín intenta dar solución a su problema:\r\nTiene una deuda de $8,000 (ocho mil pesos) y para pagarla, sólo cuenta con $5,000 (cinco mil pesos).', '1', '3', '0', '0.00', '0', null, '1', '1', '2020-10-27 14:48:18', '2020-10-29 17:18:03');
+INSERT INTO `actividad_pregunta` VALUES ('104', 'Indica cuál de los siguientes números es entero (E) y cuál decimal (D):', 'gergeete', '1', '2', '0', '0.00', '0', null, '1', '1', '2020-10-27 15:09:02', '2020-10-29 14:04:40');
+INSERT INTO `actividad_pregunta` VALUES ('110', '¿Cuales de los siguente son los sentidos?', 'Por  ejemplo, pueden reconocer  las  orejas como responsables de  la audición,  pero  no  el  oído  y  la  boca  como  responsable  del  gusto pero  no  la  lengua.', '5', '3', '0', '0.00', '0', null, '1', '1', '2020-10-29 20:56:01', '2020-10-30 17:58:32');
+INSERT INTO `actividad_pregunta` VALUES ('111', 'pregunta 1', 'descrip', '2', '3', '0', '0.00', '0', null, '1', '1', '2020-11-05 20:23:21', '2020-11-05 20:25:04');
+INSERT INTO `actividad_pregunta` VALUES ('112', 'rwerwr', 'wrwr', '17', '3', '0', '0.00', '0', null, '1', '1', '2020-11-16 18:30:07', '2020-11-16 18:30:07');
+INSERT INTO `actividad_pregunta` VALUES ('113', 'El medio ambiente es?', null, '18', '2', '0', '0.00', '0', null, '1', '1', '2020-11-26 17:49:17', '2020-11-26 17:49:17');
+INSERT INTO `actividad_pregunta` VALUES ('114', 'La interacción de una comunidad de organismos con su ambiente.', null, '20', '2', '0', '0.00', '0', null, '1', '1', '2020-11-26 17:56:15', '2020-11-26 17:56:15');
+INSERT INTO `actividad_pregunta` VALUES ('115', 'Un estado físico de la materia es:', null, '39', '2', '0', '0.00', '0', null, '1', '1', '2020-12-05 22:57:27', '2020-12-05 22:57:27');
+INSERT INTO `actividad_pregunta` VALUES ('116', 'Una característica interna de los líquidos es:', null, '40', '2', '0', '0.00', '0', null, '1', '1', '2020-12-05 23:02:04', '2020-12-05 23:02:04');
+INSERT INTO `actividad_pregunta` VALUES ('117', '¿De que están compuestos todos los alimentos?', null, '41', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 00:04:10', '2020-12-06 00:04:10');
+INSERT INTO `actividad_pregunta` VALUES ('118', '¿Los huevos según su origen pertenecen a ?', null, '42', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 00:06:54', '2020-12-06 00:06:54');
+INSERT INTO `actividad_pregunta` VALUES ('119', 'La vida de una persona comienza', null, '43', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 00:10:41', '2020-12-06 00:10:41');
+INSERT INTO `actividad_pregunta` VALUES ('120', 'Todos los seres vivos', null, '44', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 00:13:37', '2020-12-06 00:13:37');
+INSERT INTO `actividad_pregunta` VALUES ('121', 'Identifica si la siguiente imagen corresponde a un elemento o a un compuesto', null, '45', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 01:51:16', '2020-12-06 01:59:21');
+INSERT INTO `actividad_pregunta` VALUES ('122', '¿Cómo clasificas el agua de mar?', null, '46', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 02:00:46', '2020-12-06 02:00:46');
+INSERT INTO `actividad_pregunta` VALUES ('123', '¿A qué se denomina energía?', null, '47', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 02:23:14', '2020-12-06 02:23:14');
+INSERT INTO `actividad_pregunta` VALUES ('124', 'Todo proceso que ocurre en el universo implica', null, '48', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 02:32:21', '2020-12-06 02:32:21');
+INSERT INTO `actividad_pregunta` VALUES ('126', 'Según el modelo de Rutherford, en el núcleo hay:', null, '51', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 03:14:56', '2020-12-06 03:14:56');
+INSERT INTO `actividad_pregunta` VALUES ('127', '¿Cuántas partículas están presentes en un mol de partículas?', null, '52', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 03:17:29', '2020-12-06 03:17:29');
+INSERT INTO `actividad_pregunta` VALUES ('128', 'Proceso vital por el cual se perpetúa la vida y se conservan las especies se llaman:', null, '53', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 03:39:40', '2020-12-06 03:39:40');
+INSERT INTO `actividad_pregunta` VALUES ('129', 'La reproducción sucede solo cuando existe una pareja de una especie.', null, '54', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 03:42:33', '2020-12-06 03:42:33');
+INSERT INTO `actividad_pregunta` VALUES ('130', 'El rango de menos de 7 a cero corresponde a sustancias con caracter', null, '55', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 03:58:04', '2020-12-06 03:58:04');
+INSERT INTO `actividad_pregunta` VALUES ('131', 'un ejemplo de solución amortiguadora es', null, '56', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 04:00:35', '2020-12-06 04:00:35');
+INSERT INTO `actividad_pregunta` VALUES ('132', 'Son mis características físicas', null, '57', '3', '0', '0.00', '0', null, '1', '1', '2020-12-06 05:01:14', '2020-12-06 05:04:40');
+INSERT INTO `actividad_pregunta` VALUES ('133', '¿ Cuál es la primera organización social a la que pertenecemos?', null, '58', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 05:10:31', '2020-12-06 05:10:31');
+INSERT INTO `actividad_pregunta` VALUES ('134', 'Es la ciencia que estudia el paisaje geográfico', null, '59', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 05:18:37', '2020-12-06 05:18:37');
+INSERT INTO `actividad_pregunta` VALUES ('135', 'Aquellas condiciones atmosféricas permanentes de un lugar que caracterizan su paisaje son:', null, '60', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 05:21:53', '2020-12-06 05:21:53');
+INSERT INTO `actividad_pregunta` VALUES ('136', 'El núcleo de la cultura contiene', null, '61', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 16:14:11', '2020-12-06 16:14:11');
+INSERT INTO `actividad_pregunta` VALUES ('137', '¿Qué es una leyenda?', null, '62', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 16:19:17', '2020-12-06 16:19:17');
+INSERT INTO `actividad_pregunta` VALUES ('138', 'Una región natural es:', null, '63', '3', '0', '0.00', '0', null, '1', '1', '2020-12-06 16:34:49', '2020-12-06 16:34:49');
+INSERT INTO `actividad_pregunta` VALUES ('139', '¿Qué son los desiertos?', null, '64', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 16:37:31', '2020-12-06 16:37:31');
+INSERT INTO `actividad_pregunta` VALUES ('140', 'Este tipo de trabajo implica el uso primordial de las manos.', null, '65', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 16:55:07', '2020-12-06 16:55:07');
+INSERT INTO `actividad_pregunta` VALUES ('141', 'El dinero es', null, '66', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 16:57:37', '2020-12-06 16:57:37');
 
 -- ----------------------------
 -- Table structure for actividad_respuesta
@@ -77,11 +138,126 @@ CREATE TABLE `actividad_respuesta` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=322 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of actividad_respuesta
 -- ----------------------------
+INSERT INTO `actividad_respuesta` VALUES ('185', 'Respuesta 1', '103', '0', null, null, '1', '1', '2020-10-29 00:00:45', '2020-10-29 16:37:17');
+INSERT INTO `actividad_respuesta` VALUES ('186', 'Respuesta 2', '103', '0', null, null, '1', '1', '2020-10-29 00:20:30', '2020-10-29 16:38:17');
+INSERT INTO `actividad_respuesta` VALUES ('187', 'Respuesta 1', '104', '0', null, null, '1', '1', '2020-10-29 13:03:28', '2020-10-29 17:17:07');
+INSERT INTO `actividad_respuesta` VALUES ('193', 'Respuesta 3', '103', '1', null, null, '1', '1', '2020-10-29 13:56:14', '2020-10-29 17:16:55');
+INSERT INTO `actividad_respuesta` VALUES ('205', 'Respuesta 2', '104', '1', null, null, '1', '1', '2020-10-29 17:08:53', '2020-10-29 17:17:14');
+INSERT INTO `actividad_respuesta` VALUES ('210', 'Oido', '110', '1', null, null, '1', '1', '2020-10-29 20:56:11', '2020-10-31 13:38:12');
+INSERT INTO `actividad_respuesta` VALUES ('211', 'Vista', '110', '1', null, null, '1', '1', '2020-10-29 20:56:16', '2020-10-30 17:58:56');
+INSERT INTO `actividad_respuesta` VALUES ('212', 'Tacto', '110', '1', null, null, '1', '1', '2020-10-29 20:56:22', '2020-10-30 17:59:34');
+INSERT INTO `actividad_respuesta` VALUES ('213', 'Gusto', '110', '1', null, null, '1', '1', '2020-10-30 17:59:16', '2020-10-30 17:59:16');
+INSERT INTO `actividad_respuesta` VALUES ('214', 'Corazon', '110', '0', null, null, '1', '1', '2020-10-30 17:59:54', '2020-10-30 17:59:59');
+INSERT INTO `actividad_respuesta` VALUES ('215', 'respuesta 1', '111', '1', null, null, '1', '1', '2020-11-05 20:23:37', '2020-11-05 20:23:37');
+INSERT INTO `actividad_respuesta` VALUES ('216', 'respuesta 2', '111', '1', null, null, '1', '1', '2020-11-05 20:23:44', '2020-11-05 20:25:07');
+INSERT INTO `actividad_respuesta` VALUES ('218', '64363', '112', '0', null, null, '1', '1', '2020-11-16 18:32:56', '2020-11-16 18:32:56');
+INSERT INTO `actividad_respuesta` VALUES ('219', 'gdfgdgdfg', '112', '1', null, null, '1', '1', '2020-11-16 18:33:26', '2020-11-16 18:33:29');
+INSERT INTO `actividad_respuesta` VALUES ('220', 'Un lugar alejado', '113', '0', null, null, '1', '1', '2020-11-26 17:49:39', '2020-11-26 17:50:23');
+INSERT INTO `actividad_respuesta` VALUES ('221', 'Un lugar en el medio de la ciudad', '113', '0', null, null, '1', '1', '2020-11-26 17:50:08', '2020-11-26 17:50:23');
+INSERT INTO `actividad_respuesta` VALUES ('222', 'El medio que nos rodea, puede ser en espacio cerrado o abierto', '113', '1', null, null, '1', '1', '2020-11-26 17:50:23', '2020-11-26 17:50:23');
+INSERT INTO `actividad_respuesta` VALUES ('223', 'Un Ecosistema', '114', '1', null, null, '1', '1', '2020-11-26 17:57:03', '2020-11-26 17:57:27');
+INSERT INTO `actividad_respuesta` VALUES ('224', 'Los Factores Bióticos', '114', '0', null, null, '1', '1', '2020-11-26 17:57:12', '2020-11-26 17:57:27');
+INSERT INTO `actividad_respuesta` VALUES ('225', 'La cadena alimentaria', '114', '0', null, null, '1', '1', '2020-11-26 17:57:21', '2020-11-26 17:57:27');
+INSERT INTO `actividad_respuesta` VALUES ('226', 'Solido', '115', '1', null, null, '1', '1', '2020-12-05 22:57:50', '2020-12-05 22:57:50');
+INSERT INTO `actividad_respuesta` VALUES ('227', 'Fución.', '115', '0', null, null, '1', '1', '2020-12-05 22:58:01', '2020-12-05 22:58:01');
+INSERT INTO `actividad_respuesta` VALUES ('228', 'Vaporización.', '115', '0', null, null, '1', '1', '2020-12-05 22:58:10', '2020-12-05 22:58:10');
+INSERT INTO `actividad_respuesta` VALUES ('229', 'Masa constante', '116', '1', null, null, '1', '1', '2020-12-05 23:02:19', '2020-12-05 23:03:06');
+INSERT INTO `actividad_respuesta` VALUES ('230', 'Espacios intermusculares menores que en los sólidos', '116', '0', null, null, '1', '1', '2020-12-05 23:02:36', '2020-12-05 23:03:06');
+INSERT INTO `actividad_respuesta` VALUES ('231', 'No posen volumen definido', '116', '0', null, null, '1', '1', '2020-12-05 23:02:55', '2020-12-05 23:03:06');
+INSERT INTO `actividad_respuesta` VALUES ('232', 'Por azucares.', '117', '0', null, null, '1', '1', '2020-12-06 00:04:28', '2020-12-06 00:05:09');
+INSERT INTO `actividad_respuesta` VALUES ('233', 'Por nutrientes', '117', '1', null, null, '1', '1', '2020-12-06 00:04:39', '2020-12-06 00:05:09');
+INSERT INTO `actividad_respuesta` VALUES ('234', 'Por almidón.', '117', '0', null, null, '1', '1', '2020-12-06 00:04:54', '2020-12-06 00:05:09');
+INSERT INTO `actividad_respuesta` VALUES ('235', 'Por grasas.', '117', '0', null, null, '1', '1', '2020-12-06 00:05:05', '2020-12-06 00:05:09');
+INSERT INTO `actividad_respuesta` VALUES ('236', 'Origen animal.', '118', '1', null, null, '1', '1', '2020-12-06 00:07:07', '2020-12-06 00:08:50');
+INSERT INTO `actividad_respuesta` VALUES ('237', 'Origen mineral.', '118', '0', null, null, '1', '1', '2020-12-06 00:07:17', '2020-12-06 00:08:49');
+INSERT INTO `actividad_respuesta` VALUES ('238', 'Origen vegetal.', '118', '0', null, null, '1', '1', '2020-12-06 00:08:37', '2020-12-06 00:08:49');
+INSERT INTO `actividad_respuesta` VALUES ('239', 'Origen proteico.', '118', '0', null, null, '1', '1', '2020-12-06 00:08:46', '2020-12-06 00:08:49');
+INSERT INTO `actividad_respuesta` VALUES ('240', 'En la fecundación', '119', '1', null, null, '1', '1', '2020-12-06 00:10:52', '2020-12-06 00:11:24');
+INSERT INTO `actividad_respuesta` VALUES ('241', 'Cuando nacemos', '119', '0', null, null, '1', '1', '2020-12-06 00:11:00', '2020-12-06 00:11:24');
+INSERT INTO `actividad_respuesta` VALUES ('242', 'Cuando tenemos 5 años', '119', '0', null, null, '1', '1', '2020-12-06 00:11:09', '2020-12-06 00:11:24');
+INSERT INTO `actividad_respuesta` VALUES ('244', 'Cuando somos adultos', '119', '0', null, null, '1', '1', '2020-12-06 00:12:25', '2020-12-06 00:12:25');
+INSERT INTO `actividad_respuesta` VALUES ('245', 'Nacen, crecen, se reproducen y mueren', '120', '1', null, null, '1', '1', '2020-12-06 00:13:48', '2020-12-06 00:14:21');
+INSERT INTO `actividad_respuesta` VALUES ('246', 'Nacen, nadan, corren, juegan', '120', '0', null, null, '1', '1', '2020-12-06 00:13:56', '2020-12-06 00:14:21');
+INSERT INTO `actividad_respuesta` VALUES ('247', 'Se bañan, crecen, cantan, duermen', '120', '0', null, null, '1', '1', '2020-12-06 00:14:06', '2020-12-06 00:14:21');
+INSERT INTO `actividad_respuesta` VALUES ('248', 'Se reproducen, mueren, viajan, respiran bajo el agua', '120', '0', null, null, '1', '1', '2020-12-06 00:14:17', '2020-12-06 00:14:21');
+INSERT INTO `actividad_respuesta` VALUES ('249', 'elemento', '121', '0', null, null, '1', '1', '2020-12-06 01:57:45', '2020-12-06 01:58:02');
+INSERT INTO `actividad_respuesta` VALUES ('250', 'compuesto', '121', '1', null, null, '1', '1', '2020-12-06 01:57:54', '2020-12-06 01:58:02');
+INSERT INTO `actividad_respuesta` VALUES ('251', 'Elemento', '122', '0', null, null, '1', '1', '2020-12-06 02:00:59', '2020-12-06 02:01:31');
+INSERT INTO `actividad_respuesta` VALUES ('252', 'Compuesto', '122', '0', null, null, '1', '1', '2020-12-06 02:01:08', '2020-12-06 02:01:31');
+INSERT INTO `actividad_respuesta` VALUES ('253', 'Mezcla homogénea', '122', '1', null, null, '1', '1', '2020-12-06 02:01:16', '2020-12-06 02:01:31');
+INSERT INTO `actividad_respuesta` VALUES ('254', 'Mezcla heterogénea', '122', '0', null, null, '1', '1', '2020-12-06 02:01:23', '2020-12-06 02:01:31');
+INSERT INTO `actividad_respuesta` VALUES ('255', 'Al ejercicio que hacemos en las mañanas.', '123', '0', null, null, '1', '1', '2020-12-06 02:23:31', '2020-12-06 02:24:35');
+INSERT INTO `actividad_respuesta` VALUES ('256', 'Cuando jugamos en el patio de la escuela.', '123', '0', null, null, '1', '1', '2020-12-06 02:24:03', '2020-12-06 02:24:35');
+INSERT INTO `actividad_respuesta` VALUES ('257', 'Es una propiedad de la materia que permite hacer cambios en la materia.', '123', '1', null, null, '1', '1', '2020-12-06 02:24:15', '2020-12-06 02:24:35');
+INSERT INTO `actividad_respuesta` VALUES ('258', 'Es una propiedad de la materia que no le permite realizar cambios en ella.', '123', '0', null, null, '1', '1', '2020-12-06 02:24:31', '2020-12-06 02:24:35');
+INSERT INTO `actividad_respuesta` VALUES ('259', 'Vida', '124', '0', null, null, '1', '1', '2020-12-06 02:32:35', '2020-12-06 02:33:05');
+INSERT INTO `actividad_respuesta` VALUES ('260', 'Energía y transformación.', '124', '1', null, null, '1', '1', '2020-12-06 02:32:43', '2020-12-06 02:33:05');
+INSERT INTO `actividad_respuesta` VALUES ('261', 'muerte', '124', '0', null, null, '1', '1', '2020-12-06 02:32:50', '2020-12-06 02:33:05');
+INSERT INTO `actividad_respuesta` VALUES ('262', 'Convivencia', '124', '0', null, null, '1', '1', '2020-12-06 02:32:58', '2020-12-06 02:33:05');
+INSERT INTO `actividad_respuesta` VALUES ('263', 'Protones y electrones', '126', '0', null, null, '1', '1', '2020-12-06 03:15:10', '2020-12-06 03:15:31');
+INSERT INTO `actividad_respuesta` VALUES ('264', 'Protones y neutrones', '126', '1', null, null, '1', '1', '2020-12-06 03:15:18', '2020-12-06 03:15:31');
+INSERT INTO `actividad_respuesta` VALUES ('265', 'Protones, solamente', '126', '0', null, null, '1', '1', '2020-12-06 03:15:26', '2020-12-06 03:15:31');
+INSERT INTO `actividad_respuesta` VALUES ('266', '6.022 6 x 10^20', '127', '0', null, null, '1', '1', '2020-12-06 03:17:42', '2020-12-06 03:18:15');
+INSERT INTO `actividad_respuesta` VALUES ('267', '6.022 6 x 10^21', '127', '0', null, null, '1', '1', '2020-12-06 03:17:50', '2020-12-06 03:18:15');
+INSERT INTO `actividad_respuesta` VALUES ('268', '6.022 6 x 10^22', '127', '0', null, null, '1', '1', '2020-12-06 03:18:02', '2020-12-06 03:18:15');
+INSERT INTO `actividad_respuesta` VALUES ('269', '6.022 6 x 10^23', '127', '1', null, null, '1', '1', '2020-12-06 03:18:10', '2020-12-06 03:18:15');
+INSERT INTO `actividad_respuesta` VALUES ('270', 'Respiración.', '128', '0', null, null, '1', '1', '2020-12-06 03:39:53', '2020-12-06 03:40:54');
+INSERT INTO `actividad_respuesta` VALUES ('271', 'Digestión.', '128', '0', null, null, '1', '1', '2020-12-06 03:40:02', '2020-12-06 03:40:54');
+INSERT INTO `actividad_respuesta` VALUES ('272', 'Circulación.', '128', '1', null, null, '1', '1', '2020-12-06 03:40:11', '2020-12-06 03:40:54');
+INSERT INTO `actividad_respuesta` VALUES ('273', 'Reproducción', '128', '0', null, null, '1', '1', '2020-12-06 03:40:18', '2020-12-06 03:40:54');
+INSERT INTO `actividad_respuesta` VALUES ('274', 'VERDADERO', '129', '0', null, null, '1', '1', '2020-12-06 03:42:55', '2020-12-06 03:43:09');
+INSERT INTO `actividad_respuesta` VALUES ('275', 'FALSO', '129', '1', null, null, '1', '1', '2020-12-06 03:43:03', '2020-12-06 03:43:09');
+INSERT INTO `actividad_respuesta` VALUES ('276', 'básico', '130', '0', null, null, '1', '1', '2020-12-06 03:58:15', '2020-12-06 03:58:40');
+INSERT INTO `actividad_respuesta` VALUES ('277', 'ácido', '130', '1', null, null, '1', '1', '2020-12-06 03:58:22', '2020-12-06 03:58:40');
+INSERT INTO `actividad_respuesta` VALUES ('278', 'salado', '130', '0', null, null, '1', '1', '2020-12-06 03:58:28', '2020-12-06 03:58:40');
+INSERT INTO `actividad_respuesta` VALUES ('279', 'redox', '130', '0', null, null, '1', '1', '2020-12-06 03:58:35', '2020-12-06 03:58:40');
+INSERT INTO `actividad_respuesta` VALUES ('280', 'Sangre', '131', '1', null, null, '1', '1', '2020-12-06 04:01:07', '2020-12-06 04:01:35');
+INSERT INTO `actividad_respuesta` VALUES ('281', 'Agua', '131', '0', null, null, '1', '1', '2020-12-06 04:01:14', '2020-12-06 04:01:35');
+INSERT INTO `actividad_respuesta` VALUES ('282', 'HCl', '131', '0', null, null, '1', '1', '2020-12-06 04:01:21', '2020-12-06 04:01:35');
+INSERT INTO `actividad_respuesta` VALUES ('283', 'NaOH', '131', '0', null, null, '1', '1', '2020-12-06 04:01:29', '2020-12-06 04:01:35');
+INSERT INTO `actividad_respuesta` VALUES ('284', 'Color de mis ojos', '132', '1', null, null, '1', '1', '2020-12-06 05:01:25', '2020-12-06 05:04:43');
+INSERT INTO `actividad_respuesta` VALUES ('285', 'Color de mi piel', '132', '1', null, null, '1', '1', '2020-12-06 05:01:32', '2020-12-06 05:04:32');
+INSERT INTO `actividad_respuesta` VALUES ('286', 'Color del cabello', '132', '1', null, null, '1', '1', '2020-12-06 05:01:40', '2020-12-06 05:04:45');
+INSERT INTO `actividad_respuesta` VALUES ('287', 'Colegio/Escuela', '133', '0', null, null, '1', '1', '2020-12-06 05:10:43', '2020-12-06 05:11:12');
+INSERT INTO `actividad_respuesta` VALUES ('288', 'Barrio', '133', '0', null, null, '1', '1', '2020-12-06 05:10:52', '2020-12-06 05:11:12');
+INSERT INTO `actividad_respuesta` VALUES ('289', 'Municipio', '133', '0', null, null, '1', '1', '2020-12-06 05:11:00', '2020-12-06 05:11:12');
+INSERT INTO `actividad_respuesta` VALUES ('290', 'Familia', '133', '1', null, null, '1', '1', '2020-12-06 05:11:08', '2020-12-06 05:11:12');
+INSERT INTO `actividad_respuesta` VALUES ('291', 'Cartografía', '134', '0', null, null, '1', '1', '2020-12-06 05:18:49', '2020-12-06 05:19:14');
+INSERT INTO `actividad_respuesta` VALUES ('292', 'Geografía', '134', '1', null, null, '1', '1', '2020-12-06 05:18:55', '2020-12-06 05:19:14');
+INSERT INTO `actividad_respuesta` VALUES ('293', 'Proyecciones', '134', '0', null, null, '1', '1', '2020-12-06 05:19:01', '2020-12-06 05:19:14');
+INSERT INTO `actividad_respuesta` VALUES ('294', 'Xilografía', '134', '0', null, null, '1', '1', '2020-12-06 05:19:10', '2020-12-06 05:19:14');
+INSERT INTO `actividad_respuesta` VALUES ('295', 'A. estado de tiempo', '135', '0', null, null, '1', '1', '2020-12-06 05:22:07', '2020-12-06 05:22:41');
+INSERT INTO `actividad_respuesta` VALUES ('296', 'clima', '135', '1', null, null, '1', '1', '2020-12-06 05:22:16', '2020-12-06 05:22:41');
+INSERT INTO `actividad_respuesta` VALUES ('297', 'precipitaciones', '135', '0', null, null, '1', '1', '2020-12-06 05:22:23', '2020-12-06 05:22:41');
+INSERT INTO `actividad_respuesta` VALUES ('298', 'humedad', '135', '0', null, null, '1', '1', '2020-12-06 05:22:36', '2020-12-06 05:22:41');
+INSERT INTO `actividad_respuesta` VALUES ('299', 'Valores y modas.', '136', '0', null, null, '1', '1', '2020-12-06 16:14:24', '2020-12-06 16:14:54');
+INSERT INTO `actividad_respuesta` VALUES ('300', 'Modas, normas y creencias.', '136', '0', null, null, '1', '1', '2020-12-06 16:14:33', '2020-12-06 16:14:54');
+INSERT INTO `actividad_respuesta` VALUES ('301', 'Normas, valores y creencias.', '136', '1', null, null, '1', '1', '2020-12-06 16:14:40', '2020-12-06 16:14:54');
+INSERT INTO `actividad_respuesta` VALUES ('302', 'normas , valores , creencias y amor', '136', '0', null, null, '1', '1', '2020-12-06 16:14:48', '2020-12-06 16:14:54');
+INSERT INTO `actividad_respuesta` VALUES ('303', 'Narración que busca explicar hechos fantásticos', '137', '0', null, null, '1', '1', '2020-12-06 16:19:28', '2020-12-06 16:20:17');
+INSERT INTO `actividad_respuesta` VALUES ('304', 'Narración que busca explicar hechos, tradiciones y costumbres de un pueblo', '137', '1', null, null, '1', '1', '2020-12-06 16:19:37', '2020-12-06 16:20:17');
+INSERT INTO `actividad_respuesta` VALUES ('305', 'Narración que busca explicar los orígenes del universo', '137', '0', null, null, '1', '1', '2020-12-06 16:19:46', '2020-12-06 16:20:17');
+INSERT INTO `actividad_respuesta` VALUES ('306', 'Narración que se transmite de forma oral de una generación a otra', '137', '0', null, null, '1', '1', '2020-12-06 16:20:13', '2020-12-06 16:20:17');
+INSERT INTO `actividad_respuesta` VALUES ('307', 'un lugar que comparte características en clima, suelo, vegetación y relieve', '138', '1', null, null, '1', '1', '2020-12-06 16:35:01', '2020-12-06 16:35:38');
+INSERT INTO `actividad_respuesta` VALUES ('308', 'un lugar con animales, arboles y ríos iguales', '138', '0', null, null, '1', '1', '2020-12-06 16:35:14', '2020-12-06 16:35:14');
+INSERT INTO `actividad_respuesta` VALUES ('309', 'un lugar que comparte características en comida, baile, acentos y ropa', '138', '0', null, null, '1', '1', '2020-12-06 16:35:22', '2020-12-06 16:35:22');
+INSERT INTO `actividad_respuesta` VALUES ('310', 'un lugar con montañas y ríos por fuera de la ciudad', '138', '0', null, null, '1', '1', '2020-12-06 16:35:29', '2020-12-06 16:35:29');
+INSERT INTO `actividad_respuesta` VALUES ('311', 'Zonas áridas de gran temperatura', '139', '1', null, null, '1', '1', '2020-12-06 16:37:40', '2020-12-06 16:38:13');
+INSERT INTO `actividad_respuesta` VALUES ('312', 'Zonas húmedas de baja temperaturas', '139', '0', null, null, '1', '1', '2020-12-06 16:37:48', '2020-12-06 16:38:13');
+INSERT INTO `actividad_respuesta` VALUES ('313', 'Zonas trópicas con bajas temperaturas', '139', '0', null, null, '1', '1', '2020-12-06 16:37:55', '2020-12-06 16:38:13');
+INSERT INTO `actividad_respuesta` VALUES ('314', 'Zonas montañosas con altas temperaturas y humedad', '139', '0', null, null, '1', '1', '2020-12-06 16:38:05', '2020-12-06 16:38:13');
+INSERT INTO `actividad_respuesta` VALUES ('315', 'Trabajo nocturno', '140', '0', null, null, '1', '1', '2020-12-06 16:55:18', '2020-12-06 16:55:41');
+INSERT INTO `actividad_respuesta` VALUES ('316', 'Trabajo manual', '140', '1', null, null, '1', '1', '2020-12-06 16:55:26', '2020-12-06 16:55:41');
+INSERT INTO `actividad_respuesta` VALUES ('317', 'Trabajo intelectual', '140', '0', null, null, '1', '1', '2020-12-06 16:55:33', '2020-12-06 16:55:41');
+INSERT INTO `actividad_respuesta` VALUES ('318', 'Un medio de cambio.', '141', '1', null, null, '1', '1', '2020-12-06 16:57:47', '2020-12-06 16:58:19');
+INSERT INTO `actividad_respuesta` VALUES ('319', 'Universal.', '141', '0', null, null, '1', '1', '2020-12-06 16:57:55', '2020-12-06 16:58:18');
+INSERT INTO `actividad_respuesta` VALUES ('320', 'Nos permite acceder a bienes y servicios.', '141', '0', null, null, '1', '1', '2020-12-06 16:58:02', '2020-12-06 16:58:18');
+INSERT INTO `actividad_respuesta` VALUES ('321', 'Valor asignado.', '141', '0', null, null, '1', '1', '2020-12-06 16:58:12', '2020-12-06 16:58:18');
 
 -- ----------------------------
 -- Table structure for agenda
@@ -103,11 +279,22 @@ CREATE TABLE `agenda` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of agenda
 -- ----------------------------
+INSERT INTO `agenda` VALUES ('2', 'Reunion Quincenal', '2', '3', '1', '2021-01-18', '08:01:00', '08:30:00', '0', 'Cambio de Planes de Evaluacion Nueva Normalidad', '1', '1', '2020-06-19 20:39:49', '2020-06-19 20:39:49');
+INSERT INTO `agenda` VALUES ('3', 'Taller Evaluaciones en Linea', '2', '3', '4', '2021-01-19', '10:55:00', '15:30:00', '0', 'Desarrollo de Planes de Evaluacion en Linea y Generacion de Tareas', '1', '1', '2020-06-19 20:59:40', '2020-06-25 22:22:57');
+INSERT INTO `agenda` VALUES ('4', 'Celebracion Dia del Estudiante', '2', '6', '5', '2021-01-19', '08:00:00', '10:00:00', '0', 'Descripcion completa de alguna actividad para indicar infomacion importante.', '1', '1', '2020-06-19 21:01:55', '2020-11-10 21:43:13');
+INSERT INTO `agenda` VALUES ('5', 'Prueba', '2', '5', '5', '2021-01-15', '00:00:00', '00:59:00', '0', 'Actividad Prueba', '1', '1', '2020-06-19 21:05:59', '2020-06-22 19:43:38');
+INSERT INTO `agenda` VALUES ('7', 'Inicio de Clases', '2', '1', '8', '2021-01-01', '00:01:00', '00:01:00', '0', 'Inicio del año escolar', '1', '1', '2020-06-19 21:24:16', '2020-06-19 21:24:16');
+INSERT INTO `agenda` VALUES ('8', 'Fin Periodo I', '2', '2', '9', '2021-01-30', '00:01:00', '00:00:00', '0', 'Fin primer periodo', '1', '1', '2020-06-19 21:25:34', '2020-06-19 21:25:34');
+INSERT INTO `agenda` VALUES ('11', 'Campeonato de Futbol', '1', '4', '6', '2021-01-04', '08:00:00', '07:00:00', '0', 'Campeonato Interescolar Distrital', '1', '1', '2020-06-20 11:28:11', '2020-06-22 19:31:16');
+INSERT INTO `agenda` VALUES ('13', 'Inicio 2 Periodo', '2', '1', '9', '2021-01-05', '00:10:00', '05:00:00', '0', null, '1', '1', '2020-06-25 03:07:57', '2020-11-10 21:52:45');
+INSERT INTO `agenda` VALUES ('14', 'Taller Convivencia', '2', '7', '4', '2021-01-04', '00:36:00', '00:30:00', '0', 'Taller con el Prof. Jose Azuaje', '1', '1', '2020-08-18 17:51:11', '2020-11-10 21:35:55');
+INSERT INTO `agenda` VALUES ('15', 'eeqeqe', '2', '1', '1', '2021-01-09', '06:06:00', '07:05:00', '0', 'eeq', '1', '1', '2020-09-02 21:27:57', '2020-09-02 21:27:57');
+INSERT INTO `agenda` VALUES ('16', 'Reunion', '2', '1', '1', '2021-01-10', '02:09:00', '01:09:00', '0', 'fdfsf', '1', '2', '2020-09-05 14:13:58', '2020-09-05 14:13:58');
 
 -- ----------------------------
 -- Table structure for agenda_actividad
@@ -124,11 +311,20 @@ CREATE TABLE `agenda_actividad` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of agenda_actividad
 -- ----------------------------
+INSERT INTO `agenda_actividad` VALUES ('1', 'Reunion de Docentes', 'mdi-account-group', null, null, '1', '1', '2020-06-19 02:23:46', '2020-06-19 03:00:03');
+INSERT INTO `agenda_actividad` VALUES ('2', 'Reunion de Padres', 'mdi-human-male-child', null, null, '1', '1', '2020-06-19 02:59:44', '2020-06-19 02:59:44');
+INSERT INTO `agenda_actividad` VALUES ('3', 'Reunion Secrertaria', 'mdi-chair-rolling', null, null, '1', '1', '2020-06-19 03:06:30', '2020-06-19 03:06:30');
+INSERT INTO `agenda_actividad` VALUES ('4', 'Taller', 'mdi-charity', null, null, '1', '1', '2020-06-19 03:08:05', '2020-06-19 03:08:05');
+INSERT INTO `agenda_actividad` VALUES ('5', 'Celebracion', 'mdi-party-popper', null, null, '1', '1', '2020-06-19 03:11:22', '2020-06-19 10:22:50');
+INSERT INTO `agenda_actividad` VALUES ('6', 'Actividades Deportivas', 'mdi-soccer', null, null, '1', '1', '2020-06-19 03:22:38', '2020-06-19 20:57:18');
+INSERT INTO `agenda_actividad` VALUES ('7', 'Paseos', 'mdi-bus-side', null, null, '1', '1', '2020-06-19 03:23:06', '2020-06-20 11:29:43');
+INSERT INTO `agenda_actividad` VALUES ('8', 'Inicio Fin Año escolar', 'mdi-flag-checkered', null, null, '1', '1', '2020-06-19 10:18:37', '2020-11-10 20:32:54');
+INSERT INTO `agenda_actividad` VALUES ('9', 'Inicio FIn Periodo', 'mdi-flag-triangle', null, null, '1', '1', '2020-06-19 10:21:01', '2020-06-19 10:21:01');
 
 -- ----------------------------
 -- Table structure for alumno
@@ -159,11 +355,12 @@ CREATE TABLE `alumno` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of alumno
 -- ----------------------------
+INSERT INTO `alumno` VALUES ('1', 'Yustiz', 'Tovar', 'Jean', 'Pierre', '1', '31122290', 'M', '2007-06-22', 'Venezolano', 'Caracas', 'Calle 3 con 4', '76', '76', 'jyustiz@gmailcom', '04129098862', '04129098862', '04129098862', null, '1', '1', '2020-05-17 04:47:28', '2020-05-17 05:37:15');
 
 -- ----------------------------
 -- Table structure for alumno_materia
@@ -181,11 +378,21 @@ CREATE TABLE `alumno_materia` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=234 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of alumno_materia
 -- ----------------------------
+INSERT INTO `alumno_materia` VALUES ('168', '1', '2', '4', '14', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('170', '1', '1', '4', '14', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('174', '1', '2', '4', '7', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('180', '1', '2', '4', '19', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('182', '1', '1', '4', '19', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('186', '1', '2', '4', '17', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('188', '1', '1', '4', '17', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('192', '1', '2', '4', '15', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('194', '1', '1', '4', '15', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('203', '1', '1', '4', '7', null, '1', '1', '2020-08-17 23:57:01', '2020-08-17 23:57:01');
 
 -- ----------------------------
 -- Table structure for alumno_pariente
@@ -202,11 +409,12 @@ CREATE TABLE `alumno_pariente` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of alumno_pariente
 -- ----------------------------
+INSERT INTO `alumno_pariente` VALUES ('10', '1', '2', '1', null, '1', '1', '2020-07-25 18:53:44', '2020-07-25 18:53:44');
 
 -- ----------------------------
 -- Table structure for archivo
@@ -225,11 +433,56 @@ CREATE TABLE `archivo` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of archivo
 -- ----------------------------
+INSERT INTO `archivo` VALUES ('18', 'Archivo Prueba', '1', '21', '1593453680_es-cv-143.pptx', 'PowerPoint', 'Descripcion Prueba', '1', '1', '2020-06-29 18:01:20', '2020-06-29 18:01:20');
+INSERT INTO `archivo` VALUES ('24', 'Audio Macro', '8', '1', '1593648672_DAO Readme.txt', 'Texto', 'Descripcion del Libro', '1', '1', '2020-07-02 00:11:12', '2020-12-05 03:20:31');
+INSERT INTO `archivo` VALUES ('25', 'Libro Texto 1 Grado', '8', '1', '1593656676_Integra-Sociales.pdf', 'PDF', 'Integra Sociales', '1', '1', '2020-07-02 02:24:36', '2020-07-02 02:24:36');
+INSERT INTO `archivo` VALUES ('26', 'Prueba', '8', '1', '1593797727_cotizar.xlsx', 'Excel', 'Prueba Observaciones', '1', '1', '2020-07-03 17:35:27', '2020-07-03 17:35:27');
+INSERT INTO `archivo` VALUES ('28', 'hhdf', '2', '10', '1594049722_DAO Readme.txt', 'Texto', 'hdfhdhd', '1', '1', '2020-07-06 15:35:22', '2020-07-06 15:35:22');
+INSERT INTO `archivo` VALUES ('29', 'Macroeconomia', '10', '3', 'macroeconomia.pdf', 'Video', 'prueba', '1', '1', '2020-07-31 15:23:49', '2020-10-27 05:29:48');
+INSERT INTO `archivo` VALUES ('30', 'Guia', '2', '26', '1599410641_001 Sumas de 1 digito para primer grado fácil.pdf', 'PDF', 'Guia', '1', '1', '2020-09-06 16:44:01', '2020-09-06 16:44:01');
+INSERT INTO `archivo` VALUES ('31', 'Tarea 2', '11', '26', '1599508370_001 Sumas de 1 digito para primer grado fácil.pdf', 'PDF', null, '1', '1', '2020-09-07 19:52:50', '2020-09-07 19:52:50');
+INSERT INTO `archivo` VALUES ('33', 'tarea 3', '11', '32', '1599568865_Documento sin título (1).pdf', 'PDF', null, '1', '1', '2020-09-08 12:41:05', '2020-09-08 12:41:05');
+INSERT INTO `archivo` VALUES ('38', 'Macroeconomia', '8', '9', 'fundamentos_macroeconomia.mp3', 'Audio', 'Observaciones', '1', '1', '2020-10-20 02:46:26', '2020-10-27 05:02:14');
+INSERT INTO `archivo` VALUES ('39', 'prueba 2', '8', '10', 'fundamentos_macroeconomia.mp3', 'Audio', null, '1', '1', '2020-10-20 02:55:06', '2020-10-20 02:55:06');
+INSERT INTO `archivo` VALUES ('40', 'prueba 3', '8', '11', 'fundamentos_macroeconomia.mp3', 'Audio', 'yeyey', '1', '1', '2020-10-20 02:58:03', '2020-10-20 02:58:03');
+INSERT INTO `archivo` VALUES ('41', 'procedimiento', '10', '12', 'llamado.pdf', 'PDF', null, '1', '1', '2020-10-20 03:51:26', '2020-10-20 03:51:26');
+INSERT INTO `archivo` VALUES ('42', 'Los Sentidos', '8', '13', 'fundamentos_macroeconomia.mp3', 'Audio', null, '1', '1', '2020-10-27 02:04:09', '2020-10-27 02:04:09');
+INSERT INTO `archivo` VALUES ('43', 'Fundamentos', '8', '14', 'fundamentos_macroeconomia.mp3', 'Audio', null, '1', '1', '2020-10-27 05:01:26', '2020-10-27 05:01:41');
+INSERT INTO `archivo` VALUES ('44', 'Sumas Restas Facil', '10', '15', '001 Sumas de 1 digito para primer grado fácil.pdf', 'PDF', null, '1', '1', '2020-10-27 05:30:53', '2020-10-27 05:30:53');
+INSERT INTO `archivo` VALUES ('45', 'Sumas Facil', '10', '16', '001 Sumas de 1 digito para primer grado fácil.pdf', 'PDF', null, '1', '1', '2020-10-27 13:10:41', '2020-10-27 13:10:41');
+INSERT INTO `archivo` VALUES ('46', 'Los Cinco Sentidos', '10', '17', 'CUADERNO_ACTIVIDADES_LOS_CINCO_SENTIDOS.pdf', 'PDF', null, '1', '1', '2020-10-31 13:49:54', '2020-10-31 13:49:54');
+INSERT INTO `archivo` VALUES ('47', 'Los Sentidos', '8', '18', 'fundamentos_macroeconomia.mp3', 'Audio', null, '1', '1', '2020-11-05 16:16:14', '2020-11-05 16:20:09');
+INSERT INTO `archivo` VALUES ('48', 'Los sentidos', '10', '19', 'losSentidos.pdf', 'PDF', null, '1', '1', '2020-11-08 23:09:29', '2020-11-08 23:09:29');
+INSERT INTO `archivo` VALUES ('49', 'Guia', '1', '1', '1605293775_15505108.ppt', 'PowerPoint', 'rwerwr', '1', '1', '2020-11-13 18:56:15', '2020-11-13 18:56:37');
+INSERT INTO `archivo` VALUES ('51', 'Guia de la Tarea', '11', '1', '1605302163_2017_MATR_MATRICULA Y LIST ultimo (v2).pdf', 'PDF', 'twtwet', '1', '1', '2020-11-13 21:16:03', '2020-11-14 14:42:36');
+INSERT INTO `archivo` VALUES ('52', 'Calendario', '11', '1', '1605365668_Calendario Escolar 2019-2020.pdf', 'PDF', null, '1', '1', '2020-11-14 14:54:28', '2020-11-14 14:54:28');
+INSERT INTO `archivo` VALUES ('56', 'tarea', '13', '60', '1605372237_Calendario Escolar 2019-2020.xlsx', 'Excel', null, '1', '1', '2020-11-14 16:43:57', '2020-11-14 16:43:57');
+INSERT INTO `archivo` VALUES ('57', 'Significado de Estados de la materia', '10', '20', 'grado1_los solidos_Significado de Estados de la materia.pdf', 'PDF', null, '1', '1', '2020-12-06 00:34:03', '2020-12-06 00:34:03');
+INSERT INTO `archivo` VALUES ('58', 'Propiedades de la materia', '10', '21', 'grado1_los liquidos_Propiedades de la materia.pdf', 'PDF', null, '1', '1', '2020-12-06 00:34:34', '2020-12-06 00:34:34');
+INSERT INTO `archivo` VALUES ('59', 'Origen de la alimentación humana', '10', '22', 'grado 2_Hablemos de los alimentos_Origen de la alimentación humana.pdf', 'PDF', null, '1', '1', '2020-12-06 01:13:54', '2020-12-06 01:13:54');
+INSERT INTO `archivo` VALUES ('60', 'Alimentos y tipos de alimentos', '10', '23', 'grado 2_Los alimentos segun su origen_Alimentos y tipos de alimentos.pdf', 'PDF', null, '1', '1', '2020-12-06 01:14:11', '2020-12-06 01:14:11');
+INSERT INTO `archivo` VALUES ('61', 'Cambios emocionales en la preadolescencia', '10', '24', 'grado 3_Los cambios en la mujer_Cambios emocionales en la preadolescencia.pdf', 'PDF', null, '1', '1', '2020-12-06 01:47:19', '2020-12-06 01:47:19');
+INSERT INTO `archivo` VALUES ('62', 'Causas de la rebeldía en los niños', '10', '25', 'grado 3_Los cambios en los niños_Causas de la rebeldía en los niños.pdf', 'PDF', null, '1', '1', '2020-12-06 01:47:57', '2020-12-06 01:47:57');
+INSERT INTO `archivo` VALUES ('63', 'Sustancias puras', '10', '26', 'grado 4_que es un elemento y que es un compuesto_Sustancias puras.pdf', 'PDF', null, '1', '1', '2020-12-06 01:49:35', '2020-12-06 01:49:35');
+INSERT INTO `archivo` VALUES ('64', 'Tipos de mezclas', '10', '27', 'grado 4_que es una mezcla_Tipos de mezclas.pdf', 'PDF', null, '1', '1', '2020-12-06 01:49:56', '2020-12-06 01:49:56');
+INSERT INTO `archivo` VALUES ('65', 'Energía solar', '10', '28', 'grado 5_de donde proviene la energia_Energía solar.pdf', 'PDF', null, '1', '1', '2020-12-06 02:21:54', '2020-12-06 02:21:54');
+INSERT INTO `archivo` VALUES ('66', 'Energías renovables', '10', '29', 'grado 5_Podemos crear energia_Energías renovables.pdf', 'PDF', null, '1', '1', '2020-12-06 02:22:14', '2020-12-06 02:22:14');
+INSERT INTO `archivo` VALUES ('67', 'La Meiosis', '8', '30', 'grado-8-ciclo-celular.mp3', 'Audio', null, '1', '1', '2020-12-06 04:16:55', '2020-12-06 04:16:55');
+INSERT INTO `archivo` VALUES ('68', 'Crecemos y cambiamos', '10', '31', 'Grado 1_Este soy yo_Crecemos y cambiamos.pdf', 'PDF', null, '1', '1', '2020-12-06 05:00:38', '2020-12-06 05:00:38');
+INSERT INTO `archivo` VALUES ('69', 'La familia en un país diverso ¿qué y cómo?', '10', '32', 'Grado 1_Organizaciones sociales_La familia en un país diverso.pdf', 'PDF', null, '1', '1', '2020-12-06 05:09:21', '2020-12-06 05:09:21');
+INSERT INTO `archivo` VALUES ('70', 'El paisaje geográfico', '10', '33', 'Grado 2_El paisaje geográfico_El paisaje geografico.pdf', 'PDF', null, '1', '1', '2020-12-06 05:16:07', '2020-12-06 05:16:07');
+INSERT INTO `archivo` VALUES ('71', '¿Cuáles son los climas de Colombia?', '10', '34', 'Grado 2_El clima y el Paisaje_Cuáles son los climas de Colombia.pdf', 'PDF', null, '1', '1', '2020-12-06 05:16:45', '2020-12-06 05:16:45');
+INSERT INTO `archivo` VALUES ('72', '¿Qué es la cultura y cuáles son sus caracteristicas?', '10', '35', 'Grado 3_Las expresiones de cultura_Qué es la Cultura Oral y cuáles son sus Características.pdf', 'PDF', null, '1', '1', '2020-12-06 16:32:17', '2020-12-06 16:32:17');
+INSERT INTO `archivo` VALUES ('73', 'Importancia de las costumbres culturales', '10', '36', 'Grado 3_Mitos costumbres y tradiciones_Importancia de las Costumbres Culturales.pdf', 'PDF', null, '1', '1', '2020-12-06 16:32:46', '2020-12-06 16:32:46');
+INSERT INTO `archivo` VALUES ('74', 'Región del pacifico', '10', '37', 'Grado 4_Regiones naturales de Colombia_Región del Pacífico.pdf', 'PDF', null, '1', '1', '2020-12-06 16:33:28', '2020-12-06 16:33:28');
+INSERT INTO `archivo` VALUES ('75', '¿Cuáles son los factores que determinan las regiones naturales?', '10', '38', 'Grado 4_Regiones naturales del mundo_Cuáles son los factores que determinan las regiones naturales.pdf', 'PDF', null, '1', '1', '2020-12-06 16:34:31', '2020-12-06 16:34:31');
+INSERT INTO `archivo` VALUES ('76', '¿Qué se entiende por trabajo infantil?', '10', '39', 'Grado 5_El trabajo_Qué se entiende por trabajo infantil.pdf', 'PDF', null, '1', '1', '2020-12-06 16:54:14', '2020-12-06 16:54:14');
+INSERT INTO `archivo` VALUES ('77', 'Funciones del dinero', '10', '40', 'Grado 5_El dinero y el intercambio económico_Funciones del dinero.pdf', 'PDF', null, '1', '1', '2020-12-06 16:54:34', '2020-12-06 16:54:34');
 
 -- ----------------------------
 -- Table structure for area_estudio
@@ -245,7 +498,7 @@ CREATE TABLE `area_estudio` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of area_estudio
@@ -259,6 +512,7 @@ INSERT INTO `area_estudio` VALUES ('6', 'Idiomas', 'deep-orange', null, '1', '1'
 INSERT INTO `area_estudio` VALUES ('7', 'Educación Religiosa y Moral', 'pink', null, '1', '1', '2020-05-16 16:14:57', '2020-05-22 21:40:39');
 INSERT INTO `area_estudio` VALUES ('8', 'Educación Física y Deporte', 'brown', null, '1', '1', '2020-05-16 16:15:28', '2020-05-16 16:15:28');
 INSERT INTO `area_estudio` VALUES ('9', 'Educación Estética y Artistica', 'blue', null, '1', '1', '2020-05-16 16:32:18', '2020-09-20 14:18:48');
+INSERT INTO `area_estudio` VALUES ('10', 'Informatica', 'red', null, '1', '1', null, null);
 
 -- ----------------------------
 -- Table structure for asignacion
@@ -280,7 +534,7 @@ CREATE TABLE `asignacion` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of asignacion
@@ -306,10 +560,32 @@ CREATE TABLE `asignacion_alumno` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of asignacion_alumno
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for asistencia
+-- ----------------------------
+DROP TABLE IF EXISTS `asistencia`;
+CREATE TABLE `asistencia` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_clase` int(11) NOT NULL,
+  `id_alumno` int(11) NOT NULL,
+  `fe_asistencia` timestamp NULL DEFAULT NULL,
+  `bo_asistencia` tinyint(1) NOT NULL DEFAULT 0,
+  `tx_observaciones` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_status` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=206 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of asistencia
 -- ----------------------------
 
 -- ----------------------------
@@ -335,35 +611,34 @@ CREATE TABLE `asistente` (
 -- ----------------------------
 -- Records of asistente
 -- ----------------------------
-INSERT INTO `asistente` VALUES ('1', 'Institucion', '7', 'Se define la informacion principal de la institucion que incluye logo, informacion  de contacto, ubiacion y directiva', 'deep-orange', '1', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 00:09:03', '2020-09-02 15:04:45');
-INSERT INTO `asistente` VALUES ('2', 'Tipo Colegio', '8', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'deep-orange', '3', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 01:26:22', '2020-09-02 12:11:51');
-INSERT INTO `asistente` VALUES ('3', 'Cargos', '9', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'deep-orange', '2', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 01:32:11', '2020-09-02 12:11:51');
-INSERT INTO `asistente` VALUES ('4', 'Tipo Directiva', '10', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'deep-orange', '4', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:43:15', '2020-09-02 12:43:15');
-INSERT INTO `asistente` VALUES ('6', 'Empleados', '14', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'deep-orange', '5', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:44:21', '2020-09-22 13:59:59');
-INSERT INTO `asistente` VALUES ('7', 'Estructura', '12', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'deep-orange', '6', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:44:36', '2020-09-22 13:59:59');
-INSERT INTO `asistente` VALUES ('8', 'Aulas', '13', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'deep-orange', '7', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:44:54', '2020-09-22 13:59:59');
-INSERT INTO `asistente` VALUES ('9', 'Calendario', '15', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'teal', '8', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:45:10', '2020-09-22 13:59:59');
-INSERT INTO `asistente` VALUES ('10', 'Periodos', '16', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'teal', '9', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:45:25', '2020-09-22 13:59:59');
-INSERT INTO `asistente` VALUES ('11', 'Turnos', '21', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'teal', '10', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:45:38', '2020-09-22 13:59:59');
-INSERT INTO `asistente` VALUES ('12', 'Horas Academicas', '22', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'teal', '11', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:45:51', '2020-09-22 13:59:59');
-INSERT INTO `asistente` VALUES ('14', 'Areas de Estudio', '27', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'cyan', '12', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:46:47', '2020-09-22 13:59:59');
-INSERT INTO `asistente` VALUES ('15', 'Materias', '28', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'cyan', '13', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:47:03', '2020-09-22 13:59:59');
-INSERT INTO `asistente` VALUES ('16', 'Niveles', '24', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'cyan', '14', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:47:30', '2020-09-22 13:59:59');
-INSERT INTO `asistente` VALUES ('17', 'Grados', '25', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'cyan', '15', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:47:55', '2020-09-22 13:59:59');
-INSERT INTO `asistente` VALUES ('18', 'Grupos', '26', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'cyan', '16', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:48:08', '2020-09-22 13:59:59');
-INSERT INTO `asistente` VALUES ('19', 'Docente', '37', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'pink', '17', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:48:30', '2020-09-22 14:00:00');
-INSERT INTO `asistente` VALUES ('20', 'Tipo Evaluacion', '33', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'purple', '18', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:48:57', '2020-09-22 14:00:00');
-INSERT INTO `asistente` VALUES ('21', 'Plan Evaluacion', '35', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'purple', '19', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:49:11', '2020-09-22 14:00:00');
-INSERT INTO `asistente` VALUES ('22', 'Horario', '36', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'purple', '20', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:49:29', '2020-09-22 14:00:00');
-INSERT INTO `asistente` VALUES ('24', 'Nivel Calificaciones', '31', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'purple', '21', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:50:43', '2020-09-22 14:00:00');
-INSERT INTO `asistente` VALUES ('25', 'Calificacion', '32', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'purple', '22', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:50:57', '2020-09-22 14:00:00');
-INSERT INTO `asistente` VALUES ('26', 'Condicion Alumno', '38', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'pink', '23', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:51:14', '2020-09-22 14:00:00');
-INSERT INTO `asistente` VALUES ('27', 'Alumnos', '39', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'pink', '24', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:56:02', '2020-09-22 14:00:00');
-INSERT INTO `asistente` VALUES ('28', 'Acudiente', '40', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'pink', '25', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:56:18', '2020-09-22 14:00:00');
-INSERT INTO `asistente` VALUES ('29', 'Feriados', '17', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'teal', '26', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:56:43', '2020-09-22 14:00:00');
-INSERT INTO `asistente` VALUES ('30', 'Tipo Agenda', '18', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'teal', '27', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:57:00', '2020-09-22 14:00:00');
-INSERT INTO `asistente` VALUES ('31', 'Tipo Actividad', '19', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'teal', '28', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:57:29', '2020-09-22 14:00:00');
-INSERT INTO `asistente` VALUES ('32', 'Agenda', '20', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'teal', '29', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:57:43', '2020-09-22 14:00:00');
+INSERT INTO `asistente` VALUES ('1', 'Institucion', '7', 'Se define la informacion principal de la institucion que incluye logo, informacion  de contacto, ubiacion y directiva', 'deep-orange', '1', 'secretaria', 'Debe cargarse la información completa para la correcta generación de los reportes.', '1', '1', '2020-09-02 00:09:03', '2020-12-10 16:17:29');
+INSERT INTO `asistente` VALUES ('2', 'Tipo Colegio', '8', 'Indica la categoría del colegio privado o publico', 'deep-orange', '3', 'secretaria', 'Información requerida para algunos reportes', '1', '1', '2020-09-02 01:26:22', '2020-12-10 16:22:02');
+INSERT INTO `asistente` VALUES ('3', 'Cargos', '9', 'Cargos de la platilla de cargos del colegio tanto para la directiva como de los empleados.', 'deep-orange', '2', 'secretaria', 'Esta información alimentara los selectores de cargos en la carga de empleados y directivas.', '1', '1', '2020-09-02 01:32:11', '2020-12-10 16:22:02');
+INSERT INTO `asistente` VALUES ('4', 'Tipo Directiva', '10', 'Tipos de directiva con que cuente la institución', 'deep-orange', '4', 'secretaria', 'Información para alimentar selectores en pantalla de carga de directiva', '1', '1', '2020-09-02 12:43:15', '2020-12-10 16:26:07');
+INSERT INTO `asistente` VALUES ('6', 'Empleados', '14', 'Carga de la datos básicos del empleado así como la ubicación.  Cada vez que se genera un empleado se genera un usuario con perfil secretaria.', 'deep-orange', '5', 'secretaria', 'El correo es obligatorio y se debe tener especial cuidado ya que es usado para creación del usuario y envió de las notificaciones.', '1', '1', '2020-09-02 12:44:21', '2020-12-10 16:53:09');
+INSERT INTO `asistente` VALUES ('7', 'Estructura', '12', 'Se configura los edificios y/o sectores de la institución de forma jerárquica, donde se ubican las aulas de clase.', 'deep-orange', '6', 'secretaria', 'Permite al personal administrativo-docente-alumno ubicar facilmete las aulas, se emplea en horarios y asignaciones de aulas', '1', '1', '2020-09-02 12:44:36', '2020-12-10 19:27:09');
+INSERT INTO `asistente` VALUES ('8', 'Aulas', '13', 'Se indica las aulas, laboratorios, talleres u otras instalaciones  donde se imparten clases según la estructura del edificio.', 'deep-orange', '7', 'secretaria', 'Permite la asignación de clase y los horarios', '1', '1', '2020-09-02 12:44:54', '2020-12-10 19:26:28');
+INSERT INTO `asistente` VALUES ('9', 'Calendario', '15', 'Se crea, edita, activa/desactiva el calendario de clases.', 'teal', '8', 'secretaria', 'Solo puede haber un calendario activo, esto limita las fechas asignable en todas las actividades. Asimismo, muestra solo los grupos creados para ese calendario', '1', '1', '2020-09-02 12:45:10', '2020-12-10 19:30:39');
+INSERT INTO `asistente` VALUES ('10', 'Periodos', '16', 'Se configuran los periodos o lapsos en que se divide al calendario escolar.', 'teal', '9', 'secretaria', 'Solo puede haber un periodo activo. afecta las actividades y planes de evaluaciones que pueden cargarse', '1', '1', '2020-09-02 12:45:25', '2020-12-10 19:38:06');
+INSERT INTO `asistente` VALUES ('11', 'Turnos', '21', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'teal', '10', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:45:38', '2020-12-10 16:53:09');
+INSERT INTO `asistente` VALUES ('12', 'Horas Academicas', '22', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'teal', '11', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:45:51', '2020-12-10 16:53:09');
+INSERT INTO `asistente` VALUES ('14', 'Areas de Estudio', '27', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'cyan', '13', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:46:47', '2021-01-16 20:29:07');
+INSERT INTO `asistente` VALUES ('15', 'Materias', '28', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'cyan', '14', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:47:03', '2021-01-16 20:29:07');
+INSERT INTO `asistente` VALUES ('16', 'Niveles', '24', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'cyan', '15', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:47:30', '2021-01-16 20:29:07');
+INSERT INTO `asistente` VALUES ('17', 'Grados', '25', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'cyan', '16', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:47:55', '2021-01-16 20:29:07');
+INSERT INTO `asistente` VALUES ('18', 'Grupos', '26', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'cyan', '17', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:48:08', '2021-01-16 20:29:07');
+INSERT INTO `asistente` VALUES ('19', 'Docente', '37', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'teal', '12', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:48:30', '2021-01-16 20:29:06');
+INSERT INTO `asistente` VALUES ('21', 'Plan Evaluacion', '35', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'purple', '18', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:49:11', '2021-01-16 20:32:17');
+INSERT INTO `asistente` VALUES ('22', 'Horario', '36', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'purple', '19', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:49:29', '2021-01-16 20:32:17');
+INSERT INTO `asistente` VALUES ('24', 'Nivel Calificaciones', '31', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'purple', '20', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:50:43', '2021-01-16 20:32:17');
+INSERT INTO `asistente` VALUES ('25', 'Calificacion', '32', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'purple', '21', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:50:57', '2021-01-16 20:32:17');
+INSERT INTO `asistente` VALUES ('26', 'Condicion Alumno', '38', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'pink', '26', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:51:14', '2021-01-16 20:32:17');
+INSERT INTO `asistente` VALUES ('27', 'Alumnos', '39', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'pink', '27', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:56:02', '2021-01-16 20:32:17');
+INSERT INTO `asistente` VALUES ('28', 'Acudiente', '40', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'pink', '28', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:56:18', '2021-01-16 20:32:18');
+INSERT INTO `asistente` VALUES ('29', 'Feriados', '17', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'purple', '22', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:56:43', '2021-01-16 20:32:17');
+INSERT INTO `asistente` VALUES ('30', 'Tipo Agenda', '18', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'purple', '23', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:57:00', '2021-01-16 20:32:17');
+INSERT INTO `asistente` VALUES ('31', 'Tipo Actividad', '19', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'purple', '24', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:57:29', '2021-01-16 20:32:17');
+INSERT INTO `asistente` VALUES ('32', 'Agenda', '20', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'purple', '25', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:57:43', '2021-01-16 20:32:17');
 INSERT INTO `asistente` VALUES ('33', 'Bandeja Docente', '3', 'Calendario de actividades semanales, calendario de actividades del colegio, panel de funcionalidades', 'indigo', '1', 'docente', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:59:32', '2020-09-02 12:59:32');
 INSERT INTO `asistente` VALUES ('34', 'Bandeja Alumno', '4', 'Calendario de actividades semanales, calendario de actividades del colegio, panel de funcionalidades', 'amber', '1', 'alumno', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 13:00:59', '2020-09-02 13:01:20');
 INSERT INTO `asistente` VALUES ('35', 'Bandeja Acudiente', '5', 'Calendario de actividades semanales, calendario de actividades del colegio, panel de funcionalidades', 'light-green', '1', 'acudiente', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 13:02:14', '2020-09-02 13:02:14');
@@ -403,7 +678,7 @@ CREATE TABLE `aula` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of aula
@@ -839,11 +1114,12 @@ CREATE TABLE `calendario` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of calendario
 -- ----------------------------
+INSERT INTO `calendario` VALUES ('2', '2020-2021', '2020', '2020-10-14', '2021-07-13', null, '1', '1', '2020-06-10 21:06:08', '2021-01-16 17:16:17');
 
 -- ----------------------------
 -- Table structure for calificacion
@@ -895,11 +1171,19 @@ CREATE TABLE `carga_horaria` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of carga_horaria
 -- ----------------------------
+INSERT INTO `carga_horaria` VALUES ('1', 'DIR. GRUPO', '1', '1', '07:00:00', '07:45:00', '1', '1', null, '1', '1', '2020-05-10 03:06:24', '2020-09-21 14:22:36');
+INSERT INTO `carga_horaria` VALUES ('2', 'Hora 1', '1', '2', '08:00:00', '08:45:00', '1', '0', null, '1', '1', '2020-05-10 04:01:07', '2020-05-20 06:42:08');
+INSERT INTO `carga_horaria` VALUES ('3', 'Hora 2', '1', '3', '08:45:00', '09:30:00', '1', '0', null, '1', '1', '2020-05-10 04:02:03', '2020-05-20 11:20:14');
+INSERT INTO `carga_horaria` VALUES ('4', 'DESCANSO', '1', '4', '09:30:00', '10:15:00', '1', '1', null, '1', '1', '2020-05-10 04:04:47', '2020-05-20 06:38:12');
+INSERT INTO `carga_horaria` VALUES ('5', 'Hora 3', '1', '5', '10:15:00', '11:00:00', '1', '0', null, '1', '1', '2020-05-10 04:06:09', '2020-05-20 11:20:24');
+INSERT INTO `carga_horaria` VALUES ('6', 'ALMUERZO', '1', '6', '11:00:00', '11:45:00', '1', '1', null, '1', '1', '2020-05-10 04:07:48', '2020-05-20 06:38:26');
+INSERT INTO `carga_horaria` VALUES ('7', 'Hora 4', '1', '7', '13:00:00', '13:45:00', '2', '0', null, '1', '1', '2020-05-10 04:09:36', '2020-05-20 11:20:31');
+INSERT INTO `carga_horaria` VALUES ('8', 'Hora 5', '1', '8', '13:45:00', '14:30:00', '2', '0', null, '1', '1', '2020-05-10 04:10:09', '2020-06-26 22:56:11');
 
 -- ----------------------------
 -- Table structure for cargo
@@ -914,11 +1198,12 @@ CREATE TABLE `cargo` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of cargo
 -- ----------------------------
+INSERT INTO `cargo` VALUES ('1', 'Director', null, '1', '1', '2020-05-09 14:09:04', '2020-05-09 14:09:04');
 
 -- ----------------------------
 -- Table structure for ciudad
@@ -2087,21 +2372,6 @@ CREATE TABLE `clase` (
 -- ----------------------------
 -- Records of clase
 -- ----------------------------
-INSERT INTO `clase` VALUES ('1', '4', '1', '7', '1', '2020-11-01 10:37:07', '2020-11-01 10:37:04', null, '1', '1', '2020-11-01 02:05:31', '2020-11-01 02:05:31');
-INSERT INTO `clase` VALUES ('2', '4', '1', '19', '1', '2020-11-01 10:37:10', '2020-11-01 10:37:07', null, '1', '1', '2020-11-01 02:40:25', '2020-11-01 02:40:25');
-INSERT INTO `clase` VALUES ('3', '4', '1', '19', '1', '2020-11-01 11:02:24', '2020-11-01 10:37:11', null, '1', '1', '2020-11-01 02:45:38', '2020-11-01 02:45:38');
-INSERT INTO `clase` VALUES ('4', '4', '1', '7', '1', '2020-11-01 21:18:49', '2020-11-01 21:18:49', 'ninguna', '1', '1', '2020-11-01 13:39:34', '2020-11-02 01:18:49');
-INSERT INTO `clase` VALUES ('8', '4', '1', '7', '1', '2020-11-01 21:19:46', '2020-11-01 21:19:46', 'finalizar', '1', '1', '2020-11-02 00:11:13', '2020-11-02 01:19:46');
-INSERT INTO `clase` VALUES ('9', '4', '1', '7', '1', '2020-11-06 19:44:46', '2020-11-06 23:44:46', null, '1', '1', '2020-11-06 23:36:31', '2020-11-06 23:44:46');
-INSERT INTO `clase` VALUES ('10', '4', '1', '7', '1', '2020-11-08 20:46:13', '2020-11-09 00:46:13', null, '1', '1', '2020-11-09 00:45:25', '2020-11-09 00:46:13');
-INSERT INTO `clase` VALUES ('11', '4', '1', '17', '1', '2020-11-08 21:11:23', '2020-11-09 01:11:23', null, '1', '1', '2020-11-09 01:10:36', '2020-11-09 01:11:23');
-INSERT INTO `clase` VALUES ('12', '4', '1', '7', '1', '2020-11-09 10:39:13', '2020-11-09 14:39:13', null, '1', '1', '2020-11-09 14:32:53', '2020-11-09 14:39:13');
-INSERT INTO `clase` VALUES ('13', '4', '1', '7', '1', '2020-11-09 17:57:46', '2020-11-09 21:57:46', null, '1', '1', '2020-11-09 21:55:59', '2020-11-09 21:57:46');
-INSERT INTO `clase` VALUES ('14', '4', '1', '7', '1', '2020-11-09 17:59:06', '2020-11-09 21:59:06', 'sejggfdjksdf', '1', '1', '2020-11-09 21:56:14', '2020-11-09 21:59:06');
-INSERT INTO `clase` VALUES ('15', '4', '1', '7', '1', '2020-11-11 12:20:41', '2020-11-11 16:20:41', 'tetwe', '1', '1', '2020-11-11 16:18:59', '2020-11-11 16:20:41');
-INSERT INTO `clase` VALUES ('16', '4', '1', '7', '1', '2020-11-12 12:39:45', '2020-11-12 16:39:45', null, '1', '1', '2020-11-12 16:38:38', '2020-11-12 16:39:45');
-INSERT INTO `clase` VALUES ('17', '4', '1', '19', '1', '2020-11-12 12:40:36', '2020-11-12 16:40:36', null, '1', '1', '2020-11-12 16:39:57', '2020-11-12 16:40:36');
-INSERT INTO `clase` VALUES ('18', '4', '1', '7', '1', '2020-11-27 22:16:36', '2020-11-28 02:16:36', null, '1', '1', '2020-11-28 00:40:30', '2020-11-28 02:16:36');
 
 -- ----------------------------
 -- Table structure for colegio
@@ -2131,11 +2401,12 @@ CREATE TABLE `colegio` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of colegio
 -- ----------------------------
+INSERT INTO `colegio` VALUES ('1', 'San Ignacio', '202000001', '1', '2', '1', '5', '76', '2', '2', '3', 'Calle 23 con calle 22', '4314124', '500', null, null, null, null, '1', '1', '2020-06-03 18:21:50', '2020-09-22 13:53:15');
 
 -- ----------------------------
 -- Table structure for comuna
@@ -2372,11 +2643,12 @@ CREATE TABLE `docente` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of docente
 -- ----------------------------
+INSERT INTO `docente` VALUES ('1', 'Luis', 'Daniel', 'Yustiz', 'Azuaje', '1', '13479149', '2', 'M', '1979-08-11', null, 'Caracas - Venezuela', 'Casa 23-9', '5', '76', 'lyustiz@gmail.com', '04129098862', '04129098862', null, '1', '1', '2020-05-16 04:51:17', '2020-05-16 04:51:17');
 
 -- ----------------------------
 -- Table structure for docente_grupo
@@ -2392,7 +2664,7 @@ CREATE TABLE `docente_grupo` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of docente_grupo
@@ -2412,7 +2684,7 @@ CREATE TABLE `docente_materia` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of docente_materia
@@ -2469,11 +2741,12 @@ CREATE TABLE `empleado` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of empleado
 -- ----------------------------
+INSERT INTO `empleado` VALUES ('1', 'Medina', 'Romero', 'Juan', 'Carlos', '1', '4534535345', '1', 'M', '1972-02-09', 'Cali', 'Calle 46 con 42', '76', '76', 'lyustiz@gmail.com', '02340009988', '02340009988', '3', '1', null, '1', '1', '2020-05-14 00:05:09', '2020-05-16 01:50:26');
 
 -- ----------------------------
 -- Table structure for enlace
@@ -2492,11 +2765,73 @@ CREATE TABLE `enlace` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of enlace
 -- ----------------------------
+INSERT INTO `enlace` VALUES ('35', 'Ciencia Express: La célula', '2', '70', '', 'https://www.youtube.com/embed/tM2wEWk0-GQ', null, '1', '1', '2020-11-16 12:25:57', '2020-11-16 12:28:13');
+INSERT INTO `enlace` VALUES ('36', 'Tejidos animales', '2', '70', '', 'https://www.youtube.com/watch?v=9pvSA-23FYs&feature=youtu.be', null, '1', '1', '2020-11-16 12:29:31', '2020-11-16 12:29:31');
+INSERT INTO `enlace` VALUES ('37', 'Niveles de organización de los seres vivos | Biología', '2', '72', '', 'https://www.youtube.com/watch?v=B2ab1nk2xt4&feature=youtu.be', null, '1', '1', '2020-11-16 16:39:01', '2020-11-16 16:39:01');
+INSERT INTO `enlace` VALUES ('38', 'Ácidos nucleicos: ADN y ARN', '2', '72', '', 'https://www.youtube.com/watch?v=gHXMh_GPgcE&feature=youtu.be', null, '1', '1', '2020-11-16 16:39:47', '2020-11-16 16:40:33');
+INSERT INTO `enlace` VALUES ('39', 'Significado de Estado sólido', '1', '57', '', 'https://www.significados.com/estado-solido/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('40', 'Significado de Estado líquido', '1', '57', '', 'https://www.significados.com/estado-liquido/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('41', 'Definición de alimentos ', '1', '58', '', 'https://www.definicion.de/alimento/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('42', 'Cómo se clasifican los alimentos: los 7 grupos', '1', '58', '', 'https://www.lifeder.com/clasificacion-alimentos/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('43', 'La pubertad en las niñas', '1', '60', '', 'https://www.ausonia.es/es-es/informate/la-adolescencia/la-pubertad-en-las-ninas', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('44', 'Afrontar (sin miedo) la crisis de la pubertad en niños de 9 a 12 años', '1', '60', '', 'https://www.guiainfantil.com/adolescencia/cambios-psicologicos/afrontar-sin-miedo-la-crisis-de-la-pubertad-en-ninos-de-9-a-12-anos/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('45', 'Elemento químico', '1', '62', '', 'https://www.ecured.cu/Elemento_qu%C3%Admico', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('46', 'Mezclas', '1', '62', '', 'https://www.ecured.cu/Mezclas', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('47', '¿Qué es la energía solar y cómo funciona?', '1', '64', '', 'https://www.enel.pe/es/sostenibilidad/que-es-la-energia-solar-y-como-funciona.html', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('48', '¿Qué es la energía eólica y cómo funciona?', '1', '64', '', 'https://www.enel.pe/es/sostenibilidad/que-es-la-energia-eolica-y-como-funciona.html', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('49', 'Medio ambiente, panorama general', '1', '74', '', 'https://www.bancomundial.org/es/topic/environment/overview', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('50', 'Conceptos de Ecosistemas', '1', '74', '', 'https://concepto.de/ecosistemas/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('51', '¿Qué es el Átomo?', '1', '68', '', 'https://www.geoenciclopedia.com/que-es-el-atomo/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('52', 'Masa Atómica', '1', '68', '', 'https://www.significados.com/masa-atomica/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('53', 'Concepto de reproducción celular', '1', '70', '¿Qué es la reproducción celular, la meiosis, la mitosis y sus fases?. Además, su importancia para la', 'https://concepto.de/reproduccion-celular/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('54', 'Reproducción asexual y sexual', '1', '70', '', 'https://www.abc.com.py/edicion-impresa/suplementos/escolar/la-reproduccion-sexual-y-asexual-446378.html', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('55', '¿Qué es el pH?', '1', '72', '', 'https://culturacientifica.com/2019/11/28/que-es-el-ph/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('56', 'Soluciones Amortiguadoras: Características, Preparación, Ejemplos', '1', '72', '', 'https://www.lifeder.com/soluciones-amortiguadoras-buffers/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('57', 'Estados de la materia. Estado Solido', '2', '57', '', 'https://www.youtube.com/watch?v=YeV-d0K5oPY', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('58', 'Cambios de estado de la materia', '2', '57', '', 'https://www.youtube.com/watch?v=aS7Tgj1oAy5', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('59', 'Los alimentos', '2', '58', '', 'https://www.youtube.com/watch?v=EbZhQbyJgvQ', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('60', 'CLASIFICACIÓN DE LOS ALIMENTOS SEGÚN SU FUNCIÓN /APRENDE EN CASA', '2', '58', '', 'https://www.youtube.com/watch?v=oSgqvE_1pRM', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('61', 'Las niñas y la nueva pubertad', '2', '60', '', 'https://www.youtube.com/watch?v=1Istr8enXV8', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('62', 'Etapas de la adolescencia', '2', '60', '', 'https://www.youtube.com/watch?v=dZiJp76DLe4', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('63', 'Química: Los elementos químicos', '2', '62', '', 'https://www.youtube.com/watch?v=xe1VYxUY7Ys', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('64', 'Mezclas homogéneas y heterogéneas', '2', '62', '', 'https://www.youtube.com/watch?v=gtgZPr3QhvA', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('65', '¿Qué es la energía solar?', '2', '64', '', 'https://www.youtube.com/watch?v=5cVpl1WGmJA', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('66', 'Las energías renovables', '2', '64', '', 'https://www.youtube.com/watch?v=4eEri5RivV8', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('67', 'Calentamiento global, causas y concecuencias\n', '2', '74', '', 'https://www.youtube.com/watch?v=umAGi80FsPM', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('68', 'Definición y tipos de ecosistemas', '2', '74', '¿Sabías que el estudio de los ecosistemas nos ayuda a describir cualquier rincón del planeta?', 'https://www.youtube.com/watch?v=3LeeVif_qSQ', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('69', 'Estructura del átomo', '2', '68', 'Estructura del átomo explicado gráficamente.', 'https://www.youtube.com/watch?v=P_IpfoU_4qM', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('70', 'Diferencia entre masa atómica, molecular y molar', '2', '68', 'Vídeo que enseña la diferencia entre masa atómica, molecular y molar', 'https://www.youtube.com/watch?v=KEJlFQRZh44', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('71', 'La reproducción celular', '2', '70', 'La célula está viva porqué cumple con los procesos de la vida. Se reproduce, se alimenta y también m', 'https://www.youtube.com/watch?v=edInUsufUsc', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('72', '', '2', '70', '', 'https://www.youtube.com/watch?v=rlohDJzwhZo', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('73', 'Escalas de pH y pOH', '2', '72', '', 'https://www.youtube.com/watch?v=lcFX76W3QLs', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('74', 'Soluciones amortiguadoras (buffer o tampón)', '2', '72', '', 'https://www.youtube.com/watch?v=_Rh3vYWCccM', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('75', 'Yo sé cuidar mi cuerpo', '1', '2', '', 'https://securitasaldia.com.pe/yo-se-cuidar-mi-cuerpo/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('76', 'Importancia de la familia', '1', '3', '', 'https://importancias.com/familia/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('77', 'Paisaje geográfico', '1', '41', '', 'https://www.ecured.cu/Paisaje_geogr%C3%A1fico#:~:text=Concepto%3A,humano%2C%20presenta%20sus%20propias%20caracter%C3%ADsticas.&text=Es%20decir%20puede', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('78', 'Como influye el clima en el paisaje', '1', '41', '', 'http://descubriendoelpaisaje.blogspot.com/2012/05/nuestro-planeta-posee-una-inmensa.html', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('79', 'Cultura de Colombia', '1', '43', '', 'https://www.donquijote.org/es/cultura-colombiana/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('80', 'Colombia, un país de mitos y personajes fantásticos', '1', '43', '', 'https://www.colombia.co/cultura-colombiana/colombia-un-pais-de-mitos-y-personajes-fantasticos/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('81', 'Regiones en Colombia', '1', '45', '', 'https://encolombia.com/educacion-cultura/geografia/colombiana/colombia/regiones-en-colombia/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('82', 'Regiones naturales del mundo y características principales', '1', '45', '', 'https://www.noticiasvigo.es/regiones-naturales-del-mundo-y-caracteristicas-principales/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('83', 'Tipos de trabajos', '1', '47', '', 'https://www.tipos.co/tipos-de-trabajos/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('84', 'El medio de intercambio: El dinero', '1', '47', '', 'https://pablomartinscarpini.com/2019/08/24/el-medio-de-intercambio-el-dinero/', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('85', '', '0', '0', '', '', null, '0', '0', null, null);
+INSERT INTO `enlace` VALUES ('86', '', '0', '0', '', '', null, '0', '0', null, null);
+INSERT INTO `enlace` VALUES ('87', 'Quién soy yo', '2', '2', '', 'https://www.youtube.com/watch?v=LZ2O3cShf_w', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('88', 'La familia', '2', '3', '', 'https://www.youtube.com/watch?v=9p6DjK7NMTI', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('89', 'El paisaje', '2', '41', '', 'https://youtu.be/LxgKYT8oDTo?t=19', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('90', 'La influencia del clima en el paisaje', '2', '41', '', 'https://youtu.be/mnpwBISQ_10', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('91', '¿Qué es la CULTURA?', '2', '43', '', 'https://www.youtube.com/watch?v=RpngVL4_jFY', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('92', 'Mitos y leyendas', '2', '43', '', 'https://www.youtube.com/watch?v=sAQnrOhQt8M', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('93', 'Regiones Naturales de Colombia', '2', '45', '', 'https://www.youtube.com/watch?v=SM-Mp1t9JuU', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('94', 'Regiones Naturales del Mundo', '2', '45', '', 'https://www.youtube.com/watch?v=Bl7n36JMcEo', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('95', 'El trabajo y su clasificación El sector primario, secundario y terciario', '2', '47', '', 'https://www.youtube.com/watch?v=5ns5zI7nL5I', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('96', 'Qué es el dinero, funciones y tipos', '2', '47', '', 'https://www.youtube.com/watch?v=ZYcrw_62eXY', null, '1', '1', null, null);
 
 -- ----------------------------
 -- Table structure for estado_civil
@@ -2537,11 +2872,12 @@ CREATE TABLE `estructura` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of estructura
 -- ----------------------------
+INSERT INTO `estructura` VALUES ('1', 'Colegio', '1', '0', 'Colegio', null, '1', '1', '2020-05-13 05:10:58', '2020-05-13 05:10:58');
 
 -- ----------------------------
 -- Table structure for evaluacion
@@ -2567,7 +2903,7 @@ CREATE TABLE `evaluacion` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of evaluacion
@@ -2592,7 +2928,7 @@ CREATE TABLE `evaluacion_alumno` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of evaluacion_alumno
@@ -2613,11 +2949,14 @@ CREATE TABLE `evaluacion_metodo` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of evaluacion_metodo
 -- ----------------------------
+INSERT INTO `evaluacion_metodo` VALUES ('1', 'Prueba en Linea', 'mdi-order-bool-descending', 'pink', 'Mediante prueba en linea', '1', '1', '2020-08-18 15:37:51', '2020-08-18 15:54:29');
+INSERT INTO `evaluacion_metodo` VALUES ('2', 'Nota Directa', 'mdi-square-edit-outline', 'teal', 'Nota del Docente', '1', '1', '2020-08-18 15:42:30', '2020-08-18 16:16:39');
+INSERT INTO `evaluacion_metodo` VALUES ('3', 'Documento', 'mdi-clipboard-file-outline', 'blue', 'Archivo del alumno', '1', '1', '2020-08-18 15:43:42', '2020-08-18 16:12:34');
 
 -- ----------------------------
 -- Table structure for feriado
@@ -2635,11 +2974,19 @@ CREATE TABLE `feriado` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of feriado
 -- ----------------------------
+INSERT INTO `feriado` VALUES ('1', 'Año Nuevo', '1', '2020-01-01', '2020', null, '1', '1', '2020-06-15 21:49:00', '2020-06-15 21:49:00');
+INSERT INTO `feriado` VALUES ('2', 'Reyes Magos', '1', '2020-01-06', '2020', null, '1', '1', '2020-06-16 02:15:27', '2020-06-16 02:15:27');
+INSERT INTO `feriado` VALUES ('3', 'Día del Trabajo', '1', '2020-05-05', '2020', null, '1', '1', '2020-06-16 02:16:57', '2020-06-16 02:16:57');
+INSERT INTO `feriado` VALUES ('4', 'Grito de Independencia', '1', '2020-06-20', '2020', null, '1', '1', '2020-06-16 02:18:49', '2020-06-16 02:18:49');
+INSERT INTO `feriado` VALUES ('5', 'Batalla de Boyacá', '1', '2020-08-07', '2020', null, '1', '1', '2020-06-16 02:23:12', '2020-06-16 02:23:12');
+INSERT INTO `feriado` VALUES ('6', 'Inmaculada Concepción de la Virgen', '1', '2020-12-08', '2020', null, '1', '1', '2020-06-16 02:25:06', '2020-06-16 02:25:06');
+INSERT INTO `feriado` VALUES ('7', 'Navidad', '1', '2020-12-24', '2020', null, '1', '1', '2020-06-16 02:25:56', '2020-06-16 02:25:56');
+INSERT INTO `feriado` VALUES ('8', 'Día de San José', '2', '2020-01-23', '2020', null, '1', '1', '2020-06-16 02:38:21', '2020-06-16 02:38:21');
 
 -- ----------------------------
 -- Table structure for foto
@@ -2657,11 +3004,56 @@ CREATE TABLE `foto` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=199 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of foto
 -- ----------------------------
+INSERT INTO `foto` VALUES ('29', 'alumno id: 1', '1594261278_1.jpg', '2', '1', null, '1', '1', '2020-07-09 02:21:18', '2020-07-09 02:21:18');
+INSERT INTO `foto` VALUES ('32', 'docente id: 1', '1594312119_1.jpg', '3', '1', null, '1', '1', '2020-07-09 16:28:39', '2020-07-09 16:28:39');
+INSERT INTO `foto` VALUES ('60', 'alumno id: 1', '1594946193_1.jpg', '2', '1', null, '1', '1', '2020-07-17 00:36:33', '2020-07-17 00:36:33');
+INSERT INTO `foto` VALUES ('71', 'pariente id: 1', '1595721572_1.jpg', '5', '1', null, '1', '1', '2020-07-25 23:59:32', '2020-07-25 23:59:32');
+INSERT INTO `foto` VALUES ('78', 'cuenta id: 2', '1599229382_2.jpg', '4', '2', null, '1', '2', '2020-09-04 14:23:03', '2020-09-04 14:23:03');
+INSERT INTO `foto` VALUES ('122', 'actividad id: 5', '1604152501_5.jpg', '6', '5', null, '1', '1', '2020-10-31 13:55:01', '2020-10-31 13:55:01');
+INSERT INTO `foto` VALUES ('123', 'pregunta id: 98', '1604854203_98.jpg', '7', '98', null, '1', '1', '2020-11-08 16:50:03', '2020-11-08 16:50:03');
+INSERT INTO `foto` VALUES ('124', 'pregunta id: 98', '1604855295_98.jpg', '7', '98', null, '1', '1', '2020-11-08 17:08:15', '2020-11-08 17:08:15');
+INSERT INTO `foto` VALUES ('125', 'pregunta id: 98', '1604855339_98.jpg', '7', '98', null, '1', '1', '2020-11-08 17:08:59', '2020-11-08 17:08:59');
+INSERT INTO `foto` VALUES ('126', 'pregunta id: 98', '1604855445_98.jpg', '7', '98', null, '1', '1', '2020-11-08 17:10:45', '2020-11-08 17:10:45');
+INSERT INTO `foto` VALUES ('133', 'pregunta id: 103', '1604864650_103.jpg', '7', '103', null, '1', '1', '2020-11-08 19:44:10', '2020-11-08 19:44:10');
+INSERT INTO `foto` VALUES ('136', 'cuenta id: 1', '1604884778_1.jpg', '4', '1', null, '1', '1', '2020-11-09 01:19:38', '2020-11-09 01:19:38');
+INSERT INTO `foto` VALUES ('143', 'colegio id: 1', '1605026559_1.jpg', '1', '1', null, '1', '1', '2020-11-10 16:42:39', '2020-11-10 16:42:39');
+INSERT INTO `foto` VALUES ('146', 'pregunta id: 104', '1605097972_104.jpg', '7', '104', null, '1', '1', '2020-11-11 12:32:52', '2020-11-11 12:32:52');
+INSERT INTO `foto` VALUES ('151', 'actividad id: 20', '1606431555_20.jpg', '6', '20', null, '1', '1', '2020-11-26 22:59:15', '2020-11-26 22:59:15');
+INSERT INTO `foto` VALUES ('156', 'actividad id: 39', '1607209261_39.jpg', '6', '39', null, '1', '1', '2020-12-05 23:01:01', '2020-12-05 23:01:01');
+INSERT INTO `foto` VALUES ('159', 'actividad id: 40', '1607209579_40.jpg', '6', '40', null, '1', '1', '2020-12-05 23:06:19', '2020-12-05 23:06:19');
+INSERT INTO `foto` VALUES ('160', 'actividad id: 41', '1607213032_41.jpg', '6', '41', null, '1', '1', '2020-12-06 00:03:52', '2020-12-06 00:03:52');
+INSERT INTO `foto` VALUES ('162', 'actividad id: 42', '1607213197_42.jpg', '6', '42', null, '1', '1', '2020-12-06 00:06:37', '2020-12-06 00:06:37');
+INSERT INTO `foto` VALUES ('163', 'actividad id: 43', '1607213430_43.jpg', '6', '43', null, '1', '1', '2020-12-06 00:10:30', '2020-12-06 00:10:30');
+INSERT INTO `foto` VALUES ('164', 'actividad id: 44', '1607213601_44.jpg', '6', '44', null, '1', '1', '2020-12-06 00:13:21', '2020-12-06 00:13:21');
+INSERT INTO `foto` VALUES ('165', 'pregunta id: 140', '1607218507_140.jpg', '7', '140', null, '1', '1', '2020-12-06 01:35:07', '2020-12-06 01:35:07');
+INSERT INTO `foto` VALUES ('167', 'actividad id: 45', '1607219934_45.jpg', '6', '45', null, '1', '1', '2020-12-06 01:58:54', '2020-12-06 01:58:54');
+INSERT INTO `foto` VALUES ('169', 'actividad id: 46', '1607220173_46.jpg', '6', '46', null, '1', '1', '2020-12-06 02:02:53', '2020-12-06 02:02:53');
+INSERT INTO `foto` VALUES ('171', 'actividad id: 47', '1607221606_47.jpg', '6', '47', null, '1', '1', '2020-12-06 02:26:46', '2020-12-06 02:26:46');
+INSERT INTO `foto` VALUES ('175', 'actividad id: 48', '1607222147_48.jpg', '6', '48', null, '1', '1', '2020-12-06 02:35:47', '2020-12-06 02:35:47');
+INSERT INTO `foto` VALUES ('176', 'actividad id: 18', '1607223751_18.jpg', '6', '18', null, '1', '1', '2020-12-06 03:02:31', '2020-12-06 03:02:31');
+INSERT INTO `foto` VALUES ('179', 'actividad id: 51', '1607224605_51.jpg', '6', '51', null, '1', '1', '2020-12-06 03:16:45', '2020-12-06 03:16:45');
+INSERT INTO `foto` VALUES ('180', 'actividad id: 52', '1607224631_52.jpg', '6', '52', null, '1', '1', '2020-12-06 03:17:11', '2020-12-06 03:17:11');
+INSERT INTO `foto` VALUES ('181', 'pregunta id: 166', '1607225464_166.jpg', '7', '166', null, '1', '1', '2020-12-06 03:31:04', '2020-12-06 03:31:04');
+INSERT INTO `foto` VALUES ('182', 'pregunta id: 149', '1607225762_149.jpg', '7', '149', null, '1', '1', '2020-12-06 03:36:02', '2020-12-06 03:36:02');
+INSERT INTO `foto` VALUES ('183', 'actividad id: 53', '1607226092_53.jpg', '6', '53', null, '1', '1', '2020-12-06 03:41:32', '2020-12-06 03:41:32');
+INSERT INTO `foto` VALUES ('184', 'actividad id: 54', '1607226133_54.jpg', '6', '54', null, '1', '1', '2020-12-06 03:42:13', '2020-12-06 03:42:13');
+INSERT INTO `foto` VALUES ('185', 'actividad id: 55', '1607227167_55.jpg', '6', '55', null, '1', '1', '2020-12-06 03:59:27', '2020-12-06 03:59:27');
+INSERT INTO `foto` VALUES ('186', 'actividad id: 56', '1607227213_56.jpg', '6', '56', null, '1', '1', '2020-12-06 04:00:13', '2020-12-06 04:00:13');
+INSERT INTO `foto` VALUES ('187', 'actividad id: 57', '1607231047_57.jpg', '6', '57', null, '1', '1', '2020-12-06 05:04:07', '2020-12-06 05:04:07');
+INSERT INTO `foto` VALUES ('188', 'actividad id: 58', '1607231405_58.jpg', '6', '58', null, '1', '1', '2020-12-06 05:10:05', '2020-12-06 05:10:05');
+INSERT INTO `foto` VALUES ('190', 'actividad id: 59', '1607232073_59.jpg', '6', '59', null, '1', '1', '2020-12-06 05:21:13', '2020-12-06 05:21:13');
+INSERT INTO `foto` VALUES ('191', 'actividad id: 60', '1607232098_60.jpg', '6', '60', null, '1', '1', '2020-12-06 05:21:38', '2020-12-06 05:21:38');
+INSERT INTO `foto` VALUES ('192', 'actividad id: 61', '1607271415_61.jpg', '6', '61', null, '1', '1', '2020-12-06 16:16:55', '2020-12-06 16:16:55');
+INSERT INTO `foto` VALUES ('193', 'actividad id: 62', '1607271646_62.jpg', '6', '62', null, '1', '1', '2020-12-06 16:20:46', '2020-12-06 16:20:46');
+INSERT INTO `foto` VALUES ('194', 'actividad id: 63', '1607272925_63.jpg', '6', '63', null, '1', '1', '2020-12-06 16:42:05', '2020-12-06 16:42:05');
+INSERT INTO `foto` VALUES ('195', 'actividad id: 64', '1607273030_64.jpg', '6', '64', null, '1', '1', '2020-12-06 16:43:50', '2020-12-06 16:43:50');
+INSERT INTO `foto` VALUES ('197', 'actividad id: 65', '1607273793_65.jpg', '6', '65', null, '1', '1', '2020-12-06 16:56:33', '2020-12-06 16:56:33');
+INSERT INTO `foto` VALUES ('198', 'actividad id: 66', '1607273835_66.jpg', '6', '66', null, '1', '1', '2020-12-06 16:57:16', '2020-12-06 16:57:16');
 
 -- ----------------------------
 -- Table structure for grado
@@ -2678,11 +3070,25 @@ CREATE TABLE `grado` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of grado
 -- ----------------------------
+INSERT INTO `grado` VALUES ('1', 'Pre-jardin', '1', '1', null, '1', '1', '2020-05-11 18:43:48', '2020-05-16 07:50:07');
+INSERT INTO `grado` VALUES ('2', 'Jardin', '2', '1', null, '1', '1', '2020-05-11 18:44:18', '2020-05-16 07:50:14');
+INSERT INTO `grado` VALUES ('3', 'Transicion', '3', '1', null, '1', '1', '2020-05-11 18:58:15', '2020-05-16 07:50:22');
+INSERT INTO `grado` VALUES ('4', 'Grado 1º', '1', '2', 'G1', '1', '1', '2020-05-11 19:01:49', '2020-05-16 07:48:35');
+INSERT INTO `grado` VALUES ('5', 'Grado 2º', '2', '2', 'G2', '1', '1', '2020-05-11 19:03:26', '2020-05-16 07:48:42');
+INSERT INTO `grado` VALUES ('6', 'Grado 3º', '3', '2', 'G3', '1', '1', '2020-05-11 19:03:50', '2020-05-16 07:48:49');
+INSERT INTO `grado` VALUES ('7', 'Grado 4º', '4', '2', 'G4', '1', '1', '2020-05-11 19:06:38', '2020-05-16 07:48:55');
+INSERT INTO `grado` VALUES ('8', 'Grado 5º', '5', '2', 'G5', '1', '1', '2020-05-11 19:47:09', '2020-05-16 07:49:03');
+INSERT INTO `grado` VALUES ('9', 'Grado 6º', '6', '3', 'G6', '1', '1', '2020-05-11 19:47:43', '2020-05-16 07:49:18');
+INSERT INTO `grado` VALUES ('10', 'Grado 7º', '7', '3', 'G7', '1', '1', '2020-05-11 19:48:23', '2020-05-16 07:49:25');
+INSERT INTO `grado` VALUES ('11', 'Grado 8º', '8', '3', 'G8', '1', '1', '2020-05-11 19:48:44', '2020-05-16 07:49:36');
+INSERT INTO `grado` VALUES ('12', 'Grado 9º', '9', '3', 'G9', '1', '1', '2020-05-11 19:49:05', '2020-11-10 15:57:11');
+INSERT INTO `grado` VALUES ('13', 'Grado 10', '10', '3', 'G10', '1', '1', '2020-05-11 19:49:24', '2020-05-16 07:49:50');
+INSERT INTO `grado` VALUES ('14', 'Grado 11º', '11', '3', 'G11', '1', '1', '2020-05-11 19:49:52', '2020-05-16 07:49:57');
 
 -- ----------------------------
 -- Table structure for grado_alumno
@@ -2698,11 +3104,12 @@ CREATE TABLE `grado_alumno` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of grado_alumno
 -- ----------------------------
+INSERT INTO `grado_alumno` VALUES ('1', '4', '1', null, '1', '1', '2020-05-25 19:23:02', '2020-05-25 19:23:02');
 
 -- ----------------------------
 -- Table structure for grado_materia
@@ -2718,11 +3125,17 @@ CREATE TABLE `grado_materia` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of grado_materia
 -- ----------------------------
+INSERT INTO `grado_materia` VALUES ('1', '4', '14', null, '1', '1', '2020-05-16 15:13:59', '2020-05-16 15:13:59');
+INSERT INTO `grado_materia` VALUES ('2', '4', '15', null, '1', '1', '2020-05-16 15:53:59', '2020-05-16 15:53:59');
+INSERT INTO `grado_materia` VALUES ('3', '4', '19', null, '1', '1', '2020-05-16 18:32:00', '2020-05-16 18:32:00');
+INSERT INTO `grado_materia` VALUES ('4', '4', '7', null, '1', '1', '2020-05-16 18:32:18', '2020-05-16 18:32:18');
+INSERT INTO `grado_materia` VALUES ('5', '4', '17', null, '1', '1', '2020-05-16 18:32:43', '2020-05-16 18:32:43');
+INSERT INTO `grado_materia` VALUES ('7', '4', '16', null, '1', '1', '2020-08-18 18:00:57', '2020-08-18 18:00:57');
 
 -- ----------------------------
 -- Table structure for grupo
@@ -2742,11 +3155,12 @@ CREATE TABLE `grupo` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of grupo
 -- ----------------------------
+INSERT INTO `grupo` VALUES ('1', 'Grupo 1ºA', '4', '1', '2', '1', '1', null, '1', '1', '2020-05-16 19:19:15', '2020-09-22 13:50:39');
 
 -- ----------------------------
 -- Table structure for grupo_alumno
@@ -2762,11 +3176,12 @@ CREATE TABLE `grupo_alumno` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of grupo_alumno
 -- ----------------------------
+INSERT INTO `grupo_alumno` VALUES ('1', '1', '1', null, '1', '1', '2020-05-25 17:31:19', '2020-05-25 17:31:19');
 
 -- ----------------------------
 -- Table structure for grupo_calificacion
@@ -2781,11 +3196,13 @@ CREATE TABLE `grupo_calificacion` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of grupo_calificacion
 -- ----------------------------
+INSERT INTO `grupo_calificacion` VALUES ('1', 'General', 'Calificaciones Generales', '1', '1', '2020-05-12 06:42:30', '2020-05-12 06:52:29');
+INSERT INTO `grupo_calificacion` VALUES ('2', 'Preescolar', 'Calificaciones para Preescolar', '1', '1', '2020-05-12 06:43:05', '2020-05-12 06:53:48');
 
 -- ----------------------------
 -- Table structure for grupo_materia
@@ -2801,11 +3218,16 @@ CREATE TABLE `grupo_materia` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of grupo_materia
 -- ----------------------------
+INSERT INTO `grupo_materia` VALUES ('1', '1', '7', null, '1', '1', '2020-07-19 01:01:00', '2020-07-19 01:01:00');
+INSERT INTO `grupo_materia` VALUES ('2', '1', '19', null, '1', '1', '2020-07-19 01:08:26', '2020-07-19 01:08:26');
+INSERT INTO `grupo_materia` VALUES ('3', '1', '17', null, '1', '1', '2020-07-19 01:08:43', '2020-07-19 01:08:43');
+INSERT INTO `grupo_materia` VALUES ('4', '1', '15', null, '1', '1', '2020-07-19 01:08:46', '2020-07-19 01:08:46');
+INSERT INTO `grupo_materia` VALUES ('5', '1', '14', null, '1', '1', '2020-07-19 01:08:48', '2020-07-19 01:08:48');
 
 -- ----------------------------
 -- Table structure for horario
@@ -2822,11 +3244,12 @@ CREATE TABLE `horario` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of horario
 -- ----------------------------
+INSERT INTO `horario` VALUES ('1', 'H1G1A', '1', '1', null, '1', '1', '2020-05-20 12:27:49', '2020-05-20 12:27:49');
 
 -- ----------------------------
 -- Table structure for hora_academica
@@ -2867,7 +3290,7 @@ CREATE TABLE `incidencia` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of incidencia
@@ -2912,7 +3335,6 @@ CREATE TABLE `jornada` (
 -- Records of jornada
 -- ----------------------------
 INSERT INTO `jornada` VALUES ('1', 'Lunes a Viernes de 7:00am a 5:00pm', null, '1', '1', '2020-05-09 09:39:04', '2020-05-09 09:39:04');
-INSERT INTO `jornada` VALUES ('2', 'Sabado y Dominago de 7:00am a 5:00pm', null, '1', '1', '2020-05-09 09:40:48', '2020-05-09 09:40:48');
 
 -- ----------------------------
 -- Table structure for libro
@@ -2972,10 +3394,6 @@ INSERT INTO `libro` VALUES ('33', 'Ciencias Sociales', '19', '12', 'Libro de Pri
 INSERT INTO `libro` VALUES ('34', 'Matematica', '14', '12', 'Libro matematica', '', '', '1', '1', '2020-10-07 23:04:51', '2020-10-07 23:04:51');
 INSERT INTO `libro` VALUES ('35', 'Lengua Castellana', '15', '12', 'LIbro Lengua Castellana', '', '', '1', '1', '2020-10-07 23:05:16', '2020-10-07 23:23:22');
 INSERT INTO `libro` VALUES ('36', 'Ciencias Naturales', '7', '12', 'Libro Ciencias Naturales', '', '', '1', '1', '2020-10-07 23:05:16', '2020-10-07 23:23:22');
-INSERT INTO `libro` VALUES ('37', '', '0', '0', '', '', '', '0', '0', null, null);
-INSERT INTO `libro` VALUES ('38', '', '0', '0', '', '', '', '0', '0', null, null);
-INSERT INTO `libro` VALUES ('39', '', '0', '0', '', '', '', '0', '0', null, null);
-INSERT INTO `libro` VALUES ('40', '', '0', '0', '', '', '', '0', '0', null, null);
 
 -- ----------------------------
 -- Table structure for materia
@@ -2993,7 +3411,7 @@ CREATE TABLE `materia` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of materia
@@ -3017,6 +3435,10 @@ INSERT INTO `materia` VALUES ('16', 'Ingles', 'ING001', '6', null, null, '1', '1
 INSERT INTO `materia` VALUES ('17', 'Educacion Fisica', 'EDUFIS', '8', null, null, '1', '1', '2020-05-16 18:08:10', '2020-05-16 18:08:10');
 INSERT INTO `materia` VALUES ('18', 'Educacion Artistica', 'ART001', '9', null, null, '1', '1', '2020-05-16 18:09:19', '2020-05-16 18:26:20');
 INSERT INTO `materia` VALUES ('19', 'Ciencias Sociales', 'CIESOC', '1', null, 'CS', '1', '1', '2020-05-16 18:30:50', '2020-05-16 18:30:50');
+INSERT INTO `materia` VALUES ('20', 'Etica', 'ETI01', '1', null, null, '1', '1', null, null);
+INSERT INTO `materia` VALUES ('21', 'Catedra de Paz', 'CATPAZ', '1', null, null, '1', '1', null, null);
+INSERT INTO `materia` VALUES ('22', 'Filosofia', 'FILO01', '1', null, null, '1', '1', null, null);
+INSERT INTO `materia` VALUES ('23', 'Informatica', 'INF01', '10', null, null, '1', '1', null, null);
 
 -- ----------------------------
 -- Table structure for matricula
@@ -3037,7 +3459,7 @@ CREATE TABLE `matricula` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of matricula
@@ -3068,7 +3490,7 @@ CREATE TABLE `mensaje` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of mensaje
@@ -3363,7 +3785,7 @@ CREATE TABLE `multimedia` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of multimedia
@@ -3550,7 +3972,7 @@ CREATE TABLE `pagina` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=151 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=227 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of pagina
@@ -3704,6 +4126,82 @@ INSERT INTO `pagina` VALUES ('147', 'pagina1', '36', '72', '1', 'CN_G9_001.jpg',
 INSERT INTO `pagina` VALUES ('148', 'pagina2', '36', '72', '2', 'CN_G9_002.jpg', '', '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
 INSERT INTO `pagina` VALUES ('149', 'pagina3', '36', '72', '3', 'CN_G9_003.jpg', '', '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
 INSERT INTO `pagina` VALUES ('150', 'pagina4', '36', '72', '4', 'CN_G9_004.jpg', '', '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('151', 'pagina1', '2', '4', '5', 'MT_G1_005.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('152', 'pagina2', '2', '4', '6', 'MT_G1_006.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('153', 'pagina3', '2', '4', '7', 'MT_G1_007.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('154', 'pagina4', '2', '4', '8', 'MT_G1_008.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('155', 'pagina5', '2', '4', '9', 'MT_G1_009.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('156', 'pagina6', '2', '4', '10', 'MT_G1_010.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('157', 'pagina7', '2', '4', '11', 'MT_G1_011.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('158', 'pagina8', '2', '4', '12', 'MT_G1_012.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('159', 'pagina9', '2', '4', '13', 'MT_G1_013.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('160', 'pagina10', '2', '4', '14', 'MT_G1_014.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('161', 'pagina11', '2', '4', '15', 'MT_G1_015.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('162', 'pagina12', '2', '4', '16', 'MT_G1_016.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('163', 'pagina13', '2', '4', '17', 'MT_G1_017.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('164', 'pagina14', '2', '4', '18', 'MT_G1_018.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('165', 'pagina15', '2', '4', '19', 'MT_G1_019.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('166', 'pagina16', '2', '4', '20', 'MT_G1_020.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('167', 'pagina17', '2', '4', '21', 'MT_G1_021.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('168', 'pagina18', '2', '4', '22', 'MT_G1_022.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('169', 'pagina19', '2', '4', '23', 'MT_G1_023.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('170', 'pagina20', '2', '4', '24', 'MT_G1_024.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('171', 'pagina21', '2', '4', '25', 'MT_G1_025.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('172', 'pagina22', '2', '4', '26', 'MT_G1_026.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('173', 'pagina23', '2', '4', '27', 'MT_G1_027.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('174', 'pagina24', '2', '4', '28', 'MT_G1_028.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('175', 'pagina25', '2', '4', '29', 'MT_G1_029.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('176', 'pagina26', '2', '4', '30', 'MT_G1_030.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('177', 'pagina27', '2', '4', '31', 'MT_G1_031.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('178', 'pagina28', '2', '4', '32', 'MT_G1_032.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('179', 'pagina29', '2', '4', '33', 'MT_G1_033.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('180', 'pagina30', '2', '4', '34', 'MT_G1_034.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('181', 'pagina31', '2', '4', '35', 'MT_G1_035.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('182', 'pagina32', '2', '4', '36', 'MT_G1_036.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('183', 'pagina33', '2', '4', '37', 'MT_G1_037.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('184', 'pagina34', '2', '4', '38', 'MT_G1_038.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('185', 'pagina35', '2', '4', '39', 'MT_G1_039.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('186', 'pagina36', '2', '4', '40', 'MT_G1_040.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('187', 'pagina37', '2', '4', '41', 'MT_G1_041.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('188', 'pagina38', '2', '4', '42', 'MT_G1_042.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('189', 'pagina39', '2', '4', '43', 'MT_G1_043.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('190', 'pagina40', '2', '4', '44', 'MT_G1_044.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('191', 'pagina41', '2', '4', '45', 'MT_G1_045.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('192', 'pagina42', '2', '4', '46', 'MT_G1_046.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('193', 'pagina43', '2', '4', '47', 'MT_G1_047.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('194', 'pagina44', '2', '4', '48', 'MT_G1_048.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('195', 'pagina45', '2', '4', '49', 'MT_G1_049.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('196', 'pagina46', '2', '4', '50', 'MT_G1_050.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('197', 'pagina47', '2', '4', '51', 'MT_G1_051.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('198', 'pagina48', '2', '4', '52', 'MT_G1_052.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('199', 'pagina49', '2', '4', '53', 'MT_G1_053.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('200', 'pagina50', '2', '4', '54', 'MT_G1_054.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('201', 'pagina51', '2', '4', '55', 'MT_G1_055.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('202', 'pagina52', '2', '4', '56', 'MT_G1_056.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('203', 'pagina53', '2', '4', '57', 'MT_G1_057.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('204', 'pagina54', '2', '4', '58', 'MT_G1_058.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('205', 'pagina55', '2', '4', '59', 'MT_G1_059.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('206', 'pagina56', '2', '4', '60', 'MT_G1_060.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('207', 'pagina57', '2', '4', '61', 'MT_G1_061.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('208', 'pagina58', '2', '4', '62', 'MT_G1_062.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('209', 'pagina59', '2', '4', '63', 'MT_G1_063.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('210', 'pagina60', '2', '4', '64', 'MT_G1_064.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('211', 'pagina61', '2', '4', '65', 'MT_G1_065.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('212', 'pagina62', '2', '4', '66', 'MT_G1_066.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('213', 'pagina63', '2', '4', '67', 'MT_G1_067.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('214', 'pagina64', '2', '4', '68', 'MT_G1_068.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('215', 'pagina65', '2', '4', '69', 'MT_G1_069.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('216', 'pagina66', '2', '4', '70', 'MT_G1_070.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('217', 'pagina67', '2', '4', '71', 'MT_G1_071.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('218', 'pagina68', '2', '4', '72', 'MT_G1_072.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('219', 'pagina69', '2', '4', '73', 'MT_G1_073.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('220', 'pagina70', '2', '4', '74', 'MT_G1_074.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('221', 'pagina71', '2', '4', '75', 'MT_G1_075.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('222', 'pagina72', '2', '4', '76', 'MT_G1_076.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('223', 'pagina73', '2', '4', '77', 'MT_G1_077.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('224', 'pagina74', '2', '4', '78', 'MT_G1_078.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('225', 'pagina75', '2', '4', '79', 'MT_G1_079.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
+INSERT INTO `pagina` VALUES ('226', 'pagina76', '2', '4', '80', 'MT_G1_080.jpg', null, '1', '1', '2020-10-07 20:37:37', '2020-10-07 20:37:37');
 
 -- ----------------------------
 -- Table structure for pago
@@ -3804,11 +4302,12 @@ CREATE TABLE `pariente` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of pariente
 -- ----------------------------
+INSERT INTO `pariente` VALUES ('1', 'Yustiz', 'Yustiz', 'Hector', 'Ramon', '0', '4195948', 'M', '1950-02-16', 'Venezolano', null, '1', '0', 'sin empresa', 'sin cargo', 'chofer', '5352354', '5345234', '5345325', '0', null, '1', '1', '2020-05-25 19:40:07', '2020-07-25 23:47:49');
 
 -- ----------------------------
 -- Table structure for perfil
@@ -3859,9 +4358,6 @@ CREATE TABLE `periodo` (
 -- ----------------------------
 -- Records of periodo
 -- ----------------------------
-INSERT INTO `periodo` VALUES ('1', '1er PERÍODO', '1', '1', '2019-08-26', '2019-11-19', null, '1', '1', '2020-05-12 03:27:45', '2020-11-02 01:58:37');
-INSERT INTO `periodo` VALUES ('2', '2do PERÍODO', '2', '1', '2019-11-25', '2020-03-06', null, '2', '1', '2020-05-12 03:28:52', '2020-11-02 01:58:38');
-INSERT INTO `periodo` VALUES ('3', '3er PERÍODO', '3', '1', '2020-03-09', '2020-06-12', null, '2', '1', '2020-05-12 03:29:58', '2020-09-05 22:30:13');
 
 -- ----------------------------
 -- Table structure for permiso
@@ -3950,11 +4446,22 @@ CREATE TABLE `plan_plantilla` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of plan_plantilla
 -- ----------------------------
+INSERT INTO `plan_plantilla` VALUES ('1', 'tipo_evaluacion', '1', '25', null, '1', '1', null, null);
+INSERT INTO `plan_plantilla` VALUES ('2', 'tipo_evaluacion', '2', '25', null, '1', '1', null, null);
+INSERT INTO `plan_plantilla` VALUES ('3', 'tipo_asignacion', '1', '10', null, '1', '1', null, null);
+INSERT INTO `plan_plantilla` VALUES ('4', 'tipo_asignacion', '2', '5', null, '1', '1', null, null);
+INSERT INTO `plan_plantilla` VALUES ('5', 'tipo_asignacion', '3', '5', null, '1', '1', null, null);
+INSERT INTO `plan_plantilla` VALUES ('6', 'tipo_asignacion', '4', '5', null, '1', '1', null, null);
+INSERT INTO `plan_plantilla` VALUES ('7', 'tipo_asignacion', '5', '5', null, '1', '1', null, null);
+INSERT INTO `plan_plantilla` VALUES ('8', 'rasgo', '1', '5', null, '1', '1', null, null);
+INSERT INTO `plan_plantilla` VALUES ('9', 'rasgo', '2', '5', null, '1', '1', null, null);
+INSERT INTO `plan_plantilla` VALUES ('10', 'rasgo', '3', '5', null, '1', '1', null, null);
+INSERT INTO `plan_plantilla` VALUES ('11', 'rasgo', '4', '5', null, '1', '1', null, null);
 
 -- ----------------------------
 -- Table structure for plan_tema
@@ -4207,11 +4714,15 @@ CREATE TABLE `rasgo` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of rasgo
 -- ----------------------------
+INSERT INTO `rasgo` VALUES ('1', 'puntualidad', 'mdi-account-clock', 'blue', null, '1', '1', '2020-11-14 22:51:51', null);
+INSERT INTO `rasgo` VALUES ('2', 'responsabilidad', 'mdi-handshake', 'purple', null, '1', '1', '2020-11-14 22:52:24', null);
+INSERT INTO `rasgo` VALUES ('3', 'asistencia', 'mdi-account-check', 'green', null, '1', '1', '2020-11-14 22:52:20', null);
+INSERT INTO `rasgo` VALUES ('4', 'participacion', 'mdi-hand', 'orange', '', '1', '1', '2020-11-14 22:52:38', null);
 
 -- ----------------------------
 -- Table structure for recurso
@@ -4228,11 +4739,32 @@ CREATE TABLE `recurso` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of recurso
 -- ----------------------------
+INSERT INTO `recurso` VALUES ('20', '3', '4', '57', null, '1', '1', '2020-12-06 00:34:03', '2020-12-06 00:34:03');
+INSERT INTO `recurso` VALUES ('21', '3', '4', '57', null, '1', '1', '2020-12-06 00:34:34', '2020-12-06 00:34:34');
+INSERT INTO `recurso` VALUES ('22', '3', '5', '58', null, '1', '1', '2020-12-06 01:13:54', '2020-12-06 01:13:54');
+INSERT INTO `recurso` VALUES ('23', '3', '5', '58', null, '1', '1', '2020-12-06 01:14:11', '2020-12-06 01:14:11');
+INSERT INTO `recurso` VALUES ('24', '3', '6', '60', null, '1', '1', '2020-12-06 01:47:19', '2020-12-06 01:47:19');
+INSERT INTO `recurso` VALUES ('25', '3', '6', '60', null, '1', '1', '2020-12-06 01:47:57', '2020-12-06 01:47:57');
+INSERT INTO `recurso` VALUES ('26', '3', '7', '62', null, '1', '1', '2020-12-06 01:49:35', '2020-12-06 01:49:35');
+INSERT INTO `recurso` VALUES ('27', '3', '7', '62', null, '1', '1', '2020-12-06 01:49:56', '2020-12-06 01:49:56');
+INSERT INTO `recurso` VALUES ('28', '3', '8', '64', null, '1', '1', '2020-12-06 02:21:54', '2020-12-06 02:21:54');
+INSERT INTO `recurso` VALUES ('29', '3', '8', '64', null, '1', '1', '2020-12-06 02:22:14', '2020-12-06 02:22:14');
+INSERT INTO `recurso` VALUES ('30', '1', '11', '70', null, '1', '1', '2020-12-06 04:16:55', '2020-12-06 04:16:55');
+INSERT INTO `recurso` VALUES ('31', '3', '4', '2', null, '1', '1', '2020-12-06 05:00:38', '2020-12-06 05:00:38');
+INSERT INTO `recurso` VALUES ('32', '3', '4', '3', null, '1', '1', '2020-12-06 05:09:21', '2020-12-06 05:09:21');
+INSERT INTO `recurso` VALUES ('33', '3', '5', '41', null, '1', '1', '2020-12-06 05:16:07', '2020-12-06 05:16:07');
+INSERT INTO `recurso` VALUES ('34', '3', '5', '41', null, '1', '1', '2020-12-06 05:16:45', '2020-12-06 05:16:45');
+INSERT INTO `recurso` VALUES ('35', '3', '6', '43', null, '1', '1', '2020-12-06 16:32:17', '2020-12-06 16:32:17');
+INSERT INTO `recurso` VALUES ('36', '3', '6', '43', null, '1', '1', '2020-12-06 16:32:46', '2020-12-06 16:32:46');
+INSERT INTO `recurso` VALUES ('37', '3', '7', '45', null, '1', '1', '2020-12-06 16:33:28', '2020-12-06 16:33:28');
+INSERT INTO `recurso` VALUES ('38', '3', '7', '45', null, '1', '1', '2020-12-06 16:34:31', '2020-12-06 16:34:31');
+INSERT INTO `recurso` VALUES ('39', '3', '8', '47', null, '1', '1', '2020-12-06 16:54:14', '2020-12-06 16:54:14');
+INSERT INTO `recurso` VALUES ('40', '3', '8', '47', null, '1', '1', '2020-12-06 16:54:34', '2020-12-06 16:54:34');
 
 -- ----------------------------
 -- Table structure for respuesta
@@ -4847,11 +5379,393 @@ CREATE TABLE `tema` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=383 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of tema
 -- ----------------------------
+INSERT INTO `tema` VALUES ('1', 'Los Sentidos', '1', '', '7', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('2', 'Luz y Sonido', '2', '', '7', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('3', 'EL Cuerpo Humano', '3', '', '7', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('4', 'La Materia', '4', '', '7', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('5', 'Los Recursos Naturales', '5', '', '7', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('6', 'Viajes por nuestro cuerpo, forma de ser, familia y región.', '1', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('7', '¿Quíen soy yo?', '2', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('8', '¿Cómo es mi cuerpo?', '3', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('9', '¿Cómo mi cuerpo me hace único?', '4', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('10', '¿Cómo es mi forma de ser?', '5', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('11', '¿Qué es la familia?', '6', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('12', '¿Cómo es tu familia?', '7', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('13', '¿Cómo debe ser la familia?', '8', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('14', '¿Las familias son diversas?', '9', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('15', '¿Qué es el cuidado?', '10', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('16', '¿Quiénes son mis vecinos?', '11', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('17', '¿Qué hacen mis vecinos?', '12', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('18', '¿Las ocupaciones son cosas de hombes y mujeres?', '13', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('19', '¿Cómo es mi región?', '14', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('20', '¿Por qué es importante cuidar la naturaleza?', '15', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('21', '¿Cómo es la gente de mi región?', '16', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('22', 'Las vocales', '1', '', '15', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('23', 'Las consonantes: m, p, s, 1, t, silabas y sus inversos', '2', '', '15', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('24', 'Lectura e intrepretación de textos', '3', '', '15', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('25', 'Consonantes: n, d, c, f, g, b, j, r, y sus inversos.', '4', '', '15', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('26', 'Lectura de diferentes textos narrativos: cuentos y fábulas', '5', '', '15', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('27', 'El lenguaje de los gestos', '6', '', '15', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('28', 'Letras h, ñ, v, y, z, x, w, q, k', '7', '', '15', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('29', 'La conversación', '8', '', '15', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('30', 'Hagamos cuenta con números menores', '1', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('31', 'Para contar hagamos grupos de 10', '2', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('32', 'Hagamos cuenta', '3', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('33', 'Hagamos cuenta sin dibujar pelotas y puntos', '4', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('34', 'Hacia la idea de longitud', '5', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('35', 'cálculos y escrituras hasta 99', '6', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('36', 'Introducción a la posicionalidad', '7', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('37', 'Introducción al número en rango O - 999', '8', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('38', 'Introducción a la simetría', '9', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('39', 'Algo más sobre medir', '10', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('40', 'Seres de la Naturaleza', '1', '', '7', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('41', 'Los alimentos', '2', '', '7', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('42', '¿cuáles son los ciclos de la vida?', '3', '', '7', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('43', 'Movimiento de los Seres Vivos', '4', '', '7', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('44', 'Relaciones de los Seres Vivos', '5', '', '7', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('45', 'Propiedades de la Materia', '6', '', '7', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('46', 'Recursos Naturales', '7', '', '7', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('47', 'La Tierra', '8', '', '7', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('48', '¿Quién soy yo?', '1', '', '19', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('49', '¿Quiénes son las personas con las que convivimos?', '2', '', '19', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('50', 'Nuestro entorno y el municipio', '3', '', '19', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('51', 'El paisaje geografico y la vida de las comunidades', '4', '', '19', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('52', 'Las comunidades y su historia', '5', '', '19', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('53', 'Juguemos con las palabras', '1', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('54', '¿Para qué sirven las palabras?', '2', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('55', 'Lo que nombran las palabras', '3', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('56', 'Aprender jugando', '4', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('57', 'Aprender haciendo', '5', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('58', 'Aprender creando', '6', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('59', 'El diálogo', '7', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('60', '¿mensajes sin palabras?', '8', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('61', 'La biblioteca', '9', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('62', 'Más sobre los números hasta 999', '1', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('63', 'Algunos sólidos y figuras planas', '2', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('64', 'Más sobre medidas de longitud', '3', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('65', 'Hacia la idea de longitud', '4', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('66', 'Cálculos y escrituras hasta 99', '5', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('67', 'Introducción a la posisionalidad', '6', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('68', 'Introducción al número en rango del O - 999', '7', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('69', 'Introducción a la simetría', '8', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('70', 'Algo más sobre medir', '9', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('71', 'Clasificación de los Seres Vivos', '1', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('72', 'La Alimentación en los Seres Vivos', '2', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('73', 'Electricidad y Magnetismo', '3', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('74', 'Cambios en el Ser Humano', '4', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('75', 'Movimiento del Ser Humano', '5', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('76', 'Relación de los Organismos con el Ambiente', '6', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('77', 'Los Cambios de la Materia', '7', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('78', 'El Ciclo del Agua y la Formación del Suelo', '8', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('79', 'El Sistema Sol-Tierra-Luna', '9', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('80', 'El rio del tiempo', '1', '', '19', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('81', '¿Cómo orientarnos y ubicarnos geograficamente?', '2', '', '19', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('82', 'Colombia y sus departamentos', '3', '', '19', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('83', 'La cultura y yo', '4', '', '19', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('84', 'Nosotros y los otros', '5', '', '19', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('85', 'Convivir juntos', '6', '', '19', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('86', 'Vamos a relactar', '1', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('87', 'Vamos a describir', '2', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('88', 'Vamos a analizar', '3', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('89', 'EL significado de las palabras', '4', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('90', 'Algunos secretos de las palabras', '5', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('91', 'Las palabras y las personas', '6', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('92', 'habitemos la escena', '7', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('93', 'habitemos la letra', '8', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('94', 'habitemos la imagen', '9', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('95', 'Algo más sobre las operaciones en adicción y sustracción', '1', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('96', 'La operación multiplicación y relaciones multiplicativas', '2', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('97', 'Otros sistemas de ubicación', '3', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('98', 'Algo sobre clasificaciones', '4', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('99', 'Arreglos y conteos', '5', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('100', 'Nuevamente el sistema de númeración 7', '6', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('101', 'Avanzando en lo multiplicativo', '7', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('102', 'Avanzando en lo espacial', '8', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('103', 'Algo más sobre perimetros y áreas', '9', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('104', 'Los Reinos de la Naturales', '1', '', '7', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('105', 'Nutrición y Salud', '2', '', '7', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('106', 'Reproducción en los Seres Vivos', '3', '', '7', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('107', 'Especie y Reproducción', '4', '', '7', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('108', 'Movimiento de los Cuerpos', '5', '', '7', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('109', 'Elementos, Compuesto y Mezclas', '6', '', '7', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('110', 'Contaminación', '7', '', '7', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('111', 'La Tierra y el Sistema Solar', '8', '', '7', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('112', 'El largo camino de la humanidad', '1', '', '19', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('113', 'El encuentro entre dos mundos', '2', '', '19', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('114', 'Los españoles conquistaron nuestro país', '3', '', '19', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('115', 'La diversidad étnica en Colombia', '4', '', '19', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('116', 'El relieve y el clima de Colombia', '5', '', '19', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('117', 'De viajes por las regiones naturales de Colombia y el mundo', '6', '', '19', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('118', 'Los conflictos y los dilemas en nuestras vidas', '7', '', '19', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('119', 'Los ciudadanos y las instituciones', '8', '', '19', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('120', 'A divertirse en serio', '1', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('121', 'El diseño y las palabras', '2', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('122', 'Secretos de la escritura', '3', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('123', 'Las palabras y los seres humanos', '4', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('124', 'Los eventos y el significado', '5', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('125', 'Las relaciones y el significado', '6', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('126', 'Las personas se relacionan usando las palabras', '7', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('127', 'Las palabras se relacionan entre sí', '8', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('128', 'Las palabras se relacionan con las imágenes', '9', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('129', 'Nuevamente el sistema decimal de numeración', '1', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('130', 'procedimientos de multiplicar y dividir', '2', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('131', 'Relaciones multiplicativas y fraccionarios', '3', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('132', 'Profundicemos sobre algunas propiedades de las figuras', '4', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('133', 'Usemos los decimales', '5', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('134', 'Perímetros, áreas y volúmenes', '6', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('135', 'Algo más sobre arreglos', '7', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('136', 'Algo más sobre variación de magnitudes', '8', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('137', 'Algo más sobre las figuras', '9', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('138', 'Medidas de ángulos', '10', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('139', 'Estructura de los Seres Vivos', '1', '', '7', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('140', '¿Cómo Funciona el Cuerpo Humano?', '2', '', '7', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('141', 'Los Ecosistemas', '3', '', '7', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('142', 'Energía', '4', '', '7', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('143', 'Conservación de los Recursos Naturales', '5', '', '7', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('144', 'El Universo', '6', '', '7', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('145', 'La Metodologia Cientifica', '7', '', '7', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('146', 'La colonia y la independencia en nuestro país', '1', '', '19', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('147', 'Los movimientos sociales en Colombia', '2', '', '19', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('148', 'Las normas, las leyes y la constitución', '3', '', '19', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('149', 'La diversidad étnica y cultural de Colombia', '4', '', '19', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('150', 'La Colombia que vivimos', '5', '', '19', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('151', 'El país que construimos', '6', '', '19', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('152', 'La importancia de la economía en nuestras vidas', '7', '', '19', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('153', 'Las decisiones importantes en nuestras vidas', '8', '', '19', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('154', '!Expresemonos con propiedad!', '1', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('155', 'El orden de las palabras', '2', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('156', 'El texto es más que las oraciones', '3', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('157', 'La información transforma la forma como nos comunicamos', '4', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('158', 'Entendamos y disfrutemos la literatura', '5', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('159', 'Palabras contextos y propósitos', '6', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('160', 'Escribamos cada ves mejor', '7', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('161', 'Los pictogramas', '8', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('162', 'Actividades libres', '9', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('163', 'Nuevamente cómo varían magnitudes', '1', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('164', 'Algo más sobre fraccionarios', '2', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('165', 'Algoritmos de la multiplicacción y división', '3', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('166', 'Una nueva operación', '4', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('167', 'Conozcamos nuevas relaciones entre las figuras', '5', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('168', 'Algo más sobre los decimales', '6', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('169', 'Algo más sobre razones y proporciones', '7', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('170', 'Nuevamente sobre variacional', '8', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('171', 'Algo más sobre organización de datos y arreglos', '9', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('172', 'Relaciones consigo mismo', '1', '', '20', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('173', 'Tus relaciones con los demás', '2', '', '20', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('174', 'Ser honesto y tolerante', '3', '', '20', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('175', 'Ética ecológica, expresión y perdón', '4', '', '20', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('176', 'Aspectos generales de la educación física', '1', '', '17', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('177', 'Cuidar la vida', '2', '', '17', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('178', 'Técnicas de movimiento', '3', '', '17', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('179', 'La expresión corporal artistica', '4', '', '17', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('180', 'Entrada al mundo del lenguaje', '1', '', '15', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('181', 'Vivo mi lengua', '2', '', '15', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('182', 'Conozco mi lengua', '3', '', '15', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('183', 'Construir el mundo a través de palabras', '4', '', '15', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('184', 'Construyo Sistemas de números', '1', '', '14', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('185', 'Mido y Construyo', '2', '', '14', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('186', 'Proporcionalidad', '3', '', '14', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('187', 'Sistemas de datos', '4', '', '14', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('188', 'La Ciencia y los seres vivos', '1', '', '7', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('189', 'Conociendo los seres de la naturaleza', '2', '', '7', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('190', 'Los seres vivos y sus relaciones', '3', '', '7', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('191', 'El ambiente y los seres vivos', '4', '', '7', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('192', 'El ser humano y su entorno', '1', '', '19', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('193', '¿De qué manera el ser humano transforma el medio?', '2', '', '19', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('194', '¿Cómo se han transformado las estructuras de poder?', '3', '', '19', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('195', '¿Qué aprendemos de las sociedades de ayer y de hoy?', '4', '', '19', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('196', 'Vamos a danzar', '1', 'D', '18', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('197', 'La danza es un mundo', '2', 'D', '18', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('198', 'Descubramos el mundo de la música', '3', 'M', '18', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('199', 'Conozcamos la música del mundo', '4', 'M', '18', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('200', 'Títeres en escena', '5', 'T', '18', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('201', 'El mimo', '6', 'T', '18', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('202', 'A pintar, a crear y a jugar', '7', 'V', '18', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('203', 'Exploremos el espacio y el diseño', '8', 'V', '18', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('204', 'La ciencia y la vida.', '1', '', '7', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('205', 'Los seres de la naturaleza.', '2', '', '7', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('206', 'La vida y el universo.', '3', '', '7', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('207', 'El ambiente.', '4', '', '7', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('208', 'El clima y su relación con el ser humano', '1', '', '19', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('209', 'Geografía física y humana de Europa América', '2', '', '19', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('210', 'Imperios en Europa', '3', '', '19', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('211', 'Imperios en América', '4', '', '19', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('212', 'Vamos a danzar', '1', 'D', '18', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('213', 'La danza es un mundo', '2', 'D', '18', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('214', 'Descubramos el mundo de la música', '3', 'M', '18', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('215', 'Conozcamos la música del mundo', '4', 'M', '18', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('216', 'Títeres en escena', '5', 'T', '18', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('217', 'El mimo', '6', 'T', '18', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('218', 'A pintar, a crear y a jugar', '7', 'V', '18', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('219', 'Exploremos el espacio y el diseño', '8', 'V', '18', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('220', 'Participación e inclusión social', '1', '', '20', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('221', 'Mediación, desarrollo y territorios para la articipación', '2', '', '20', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('222', 'Prevención de adicciones, Ley de Infancia y Adolescencia, y participación', '3', '', '20', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('223', 'Comunicación y concertación, mecanismos de participación, y la paz', '4', '', '20', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('224', 'Cómo responde mi cuerpo al ejercicio', '1', '', '17', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('225', 'El ser humano y su entorno Técnicas de movimiento en equipo: juegos', '2', '', '17', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('226', 'predeportivos de pelota', '3', '', '17', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('227', 'Influencia de la danza en la sociedad', '4', '', '17', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('228', 'Alistando el equipaje para recorrer mi lengua', '1', '', '15', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('229', 'Viajando hacia el mundo de la lengua y la literatura', '2', '', '15', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('230', 'Viviendo las estaciones de mi viaje por la lengua', '3', '', '15', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('231', 'Me bajo en esta estación, pero el viaje por la lengua continu28', '4', '', '15', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('232', 'El sistema de los números enteros', '1', '', '14', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('233', 'Construyo y Compruebo', '2', '', '14', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('234', 'Introducción al Álgebra', '3', '', '14', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('235', 'Estadística Descriptiva y Probabilidad', '4', '', '14', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('236', 'Los seres vivos como organismos dinámicos', '1', '', '7', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('237', 'Cambios químicos en la materia, salud sexual y reproductiva', '2', '', '7', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('238', 'Los procesos físicos, químicos y biológicos y los seres vivos', '3', '', '7', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('239', 'La defensa de los organismos', '4', '', '7', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('240', 'Geografía', '1', '', '19', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('241', 'América Colonial', '2', '', '19', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('242', 'La época de las revoluciones', '3', '', '19', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('243', 'Colombia en el siglo XIX', '4', '', '19', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('244', 'Vamos a danzar', '1', 'D', '18', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('245', 'La danza es un mundo', '2', 'D', '18', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('246', 'Descubramos el mundo de la música', '3', 'M', '18', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('247', 'Conozcamos la música del mundo', '4', 'M', '18', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('248', 'Títeres en escena', '5', 'T', '18', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('249', 'El mimo', '6', 'T', '18', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('250', 'A pintar, a crear y a jugar', '7', 'V', '18', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('251', 'Exploremos el espacio y el diseño', '8', 'V', '18', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('252', 'Yo soy, teres, todos juntos somos', '1', '', '20', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('253', 'Viviendo y conviviendo', '2', '', '20', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('254', 'Me esfuerzo por comprender y comunicarme bien', '3', '', '20', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('255', 'Tengo derechos y asumo deberes', '4', '', '20', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('256', 'Actividad física en la vida cotidiana grado 8º', '1', '', '17', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('257', 'La gimnasia', '2', '', '17', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('258', 'Actividades deportivas de conjunto', '3', '', '17', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('259', 'La danza folclórica', '4', '', '17', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('260', 'La palabra hablada', '1', '', '15', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('261', 'La palabra narrada', '2', '', '15', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('262', 'Exponiendo se aprende', '3', '', '15', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('263', 'La palabra argumentada', '4', '', '15', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('264', 'Sistemas de los números racionales', '1', '', '14', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('265', 'Geometría', '2', '', '14', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('266', 'Álgebra', '3', '', '14', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('267', 'Estadística y probabilidad', '4', '', '14', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('268', 'Características genéticas de los seres vivos', '1', '', '7', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('269', 'Los procesos de la evolución', '2', '', '7', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('270', 'Aspectos básicos de taxonomía', '3', '', '7', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('271', 'La energía del planeta y los procesos de adaptación', '4', '', '7', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('272', 'Imperialismo', '1', '', '19', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('273', 'Un mundo conflictivo entre 1930 y 1950', '2', '', '19', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('274', 'La tensión entre capitalismo y socialismo hasta la década de los 80', '3', '', '19', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('275', 'Transformaciones desde la década de los años 80', '4', '', '19', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('276', 'Vamos a danzar', '1', 'D', '18', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('277', 'La danza es un mundo', '2', 'D', '18', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('278', 'Descubramos el mundo de la música', '3', 'M', '18', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('279', 'Conozcamos la música del mundo', '4', 'M', '18', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('280', 'Títeres en escena', '5', 'T', '18', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('281', 'El mimo', '6', 'T', '18', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('282', 'A pintar, a crear y a jugar', '7', 'V', '18', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('283', 'Exploremos el espacio y el diseño', '8', 'V', '18', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('284', 'Me comunico responsablemente', '1', '', '20', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('285', 'Contribuyo en la construcción de una sociedad pacífica', '2', '', '20', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('286', 'Tomo decisiones responsables', '3', '', '20', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('287', 'Reclamo mis derechos y cumplo con mis deberes', '4', '', '20', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('288', 'Actividad física y salud', '1', '', '17', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('289', 'Deportes de conjunto', '2', '', '17', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('290', 'Manifestaciones recreativas', '3', '', '17', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('291', 'Coreografías de danza folclórica', '4', '', '17', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('292', 'Expresamos lo que somos', '1', '', '15', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('293', 'Expresamos ideas, saberes y sentimientos', '2', '', '15', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('294', 'Aprendemos hablando y escribiendo', '3', '', '15', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('295', 'Convencemos y nos convencen con buenos argumentos', '4', '', '15', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('296', 'Conjunto de los números reales', '1', '', '14', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('297', 'Geometría', '2', '', '14', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('298', 'Funciones: Lineal, cuadrática, exponencial y logarítmica, y sistemas lineales', '3', '', '14', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('299', 'Estadística', '4', '', '14', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('300', 'El poder judicial', '0', '', '21', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('301', 'El ministerio público', '2', '', '21', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('302', 'Administración de justicia', '3', '', '21', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('303', 'El debido proceso', '4', '', '21', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('304', 'Relaciones de masas en las reacciones químicas', '1', '', '10', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('305', 'Reacciones acuosas', '2', '', '10', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('306', 'Gases y sus leyes', '3', '', '10', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('307', 'Mundo físico', '1', '', '9', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('308', 'Magnitudes física', '2', '', '9', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('309', 'Cinematica del movimiento retilineo', '3', '', '9', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('310', 'Cinematica del movimiento en el plano', '4', '', '9', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('311', 'Dinamica', '5', '', '9', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('312', 'Trabajo y energía', '6', '', '9', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('313', 'Estatica', '7', '', '9', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('314', 'Ángulos', '1', '', '14', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('315', 'Triángulos', '2', '', '14', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('316', 'Solución de Triángulos rectángulos', '3', '', '14', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('317', 'Concepto de: Lenguaje, lengua, dialecto', '1', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('318', 'Origen y evolución de la lengua española.', '2', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('319', 'Literatura española del medioevo.', '3', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('320', 'Tipología textual.', '4', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('321', 'Literatura del siglo de oro', '5', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('322', 'El informe escrito, la reseña, el ensayo', '6', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('323', 'Novela de la posguerra, autores en el exilio,', '7', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('324', 'Novela contemporánea', '8', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('325', 'Figuras literarias', '9', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('326', 'Arcaísmos, neologismos, Regionalismos', '10', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('327', 'Nociones preliminares de filosofia', '1', '', '22', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('328', 'Filosofia universal', '2', '', '22', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('329', 'Cosmologia', '3', '', '22', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('330', 'La psicologia', '4', '', '22', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('331', 'Antropologia', '5', '', '22', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('332', 'Epistemologia', '6', '', '22', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('333', 'Gnoseologia Qg Unidad: La politica', '7', '', '22', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('334', 'lntrodución a las marcas de diseño grafico', '1', '', '23', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('335', 'Imagen corporativa', '2', '', '23', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('336', 'Historia del diseño de marcas', '3', '', '23', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('337', 'lntrodución al CorelDraw', '4', '', '23', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('338', 'lntrodución a adobe lllustrator', '5', '', '23', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('339', 'El derecho', '1', '', '21', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('340', 'Derechos humanos', '2', '', '21', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('341', 'Derecho internacional humanitario', '3', '', '21', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('342', 'La paz armada', '4', '', '21', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('343', 'Los tratados de paz', '5', '', '21', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('344', 'verificación y evaluacion de los tratados de paz', '6', '', '21', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('345', 'El Átomo de carbono', '1', '', '10', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('346', 'Formulas químicas en alcanos', '2', '', '10', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('347', 'Formulas químicas en alquenos', '3', '', '10', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('348', 'Formulas químicas en aluinos', '4', '', '10', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('349', 'Isomería', '5', '', '10', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('350', 'Aromaticos', '6', '', '10', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('351', 'Alcoholes y fenoles', '7', '', '10', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('352', 'Calor y temperatura', '1', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('353', 'Mecanica de fluidos', '2', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('354', 'Carga electrica y Campo electrico', '3', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('355', 'Corriente electrica', '4', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('356', 'Magnetismo', '5', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('357', 'Optica y sonido', '6', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('358', 'Movimiento ondulatorio', '7', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('359', 'Optica y radiación electromagnetica', '8', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('360', 'Épocas literarias', '1', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('361', 'Características de la comunicación humana', '2', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('362', 'Medios de comunicación y otros medios simbólicos', '3', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('363', 'Literatura del barroco, neoclasicismo, romanticismo y realismo.', '4', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('364', 'Texto científico-técnico', '5', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('365', 'Escritura de palabras compuestas, derivadas y acrónimos', '6', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('366', 'Literatura simbolismo y vanguardias', '7', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('367', 'Lengua materna y segundas lenguas', '8', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('368', 'El ensayo', '9', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('369', 'La literatura contemporánea.', '10', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('370', 'Folosofia medieval y del renacimiento', '1', '', '22', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('371', 'Filosofia moderna', '2', '', '22', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('372', 'Filosofia contemporanea', '3', '', '22', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('373', 'lntrodución a Photoshop', '1', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('374', 'Conceptos básicos de Photoshop', '2', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('375', 'Retoque fotografico', '3', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('376', 'Creación de animaciones en photoshop', '4', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('377', 'Conceptos básicos y entorno de flash', '5', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('378', 'Clip de película. Trabajar con filtros', '6', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('379', 'Desigualdades e Inecuaciones e Intervalos', '1', '', '14', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('380', 'Teoría de Funciones', '2', '', '14', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('381', 'Limite y Continuidad', '3', '', '14', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
+INSERT INTO `tema` VALUES ('382', 'Sucesiones y sumatoria', '4', '', '14', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
 
 -- ----------------------------
 -- Table structure for tipo_accion
@@ -5123,11 +6037,15 @@ CREATE TABLE `tipo_directiva` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of tipo_directiva
 -- ----------------------------
+INSERT INTO `tipo_directiva` VALUES ('1', 'Junta Directiva', null, '1', '1', '2020-05-08 19:02:22', '2020-05-08 19:02:22');
+INSERT INTO `tipo_directiva` VALUES ('2', 'Asociacion de Padres', null, '1', '1', '2020-05-08 19:02:44', '2020-05-08 19:02:44');
+INSERT INTO `tipo_directiva` VALUES ('3', 'Administrativo', null, '1', '1', '2020-05-08 19:03:04', '2020-05-08 19:03:04');
+INSERT INTO `tipo_directiva` VALUES ('4', 'Otros', null, '1', '1', '2020-05-08 19:03:14', '2020-05-08 19:03:14');
 
 -- ----------------------------
 -- Table structure for tipo_documento
@@ -5623,316 +6541,7 @@ CREATE TABLE `usuario` (
 -- ----------------------------
 INSERT INTO `usuario` VALUES ('1', '1', 'Administrador', 'admin', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'lyustiz@gmail.com', '', '1', '1', null, null, null, null, null, '1', '1', null, null);
 INSERT INTO `usuario` VALUES ('2', '1', 'jean yustiz', 'jyustiz', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'jyustiz@gmail.com', null, '3', '1', null, 'riR8aTSe', null, null, null, '1', '2', '2020-08-21 00:56:14', '2020-09-04 19:37:07');
-INSERT INTO `usuario` VALUES ('3', '1', 'luisa tovar', 'ltovar', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'luisat02@gmail.com', null, '3', '2', null, 'PALIJ7aj', null, null, null, '1', '1', '2020-08-21 00:56:33', '2020-08-21 00:56:33');
-INSERT INTO `usuario` VALUES ('4', '1', 'diana calderon', 'dcalderon', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'neque@Fuscedolor.org', null, '3', '10', null, 'nddZYKaf', null, null, null, '1', '1', '2020-08-21 00:56:33', '2020-08-21 00:56:33');
-INSERT INTO `usuario` VALUES ('5', '1', 'hollee ruiz', 'hruiz', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'pulvinar@Fuscealiquetmagna.org', null, '3', '11', null, 'LFpNq9AJ', null, null, null, '1', '1', '2020-08-21 00:56:34', '2020-08-21 00:56:34');
-INSERT INTO `usuario` VALUES ('6', '1', 'beau blankenship', 'bblankenship', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'pede.malesuada.vel@Maecenasiac', null, '3', '12', null, 'zu0PWHkc', null, null, null, '1', '1', '2020-08-21 00:56:34', '2020-08-21 00:56:34');
-INSERT INTO `usuario` VALUES ('7', '1', 'lester gomez', 'lgomez', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'magna.a@dictummagnaUt.com', null, '3', '13', null, 'OmM2072N', null, null, null, '1', '1', '2020-08-21 00:56:35', '2020-08-21 00:56:35');
-INSERT INTO `usuario` VALUES ('8', '1', 'acton holloway', 'aholloway', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'consequat.enim.diam@sitamet.ca', null, '3', '14', null, '0USrnzzk', null, null, null, '1', '1', '2020-08-21 00:56:35', '2020-08-21 00:56:35');
-INSERT INTO `usuario` VALUES ('9', '1', 'tallulah castillo', 'tcastillo', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'quis.pede@tinciduntDonecvitae.', null, '3', '15', null, 'YYLVHtXL', null, null, null, '1', '1', '2020-08-21 00:56:36', '2020-08-21 00:56:36');
-INSERT INTO `usuario` VALUES ('10', '1', 'kevin potts', 'kpotts', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'risus.at.fringilla@Donecest.co', null, '3', '16', null, 'V3ApziQt', null, null, null, '1', '1', '2020-08-21 00:56:36', '2020-08-21 00:56:36');
-INSERT INTO `usuario` VALUES ('11', '1', 'tobias watson', 'twatson', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'velit.egestas.lacinia@In.edu', null, '3', '17', null, 'VoNhbnAE', null, null, null, '1', '1', '2020-08-21 00:56:37', '2020-08-21 00:56:37');
-INSERT INTO `usuario` VALUES ('12', '1', 'bianca williamson', 'bwilliamson', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'feugiat.non@auctorvelit.org', null, '3', '18', null, '2lgCG2qQ', null, null, null, '1', '1', '2020-08-21 00:56:38', '2020-08-21 00:56:38');
-INSERT INTO `usuario` VALUES ('13', '1', 'britanney stone', 'bstone', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'amet@fermentumarcuVestibulum.c', null, '3', '19', null, 'MpAAcU8W', null, null, null, '1', '1', '2020-08-21 00:56:38', '2020-08-21 00:56:38');
-INSERT INTO `usuario` VALUES ('14', '1', 'destiny clemons', 'dclemons', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'facilisis.non.bibendum@vitae.e', null, '3', '20', null, 'ahybRLGs', null, null, null, '1', '1', '2020-08-21 00:56:39', '2020-08-21 00:56:39');
-INSERT INTO `usuario` VALUES ('15', '1', 'thomas clemons', 'tclemons', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Phasellus@Fusce.co.uk', null, '3', '21', null, 'XngCjOA3', null, null, null, '1', '1', '2020-08-21 00:56:39', '2020-08-21 00:56:39');
-INSERT INTO `usuario` VALUES ('16', '1', 'cullen craig', 'ccraig', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'justo.eu.arcu@egetmassaSuspend', null, '3', '22', null, 'LcEI1ncg', null, null, null, '1', '1', '2020-08-21 00:56:40', '2020-08-21 00:56:40');
-INSERT INTO `usuario` VALUES ('17', '1', 'sthephany rich', 'srich', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'dapibus.ligula@eudoloregestas.', null, '3', '23', null, 'EqP3zTEl', null, null, null, '1', '1', '2020-08-21 00:56:40', '2020-08-21 00:56:40');
-INSERT INTO `usuario` VALUES ('18', '1', 'odessa larson', 'olarson', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ipsum@vulputate.org', null, '3', '24', null, 'Krg8tT2w', null, null, null, '1', '1', '2020-08-21 00:56:41', '2020-08-21 00:56:41');
-INSERT INTO `usuario` VALUES ('19', '1', 'jasmine downs', 'jdowns', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Aliquam@consequatdolorvitae.or', null, '3', '25', null, 'ia3EMS7I', null, null, null, '1', '1', '2020-08-21 00:56:41', '2020-08-21 00:56:41');
-INSERT INTO `usuario` VALUES ('20', '1', 'felicia hood', 'fhood', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'in.faucibus.orci@pellentesquea', null, '3', '26', null, '14o48MnU', null, null, null, '1', '1', '2020-08-21 00:56:41', '2020-08-21 00:56:41');
-INSERT INTO `usuario` VALUES ('21', '1', 'otto moss', 'omoss', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'a.enim.Suspendisse@ategestas.c', null, '3', '27', null, 'lnMAuKIe', null, null, null, '1', '1', '2020-08-21 00:56:42', '2020-08-21 00:56:42');
-INSERT INTO `usuario` VALUES ('22', '1', 'hashim campos', 'hcampos', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'diam.vel.arcu@arcuNunc.edu', null, '3', '28', null, 'vhOPY8lB', null, null, null, '1', '1', '2020-08-21 00:56:42', '2020-08-21 00:56:42');
-INSERT INTO `usuario` VALUES ('23', '1', 'cassandra dominguez', 'cdominguez', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'iaculis.lacus.pede@Maecenasmal', null, '3', '29', null, 'frrnQpa0', null, null, null, '1', '1', '2020-08-21 00:56:43', '2020-08-21 00:56:43');
-INSERT INTO `usuario` VALUES ('24', '1', 'amber best', 'abest', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'per.conubia@tristiquepellentes', null, '3', '30', null, 'zJH3mOhi', null, null, null, '1', '1', '2020-08-21 00:56:43', '2020-08-21 00:56:43');
-INSERT INTO `usuario` VALUES ('25', '1', 'yvonne cox', 'ycox', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'mauris.sagittis.placerat@Namte', null, '3', '31', null, 'p8lc1Ykz', null, null, null, '1', '1', '2020-08-21 00:56:44', '2020-08-21 00:56:44');
-INSERT INTO `usuario` VALUES ('26', '1', 'morgan pope', 'mpope', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'magna.Duis@nullaatsem.com', null, '3', '32', null, '9VVfKe0z', null, null, null, '1', '1', '2020-08-21 00:56:44', '2020-08-21 00:56:44');
-INSERT INTO `usuario` VALUES ('27', '1', 'ashton ellis', 'aellis', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Curabitur.ut.odio@diam.org', null, '3', '33', null, '5N42XVrh', null, null, null, '1', '1', '2020-08-21 00:56:45', '2020-08-21 00:56:45');
-INSERT INTO `usuario` VALUES ('28', '1', 'autumn crane', 'acrane', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Maecenas.malesuada@luctusetult', null, '3', '34', null, 't0yyeETu', null, null, null, '1', '1', '2020-08-21 00:56:45', '2020-08-21 00:56:45');
-INSERT INTO `usuario` VALUES ('29', '1', 'norman carrillo', 'ncarrillo', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'vitae.risus@purusmaurisa.com', null, '3', '35', null, 'q7tQXT7w', null, null, null, '1', '1', '2020-08-21 00:56:46', '2020-08-21 00:56:46');
-INSERT INTO `usuario` VALUES ('30', '1', 'kaseem vang', 'kvang', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'fringilla.ornare@elit.net', null, '3', '36', null, 'osFhxGFY', null, null, null, '1', '1', '2020-08-21 00:56:46', '2020-08-21 00:56:46');
-INSERT INTO `usuario` VALUES ('31', '1', 'ruby phillips', 'rphillips', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'purus.Maecenas@mus.co.uk', null, '3', '37', null, 'n9N9nRBY', null, null, null, '1', '1', '2020-08-21 00:56:47', '2020-08-21 00:56:47');
-INSERT INTO `usuario` VALUES ('32', '1', 'shafira mcknight', 'smcknight', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Morbi@malesuadamalesuada.edu', null, '3', '38', null, 'FTgDLwCU', null, null, null, '1', '1', '2020-08-21 00:56:47', '2020-08-21 00:56:47');
-INSERT INTO `usuario` VALUES ('33', '1', 'roth lucas', 'rlucas', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'vitae.purus@montesnasceturridi', null, '3', '39', null, 'SEcCJCzU', null, null, null, '1', '1', '2020-08-21 00:56:48', '2020-08-21 00:56:48');
-INSERT INTO `usuario` VALUES ('34', '1', 'cooper welch', 'cwelch', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Cras@arcuVestibulum.ca', null, '3', '40', null, '0mulgLqJ', null, null, null, '1', '1', '2020-08-21 00:56:48', '2020-08-21 00:56:48');
-INSERT INTO `usuario` VALUES ('35', '1', 'keegan valenzuela', 'kvalenzuela', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'nulla.ante@eutellusPhasellus.c', null, '3', '41', null, 'CGyIr9Sd', null, null, null, '1', '1', '2020-08-21 00:56:49', '2020-08-21 00:56:49');
-INSERT INTO `usuario` VALUES ('36', '1', 'alden morrison', 'amorrison', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'rutrum@estmollis.net', null, '3', '42', null, 'dRX5Nx0K', null, null, null, '1', '1', '2020-08-21 00:56:49', '2020-08-21 00:56:49');
-INSERT INTO `usuario` VALUES ('37', '1', 'gary stein', 'gstein', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Pellentesque.habitant.morbi@fe', null, '3', '43', null, '130K3p5I', null, null, null, '1', '1', '2020-08-21 00:56:49', '2020-08-21 00:56:49');
-INSERT INTO `usuario` VALUES ('38', '1', 'aline burt', 'aburt', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'mi.Duis@maurissagittis.edu', null, '3', '44', null, 'sYE9jLOP', null, null, null, '1', '1', '2020-08-21 00:56:50', '2020-08-21 00:56:50');
-INSERT INTO `usuario` VALUES ('39', '1', 'kimberly bartlett', 'kbartlett', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ut.mi@ligulatortordictum.com', null, '3', '45', null, 'lEF4fueP', null, null, null, '1', '1', '2020-08-21 00:56:50', '2020-08-21 00:56:50');
-INSERT INTO `usuario` VALUES ('40', '1', 'hedwig oneal', 'honeal', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'a.facilisis.non@dictumeu.edu', null, '3', '46', null, 'QA7gmiLI', null, null, null, '1', '1', '2020-08-21 00:56:51', '2020-08-21 00:56:51');
-INSERT INTO `usuario` VALUES ('41', '1', 'olympia cummings', 'ocummings', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'sodales.Mauris@necante.edu', null, '3', '47', null, 'CviqYgjv', null, null, null, '1', '1', '2020-08-21 00:56:51', '2020-08-21 00:56:51');
-INSERT INTO `usuario` VALUES ('42', '1', 'paloma may', 'pmay', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'enim.nisl@eros.org', null, '3', '48', null, 'om4IP2Fq', null, null, null, '1', '1', '2020-08-21 00:56:52', '2020-08-21 00:56:52');
-INSERT INTO `usuario` VALUES ('43', '1', 'bruce riley', 'briley', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'pede.malesuada@nullavulputate.', null, '3', '49', null, 'B4qAQ0TP', null, null, null, '1', '1', '2020-08-21 00:56:52', '2020-08-21 00:56:52');
-INSERT INTO `usuario` VALUES ('44', '1', 'finn knight', 'fknight', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'placerat@orciadipiscing.ca', null, '3', '50', null, '4PWXGbtI', null, null, null, '1', '1', '2020-08-21 00:56:52', '2020-08-21 00:56:52');
-INSERT INTO `usuario` VALUES ('45', '1', 'nehru coffey', 'ncoffey', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Sed.auctor.odio@Nullam.com', null, '3', '51', null, 'ZspijkgR', null, null, null, '1', '1', '2020-08-21 00:56:53', '2020-08-21 00:56:53');
-INSERT INTO `usuario` VALUES ('46', '1', 'cairo saunders', 'csaunders', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ullamcorper@Nulladignissim.co.', null, '3', '52', null, 'U4MUl9Ox', null, null, null, '1', '1', '2020-08-21 00:56:53', '2020-08-21 00:56:53');
-INSERT INTO `usuario` VALUES ('47', '1', 'maite prince', 'mprince', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'orci.in.consequat@ipsumcursusv', null, '3', '53', null, 'Ouu3XC1t', null, null, null, '1', '1', '2020-08-21 00:56:54', '2020-08-21 00:56:54');
-INSERT INTO `usuario` VALUES ('48', '1', 'blossom frye', 'bfrye', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'montes.nascetur@sapienCras.net', null, '3', '54', null, 'gLlES2pL', null, null, null, '1', '1', '2020-08-21 00:56:54', '2020-08-21 00:56:54');
-INSERT INTO `usuario` VALUES ('49', '1', 'kirsten gillespie', 'kgillespie', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ultricies.dignissim.lacus@Sed.', null, '3', '55', null, 'oxlECXPP', null, null, null, '1', '1', '2020-08-21 00:56:54', '2020-08-21 00:56:54');
-INSERT INTO `usuario` VALUES ('50', '1', 'barrett reynolds', 'breynolds', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'interdum.Curabitur@natoque.co.', null, '3', '56', null, 'AKRefDju', null, null, null, '1', '1', '2020-08-21 00:56:55', '2020-08-21 00:56:55');
-INSERT INTO `usuario` VALUES ('51', '1', 'benedict berry', 'bberry', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ac.risus@viverra.co.uk', null, '3', '57', null, 'rPJPb5Zz', null, null, null, '1', '1', '2020-08-21 00:56:55', '2020-08-21 00:56:55');
-INSERT INTO `usuario` VALUES ('52', '1', 'gail perkins', 'gperkins', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ligula@etultrices.com', null, '3', '58', null, '2d6tadWK', null, null, null, '1', '1', '2020-08-21 00:56:56', '2020-08-21 00:56:56');
-INSERT INTO `usuario` VALUES ('53', '1', 'amy horne', 'ahorne', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Donec.tempor.est@NuncmaurisMor', null, '3', '59', null, 'GNnrWkrD', null, null, null, '1', '1', '2020-08-21 00:56:56', '2020-08-21 00:56:56');
-INSERT INTO `usuario` VALUES ('54', '1', 'rajah cleveland', 'rcleveland', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'habitant.morbi@lobortismauris.', null, '3', '60', null, '7MowcdQm', null, null, null, '1', '1', '2020-08-21 00:56:57', '2020-08-21 00:56:57');
-INSERT INTO `usuario` VALUES ('55', '1', 'kane sherman', 'ksherman', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'massa.Mauris.vestibulum@non.co', null, '3', '61', null, 'sd9qR2Ya', null, null, null, '1', '1', '2020-08-21 00:56:57', '2020-08-21 00:56:57');
-INSERT INTO `usuario` VALUES ('56', '1', 'erica workman', 'eworkman', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'suscipit.nonummy.Fusce@consect', null, '3', '62', null, 'yzsQqUEM', null, null, null, '1', '1', '2020-08-21 00:56:58', '2020-08-21 00:56:58');
-INSERT INTO `usuario` VALUES ('57', '1', 'hope burris', 'hburris', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'pede.nonummy.ut@rutrum.net', null, '3', '63', null, 'Rp9RkBE5', null, null, null, '1', '1', '2020-08-21 00:56:58', '2020-08-21 00:56:58');
-INSERT INTO `usuario` VALUES ('58', '1', 'imani sutton', 'isutton', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Donec.non.justo@sapienCrasdolo', null, '3', '64', null, 'usYdGy0x', null, null, null, '1', '1', '2020-08-21 00:56:58', '2020-08-21 00:56:58');
-INSERT INTO `usuario` VALUES ('59', '1', 'dorothy mendoza', 'dmendoza', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'mattis.velit@aenim.ca', null, '3', '65', null, 'FQKo770n', null, null, null, '1', '1', '2020-08-21 00:56:59', '2020-08-21 00:56:59');
-INSERT INTO `usuario` VALUES ('60', '1', 'kimberly hubbard', 'khubbard', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Nulla@Suspendissealiquet.org', null, '3', '66', null, '1q7oPbBI', null, null, null, '1', '1', '2020-08-21 00:56:59', '2020-08-21 00:56:59');
-INSERT INTO `usuario` VALUES ('61', '1', 'colt holder', 'cholder', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'eu.tellus@laoreetposuereenim.o', null, '3', '67', null, '4yzRcHZl', null, null, null, '1', '1', '2020-08-21 00:57:00', '2020-08-21 00:57:00');
-INSERT INTO `usuario` VALUES ('62', '1', 'tatyana battle', 'tbattle', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Integer.tincidunt@Nulla.ca', null, '3', '68', null, 'X4v0EpIW', null, null, null, '1', '1', '2020-08-21 00:57:00', '2020-08-21 00:57:00');
-INSERT INTO `usuario` VALUES ('63', '1', 'india waters', 'iwaters', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Suspendisse@Aliquam.edu', null, '3', '69', null, '2Zsb0iQl', null, null, null, '1', '1', '2020-08-21 00:57:00', '2020-08-21 00:57:00');
-INSERT INTO `usuario` VALUES ('64', '1', 'stella lindsay', 'slindsay', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'enim.Etiam@atiaculis.com', null, '3', '70', null, 'lGGoZl6u', null, null, null, '1', '1', '2020-08-21 00:57:01', '2020-08-21 00:57:01');
-INSERT INTO `usuario` VALUES ('65', '1', 'holly parks', 'hparks', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'pede.Nunc@Lorem.net', null, '3', '71', null, 'nnwCLUgc', null, null, null, '1', '1', '2020-08-21 00:57:01', '2020-08-21 00:57:01');
-INSERT INTO `usuario` VALUES ('66', '1', 'isaac weaver', 'iweaver', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'nulla.Integer.vulputate@metus.', null, '3', '72', null, 'wfI41X3Q', null, null, null, '1', '1', '2020-08-21 00:57:02', '2020-08-21 00:57:02');
-INSERT INTO `usuario` VALUES ('67', '1', 'sheila mejia', 'smejia', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'dis.parturient@scelerisquenequ', null, '3', '73', null, 'plOOlW0x', null, null, null, '1', '1', '2020-08-21 00:57:02', '2020-08-21 00:57:02');
-INSERT INTO `usuario` VALUES ('68', '1', 'pearl beasley', 'pbeasley', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ornare.lectus@sagittissemper.c', null, '3', '74', null, 'HqbnoKIH', null, null, null, '1', '1', '2020-08-21 00:57:03', '2020-08-21 00:57:03');
-INSERT INTO `usuario` VALUES ('69', '1', 'yvonne logan', 'ylogan', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ut.aliquam@necenim.ca', null, '3', '75', null, 'UM2yAz0v', null, null, null, '1', '1', '2020-08-21 00:57:03', '2020-08-21 00:57:03');
-INSERT INTO `usuario` VALUES ('70', '1', 'micah mckenzie', 'mmckenzie', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'a.odio@faucibus.edu', null, '3', '76', null, 'FT8U1Djl', null, null, null, '1', '1', '2020-08-21 00:57:04', '2020-08-21 00:57:04');
-INSERT INTO `usuario` VALUES ('71', '1', 'micah richardson', 'mrichardson', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'diam.lorem.auctor@justoeu.co.u', null, '3', '77', null, 'aiaEyU6V', null, null, null, '1', '1', '2020-08-21 00:57:04', '2020-08-21 00:57:04');
-INSERT INTO `usuario` VALUES ('72', '1', 'steel jones', 'sjones', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'vel.pede.blandit@diamProindolo', null, '3', '78', null, 'mrtln3TV', null, null, null, '1', '1', '2020-08-21 00:57:04', '2020-08-21 00:57:04');
-INSERT INTO `usuario` VALUES ('73', '1', 'zane dalton', 'zdalton', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'parturient.montes@consectetuer', null, '3', '79', null, 'qY76GHum', null, null, null, '1', '1', '2020-08-21 00:57:05', '2020-08-21 00:57:05');
-INSERT INTO `usuario` VALUES ('74', '1', 'ryder cantrell', 'rcantrell', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Curae@estNuncullamcorper.org', null, '3', '80', null, 'jT7sNQVr', null, null, null, '1', '1', '2020-08-21 00:57:05', '2020-08-21 00:57:05');
-INSERT INTO `usuario` VALUES ('75', '1', 'tanner carey', 'tcarey', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'nec.mollis@inconsequat.co.uk', null, '3', '81', null, 'wCLmZV0X', null, null, null, '1', '1', '2020-08-21 00:57:06', '2020-08-21 00:57:06');
-INSERT INTO `usuario` VALUES ('76', '1', 'germane tyler', 'gtyler', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'suscipit.est@dapibus.edu', null, '3', '82', null, 'LqGtyQy9', null, null, null, '1', '1', '2020-08-21 00:57:06', '2020-08-21 00:57:06');
-INSERT INTO `usuario` VALUES ('77', '1', 'hayfa mosley', 'hmosley', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Sed@Aenean.net', null, '3', '83', null, 'JTdDGPXy', null, null, null, '1', '1', '2020-08-21 00:57:07', '2020-08-21 00:57:07');
-INSERT INTO `usuario` VALUES ('78', '1', 'adena delaney', 'adelaney', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'magna.tellus@morbitristiquesen', null, '3', '84', null, 'liCxaeoo', null, null, null, '1', '1', '2020-08-21 00:57:08', '2020-08-21 00:57:08');
-INSERT INTO `usuario` VALUES ('79', '1', 'jael phelps', 'jphelps', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'accumsan.convallis@Aliquamgrav', null, '3', '85', null, 'VyLXL0hN', null, null, null, '1', '1', '2020-08-21 00:57:08', '2020-08-21 00:57:08');
-INSERT INTO `usuario` VALUES ('80', '1', 'ulla finley', 'ufinley', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'elit.pretium.et@dolortempusnon', null, '3', '86', null, 'JwJc8IY7', null, null, null, '1', '1', '2020-08-21 00:57:08', '2020-08-21 00:57:08');
-INSERT INTO `usuario` VALUES ('81', '1', 'rafael armstrong', 'rarmstrong', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Suspendisse.sagittis@Proin.org', null, '3', '87', null, 'x4TaZZag', null, null, null, '1', '1', '2020-08-21 00:57:09', '2020-08-21 00:57:09');
-INSERT INTO `usuario` VALUES ('82', '1', 'norman howard', 'nhoward', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'tempus@nascetur.edu', null, '3', '88', null, '0N95WN83', null, null, null, '1', '1', '2020-08-21 00:57:09', '2020-08-21 00:57:09');
-INSERT INTO `usuario` VALUES ('83', '1', 'garrison blevins', 'gblevins', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'velit.Pellentesque@Loremipsum.', null, '3', '89', null, 'gdrO2Wpp', null, null, null, '1', '1', '2020-08-21 00:57:10', '2020-08-21 00:57:10');
-INSERT INTO `usuario` VALUES ('84', '1', 'carolyn burns', 'cburns', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'eros@acturpis.net', null, '3', '90', null, 'UCvXZPuA', null, null, null, '1', '1', '2020-08-21 00:57:10', '2020-08-21 00:57:10');
-INSERT INTO `usuario` VALUES ('85', '1', 'arsenio marquez', 'amarquez', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'eu.placerat@lectus.ca', null, '3', '91', null, 'gulGzxFN', null, null, null, '1', '1', '2020-08-21 00:57:11', '2020-08-21 00:57:11');
-INSERT INTO `usuario` VALUES ('86', '1', 'rogan leblanc', 'rleblanc', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'malesuada.vel@felis.edu', null, '3', '92', null, 'qPvkpOqI', null, null, null, '1', '1', '2020-08-21 00:57:11', '2020-08-21 00:57:11');
-INSERT INTO `usuario` VALUES ('87', '1', 'vivian noble', 'vnoble', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'aliquam.enim.nec@inceptos.com', null, '3', '93', null, 'CEW1uXsm', null, null, null, '1', '1', '2020-08-21 00:57:12', '2020-08-21 00:57:12');
-INSERT INTO `usuario` VALUES ('88', '1', 'vielka collier', 'vcollier', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'sodales.Mauris@Loremipsumdolor', null, '3', '94', null, 'KQPxXzNs', null, null, null, '1', '1', '2020-08-21 00:57:12', '2020-08-21 00:57:12');
-INSERT INTO `usuario` VALUES ('89', '1', 'breanna beach', 'bbeach', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'natoque.penatibus.et@luctusvul', null, '3', '95', null, 'oIlShlhr', null, null, null, '1', '1', '2020-08-21 00:57:13', '2020-08-21 00:57:13');
-INSERT INTO `usuario` VALUES ('90', '1', 'rose stafford', 'rstafford', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'non.quam.Pellentesque@Vivamuse', null, '3', '96', null, 'z4AbEx7l', null, null, null, '1', '1', '2020-08-21 00:57:13', '2020-08-21 00:57:13');
-INSERT INTO `usuario` VALUES ('91', '1', 'tad tucker', 'ttucker', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ac@dui.co.uk', null, '3', '97', null, 'SEgo1L1g', null, null, null, '1', '1', '2020-08-21 00:57:14', '2020-08-21 00:57:14');
-INSERT INTO `usuario` VALUES ('92', '1', 'gage sheppard', 'gsheppard', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'eu.tempor@Namligulaelit.edu', null, '3', '98', null, 'jbfoSaEL', null, null, null, '1', '1', '2020-08-21 00:57:14', '2020-08-21 00:57:14');
-INSERT INTO `usuario` VALUES ('93', '1', 'darryl walter', 'dwalter', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'rutrum.eu@Nulla.co.uk', null, '3', '99', null, 'R3Zwx7Hl', null, null, null, '1', '1', '2020-08-21 00:57:15', '2020-08-21 00:57:15');
-INSERT INTO `usuario` VALUES ('94', '1', 'mia morin', 'mmorin', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'gravida.mauris@Morbi.net', null, '3', '100', null, 'rSfVWFTP', null, null, null, '1', '1', '2020-08-21 00:57:15', '2020-08-21 00:57:15');
-INSERT INTO `usuario` VALUES ('95', '1', 'miranda pena', 'mpena', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'tincidunt.nunc@nunc.edu', null, '3', '101', null, 'SPDihRF0', null, null, null, '1', '1', '2020-08-21 00:57:16', '2020-08-21 00:57:16');
-INSERT INTO `usuario` VALUES ('96', '1', 'kimberly neal', 'kneal', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'augue.ac.ipsum@nequesed.org', null, '3', '102', null, 'r8d0WkIB', null, null, null, '1', '1', '2020-08-21 00:57:16', '2020-08-21 00:57:16');
-INSERT INTO `usuario` VALUES ('97', '1', 'hu allen', 'hallen', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'amet@anunc.org', null, '3', '103', null, 'U1ZU3LRc', null, null, null, '1', '1', '2020-08-21 00:57:17', '2020-08-21 00:57:17');
-INSERT INTO `usuario` VALUES ('98', '1', 'olympia sears', 'osears', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'nec.ante@nonluctussit.org', null, '3', '104', null, '6mAVXstA', null, null, null, '1', '1', '2020-08-21 00:57:17', '2020-08-21 00:57:17');
-INSERT INTO `usuario` VALUES ('99', '1', 'dora ashley', 'dashley', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Nulla@massaMauris.org', null, '3', '105', null, 'aIQRS6Y2', null, null, null, '1', '1', '2020-08-21 00:57:18', '2020-08-21 00:57:18');
-INSERT INTO `usuario` VALUES ('100', '1', 'rafael thornton', 'rthornton', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'et@In.net', null, '3', '106', null, 'CkI6s6ty', null, null, null, '1', '1', '2020-08-21 00:57:18', '2020-08-21 00:57:18');
-INSERT INTO `usuario` VALUES ('101', '1', 'zoe andrews', 'zandrews', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'lacinia.mattis@ac.edu', null, '3', '107', null, 'C42PbiMl', null, null, null, '1', '1', '2020-08-21 00:57:18', '2020-08-21 00:57:18');
-INSERT INTO `usuario` VALUES ('102', '1', 'kaitlin rollins', 'krollins', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Nunc.commodo@quislectus.edu', null, '3', '108', null, 'Y0IRfEOr', null, null, null, '1', '1', '2020-08-21 00:57:19', '2020-08-21 00:57:19');
-INSERT INTO `usuario` VALUES ('103', '1', 'kelsey keller', 'kkeller', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ultricies.ligula.Nullam@elitph', null, '3', '109', null, 'zxhr2mhc', null, null, null, '1', '1', '2020-08-21 00:57:20', '2020-08-21 00:57:20');
 INSERT INTO `usuario` VALUES ('104', '1', 'yustiz luis', 'yluis', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'lyustiz@gmail.com', null, '2', '1', null, '9lRfdaVW', null, null, null, '1', '1', '2020-08-21 01:04:42', '2020-08-21 01:04:42');
-INSERT INTO `usuario` VALUES ('105', '1', 'jose perez', 'jperez', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'dghsgf@gmail.com', null, '2', '2', null, '4rZHVT5h', null, null, null, '1', '1', '2020-08-21 01:04:43', '2020-08-21 01:04:43');
-INSERT INTO `usuario` VALUES ('106', '1', 'cameron ryan', 'cryan', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'massa@non.ca', null, '2', '10', null, 'RGpz6QkJ', null, null, null, '1', '1', '2020-08-21 01:04:43', '2020-08-21 01:04:43');
-INSERT INTO `usuario` VALUES ('107', '1', 'ciara pierce', 'cpierce', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ornare.libero@ac.ca', null, '2', '11', null, 'xqFMcArf', null, null, null, '1', '1', '2020-08-21 01:04:44', '2020-08-21 01:04:44');
-INSERT INTO `usuario` VALUES ('108', '1', 'kylan hopper', 'khopper', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Donec@Aliquam.com', null, '2', '12', null, 'kjqLpenO', null, null, null, '1', '1', '2020-08-21 01:04:44', '2020-08-21 01:04:44');
-INSERT INTO `usuario` VALUES ('109', '1', 'uriel bentley', 'ubentley', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'id.erat.Etiam@dui.net', null, '2', '13', null, 'pCVZJIdL', null, null, null, '1', '1', '2020-08-21 01:04:44', '2020-08-21 01:04:44');
-INSERT INTO `usuario` VALUES ('110', '1', 'mercedes fitzgerald', 'mfitzgerald', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Phasellus.nulla@etmagnis.edu', null, '2', '14', null, 'RPc4SJeV', null, null, null, '1', '1', '2020-08-21 01:04:45', '2020-08-21 01:04:45');
-INSERT INTO `usuario` VALUES ('111', '1', 'kevin hewitt', 'khewitt', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Sed.auctor@etlibero.co.uk', null, '2', '15', null, 'hcjapka2', null, null, null, '1', '1', '2020-08-21 01:04:45', '2020-08-21 01:04:45');
-INSERT INTO `usuario` VALUES ('112', '1', 'philip spencer', 'pspencer', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'blandit.mattis.Cras@leoVivamus', null, '2', '16', null, 'NPKtPUnr', null, null, null, '1', '1', '2020-08-21 01:04:46', '2020-08-21 01:04:46');
-INSERT INTO `usuario` VALUES ('113', '1', 'wendy finley', 'wfinley', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'mollis@dis.edu', null, '2', '17', null, '9SyqGCsE', null, null, null, '1', '1', '2020-08-21 01:04:46', '2020-08-21 01:04:46');
-INSERT INTO `usuario` VALUES ('114', '1', 'kieran molina', 'kmolina', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ligula@utaliquam.edu', null, '2', '18', null, 'dCOF2yQ1', null, null, null, '1', '1', '2020-08-21 01:04:47', '2020-08-21 01:04:47');
-INSERT INTO `usuario` VALUES ('115', '1', 'olga merrill', 'omerrill', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'amet@nulla.com', null, '2', '19', null, 'ZnQ5lYpt', null, null, null, '1', '1', '2020-08-21 01:04:47', '2020-08-21 01:04:47');
-INSERT INTO `usuario` VALUES ('116', '1', 'helen manning', 'hmanning', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Lorem@antedictum.org', null, '2', '20', null, 'ZbAW7tMB', null, null, null, '1', '1', '2020-08-21 01:04:48', '2020-08-21 01:04:48');
-INSERT INTO `usuario` VALUES ('117', '1', 'kalia abbott', 'kabbott', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'pede.blandit@ipsumCurabitur.ed', null, '2', '21', null, 'kw9Qip2Z', null, null, null, '1', '1', '2020-08-21 01:04:48', '2020-08-21 01:04:48');
-INSERT INTO `usuario` VALUES ('118', '1', 'joan white', 'jwhite', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'consectetuer@luctusipsum.co.uk', null, '2', '22', null, 'IQTbqvt4', null, null, null, '1', '1', '2020-08-21 01:04:49', '2020-08-21 01:04:49');
-INSERT INTO `usuario` VALUES ('119', '1', 'travis brewer', 'tbrewer', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'libero.Morbi.accumsan@duiFusce', null, '2', '23', null, '7N1q6fPr', null, null, null, '1', '1', '2020-08-21 01:04:49', '2020-08-21 01:04:49');
-INSERT INTO `usuario` VALUES ('120', '1', 'melanie santana', 'msantana', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Nam.interdum.enim@orciinconseq', null, '2', '24', null, '3hDsvWNY', null, null, null, '1', '1', '2020-08-21 01:04:49', '2020-08-21 01:04:49');
-INSERT INTO `usuario` VALUES ('121', '1', 'paula wilkerson', 'pwilkerson', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'non.lacinia.at@vel.org', null, '2', '25', null, 'JMjCFtBO', null, null, null, '1', '1', '2020-08-21 01:04:50', '2020-08-21 01:04:50');
-INSERT INTO `usuario` VALUES ('122', '1', 'kaitlin byers', 'kbyers', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'a.auctor@tinciduntorciquis.co.', null, '2', '26', null, 'YWaF6D1W', null, null, null, '1', '1', '2020-08-21 01:04:51', '2020-08-21 01:04:51');
-INSERT INTO `usuario` VALUES ('123', '1', 'virginia terrell', 'vterrell', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Phasellus.in.felis@neque.net', null, '2', '27', null, 'XvE3oBKX', null, null, null, '1', '1', '2020-08-21 01:04:51', '2020-08-21 01:04:51');
-INSERT INTO `usuario` VALUES ('124', '1', 'lester bishop', 'lbishop', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ipsum.dolor@massarutrum.net', null, '2', '28', null, 'l4XuZFT7', null, null, null, '1', '1', '2020-08-21 01:04:52', '2020-08-21 01:04:52');
-INSERT INTO `usuario` VALUES ('125', '1', 'hakeem puckett', 'hpuckett', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'auctor.nunc@amet.org', null, '2', '29', null, 'w2Bvrwls', null, null, null, '1', '1', '2020-08-21 01:04:52', '2020-08-21 01:04:52');
-INSERT INTO `usuario` VALUES ('126', '1', 'maggie walsh', 'mwalsh', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'mi.tempor.lorem@etultrices.com', null, '2', '30', null, '6uBAsldm', null, null, null, '1', '1', '2020-08-21 01:04:53', '2020-08-21 01:04:53');
-INSERT INTO `usuario` VALUES ('127', '1', 'yvette bowen', 'ybowen', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ullamcorper.magna.Sed@Seddictu', null, '2', '31', null, 'Z57bLEiF', null, null, null, '1', '1', '2020-08-21 01:04:53', '2020-08-21 01:04:53');
-INSERT INTO `usuario` VALUES ('128', '1', 'stuart mckee', 'smckee', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Vivamus@Sedmalesuadaaugue.com', null, '2', '32', null, '940AhfdS', null, null, null, '1', '1', '2020-08-21 01:04:53', '2020-08-21 01:04:53');
-INSERT INTO `usuario` VALUES ('129', '1', 'vernon spears', 'vspears', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'feugiat.placerat.velit@enim.ne', null, '2', '33', null, 'gWv7oaQK', null, null, null, '1', '1', '2020-08-21 01:04:54', '2020-08-21 01:04:54');
-INSERT INTO `usuario` VALUES ('130', '1', 'kylie montoya', 'kmontoya', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ac@auctor.net', null, '2', '34', null, '2KD27ewg', null, null, null, '1', '1', '2020-08-21 01:04:54', '2020-08-21 01:04:54');
-INSERT INTO `usuario` VALUES ('131', '1', 'marshall castillo', 'mcastillo', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'orci@vulputatelacus.net', null, '2', '35', null, 'WQUQj5QM', null, null, null, '1', '1', '2020-08-21 01:04:55', '2020-08-21 01:04:55');
-INSERT INTO `usuario` VALUES ('132', '1', 'cleo vargas', 'cvargas', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'a.enim@ullamcorper.org', null, '2', '36', null, 'URiw6iqU', null, null, null, '1', '1', '2020-08-21 01:04:55', '2020-08-21 01:04:55');
-INSERT INTO `usuario` VALUES ('133', '1', 'anthony russell', 'arussell', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'nunc.sit@libero.com', null, '2', '37', null, '9VSRNDHT', null, null, null, '1', '1', '2020-08-21 01:04:56', '2020-08-21 01:04:56');
-INSERT INTO `usuario` VALUES ('134', '1', 'hanae brennan', 'hbrennan', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Donec@nonlobortis.org', null, '2', '38', null, 'X7SCBpdW', null, null, null, '1', '1', '2020-08-21 01:04:56', '2020-08-21 01:04:56');
-INSERT INTO `usuario` VALUES ('135', '1', 'lilah garcia', 'lgarcia', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Duis@euismodmauris.net', null, '2', '39', null, 'tk9nzY9x', null, null, null, '1', '1', '2020-08-21 01:04:57', '2020-08-21 01:04:57');
-INSERT INTO `usuario` VALUES ('136', '1', 'honorato merrill', 'hmerrill', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'parturient.montes.nascetur@ide', null, '2', '40', null, 'Z29sGxYt', null, null, null, '1', '1', '2020-08-21 01:04:57', '2020-08-21 01:04:57');
-INSERT INTO `usuario` VALUES ('137', '1', 'clare leonard', 'cleonard', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'justo@loremvitaeodio.co.uk', null, '2', '41', null, 'I4Sokd5L', null, null, null, '1', '1', '2020-08-21 01:04:58', '2020-08-21 01:04:58');
-INSERT INTO `usuario` VALUES ('138', '1', 'lucian barnes', 'lbarnes', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'nonummy.ultricies@euismodestar', null, '2', '42', null, 'kH1mPNgP', null, null, null, '1', '1', '2020-08-21 01:04:58', '2020-08-21 01:04:58');
-INSERT INTO `usuario` VALUES ('139', '1', 'sara hudson', 'shudson', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'lorem@idnuncinterdum.com', null, '2', '43', null, 'zzyZYSSJ', null, null, null, '1', '1', '2020-08-21 01:04:59', '2020-08-21 01:04:59');
-INSERT INTO `usuario` VALUES ('140', '1', 'leigh duran', 'lduran', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'amet.ornare@ornare.ca', null, '2', '44', null, 'yGbgqe4a', null, null, null, '1', '1', '2020-08-21 01:04:59', '2020-08-21 01:04:59');
-INSERT INTO `usuario` VALUES ('141', '1', 'penelope hicks', 'phicks', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Aliquam.erat@lobortis.edu', null, '2', '45', null, '8XvnWXGb', null, null, null, '1', '1', '2020-08-21 01:05:00', '2020-08-21 01:05:00');
-INSERT INTO `usuario` VALUES ('142', '1', 'omar hanson', 'ohanson', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ante.iaculis@lacinia.org', null, '2', '46', null, '7EKv3dyg', null, null, null, '1', '1', '2020-08-21 01:05:00', '2020-08-21 01:05:00');
-INSERT INTO `usuario` VALUES ('143', '1', 'xantha mckinney', 'xmckinney', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'massa@sit.edu', null, '2', '47', null, 'sxQP3jL0', null, null, null, '1', '1', '2020-08-21 01:05:01', '2020-08-21 01:05:01');
-INSERT INTO `usuario` VALUES ('144', '1', 'upton miller', 'umiller', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'quis.arcu@in.edu', null, '2', '48', null, 'DJAu7PHJ', null, null, null, '1', '1', '2020-08-21 01:05:01', '2020-08-21 01:05:01');
-INSERT INTO `usuario` VALUES ('145', '1', 'nayda sykes', 'nsykes', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ut@acsem.ca', null, '2', '49', null, '88EUYrbD', null, null, null, '1', '1', '2020-08-21 01:05:02', '2020-08-21 01:05:02');
-INSERT INTO `usuario` VALUES ('146', '1', 'hermione mccarty', 'hmccarty', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'tellus.lorem@eratEtiamvestibul', null, '2', '50', null, 'gLYIe4xm', null, null, null, '1', '1', '2020-08-21 01:05:02', '2020-08-21 01:05:02');
-INSERT INTO `usuario` VALUES ('147', '1', 'finn craft', 'fcraft', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'mollis.Phasellus@elementumat.c', null, '2', '51', null, 'EoyTq00U', null, null, null, '1', '1', '2020-08-21 01:05:03', '2020-08-21 01:05:03');
-INSERT INTO `usuario` VALUES ('148', '1', 'natalie beard', 'nbeard', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'dictum@eget.ca', null, '2', '52', null, 'rUM7cBtk', null, null, null, '1', '1', '2020-08-21 01:05:03', '2020-08-21 01:05:03');
-INSERT INTO `usuario` VALUES ('149', '1', 'sylvester thornton', 'sthornton', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'lacus.Mauris@sodalespurusin.or', null, '2', '53', null, 'mfcPgtG9', null, null, null, '1', '1', '2020-08-21 01:05:04', '2020-08-21 01:05:04');
-INSERT INTO `usuario` VALUES ('150', '1', 'olympia skinner', 'oskinner', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'mauris.Integer.sem@acipsumPhas', null, '2', '54', null, 'Xb2orKDk', null, null, null, '1', '1', '2020-08-21 01:05:04', '2020-08-21 01:05:04');
-INSERT INTO `usuario` VALUES ('151', '1', 'kameko chandler', 'kchandler', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Quisque@convallis.ca', null, '2', '55', null, 'cnL8UcVa', null, null, null, '1', '1', '2020-08-21 01:05:05', '2020-08-21 01:05:05');
-INSERT INTO `usuario` VALUES ('152', '1', 'wendy morales', 'wmorales', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'luctus.Curabitur.egestas@purus', null, '2', '56', null, 'cxBpYQyH', null, null, null, '1', '1', '2020-08-21 01:05:05', '2020-08-21 01:05:05');
-INSERT INTO `usuario` VALUES ('153', '1', 'wyatt oneal', 'woneal', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'eu@interdumlibero.com', null, '2', '57', null, 'ZxQn9xpE', null, null, null, '1', '1', '2020-08-21 01:05:06', '2020-08-21 01:05:06');
-INSERT INTO `usuario` VALUES ('154', '1', 'marsden gonzales', 'mgonzales', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'dolor.egestas@mattis.net', null, '2', '58', null, 'oR8TCJrM', null, null, null, '1', '1', '2020-08-21 01:05:06', '2020-08-21 01:05:06');
-INSERT INTO `usuario` VALUES ('155', '1', 'whilemina snow', 'wsnow', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'amet@dolorelit.org', null, '2', '59', null, 'YsL6fiBs', null, null, null, '1', '1', '2020-08-21 01:05:07', '2020-08-21 01:05:07');
-INSERT INTO `usuario` VALUES ('156', '1', 'indira butler', 'ibutler', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Morbi@etipsum.net', null, '2', '60', null, 'V2lMplJa', null, null, null, '1', '1', '2020-08-21 01:05:07', '2020-08-21 01:05:07');
-INSERT INTO `usuario` VALUES ('157', '1', 'linda mckenzie', 'lmckenzie', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Nunc.ut@porttitorerosnec.co.uk', null, '2', '61', null, '1RCPnu5f', null, null, null, '1', '1', '2020-08-21 01:05:08', '2020-08-21 01:05:08');
-INSERT INTO `usuario` VALUES ('158', '1', 'lionel schmidt', 'lschmidt', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ridiculus.mus.Donec@rutrumnonh', null, '2', '62', null, 'MKjaGAZ6', null, null, null, '1', '1', '2020-08-21 01:05:08', '2020-08-21 01:05:08');
-INSERT INTO `usuario` VALUES ('159', '1', 'david downs', 'ddowns', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'amet@metus.org', null, '2', '63', null, 'jWDJmBPO', null, null, null, '1', '1', '2020-08-21 01:05:09', '2020-08-21 01:05:09');
-INSERT INTO `usuario` VALUES ('160', '1', 'stacey hahn', 'shahn', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Pellentesque.ut.ipsum@loremtri', null, '2', '64', null, 'w2eXfbil', null, null, null, '1', '1', '2020-08-21 01:05:09', '2020-08-21 01:05:09');
-INSERT INTO `usuario` VALUES ('161', '1', 'simon fitzpatrick', 'sfitzpatrick', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'interdum.Sed.auctor@est.com', null, '2', '65', null, 'oDybxnAs', null, null, null, '1', '1', '2020-08-21 01:05:10', '2020-08-21 01:05:10');
-INSERT INTO `usuario` VALUES ('162', '1', 'kane lancaster', 'klancaster', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ornare.egestas@dapibusquam.net', null, '2', '66', null, 'bWEuo4Ph', null, null, null, '1', '1', '2020-08-21 01:05:10', '2020-08-21 01:05:10');
-INSERT INTO `usuario` VALUES ('163', '1', 'kiara boone', 'kboone', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'id.libero@orcilacus.net', null, '2', '67', null, 'Na1vVpWJ', null, null, null, '1', '1', '2020-08-21 01:05:11', '2020-08-21 01:05:11');
-INSERT INTO `usuario` VALUES ('164', '1', 'kylie keller', 'kskeller', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'quam@ultriciesadipiscing.edu', null, '2', '68', null, 'jW0SuiKA', null, null, null, '1', '1', '2020-08-21 01:05:11', '2020-08-21 01:05:11');
-INSERT INTO `usuario` VALUES ('165', '1', 'jackson mcintyre', 'jmcintyre', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'tellus.lorem@ascelerisque.edu', null, '2', '69', null, '9bxhOwUM', null, null, null, '1', '1', '2020-08-21 01:05:12', '2020-08-21 01:05:12');
-INSERT INTO `usuario` VALUES ('166', '1', 'nathan spence', 'nspence', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'sed.dui@loremluctus.com', null, '2', '70', null, 'fPJ0TaNz', null, null, null, '1', '1', '2020-08-21 01:05:12', '2020-08-21 01:05:12');
-INSERT INTO `usuario` VALUES ('167', '1', 'zenia hensley', 'zhensley', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'justo.faucibus.lectus@egetmagn', null, '2', '71', null, 'FQD5cqiC', null, null, null, '1', '1', '2020-08-21 01:05:13', '2020-08-21 01:05:13');
-INSERT INTO `usuario` VALUES ('168', '1', 'kameko robbins', 'krobbins', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'magna.a@Quisquetinciduntpede.c', null, '2', '72', null, 'P7FcFzPV', null, null, null, '1', '1', '2020-08-21 01:05:13', '2020-08-21 01:05:13');
-INSERT INTO `usuario` VALUES ('169', '1', 'ella vaughn', 'evaughn', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Etiam@semconsequatnec.ca', null, '2', '73', null, '3tF07NMX', null, null, null, '1', '1', '2020-08-21 01:05:14', '2020-08-21 01:05:14');
-INSERT INTO `usuario` VALUES ('170', '1', 'declan compton', 'dcompton', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'urna.Nullam.lobortis@urnaet.co', null, '2', '74', null, 'Vm7z1xgc', null, null, null, '1', '1', '2020-08-21 01:05:14', '2020-08-21 01:05:14');
-INSERT INTO `usuario` VALUES ('171', '1', 'penelope ray', 'pray', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'odio@dictum.org', null, '2', '75', null, 'OC6scjPZ', null, null, null, '1', '1', '2020-08-21 01:05:15', '2020-08-21 01:05:15');
-INSERT INTO `usuario` VALUES ('172', '1', 'willa brennan', 'wbrennan', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'dapibus.ligula.Aliquam@maurisb', null, '2', '76', null, '32OZa6WK', null, null, null, '1', '1', '2020-08-21 01:05:15', '2020-08-21 01:05:15');
-INSERT INTO `usuario` VALUES ('173', '1', 'jonas brewer', 'jbrewer', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ut.aliquam.iaculis@Inornaresag', null, '2', '77', null, 'f3uTP55t', null, null, null, '1', '1', '2020-08-21 01:05:16', '2020-08-21 01:05:16');
-INSERT INTO `usuario` VALUES ('174', '1', 'harriet yates', 'hyates', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'orci.adipiscing@magnisdispartu', null, '2', '78', null, 'PivX8DOh', null, null, null, '1', '1', '2020-08-21 01:05:16', '2020-08-21 01:05:16');
-INSERT INTO `usuario` VALUES ('175', '1', 'dorothy shaffer', 'dshaffer', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Cras.lorem.lorem@convallisconv', null, '2', '79', null, 'zg1d2V92', null, null, null, '1', '1', '2020-08-21 01:05:17', '2020-08-21 01:05:17');
-INSERT INTO `usuario` VALUES ('176', '1', 'thomas odom', 'todom', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'urna.Nunc@justo.ca', null, '2', '80', null, 'S4B74K1H', null, null, null, '1', '1', '2020-08-21 01:05:17', '2020-08-21 01:05:17');
-INSERT INTO `usuario` VALUES ('177', '1', 'paul gilliam', 'pgilliam', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Donec@liberonec.edu', null, '2', '81', null, '59ZKepkk', null, null, null, '1', '1', '2020-08-21 01:05:18', '2020-08-21 01:05:18');
-INSERT INTO `usuario` VALUES ('178', '1', 'michael larsen', 'mlarsen', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'sem@Integermollis.com', null, '2', '82', null, 'A9t3mzFQ', null, null, null, '1', '1', '2020-08-21 01:05:18', '2020-08-21 01:05:18');
-INSERT INTO `usuario` VALUES ('179', '1', 'francesca leonard', 'fleonard', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'nec@Morbiquisurna.org', null, '2', '83', null, 'ePiWhsdL', null, null, null, '1', '1', '2020-08-21 01:05:19', '2020-08-21 01:05:19');
-INSERT INTO `usuario` VALUES ('180', '1', 'matthew whitley', 'mwhitley', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ipsum@ut.ca', null, '2', '84', null, '6ghnN0wy', null, null, null, '1', '1', '2020-08-21 01:05:19', '2020-08-21 01:05:19');
-INSERT INTO `usuario` VALUES ('181', '1', 'malachi foster', 'mfoster', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'egestas.urna.justo@lobortisult', null, '2', '85', null, 'NFdMBC5x', null, null, null, '1', '1', '2020-08-21 01:05:19', '2020-08-21 01:05:19');
-INSERT INTO `usuario` VALUES ('182', '1', 'hanna black', 'hblack', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Nunc.commodo.auctor@nonummy.or', null, '2', '86', null, '4z2i4oY3', null, null, null, '1', '1', '2020-08-21 01:05:20', '2020-08-21 01:05:20');
-INSERT INTO `usuario` VALUES ('183', '1', 'adele summers', 'asummers', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'in@Phasellus.ca', null, '2', '87', null, 'AtadzuU7', null, null, null, '1', '1', '2020-08-21 01:05:20', '2020-08-21 01:05:20');
-INSERT INTO `usuario` VALUES ('184', '1', 'jasmine contreras', 'jcontreras', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ut.nisi@nullaatsem.com', null, '2', '88', null, 'Mdvw5NWE', null, null, null, '1', '1', '2020-08-21 01:05:21', '2020-08-21 01:05:21');
-INSERT INTO `usuario` VALUES ('185', '1', 'mariko floyd', 'mfloyd', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'lobortis.nisi@quisarcu.org', null, '2', '89', null, 'iNaOiHW6', null, null, null, '1', '1', '2020-08-21 01:05:21', '2020-08-21 01:05:21');
-INSERT INTO `usuario` VALUES ('186', '1', 'damon warren', 'dwarren', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'sapien@MaurismagnaDuis.com', null, '2', '90', null, 'AA40Ga1j', null, null, null, '1', '1', '2020-08-21 01:05:22', '2020-08-21 01:05:22');
-INSERT INTO `usuario` VALUES ('187', '1', 'micah weber', 'mweber', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ante@antedictum.net', null, '2', '91', null, 'F94k1DSy', null, null, null, '1', '1', '2020-08-21 01:05:22', '2020-08-21 01:05:22');
-INSERT INTO `usuario` VALUES ('188', '1', 'erica hutchinson', 'ehutchinson', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'justo.Praesent@massalobortis.e', null, '2', '92', null, 'DuNsaRJ0', null, null, null, '1', '1', '2020-08-21 01:05:23', '2020-08-21 01:05:23');
-INSERT INTO `usuario` VALUES ('189', '1', 'dahlia torres', 'dtorres', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Proin@Quisque.com', null, '2', '93', null, '4DAanCog', null, null, null, '1', '1', '2020-08-21 01:05:23', '2020-08-21 01:05:23');
-INSERT INTO `usuario` VALUES ('190', '1', 'carter richards', 'crichards', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'nisi.a@rutrumjustoPraesent.com', null, '2', '94', null, 'x8rxS2j6', null, null, null, '1', '1', '2020-08-21 01:05:24', '2020-08-21 01:05:24');
-INSERT INTO `usuario` VALUES ('191', '1', 'ila ellison', 'iellison', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'vestibulum.lorem.sit@Suspendis', null, '2', '95', null, 'UKlNJIJ1', null, null, null, '1', '1', '2020-08-21 01:05:24', '2020-08-21 01:05:24');
-INSERT INTO `usuario` VALUES ('192', '1', 'iris moreno', 'imoreno', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'magna.Phasellus.dolor@egestas.', null, '2', '96', null, 'Vwzrw5zw', null, null, null, '1', '1', '2020-08-21 01:05:25', '2020-08-21 01:05:25');
-INSERT INTO `usuario` VALUES ('193', '1', 'cara adkins', 'cadkins', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'tempus.eu@sitamet.ca', null, '2', '97', null, 'u7VBv0By', null, null, null, '1', '1', '2020-08-21 01:05:25', '2020-08-21 01:05:25');
-INSERT INTO `usuario` VALUES ('194', '1', 'jared cain', 'jcain', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Ut@ligulaNullam.ca', null, '2', '98', null, 'PRYGywYw', null, null, null, '1', '1', '2020-08-21 01:05:26', '2020-08-21 01:05:26');
-INSERT INTO `usuario` VALUES ('195', '1', 'pamela tyler', 'ptyler', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ante.bibendum.ullamcorper@vehi', null, '2', '99', null, 'PeaafiQ0', null, null, null, '1', '1', '2020-08-21 01:05:26', '2020-08-21 01:05:26');
-INSERT INTO `usuario` VALUES ('196', '1', 'ahmed meyer', 'ameyer', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'sollicitudin.orci.sem@mi.com', null, '2', '100', null, 'SCew7ftv', null, null, null, '1', '1', '2020-08-21 01:05:27', '2020-08-21 01:05:27');
-INSERT INTO `usuario` VALUES ('197', '1', 'zia hampton', 'zhampton', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'eleifend.non@vehicula.org', null, '2', '101', null, 'CRPBDCzM', null, null, null, '1', '1', '2020-08-21 01:05:27', '2020-08-21 01:05:27');
-INSERT INTO `usuario` VALUES ('198', '1', 'patrick jensen', 'pjensen', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'arcu.ac@erat.net', null, '2', '102', null, 'SKJJs0Il', null, null, null, '1', '1', '2020-08-21 01:05:28', '2020-08-21 01:05:28');
-INSERT INTO `usuario` VALUES ('199', '1', 'fulton cole', 'fcole', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'sollicitudin.orci.sem@Aliquam.', null, '2', '103', null, 'dZ8d6Y4s', null, null, null, '1', '1', '2020-08-21 01:05:28', '2020-08-21 01:05:28');
-INSERT INTO `usuario` VALUES ('200', '1', 'brielle melendez', 'bmelendez', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Duis.a@nibhAliquam.co.uk', null, '2', '104', null, '6LQifIBM', null, null, null, '1', '1', '2020-08-21 01:05:29', '2020-08-21 01:05:29');
-INSERT INTO `usuario` VALUES ('201', '1', 'lavinia robles', 'lrobles', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'adipiscing@montesnasceturridic', null, '2', '105', null, '20IKZygK', null, null, null, '1', '1', '2020-08-21 01:05:29', '2020-08-21 01:05:29');
-INSERT INTO `usuario` VALUES ('202', '1', 'shad olsen', 'solsen', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'aliquet.Phasellus.fermentum@Ae', null, '2', '106', null, 'tR9tiobF', null, null, null, '1', '1', '2020-08-21 01:05:30', '2020-08-21 01:05:30');
-INSERT INTO `usuario` VALUES ('203', '1', 'hanae boyer', 'hboyer', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'augue.porttitor.interdum@nunc.', null, '2', '107', null, 'Q4REWW6h', null, null, null, '1', '1', '2020-08-21 01:05:30', '2020-08-21 01:05:30');
-INSERT INTO `usuario` VALUES ('204', '1', 'sloane gordon', 'sgordon', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'massa@sitametdapibus.co.uk', null, '2', '108', null, '79WSIjBG', null, null, null, '1', '1', '2020-08-21 01:05:30', '2020-08-21 01:05:30');
-INSERT INTO `usuario` VALUES ('205', '1', 'brittany nelson', 'bnelson', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'tempus.risus@accumsan.co.uk', null, '2', '109', null, 'unfSQ894', null, null, null, '1', '1', '2020-08-21 01:05:31', '2020-08-21 01:05:31');
-INSERT INTO `usuario` VALUES ('206', '1', 'juan medina', 'jmedina', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'lyustiz@gmail.com', null, '4', '1', null, 'tH8uFv3C', null, null, null, '1', '1', '2020-08-21 01:48:32', '2020-08-21 01:48:32');
-INSERT INTO `usuario` VALUES ('207', '1', 'grant holmes', 'gholmes', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Nunc.ac.sem@inaliquet.net', null, '4', '10', null, 'Z1Rl2DSC', null, null, null, '1', '1', '2020-08-21 01:48:32', '2020-08-21 01:48:32');
-INSERT INTO `usuario` VALUES ('208', '1', 'cally orr', 'corr', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'libero.est.congue@quam.com', null, '4', '11', null, '2owHR4XY', null, null, null, '1', '1', '2020-08-21 01:48:33', '2020-08-21 01:48:33');
-INSERT INTO `usuario` VALUES ('209', '1', 'illiana robles', 'irobles', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'dolor.dapibus.gravida@nonsolli', null, '4', '12', null, 'hElFhD9e', null, null, null, '1', '1', '2020-08-21 01:48:33', '2020-08-21 01:48:33');
-INSERT INTO `usuario` VALUES ('210', '1', 'isaac carroll', 'icarroll', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'rutrum@elementumpurusaccumsan.', null, '4', '13', null, '9ciMi6FH', null, null, null, '1', '1', '2020-08-21 01:48:34', '2020-08-21 01:48:34');
-INSERT INTO `usuario` VALUES ('211', '1', 'preston waller', 'pwaller', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'commodo@scelerisquenequesed.ed', null, '4', '14', null, '0MrzzeU2', null, null, null, '1', '1', '2020-08-21 01:48:34', '2020-08-21 01:48:34');
-INSERT INTO `usuario` VALUES ('212', '1', 'arden holloway', 'alholloway', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Nulla.semper.tellus@blandit.co', null, '4', '15', null, 'vgfrqwvd', null, null, null, '1', '1', '2020-08-21 01:48:35', '2020-08-21 01:48:35');
-INSERT INTO `usuario` VALUES ('213', '1', 'keelie chapman', 'kchapman', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'non.luctus.sit@mollisnoncursus', null, '4', '16', null, '5PVy3C3r', null, null, null, '1', '1', '2020-08-21 01:48:35', '2020-08-21 01:48:35');
-INSERT INTO `usuario` VALUES ('214', '1', 'reece hines', 'rhines', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'est.Nunc@necluctusfelis.ca', null, '4', '17', null, 'ydinGVae', null, null, null, '1', '1', '2020-08-21 01:48:35', '2020-08-21 01:48:35');
-INSERT INTO `usuario` VALUES ('215', '1', 'veda lindsay', 'vlindsay', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'malesuada@atvelit.co.uk', null, '4', '18', null, 'RnyCn6DG', null, null, null, '1', '1', '2020-08-21 01:48:36', '2020-08-21 01:48:36');
-INSERT INTO `usuario` VALUES ('216', '1', 'lewis maynard', 'lmaynard', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'scelerisque@necurnaet.net', null, '4', '19', null, 'MldxadWS', null, null, null, '1', '1', '2020-08-21 01:48:36', '2020-08-21 01:48:36');
-INSERT INTO `usuario` VALUES ('217', '1', 'laura kennedy', 'lkennedy', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'a.auctor.non@dui.org', null, '4', '20', null, 'miKLUwu2', null, null, null, '1', '1', '2020-08-21 01:48:37', '2020-08-21 01:48:37');
-INSERT INTO `usuario` VALUES ('218', '1', 'cynthia valentine', 'cvalentine', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'nec@lacusCrasinterdum.org', null, '4', '21', null, 'OzNO3ugg', null, null, null, '1', '1', '2020-08-21 01:48:37', '2020-08-21 01:48:37');
-INSERT INTO `usuario` VALUES ('219', '1', 'denise joyce', 'djoyce', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Donec@elit.net', null, '4', '22', null, 'JT8iTFx3', null, null, null, '1', '1', '2020-08-21 01:48:38', '2020-08-21 01:48:38');
-INSERT INTO `usuario` VALUES ('220', '1', 'tanner lyons', 'tlyons', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'velit@tincidunt.ca', null, '4', '23', null, 'IkKmRJVp', null, null, null, '1', '1', '2020-08-21 01:48:38', '2020-08-21 01:48:38');
-INSERT INTO `usuario` VALUES ('221', '1', 'blaine lopez', 'blopez', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'at.auctor.ullamcorper@felispur', null, '4', '24', null, 'cWDMgtKU', null, null, null, '1', '1', '2020-08-21 01:48:39', '2020-08-21 01:48:39');
-INSERT INTO `usuario` VALUES ('222', '1', 'kato giles', 'kgiles', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ante@Sedet.edu', null, '4', '25', null, 'ESqr4lH7', null, null, null, '1', '1', '2020-08-21 01:48:39', '2020-08-21 01:48:39');
-INSERT INTO `usuario` VALUES ('223', '1', 'ciaran patrick', 'cpatrick', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Cras.eu.tellus@tellusAenean.co', null, '4', '26', null, '5Ad8cZ97', null, null, null, '1', '1', '2020-08-21 01:48:40', '2020-08-21 01:48:40');
-INSERT INTO `usuario` VALUES ('224', '1', 'abra hebert', 'ahebert', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'nec.cursus@seddictum.edu', null, '4', '27', null, '5k4C9DeC', null, null, null, '1', '1', '2020-08-21 01:48:40', '2020-08-21 01:48:40');
-INSERT INTO `usuario` VALUES ('225', '1', 'oprah waters', 'owaters', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'pharetra@Suspendissecommodo.or', null, '4', '28', null, 'DdAU7yD2', null, null, null, '1', '1', '2020-08-21 01:48:41', '2020-08-21 01:48:41');
-INSERT INTO `usuario` VALUES ('226', '1', 'jessamine coffey', 'jcoffey', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Curabitur@Quisquepurussapien.c', null, '4', '29', null, 'Bi7gHX03', null, null, null, '1', '1', '2020-08-21 01:48:41', '2020-08-21 01:48:41');
-INSERT INTO `usuario` VALUES ('227', '1', 'martin hull', 'mhull', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'placerat.orci.lacus@vitaeeratV', null, '4', '30', null, 'CeqFXaWt', null, null, null, '1', '1', '2020-08-21 01:48:41', '2020-08-21 01:48:41');
-INSERT INTO `usuario` VALUES ('228', '1', 'teegan west', 'twest', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'eget.varius@convallisdolor.ca', null, '4', '31', null, '84SOYNGN', null, null, null, '1', '1', '2020-08-21 01:48:42', '2020-08-21 01:48:42');
-INSERT INTO `usuario` VALUES ('229', '1', 'josephine perry', 'jperry', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'nulla.magna.malesuada@ligulaco', null, '4', '32', null, '6hMgmbon', null, null, null, '1', '1', '2020-08-21 01:48:42', '2020-08-21 01:48:42');
-INSERT INTO `usuario` VALUES ('230', '1', 'rhona murray', 'rmurray', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'gravida@ametconsectetuer.ca', null, '4', '33', null, 'lcI5DsA4', null, null, null, '1', '1', '2020-08-21 01:48:43', '2020-08-21 01:48:43');
-INSERT INTO `usuario` VALUES ('231', '1', 'felicia hancock', 'fhancock', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'interdum.feugiat@amet.org', null, '4', '34', null, 'SUlolW35', null, null, null, '1', '1', '2020-08-21 01:48:43', '2020-08-21 01:48:43');
-INSERT INTO `usuario` VALUES ('232', '1', 'cairo gross', 'cgross', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'interdum@tortor.edu', null, '4', '35', null, 'YTJXQUym', null, null, null, '1', '1', '2020-08-21 01:48:44', '2020-08-21 01:48:44');
-INSERT INTO `usuario` VALUES ('233', '1', 'freya houston', 'fhouston', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Nam.consequat.dolor@Etiamimper', null, '4', '36', null, 'Y0f65UPt', null, null, null, '1', '1', '2020-08-21 01:48:44', '2020-08-21 01:48:44');
-INSERT INTO `usuario` VALUES ('234', '1', 'cullen bean', 'cbean', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'neque.Nullam.ut@in.net', null, '4', '37', null, 'VE3hjKYZ', null, null, null, '1', '1', '2020-08-21 01:48:45', '2020-08-21 01:48:45');
-INSERT INTO `usuario` VALUES ('235', '1', 'melanie hatfield', 'mhatfield', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'consequat.nec@tellusAeneaneges', null, '4', '38', null, '67gFkBlV', null, null, null, '1', '1', '2020-08-21 01:48:45', '2020-08-21 01:48:45');
-INSERT INTO `usuario` VALUES ('236', '1', 'kristen camacho', 'kcamacho', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Donec.est@rhoncus.net', null, '4', '39', null, '5fwXFHBy', null, null, null, '1', '1', '2020-08-21 01:48:46', '2020-08-21 01:48:46');
-INSERT INTO `usuario` VALUES ('237', '1', 'mira berry', 'mberry', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'interdum.ligula.eu@nunc.com', null, '4', '40', null, 'iPp4DBCs', null, null, null, '1', '1', '2020-08-21 01:48:46', '2020-08-21 01:48:46');
-INSERT INTO `usuario` VALUES ('238', '1', 'alan phillips', 'aphillips', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'mi.ac@vitae.co.uk', null, '4', '41', null, 'hjuJaomv', null, null, null, '1', '1', '2020-08-21 01:48:47', '2020-08-21 01:48:47');
-INSERT INTO `usuario` VALUES ('239', '1', 'porter guerra', 'pguerra', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'porttitor@rhoncusid.org', null, '4', '42', null, 'KunrVeYO', null, null, null, '1', '1', '2020-08-21 01:48:47', '2020-08-21 01:48:47');
-INSERT INTO `usuario` VALUES ('240', '1', 'donovan meadows', 'dmeadows', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'lacus@ridiculusmusDonec.net', null, '4', '43', null, 'lzBsnp1d', null, null, null, '1', '1', '2020-08-21 01:48:48', '2020-08-21 01:48:48');
-INSERT INTO `usuario` VALUES ('241', '1', 'callum rivera', 'crivera', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'eu.tellus.Phasellus@vitaemauri', null, '4', '44', null, 'VQSkzbO6', null, null, null, '1', '1', '2020-08-21 01:48:48', '2020-08-21 01:48:48');
-INSERT INTO `usuario` VALUES ('242', '1', 'lydia carver', 'lcarver', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ullamcorper.eu.euismod@Lorem.n', null, '4', '45', null, 'vIj8raxq', null, null, null, '1', '1', '2020-08-21 01:48:49', '2020-08-21 01:48:49');
-INSERT INTO `usuario` VALUES ('243', '1', 'orli barrera', 'obarrera', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Vivamus.molestie.dapibus@neclu', null, '4', '46', null, 'BSrEqGVN', null, null, null, '1', '1', '2020-08-21 01:48:49', '2020-08-21 01:48:49');
-INSERT INTO `usuario` VALUES ('244', '1', 'cara solomon', 'csolomon', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'vehicula.et@sitametconsectetue', null, '4', '47', null, 'bpriD2rs', null, null, null, '1', '1', '2020-08-21 01:48:49', '2020-08-21 01:48:49');
-INSERT INTO `usuario` VALUES ('245', '1', 'amena pena', 'apena', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'a.dui@musDonec.com', null, '4', '48', null, 'KqrIDGit', null, null, null, '1', '1', '2020-08-21 01:48:50', '2020-08-21 01:48:50');
-INSERT INTO `usuario` VALUES ('246', '1', 'hiroko cooke', 'hcooke', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'tellus@loremloremluctus.co.uk', null, '4', '49', null, 'KtjPbbgb', null, null, null, '1', '1', '2020-08-21 01:48:50', '2020-08-21 01:48:50');
-INSERT INTO `usuario` VALUES ('247', '1', 'zenia cameron', 'zcameron', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'risus.varius@Sed.net', null, '4', '50', null, 'itBOJq5G', null, null, null, '1', '1', '2020-08-21 01:48:51', '2020-08-21 01:48:51');
-INSERT INTO `usuario` VALUES ('248', '1', 'maggy fleming', 'mfleming', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'dui@auguemalesuadamalesuada.ca', null, '4', '51', null, 'oCUeXdnJ', null, null, null, '1', '1', '2020-08-21 01:48:51', '2020-08-21 01:48:51');
-INSERT INTO `usuario` VALUES ('249', '1', 'otto house', 'ohouse', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'adipiscing.elit.Etiam@auctorqu', null, '4', '52', null, 'bJ4rb5r1', null, null, null, '1', '1', '2020-08-21 01:48:52', '2020-08-21 01:48:52');
-INSERT INTO `usuario` VALUES ('250', '1', 'lamar melton', 'lmelton', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'imperdiet.ullamcorper.Duis@vul', null, '4', '53', null, 'RbfVUYjJ', null, null, null, '1', '1', '2020-08-21 01:48:52', '2020-08-21 01:48:52');
-INSERT INTO `usuario` VALUES ('251', '1', 'hamilton page', 'hpage', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Praesent.luctus@tellusidnunc.c', null, '4', '54', null, 't4PVYSi6', null, null, null, '1', '1', '2020-08-21 01:48:53', '2020-08-21 01:48:53');
-INSERT INTO `usuario` VALUES ('252', '1', 'ignatius roach', 'iroach', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'molestie@nec.ca', null, '4', '55', null, 'OizXwKLr', null, null, null, '1', '1', '2020-08-21 01:48:53', '2020-08-21 01:48:53');
-INSERT INTO `usuario` VALUES ('253', '1', 'althea moses', 'amoses', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'lectus.convallis@Quisquetincid', null, '4', '56', null, 'QGELfWYm', null, null, null, '1', '1', '2020-08-21 01:48:54', '2020-08-21 01:48:54');
-INSERT INTO `usuario` VALUES ('254', '1', 'aaron farrell', 'afarrell', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ut.pellentesque@Lorem.com', null, '4', '57', null, 'NpV8vDsz', null, null, null, '1', '1', '2020-08-21 01:48:54', '2020-08-21 01:48:54');
-INSERT INTO `usuario` VALUES ('255', '1', 'linda horne', 'lhorne', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Donec.felis@nonlaciniaat.ca', null, '4', '58', null, 'PHqAaMId', null, null, null, '1', '1', '2020-08-21 01:48:55', '2020-08-21 01:48:55');
-INSERT INTO `usuario` VALUES ('256', '1', 'lisandra mack', 'lmack', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'mattis.Integer.eu@nuncullamcor', null, '4', '59', null, 'A8xRCdIb', null, null, null, '1', '1', '2020-08-21 01:48:55', '2020-08-21 01:48:55');
-INSERT INTO `usuario` VALUES ('257', '1', 'ivy moss', 'imoss', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'nunc.ac.mattis@egetipsumSuspen', null, '4', '60', null, 'SARmfsRA', null, null, null, '1', '1', '2020-08-21 01:48:56', '2020-08-21 01:48:56');
-INSERT INTO `usuario` VALUES ('258', '1', 'vanna case', 'vcase', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'erat.volutpat.Nulla@consectetu', null, '4', '61', null, 'yoIQ0IeS', null, null, null, '1', '1', '2020-08-21 01:48:57', '2020-08-21 01:48:57');
-INSERT INTO `usuario` VALUES ('259', '1', 'nash guy', 'nguy', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'penatibus@odiovelest.ca', null, '4', '62', null, 'HtxCcYiz', null, null, null, '1', '1', '2020-08-21 01:48:57', '2020-08-21 01:48:57');
-INSERT INTO `usuario` VALUES ('260', '1', 'kelsie weber', 'kweber', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'gravida@loremegetmollis.com', null, '4', '63', null, 'fhdBok3O', null, null, null, '1', '1', '2020-08-21 01:48:58', '2020-08-21 01:48:58');
-INSERT INTO `usuario` VALUES ('261', '1', 'kaye hodge', 'khodge', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'sem@sedconsequat.edu', null, '4', '64', null, 'oPiqFqXT', null, null, null, '1', '1', '2020-08-21 01:48:58', '2020-08-21 01:48:58');
-INSERT INTO `usuario` VALUES ('262', '1', 'sarah conway', 'sconway', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Aliquam.erat.volutpat@morbitri', null, '4', '65', null, '3BKAEYOa', null, null, null, '1', '1', '2020-08-21 01:48:58', '2020-08-21 01:48:58');
-INSERT INTO `usuario` VALUES ('263', '1', 'mollie hogan', 'mhogan', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'nisi.sem.semper@Integereu.net', null, '4', '66', null, '9Jfqkng9', null, null, null, '1', '1', '2020-08-21 01:48:59', '2020-08-21 01:48:59');
-INSERT INTO `usuario` VALUES ('264', '1', 'abel ramirez', 'aramirez', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ullamcorper.magna.Sed@sceleris', null, '4', '67', null, 'ozOzKac4', null, null, null, '1', '1', '2020-08-21 01:48:59', '2020-08-21 01:48:59');
-INSERT INTO `usuario` VALUES ('265', '1', 'herman mayo', 'hmayo', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'non.justo.Proin@egettinciduntd', null, '4', '68', null, '6sFac5j6', null, null, null, '1', '1', '2020-08-21 01:49:00', '2020-08-21 01:49:00');
-INSERT INTO `usuario` VALUES ('266', '1', 'fay clay', 'fclay', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'lorem.sit@nonegestas.edu', null, '4', '69', null, '08sPatQV', null, null, null, '1', '1', '2020-08-21 01:49:00', '2020-08-21 01:49:00');
-INSERT INTO `usuario` VALUES ('267', '1', 'basil booth', 'bbooth', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'lorem.semper.auctor@mus.org', null, '4', '70', null, 'xo41YOP8', null, null, null, '1', '1', '2020-08-21 01:49:01', '2020-08-21 01:49:01');
-INSERT INTO `usuario` VALUES ('268', '1', 'kuame haley', 'khaley', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ac.metus@odiosemper.co.uk', null, '4', '71', null, 'KR9nn5yF', null, null, null, '1', '1', '2020-08-21 01:49:01', '2020-08-21 01:49:01');
-INSERT INTO `usuario` VALUES ('269', '1', 'colin tate', 'ctate', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'arcu@tellusjustosit.org', null, '4', '72', null, 'FgKEsTBO', null, null, null, '1', '1', '2020-08-21 01:49:02', '2020-08-21 01:49:02');
-INSERT INTO `usuario` VALUES ('270', '1', 'molly neal', 'mneal', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ipsum.leo@Sedetlibero.edu', null, '4', '73', null, 'Q8C0dmMH', null, null, null, '1', '1', '2020-08-21 01:49:02', '2020-08-21 01:49:02');
-INSERT INTO `usuario` VALUES ('271', '1', 'cassady sparks', 'csparks', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'id.libero.Donec@sedliberoProin', null, '4', '74', null, 'rEUs7BWm', null, null, null, '1', '1', '2020-08-21 01:49:03', '2020-08-21 01:49:03');
-INSERT INTO `usuario` VALUES ('272', '1', 'emerson obrien', 'eobrien', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'felis.adipiscing.fringilla@etm', null, '4', '75', null, 'BzeVmqOb', null, null, null, '1', '1', '2020-08-21 01:49:04', '2020-08-21 01:49:04');
-INSERT INTO `usuario` VALUES ('273', '1', 'cameron marquez', 'cmarquez', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'sodales.at.velit@enimnon.edu', null, '4', '76', null, 'GkTtIpyl', null, null, null, '1', '1', '2020-08-21 01:49:04', '2020-08-21 01:49:04');
-INSERT INTO `usuario` VALUES ('274', '1', 'kenneth lewis', 'klewis', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'scelerisque.dui@accumsanneque.', null, '4', '77', null, 'oe2hIaP3', null, null, null, '1', '1', '2020-08-21 01:49:05', '2020-08-21 01:49:05');
-INSERT INTO `usuario` VALUES ('275', '1', 'courtney mueller', 'cmueller', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'orci.consectetuer.euismod@temp', null, '4', '78', null, 'TKCroNfX', null, null, null, '1', '1', '2020-08-21 01:49:05', '2020-08-21 01:49:05');
-INSERT INTO `usuario` VALUES ('276', '1', 'imelda stafford', 'istafford', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'bibendum.Donec@dui.net', null, '4', '79', null, '6UVC09UT', null, null, null, '1', '1', '2020-08-21 01:49:05', '2020-08-21 01:49:05');
-INSERT INTO `usuario` VALUES ('277', '1', 'colette allison', 'callison', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'mi.eleifend.egestas@Crassed.co', null, '4', '80', null, 'H6CrvvrJ', null, null, null, '1', '1', '2020-08-21 01:49:06', '2020-08-21 01:49:06');
-INSERT INTO `usuario` VALUES ('278', '1', 'kibo ramsey', 'kramsey', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ipsum@mauris.co.uk', null, '4', '81', null, 'VBS1lZgM', null, null, null, '1', '1', '2020-08-21 01:49:06', '2020-08-21 01:49:06');
-INSERT INTO `usuario` VALUES ('279', '1', 'doris waters', 'dwaters', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'vel.lectus@euturpis.co.uk', null, '4', '82', null, 'XqoSZ0y1', null, null, null, '1', '1', '2020-08-21 01:49:07', '2020-08-21 01:49:07');
-INSERT INTO `usuario` VALUES ('280', '1', 'petra peterson', 'ppeterson', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'metus.sit@habitantmorbitristiq', null, '4', '83', null, 'yuavxSDT', null, null, null, '1', '1', '2020-08-21 01:49:07', '2020-08-21 01:49:07');
-INSERT INTO `usuario` VALUES ('281', '1', 'josephine kerr', 'jkerr', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'diam.dictum@semper.edu', null, '4', '84', null, '2LgUq0xR', null, null, null, '1', '1', '2020-08-21 01:49:08', '2020-08-21 01:49:08');
-INSERT INTO `usuario` VALUES ('282', '1', 'mercedes holmes', 'mholmes', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Cras@risusvarius.net', null, '4', '85', null, '4oQ6Dp4L', null, null, null, '1', '1', '2020-08-21 01:49:08', '2020-08-21 01:49:08');
-INSERT INTO `usuario` VALUES ('283', '1', 'pascale bray', 'pbray', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'lacinia.at@Integer.net', null, '4', '86', null, 'TVYfj25f', null, null, null, '1', '1', '2020-08-21 01:49:09', '2020-08-21 01:49:09');
-INSERT INTO `usuario` VALUES ('284', '1', 'latifah macdonald', 'lmacdonald', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'metus.sit@mauris.co.uk', null, '4', '87', null, 'tdTvn4sh', null, null, null, '1', '1', '2020-08-21 01:49:09', '2020-08-21 01:49:09');
-INSERT INTO `usuario` VALUES ('285', '1', 'alea fisher', 'afisher', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'odio.auctor.vitae@adipiscingla', null, '4', '88', null, 'u67QUEAe', null, null, null, '1', '1', '2020-08-21 01:49:10', '2020-08-21 01:49:10');
-INSERT INTO `usuario` VALUES ('286', '1', 'yoshi hall', 'yhall', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'auctor.velit@hendreritidante.c', null, '4', '89', null, 'MfPchVkD', null, null, null, '1', '1', '2020-08-21 01:49:10', '2020-08-21 01:49:10');
-INSERT INTO `usuario` VALUES ('287', '1', 'joseph underwood', 'junderwood', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'faucibus.Morbi.vehicula@non.ne', null, '4', '90', null, 'LGyx2rkp', null, null, null, '1', '1', '2020-08-21 01:49:11', '2020-08-21 01:49:11');
-INSERT INTO `usuario` VALUES ('288', '1', 'ursa kerr', 'ukerr', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'montes.nascetur.ridiculus@Null', null, '4', '91', null, '7WXEuLmw', null, null, null, '1', '1', '2020-08-21 01:49:12', '2020-08-21 01:49:12');
-INSERT INTO `usuario` VALUES ('289', '1', 'wayne rivers', 'wrivers', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'interdum.feugiat.Sed@orci.co.u', null, '4', '92', null, 'VA2dUagm', null, null, null, '1', '1', '2020-08-21 01:49:12', '2020-08-21 01:49:12');
-INSERT INTO `usuario` VALUES ('290', '1', 'cruz sullivan', 'csullivan', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Sed.pharetra@aodio.ca', null, '4', '93', null, 'f9XCTXb4', null, null, null, '1', '1', '2020-08-21 01:49:12', '2020-08-21 01:49:12');
-INSERT INTO `usuario` VALUES ('291', '1', 'eric gay', 'egay', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'cursus.non@Integerin.net', null, '4', '94', null, '86bzOjUU', null, null, null, '1', '1', '2020-08-21 01:49:13', '2020-08-21 01:49:13');
-INSERT INTO `usuario` VALUES ('292', '1', 'daniel dennis', 'ddennis', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'tellus.id@temporlorem.net', null, '4', '95', null, 'XjcMKlYU', null, null, null, '1', '1', '2020-08-21 01:49:13', '2020-08-21 01:49:13');
-INSERT INTO `usuario` VALUES ('293', '1', 'frances watson', 'fwatson', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Ut.semper@duiin.co.uk', null, '4', '96', null, '9EIeClts', null, null, null, '1', '1', '2020-08-21 01:49:14', '2020-08-21 01:49:14');
-INSERT INTO `usuario` VALUES ('294', '1', 'amery landry', 'alandry', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'penatibus.et.magnis@augueportt', null, '4', '97', null, 'KwKDz8jU', null, null, null, '1', '1', '2020-08-21 01:49:14', '2020-08-21 01:49:14');
-INSERT INTO `usuario` VALUES ('295', '1', 'keely james', 'kjames', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'leo@etnunc.com', null, '4', '98', null, 't4c8zIWa', null, null, null, '1', '1', '2020-08-21 01:49:15', '2020-08-21 01:49:15');
-INSERT INTO `usuario` VALUES ('296', '1', 'colleen rutledge', 'crutledge', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'magna@molestietortornibh.net', null, '4', '99', null, 'qqDb0jJw', null, null, null, '1', '1', '2020-08-21 01:49:15', '2020-08-21 01:49:15');
-INSERT INTO `usuario` VALUES ('297', '1', 'gil mccall', 'gmccall', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'eget.metus.eu@lectus.edu', null, '4', '100', null, 'prgY4FZH', null, null, null, '1', '1', '2020-08-21 01:49:16', '2020-08-21 01:49:16');
-INSERT INTO `usuario` VALUES ('298', '1', 'chancellor wilkins', 'cwilkins', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Fusce.dolor@fringillamilacinia', null, '4', '101', null, '36bjPVMv', null, null, null, '1', '1', '2020-08-21 01:49:16', '2020-08-21 01:49:16');
-INSERT INTO `usuario` VALUES ('299', '1', 'conan webb', 'cwebb', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'faucibus@necimperdietnec.org', null, '4', '102', null, 'auvNvh8E', null, null, null, '1', '1', '2020-08-21 01:49:17', '2020-08-21 01:49:17');
-INSERT INTO `usuario` VALUES ('300', '1', 'price mills', 'pmills', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'senectus.et.netus@sitametconse', null, '4', '103', null, 'FDTAZ4Li', null, null, null, '1', '1', '2020-08-21 01:49:17', '2020-08-21 01:49:17');
-INSERT INTO `usuario` VALUES ('301', '1', 'meredith goff', 'mgoff', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'dolor@enimNuncut.net', null, '4', '104', null, 'rw3muPat', null, null, null, '1', '1', '2020-08-21 01:49:18', '2020-08-21 01:49:18');
-INSERT INTO `usuario` VALUES ('302', '1', 'zena hendrix', 'zhendrix', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'lectus@vitaealiquam.edu', null, '4', '105', null, 'DaK8KAjn', null, null, null, '1', '1', '2020-08-21 01:49:18', '2020-08-21 01:49:18');
-INSERT INTO `usuario` VALUES ('303', '1', 'raja woodward', 'rwoodward', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'lacus.Mauris.non@massaMauris.o', null, '4', '106', null, '5ROODCkI', null, null, null, '1', '1', '2020-08-21 01:49:19', '2020-08-21 01:49:19');
-INSERT INTO `usuario` VALUES ('304', '1', 'kirsten holt', 'kholt', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'Phasellus@vitae.com', null, '4', '107', null, 'gbDdt1nN', null, null, null, '1', '1', '2020-08-21 01:49:19', '2020-08-21 01:49:19');
-INSERT INTO `usuario` VALUES ('305', '1', 'macey garcia', 'mgarcia', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'consequat@parturientmontesnasc', null, '4', '108', null, '8lylFVz9', null, null, null, '1', '1', '2020-08-21 01:49:19', '2020-08-21 01:49:19');
-INSERT INTO `usuario` VALUES ('307', '1', 'britanney walton', 'bwalton', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'auctor.quis@vitaesodalesnisi.n', null, '4', '109', null, 'LCrR9wcI', null, null, null, '1', '1', '2020-08-21 03:02:52', '2020-08-21 03:02:52');
-INSERT INTO `usuario` VALUES ('308', '1', 'cecili chavez', 'cchavez', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'cecilio@gmail.com', null, '3', '112', null, 'ZvCnas1i', null, null, null, '1', '1', '2020-08-21 03:24:20', '2020-08-21 03:24:20');
-INSERT INTO `usuario` VALUES ('309', '1', 'sadfsdfsadf fsadfasdf', 'sfsadfasdf', '$2y$10$b6aRxCn7ojM4YBTH7VNhmOv6a2zkH/x/iCAelx1M3NXpRhV2LKfG6', 'ldfsff@gmail.com', null, '2', '110', null, 'zOKZZDje', null, null, null, '1', '1', '2020-08-21 03:41:52', '2020-08-21 03:41:52');
-INSERT INTO `usuario` VALUES ('311', '1', 'zzzz zzzzzzzzz', 'zzzzzzzzzz', '$2y$10$/CJKpoxHa/YcdYY1djt30uZwzmVp1.6vg3eaqRnjeptUL2vOjrgbC', 'lghgfaf@gmail.com', null, '3', '117', null, '3ACpyp6p', null, null, null, '1', '1', '2020-09-02 11:19:09', '2020-09-02 11:19:09');
-INSERT INTO `usuario` VALUES ('312', '1', 'jean mastrollani', 'jmastrollani', '$2y$10$I0rXjL34gmyCiNoNihSmdekvEYqG/oMelZDiI/tIsBq.4542aFSBC', 'li@gmail.com', null, '3', '118', null, 'taovQePx', null, null, null, '1', '1', '2020-09-03 00:53:18', '2020-09-03 00:53:18');
-INSERT INTO `usuario` VALUES ('313', '1', 'luis mastro', 'lmastro', '$2y$10$STxE4avkG1qcN4FsD.clx.GiT71R/jWFgSuNH9xhEjNp43MueQBwy', 'lyustiz@sdjhjkshjdfks', null, '2', '112', null, 'yjdnLxIv', null, null, null, '1', '1', '2020-09-03 01:02:47', '2020-09-03 01:02:47');
-INSERT INTO `usuario` VALUES ('314', '1', 'jose rodriguez', 'jrodriguez', '$2y$10$QbWasyskGIZVYG2amTYQg.vt30pZ93d3xM5oDzNz7FOYJrmn69oMS', 'lfsfsdf@gmail.com', null, '4', '7', null, 'TAiBKWWu', null, null, null, '1', '1', '2020-09-03 01:13:28', '2020-09-03 01:13:28');
 
 -- ----------------------------
 -- Table structure for usuario_perfil
@@ -5957,320 +6566,8 @@ INSERT INTO `usuario_perfil` VALUES ('1', '1', '1', null, '1', '1', '2020-06-06 
 INSERT INTO `usuario_perfil` VALUES ('2', '1', '2', null, '1', '1', '2020-06-06 20:31:23', '2020-06-06 20:31:23');
 INSERT INTO `usuario_perfil` VALUES ('3', '1', '3', null, '1', '1', '2020-06-06 20:31:35', '2020-06-06 20:31:35');
 INSERT INTO `usuario_perfil` VALUES ('5', '1', '4', null, '1', '1', '2020-07-24 18:15:27', '2020-07-24 18:15:27');
-INSERT INTO `usuario_perfil` VALUES ('6', '3', '3', null, '1', '1', '2020-08-21 00:56:33', '2020-08-21 00:56:33');
-INSERT INTO `usuario_perfil` VALUES ('7', '4', '3', null, '1', '1', '2020-08-21 00:56:33', '2020-08-21 00:56:33');
-INSERT INTO `usuario_perfil` VALUES ('8', '5', '3', null, '1', '1', '2020-08-21 00:56:34', '2020-08-21 00:56:34');
-INSERT INTO `usuario_perfil` VALUES ('9', '6', '3', null, '1', '1', '2020-08-21 00:56:34', '2020-08-21 00:56:34');
-INSERT INTO `usuario_perfil` VALUES ('10', '7', '3', null, '1', '1', '2020-08-21 00:56:35', '2020-08-21 00:56:35');
-INSERT INTO `usuario_perfil` VALUES ('11', '8', '3', null, '1', '1', '2020-08-21 00:56:35', '2020-08-21 00:56:35');
-INSERT INTO `usuario_perfil` VALUES ('12', '9', '3', null, '1', '1', '2020-08-21 00:56:36', '2020-08-21 00:56:36');
-INSERT INTO `usuario_perfil` VALUES ('13', '10', '3', null, '1', '1', '2020-08-21 00:56:36', '2020-08-21 00:56:36');
-INSERT INTO `usuario_perfil` VALUES ('14', '11', '3', null, '1', '1', '2020-08-21 00:56:37', '2020-08-21 00:56:37');
-INSERT INTO `usuario_perfil` VALUES ('15', '12', '3', null, '1', '1', '2020-08-21 00:56:38', '2020-08-21 00:56:38');
-INSERT INTO `usuario_perfil` VALUES ('16', '13', '3', null, '1', '1', '2020-08-21 00:56:38', '2020-08-21 00:56:38');
-INSERT INTO `usuario_perfil` VALUES ('17', '14', '3', null, '1', '1', '2020-08-21 00:56:39', '2020-08-21 00:56:39');
-INSERT INTO `usuario_perfil` VALUES ('18', '15', '3', null, '1', '1', '2020-08-21 00:56:39', '2020-08-21 00:56:39');
-INSERT INTO `usuario_perfil` VALUES ('19', '16', '3', null, '1', '1', '2020-08-21 00:56:40', '2020-08-21 00:56:40');
-INSERT INTO `usuario_perfil` VALUES ('20', '17', '3', null, '1', '1', '2020-08-21 00:56:40', '2020-08-21 00:56:40');
-INSERT INTO `usuario_perfil` VALUES ('21', '18', '3', null, '1', '1', '2020-08-21 00:56:41', '2020-08-21 00:56:41');
-INSERT INTO `usuario_perfil` VALUES ('22', '19', '3', null, '1', '1', '2020-08-21 00:56:41', '2020-08-21 00:56:41');
-INSERT INTO `usuario_perfil` VALUES ('23', '20', '3', null, '1', '1', '2020-08-21 00:56:41', '2020-08-21 00:56:41');
-INSERT INTO `usuario_perfil` VALUES ('24', '21', '3', null, '1', '1', '2020-08-21 00:56:42', '2020-08-21 00:56:42');
-INSERT INTO `usuario_perfil` VALUES ('25', '22', '3', null, '1', '1', '2020-08-21 00:56:42', '2020-08-21 00:56:42');
-INSERT INTO `usuario_perfil` VALUES ('26', '23', '3', null, '1', '1', '2020-08-21 00:56:43', '2020-08-21 00:56:43');
-INSERT INTO `usuario_perfil` VALUES ('27', '24', '3', null, '1', '1', '2020-08-21 00:56:43', '2020-08-21 00:56:43');
-INSERT INTO `usuario_perfil` VALUES ('28', '25', '3', null, '1', '1', '2020-08-21 00:56:44', '2020-08-21 00:56:44');
-INSERT INTO `usuario_perfil` VALUES ('29', '26', '3', null, '1', '1', '2020-08-21 00:56:44', '2020-08-21 00:56:44');
-INSERT INTO `usuario_perfil` VALUES ('30', '27', '3', null, '1', '1', '2020-08-21 00:56:45', '2020-08-21 00:56:45');
-INSERT INTO `usuario_perfil` VALUES ('31', '28', '3', null, '1', '1', '2020-08-21 00:56:45', '2020-08-21 00:56:45');
-INSERT INTO `usuario_perfil` VALUES ('32', '29', '3', null, '1', '1', '2020-08-21 00:56:46', '2020-08-21 00:56:46');
-INSERT INTO `usuario_perfil` VALUES ('33', '30', '3', null, '1', '1', '2020-08-21 00:56:46', '2020-08-21 00:56:46');
-INSERT INTO `usuario_perfil` VALUES ('34', '31', '3', null, '1', '1', '2020-08-21 00:56:47', '2020-08-21 00:56:47');
-INSERT INTO `usuario_perfil` VALUES ('35', '32', '3', null, '1', '1', '2020-08-21 00:56:47', '2020-08-21 00:56:47');
-INSERT INTO `usuario_perfil` VALUES ('36', '33', '3', null, '1', '1', '2020-08-21 00:56:48', '2020-08-21 00:56:48');
-INSERT INTO `usuario_perfil` VALUES ('37', '34', '3', null, '1', '1', '2020-08-21 00:56:48', '2020-08-21 00:56:48');
-INSERT INTO `usuario_perfil` VALUES ('38', '35', '3', null, '1', '1', '2020-08-21 00:56:49', '2020-08-21 00:56:49');
-INSERT INTO `usuario_perfil` VALUES ('39', '36', '3', null, '1', '1', '2020-08-21 00:56:49', '2020-08-21 00:56:49');
-INSERT INTO `usuario_perfil` VALUES ('40', '37', '3', null, '1', '1', '2020-08-21 00:56:49', '2020-08-21 00:56:49');
-INSERT INTO `usuario_perfil` VALUES ('41', '38', '3', null, '1', '1', '2020-08-21 00:56:50', '2020-08-21 00:56:50');
-INSERT INTO `usuario_perfil` VALUES ('42', '39', '3', null, '1', '1', '2020-08-21 00:56:50', '2020-08-21 00:56:50');
-INSERT INTO `usuario_perfil` VALUES ('43', '40', '3', null, '1', '1', '2020-08-21 00:56:51', '2020-08-21 00:56:51');
-INSERT INTO `usuario_perfil` VALUES ('44', '41', '3', null, '1', '1', '2020-08-21 00:56:51', '2020-08-21 00:56:51');
-INSERT INTO `usuario_perfil` VALUES ('45', '42', '3', null, '1', '1', '2020-08-21 00:56:52', '2020-08-21 00:56:52');
-INSERT INTO `usuario_perfil` VALUES ('46', '43', '3', null, '1', '1', '2020-08-21 00:56:52', '2020-08-21 00:56:52');
-INSERT INTO `usuario_perfil` VALUES ('47', '44', '3', null, '1', '1', '2020-08-21 00:56:52', '2020-08-21 00:56:52');
-INSERT INTO `usuario_perfil` VALUES ('48', '45', '3', null, '1', '1', '2020-08-21 00:56:53', '2020-08-21 00:56:53');
-INSERT INTO `usuario_perfil` VALUES ('49', '46', '3', null, '1', '1', '2020-08-21 00:56:53', '2020-08-21 00:56:53');
-INSERT INTO `usuario_perfil` VALUES ('50', '47', '3', null, '1', '1', '2020-08-21 00:56:54', '2020-08-21 00:56:54');
-INSERT INTO `usuario_perfil` VALUES ('51', '48', '3', null, '1', '1', '2020-08-21 00:56:54', '2020-08-21 00:56:54');
-INSERT INTO `usuario_perfil` VALUES ('52', '49', '3', null, '1', '1', '2020-08-21 00:56:55', '2020-08-21 00:56:55');
-INSERT INTO `usuario_perfil` VALUES ('53', '50', '3', null, '1', '1', '2020-08-21 00:56:55', '2020-08-21 00:56:55');
-INSERT INTO `usuario_perfil` VALUES ('54', '51', '3', null, '1', '1', '2020-08-21 00:56:55', '2020-08-21 00:56:55');
-INSERT INTO `usuario_perfil` VALUES ('55', '52', '3', null, '1', '1', '2020-08-21 00:56:56', '2020-08-21 00:56:56');
-INSERT INTO `usuario_perfil` VALUES ('56', '53', '3', null, '1', '1', '2020-08-21 00:56:56', '2020-08-21 00:56:56');
-INSERT INTO `usuario_perfil` VALUES ('57', '54', '3', null, '1', '1', '2020-08-21 00:56:57', '2020-08-21 00:56:57');
-INSERT INTO `usuario_perfil` VALUES ('58', '55', '3', null, '1', '1', '2020-08-21 00:56:57', '2020-08-21 00:56:57');
-INSERT INTO `usuario_perfil` VALUES ('59', '56', '3', null, '1', '1', '2020-08-21 00:56:58', '2020-08-21 00:56:58');
-INSERT INTO `usuario_perfil` VALUES ('60', '57', '3', null, '1', '1', '2020-08-21 00:56:58', '2020-08-21 00:56:58');
-INSERT INTO `usuario_perfil` VALUES ('61', '58', '3', null, '1', '1', '2020-08-21 00:56:58', '2020-08-21 00:56:58');
-INSERT INTO `usuario_perfil` VALUES ('62', '59', '3', null, '1', '1', '2020-08-21 00:56:59', '2020-08-21 00:56:59');
-INSERT INTO `usuario_perfil` VALUES ('63', '60', '3', null, '1', '1', '2020-08-21 00:56:59', '2020-08-21 00:56:59');
-INSERT INTO `usuario_perfil` VALUES ('64', '61', '3', null, '1', '1', '2020-08-21 00:57:00', '2020-08-21 00:57:00');
-INSERT INTO `usuario_perfil` VALUES ('65', '62', '3', null, '1', '1', '2020-08-21 00:57:00', '2020-08-21 00:57:00');
-INSERT INTO `usuario_perfil` VALUES ('66', '63', '3', null, '1', '1', '2020-08-21 00:57:00', '2020-08-21 00:57:00');
-INSERT INTO `usuario_perfil` VALUES ('67', '64', '3', null, '1', '1', '2020-08-21 00:57:01', '2020-08-21 00:57:01');
-INSERT INTO `usuario_perfil` VALUES ('68', '65', '3', null, '1', '1', '2020-08-21 00:57:01', '2020-08-21 00:57:01');
-INSERT INTO `usuario_perfil` VALUES ('69', '66', '3', null, '1', '1', '2020-08-21 00:57:02', '2020-08-21 00:57:02');
-INSERT INTO `usuario_perfil` VALUES ('70', '67', '3', null, '1', '1', '2020-08-21 00:57:02', '2020-08-21 00:57:02');
-INSERT INTO `usuario_perfil` VALUES ('71', '68', '3', null, '1', '1', '2020-08-21 00:57:03', '2020-08-21 00:57:03');
-INSERT INTO `usuario_perfil` VALUES ('72', '69', '3', null, '1', '1', '2020-08-21 00:57:03', '2020-08-21 00:57:03');
-INSERT INTO `usuario_perfil` VALUES ('73', '70', '3', null, '1', '1', '2020-08-21 00:57:04', '2020-08-21 00:57:04');
-INSERT INTO `usuario_perfil` VALUES ('74', '71', '3', null, '1', '1', '2020-08-21 00:57:04', '2020-08-21 00:57:04');
-INSERT INTO `usuario_perfil` VALUES ('75', '72', '3', null, '1', '1', '2020-08-21 00:57:05', '2020-08-21 00:57:05');
-INSERT INTO `usuario_perfil` VALUES ('76', '73', '3', null, '1', '1', '2020-08-21 00:57:05', '2020-08-21 00:57:05');
-INSERT INTO `usuario_perfil` VALUES ('77', '74', '3', null, '1', '1', '2020-08-21 00:57:05', '2020-08-21 00:57:05');
-INSERT INTO `usuario_perfil` VALUES ('78', '75', '3', null, '1', '1', '2020-08-21 00:57:06', '2020-08-21 00:57:06');
-INSERT INTO `usuario_perfil` VALUES ('79', '76', '3', null, '1', '1', '2020-08-21 00:57:07', '2020-08-21 00:57:07');
-INSERT INTO `usuario_perfil` VALUES ('80', '77', '3', null, '1', '1', '2020-08-21 00:57:07', '2020-08-21 00:57:07');
-INSERT INTO `usuario_perfil` VALUES ('81', '78', '3', null, '1', '1', '2020-08-21 00:57:08', '2020-08-21 00:57:08');
-INSERT INTO `usuario_perfil` VALUES ('82', '79', '3', null, '1', '1', '2020-08-21 00:57:08', '2020-08-21 00:57:08');
-INSERT INTO `usuario_perfil` VALUES ('83', '80', '3', null, '1', '1', '2020-08-21 00:57:08', '2020-08-21 00:57:08');
-INSERT INTO `usuario_perfil` VALUES ('84', '81', '3', null, '1', '1', '2020-08-21 00:57:09', '2020-08-21 00:57:09');
-INSERT INTO `usuario_perfil` VALUES ('85', '82', '3', null, '1', '1', '2020-08-21 00:57:09', '2020-08-21 00:57:09');
-INSERT INTO `usuario_perfil` VALUES ('86', '83', '3', null, '1', '1', '2020-08-21 00:57:10', '2020-08-21 00:57:10');
-INSERT INTO `usuario_perfil` VALUES ('87', '84', '3', null, '1', '1', '2020-08-21 00:57:10', '2020-08-21 00:57:10');
-INSERT INTO `usuario_perfil` VALUES ('88', '85', '3', null, '1', '1', '2020-08-21 00:57:11', '2020-08-21 00:57:11');
-INSERT INTO `usuario_perfil` VALUES ('89', '86', '3', null, '1', '1', '2020-08-21 00:57:11', '2020-08-21 00:57:11');
-INSERT INTO `usuario_perfil` VALUES ('90', '87', '3', null, '1', '1', '2020-08-21 00:57:12', '2020-08-21 00:57:12');
-INSERT INTO `usuario_perfil` VALUES ('91', '88', '3', null, '1', '1', '2020-08-21 00:57:12', '2020-08-21 00:57:12');
-INSERT INTO `usuario_perfil` VALUES ('92', '89', '3', null, '1', '1', '2020-08-21 00:57:13', '2020-08-21 00:57:13');
-INSERT INTO `usuario_perfil` VALUES ('93', '90', '3', null, '1', '1', '2020-08-21 00:57:13', '2020-08-21 00:57:13');
-INSERT INTO `usuario_perfil` VALUES ('94', '91', '3', null, '1', '1', '2020-08-21 00:57:14', '2020-08-21 00:57:14');
-INSERT INTO `usuario_perfil` VALUES ('95', '92', '3', null, '1', '1', '2020-08-21 00:57:14', '2020-08-21 00:57:14');
-INSERT INTO `usuario_perfil` VALUES ('96', '93', '3', null, '1', '1', '2020-08-21 00:57:15', '2020-08-21 00:57:15');
-INSERT INTO `usuario_perfil` VALUES ('97', '94', '3', null, '1', '1', '2020-08-21 00:57:15', '2020-08-21 00:57:15');
-INSERT INTO `usuario_perfil` VALUES ('98', '95', '3', null, '1', '1', '2020-08-21 00:57:16', '2020-08-21 00:57:16');
-INSERT INTO `usuario_perfil` VALUES ('99', '96', '3', null, '1', '1', '2020-08-21 00:57:16', '2020-08-21 00:57:16');
-INSERT INTO `usuario_perfil` VALUES ('100', '97', '3', null, '1', '1', '2020-08-21 00:57:17', '2020-08-21 00:57:17');
-INSERT INTO `usuario_perfil` VALUES ('101', '98', '3', null, '1', '1', '2020-08-21 00:57:17', '2020-08-21 00:57:17');
-INSERT INTO `usuario_perfil` VALUES ('102', '99', '3', null, '1', '1', '2020-08-21 00:57:18', '2020-08-21 00:57:18');
-INSERT INTO `usuario_perfil` VALUES ('103', '100', '3', null, '1', '1', '2020-08-21 00:57:18', '2020-08-21 00:57:18');
-INSERT INTO `usuario_perfil` VALUES ('104', '101', '3', null, '1', '1', '2020-08-21 00:57:19', '2020-08-21 00:57:19');
-INSERT INTO `usuario_perfil` VALUES ('105', '102', '3', null, '1', '1', '2020-08-21 00:57:19', '2020-08-21 00:57:19');
-INSERT INTO `usuario_perfil` VALUES ('106', '103', '3', null, '1', '1', '2020-08-21 00:57:20', '2020-08-21 00:57:20');
 INSERT INTO `usuario_perfil` VALUES ('107', '104', '2', null, '1', '1', '2020-08-21 01:04:42', '2020-08-21 01:04:42');
-INSERT INTO `usuario_perfil` VALUES ('108', '105', '2', null, '1', '1', '2020-08-21 01:04:43', '2020-08-21 01:04:43');
-INSERT INTO `usuario_perfil` VALUES ('109', '106', '2', null, '1', '1', '2020-08-21 01:04:43', '2020-08-21 01:04:43');
-INSERT INTO `usuario_perfil` VALUES ('110', '107', '2', null, '1', '1', '2020-08-21 01:04:44', '2020-08-21 01:04:44');
-INSERT INTO `usuario_perfil` VALUES ('111', '108', '2', null, '1', '1', '2020-08-21 01:04:44', '2020-08-21 01:04:44');
-INSERT INTO `usuario_perfil` VALUES ('112', '109', '2', null, '1', '1', '2020-08-21 01:04:44', '2020-08-21 01:04:44');
-INSERT INTO `usuario_perfil` VALUES ('113', '110', '2', null, '1', '1', '2020-08-21 01:04:45', '2020-08-21 01:04:45');
-INSERT INTO `usuario_perfil` VALUES ('114', '111', '2', null, '1', '1', '2020-08-21 01:04:45', '2020-08-21 01:04:45');
-INSERT INTO `usuario_perfil` VALUES ('115', '112', '2', null, '1', '1', '2020-08-21 01:04:46', '2020-08-21 01:04:46');
-INSERT INTO `usuario_perfil` VALUES ('116', '113', '2', null, '1', '1', '2020-08-21 01:04:46', '2020-08-21 01:04:46');
-INSERT INTO `usuario_perfil` VALUES ('117', '114', '2', null, '1', '1', '2020-08-21 01:04:47', '2020-08-21 01:04:47');
-INSERT INTO `usuario_perfil` VALUES ('118', '115', '2', null, '1', '1', '2020-08-21 01:04:47', '2020-08-21 01:04:47');
-INSERT INTO `usuario_perfil` VALUES ('119', '116', '2', null, '1', '1', '2020-08-21 01:04:48', '2020-08-21 01:04:48');
-INSERT INTO `usuario_perfil` VALUES ('120', '117', '2', null, '1', '1', '2020-08-21 01:04:48', '2020-08-21 01:04:48');
-INSERT INTO `usuario_perfil` VALUES ('121', '118', '2', null, '1', '1', '2020-08-21 01:04:49', '2020-08-21 01:04:49');
-INSERT INTO `usuario_perfil` VALUES ('122', '119', '2', null, '1', '1', '2020-08-21 01:04:49', '2020-08-21 01:04:49');
-INSERT INTO `usuario_perfil` VALUES ('123', '120', '2', null, '1', '1', '2020-08-21 01:04:50', '2020-08-21 01:04:50');
-INSERT INTO `usuario_perfil` VALUES ('124', '121', '2', null, '1', '1', '2020-08-21 01:04:50', '2020-08-21 01:04:50');
-INSERT INTO `usuario_perfil` VALUES ('125', '122', '2', null, '1', '1', '2020-08-21 01:04:51', '2020-08-21 01:04:51');
-INSERT INTO `usuario_perfil` VALUES ('126', '123', '2', null, '1', '1', '2020-08-21 01:04:51', '2020-08-21 01:04:51');
-INSERT INTO `usuario_perfil` VALUES ('127', '124', '2', null, '1', '1', '2020-08-21 01:04:52', '2020-08-21 01:04:52');
-INSERT INTO `usuario_perfil` VALUES ('128', '125', '2', null, '1', '1', '2020-08-21 01:04:52', '2020-08-21 01:04:52');
-INSERT INTO `usuario_perfil` VALUES ('129', '126', '2', null, '1', '1', '2020-08-21 01:04:53', '2020-08-21 01:04:53');
-INSERT INTO `usuario_perfil` VALUES ('130', '127', '2', null, '1', '1', '2020-08-21 01:04:53', '2020-08-21 01:04:53');
-INSERT INTO `usuario_perfil` VALUES ('131', '128', '2', null, '1', '1', '2020-08-21 01:04:54', '2020-08-21 01:04:54');
-INSERT INTO `usuario_perfil` VALUES ('132', '129', '2', null, '1', '1', '2020-08-21 01:04:54', '2020-08-21 01:04:54');
-INSERT INTO `usuario_perfil` VALUES ('133', '130', '2', null, '1', '1', '2020-08-21 01:04:55', '2020-08-21 01:04:55');
-INSERT INTO `usuario_perfil` VALUES ('134', '131', '2', null, '1', '1', '2020-08-21 01:04:55', '2020-08-21 01:04:55');
-INSERT INTO `usuario_perfil` VALUES ('135', '132', '2', null, '1', '1', '2020-08-21 01:04:55', '2020-08-21 01:04:55');
-INSERT INTO `usuario_perfil` VALUES ('136', '133', '2', null, '1', '1', '2020-08-21 01:04:56', '2020-08-21 01:04:56');
-INSERT INTO `usuario_perfil` VALUES ('137', '134', '2', null, '1', '1', '2020-08-21 01:04:56', '2020-08-21 01:04:56');
-INSERT INTO `usuario_perfil` VALUES ('138', '135', '2', null, '1', '1', '2020-08-21 01:04:57', '2020-08-21 01:04:57');
-INSERT INTO `usuario_perfil` VALUES ('139', '136', '2', null, '1', '1', '2020-08-21 01:04:57', '2020-08-21 01:04:57');
-INSERT INTO `usuario_perfil` VALUES ('140', '137', '2', null, '1', '1', '2020-08-21 01:04:58', '2020-08-21 01:04:58');
-INSERT INTO `usuario_perfil` VALUES ('141', '138', '2', null, '1', '1', '2020-08-21 01:04:58', '2020-08-21 01:04:58');
-INSERT INTO `usuario_perfil` VALUES ('142', '139', '2', null, '1', '1', '2020-08-21 01:04:59', '2020-08-21 01:04:59');
-INSERT INTO `usuario_perfil` VALUES ('143', '140', '2', null, '1', '1', '2020-08-21 01:04:59', '2020-08-21 01:04:59');
-INSERT INTO `usuario_perfil` VALUES ('144', '141', '2', null, '1', '1', '2020-08-21 01:05:00', '2020-08-21 01:05:00');
-INSERT INTO `usuario_perfil` VALUES ('145', '142', '2', null, '1', '1', '2020-08-21 01:05:00', '2020-08-21 01:05:00');
-INSERT INTO `usuario_perfil` VALUES ('146', '143', '2', null, '1', '1', '2020-08-21 01:05:01', '2020-08-21 01:05:01');
-INSERT INTO `usuario_perfil` VALUES ('147', '144', '2', null, '1', '1', '2020-08-21 01:05:01', '2020-08-21 01:05:01');
-INSERT INTO `usuario_perfil` VALUES ('148', '145', '2', null, '1', '1', '2020-08-21 01:05:02', '2020-08-21 01:05:02');
-INSERT INTO `usuario_perfil` VALUES ('149', '146', '2', null, '1', '1', '2020-08-21 01:05:02', '2020-08-21 01:05:02');
-INSERT INTO `usuario_perfil` VALUES ('150', '147', '2', null, '1', '1', '2020-08-21 01:05:03', '2020-08-21 01:05:03');
-INSERT INTO `usuario_perfil` VALUES ('151', '148', '2', null, '1', '1', '2020-08-21 01:05:03', '2020-08-21 01:05:03');
-INSERT INTO `usuario_perfil` VALUES ('152', '149', '2', null, '1', '1', '2020-08-21 01:05:04', '2020-08-21 01:05:04');
-INSERT INTO `usuario_perfil` VALUES ('153', '150', '2', null, '1', '1', '2020-08-21 01:05:04', '2020-08-21 01:05:04');
-INSERT INTO `usuario_perfil` VALUES ('154', '151', '2', null, '1', '1', '2020-08-21 01:05:05', '2020-08-21 01:05:05');
-INSERT INTO `usuario_perfil` VALUES ('155', '152', '2', null, '1', '1', '2020-08-21 01:05:05', '2020-08-21 01:05:05');
-INSERT INTO `usuario_perfil` VALUES ('156', '153', '2', null, '1', '1', '2020-08-21 01:05:06', '2020-08-21 01:05:06');
-INSERT INTO `usuario_perfil` VALUES ('157', '154', '2', null, '1', '1', '2020-08-21 01:05:06', '2020-08-21 01:05:06');
-INSERT INTO `usuario_perfil` VALUES ('158', '155', '2', null, '1', '1', '2020-08-21 01:05:07', '2020-08-21 01:05:07');
-INSERT INTO `usuario_perfil` VALUES ('159', '156', '2', null, '1', '1', '2020-08-21 01:05:07', '2020-08-21 01:05:07');
-INSERT INTO `usuario_perfil` VALUES ('160', '157', '2', null, '1', '1', '2020-08-21 01:05:08', '2020-08-21 01:05:08');
-INSERT INTO `usuario_perfil` VALUES ('161', '158', '2', null, '1', '1', '2020-08-21 01:05:08', '2020-08-21 01:05:08');
-INSERT INTO `usuario_perfil` VALUES ('162', '159', '2', null, '1', '1', '2020-08-21 01:05:09', '2020-08-21 01:05:09');
-INSERT INTO `usuario_perfil` VALUES ('163', '160', '2', null, '1', '1', '2020-08-21 01:05:09', '2020-08-21 01:05:09');
-INSERT INTO `usuario_perfil` VALUES ('164', '161', '2', null, '1', '1', '2020-08-21 01:05:10', '2020-08-21 01:05:10');
-INSERT INTO `usuario_perfil` VALUES ('165', '162', '2', null, '1', '1', '2020-08-21 01:05:10', '2020-08-21 01:05:10');
-INSERT INTO `usuario_perfil` VALUES ('166', '163', '2', null, '1', '1', '2020-08-21 01:05:11', '2020-08-21 01:05:11');
-INSERT INTO `usuario_perfil` VALUES ('167', '164', '2', null, '1', '1', '2020-08-21 01:05:11', '2020-08-21 01:05:11');
-INSERT INTO `usuario_perfil` VALUES ('168', '165', '2', null, '1', '1', '2020-08-21 01:05:12', '2020-08-21 01:05:12');
-INSERT INTO `usuario_perfil` VALUES ('169', '166', '2', null, '1', '1', '2020-08-21 01:05:12', '2020-08-21 01:05:12');
-INSERT INTO `usuario_perfil` VALUES ('170', '167', '2', null, '1', '1', '2020-08-21 01:05:13', '2020-08-21 01:05:13');
-INSERT INTO `usuario_perfil` VALUES ('171', '168', '2', null, '1', '1', '2020-08-21 01:05:13', '2020-08-21 01:05:13');
-INSERT INTO `usuario_perfil` VALUES ('172', '169', '2', null, '1', '1', '2020-08-21 01:05:14', '2020-08-21 01:05:14');
-INSERT INTO `usuario_perfil` VALUES ('173', '170', '2', null, '1', '1', '2020-08-21 01:05:14', '2020-08-21 01:05:14');
-INSERT INTO `usuario_perfil` VALUES ('174', '171', '2', null, '1', '1', '2020-08-21 01:05:15', '2020-08-21 01:05:15');
-INSERT INTO `usuario_perfil` VALUES ('175', '172', '2', null, '1', '1', '2020-08-21 01:05:15', '2020-08-21 01:05:15');
-INSERT INTO `usuario_perfil` VALUES ('176', '173', '2', null, '1', '1', '2020-08-21 01:05:16', '2020-08-21 01:05:16');
-INSERT INTO `usuario_perfil` VALUES ('177', '174', '2', null, '1', '1', '2020-08-21 01:05:16', '2020-08-21 01:05:16');
-INSERT INTO `usuario_perfil` VALUES ('178', '175', '2', null, '1', '1', '2020-08-21 01:05:17', '2020-08-21 01:05:17');
-INSERT INTO `usuario_perfil` VALUES ('179', '176', '2', null, '1', '1', '2020-08-21 01:05:17', '2020-08-21 01:05:17');
-INSERT INTO `usuario_perfil` VALUES ('180', '177', '2', null, '1', '1', '2020-08-21 01:05:18', '2020-08-21 01:05:18');
-INSERT INTO `usuario_perfil` VALUES ('181', '178', '2', null, '1', '1', '2020-08-21 01:05:18', '2020-08-21 01:05:18');
-INSERT INTO `usuario_perfil` VALUES ('182', '179', '2', null, '1', '1', '2020-08-21 01:05:19', '2020-08-21 01:05:19');
-INSERT INTO `usuario_perfil` VALUES ('183', '180', '2', null, '1', '1', '2020-08-21 01:05:19', '2020-08-21 01:05:19');
-INSERT INTO `usuario_perfil` VALUES ('184', '181', '2', null, '1', '1', '2020-08-21 01:05:20', '2020-08-21 01:05:20');
-INSERT INTO `usuario_perfil` VALUES ('185', '182', '2', null, '1', '1', '2020-08-21 01:05:20', '2020-08-21 01:05:20');
-INSERT INTO `usuario_perfil` VALUES ('186', '183', '2', null, '1', '1', '2020-08-21 01:05:20', '2020-08-21 01:05:20');
-INSERT INTO `usuario_perfil` VALUES ('187', '184', '2', null, '1', '1', '2020-08-21 01:05:21', '2020-08-21 01:05:21');
-INSERT INTO `usuario_perfil` VALUES ('188', '185', '2', null, '1', '1', '2020-08-21 01:05:21', '2020-08-21 01:05:21');
-INSERT INTO `usuario_perfil` VALUES ('189', '186', '2', null, '1', '1', '2020-08-21 01:05:22', '2020-08-21 01:05:22');
-INSERT INTO `usuario_perfil` VALUES ('190', '187', '2', null, '1', '1', '2020-08-21 01:05:22', '2020-08-21 01:05:22');
-INSERT INTO `usuario_perfil` VALUES ('191', '188', '2', null, '1', '1', '2020-08-21 01:05:23', '2020-08-21 01:05:23');
-INSERT INTO `usuario_perfil` VALUES ('192', '189', '2', null, '1', '1', '2020-08-21 01:05:23', '2020-08-21 01:05:23');
-INSERT INTO `usuario_perfil` VALUES ('193', '190', '2', null, '1', '1', '2020-08-21 01:05:24', '2020-08-21 01:05:24');
-INSERT INTO `usuario_perfil` VALUES ('194', '191', '2', null, '1', '1', '2020-08-21 01:05:24', '2020-08-21 01:05:24');
-INSERT INTO `usuario_perfil` VALUES ('195', '192', '2', null, '1', '1', '2020-08-21 01:05:25', '2020-08-21 01:05:25');
-INSERT INTO `usuario_perfil` VALUES ('196', '193', '2', null, '1', '1', '2020-08-21 01:05:25', '2020-08-21 01:05:25');
-INSERT INTO `usuario_perfil` VALUES ('197', '194', '2', null, '1', '1', '2020-08-21 01:05:26', '2020-08-21 01:05:26');
-INSERT INTO `usuario_perfil` VALUES ('198', '195', '2', null, '1', '1', '2020-08-21 01:05:26', '2020-08-21 01:05:26');
-INSERT INTO `usuario_perfil` VALUES ('199', '196', '2', null, '1', '1', '2020-08-21 01:05:27', '2020-08-21 01:05:27');
-INSERT INTO `usuario_perfil` VALUES ('200', '197', '2', null, '1', '1', '2020-08-21 01:05:27', '2020-08-21 01:05:27');
-INSERT INTO `usuario_perfil` VALUES ('201', '198', '2', null, '1', '1', '2020-08-21 01:05:28', '2020-08-21 01:05:28');
-INSERT INTO `usuario_perfil` VALUES ('202', '199', '2', null, '1', '1', '2020-08-21 01:05:28', '2020-08-21 01:05:28');
-INSERT INTO `usuario_perfil` VALUES ('203', '200', '2', null, '1', '1', '2020-08-21 01:05:29', '2020-08-21 01:05:29');
-INSERT INTO `usuario_perfil` VALUES ('204', '201', '2', null, '1', '1', '2020-08-21 01:05:29', '2020-08-21 01:05:29');
-INSERT INTO `usuario_perfil` VALUES ('205', '202', '2', null, '1', '1', '2020-08-21 01:05:30', '2020-08-21 01:05:30');
-INSERT INTO `usuario_perfil` VALUES ('206', '203', '2', null, '1', '1', '2020-08-21 01:05:30', '2020-08-21 01:05:30');
-INSERT INTO `usuario_perfil` VALUES ('207', '204', '2', null, '1', '1', '2020-08-21 01:05:31', '2020-08-21 01:05:31');
-INSERT INTO `usuario_perfil` VALUES ('208', '205', '2', null, '1', '1', '2020-08-21 01:05:31', '2020-08-21 01:05:31');
-INSERT INTO `usuario_perfil` VALUES ('209', '206', '1', null, '1', '1', '2020-08-21 01:48:32', '2020-08-21 01:48:32');
-INSERT INTO `usuario_perfil` VALUES ('210', '207', '1', null, '1', '1', '2020-08-21 01:48:32', '2020-08-21 01:48:32');
-INSERT INTO `usuario_perfil` VALUES ('211', '208', '1', null, '1', '1', '2020-08-21 01:48:33', '2020-08-21 01:48:33');
-INSERT INTO `usuario_perfil` VALUES ('212', '209', '1', null, '1', '1', '2020-08-21 01:48:33', '2020-08-21 01:48:33');
-INSERT INTO `usuario_perfil` VALUES ('213', '210', '1', null, '1', '1', '2020-08-21 01:48:34', '2020-08-21 01:48:34');
-INSERT INTO `usuario_perfil` VALUES ('214', '211', '1', null, '1', '1', '2020-08-21 01:48:34', '2020-08-21 01:48:34');
-INSERT INTO `usuario_perfil` VALUES ('215', '212', '1', null, '1', '1', '2020-08-21 01:48:35', '2020-08-21 01:48:35');
-INSERT INTO `usuario_perfil` VALUES ('216', '213', '1', null, '1', '1', '2020-08-21 01:48:35', '2020-08-21 01:48:35');
-INSERT INTO `usuario_perfil` VALUES ('217', '214', '1', null, '1', '1', '2020-08-21 01:48:36', '2020-08-21 01:48:36');
-INSERT INTO `usuario_perfil` VALUES ('218', '215', '1', null, '1', '1', '2020-08-21 01:48:36', '2020-08-21 01:48:36');
-INSERT INTO `usuario_perfil` VALUES ('219', '216', '1', null, '1', '1', '2020-08-21 01:48:36', '2020-08-21 01:48:36');
-INSERT INTO `usuario_perfil` VALUES ('220', '217', '1', null, '1', '1', '2020-08-21 01:48:37', '2020-08-21 01:48:37');
-INSERT INTO `usuario_perfil` VALUES ('221', '218', '1', null, '1', '1', '2020-08-21 01:48:37', '2020-08-21 01:48:37');
-INSERT INTO `usuario_perfil` VALUES ('222', '219', '1', null, '1', '1', '2020-08-21 01:48:38', '2020-08-21 01:48:38');
-INSERT INTO `usuario_perfil` VALUES ('223', '220', '1', null, '1', '1', '2020-08-21 01:48:38', '2020-08-21 01:48:38');
-INSERT INTO `usuario_perfil` VALUES ('224', '221', '1', null, '1', '1', '2020-08-21 01:48:39', '2020-08-21 01:48:39');
-INSERT INTO `usuario_perfil` VALUES ('225', '222', '1', null, '1', '1', '2020-08-21 01:48:39', '2020-08-21 01:48:39');
-INSERT INTO `usuario_perfil` VALUES ('226', '223', '1', null, '1', '1', '2020-08-21 01:48:40', '2020-08-21 01:48:40');
-INSERT INTO `usuario_perfil` VALUES ('227', '224', '1', null, '1', '1', '2020-08-21 01:48:40', '2020-08-21 01:48:40');
-INSERT INTO `usuario_perfil` VALUES ('228', '225', '1', null, '1', '1', '2020-08-21 01:48:41', '2020-08-21 01:48:41');
-INSERT INTO `usuario_perfil` VALUES ('229', '226', '1', null, '1', '1', '2020-08-21 01:48:41', '2020-08-21 01:48:41');
-INSERT INTO `usuario_perfil` VALUES ('230', '227', '1', null, '1', '1', '2020-08-21 01:48:42', '2020-08-21 01:48:42');
-INSERT INTO `usuario_perfil` VALUES ('231', '228', '1', null, '1', '1', '2020-08-21 01:48:42', '2020-08-21 01:48:42');
-INSERT INTO `usuario_perfil` VALUES ('232', '229', '1', null, '1', '1', '2020-08-21 01:48:42', '2020-08-21 01:48:42');
-INSERT INTO `usuario_perfil` VALUES ('233', '230', '1', null, '1', '1', '2020-08-21 01:48:43', '2020-08-21 01:48:43');
-INSERT INTO `usuario_perfil` VALUES ('234', '231', '1', null, '1', '1', '2020-08-21 01:48:43', '2020-08-21 01:48:43');
-INSERT INTO `usuario_perfil` VALUES ('235', '232', '1', null, '1', '1', '2020-08-21 01:48:44', '2020-08-21 01:48:44');
-INSERT INTO `usuario_perfil` VALUES ('236', '233', '1', null, '1', '1', '2020-08-21 01:48:44', '2020-08-21 01:48:44');
-INSERT INTO `usuario_perfil` VALUES ('237', '234', '1', null, '1', '1', '2020-08-21 01:48:45', '2020-08-21 01:48:45');
-INSERT INTO `usuario_perfil` VALUES ('238', '235', '1', null, '1', '1', '2020-08-21 01:48:45', '2020-08-21 01:48:45');
-INSERT INTO `usuario_perfil` VALUES ('239', '236', '1', null, '1', '1', '2020-08-21 01:48:46', '2020-08-21 01:48:46');
-INSERT INTO `usuario_perfil` VALUES ('240', '237', '1', null, '1', '1', '2020-08-21 01:48:46', '2020-08-21 01:48:46');
-INSERT INTO `usuario_perfil` VALUES ('241', '238', '1', null, '1', '1', '2020-08-21 01:48:47', '2020-08-21 01:48:47');
-INSERT INTO `usuario_perfil` VALUES ('242', '239', '1', null, '1', '1', '2020-08-21 01:48:47', '2020-08-21 01:48:47');
-INSERT INTO `usuario_perfil` VALUES ('243', '240', '1', null, '1', '1', '2020-08-21 01:48:48', '2020-08-21 01:48:48');
-INSERT INTO `usuario_perfil` VALUES ('244', '241', '1', null, '1', '1', '2020-08-21 01:48:48', '2020-08-21 01:48:48');
-INSERT INTO `usuario_perfil` VALUES ('245', '242', '1', null, '1', '1', '2020-08-21 01:48:49', '2020-08-21 01:48:49');
-INSERT INTO `usuario_perfil` VALUES ('246', '243', '1', null, '1', '1', '2020-08-21 01:48:49', '2020-08-21 01:48:49');
-INSERT INTO `usuario_perfil` VALUES ('247', '244', '1', null, '1', '1', '2020-08-21 01:48:50', '2020-08-21 01:48:50');
-INSERT INTO `usuario_perfil` VALUES ('248', '245', '1', null, '1', '1', '2020-08-21 01:48:50', '2020-08-21 01:48:50');
-INSERT INTO `usuario_perfil` VALUES ('249', '246', '1', null, '1', '1', '2020-08-21 01:48:51', '2020-08-21 01:48:51');
-INSERT INTO `usuario_perfil` VALUES ('250', '247', '1', null, '1', '1', '2020-08-21 01:48:51', '2020-08-21 01:48:51');
-INSERT INTO `usuario_perfil` VALUES ('251', '248', '1', null, '1', '1', '2020-08-21 01:48:51', '2020-08-21 01:48:51');
-INSERT INTO `usuario_perfil` VALUES ('252', '249', '1', null, '1', '1', '2020-08-21 01:48:52', '2020-08-21 01:48:52');
-INSERT INTO `usuario_perfil` VALUES ('253', '250', '1', null, '1', '1', '2020-08-21 01:48:52', '2020-08-21 01:48:52');
-INSERT INTO `usuario_perfil` VALUES ('254', '251', '1', null, '1', '1', '2020-08-21 01:48:53', '2020-08-21 01:48:53');
-INSERT INTO `usuario_perfil` VALUES ('255', '252', '1', null, '1', '1', '2020-08-21 01:48:53', '2020-08-21 01:48:53');
-INSERT INTO `usuario_perfil` VALUES ('256', '253', '1', null, '1', '1', '2020-08-21 01:48:54', '2020-08-21 01:48:54');
-INSERT INTO `usuario_perfil` VALUES ('257', '254', '1', null, '1', '1', '2020-08-21 01:48:54', '2020-08-21 01:48:54');
-INSERT INTO `usuario_perfil` VALUES ('258', '255', '1', null, '1', '1', '2020-08-21 01:48:55', '2020-08-21 01:48:55');
-INSERT INTO `usuario_perfil` VALUES ('259', '256', '1', null, '1', '1', '2020-08-21 01:48:55', '2020-08-21 01:48:55');
-INSERT INTO `usuario_perfil` VALUES ('260', '257', '1', null, '1', '1', '2020-08-21 01:48:56', '2020-08-21 01:48:56');
-INSERT INTO `usuario_perfil` VALUES ('261', '258', '1', null, '1', '1', '2020-08-21 01:48:57', '2020-08-21 01:48:57');
-INSERT INTO `usuario_perfil` VALUES ('262', '259', '1', null, '1', '1', '2020-08-21 01:48:57', '2020-08-21 01:48:57');
-INSERT INTO `usuario_perfil` VALUES ('263', '260', '1', null, '1', '1', '2020-08-21 01:48:58', '2020-08-21 01:48:58');
-INSERT INTO `usuario_perfil` VALUES ('264', '261', '1', null, '1', '1', '2020-08-21 01:48:58', '2020-08-21 01:48:58');
-INSERT INTO `usuario_perfil` VALUES ('265', '262', '1', null, '1', '1', '2020-08-21 01:48:59', '2020-08-21 01:48:59');
-INSERT INTO `usuario_perfil` VALUES ('266', '263', '1', null, '1', '1', '2020-08-21 01:48:59', '2020-08-21 01:48:59');
-INSERT INTO `usuario_perfil` VALUES ('267', '264', '1', null, '1', '1', '2020-08-21 01:48:59', '2020-08-21 01:48:59');
-INSERT INTO `usuario_perfil` VALUES ('268', '265', '1', null, '1', '1', '2020-08-21 01:49:00', '2020-08-21 01:49:00');
-INSERT INTO `usuario_perfil` VALUES ('269', '266', '1', null, '1', '1', '2020-08-21 01:49:00', '2020-08-21 01:49:00');
-INSERT INTO `usuario_perfil` VALUES ('270', '267', '1', null, '1', '1', '2020-08-21 01:49:01', '2020-08-21 01:49:01');
-INSERT INTO `usuario_perfil` VALUES ('271', '268', '1', null, '1', '1', '2020-08-21 01:49:02', '2020-08-21 01:49:02');
-INSERT INTO `usuario_perfil` VALUES ('272', '269', '1', null, '1', '1', '2020-08-21 01:49:02', '2020-08-21 01:49:02');
-INSERT INTO `usuario_perfil` VALUES ('273', '270', '1', null, '1', '1', '2020-08-21 01:49:03', '2020-08-21 01:49:03');
-INSERT INTO `usuario_perfil` VALUES ('274', '271', '1', null, '1', '1', '2020-08-21 01:49:03', '2020-08-21 01:49:03');
-INSERT INTO `usuario_perfil` VALUES ('275', '272', '1', null, '1', '1', '2020-08-21 01:49:04', '2020-08-21 01:49:04');
-INSERT INTO `usuario_perfil` VALUES ('276', '273', '1', null, '1', '1', '2020-08-21 01:49:04', '2020-08-21 01:49:04');
-INSERT INTO `usuario_perfil` VALUES ('277', '274', '1', null, '1', '1', '2020-08-21 01:49:05', '2020-08-21 01:49:05');
-INSERT INTO `usuario_perfil` VALUES ('278', '275', '1', null, '1', '1', '2020-08-21 01:49:05', '2020-08-21 01:49:05');
-INSERT INTO `usuario_perfil` VALUES ('279', '276', '1', null, '1', '1', '2020-08-21 01:49:05', '2020-08-21 01:49:05');
-INSERT INTO `usuario_perfil` VALUES ('280', '277', '1', null, '1', '1', '2020-08-21 01:49:06', '2020-08-21 01:49:06');
-INSERT INTO `usuario_perfil` VALUES ('281', '278', '1', null, '1', '1', '2020-08-21 01:49:06', '2020-08-21 01:49:06');
-INSERT INTO `usuario_perfil` VALUES ('282', '279', '1', null, '1', '1', '2020-08-21 01:49:07', '2020-08-21 01:49:07');
-INSERT INTO `usuario_perfil` VALUES ('283', '280', '1', null, '1', '1', '2020-08-21 01:49:07', '2020-08-21 01:49:07');
-INSERT INTO `usuario_perfil` VALUES ('284', '281', '1', null, '1', '1', '2020-08-21 01:49:08', '2020-08-21 01:49:08');
-INSERT INTO `usuario_perfil` VALUES ('285', '282', '1', null, '1', '1', '2020-08-21 01:49:09', '2020-08-21 01:49:09');
-INSERT INTO `usuario_perfil` VALUES ('286', '283', '1', null, '1', '1', '2020-08-21 01:49:09', '2020-08-21 01:49:09');
-INSERT INTO `usuario_perfil` VALUES ('287', '284', '1', null, '1', '1', '2020-08-21 01:49:10', '2020-08-21 01:49:10');
-INSERT INTO `usuario_perfil` VALUES ('288', '285', '1', null, '1', '1', '2020-08-21 01:49:10', '2020-08-21 01:49:10');
-INSERT INTO `usuario_perfil` VALUES ('289', '286', '1', null, '1', '1', '2020-08-21 01:49:11', '2020-08-21 01:49:11');
-INSERT INTO `usuario_perfil` VALUES ('290', '287', '1', null, '1', '1', '2020-08-21 01:49:11', '2020-08-21 01:49:11');
-INSERT INTO `usuario_perfil` VALUES ('291', '288', '1', null, '1', '1', '2020-08-21 01:49:12', '2020-08-21 01:49:12');
-INSERT INTO `usuario_perfil` VALUES ('292', '289', '1', null, '1', '1', '2020-08-21 01:49:12', '2020-08-21 01:49:12');
-INSERT INTO `usuario_perfil` VALUES ('293', '290', '1', null, '1', '1', '2020-08-21 01:49:13', '2020-08-21 01:49:13');
-INSERT INTO `usuario_perfil` VALUES ('294', '291', '1', null, '1', '1', '2020-08-21 01:49:13', '2020-08-21 01:49:13');
-INSERT INTO `usuario_perfil` VALUES ('295', '292', '1', null, '1', '1', '2020-08-21 01:49:14', '2020-08-21 01:49:14');
-INSERT INTO `usuario_perfil` VALUES ('296', '293', '1', null, '1', '1', '2020-08-21 01:49:14', '2020-08-21 01:49:14');
-INSERT INTO `usuario_perfil` VALUES ('297', '294', '1', null, '1', '1', '2020-08-21 01:49:14', '2020-08-21 01:49:14');
-INSERT INTO `usuario_perfil` VALUES ('298', '295', '1', null, '1', '1', '2020-08-21 01:49:15', '2020-08-21 01:49:15');
-INSERT INTO `usuario_perfil` VALUES ('299', '296', '1', null, '1', '1', '2020-08-21 01:49:15', '2020-08-21 01:49:15');
-INSERT INTO `usuario_perfil` VALUES ('300', '297', '1', null, '1', '1', '2020-08-21 01:49:16', '2020-08-21 01:49:16');
-INSERT INTO `usuario_perfil` VALUES ('301', '298', '1', null, '1', '1', '2020-08-21 01:49:16', '2020-08-21 01:49:16');
-INSERT INTO `usuario_perfil` VALUES ('302', '299', '1', null, '1', '1', '2020-08-21 01:49:17', '2020-08-21 01:49:17');
-INSERT INTO `usuario_perfil` VALUES ('303', '300', '1', null, '1', '1', '2020-08-21 01:49:17', '2020-08-21 01:49:17');
-INSERT INTO `usuario_perfil` VALUES ('304', '301', '1', null, '1', '1', '2020-08-21 01:49:18', '2020-08-21 01:49:18');
-INSERT INTO `usuario_perfil` VALUES ('305', '302', '1', null, '1', '1', '2020-08-21 01:49:18', '2020-08-21 01:49:18');
-INSERT INTO `usuario_perfil` VALUES ('306', '303', '1', null, '1', '1', '2020-08-21 01:49:19', '2020-08-21 01:49:19');
-INSERT INTO `usuario_perfil` VALUES ('307', '304', '1', null, '1', '1', '2020-08-21 01:49:19', '2020-08-21 01:49:19');
-INSERT INTO `usuario_perfil` VALUES ('308', '305', '1', null, '1', '1', '2020-08-21 01:49:19', '2020-08-21 01:49:19');
-INSERT INTO `usuario_perfil` VALUES ('309', '306', '1', null, '1', '1', '2020-08-21 01:49:20', '2020-08-21 01:49:20');
-INSERT INTO `usuario_perfil` VALUES ('310', '307', '1', null, '1', '1', '2020-08-21 03:02:52', '2020-08-21 03:02:52');
-INSERT INTO `usuario_perfil` VALUES ('311', '308', '1', null, '1', '1', '2020-08-21 03:24:20', '2020-08-21 03:24:20');
-INSERT INTO `usuario_perfil` VALUES ('312', '309', '1', null, '1', '1', '2020-08-21 03:41:52', '2020-08-21 03:41:52');
 INSERT INTO `usuario_perfil` VALUES ('313', '2', '3', null, '1', '1', '2020-08-21 00:41:06', '2020-08-21 00:41:08');
-INSERT INTO `usuario_perfil` VALUES ('314', '310', '1', null, '1', '1', '2020-09-02 11:07:42', '2020-09-02 11:07:42');
-INSERT INTO `usuario_perfil` VALUES ('315', '311', '3', null, '1', '1', '2020-09-02 11:19:09', '2020-09-02 11:19:09');
-INSERT INTO `usuario_perfil` VALUES ('316', '312', '3', null, '1', '1', '2020-09-03 00:53:18', '2020-09-03 00:53:18');
-INSERT INTO `usuario_perfil` VALUES ('317', '313', '2', null, '1', '1', '2020-09-03 01:02:47', '2020-09-03 01:02:47');
-INSERT INTO `usuario_perfil` VALUES ('318', '314', '4', null, '1', '1', '2020-09-03 01:13:28', '2020-09-03 01:13:28');
-INSERT INTO `usuario_perfil` VALUES ('319', '315', '5', null, '1', '1', '2020-09-22 22:58:21', '2020-09-22 22:58:21');
 
 -- ----------------------------
 -- Table structure for zona
@@ -6355,7 +6652,7 @@ alumno_pariente
 INNER JOIN alumno ON alumno_pariente.id_alumno = alumno.id
 INNER JOIN pariente ON alumno_pariente.id_pariente = pariente.id
 INNER JOIN parentesco ON pariente.id_parentesco = parentesco.id
-ORDER BY CONCAT(alumno.nb_apellido,' ', alumno.nb_apellido2,' ',alumno.nb_nombre,' ',alumno.nb_nombre2) ASC ;
+ORDER BY CONCAT(alumno.nb_apellido,' ', alumno.nb_apellido2,' ',alumno.nb_nombre,' ',alumno.nb_nombre2) ASC ; ;
 
 -- ----------------------------
 -- View structure for vw_alumno_matricula
@@ -6415,7 +6712,7 @@ ORDER BY
 		alumno.nb_nombre,
 		' ',
 		alumno.nb_nombre2
-	) ASC ;
+	) ASC ; ;
 
 -- ----------------------------
 -- View structure for vw_alumno_sin_matricula
@@ -6480,7 +6777,7 @@ ORDER BY
 		alumno.nb_nombre,
 		' ',
 		alumno.nb_nombre2
-	) ASC ;
+	) ASC ; ;
 
 -- ----------------------------
 -- View structure for vw_docente
@@ -6514,7 +6811,7 @@ docente
 INNER JOIN estado_civil ON docente.id_estado_civil = estado_civil.id
 INNER JOIN tipo_documento ON docente.id_tipo_documento = tipo_documento.id
 INNER JOIN departamento ON docente.id_departamento = departamento.id
-INNER JOIN ciudad ON docente.id_ciudad = ciudad.id ;
+INNER JOIN ciudad ON docente.id_ciudad = ciudad.id ; ;
 
 -- ----------------------------
 -- View structure for vw_grado_materia
@@ -6534,7 +6831,7 @@ FROM
 grado
 INNER JOIN grado_materia ON grado_materia.id_grado = grado.id
 INNER JOIN materia ON grado_materia.id_materia = materia.id
-INNER JOIN area_estudio ON materia.id_area_estudio = area_estudio.id ;
+INNER JOIN area_estudio ON materia.id_area_estudio = area_estudio.id ; ;
 
 -- ----------------------------
 -- View structure for vw_grupo
@@ -6561,7 +6858,7 @@ INNER JOIN nivel ON grado.id_nivel = nivel.id
 INNER JOIN calendario ON grupo.id_calendario = calendario.id
 INNER JOIN docente ON grupo.id_docente = docente.id
 INNER JOIN turno ON grupo.id_turno = turno.id
-WHERE calendario.id = (SELECT id_calendario from colegio where id = 1) ;
+WHERE calendario.id = (SELECT id_calendario from colegio where id = 1) ; ;
 
 -- ----------------------------
 -- View structure for vw_grupo_materia
@@ -6583,7 +6880,7 @@ grupo_materia
 INNER JOIN materia ON grupo_materia.id_materia = materia.id 
 INNER JOIN grupo ON grupo_materia.id_grupo = grupo.id 
 INNER JOIN area_estudio ON materia.id_area_estudio = area_estudio.id 
-INNER JOIN calendario ON grupo.id_calendario = calendario.id ;
+INNER JOIN calendario ON grupo.id_calendario = calendario.id ; ;
 
 -- ----------------------------
 -- View structure for vw_materia
@@ -6596,7 +6893,7 @@ materia.id_area_estudio,
 area_estudio.nb_area_estudio
 FROM
 materia ,
-area_estudio ;
+area_estudio ; ;
 
 -- ----------------------------
 -- View structure for vw_usuario
@@ -6613,4 +6910,4 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `vw_usuario` AS SELE
 FROM
 	usuario
 INNER JOIN tipo_usuario ON usuario.id_tipo_usuario = tipo_usuario.id
-INNER JOIN `status` ON usuario.id_status = `status`.id ;
+INNER JOIN `status` ON usuario.id_status = `status`.id ; ;

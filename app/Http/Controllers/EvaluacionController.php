@@ -99,6 +99,30 @@ class EvaluacionController extends Controller
                                 ->find($idEvaluacion);
     }
 
+    public function evaluacionMateriaAlumno($idMateria, $idAlumno)
+    {
+        $evaluaciones = Evaluacion::with([
+                                    'tipoEvaluacion:id,nb_tipo_evaluacion,tx_icono,tx_color',
+                                    'evaluacionAlumno' => function($query) use ( $idAlumno ){
+                                        $query->where('id_alumno' , $idAlumno);
+                                    },
+                                    'origen'
+                                ])
+                                ->whereHas('evaluacionAlumno', function (Builder $query) use($idAlumno) {
+                                    $query->where('id_alumno', $idAlumno);
+                                })
+                                ->where('id_materia', $idMateria)
+                                ->get();
+
+        $data = [];
+
+        foreach ($evaluaciones as $evaluacion) {
+            $data[$evaluacion->tx_origen] = $evaluacion;
+        }
+
+        return $data;
+    }
+
       /**
      * Store a newly created resource in storage.
      *

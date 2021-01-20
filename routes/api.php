@@ -299,8 +299,9 @@ Route::apiResource('/rasgo',                        'RasgoController');
 
 // -- EVALUACION -- //
 
-Route::get('/evaluacion/planEvaluacion/{planEvaluacion}',  'EvaluacionController@evaluacionPlan');
-Route::get('/evaluacion/materia/{materia}/grupo/{grupo}',  'EvaluacionController@evaluacionMateriaGrupo');
+Route::get('/evaluacion/planEvaluacion/{planEvaluacion}',   'EvaluacionController@evaluacionPlan');
+Route::get('/evaluacion/materia/{materia}/grupo/{grupo}',   'EvaluacionController@evaluacionMateriaGrupo');
+Route::get('/evaluacion/materia/{materia}/alumno/{alumno}', 'EvaluacionController@evaluacionMateriaAlumno');
 Route::get('/evaluacion/materia/{materia}/grupo/{grupo}/prueba',  'EvaluacionController@evaluacionMateriaGrupoPrueba');
 Route::get('/evaluacion/grupo/{grupo}',         'EvaluacionController@evaluacionGrupo');
 Route::get('/evaluacion/docente/{docente}',     'EvaluacionController@evaluacionDocente');

@@ -1,41 +1,43 @@
 <template>
   <v-card class="rounded-xl elevation-5 vertical-overflow" height="39rem">
     <v-card-text>
-        <v-list-item @click="navegateToName('biblioteca-alumno')"> 
+      <v-list-item @click="navegateToName('biblioteca-alumno')"> 
+        <v-list-item-content>
+          <v-list-item-title class=" font-weight-black">Asignaciones</v-list-item-title>
+          <v-list-item-subtitle>Avance</v-list-item-subtitle>
+        </v-list-item-content>
+        <v-list-item-avatar color="blue darken-4 elevation-3" rounded dark size="43" class="pointer">
+          <v-icon dark size="40">mdi-progress-check</v-icon>
+        </v-list-item-avatar>
+      </v-list-item>
+      <v-list two-line> 
+        <template v-for="(tipo, idx) in tipos" >
+          <div :key="idx" v-if="getTotal(tipo).total">
+          <v-list-item @click="navegateToName('biblioteca-alumno')"> 
             <v-list-item-content>
-                <v-list-item-title class=" font-weight-black">Asignaciones</v-list-item-title>
-                <v-list-item-subtitle>Avance</v-list-item-subtitle>
+              <v-list-item-title  class="font-weight-medium text-capitalize">{{tipo}}</v-list-item-title>
+              <v-list-item-subtitle>{{getTotal(tipo).completada}}/{{getTotal(tipo).total}} Completados</v-list-item-subtitle>
             </v-list-item-content>
-
-                <v-list-item-avatar color="teal lighten-5" size="43">
-                <v-icon  color="teal lighten-2" size="28">mdi-check-circle</v-icon>
-            </v-list-item-avatar>
-        </v-list-item>
-        <v-list two-line> 
-          <template v-for="(tipo, idx) in tipos" >
-            <div :key="idx" v-if="getTotal(tipo).total">
-            <v-list-item @click="navegateToName('biblioteca-alumno')"> 
-                <v-list-item-content>
-                    <v-list-item-title  class="font-weight-medium text-capitalize">{{tipo}}</v-list-item-title>
-                    <v-list-item-subtitle>{{getTotal(tipo).completada}}/{{getTotal(tipo).total}} Completados</v-list-item-subtitle>
-                </v-list-item-content>
-                <v-list-item-action>
-                  <v-progress-circular
-                      :size="48"
-                      :width="7"
-                      :value="getPorcentaje(tipo)"
-                      color="teal lighten-3"
-                      >
-                      <div>
-                          <span class="dfisplay-1">{{getPorcentaje(tipo)}}%</span>
-                      </div>
-                  </v-progress-circular>
-                </v-list-item-action>
-            </v-list-item>
-            <v-divider class="mx-2"></v-divider>
-            </div>
-          </template>          
-        </v-list>
+            <v-list-item-action>
+              <v-progress-circular
+                :size="50"
+                :width="7"
+                :value="getPorcentaje(tipo)"
+                color="blue darken-4"
+                >
+                <div>
+                    <span class="dfisplay-1">{{getPorcentaje(tipo)}}%</span>
+                </div>
+              </v-progress-circular>
+            </v-list-item-action>
+          </v-list-item>
+          <v-divider class="mx-2"></v-divider>
+          </div>
+        </template>          
+      </v-list>
+      <v-overlay class="rounded-xl" absolute :opacity="0.1" :value="loading">
+        <v-icon size="60" class="mdi-spin">mdi-loading</v-icon>
+      </v-overlay>
     </v-card-text>
   </v-card>
 </template>

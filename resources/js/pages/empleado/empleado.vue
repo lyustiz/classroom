@@ -29,8 +29,19 @@
 
                 <template v-slot:item="{ item }">
                     <tr>
+                        <td class="text-xs-left">
+                            <app-foto-cuenta 
+                                :origenId="item.id" 
+                                :maxItems="1" 
+                                :tipoFoto="8" 
+                                :foto="item.foto"
+                                :aspectRatio="32/43">
+                            </app-foto-cuenta> 
+                        </td>
                         <td class="text-xs-left">{{ item.nb_empleado }}</td>
-						<td class="text-xs-left">{{ item.tx_sexo }}</td>
+						<td class="text-xs-left">
+                            <list-icon :data="sexoIcons" :value="item.tx_sexo"></list-icon>
+                        </td>
 						<td class="text-xs-left">{{ item.tx_documento }}</td>
 						<td class="text-xs-left">{{ item.cargo.nb_cargo }}</td>
 						<td class="text-xs-left">
@@ -94,6 +105,7 @@ export default {
         title:    'Empleado',
         resource: 'empleado',
         headers: [
+            { text: 'Foto',                value: 'id', sortable: false, filterable: false },
             { text: 'Apellidos y Nombres',   value: 'nb_empleado' },
 			{ text: 'Sexo',   value: 'tx_sexo' },
 			{ text: 'Documento',   value: 'tx_documento' },
