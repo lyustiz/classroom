@@ -137,7 +137,7 @@
                                         </v-list-item-content>
                                         <v-list-item-action>
                                             <v-btn icon>
-                                                <template v-if="evaluacion.evaluacion_alumno[0].fe_evaluacion">
+                                                <template v-if="evaluacion.evaluacion_alumno[0].id_status > 4">
                                                     <v-icon size="30" color="green">mdi-checkbox-marked-circle-outline</v-icon>
                                                 </template>
                                                 <template v-else>
@@ -176,7 +176,7 @@
                                         </v-list-item-content>
                                         <v-list-item-action>
                                             <v-btn icon>
-                                                <template v-if="evaluacion.evaluacion_alumno[0].fe_evaluacion">
+                                                <template v-if="evaluacion.evaluacion_alumno[0].id_status > 4">
                                                     <v-icon size="30" color="green">mdi-checkbox-marked-circle-outline</v-icon>
                                                 </template>
                                                 <template v-else>
@@ -214,7 +214,7 @@
                                         </v-list-item-content>
                                         <v-list-item-action>
                                             <v-btn icon>
-                                                <template v-if="asignacion.asignacion_alumno[0].fe_completado">
+                                                <template v-if="asignacion.evaluacion_alumno[0].id_status > 4">
                                                     <v-icon size="30" color="green">mdi-checkbox-marked-circle-outline</v-icon>
                                                 </template>
                                                 <template v-else>
@@ -252,7 +252,7 @@
                                         </v-list-item-content>
                                         <v-list-item-action>
                                             <v-btn icon>
-                                                <template v-if="asignacion.asignacion_alumno[0].fe_completado">
+                                                <template v-if="asignacion.evaluacion_alumno[0].id_status > 4">
                                                     <v-icon size="30" color="green">mdi-checkbox-marked-circle-outline</v-icon>
                                                 </template>
                                                 <template v-else>
@@ -291,7 +291,7 @@
                                         </v-list-item-content>
                                         <v-list-item-action>
                                             <v-btn icon>
-                                                <template v-if="asignacion.asignacion_alumno[0].fe_completado">
+                                                <template v-if="asignacion.evaluacion_alumno[0].id_status > 4">
                                                     <v-icon size="30" color="green">mdi-checkbox-marked-circle-outline</v-icon>
                                                 </template>
                                                 <template v-else>
@@ -330,7 +330,7 @@
                                         </v-list-item-content>
                                         <v-list-item-action>
                                             <v-btn icon>
-                                                <template v-if="asignacion.asignacion_alumno[0].fe_completado">
+                                                <template v-if="asignacion.evaluacion_alumno[0].id_status > 4">
                                                     <v-icon size="30" color="green">mdi-checkbox-marked-circle-outline</v-icon>
                                                 </template>
                                                 <template v-else>
@@ -369,7 +369,7 @@
                                         </v-list-item-content>
                                         <v-list-item-action>
                                             <v-btn icon>
-                                                <template v-if="asignacion.asignacion_alumno[0].fe_completado">
+                                                <template v-if="asignacion.evaluacion_alumno[0].id_status > 4">
                                                     <v-icon size="30" color="green">mdi-checkbox-marked-circle-outline</v-icon>
                                                 </template>
                                                 <template v-else>
@@ -408,33 +408,33 @@
     </v-overlay> 
   
     <v-dialog v-model="dialogActividad" fullscreen>
-        <app-actividad v-if="dialogActividad" :actividad="actividad" evaluar @onClomplete="list()"  @closeDialog="closeDialog('dialogActividad')" ></app-actividad>
+        <app-actividad v-if="dialogActividad"  :actividad="actividad" evaluar :asignacion="asignacion" @onClomplete="list()"  @closeDialog="closeDialog('dialogActividad')" ></app-actividad>
     </v-dialog>
 
     <v-dialog v-model="dialogAudio" width="450" content-class="rounded-xl primary" hide-overlay>
-        <visor-audio v-if="dialogAudio" :audio="audio" evaluar @onClomplete="list()"  @closeDialog="closeDialog('dialogAudio')" ></visor-audio>
+        <visor-audio v-if="dialogAudio" :audio="audio" evaluar @onClomplete="list()" :evaluacion="asignacion"  @closeDialog="closeDialog('dialogAudio')" ></visor-audio>
     </v-dialog>
 
     <v-dialog v-model="dialogVideo" width="80vw" content-class="rounded-xl black">
-        <visor-video v-if="dialogVideo" :video="video" evaluar @onClomplete="list()"  @closeDialog="closeDialog('dialogVideo')" ></visor-video>
+        <visor-video v-if="dialogVideo" :video="video" evaluar @onClomplete="list()" :evaluacion="asignacion"  @closeDialog="closeDialog('dialogVideo')" ></visor-video>
     </v-dialog>
 
     <v-dialog v-model="dialogEnlace" fullscreen scrollable>
-        <visor-enlace v-if="dialogEnlace" :enlace="enlace" evaluar @onClomplete="list()"  @closeDialog="closeDialog('dialogEnlace')" ></visor-enlace>
+        <visor-enlace v-if="dialogEnlace" :enlace="enlace" evaluar @onClomplete="list()" :evaluacion="asignacion"  @closeDialog="closeDialog('dialogEnlace')" ></visor-enlace>
     </v-dialog>
 
     <v-dialog v-model="dialogLectura" fullscreen>
-        <visor-pdf v-if="dialogLectura" :pdf="lectura" evaluar @onClomplete="list()" @closeDialog="closeDialog('dialogLectura')" ></visor-pdf>
+        <visor-pdf v-if="dialogLectura" :pdf="lectura" evaluar @onClomplete="list()" :evaluacion="asignacion" @closeDialog="closeDialog('dialogLectura')" ></visor-pdf>
     </v-dialog>
 
     <!-- evaluaciones  -->
 
     <v-dialog v-model="dialogPrueba" fullscreen scrollable>
-        <app-prueba v-if="dialogPrueba" :prueba="prueba" @closeDialog="closeDialog('dialogPrueba')" ></app-prueba>
+        <app-prueba v-if="dialogPrueba" :evaluacion-alumno="prueba" @closeDialog="closeDialog('dialogPrueba')" ></app-prueba>
     </v-dialog>
 
      <v-dialog v-model="dialogTarea" fullscreen scrollable>
-        <app-tarea v-if="dialogTarea" :evaluacion-alumno="tarea" @closeDialog="closeDialog('dialogTarea')" @onClomplete="getEvaluaciones()" ></app-tarea>
+        <app-tarea v-if="dialogTarea"  :evaluacion-alumno="evaluacion" @closeDialog="closeDialog('dialogTarea')" @onClomplete="getEvaluaciones()" ></app-tarea>
     </v-dialog>
 
     </v-card>
@@ -508,6 +508,10 @@ export default {
                 item:       null,
                 tipoItem:   null,
 
+
+                asignacion: null,
+                evaluacion: null,
+
                 dialogActividad:  false,
                 dialogAudio:      false,
                 dialogVideo:      false,
@@ -542,7 +546,7 @@ export default {
                   
         list()
         {
-            this.getResource( `asignacion/alumno/${this.alumno.id}`).then( (data) => 
+            this.getResource( `evaluacion/alumno/${this.alumno.id}`).then( (data) => 
             {  
                 this.eventos                 = data.plan
                 const { lastStart, lastEnd } = this.$refs.calendar
@@ -666,6 +670,8 @@ export default {
         {
             console.log(asignacion)
             
+            this.asignacion = asignacion.evaluacion_alumno[0]
+               
             switch (tipo ) {
 
                 case 'actividad':
@@ -710,16 +716,21 @@ export default {
 
         verEvaluacion(evaluacion, tipo)
         {
+            console.log(evaluacion)
+            
+            this.evaluacion =  evaluacion.evaluacion_alumno[0]
+            
             switch (tipo ) {
 
                 case 'cuestionario':
-                    this.prueba       = evaluacion.origen
-                    this.dialogPrueba = true
+                    this.prueba             = evaluacion.evaluacion_alumno[0]
+                    this.prueba.evaluacion  =  evaluacion
+                    this.dialogPrueba       = true
                     break;
                 
                 case 'tarea':
                     
-                    this.tarea       = evaluacion.evaluacion_alumno[0]
+                    this.tarea       = this.evaluacion.origen
                     this.dialogTarea = true
                     break;                  
                     break;

@@ -106,7 +106,7 @@
                             <v-col cols="12 text-center"> Calificacion</v-col>
                             <v-col cols="12">
                                 <v-text-field
-                                    :rules="[rules.required, rules.maxNum(tarea.nu_peso)]"
+                                    :rules="[rules.required, rules.maxNum(5), rules.minNum(1)]"
                                     v-model="form.nu_calificacion"
                                     label="Peso"
                                     placeholder="0"
@@ -169,12 +169,12 @@ export default {
 
     created()
     {       
-        this.evaluacion =  this.evaluacionAlumno.evaluacion
-        this.alumno  =     this.evaluacionAlumno.alumno
-        this.tarea   =     this.evaluacionAlumno.evaluacion.origen
-        this.materia =     this.evaluacionAlumno.evaluacion.materia
-        this.tema    =     this.evaluacionAlumno.evaluacion.tema
-        this.item    =     this.evaluacionAlumno
+        this.evaluacion = this.evaluacionAlumno.evaluacion
+        this.alumno     = this.evaluacionAlumno.alumno
+        this.tarea      = this.evaluacionAlumno.evaluacion.origen
+        this.materia    = this.evaluacionAlumno.evaluacion.materia
+        this.tema       = this.evaluacionAlumno.evaluacion.tema
+        this.item       = this.evaluacionAlumno
         this.mapForm()
         console.log(this.evaluacionAlumno)
         this.list()
@@ -183,6 +183,7 @@ export default {
     data() {
         return {
             evaluacion: null,
+            calificacion: [],
             tarea:      null,
             alumno:     null,
             materia:    null,
@@ -208,6 +209,11 @@ export default {
             this.getResource( `evaluacionAlumno/${this.evaluacionAlumno.id}/archivos`).then( data => 
             {
                 this.archivo = data.archivo
+            })
+
+            this.getResource( `calificacion/1`).then( data => 
+            {
+                this.calificacion = data
             })
         },
 

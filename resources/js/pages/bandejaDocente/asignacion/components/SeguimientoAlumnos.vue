@@ -15,7 +15,7 @@
 
             <div v-for="(seguimientos, tipo) in tipos" :key="tipo">
                 <v-row class="white"  >
-                    <v-col cols="4"  v-for="(seguimiento, idx) in seguimientos" :key="idx">
+                    <v-col cols="12" md="4" v-for="(seguimiento, idx) in seguimientos" :key="idx">
                         
                         <seguimiento-evaluaciones v-if="tipo =='evaluacion'"  :seguimiento="seguimiento" :tipo="tipo" @onUpdateData="list()"></seguimiento-evaluaciones> 
 
@@ -105,7 +105,7 @@ export default {
         list()
         {
             //this.seguimientos = []
-            this.getResource( `asignacionAlumno/grupo/${this.grupo.id}`).then( (data) => 
+            this.getResource( `evaluacionAlumno/grupo/${this.grupo.id}`).then( (data) => 
             {  
                 this.seguimientos              = data
             })

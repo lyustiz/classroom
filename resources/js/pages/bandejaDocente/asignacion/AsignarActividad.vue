@@ -7,9 +7,7 @@
             <v-container class="deep-purple white--text py-0">
             <v-row no-gutters>
                 <v-col>
-
                     <v-row align="center">
-                    
                         <v-col>
                             <v-row no-gutters>
                                 <v-col class="text-center text-uppercase"> {{`${this.months[dia.month-1]} ${dia.year}`}}</v-col>
@@ -18,14 +16,12 @@
                                 <v-col class="text-center display-3 font-weight-light"> {{dia.day.toString().padStart(2,"00")}}</v-col>
                             </v-row>
                         </v-col>
-
                     </v-row>
-                    
                 </v-col>
 
                 <v-col>
                     <v-row align="center">
-                        <v-col class="text-center text-uppercase">{{tipo.nb_tipo_asignacion}}</v-col>
+                        <v-col class="text-center text-uppercase">{{tipo.nb_tipo_evaluacion}}</v-col>
                     </v-row>
                     <v-row no-gutters  align="center">
                         <v-col class="text-center">
@@ -78,10 +74,10 @@
 
         <v-col class="mx-2 pa-2 rounded-lg grey lighten-4 ">
             <div>
-                <v-btn fab x-small color="success ml-2" v-show="addBtn && tipo.nb_tipo_asignacion != 'actividad'" @click="addItems()"><v-icon>mdi-plus</v-icon></v-btn>
+                <v-btn fab x-small color="success ml-2" v-show="addBtn && tipo.nb_tipo_evaluacion != 'Actividad'" @click="addItems()"><v-icon>mdi-plus</v-icon></v-btn>
             </div>
             <v-list dense class="selector-container rounded-lg pa-0">
-                <v-list-item-group v-model="form.id_origen" color="deep-purple" class="rounded-lg" multiple>
+                <v-list-item-group v-model="form.id_origen" color="deep-purple" class="rounded-lg">
                     <v-list-item v-for="(item, i) in items" :key="i" :value="item.id" >
                         <template v-slot:default="{ active }" >
                         <v-list-item-avatar color="white">
@@ -152,11 +148,6 @@ export default {
             default: () => {}
         },
 
-        tipoAsignaciones:{
-            type: Array,
-            default: () => []
-        },
-
         tipo:{
             type: Object,
             default: null
@@ -173,21 +164,25 @@ export default {
 
     created()
     {
-      console.log(this.grupo);
+      console.log(this.tipo);
       
        this.form.id_grupo           = this.grupo.id
-       this.form.id_tipo_asignacion = this.tipo.id
+       this.form.id_tipo_evaluacion = this.tipo.id
        this.form.tx_origen          = this.tipo.tx_origen
        this.form.fe_inicio          = this.dia.date
        this.form.fe_fin             = this.dia.date
        this.form.id_status          = 1
+       this.form.hh_inicio          = '00:00'
+       this.form.hh_fin             = '00:00'
+       this.form.id_docente         = this.docente.id
+       this.form.alumnos            = [0]
 
         if(this.tipo.tx_origen == 'enlace'){
-            this.tipoEnlace  = (this.tipo.nb_tipo_asignacion == 'web') ? 1 : 2
+            this.tipoEnlace  = (this.tipo.nb_tipo_evaluacion == 'Enlace') ? 1 : 2
         }
 
         if(this.tipo.tx_origen == 'recurso'){
-            this.tipoRecurso = (this.tipo.nb_tipo_asignacion == 'audio') ? 1 : 3
+            this.tipoRecurso = (this.tipo.nb_tipo_evaluacion == 'Audio') ? 1 : 3
         }
 
        this.resource  = this.getResourcePath()
@@ -199,18 +194,23 @@ export default {
             materias: [],
             temas:    [],
             form:{
-                id: null,
+                id:                 null,
+                fe_inicio:          false,
+                fe_fin:             false,
+                hh_inicio:          false,
+                hh_fin:             false,
+                nu_minutos:         0,
+                id_docente:         null,
+                alumnos:            [],
                 id_grupo: 	        null,
-				id_tipo_asignacion: null,
-				id_materia: 	    null,
-				id_tema: 	        null,
-				id_origen: 	        [],
+                id_tipo_evaluacion: null,
+                id_materia: 	    null,
+                id_tema: 	        null,
+				id_origen: 	        null,
 				tx_origen: 	        null,
-				fe_inicio: 	        null,
-				fe_fin: 	        null,
 				tx_observaciones: 	null,
 				id_status: 	        null,
-				id_usuario: 	    null,
+                id_usuario: 	    null,
             },
             items:      [],
             resource:   null,
@@ -241,7 +241,7 @@ export default {
         {
             this.temas        = []
             this.actividades  = []
-            this.form.id_tema =  null
+            this.form.id_tema = null
             this.addBtn       = false
             this.getResource( `tema/grado/${this.grupo.grado.id}/materia/${materia}` ).then( data =>  this.temas = data)
         },
@@ -259,12 +259,12 @@ export default {
 
         store()
         {
-            if(this.form.id_origen.length < 1) {
-                this.showError('Favor Seleccionar ' + this.tipo.nb_tipo_asignacion )
+            if(!this.form.id_origen) {
+                this.showError('Favor Seleccionar ' + this.tipo.nb_tipo_evaluacion )
                 return
             }
             
-            this.storeResource('asignacion', this.form).then( data => {
+            this.storeResource('evaluacion', this.form).then( data => {
                 this.showMessage(data.msj)
                 this.$emit('closeDialog', true)
             })
@@ -285,13 +285,13 @@ export default {
         },
 
         getDataCols(data)
-        {
-            let cols = this.dataItems[this.tipo.nb_tipo_asignacion]
+        {            
+            let cols = this.dataItems[this.tipo.nb_tipo_evaluacion.toLowerCase()]
             for (const item of data) 
             {
                 if(this.tipo.tx_origen == 'recurso'){
                     let fullurl = `${item.archivo.tipo_archivo.tx_base_path}/${item.id}/${item.archivo.nb_real}`
-                    this.items.push( { id: item.id, name: item.archivo.nb_archivo, url: fullurl, description: this.tipo.nb_tipo_asignacion })
+                    this.items.push( { id: item.id, name: item.archivo.nb_archivo, url: fullurl, description: this.tipo.nb_tipo_evaluacion })
                 } else{
                     this.items.push( { id: item.id, name: item[cols.name], url: item[cols.url], description: item[cols.description] })
                 }

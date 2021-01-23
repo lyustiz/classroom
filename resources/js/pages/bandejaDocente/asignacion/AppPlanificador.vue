@@ -5,35 +5,24 @@
         <v-col cols="auto" >
 
             <v-row  class="flex-column" justify="center" dense>
-
                 <app-button small :size="30" innerClass="mx-auto mt-2"  color="green" label="Volver al Inicio" icon="mdi-home" @click="navegateToName('bandeja-docente')" ></app-button>
-                 
                 <v-item-group active-class="deep-purple" v-model="grupoSelected" class="group-container" >
-
                     <v-item v-slot:default="{ active, toggle }" v-for="(grupo, i) in grupos" :key="i" class="pointer" :value="grupo">
-        
-                        <v-col @click="toggle">
-
-                            <div>
-                                <v-avatar :color="(active) ? 'deep-purple': 'deep-purple lighten-4'" size="90" >
-                                    <v-icon size="70" color="white">mdi-account-group</v-icon> 
-                                </v-avatar>
-                                <v-card-title v-text="grupo.nb_grupo" class="caption my-n2"></v-card-title>
-                            </div>
-
+                        <v-col cols="12" @click="toggle" class="text-center">
+                            <v-avatar :color="(active) ? 'deep-purple': 'deep-purple lighten-4'" size="90" >
+                                <v-icon size="70" color="white">mdi-account-group</v-icon> 
+                            </v-avatar>
+                            <v-card-title v-text="grupo.nb_grupo" class="caption my-n2"></v-card-title>
                         </v-col>
-
                     </v-item>
-
                 </v-item-group>
-
             </v-row>
 
         </v-col>
 
         <v-col class="pa-1"> 
             <v-row no-gutters justify="center">
-                <app-calendar :grupo="grupoSelected" :tipoAsignacion="tipoAsignacion" :tipoEvaluacion="tipoEvaluacion" ></app-calendar>
+                <app-calendar :grupo="grupoSelected" :tipoEvaluacion="tipoEvaluacion" ></app-calendar>
             </v-row>
         </v-col>
 
@@ -69,7 +58,6 @@ export default {
         return {
             grupos:        [],
             grupoSelected: null,
-            tipoAsignacion: [],
             tipoEvaluacion: [],
         }
     },
@@ -79,7 +67,6 @@ export default {
         list()
         {
             this.getResource( `grupo/docente/${this.docente.id}` ).then( data =>  this.grupos = data)
-            this.getResource( `tipoAsignacion` ).then( data => this.tipoAsignacion = data)
             this.getResource( `tipoEvaluacion` ).then( data => this.tipoEvaluacion = data)
         },
     }

@@ -1,98 +1,90 @@
 <template>
- <div>
-
-    <app-simple-toolbar :title="title" @closeModal="$emit('closeModal')"></app-simple-toolbar>
 
     <v-card>
+        <v-card-title class="pa-0">
+             <app-simple-toolbar :title="title" @closeModal="$emit('closeModal')"></app-simple-toolbar>
+        </v-card-title>
+        <v-card-text>
     
-    <v-row>
-        <v-col>
+            <v-list two-line rounded>
+            <v-list-item v-for="(file, idx) in items" :key="idx" >
 
-        <v-list two-line rounded>
-        <v-list-item-group color="primary">
-        <v-list-item v-for="(file, idx) in items" :key="idx" >
-
-            <v-list-item-avatar :color="getFileType(file.tx_mimetype).color">
+                <v-list-item-avatar :color="getFileType(file.tx_mimetype).color">
                     <v-tooltip right color="green lighten-2" open-on-click>
-                    <template v-slot:activator="{ on }">
-                        <v-icon 
-                            v-on="on"
-                            color="white"
-                            v-text="getFileType(file.tx_mimetype).icon"
-                        ></v-icon>
-                    </template>
-                    <span>{{file.tx_observaciones }}</span>
-                </v-tooltip>
-                
-            </v-list-item-avatar>
+                        <template v-slot:activator="{ on }">
+                            <v-icon 
+                                v-on="on"
+                                color="white"
+                                v-text="getFileType(file.tx_mimetype).icon"
+                            ></v-icon>
+                        </template>
+                        <span>{{file.tx_observaciones }}</span>
+                    </v-tooltip>
+                </v-list-item-avatar>
 
-            <v-list-item-content class="my-0 py-0" >
-                <v-list-item-title v-text="file.nb_archivo"></v-list-item-title>
-                <v-list-item-subtitle v-text="file.nb_real"></v-list-item-subtitle>
-            </v-list-item-content>
+                <v-list-item-content class="my-0 py-0" >
+                    <v-list-item-title v-text="file.nb_archivo"></v-list-item-title>
+                    <v-list-item-subtitle v-text="file.nb_real"></v-list-item-subtitle>
+                </v-list-item-content>
 
-            <v-list-item-action>
-                <menu-items :itemsMenu="filesMenu" :item="file" iconColor="green lighten-5" @onMenu="onMenu($event)"></menu-items>
-            </v-list-item-action>
+                <v-list-item-action>
+                    <menu-items :itemsMenu="filesMenu" :item="file" iconColor="green lighten-5" @onMenu="onMenu($event)"></menu-items>
+                </v-list-item-action>
 
-            <a class="d-none" :ref="file.id" rel="noreferrer noopener" target="_blank" :href="file.tipo_archivo.tx_base_path + file.tx_origen_id + '/' + file.tx_path" :download="file.nb_real"></a>
+                <a class="d-none" :ref="file.id" rel="noreferrer noopener" target="_blank" :href="file.tipo_archivo.tx_base_path + file.tx_origen_id + '/' + file.tx_path" :download="file.nb_real"></a>
 
-        </v-list-item>
-        </v-list-item-group>
-        </v-list>
+            </v-list-item>
+            </v-list>
 
-        </v-col>
-    </v-row>
+            <v-row justify="center">
+                <v-col cols="12" md="6" class="text-center">
+                    <v-file-input 
+                        placeholder="Seleccione un archivo"
+                        :accept="mimeTypes" 
+                        v-model="fileUpload"
+                        color="info"
+                        rounded
+                        dense
+                        :loading="loading"
+                        :disabled="loading"
+                        @change="setFiles()"
+                        filled>
+                    </v-file-input>
+                </v-col>
+            </v-row>
 
-    <v-row justify="center">
-        <v-col cols="12" md="6" class="text-center">
-            <v-file-input 
-                placeholder="Seleccione un archivo"
-                :accept="mimeTypes" 
-                v-model="fileUpload"
-                color="info"
-                rounded
-                dense
-                :loading="loading"
-                :disabled="loading"
-                @change="setFiles()"
-                filled>
-            </v-file-input>
-        </v-col>
-    </v-row>
-
-    <app-modal
-        :modal="modal"
-        @closeModal="closeModal()"
-        :head-color="$App.theme.headModal"
-        :title="title">
-        <archivo-form
-            :file="file"
-            :origen="origen"
-            :origenId="origenId"
-            :tipoArchivo="tipoArchivo"
-            :fileType="fileType"
-            :fileName="fileName"
-            :action="action"
-            :item="item"
+        <app-modal
+            :modal="modal"
             @closeModal="closeModal()"
-            @onUpdateFiles="$emit('onUpdateFiles', $event)"
-        ></archivo-form>
+            :head-color="$App.theme.headModal"
+            :title="title">
+            <archivo-form
+                :file="file"
+                :origen="origen"
+                :origenId="origenId"
+                :tipoArchivo="tipoArchivo"
+                :fileType="fileType"
+                :fileName="fileName"
+                :action="action"
+                :item="item"
+                @closeModal="closeModal()"
+                @onUpdateFiles="$emit('onUpdateFiles', $event)"
+            ></archivo-form>
+        </app-modal>
 
-    </app-modal>
+        <form-delete
+            :dialog="dialog"
+            :loading="loading"
+            message="Desea eliminar el Archivo Seleccionado?"
+            @deleteItem="deleteItem()"
+            @deleteCancel="deleteCancel()"
+        ></form-delete>
 
-    <form-delete
-        :dialog="dialog"
-        :loading="loading"
-        message="Desea eliminar el Archivo Seleccionado?"
-        @deleteItem="deleteItem()"
-        @deleteCancel="deleteCancel()"
-    ></form-delete>
+        <pre v-if="$App.debug">{{ $data }}</pre>
+    </v-card-text>
 
-    <pre v-if="$App.debug">{{ $data }}</pre>
+</v-card>
 
-     </v-card>
-</div>
 </template>
 
 <script>

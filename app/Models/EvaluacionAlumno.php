@@ -10,12 +10,15 @@ class EvaluacionAlumno extends Model
 
     protected $fillable   = [
                             'id_evaluacion',
+                            'id_plan_evaluacion',
                             'id_alumno',
                             'fe_evaluacion',
                             'hh_inicio',
                             'hh_fin',     
                             'nu_calificacion',
                             'id_calificacion',
+                            'fe_acceso',
+                            'nu_acceso',
 	 	 	 	 	 	 	'tx_observaciones',
 	 	 	 	 	 	 	'id_status',
 	 	 	 	 	 	 	'id_usuario'

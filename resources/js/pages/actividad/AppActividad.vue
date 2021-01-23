@@ -254,7 +254,7 @@ export default {
         {
             if(!this.isCompleted) return
             
-            this.updateResource(`asignacionAlumno/${this.asignacion.id}/completada`, this.form).then( (data) => {
+            this.updateResource(`evaluacionAlumno/${this.asignacion.id}/completada`, this.form).then( (data) => {
                 this.$emit('onClomplete')
                 //$emit('closeDialog')
             })

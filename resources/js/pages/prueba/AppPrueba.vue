@@ -74,6 +74,7 @@ export default {
         
         getPruebaAlumno()
         {
+            console.log(this.evaluacionAlumno)
             this.getResource(`prueba/${this.evaluacionAlumno.evaluacion.id_origen}/evaluacion/${this.evaluacionAlumno.evaluacion.id}/evaluacionAlumno/${this.evaluacionAlumno.id}`).then((data) =>{
                 this.prueba = data
                 this.setComponent()

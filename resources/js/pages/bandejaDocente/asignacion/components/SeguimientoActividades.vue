@@ -2,12 +2,12 @@
 
     <v-card class="rounded-xl pb-2" >
 
-        <v-toolbar :color="seguimiento[0].asignacion.tipo_asignacion.tx_color" dense dark flat>
+        <v-toolbar :color="seguimiento[0].evaluacion.tipo_evaluacion.tx_color" dense dark flat>
             <v-row>
                 <v-col cols="auto">
-                    <v-icon size="30">{{seguimiento[0].asignacion.tipo_asignacion.tx_icono}}</v-icon>
+                    <v-icon size="30">{{seguimiento[0].evaluacion.tipo_evaluacion.tx_icono}}</v-icon>
                 </v-col>
-                <v-col class="headline text-left">{{ seguimiento[0].asignacion.tipo_asignacion.nb_tipo_asignacion }}</v-col>
+                <v-col class="headline text-left">{{ seguimiento[0].evaluacion.tipo_evaluacion.nb_tipo_evaluacion }}</v-col>
                 <v-col cols="auto" class="title">
                     {{ totalSeguimientos(seguimiento) }}
                 </v-col>
@@ -18,20 +18,20 @@
             <v-list dense>
             <v-list-item color="indigo" link v-for="(item) in seguimiento" :key="item.id" disabled>
                 <v-list-item-avatar color="white" size="35" >
-                    <v-icon size="30" :color="item.asignacion.tipo_asignacion.tx_color">
-                        {{item.asignacion.tipo_asignacion.tx_icono}}
+                    <v-icon size="30" :color="item.evaluacion.tipo_evaluacion.tx_color">
+                        {{item.evaluacion.tipo_evaluacion.tx_icono}}
                     </v-icon>
                 </v-list-item-avatar>
                 <v-list-item-content>
                     <v-list-item-title>{{ getNombre(item) }}</v-list-item-title>
                     <v-list-item-subtitle>
-                        <span class="font-weight-medium"> Vistas: </span>{{item.nu_accesos}}
+                        <span class="font-weight-medium"> Vistas: </span>{{item.nu_acceso}}
                         <span class="font-weight-medium ml-3" v-if="item.fe_acceso"> Acceso: </span>{{item.fe_acceso | formatDate}}
                     </v-list-item-subtitle>
                 </v-list-item-content>
                 <v-list-item-action>
                     <v-btn icon>
-                        <template v-if="item.fe_completado">
+                        <template v-if="item.id_status > 4">
                             <v-icon size="30" color="green">mdi-checkbox-marked-circle-outline</v-icon>
                         </template>
                         <template v-else>
@@ -74,28 +74,27 @@ export default {
 
         getNombre(item, tipo)
         {
-            if(item.asignacion.tx_origen == 'recurso')
+            if(item.evaluacion.tx_origen == 'recurso')
             {
-                return item.asignacion.origen.archivo.nb_archivo
+                return item.evaluacion.origen.archivo.nb_archivo
             } 
             else 
             {
-                let  colunmbName = 'nb_' + item.asignacion.tx_origen
-                return item.asignacion.origen[colunmbName]
+                let  colunmbName = 'nb_' + item.evaluacion.tx_origen
+                return item.evaluacion.origen[colunmbName]
             }
         },
 
-        totalSeguimientos(seguimiento)
+        totalSeguimientos(seguimientos)
         {
             let completados = 0
-            for (const seg of seguimiento) {
-                if(seg.fe_completado)
+            for (const seguimiento of seguimientos) {
+                if(seguimiento.id_status > 4)
                 {
                     completados++
                 }
             }
-            
-            return  `${completados} / ${seguimiento.length}`
+            return  `${completados} / ${seguimientos.length}`
         }
     }
 }

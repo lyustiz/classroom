@@ -20,9 +20,7 @@
 
             <v-col cols="auto">
 
-               
-
-                 <v-tooltip bottom color="green">
+                <v-tooltip bottom color="green">
                     <template v-slot:activator="{ on }">
                     <v-btn small icon depressed v-on="on" class="ml-1 mt-1" @click="navegateToName('planificador-docente')">
                         <v-icon size="30">mdi-calendar-multiselect</v-icon>
@@ -96,23 +94,30 @@
             </v-col>
 
             <v-col cols="12" >
-                <v-select
-                    :items="temas"
-                    v-model="tema"
-                    item-text="nb_tema"
-                    item-value="id"
-                    label="Tema"
-                    hint="Seleccione Tema"
-                    persistent-hint
-                    :loading="loading"
-                    :readonly="loading"
-                    :disabled="temas.length < 1"
-                    dense
-                    filled
-                    rounded
-                    @change="getRecursos($event)"
-                    return-object
-                ></v-select>
+                <v-row no-gutters>
+                    <v-col>
+                        <v-select
+                            :items="temas"
+                            v-model="tema"
+                            item-text="nb_tema"
+                            item-value="id"
+                            label="Tema"
+                            hint="Seleccione Tema"
+                            persistent-hint
+                            :loading="loading"
+                            :readonly="loading"
+                            :disabled="temas.length < 1"
+                            dense
+                            filled
+                            rounded
+                            @change="getRecursos($event)"
+                            return-object
+                        ></v-select>
+                    </v-col>
+                    <v-col cols="auto" class="px-2 py-1">
+                        <v-btn fab small color="success" :disabled="temas.length < 1" @click="dialogTema=true"><v-icon>mdi-plus</v-icon></v-btn>
+                    </v-col>
+                </v-row>
             </v-col>
         </v-row>
 
@@ -156,6 +161,10 @@
 
     <pre>{{$data.peers}}</pre>
 
+    <v-dialog v-model="dialogTema" width="80vw" scrollable content-class="rounded-xl">
+        <app-tema v-if="dialogTema" :materia="materia" :grado="grado" :temas="temas" @closeDialog="closeDialog()" @updateData="getTemas(materia)"></app-tema>
+    </v-dialog>
+
     </v-card>
 
 </template>
@@ -164,6 +173,7 @@
 import DataHelper   from '@mixins/AppData';
 import AppActividad from '@pages/actividad/AppActividad';
 import TemaToolbar  from './component/TemaToolbar'
+import AppTema      from '@pages/tema/AppTema';
 
 // Gestion
 import GestionVideo        from './GestionVideo'
@@ -179,6 +189,7 @@ export default {
 
     components: { 
         'tema-toolbar':         TemaToolbar,
+        'app-tema':             AppTema,
         'app-actividad':        AppActividad,
         'gestion-video':        GestionVideo,
         'gestion-audio':        GestionAudio,
@@ -226,7 +237,9 @@ export default {
 
             evaluaciones:  [],
             cuestionarios: [],
-            tareas:        []
+            tareas:        [],
+
+            dialogTema:   false
         }
     },
 
@@ -303,6 +316,12 @@ export default {
         closeModal()
         {
             this.dialog   = false
+        },
+
+        closeDialog()
+        {
+            this.getTemas(this.materia)
+            this.dialogTema = false
         },
     }
 }

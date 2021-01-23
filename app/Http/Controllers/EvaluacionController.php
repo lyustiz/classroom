@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Evaluacion;
 use App\Models\EvaluacionAlumno;
+use App\Models\PlanEvaluacion;
+use App\Models\TipoEvaluacion;
+use App\Models\Alumno;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Traits\NotificacionTrait;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class EvaluacionController extends Controller
 {
@@ -40,16 +44,6 @@ class EvaluacionController extends Controller
                         ->get();
     }
 
-    public function evaluacionGrupo($idGrupo)
-    {
-        return Evaluacion::with([
-                                'tipoEvaluacion:id,nb_tipo_evaluacion',
-                                'materia:id,nb_materia',
-                                'origen',
-                        ])
-                        ->where('id_grupo',$idGrupo)
-                        ->get();
-    }
 
     public function evaluacionMateriaGrupo($idMateria, $idGrupo)
     {
@@ -123,6 +117,79 @@ class EvaluacionController extends Controller
         return $data;
     }
 
+    public function evaluacionGrupo($idGrupo)  //TODO  Extraer Querys
+    {                          
+        $evaluacion = Evaluacion::with([
+                                'tipoEvaluacion:id,nb_tipo_evaluacion',
+                                'materia:id,nb_materia',
+                                'origen',
+                        ])
+                        ->where('id_grupo',$idGrupo)
+                        ->orderBy('fe_inicio', 'asc')
+                        ->get();
+
+        return [
+            'plan'   => $this->formatData($evaluacion),
+        ];
+    }
+
+    public function formatData($evaluaciones)
+    {
+        $data = [];
+
+        foreach ($evaluaciones as $evaluacion)
+        { 
+            $tipoEvaluacion = strtolower($evaluacion->tipoEvaluacion->nb_tipo_evaluacion);
+            $data[$evaluacion->fe_inicio][$tipoEvaluacion][$evaluacion->materia->nb_materia][] = $evaluacion;
+        }
+
+        return $data;
+    } 
+
+    public function evaluacionAlumno($idAlumno)  //TODO  Extraer Querys
+    {                    
+        $evaluaciones = Evaluacion::with([
+                                'tipoEvaluacion:tipo_evaluacion.id,nb_tipo_evaluacion',
+                                'materia:id,nb_materia',
+                                'tema:id,nb_tema',
+                                'evaluacionAlumno' => function($query) use ( $idAlumno ){
+                                    $query->where('evaluacion_alumno.id_alumno' , $idAlumno);
+                                },
+                                'materia:materia.id,nb_materia',
+                                'origen' => function (MorphTo $morphTo) {
+                                    $morphTo->morphWith([
+                                        Prueba::class    => ['prueba:id:nb_prueba'],
+                                        Tarea::class     => ['tarea:id:nb_tarea'],
+                                        Enlace::class    => ['enlace:id:nb_enlace'],
+                                        Recurso::class   => ['recurso:recurso.id'],
+                                        Actividad::class => ['actividad:actividad.id']
+                                    ]);
+                                }
+                        ])
+                        ->whereHas('grupo.alumno', function (Builder $query) use($idAlumno) {
+                            $query->where('alumno.id', $idAlumno);
+                        })
+                        ->orderBy('fe_inicio', 'asc')
+                        ->get();
+
+                        return [
+                            'plan'   => $this->formatPlan($evaluaciones),
+                        ];
+    }
+
+    public function formatPlan($evaluaciones)
+    {
+        $data = [];
+
+        foreach ($evaluaciones as $evaluacion) //data[dia][tipo][materia]
+        { 
+            $tipoEvaluacion = strtolower($evaluacion->tipoEvaluacion->nb_tipo_evaluacion);
+            $data[$evaluacion->fe_inicio][$tipoEvaluacion][$evaluacion->materia->nb_materia][] = $evaluacion;
+        }
+
+        return $data;
+    }
+
       /**
      * Store a newly created resource in storage.
      *
@@ -133,6 +200,7 @@ class EvaluacionController extends Controller
     {
         $validate = request()->validate([
             'id_tipo_evaluacion' => 'required|integer|max:999999999',
+            'id_docente'         => 'required|integer|max:999999999',
             'id_grupo'           => 'required|integer|max:999999999',
             'id_materia'         => 'required|integer|max:999999999',
             'id_tema'            => 'required|integer|max:999999999',
@@ -149,6 +217,31 @@ class EvaluacionController extends Controller
             'id_usuario'         => 'required|integer|max:999999999',
             'alumnos'            => 'required|array'
         ]);
+
+        $planEvaluacion = PlanEvaluacion::select('id')
+                                        ->where([
+                                                    'id_docente' => $request->id_docente,
+                                                    'id_grupo'   => $request->id_grupo,
+                                                    'id_materia' => $request->id_materia,
+                                                ])
+                                        ->has('periodoActivo')
+                                        ->first();
+
+        $nu_calificacion  = Calificacion::max('nu_hasta')->where('id_grupo_calificacion', 1); //TODO: SELECT GRUPO POR GRADO
+
+        if(!$planEvaluacion)
+        {
+            throw ValidationException::withMessages(['planDisabled' => "No se le asignno la materia para el periodo actual (Ver Plan Evaluacion)"]);
+        }
+        
+        $tipoEvaluacion = TipoEvaluacion::select('tx_clase')->find($request->id_tipo_evaluacion);
+                                        
+        $request->merge([
+                            'id_plan_evaluacion' => $planEvaluacion->id, 
+                            'tx_clase'           => $tipoEvaluacion->tx_clase,
+                            'nu_peso'            => $nu_calificacion
+                        ]);                                
+        
 
         $evaluacion = evaluacion::create($request->all());
 
@@ -169,14 +262,25 @@ class EvaluacionController extends Controller
     {
         $evaluacionAlumnos = [];
 
+        if($evaluacion->tx_clase == 'asignacion' )
+        {
+            $alumnos = Alumno::select('id')
+                             ->whereHas('grupo', function (Builder $query) use($evaluacion) {
+                                 $query->where('id_grupo', $evaluacion->id_grupo);
+                             })
+                             ->get()
+                             ->pluck('id');
+        }
+
         foreach ($alumnos as $idAlumno) 
         {
             $evaluacionAlumnos[] = [
-                                    'id_evaluacion' => $evaluacion->id,
-                                    'id_alumno'     => $idAlumno,
-                                    'id_usuario'    => $evaluacion->id_usuario,
-                                    'id_status'     => 3,
-                                    'created_at'    => date('Y-m-d H:i:s'),
+                                    'id_plan_evaluacion' => $evaluacion->id_plan_evaluacion, 
+                                    'id_evaluacion'      => $evaluacion->id,
+                                    'id_alumno'          => $idAlumno,
+                                    'id_usuario'         => $evaluacion->id_usuario,
+                                    'id_status'          => 3,
+                                    'created_at'         => date('Y-m-d H:i:s'),
                                 ];
         }
 

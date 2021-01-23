@@ -1,8 +1,19 @@
 <template>
-  <v-card>
-      
+  <v-card class="rounded-xl">
+    <v-card-title class="pa-0">
+       <v-subheader insert class="grey lighten-3 rounded-t-xl font-weight-bold col-12">
+          <v-row no-gutters>
+            <v-col>Evaluaciones</v-col>
+            <v-col cols="auto">
+              <v-btn icon x-small class="mx-1" @click.native="$emit('closeDialog')">
+                <v-icon>mdi-close-circle</v-icon>
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-subheader>
+    </v-card-title>
+    <v-card-text class="px-0">
       <v-list class="rounded-xl" dense subheader>
-        <v-subheader insert class="grey lighten-3 pl-4 rounded-t-xl font-weight-bold">Evaluaciones</v-subheader>
         <div v-for="(evaluacion, idx) in evaluaciones" :key="idx" class="">
           <v-list-item class="grey lighten-5" > 
             <v-list-item-avatar :color="evaluacion.tipo_evaluacion.tx_color">
@@ -29,7 +40,10 @@
           </v-list-item>
         </div>
       </v-list>
-      
+    </v-card-text>  
+    <v-overlay color="rounded-lg" absolute :opacity="0.3" :value="loading">
+        <v-icon size="40" class="mdi-spin">mdi-loading</v-icon>
+    </v-overlay>
   </v-card>
 </template>
 
@@ -88,14 +102,31 @@ export default {
         this.evaluaciones = data
       })
     },
+
     getNombreOrigen(origen, data)
     {
+      console.log(data) 
       switch (origen) {
         case 'prueba':
           return data.nb_prueba
           break;
         case 'tarea':
           return data.nb_tarea
+          break;
+        case 'actividad':
+          return data.nb_actividad
+          break;
+        case 'video':
+          return data.nb_enlace
+          break;
+        case 'audio':
+          return data.archivo.nb_archivo
+          break;
+        case 'lectura':
+          return data.archivo.nb_archivo
+          break;
+        case 'enlace':
+          return data.nb_enlace
           break;
       
         default:

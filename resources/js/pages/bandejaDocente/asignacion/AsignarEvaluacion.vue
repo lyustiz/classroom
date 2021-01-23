@@ -442,9 +442,10 @@ export default {
        this.dates.hh_inicio = this.formatTime('00:00')
        this.dates.hh_fin    = this.formatTime('23:59')
 
-       this.form.id_grupo   = this.grupo.id
+       this.form.id_grupo           = this.grupo.id
        this.form.id_tipo_evaluacion = this.tipo.id
-       this.form.tx_origen  = this.tipo.tx_origen
+       this.form.tx_origen          = this.tipo.tx_origen
+       this.form.id_docente = this.docente.id
     },
 
     data() {
@@ -463,22 +464,23 @@ export default {
                 minutos:   false
             },
             form:{
-                id:         null,
-                fe_inicio:  false,
-                fe_fin:     false,
-                hh_inicio:  false,
-                hh_fin:     false,
-                nu_minutos: 0,
-                alumnos:    [],
+                id:                 null,
+                fe_inicio:          false,
+                fe_fin:             false,
+                hh_inicio:          false,
+                hh_fin:             false,
+                nu_minutos:         0,
+                id_docente:         null,
+                alumnos:            [],
                 id_grupo: 	        null,
-				id_tipo_evaluacion: null,
+                id_tipo_evaluacion: null,
                 id_materia: 	    null,
                 id_tema: 	        null,
 				id_origen: 	        null,
 				tx_origen: 	        null,
 				tx_observaciones: 	null,
 				id_status: 	        null,
-				id_usuario: 	    null,
+                id_usuario: 	    null,
             },
             default: {
                 id_status: 1
@@ -522,7 +524,6 @@ export default {
 
         store()
         {
-           console.log(this.prueba, this.tarea)
             if(this.prueba){ 
                 this.form.id_origen = this.prueba.id
                 this.form.id_tema   = this.prueba.id_tema
@@ -543,9 +544,7 @@ export default {
         },
 
         validate()
-        {
-            console.log(this.form)
-            
+        {            
             if( !this.form.fe_inicio ){
                 this.showError('Favor seleccionar fecha Desde')
                 return false

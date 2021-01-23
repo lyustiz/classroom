@@ -375,9 +375,7 @@
             <div class="pa-1" v-if="grupo">
 
             <v-list  color="grey lighten-5 rounded-lg">
-
                 <v-subheader>Evaluaciones</v-subheader>
-
                 <v-list-item v-for="tipo in tipoEvaluacion" :key="tipo.nb_tipo_evaluacion" class="pointer" ripple @click="asignarEvaluacion(day, tipo)">
                     <v-list-item-avatar color="white" size="35">
                         <v-icon size="30" :color="tipo.tx_color" v-text="tipo.tx_icono"></v-icon>
@@ -386,19 +384,6 @@
                         <v-list-item-title class="amber--amber" v-text="tipo.nb_tipo_evaluacion"></v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
-
-
-                <v-subheader>Asignaciones</v-subheader>
-
-                <v-list-item v-for="(tipo, i) in tipoAsignacion" :key="i" class="pointer" ripple @click="asignarActividad(day, tipo)">
-                    <v-list-item-avatar color="white" size="35">
-                        <v-icon size="30" :color="tipo.tx_color" v-text="tipo.tx_icono"></v-icon>
-                    </v-list-item-avatar>
-                    <v-list-item-content>
-                        <v-list-item-title class="amber--amber" v-text="tipo.nb_tipo_asignacion"></v-list-item-title>
-                    </v-list-item-content>
-                </v-list-item>
-
             </v-list>
 
             </div>
@@ -425,7 +410,7 @@
     </v-overlay> 
   
     <v-dialog v-model="dialogAsignacion" max-width="500px" content-class="rounded-xl" >
-        <asignar-actividad v-if="dialogAsignacion" :grupo="grupo" :dia="dia" :tipo="tipo" :tipoAsignacion="tipoAsignacion" @closeDialog="closeDialog('dialogAsignacion', $event)" ></asignar-actividad>
+        <asignar-actividad v-if="dialogAsignacion" :grupo="grupo" :dia="dia" :tipo="tipo" @closeDialog="closeDialog('dialogAsignacion', $event)" ></asignar-actividad>
     </v-dialog>
 
     <v-dialog v-model="dialogEvaluacion" max-width="90vw" content-class="rounded-xl" scrollable >
@@ -465,7 +450,7 @@
     <form-delete
         :dialog="dialogEliminar"
         :loading="loading"
-        message="Desea eliminar la Asignacion/Evaluacion Seleccionada?"
+        message="Desea eliminar la Evaluacion Seleccionada?"
         @deleteItem="eliminarItem()"
         @deleteCancel="cancelEliminar()"
     ></form-delete>
@@ -501,11 +486,6 @@ export default {
         grupo: {
             type:    Object,
             default: () => null
-        },
-
-        tipoAsignacion: {
-            type:    Array,
-            default: () => []
         },
 
         tipoEvaluacion: {
@@ -609,7 +589,7 @@ export default {
                   
         list()
         {
-            this.getResource( 'asignacion/grupo/' + this.grupo.id ).then( (data) => 
+            this.getResource( 'evaluacion/grupo/' + this.grupo.id ).then( (data) => 
             {  
                 this.eventos                 = data.plan
                 const { lastStart, lastEnd } = this.$refs.calendar
@@ -619,12 +599,7 @@ export default {
 
         getEventsDay(day)
         {
-           return this.eventos[day.date]
-        },
-
-        getActividadDay(day)
-        {
-            console.log(day)
+          return this.eventos[day.date]
         },
 
         prev() 
@@ -701,23 +676,22 @@ export default {
             return  new Date(newDate.setDate(newDate.getDate() + days))       
         },
 
-        asignarActividad(dia, tipo)
-        {            
-            this.dialogAsignacion = true;
-            this.dia           = dia;
-            this.tipo          = tipo;
-        },
-
         asignarEvaluacion(dia, tipo)
         {            
-            this.dialogEvaluacion = true;
-            this.dia           = dia;
-            this.tipo          = tipo;
+            if(tipo.tx_clase == 'evaluacion')
+            {
+                this.dialogEvaluacion = true;
+                this.dia           = dia;
+                this.tipo          = tipo;
+            }else{
+                this.dialogAsignacion = true;
+                this.dia           = dia;
+                this.tipo          = tipo;
+            }
         },
 
         confirmEliminar(item, tipoItem)
         {
-            console.log(item, tipoItem)
             this.item           = item
             this.tipoItem       = tipoItem
             this.dialogEliminar = true
@@ -742,7 +716,6 @@ export default {
 
         verAsignacion(asignacion, tipo)
         {
-            console.log(asignacion)
             
             switch (tipo ) {
 
@@ -811,13 +784,6 @@ export default {
                     break;
             }
 
-        },
-
-        asignarEvaluacion(dia, tipo)
-        {
-            this.dialogEvaluacion = true;
-            this.dia           = dia;
-            this.tipo          = tipo;
         },
 
         closeDialog(dialog, refresh)

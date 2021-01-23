@@ -34,7 +34,7 @@ class Tema extends Model
 
     public function scopeComboData($query)
     {
-        return $query->addSelect('id', 'nb_tema');
+        return $query->addSelect('id', 'nb_tema', 'nu_tema', 'id_status');
     }
 
     public function status()

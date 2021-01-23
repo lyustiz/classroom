@@ -144,11 +144,11 @@
                                 <card-book 
                                     :active="active" 
                                     color="amber" 
-                                    :label="actividad.asignacion.origen.nb_actividad" 
+                                    :label="actividad.evaluacion.origen.nb_actividad" 
                                     icon="mdi-rocket-launch" 
                                     @onSelect="verAsignacion(actividad, 'actividad')"
-                                    :completed="(actividad.fe_completado) ? true: false"
-                                    v-if="completed.actividad || (!actividad.fe_completado)">
+                                    :completed="(actividad.id_status > 4) ? true: false"
+                                    v-if="completed.actividad || actividad.id_status < 5">
                                 </card-book>
                             </v-slide-item> 
                             <v-overlay color="amber rounded-lg" absolute :opacity="0.3" :value="loading">
@@ -170,11 +170,11 @@
                                 <card-book 
                                     :active="active"
                                     color="blue" 
-                                    :label="enlace.asignacion.origen.nb_enlace" 
+                                    :label="enlace.evaluacion.origen.nb_enlace" 
                                     icon="mdi-earth" 
                                     @onSelect="verAsignacion(enlace, 'enlace')"
-                                    :completed="(enlace.fe_completado) ? true: false"
-                                    v-if="completed.enlace || (!enlace.fe_completado)">
+                                    :completed="(enlace.id_status > 4) ? true: false"
+                                    v-if="completed.enlace || enlace.id_status < 5">
                                 </card-book>
                             </v-slide-item> 
                             <v-overlay color="amber rounded-lg" absolute :opacity="0.3" :value="loading">
@@ -196,11 +196,11 @@
                                 <card-book 
                                     :active="active" 
                                     color="red" 
-                                    :label="video.asignacion.origen.nb_enlace" 
+                                    :label="video.evaluacion.origen.nb_enlace" 
                                     icon="mdi-play-box-multiple" 
                                     @onSelect="verAsignacion(video, 'video')"
-                                    :completed="(video.fe_completado) ? true: false"
-                                    v-if="completed.video || (!video.fe_completado)">
+                                    :completed="(video.id_status > 4) ? true: false"
+                                    v-if="completed.video || video.id_status < 5">
                                 </card-book>
                             </v-slide-item> 
                             <v-overlay color="amber rounded-lg" absolute :opacity="0.3" :value="loading">
@@ -222,11 +222,11 @@
                                 <card-book 
                                     :active="active" 
                                     color="orange" 
-                                    :label="audio.asignacion.origen.archivo.nb_archivo" 
+                                    :label="audio.evaluacion.origen.archivo.nb_archivo" 
                                     icon="mdi-music-box-multiple" 
                                     @onSelect="verAsignacion(audio, 'audio')"
-                                    :completed="(audio.fe_completado) ? true: false"
-                                    v-if="completed.audio || (!audio.fe_completado)">
+                                    :completed="(audio.id_status > 4) ? true: false"
+                                    v-if="completed.audio || audio.id_status < 5">
                                 </card-book>
                             </v-slide-item> 
                             <v-overlay color="amber rounded-lg" absolute :opacity="0.3" :value="loading">
@@ -248,11 +248,11 @@
                                 <card-book 
                                     :active="active" 
                                     color="purple" 
-                                    :label="lectura.asignacion.origen.archivo.nb_archivo" 
+                                    :label="lectura.evaluacion.origen.archivo.nb_archivo" 
                                     icon="mdi-library" 
                                     @onSelect="verAsignacion(lectura, 'lectura')"
-                                    :completed="(lectura.fe_completado) ? true: false"
-                                    v-if="completed.lectura || (!lectura.fe_completado)">
+                                    :completed="(lectura.id_status > 4) ? true: false"
+                                    v-if="completed.lectura || lectura.id_status < 5">
                                 </card-book>
                             </v-slide-item> 
                             <v-overlay color="amber rounded-lg" absolute :opacity="0.3" :value="loading">
@@ -279,23 +279,23 @@
         </v-dialog>
 
         <v-dialog v-model="dialogActividad" fullscreen persistent no-click-animation>
-            <app-actividad v-if="dialogActividad" :actividad="actividadSelected.asignacion.origen" evaluar :asignacion="actividadSelected" @onClomplete="getAsignaciones()"  @closeDialog="closeDialog('dialogActividad')" ></app-actividad>
+            <app-actividad v-if="dialogActividad" :actividad="actividadSelected.origen" evaluar :asignacion="asignacion" @onClomplete="getEvaluaciones()"  @closeDialog="closeDialog('dialogActividad')" ></app-actividad>
         </v-dialog>
 
         <v-dialog v-model="dialogAudio" width="450" content-class="rounded-xl primary" hide-overlay>
-            <visor-audio v-if="dialogAudio" :audio="audioSelected" :asignacion="asignacion" evaluar @onClomplete="getAsignaciones()" @closeDialog="closeDialog('dialogAudio')" ></visor-audio>
+            <visor-audio v-if="dialogAudio" :audio="audioSelected" :evaluacion="asignacion" evaluar @onClomplete="getEvaluaciones()" @closeDialog="closeDialog('dialogAudio')" ></visor-audio>
         </v-dialog>
 
         <v-dialog v-model="dialogVideo" width="80vw" content-class="rounded-xl black">
-            <visor-video v-if="dialogVideo" :video="videoSelected" :asignacion="asignacion" evaluar @onClomplete="getAsignaciones()" @closeDialog="closeDialog('dialogVideo')" ></visor-video>
+            <visor-video v-if="dialogVideo" :video="videoSelected" :evaluacion="asignacion" evaluar @onClomplete="getEvaluaciones()" @closeDialog="closeDialog('dialogVideo')" ></visor-video>
         </v-dialog>
 
         <v-dialog v-model="dialogEnlace" fullscreen scrollable>
-            <visor-enlace v-if="dialogEnlace" :enlace="enlaceSelected" :asignacion="asignacion" evaluar @onClomplete="getAsignaciones()" @closeDialog="closeDialog('dialogEnlace')" ></visor-enlace>
+            <visor-enlace v-if="dialogEnlace" :enlace="enlaceSelected" :evaluacion="asignacion" evaluar @onClomplete="getEvaluaciones()" @closeDialog="closeDialog('dialogEnlace')" ></visor-enlace>
         </v-dialog>
 
         <v-dialog v-model="dialogLectura" width="95vw" content-class="rounded-xl">
-            <visor-pdf v-if="dialogLectura" :pdf="lecturaSelected" :asignacion="asignacion" evaluar @onClomplete="getAsignaciones()" @closeDialog="closeDialog('dialogLectura')" ></visor-pdf>
+            <visor-pdf v-if="dialogLectura" :pdf="lecturaSelected" :evaluacion="asignacion" evaluar @onClomplete="getEvaluaciones()" @closeDialog="closeDialog('dialogLectura')" ></visor-pdf>
         </v-dialog>
 
         <pre>{{$data.peers}}</pre>
@@ -421,7 +421,6 @@ export default {
         list()
         {
            this.getLibros()
-           this.getAsignaciones()
            this.getEvaluaciones()
         },
 
@@ -430,39 +429,23 @@ export default {
             this.getResource( `libro/grado/${this.grado.id}` ).then( data =>  this.libros = data )
         },
 
-        getAsignaciones()
-        {
-            this.getResource( `asignacionAlumno/alumno/${this.alumno.id}` ).then( data => {
-                this.asignaciones = data
-                this.actividades  = data.actividad
-                this.enlaces      = data.enlace
-                this.videos       = data.video
-                this.audios       = data.audio
-                this.lecturas     = data.lectura
-            })
-        },
-
         getEvaluaciones()
         {
             this.getResource( `evaluacionAlumno/alumno/${this.alumno.id}` ).then( data =>  {
                 this.evaluaciones  = data
                 this.cuestionarios = data.cuestionario
                 this.tareas        = data.tarea
-            
+                this.actividades   = data.actividad
+                this.enlaces       = data.enlace
+                this.videos        = data.video
+                this.audios        = data.audio
+                this.lecturas      = data.lectura
             })
         },
 
         getCompletadas( tipo, items)
         {
-            if(tipo == 'asignaciones')
-            {
-               return  (items)  ? items.filter( item => item.fe_completado).length : 0
-            }
-
-            if(tipo == 'evaluaciones')
-            {
-               return  (items)  ? items.filter( item => item.id_status > 4).length : 0
-            }
+            return  (items)  ? items.filter( item => item.id_status > 4).length : 0
         },
 
         closeModal()
@@ -488,14 +471,12 @@ export default {
         verAsignacion(asignacion, tipo)
         {
             this.asignacion = asignacion
-            asignacion  = asignacion.asignacion
-
-            console.log(asignacion)
-           
-           switch (tipo ) {
+            asignacion      = asignacion.evaluacion
+           console.log(asignacion)
+            switch (tipo ) {
 
                 case 'actividad':
-                    this.actividadSelected = this.asignacion
+                    this.actividadSelected = asignacion
                     this.dialogActividad   = true
                     break;
                 
@@ -522,7 +503,7 @@ export default {
                     break;
                 
                 case 'lectura':
-                    this.lecturaSelected  =   {   name: asignacion.origen.archivo.nb_archivo,
+                    this.lecturaSelected  = {   name: asignacion.origen.archivo.nb_archivo,
                                                 src: `${asignacion.origen.archivo.tipo_archivo.tx_base_path}${asignacion.id_origen}/${asignacion.origen.archivo.tx_path}` 
                                             }
                     this.dialogLectura  = true 
@@ -542,7 +523,7 @@ export default {
             switch (tipo ) {
 
                 case 'cuestionario':
-                    this.pruebaSelected  = evaluacion.origen
+                    this.pruebaSelected  =  this.evaluacion
                     this.dialogPrueba    = true
                     break;
                 

@@ -15,7 +15,7 @@ export default
             default: 60
         },
 
-        asignacion: {
+        evaluacion: {
             type: Object,
             default: ()  => {}
         }
@@ -27,7 +27,7 @@ export default
         {
             if(this.validarData())
             {
-                this.time = ( this.segundos )  ? this.segundos :  this.asignacion.asignacion.tipo_asignacion.nu_tiempo
+                this.time = ( this.segundos )  ? this.segundos :  this.evaluacion.evaluacion.tipo_evaluacion.nu_criterio
                 this.registroAcceso()
                 this.conteo()
             }
@@ -63,7 +63,7 @@ export default
 
         validarData()
         {           
-            if(!this.asignacion.id) {
+            if(!this.evaluacion.id) {
                 this.showError('Error en Asignacion')
                 return
             }
@@ -73,12 +73,12 @@ export default
                 return
             }
 
-            if(!this.asignacion.id_alumno) {
+            if(!this.evaluacion.id_alumno) {
                 this.showError('Error en datos alumno')
                 return
             }
 
-            if(this.asignacion.fe_completado) {
+            if(this.evaluacion.fe_completado) {
                 this.showMessage('Actividad Completada')
                 this.isCompleted = true
                 return true
@@ -89,7 +89,7 @@ export default
 
         registroAcceso()
         {
-            this.updateResource(`asignacionAlumno/${this.asignacion.id}/acceso`, this.form).then( (data) => {
+            this.updateResource(`evaluacionAlumno/${this.evaluacion.id}/acceso`, this.form).then( (data) => {
 
             })
 
@@ -99,7 +99,7 @@ export default
         {
             if(this.isCompleted) return
             
-            this.updateResource(`asignacionAlumno/${this.asignacion.id}/completada`, this.form).then( (data) => {
+            this.updateResource(`evaluacionAlumno/${this.evaluacion.id}/completada`, this.form).then( (data) => {
                 this.isCompleted = true
                 this.$emit('onClomplete')
             })

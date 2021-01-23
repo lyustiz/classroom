@@ -9,25 +9,23 @@ class Evaluacion extends Model
     protected $table 	  = 'evaluacion';
 
     protected $fillable   = [
-                                'id_tipo_evaluacion',
-                                'nb_evaluacion',
-                                'tx_descripcion',
-                                'id_grupo',
-                                'id_materia',
-                                'id_tema',
-                                'tx_origen',
-                                'id_origen',
-                                'nu_peso',
-                                'fe_inicio',
-                                'fe_fin',
-                                'hh_inicio',
-                                'hh_fin',
-                                'nu_minutos',
-                                'tx_observaciones',
-                                'id_status',
-                                'id_usuario',
-                                'created_at',
-	 	 	 	 	 	 	    'updated_at'
+                            'id_plan_evaluacion',
+                            'id_tipo_evaluacion',
+                            'tx_clase',
+                            'id_origen',
+                            'tx_origen',
+                            'id_grupo',
+                            'id_materia',
+                            'id_tema',
+                            'nu_peso',
+                            'fe_inicio',
+                            'fe_fin',
+                            'hh_inicio',
+                            'hh_fin',
+                            'nu_minutos',
+                            'tx_observaciones',
+                            'id_status',
+                            'id_usuario'       
                             ]; 
     
     protected $hidden     = [
@@ -35,15 +33,15 @@ class Evaluacion extends Model
 	 	 	 	 	 	 	'updated_at'
                             ];
     
-    protected $planificada = 9;
+    protected $asignada    = 3;
 
-    protected $asignada    = 10;
+    protected $ejecucion   = 4;
+                            
+    protected $evaluada    = 6;
 
-    protected $evaluada    = 11;
-
-    public function planificada()
+    public function ejecucion()
     {
-        return $this->planificada;
+        return $this->ejecucion;
     }
 
     public function asignada()
@@ -58,7 +56,7 @@ class Evaluacion extends Model
 
     public function scopeActivo($query)
     {
-        return $query->where('id_status', 9);
+        return $query->where('id_status', 1);
 	}
 
 	public function scopeComboData($query)

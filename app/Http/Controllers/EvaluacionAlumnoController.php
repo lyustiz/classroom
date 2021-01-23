@@ -6,6 +6,7 @@ use App\Models\EvaluacionAlumno;
 use App\Models\Calificacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 
 class EvaluacionAlumnoController extends Controller
 {
@@ -56,7 +57,7 @@ class EvaluacionAlumnoController extends Controller
 
         foreach ($evaluacinesAlumno as $evaluacionAlumno) //data[tipo]
         { 
-            $tipo          = $evaluacionAlumno->evaluacion->tipoEvaluacion->nb_tipo_evaluacion;
+            $tipo          = strtolower($evaluacionAlumno->evaluacion->tipoEvaluacion->nb_tipo_evaluacion);
 
             $data[$tipo][] = $evaluacionAlumno;
         }
@@ -66,7 +67,44 @@ class EvaluacionAlumnoController extends Controller
 
     public function evaluacionAlumnoGrupo($idGrupo)  //TODO  Extraer Querys
     {
-        $asignaciones = EvaluacionAlumno::with([
+        $evaluaciones = EvaluacionAlumno::with([
+                                'alumno:id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',
+                                'evaluacion:id,id_tipo_evaluacion,tx_origen,id_origen,id_grupo,id_materia,id_tema,nu_peso,fe_inicio,fe_fin,hh_inicio,hh_fin,nu_minutos',
+                                'evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion,tx_icono,tx_color,tx_clase',
+                                'evaluacion.materia:id,nb_materia',
+                                'evaluacion.tema:id,nb_tema',
+                                'evaluacion.origen'
+                            ])
+                            ->whereHas('alumno.grupo', function (Builder $query) use($idGrupo) {
+                                $query->where('grupo.id', $idGrupo);
+                            })
+                            ->get(); 
+
+        return $this->formatDataAlumnos($evaluaciones);
+    }
+
+    public function formatDataAlumnos($evaluacionesAlumno)
+    {
+        $data = [];
+
+        foreach ($evaluacionesAlumno as $evaluacionAlumno) //data[tipo][materia]
+        { 
+            $alumno         = $evaluacionAlumno->alumno->nb_alumno;
+            $evaluacion     = $evaluacionAlumno->evaluacion;
+            $tipoEvaluacion = $evaluacion->tipoEvaluacion->nb_tipo_evaluacion;
+            $clase          = $evaluacion->tipoEvaluacion->tx_clase;
+
+            $data[$alumno][$clase][$tipoEvaluacion][] = $evaluacionAlumno;
+        }
+
+        return $data;
+    }
+
+
+    /*
+    public function asignacionAlumnoGrupo($idGrupo)  //TODO  Extraer Querys
+    {
+        $asignaciones = AsignacionAlumno::with([
                                 'alumno:id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',
                                 'asignacion:id,id_tipo_asignacion,id_materia,id_tema,id_origen,tx_origen,fe_inicio,fe_fin',
                                 'asignacion.tipoAsignacion:id,nb_tipo_asignacion,tx_icono,tx_color,tx_criterio,nu_tiempo',
@@ -79,10 +117,23 @@ class EvaluacionAlumnoController extends Controller
                             })
                             ->get(); 
 
-        return $this->formatDataAlumnos($asignaciones);
+        $evaluaciones = EvaluacionAlumno::with([
+                                'alumno:id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',
+                                'evaluacion:id,id_tipo_evaluacion,id_materia,id_tema,id_origen,tx_origen,fe_inicio,fe_fin',
+                                'evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion,tx_icono,tx_color',
+                                'evaluacion.materia:id,nb_materia',
+                                'evaluacion.tema:id,nb_tema',
+                                'evaluacion.origen'
+                            ])
+                            ->whereHas('alumno.grupo', function (Builder $query) use($idGrupo) {
+                                $query->where('grupo.id', $idGrupo);
+                            })
+                            ->get();                     
+        
+        return $this->formatDataAlumnos($asignaciones, $evaluaciones);
     }
 
-    public function formatDataAlumnos($evaluacionesAlumno)
+    public function formatDataAlumnos($asignacionesAlumno, $evaluacionesAlumno)
     {
         $data = [];
 
@@ -90,12 +141,24 @@ class EvaluacionAlumnoController extends Controller
         { 
             $alumno         = $evaluacionAlumno->alumno->nb_alumno;
             $evaluacion     = $evaluacionAlumno->evaluacion;
-            $tipoAsignacion = $evaluacion->tipoAsignacion->nb_tipo_evaluacion;
-            $data[$alumno][$tipoAsignacion][] = $evaluacionAlumno;
+            $tipoEvaluacion = $evaluacion->tipoEvaluacion->nb_tipo_evaluacion;
+            $data[$alumno]['evaluacion'][$tipoEvaluacion][] = $evaluacionAlumno;
+        }
+
+        foreach ($asignacionesAlumno as $asignacionAlumno) //data[tipo][materia]
+        { 
+            $alumno         = $asignacionAlumno->alumno->nb_alumno;
+            $asignacion     = $asignacionAlumno->asignacion;
+            $tipoAsignacion = $asignacion->tipoAsignacion->nb_tipo_asignacion;
+            $data[$alumno]['asignacion'][$tipoAsignacion][] = $asignacionAlumno;
         }
 
         return $data;
-    }
+    } 
+
+
+
+     */
 
     public function evaluacionAlumnoArchivo($idEvaluacionAlumno)  
     {
@@ -158,17 +221,16 @@ class EvaluacionAlumnoController extends Controller
 
     public function calificar($evaluacion, $nu_calificacion)
     {
-        $maxCalificacion  = Calificacion::max('nu_hasta');
-
-        $peso             = ($evaluacion->nu_peso == 0 ) ? 0.01 :  $evaluacion->nu_peso;
-
-        $porcentaje       = $nu_calificacion * 100 / $peso ;
-        
-        $nu_calificacion  = round( ($maxCalificacion * $porcentaje / 100), 2, PHP_ROUND_HALF_UP);
-
         $calificacion     = Calificacion::where('nu_desde' ,'<=', $nu_calificacion )->where('nu_hasta' ,'>=', $nu_calificacion )->first();
-
+        
         return $calificacion->id;
+        /* 
+        $maxCalificacion  = Calificacion::max('nu_hasta');
+        $peso             = ($evaluacion->nu_peso == 0 ) ? 0.1 :  $evaluacion->nu_peso;
+        $porcentaje       = $nu_calificacion * 100 / $peso ;
+        $nu_calificacion  = round( ($maxCalificacion * $porcentaje / 100), 2, PHP_ROUND_HALF_UP);
+        return $calificacion->id; 
+        */
     }
 
     /**
@@ -250,6 +312,44 @@ class EvaluacionAlumnoController extends Controller
         $puntos            = round(($maxCalificacion * $percPeso * $percCalificacion), 2, PHP_ROUND_HALF_UP);
 
         return $puntos;
+    }
+
+    public function acceso(Request $request, EvaluacionAlumno $evaluacionAlumno)
+    {
+        $validate = request()->validate([
+			'id_usuario'        => 	'required|integer|max:999999999',
+        ]);
+
+        $request->merge(['fe_acceso' => date("Y-m-d H:i:s")]);
+
+        $update = $evaluacionAlumno->update($request->all());
+
+        $evaluacionAlumno->increment('nu_acceso');
+
+        return [ 'msj' => 'Asignacion iniciada' , compact('update')];
+    }
+
+    public function completada(Request $request, EvaluacionAlumno $evaluacionAlumno)
+    {
+        $validate = request()->validate([
+			'id_usuario'        => 	'required|integer|max:999999999',
+        ]);
+
+        $calificacion  = Calificacion::select('id', 'nu_hasta', 'nb_calificacion')
+                                     ->where('id_grupo_calificacion', 1) //TODO: SELECT GRUPO POR GRADO
+                                     ->orederBy('id_nivel_calificacion', 'desc')
+                                     ->limit(1); 
+
+        $request->merge([
+                'fe_evaluacion'   => date("Y-m-d H:i:s"), 
+                'id_status'       => 5, 
+                'id_calificacion' => $calificacion->id, 
+                'nu_calificacion' => $calificacion->nu_calificacion 
+        ]);
+
+        $update = $evaluacionAlumno->update($request->all());
+
+        return [ 'msj' => 'Asignacion Completada' , compact('update')];
     }
 
     /**

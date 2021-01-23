@@ -77,7 +77,6 @@ import PlanEvaluacion    from './evaluacion/PlanEvaluacion'
 import EvaluacionDocente from './evaluacion/EvaluacionDocente'
 import ClaseAlumno       from '@pages/bandejaAlumno/clase/AppClase'
 import MenuPrueba        from './prueba/MenuPrueba.vue'
-import AppAsignar        from './asignacion/AppAsignar'
 import GestionTemas      from './tema/GestionTema'
 
 export default {
@@ -87,7 +86,6 @@ export default {
         'plan-evaluacion':    PlanEvaluacion,
         'evaluacion-docente': EvaluacionDocente,
         'clase-alumno':       ClaseAlumno, 
-        'app-asignar':        AppAsignar, 
         'gestion-tema':       GestionTemas, 
     },
 
@@ -107,10 +105,9 @@ export default {
             sectionWidth:  null,
             dialog:        false,
             sections: [
-
-                    { label: 'Alumnos', icon: 'mdi-school', component: 'lista-alumno', color: 'blue', sectionWidth: '700' },
-                    { label: 'Plan Evaluacion', icon: 'mdi-table-clock', component: 'plan-evaluacion', color: 'indigo', sectionWidth: '700' },
-                ]
+                { label: 'Alumnos', icon: 'mdi-school', component: 'lista-alumno', color: 'blue', sectionWidth: '700' },
+                { label: 'Plan Evaluacion', icon: 'mdi-table-clock', component: 'plan-evaluacion', color: 'indigo', sectionWidth: '700' },
+            ]
         }
     },
 

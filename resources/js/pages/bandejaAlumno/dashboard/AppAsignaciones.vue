@@ -96,7 +96,7 @@ export default {
       
       list()
       {
-        this.getResource( `asignacionAlumno/evaluacion/${this.alumno.id}` ).then( (data) => 
+        this.getResource( `evaluacionAlumno/alumno/${this.alumno.id}` ).then( (data) => 
         { 
           this.cuestionario = data.cuestionario 
           this.actividad    = data.actividad 
@@ -112,14 +112,14 @@ export default {
 
       totales()
       {
-        this.cuestionarioTotal = (this.cuestionario) ? { total: this.cuestionario.length, completada: this.cuestionario.filter( item => item.fe_completado).length } :  { total: 0, completada: 0 };
-        this.actividadTotal    = (this.actividad)    ? { total: this.actividad.length, completada: this.actividad.filter( item => item.fe_completado).length } :  { total: 0, completada: 0 };
-        this.tareaTotal        = (this.tarea)        ? { total: this.tarea.length, completada: this.tarea.filter( item => item.fe_completado).length } :  { total: 0, completada: 0 };
-        this.videoTotal        = (this.video)        ? { total: this.video.length, completada: this.video.filter( item => item.fe_completado).length } :  { total: 0, completada: 0 };
-        this.audioTotal        = (this.audio)        ? { total: this.audio.length, completada: this.audio.filter( item => item.fe_completado).length } :  { total: 0, completada: 0 };
-        this.enlaceTotal       = (this.enlace)       ? { total: this.enlace.length, completada: this.enlace.filter( item => item.fe_completado).length } :  { total: 0, completada: 0 };
-        this.lecturaTotal      = (this.lectura)      ? { total: this.lectura.length, completada: this.lectura.filter( item => item.fe_completado).length } :  { total: 0, completada: 0 };
-        this.tareaTotal        = (this.tarea)        ? { total: this.tarea.length, completada: this.tarea.filter( item => item.fe_completado).length } :  { total: 0, completada: 0 };
+        this.cuestionarioTotal = (this.cuestionario) ? { total: this.cuestionario.length, completada: this.cuestionario.filter( item => item.id_status > 4).length } :  { total: 0, completada: 0 };
+        this.actividadTotal    = (this.actividad)    ? { total: this.actividad.length, completada: this.actividad.filter( item => item.id_status > 4).length } :  { total: 0, completada: 0 };
+        this.tareaTotal        = (this.tarea)        ? { total: this.tarea.length, completada: this.tarea.filter( item => item.id_status > 4).length } :  { total: 0, completada: 0 };
+        this.videoTotal        = (this.video)        ? { total: this.video.length, completada: this.video.filter( item => item.id_status > 4).length } :  { total: 0, completada: 0 };
+        this.audioTotal        = (this.audio)        ? { total: this.audio.length, completada: this.audio.filter( item => item.id_status > 4).length } :  { total: 0, completada: 0 };
+        this.enlaceTotal       = (this.enlace)       ? { total: this.enlace.length, completada: this.enlace.filter( item => item.id_status > 4).length } :  { total: 0, completada: 0 };
+        this.lecturaTotal      = (this.lectura)      ? { total: this.lectura.length, completada: this.lectura.filter( item => item.id_status > 4).length } :  { total: 0, completada: 0 };
+        this.tareaTotal        = (this.tarea)        ? { total: this.tarea.length, completada: this.tarea.filter( item => item.id_status > 4).length } :  { total: 0, completada: 0 };
       },
 
       getTotal(tipo)
