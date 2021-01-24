@@ -3,10 +3,10 @@
     <v-card>
 
         <v-card-title class="pa-0">
-            <app-simple-toolbar title="Plan Evaluacion" @closeModal="$emit('closeDialog')" dense></app-simple-toolbar>
+            <app-simple-toolbar :title="title" @closeModal="$emit('closeDialog')" dense></app-simple-toolbar>
         </v-card-title>
-        <v-card-text>
 
+        <v-card-text>
         <v-form ref="form" v-model="valid" lazy-validation>
             <v-row>
                 <v-col>
@@ -26,9 +26,9 @@
                     filled
                     rounded
                     no-data-text="No existen temas disponibles"
+                    ref="temas"
                     ></v-select>
                 </v-col>
-                
                 <v-col cols="auto">
                     <v-tooltip bottom>
                         <template v-slot:activator="{ on }">
@@ -39,13 +39,12 @@
                         <span>Editar</span>
                     </v-tooltip>
                 </v-col>
-                
             </v-row>
-        </v-form>
+        
 
-        <v-row no-gutters justify="center" class="mt-n6">
+            <v-row no-gutters justify="center" class="mt-n6">
 
-            <v-col cols="12" md="8" sd="10">
+                <v-col cols="12" md="8" sd="10">
 
                 <v-list dense color="grey lighten-5 rounded-xl" subheader>
 
@@ -60,7 +59,6 @@
                          </v-subheader>
                         
                         <v-list-item :key="item.id">
-                            
                             <v-list-item-avatar color="white" size="30">
                                 <v-icon :color="item.origen.tx_color" class="" size="25">{{item.origen.tx_icono}}</v-icon>
                             </v-list-item-avatar>
@@ -93,14 +91,11 @@
                                     :error="total > 100"
                                 ></v-text-field>
                             </v-list-item-action-text>
-                           
                         </v-list-item>
-
 
                     </template>
 
                      <v-list-item dark class="indigo rounded-b-xl mb-n2 mt-1" v-if="items.length > 0">
-
                         <v-list-item-content>
                             <v-list-item-title class="ml-5 subtitle-1">
                                 TOTAL
@@ -120,6 +115,7 @@
                                 type="number"
                                 class="percent-field my-2"
                                 :error="total > 100"
+                                ref="total"
                             ></v-text-field>
                         </v-list-item-action-text>
                     </v-list-item>
@@ -130,10 +126,12 @@
                    
                 </v-list>
 
-            </v-col>
+                </v-col>
 
-        </v-row>
+                
 
+            </v-row>
+        </v-form>    
         </v-card-text>
     </v-card>
   
@@ -148,6 +146,16 @@ export default {
     props:
     {
         planEvaluacion: {
+            type:       Object,
+            default:    () => {}
+        },
+
+        grupo: {
+            type:       Object,
+            default:    () => {}
+        },
+
+        materia: {
             type:       Object,
             default:    () => {}
         },
@@ -175,7 +183,6 @@ export default {
                 this.items.forEach(item => {
                     total += parseInt(item.nu_peso)
                 })
-   
             }
             return total
         }
@@ -184,10 +191,10 @@ export default {
     data()
     {
         return{
+            title: `Plan Evaluacion - ${this.grupo.nb_grupo} - ${this.materia.nb_materia}`,
             search: null,
             selects: {
                 tipoEvaluacion: [],
-                tipoAsignacion: [],
                 rasgo: [],
             },
             temasAsignado: [],
@@ -259,8 +266,8 @@ export default {
 
         update(item)
         {
-           if(!this.validate) return
-
+           if(!this.validate()) return
+  
             let form = {
                 detalles:   this.items,
                 temas:      this.temasAsignado,
@@ -273,19 +280,22 @@ export default {
         },
 
         validate()
-        {
+        {           
             if(this.total > 100)  {
                 this.showError('La planificacion esta sobre el 100%')
+                this.$refs.total.focus()
                 return false
             }
 
             if(this.total < 100) {
                 this.showError('La planificacion esta por debajo de 100%')
+                this.$refs.total.focus()
                 return false
             }
 
             if(this.temasAsignado.length < 1) { 
                 this.showError('Favor asignar temas a la planificacion')
+                this.$refs.temas.focus()
                 return false
             }
 

@@ -8,7 +8,6 @@
         <v-card-text>
 
         <v-col cols="12" md="6">
-            
                 <v-select
                 :items="periodos"
                 item-text="nb_periodo"
@@ -20,16 +19,15 @@
                 rounded
                 filled
                 ></v-select>
-
         </v-col>
 
-        <v-alert type="warning" :value="true" v-if="!periodo">
+        <v-alert type="warning" :value="true" v-if="!periodo" prominent>
             Seleccione un Período
         </v-alert>
 
         <v-list rounded v-else>
 
-        <v-list-group prepend-icon="mdi-numeric" v-for="grado in grados" :key="grado.id" color="green" class="grey lighten-5 rounded-xl mb-2" ripple>
+        <v-list-group prepend-icon="mdi-numeric" v-for="grado in grados" :key="grado.id" color="green" class="grey lighten-4 rounded-xl mb-2" ripple>
 
             <template v-slot:activator>
                 <v-list-item-title v-text="grado.nb_grado"></v-list-item-title>
@@ -165,7 +163,7 @@
     </v-row>
 
     <v-dialog v-model="detalleDialog" fullscreen scrollable>
-           <plan-detalle v-if="detalleDialog" :planEvaluacion="plan" @closeDialog="closeDialog('detalleDialog', $event)"></plan-detalle>
+           <plan-detalle v-if="detalleDialog" :planEvaluacion="plan" :grupo="grupo" :materia="materia" @closeDialog="closeDialog('detalleDialog', $event)"></plan-detalle>
     </v-dialog>
     </v-container>
   
@@ -210,7 +208,9 @@ export default {
 				id_usuario: 	  this.idUser,
             },
             detalleDialog: false,
-            plan: null
+            plan:    null,
+            grupo:   null,
+            materia: null
         }
     },
 
@@ -274,7 +274,9 @@ export default {
 
         detalleEvaluacion(grupo, materia)
         {
-            this.plan = this.planEvaluacion[`${grupo.id}-${materia.id}`][0]
+            this.plan          = this.planEvaluacion[`${grupo.id}-${materia.id}`][0]
+            this.grupo         = grupo
+            this.materia       = materia
             this.detalleDialog = true
         },
 

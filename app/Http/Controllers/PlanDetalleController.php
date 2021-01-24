@@ -31,11 +31,9 @@ class PlanDetalleController extends Controller
     {
         $tipoEvaluacion = TipoEvaluacion::comboData()->activo()->get(); 
 
-        $tipoAsignacion = TipoAsignacion::comboData()->activo()->get(); 
-
         $rasgo = Rasgo::comboData()->activo()->get(); 
 
-        return compact('tipoEvaluacion', 'tipoAsignacion', 'rasgo');
+        return compact('tipoEvaluacion', 'rasgo');
     }
 
 

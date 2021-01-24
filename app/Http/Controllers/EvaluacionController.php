@@ -6,6 +6,7 @@ use App\Models\Evaluacion;
 use App\Models\EvaluacionAlumno;
 use App\Models\PlanEvaluacion;
 use App\Models\TipoEvaluacion;
+use App\Models\Calificacion;
 use App\Models\Alumno;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -227,7 +228,7 @@ class EvaluacionController extends Controller
                                         ->has('periodoActivo')
                                         ->first();
 
-        $nu_calificacion  = Calificacion::max('nu_hasta')->where('id_grupo_calificacion', 1); //TODO: SELECT GRUPO POR GRADO
+        $nu_calificacion  = Calificacion::where('id_grupo_calificacion', 1)->max('nu_hasta'); //TODO: SELECT GRUPO POR GRADO
 
         if(!$planEvaluacion)
         {

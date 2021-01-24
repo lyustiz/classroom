@@ -277,6 +277,32 @@ class PlanEvaluacionController extends Controller
         return PlanDetalle::insert($planDetalle);
     }
 
+    public function fixPlanDetalles()
+    {
+        $planesEvaluacion = PlanEvaluacion::with(['planDetalle'])->get();
+        $plantilla        = PlanPlantilla::get();
+        $planDetalles = [];
+
+        foreach ($planesEvaluacion as $planEvaluacion) {
+            if( count($planEvaluacion->planDetalle) < 1)
+            {
+                foreach ($plantilla  as $detalle) {
+                    $planDetalles[] = [
+                        'id_plan_evaluacion'    => $planEvaluacion->id,
+                        'tx_origen'             => $detalle->tx_origen,
+                        'id_origen'             => $detalle->id_origen,
+                        'nu_peso'               => $detalle->nu_peso,
+                        'id_status'             => 1,
+                        'id_usuario'            => $planEvaluacion->id_usuario,
+                        'created_at'            => $planEvaluacion->created_at
+                    ];
+                }
+            }
+        }
+
+        return PlanDetalle::insert($planDetalles);
+    }
+
     /**
      * Display the specified resource.
      *

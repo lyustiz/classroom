@@ -297,6 +297,10 @@ Route::get('/planTema/detallePlan/{detallePlan}',   'PlanTemaController@planTema
 Route::apiResource('/planTema',                     'PlanTemaController', ['parameters' => ['planTema' => 'planTema']]);
 Route::apiResource('/rasgo',                        'RasgoController');
 
+
+//TOOLS//
+// Route::get('/fixPlanes',   'PlanEvaluacionController@fixPlanDetalles');
+
 // -- EVALUACION -- //
 
 Route::get('/evaluacion/planEvaluacion/{planEvaluacion}',   'EvaluacionController@evaluacionPlan');
