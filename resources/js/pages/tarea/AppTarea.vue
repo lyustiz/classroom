@@ -72,7 +72,7 @@
                         <v-row>
                             <v-col class="text-center">
                                 <v-badge color="success" overlap :value="archivoAlumno" icon="mdi-check-bold" >
-                                    <v-btn color="success"  @click="addFile(evaluacionAlumno)" :loading="loading">
+                                    <v-btn color="success"  @click="addFile(evaluacionAlumno)" :loading="loading" :disabled="isCompleted">
                                         <v-icon class="mr-3">mdi-file-upload</v-icon>
                                         Cargar Archivo
                                     </v-btn>

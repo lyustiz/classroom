@@ -140,6 +140,7 @@ export default {
     {       
         this.alumno = this.evaluacionAlumno.alumno
         this.prueba = this.evaluacionAlumno.evaluacion.origen
+        this.form.id_prueba = this.prueba.id
         this.list()
     },
 
@@ -150,6 +151,7 @@ export default {
             preguntas:   [],
             form: {
                 respuestas:  [],
+                id_prueba:   null,
                 id_usuario:  null
             },
             totalPrueba: 0,
@@ -179,6 +181,7 @@ export default {
         getTotalCalificacion(preguntas)
         {
             this.totalPrueba = 0
+            console.log('total', preguntas)
             for (const pregunta of preguntas) {
 
                 for (const respuesta of pregunta.respuesta_alumno) {
@@ -191,8 +194,7 @@ export default {
         {
             this.getEvaluaciones()
             this.form.id_usuario = this.idUser
-            
-            this.updateResource(`pruebaAlumno/evaluar/${this.alumno.prueba_alumno[0].id}`, this.form ).then( data =>  {
+            this.updateResource(`evaluacionAlumno/${this.evaluacionAlumno.id}/evaluar`, this.form ).then( data =>  {
                 this.showMessage(data.msj)
                 this.$emit('closeModal')
             })

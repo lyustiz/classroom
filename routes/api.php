@@ -320,13 +320,14 @@ Route::get('/evaluacionAlumno/grupo/{grupo}',   'EvaluacionAlumnoController@eval
 
 Route::put('/evaluacionAlumno/{evaluacionAlumno}/completada', 'EvaluacionAlumnoController@completada');
 Route::put('/evaluacionAlumno/{evaluacionAlumno}/acceso',     'EvaluacionAlumnoController@acceso');
-// -- PRUEBA -- //
 
+// -- PRUEBA -- //
 Route::put('/evaluacionAlumno/{evaluacionAlumno}/iniciarPrueba',   'EvaluacionAlumnoController@iniciarPrueba');
 Route::put('/evaluacionAlumno/{evaluacionAlumno}/finalizarPrueba', 'EvaluacionAlumnoController@finalizarPrueba');
+Route::put('/evaluacionAlumno/{evaluacionAlumno}/evaluar',         'EvaluacionAlumnoController@evaluar');
 
 Route::get('/prueba/{prueba}/evaluacion/{evaluacion}/evaluacionAlumno/{evaluacionAlumno}', 'PruebaController@pruebaEvaluacionAlumno');
-Route::get('/prueba/grado/{grado}',             'PruebaController@pruebaGrado');
+Route::get('/prueba/grado/{grado}',                    'PruebaController@pruebaGrado');
 Route::get('/prueba/grado/{grado}/materia/{materia}',  'PruebaController@pruebaGradoMateria');
 Route::get('/prueba/docente/{docente}/grado/{grado}/materia/{materia}',  'PruebaController@pruebaDocenteGradoMateria');
 
@@ -346,8 +347,7 @@ Route::apiResource('/prueba',                   'PruebaController', ['parameters
 Route::apiResource('/respuesta',                'RespuestaController', ['parameters' => ['respuesta' => 'respuesta']]);
 Route::apiResource('/tipoPregunta',             'TipoPreguntaController',['parameters' => ['tipoPregunta' => 'tipoPregunta']]);
 Route::apiResource('/pregunta',                 'PreguntaController', ['parameters' => ['pregunta' => 'pregunta']]);
-Route::apiResource('/pruebaAlumno',             'PruebaAlumnoController');
-Route::apiResource('/respuestaAlumno',          'RespuestaAlumnoController');
+Route::apiResource('/respuestaAlumno',        'RespuestaAlumnoController');
 
 // -- TAREA -- //
 

@@ -36,7 +36,7 @@
             </v-list-item>
             </v-list>
 
-            <v-row justify="center">
+            <v-row justify="center" v-show="this.items.length >= this.maxItems">
                 <v-col cols="12" md="6" class="text-center">
                     <v-file-input 
                         placeholder="Seleccione un archivo"

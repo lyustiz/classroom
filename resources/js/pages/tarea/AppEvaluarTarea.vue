@@ -10,7 +10,7 @@
             <v-toolbar color="grey lighten-4" dense class="elevation-0">
                     <v-row no-gutters justify="space-between">
                         <v-col cols="auto">Alumno: {{(alumno) ? alumno.nb_corto : null}}</v-col>
-                        <v-col cols="auto">Puntuacion: {{form.nu_calificacion}} / {{ tarea.nu_peso }}</v-col>
+                        <v-col cols="auto">Puntuacion: {{form.nu_calificacion | formatNumber}} / {{ evaluacion.nu_peso | formatNumber }}</v-col>
                     </v-row>
                 </v-toolbar>
         </v-card-title>
@@ -176,7 +176,6 @@ export default {
         this.tema       = this.evaluacionAlumno.evaluacion.tema
         this.item       = this.evaluacionAlumno
         this.mapForm()
-        console.log(this.evaluacionAlumno)
         this.list()
     },
 

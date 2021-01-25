@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\EvaluacionAlumno;
+use App\Models\RespuestaAlumno;
+use App\Models\Prueba;
+use App\Models\Respuesta;
 use App\Models\Calificacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -221,6 +224,8 @@ class EvaluacionAlumnoController extends Controller
 
     public function calificar($evaluacion, $nu_calificacion)
     {
+        $nu_calificacion  = number_format(round( $nu_calificacion, 2, PHP_ROUND_HALF_UP), 0 , ',', ''); // fix 4.6 bug
+        
         $calificacion     = Calificacion::where('nu_desde' ,'<=', $nu_calificacion )->where('nu_hasta' ,'>=', $nu_calificacion )->first();
         
         return $calificacion->id;
@@ -337,19 +342,70 @@ class EvaluacionAlumnoController extends Controller
 
         $calificacion  = Calificacion::select('id', 'nu_hasta', 'nb_calificacion')
                                      ->where('id_grupo_calificacion', 1) //TODO: SELECT GRUPO POR GRADO
-                                     ->orederBy('id_nivel_calificacion', 'desc')
-                                     ->limit(1); 
+                                     ->orderBy('id_nivel_calificacion', 'desc')
+                                     ->first();
 
         $request->merge([
                 'fe_evaluacion'   => date("Y-m-d H:i:s"), 
                 'id_status'       => 5, 
                 'id_calificacion' => $calificacion->id, 
-                'nu_calificacion' => $calificacion->nu_calificacion 
+                'nu_calificacion' => $calificacion->nu_hasta
         ]);
 
         $update = $evaluacionAlumno->update($request->all());
 
         return [ 'msj' => 'Asignacion Completada' , compact('update')];
+    }
+
+    public function evaluar(Request $request, EvaluacionAlumno $evaluacionAlumno)
+    {
+        $validate = request()->validate([
+            'id_prueba'   => 	'required|integer|max:999999999',
+            'id_usuario'   => 	'required|integer|max:999999999',
+            'respuestas'   =>   'nullable|array',
+        ]);
+
+        $prueba       = Prueba::select('id', 'nu_peso')->find($request->id_prueba);
+
+        $respuestas   = RespuestaAlumno::where('id_alumno', $evaluacionAlumno->id_alumno)
+                                     ->where('id_prueba', $request->id_prueba)
+                                     ->get(); 
+
+        $calificacion = Calificacion::select('id', 'nu_hasta', 'nb_calificacion')
+                                     ->where('id_grupo_calificacion', 1) //TODO: SELECT GRUPO POR GRADO
+                                     ->orderBy('id_nivel_calificacion', 'desc')
+                                     ->first();
+        
+        $nuCalificacion = 0;
+      
+        foreach ($respuestas as $key => $repuesta)        
+        {
+            $idxEvaluada  = array_search($repuesta->id, array_column($request->respuestas, 'id'));
+            
+            if($idxEvaluada !== false)
+            {
+                $valorEvaluada = $request->respuestas[$idxEvaluada]['value'];
+                $repuesta->update(['nu_valor' => $valorEvaluada ]);
+            }
+
+            $nuCalificacion += ($repuesta->nu_valor !== null) ?  $repuesta->nu_valor : 0;
+        }
+
+        $nuCalificacion = round($nuCalificacion  * $calificacion->nu_hasta / $prueba->nu_peso, 2, PHP_ROUND_HALF_UP)  ;
+
+        $nu_calificacion  = number_format($nuCalificacion, 0 , ',', ''); // fix 4.6 bug
+               
+        $calificacion   = Calificacion::where('nu_desde' ,'<=', $nuCalificacion )->where('nu_hasta' ,'>=', $nuCalificacion )->first();
+
+        $request->merge([
+            'nu_calificacion' => $nuCalificacion,
+            'id_calificacion' => $calificacion->id,
+            'id_status'       => 5
+        ]);
+      
+        $evaluacionAlumno = $evaluacionAlumno->update($request->except('respuestas'));
+
+        return [ 'msj' => 'Cuestionario Evaluado' , compact('evaluacionAlumno','calificacion')];
     }
 
     /**

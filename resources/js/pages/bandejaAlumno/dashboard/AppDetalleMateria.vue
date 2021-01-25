@@ -39,6 +39,14 @@
             </v-list-item-icon>
           </v-list-item>
         </div>
+         <v-list-item class="grey lighten-5" v-if="(evaluaciones.length<1) && !loading" > 
+           <v-list-item-avatar color="orange" >
+              <v-icon dark>mdi-alert-circle-outline</v-icon>
+            </v-list-item-avatar> 
+            <v-list-item-content>
+              <v-list-item-title class="orange--text">Sin Evaluaciones Asignadas</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
       </v-list>
     </v-card-text>  
     <v-overlay color="rounded-lg" absolute :opacity="0.3" :value="loading">

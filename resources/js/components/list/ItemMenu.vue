@@ -4,7 +4,7 @@
         
         <template v-slot:activator="{ on }">
             <v-btn :x-small="small" :small="!small" :color="btnColor" fab v-on="on" depressed>
-                <v-icon :color="iconColor">mdi-dots-vertical</v-icon>
+                <v-icon :color="iconColor" v-text="icon"></v-icon>
             </v-btn>
         </template>
 
@@ -41,6 +41,11 @@ export default
         menus:{
             type: Array,
             default: () => []
+        },
+
+        icon:{
+            type: String,
+            default: 'mdi-dots-vertical'
         },
 
         iconColor:{
