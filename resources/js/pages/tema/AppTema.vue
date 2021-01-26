@@ -149,6 +149,11 @@ export default {
             this.item   = {};
             this.$emit('updateData');
         },
+
+        postResponseAction(action)
+        {
+            this.$emit('updateData');
+        }
     }
 }
 </script>

@@ -192,6 +192,11 @@ export default {
                     this.fotos       = data.foto
                 });
             }
+
+            if(this.evaluar)
+            {
+                this.registroAcceso()
+            }
         },
 
         responder()
@@ -248,6 +253,13 @@ export default {
             {
                 this.actividadCompletada()
             }
+        },
+
+        registroAcceso()
+        {
+            this.updateResource(`evaluacionAlumno/${this.asignacion.id}/acceso`, this.form).then( (data) => {
+
+            })
         },
 
         actividadCompletada()

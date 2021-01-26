@@ -21,7 +21,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="(calificacion, idx) in calificaciones" :key="idx">
+                 <tr v-for="(calificacion, idx) in calificaciones" :key="idx">
                     <td> {{ calificacion.nb_materia }} </td>
                     <td> {{ calificacion.nu_calificacion }} </td>
                     <td>
@@ -42,6 +42,7 @@
                         <list-simple-icon label="Ver Detalles" icon="mdi-text-box-search-outline" color="indigo" @click="showDetalles(calificacion.id_materia)" ></list-simple-icon>
                     </td>
                 </tr>
+              
                 </tbody>
             </template>
         </v-simple-table>
@@ -90,7 +91,7 @@ export default {
     data () {
         return {
             title:          'Evaluaciones',
-            planes:         [],
+            planesEvaluacion:  [],
             calificaciones: [],
             dialogDetail:   false,
             planEvaluacion: null
@@ -103,15 +104,15 @@ export default {
         {
            if( !this.alumno ) return
            this.getResource( `planEvaluacion/calificacion/alumno/${this.alumno.id}` ).then( data => {
-                /* this.planes = data.planEvaluacion
-                this.calificaciones = data.calificaciones */
+                this.planesEvaluacion = data.planEvaluacion
+                this.calificaciones   = data.calificaciones
             })
         },
 
         showDetalles(idMateria)
         {
-            this.planEvaluacion = this.planes.find( (plan) => plan.id_materia == idMateria);
-            if(this.planEvaluacion) this.dialogDetail   = true
+            this.planEvaluacion = this.planesEvaluacion.find( (plan) => plan.id_materia == idMateria);
+            if(this.planEvaluacion) this.dialogDetail = true
         },
 
         closeDialog()

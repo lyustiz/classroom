@@ -232,12 +232,13 @@ Route::get('/menu/combo',                       'MenuController@combo');
 Route::apiResource('/menu',                     'MenuController');
 
 // -- Notificaciones -- //
-
+Route::get('/notificacion/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/all',        'NotificacionController@all');
 Route::get('/notificacion/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/read',        'NotificacionController@read');
 Route::get('/notificacion/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/unread',      'NotificacionController@unread');
 Route::put('/notificacion/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/markreadall', 'NotificacionController@markReadAll');
 Route::put('/notificacion/{notificacion}/unread', 'NotificacionController@markUnread');
 Route::put('/notificacion/{notificacion}/read',   'NotificacionController@markRead');
+Route::put('/notificacion/{notificacion}/all',    'NotificacionController@markRead');
 
 Route::get('/notificacion/combos',                                           'NotificacionController@combos');
 Route::get('/notificacion/destinatario/{tipoDestinatario}',                  'NotificacionController@destinatario');

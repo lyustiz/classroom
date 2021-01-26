@@ -32,7 +32,7 @@
                   
         <v-col cols="12" >
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[rules.max(300)]"
                 v-model="form.tx_descripcion"
                 label="Descripcion"
                 placeholder="Indique Descripcion"
@@ -69,40 +69,6 @@
             persistent-hint
             ></v-select>
         </v-col>
-          
-        <v-col cols="12" md="6">
-            <v-text-field
-                :rules="[rules.required]"
-                v-model="form.nu_nivel"
-                label="Nivel"
-                placeholder="Indique Nivel"
-                dense
-            ></v-text-field>
-        </v-col>
-                  
-        <v-col cols="12" md="6">
-            <v-text-field
-                :rules="[rules.required]"
-                v-model="form.nu_peso"
-                label="Peso"
-                placeholder="Indique Peso"
-                dense
-            ></v-text-field>
-        </v-col>
-                          
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.status"
-            item-text="nb_status"
-            item-value="id"
-            v-model="form.id_status"
-            :rules="[rules.select]"
-            label="Status"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
-         
 
         </v-row>
 
@@ -153,8 +119,13 @@ export default {
             },
             selects:
             {
-	 	 	 	grado: 	 [],
+                   
+                grado: 	 [],
 	 	 	 	status:  [],
+            },
+            defaultForm:{
+                nu_nivel: 	    1,
+				nu_peso: 	    1,
             },
             materias:[]
         }
@@ -162,6 +133,14 @@ export default {
 
     methods:
     {
+        preActionForms(action)
+        {
+            if(action== 'upd')
+            {
+                this.getMaterias(this.form.id_grado)
+            }
+        },
+        
         getMaterias(idGrado)
         {
             this.materias = []

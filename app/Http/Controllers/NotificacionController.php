@@ -28,6 +28,18 @@ class NotificacionController extends Controller
         return $notificacion;
     }
 
+    public function all($idDestinatario, $idTipoDestinatario)
+    {
+        return Notificacion::with([ 'usuario:usuario.id,nb_usuario,nb_nombres', 
+                                    'tipoNotificacion:tipo_notificacion.id,nb_tipo_notificacion,tx_icono,tx_color',
+                                   ])
+                           ->where( 'id_destinatario', $idDestinatario )
+                           ->where( 'id_tipo_destinatario', $idTipoDestinatario )
+                           ->latest()
+                           ->limit(20)
+                           ->get();
+    }
+
     public function unRead($idDestinatario, $idTipoDestinatario)
     {
         return Notificacion::with([ 'usuario:usuario.id,nb_usuario,nb_nombres', 
@@ -40,6 +52,7 @@ class NotificacionController extends Controller
                            ->limit(30)
                            ->get();
     }
+    
 
     public function read($idDestinatario, $idTipoDestinatario)
     {

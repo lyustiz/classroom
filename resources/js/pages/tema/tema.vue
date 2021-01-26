@@ -6,7 +6,9 @@
             <add-button @insItem="insertForm()"></add-button>
         </template>
 
-            <v-col cols="12" md="6">
+            <v-row>
+
+            <v-col cols="12" md="4">
                 <v-text-field
                     v-model="search"
                     append-icon="search"
@@ -15,7 +17,38 @@
                     clearable
                     dense
                 ></v-text-field>
+
             </v-col>
+
+            <v-col cols="12" md="4">
+                <v-select
+                :items="selects.grado"
+                    v-model="grado"
+                    item-value="nb_grado"
+                    item-text="nb_grado"
+                    label="Grado"
+                    clearable
+                    hide-details
+                    dense
+                ></v-select>
+
+            </v-col>
+
+            <v-col cols="12" md="4">
+                <v-select
+                    :items="selects.materia"
+                    v-model="materia"
+                    item-value="nb_materia"
+                    item-text="nb_materia"
+                    label="Materia"
+                    clearable
+                    hide-details
+                    dense
+                ></v-select>
+
+            </v-col>
+
+            </v-row>
 
             <v-data-table
                 :headers="headers"
@@ -28,14 +61,12 @@
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.nu_tema }}</td>
-                        <td class="text-xs-left">{{ item.nb_tema }}</td>
-						<td class="text-xs-left"><list-simple-icon icon="mdi-text-box-outline" color="indigo" :label="item.tx_descripcion"></list-simple-icon></td>
-						<td class="text-xs-left">{{ item.grado.nb_grado }}</td>
-						<td class="text-xs-left">{{ item.materia.nb_materia }}</td>
-						<td class="text-xs-left">{{ item.nu_nivel }}</td>
-						<td class="text-xs-left">{{ item.nu_peso }}</td>
-						<td class="text-xs-left">
+                        <td>{{ item.nu_tema }}</td>
+                        <td>{{ item.nb_tema }}</td>
+						<td><list-simple-icon icon="mdi-text-box-outline" color="indigo" :label="item.tx_descripcion"></list-simple-icon></td>
+						<td>{{ item.grado.nb_grado }}</td>
+						<td>{{ item.materia.nb_materia }}</td>
+						<td>
                             <status-switch 
                                 :loading="loading" 
                                 :resource="resource" 
@@ -44,7 +75,7 @@
                             </status-switch>
                         </td>
                         
-                        <td class="text-xs-left">
+                        <td>
                             <list-buttons 
                                 @update="updateForm(item)" 
                                 @delete="deleteForm(item)" >
@@ -87,28 +118,64 @@
 import listHelper from '@mixins/Applist';
 import temaForm  from './temaForm';
 export default {
+
     mixins:     [ listHelper],
-    components: { 'tema-form': temaForm },
-    data () {
-    return {
-        title:    'Tema',
-        resource: 'tema',
-        headers: [
-            { text: 'Nro',         value: 'nu_tema' },
-            { text: 'Tema',        value: 'nb_tema' },
-			{ text: 'Descripcion', value: 'tx_descripcion' },
-			{ text: 'Grado',       value: 'grado.nb_grado' },
-			{ text: 'Materia',     value: 'materia.nb_materia' },
-			{ text: 'Nivel',       value: 'nu_nivel' },
-			{ text: 'Peso',        value: 'nu_peso' },
-			{ text: 'Status',      value: 'id_status' },
-            { text: 'Acciones',    value: 'actions', sortable: false, filterable: false },
-        ],
-    }
+
+    components: { 
+        'tema-form': temaForm 
     },
+
+    watch:
+    {
+        items(items)
+        {
+            if(items.length>0)
+            {
+                items.forEach( (item) => {
+                    this.selects.grado.push(item.grado)
+                    this.selects.materia.push(item.materia)
+                }, this)
+            }
+        }
+    },
+
+    data () {
+        return {
+            title:    'Tema',
+            grado:   null,
+            materia: null,
+            resource: 'tema',
+            headers: [
+                { text: 'Nro',         value: 'nu_tema' },
+                { text: 'Tema',        value: 'nb_tema' },
+                { text: 'Descripcion', value: 'tx_descripcion' },
+                { text: 'Grado',       value: 'grado.nb_grado',     filter: this.filterGrado },
+                { text: 'Materia',     value: 'materia.nb_materia', filter: this.filterMateria },
+                { text: 'Status',      value: 'id_status' },
+                { text: 'Acciones',    value: 'actions', sortable: false, filterable: false },
+            ],
+            selects:{
+                grado:   [],
+                materia: []
+            }
+        }
+    },
+
     methods:
     {
-   
+        filterGrado(value, search, item )
+        {
+            if(!this.grado) return true
+            
+            return value == this.grado
+        },
+
+        filterMateria(value, search, item )
+        {
+            if(!this.materia) return true
+            
+            return value == this.materia
+        }
     }
 }
 </script>

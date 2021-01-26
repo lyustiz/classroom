@@ -110,7 +110,7 @@ class PlanEvaluacionController extends Controller
     }
 
 
-    public function PlanEvaluacionCalificacionAlumno($idAlumno)
+   /*  public function PlanEvaluacionCalificacionAlumno($idAlumno)
     {
         $planEvaluacion =   PlanEvaluacion::with([
                                         'materia',
@@ -132,13 +132,12 @@ class PlanEvaluacionController extends Controller
         $calificaciones = $this->calcularCalificaciones($planEvaluacion);
 
         return [ 'calificaciones' => $calificaciones, 'planEvaluacion' => $planEvaluacion ];
-    }
+    } */
 
     public function calcularCalificaciones($planEvaluacion)
     {
         $calificaciones = Calificacion::with(['nivelCalificacion:id,nb_nivel_calificacion'])->get();
                                  
-        
         $calificacion = [];
 
         foreach ($planEvaluacion as $key => $plan) {
@@ -166,11 +165,13 @@ class PlanEvaluacionController extends Controller
         return $calificacion;
     }
 
-    public function getTipoCalificacion($calificaciones, $nuCalificacion)
+    public function getTipoCalificacion($nu_calificacion)
     {
-        $nuCalificacion =  round($nuCalificacion, 0, PHP_ROUND_HALF_UP );  //TODO METODO REDONDEO
-
-        return $calificaciones->firstWhere('nu_calificacion', $nuCalificacion);
+        $nu_calificacion  = number_format(round( $nu_calificacion, 2, PHP_ROUND_HALF_UP), 0 , ',', ''); // fix 4.6 bug
+        
+        $calificacion     = Calificacion::with(['nivelCalificacion:id,nb_nivel_calificacion'])->where('nu_desde' ,'<=', $nu_calificacion )->where('nu_hasta' ,'>=', $nu_calificacion )->first();
+        
+        return $calificacion;
     }
 
     public function PlanEvaluacionCalificacionAlumnoDocente($idAlumno, $idDocente)
@@ -224,6 +225,88 @@ class PlanEvaluacionController extends Controller
                     ->orderBY('nb_materia')
                     ->get(); */
 
+    }
+
+    public function PlanEvaluacionCalificacionAlumno($idAlumno)
+    {
+      
+        $planEvaluacion =   PlanEvaluacion::with([
+                                'planDetalle',
+                                'materia',
+                                'evaluacion.tipoEvaluacion',
+                                'evaluacion.evaluacionAlumno'=> function($query) use ( $idAlumno ){
+                                    $query->where('id_alumno', $idAlumno);
+                                },
+                                'evaluacion.evaluacionAlumno.calificacion',
+                            ])
+                            ->whereHas('materia.alumno', function ($query) use ($idAlumno) {
+                                $query->where('alumno.id', $idAlumno);
+                            }) 
+                            ->has('periodoActivo')
+                            ->activo()
+                            ->get();
+
+        $calificaciones = $this->calcularCalificacionAlumno($planEvaluacion);
+
+        return [ 'calificaciones' => $calificaciones, 'planEvaluacion' => $planEvaluacion ];
+                
+    }
+
+    public function calcularCalificacionAlumno($planesEvaluacion)
+    {
+        //$calificaciones = Calificacion::with(['nivelCalificacion:id,nb_nivel_calificacion'])->where('id_grupo_calificacion', 1)->get();
+                                 
+        $calificacion = [];
+
+        foreach ($planesEvaluacion as $key => $planEvaluacion) {
+
+            $materiaId = $planEvaluacion->id_materia;
+
+            $materia   = $planEvaluacion->materia->nb_materia;
+            
+            $calificacion[$materiaId] = [
+                                            'id_materia'      => $materiaId,
+                                            'nb_materia'      => $materia,
+                                            'nu_calificacion' => 0 , 
+                                            'calificacion'    => [],
+                                        ];
+
+            $notaMateria = 0;
+           
+            foreach ($planEvaluacion->evaluacion as $key => $evaluacion) {
+
+                $promedioNota    = 0;
+                $nroEvaluaciones = 0;
+                $porcentajeEvaluacion = 0;
+                $porcentaje      = $planEvaluacion->planDetalle->firstWhere('id_origen', $evaluacion->id_tipo_evaluacion)->nu_peso;
+
+                foreach ($evaluacion->evaluacionAlumno as $key => $evaluacionAlumno) {
+
+                   if($evaluacionAlumno->nu_calificacion != null and $evaluacionAlumno->id_status !=2)
+                   {
+                       $promedioNota += $evaluacionAlumno->nu_calificacion;
+                       $nroEvaluaciones++;
+                   }
+                }  
+                
+                $promedioNota         = $promedioNota / $nroEvaluaciones;
+                
+                $porcentajeEvaluacion = $promedioNota * $porcentaje / 100;
+
+                $notaMateria += $porcentajeEvaluacion;
+            }
+
+            $notaMateria    =  number_format(round( $notaMateria, 2, PHP_ROUND_HALF_UP), 2 , ',', ''); // fix 4.6 bug
+
+            $calificacion[$materiaId]['nu_calificacion'] = $notaMateria;
+
+            //TODO: single query
+            $calificaciones = Calificacion::with(['nivelCalificacion:id,nb_nivel_calificacion'])->where('nu_desde' ,'<=', $notaMateria )->where('nu_hasta' ,'>=', $notaMateria )->first();
+            
+            $calificacion[$materiaId]['calificacion'] = $calificaciones;
+        }
+
+        return $calificacion;
     }
 
     /**

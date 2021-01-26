@@ -15,7 +15,8 @@
             </v-card-title>
             <v-card-text class="pa-0">
                 <v-toolbar color="grey lighten-3" flat dense>
-                    <v-btn class="mx-1" depressed dark fab x-small color="indigo" @click="getUnreads()"><v-icon size="20">mdi-sync</v-icon></v-btn>
+                    <v-btn class="mx-1" depressed dark fab x-small color="indigo" @click="getAll()"><v-icon size="20">mdi-sync</v-icon></v-btn>
+                    <v-btn class="mx-1" depressed dark fab x-small color="orange" @click="getUnreads()"><v-icon size="20">mdi-bell-alert</v-icon></v-btn>
                     <v-btn class="mx-1" depressed dark fab x-small color="green" @click="getReads()"><v-icon size="20">mdi-bell-check</v-icon></v-btn>
                     <v-spacer></v-spacer>
                     <v-btn class="mx-1" depressed dark fab x-small color="amber" @click="markReadAll()"><v-icon>mdi-check-all</v-icon></v-btn>
@@ -30,7 +31,7 @@
                                 <v-list-item-title v-text="notificacion.tx_mensaje"></v-list-item-title>
                             </v-list-item-content>
                             <v-list-item-avatar color="grey lighten-5">
-                                <v-icon dark size="25" :color="(notificacion.fe_lectura) ? 'green': 'red'" v-text="(notificacion.fe_lectura) ? 'mdi-bell-check': 'mdi-bell-alert' "></v-icon>
+                                <v-icon dark size="25" :color="(notificacion.fe_lectura) ? 'green': 'orange'" v-text="(notificacion.fe_lectura) ? 'mdi-bell-check': 'mdi-bell-alert' "></v-icon>
                             </v-list-item-avatar>
                         </v-list-item>
                     </v-list-item-group>
@@ -94,6 +95,11 @@ export default {
 
     },
 
+    mounted()
+    {
+        this.getAll()
+    },
+
     watch:
     {
         notificacion(notificacion)
@@ -131,6 +137,13 @@ export default {
 
     methods: 
     {
+        getAll()
+        {            
+            this.getResource(`notificacion/destinatario/${this.user.id_origen}/tipoDestinatario/${this.profile.id}/all`).then( data =>{
+                this.notificaciones = data
+            })
+        },
+        
         getUnreads()
         {            
             this.getResource(`notificacion/destinatario/${this.user.id_origen}/tipoDestinatario/${this.profile.id}/unread`).then( data =>{
