@@ -3,16 +3,16 @@
     <v-card flat height="90vh">
 
         <v-card-title class="pa-0">
-            <app-simple-toolbar title="Revision Respuesta" @closeModal="$emit('closeDialog', false)"></app-simple-toolbar>
+            <app-simple-toolbar title="Evaluar Prueba" @closeModal="$emit('closeDialog', false)"></app-simple-toolbar>
         </v-card-title>
 
         <v-card-title class="pa-0">
             <v-toolbar color="grey lighten-4" dense class="elevation-0">
-                    <v-row no-gutters justify="space-between">
-                        <v-col cols="auto">Alumno: {{(alumno) ? alumno.nb_corto : null}}</v-col>
-                        <v-col cols="auto">Total: {{ totalPrueba }}</v-col>
-                    </v-row>
-                </v-toolbar>
+                <v-row no-gutters justify="space-between">
+                    <v-col cols="auto">Alumno: {{(alumno) ? alumno.nb_corto : null}}</v-col>
+                    <v-col cols="auto">Total: {{ totalPrueba }}</v-col>
+                </v-row>
+            </v-toolbar>
         </v-card-title>
 
         <v-card-text>
@@ -97,13 +97,36 @@
 
         <v-card-actions>
             <v-spacer></v-spacer>
+            <v-edit-dialog
+                >
+                <v-btn color="success" small>Observaciones</v-btn>
+                <template v-slot:input>
+                    <v-textarea
+                    v-model="form.tx_observaciones"
+                    :rules="[rules.max(200)]"
+                    label="Indicar Observaciones"
+                    filled
+                    rows="2"
+                    class="mt-1"
+                    counter
+                    ></v-textarea>
+                </template>
+            </v-edit-dialog>
+            <v-spacer></v-spacer>
             <v-btn fab depressed x-small color="error" @click="$emit('closeDialog', false)">
                <v-icon>mdi-reply</v-icon>
             </v-btn>
-            <v-btn fab depressed small color="success" :disabled="!valid" :loading="loading" @click="evaluar()">
+            <v-btn fab depressed small color="success" :disabled="!valid" :loading="loading" @click="confirm=true">
                 <v-icon>save_alt</v-icon>
             </v-btn>
         </v-card-actions>
+
+        <app-confirm 
+            :confirm="confirm" 
+            titulo="Cuestionario" 
+            mensaje="Desea Finalizar la calificacion del Cuestionario?" 
+            @closeConfirm="evaluar($event)">
+        </app-confirm>
 
         <v-overlay
             absolute
@@ -141,18 +164,21 @@ export default {
         this.alumno = this.evaluacionAlumno.alumno
         this.prueba = this.evaluacionAlumno.evaluacion.origen
         this.form.id_prueba = this.prueba.id
+        this.form.tx_observaciones = this.evaluacionAlumno.tx_observaciones
         this.list()
     },
 
     data() {
         return {
+            confirm: false,
             prueba: null,
             alumno: null,
             preguntas:   [],
             form: {
                 respuestas:  [],
                 id_prueba:   null,
-                id_usuario:  null
+                id_usuario:  null,
+                tx_observaciones: null
             },
             totalPrueba: 0,
         }
@@ -181,7 +207,6 @@ export default {
         getTotalCalificacion(preguntas)
         {
             this.totalPrueba = 0
-            console.log('total', preguntas)
             for (const pregunta of preguntas) {
 
                 for (const respuesta of pregunta.respuesta_alumno) {
@@ -190,13 +215,15 @@ export default {
             }
         },
 
-        evaluar()
+        evaluar(confirm)
         {
+            this.confirm = false
+            if(!confirm) return
             this.getEvaluaciones()
             this.form.id_usuario = this.idUser
             this.updateResource(`evaluacionAlumno/${this.evaluacionAlumno.id}/evaluar`, this.form ).then( data =>  {
                 this.showMessage(data.msj)
-                this.$emit('closeModal')
+                this.$emit('closeDialog', true)
             })
         },
 

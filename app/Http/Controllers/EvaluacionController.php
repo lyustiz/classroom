@@ -219,7 +219,15 @@ class EvaluacionController extends Controller
             'alumnos'            => 'required|array'
         ]);
 
-        $planEvaluacion = PlanEvaluacion::select('id')
+        $planEvaluacion = PlanEvaluacion::with([
+                                            'planDetalle' => function($query) use ( $request ){
+                                                $query->where([
+                                                                'tx_origen' => 'tipo_evaluacion', 
+                                                                'id_origen' => $request->id_tipo_evaluacion
+                                                              ]);
+                                            },
+                                        ])
+                                        ->select('id')
                                         ->where([
                                                     'id_docente' => $request->id_docente,
                                                     'id_grupo'   => $request->id_grupo,
@@ -239,12 +247,13 @@ class EvaluacionController extends Controller
                                         
         $request->merge([
                             'id_plan_evaluacion' => $planEvaluacion->id, 
+                            'id_plan_detalle'    => $planEvaluacion->planDetalle[0]->id, 
                             'tx_clase'           => $tipoEvaluacion->tx_clase,
                             'nu_peso'            => $nu_calificacion
                         ]);                                
         
 
-        $evaluacion = evaluacion::create($request->all());
+        $evaluacion = Evaluacion::create($request->all());
 
         $evaluacionAlumno = $this->asignarEvaluacionAlumnos($evaluacion, $request->alumnos);
 

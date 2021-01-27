@@ -10,6 +10,7 @@ class Evaluacion extends Model
 
     protected $fillable   = [
                             'id_plan_evaluacion',
+                            'id_plan_detalle',
                             'id_tipo_evaluacion',
                             'tx_clase',
                             'id_origen',

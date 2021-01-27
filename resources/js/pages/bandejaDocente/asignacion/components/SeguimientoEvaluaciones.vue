@@ -41,7 +41,7 @@
         </v-card-text>
 
         <v-dialog v-model="dialogPrueba" max-width="95vw" content-class="rounded-xl" scrollable>
-            <evaluar-prueba :evaluacionAlumno="evaluacion" v-if="dialogPrueba" @closeDialog="closeDialog('dialogPrueba', $event,)"></evaluar-prueba>
+            <evaluar-prueba :evaluacionAlumno="evaluacion" v-if="dialogPrueba" @closeDialog="closeDialog('dialogPrueba', $event)"></evaluar-prueba>
         </v-dialog>
 
         <v-dialog v-model="dialogTarea" max-width="95vw" content-class="rounded-xl" scrollable>

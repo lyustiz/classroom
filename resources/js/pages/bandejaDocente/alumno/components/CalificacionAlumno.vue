@@ -81,6 +81,11 @@ export default {
         alumno:{
             type: Object,
             default: () => {}
+        },
+
+        materia:{
+            type: Object,
+            default: () => {}
         }
     },
 
@@ -127,7 +132,7 @@ export default {
         list()
         {
            if( !this.alumno ) return
-           this.getResource( `planEvaluacion/calificacion/alumno/${this.alumno.id}/docente/${this.docente.id}` ).then( data => {
+           this.getResource( `planEvaluacion/calificacion/alumno/${this.alumno.id}/materia/${this.materia.id}` ).then( data => {
                 this.planes = data.planEvaluacion
                 this.calificaciones = data.calificaciones
             })

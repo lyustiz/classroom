@@ -224,7 +224,7 @@ class EvaluacionAlumnoController extends Controller
 
     public function calificar($evaluacion, $nu_calificacion)
     {
-        $nu_calificacion  = number_format(round( $nu_calificacion, 2, PHP_ROUND_HALF_UP), 0 , ',', ''); // fix 4.6 bug
+        $nu_calificacion  = number_format(round( $nu_calificacion, 2, PHP_ROUND_HALF_UP), 2 , ',', ''); // fix 4.6 bug
         
         $calificacion     = Calificacion::where('nu_desde' ,'<=', $nu_calificacion )->where('nu_hasta' ,'>=', $nu_calificacion )->first();
         
@@ -360,9 +360,10 @@ class EvaluacionAlumnoController extends Controller
     public function evaluar(Request $request, EvaluacionAlumno $evaluacionAlumno)
     {
         $validate = request()->validate([
-            'id_prueba'   => 	'required|integer|max:999999999',
-            'id_usuario'   => 	'required|integer|max:999999999',
-            'respuestas'   =>   'nullable|array',
+            'id_prueba'        => 'required|integer|max:999999999',
+            'id_usuario'       => 'required|integer|max:999999999',
+            'tx_observaciones' => 'nullable|string|max:200',
+            'respuestas'       => 'nullable|array',
         ]);
 
         $prueba       = Prueba::select('id', 'nu_peso')->find($request->id_prueba);
@@ -393,7 +394,7 @@ class EvaluacionAlumnoController extends Controller
 
         $nuCalificacion = round($nuCalificacion  * $calificacion->nu_hasta / $prueba->nu_peso, 2, PHP_ROUND_HALF_UP)  ;
 
-        $nu_calificacion  = number_format($nuCalificacion, 0 , ',', ''); // fix 4.6 bug
+        $nu_calificacion  = number_format($nuCalificacion, 2 , ',', ''); // fix 4.6 bug
                
         $calificacion   = Calificacion::where('nu_desde' ,'<=', $nuCalificacion )->where('nu_hasta' ,'>=', $nuCalificacion )->first();
 

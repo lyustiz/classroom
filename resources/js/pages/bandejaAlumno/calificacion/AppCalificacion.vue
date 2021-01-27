@@ -49,7 +49,7 @@
 
         <v-dialog
             v-model="dialogDetail"
-            max-width="500px"
+            max-width="600px"
             content-class="rounded-xl"
             scrollable
         >

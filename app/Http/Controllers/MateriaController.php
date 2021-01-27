@@ -73,6 +73,33 @@ class MateriaController extends Controller
                 return $materia;
     }
 
+    public function materiaGrupoAlumnoDocente($idDocente)
+    {
+        $materia = Materia::with([
+                            'grupo' => function($query) use ( $idDocente ){
+                                $query->whereHas('planEvaluacion', function ($query) use ( $idDocente) {
+                                    $query->where('id_docente', $idDocente)
+                                          ->has('periodoActivo');
+                                })
+                                ->has('calendarioActivo')
+                                ->orderBy('id_grado', 'asc')
+                                ->orderBy('nu_orden', 'asc');
+                            },
+                            'grupo.alumno:alumno.id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2,tx_documento',
+                            'grupo.alumno.foto:id,tx_src,id_tipo_foto,id_origen',
+                            'grupo.alumno.foto.tipoFoto:id,tx_base_path',
+                            'grupo.alumno.usuarioAlumno:id,nb_usuario,id_origen'
+                        ])
+                        ->select('id', 'nb_materia')
+                        ->whereHas('docente', function ($query) use ($idDocente) {
+                            $query->where('docente.id', $idDocente);
+                        })
+                        ->orderBY('nb_materia')
+                        ->get();
+
+                return $materia;
+    }
+
     public function materiaAlumno($idAlumno)
     {
         $materia = Materia::with(['areaEstudio:id,tx_color'])

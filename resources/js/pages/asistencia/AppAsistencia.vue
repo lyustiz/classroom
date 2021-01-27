@@ -108,6 +108,7 @@
 import AppData from '@mixins/AppData';
 import AppAlumnoIncidencia from '@pages/incidencia/AppIncidencia';
 import AppMensaje from '@pages/mensaje/AppMensaje';
+import respuestaAlumnoFormVue from '../respuestaAlumno/respuestaAlumnoForm.vue';
 
 export default {
     
@@ -140,8 +141,9 @@ export default {
             alumnos: [],
             alumnosSelected: [],
             menus: [
-                { action: 'addIncidencia',    icon: 'mdi-account-alert',    label: 'Incidencia / Sanciones' },
-                { action: 'sendMensaje',     icon: 'mdi-mail',              label: 'Enviar Mensaje'  },
+                { action: 'addIncidencia', icon: 'mdi-account-alert', label: 'Incidencia / Sanciones' },
+                { action: 'sendMensaje',   icon: 'mdi-mail',          label: 'Enviar Mensaje'  },
+                { action: 'resetPassword', icon: 'mdi-account-key',   label: 'Reiniciar Password'   },
             ],
             dialogIncidencia: false,
             dialogMensaje:    false,
@@ -180,6 +182,18 @@ export default {
 
         updateAsistencia(asistencia, boAsistencia)
         {
+            if(this.clase.fe_completada)
+            {
+                if(!boAsistencia)
+                {
+                    this.alumnosSelected.push(asistencia.id)
+                } else {
+                    this.alumnosSelected = this.alumnosSelected.filter( idAsistencia => idAsistencia != asistencia.id)
+                }
+                this.showError('Clase Finalizada');
+                return
+            }
+            
             this.form.bo_asistencia  = boAsistencia;
             
             this.updateResource(`asistencia/${asistencia.id}`, this.form).then( data => {
@@ -199,7 +213,7 @@ export default {
 
             this.mensaje = {
                 tipoDestinatario: 3,
-                tipoMensaje: 1,
+                tipoMensaje:      1,
                 tipoPrioridad:    1,
                 idDestinatario:   alumno.id,
                 asunto:           null,
@@ -210,11 +224,20 @@ export default {
             }
         },
 
+        resetPassword(alumno)
+        {
+            let form = { id_usuario: this.idUser }
+            this.updateResource( `usuario/${alumno.usuario_alumno.id}/resetPassword`, form).then( data => {
+                this.showMessage(data.msj)
+            });
+        },
+
         closeDialog(dialog)
         {
             this.alumno    = null
             this[dialog]   = false
         }
+
 
     }
 }

@@ -38,10 +38,6 @@ class PlanDetalle extends Model
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
     }
-    public function tipoEvaluacion()
-    {
-        return $this->BelongsTo('App\Models\TipoEvaluacion', 'id_tipo_evaluacion');
-    }
 
     public function planEvaluacion()
     {
@@ -50,7 +46,7 @@ class PlanDetalle extends Model
 
     public function evaluacion()
     {
-        return $this->hasOne('App\Models\Evaluacion', 'id_plan_detalle');
+        return $this->hasMany('App\Models\Evaluacion',  'id_plan_detalle');
     }
 
     public function archivo()
@@ -63,7 +59,7 @@ class PlanDetalle extends Model
         return $this->HasMany('App\Models\PlanTema', 'id_plan_detalle');
     }
 
-    public function origen()
+    public function tipoEvaluacion()
     {
         return $this->morphTo(null,'tx_origen','id_origen', 'id');
     }

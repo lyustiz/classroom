@@ -173,34 +173,6 @@ class PlanEvaluacionController extends Controller
         
         return $calificacion;
     }
-
-    public function PlanEvaluacionCalificacionAlumnoDocente($idAlumno, $idDocente)
-    {
-        $planEvaluacion =   PlanEvaluacion::with([
-                                        'materia',
-                                        'evaluacion',
-                                        'evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion',
-                                        'evaluacion.evaluacionAlumno'=> function($query) use ( $idAlumno ){
-                                            $query->where('id_alumno', $idAlumno);
-                                        },
-                                        'evaluacion.evaluacionAlumno.calificacion',
-                                    ])
-                                    ->whereHas('grupo.alumno', function ($query) use ($idAlumno) {
-                                        $query->where('alumno.id', $idAlumno);
-                                    })
-                                    ->whereHas('materia.alumno', function ($query) use ($idAlumno) {
-                                        $query->where('alumno.id', $idAlumno);
-                                    })
-                                    ->where('id_docente', $idDocente)
-                                    ->has('periodoActivo')
-                                    ->activo()
-                                    ->get();
-
-        $calificaciones = $this->calcularCalificaciones($planEvaluacion);
-
-        return [ 'calificaciones' => $calificaciones, 'planEvaluacion' => $planEvaluacion ];
-    }
-
     public function PlanEvaluacionCalificacionGrupo($idAlumno)
     {
       
@@ -227,17 +199,45 @@ class PlanEvaluacionController extends Controller
 
     }
 
+
+    public function PlanEvaluacionCalificacionAlumnoMateria($idAlumno, $idMateria)
+    {
+        $planEvaluacion =   PlanEvaluacion::with([
+                                        'materia:id,nb_materia',
+                                        'planDetalle.tipoEvaluacion',
+                                        'planDetalle.evaluacion.origen',
+                                        'evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion',
+                                        'planDetalle.evaluacion.evaluacionAlumno'=> function($query) use ( $idAlumno ){
+                                            $query->where('id_alumno', $idAlumno);
+                                        },
+                                    ])
+                                    ->whereHas('grupo.alumno', function ($query) use ($idAlumno) {
+                                        $query->where('alumno.id', $idAlumno);
+                                    })
+                                    ->whereHas('materia.alumno', function ($query) use ($idAlumno) {
+                                        $query->where('alumno.id', $idAlumno);
+                                    })
+                                    ->where('id_materia', $idMateria)
+                                    ->has('periodoActivo')
+                                    ->activo()
+                                    ->get();
+
+        $calificaciones = $this->calcularCalificacionAlumno($planEvaluacion);
+
+        return [ 'calificaciones' => $calificaciones, 'planEvaluacion' => $planEvaluacion ];
+    }
+
+  
     public function PlanEvaluacionCalificacionAlumno($idAlumno)
     {
-      
         $planEvaluacion =   PlanEvaluacion::with([
-                                'planDetalle',
-                                'materia',
-                                'evaluacion.tipoEvaluacion',
-                                'evaluacion.evaluacionAlumno'=> function($query) use ( $idAlumno ){
-                                    $query->where('id_alumno', $idAlumno);
-                                },
-                                'evaluacion.evaluacionAlumno.calificacion',
+                                    'materia:id,nb_materia', 
+                                    'planDetalle.tipoEvaluacion',
+                                    'planDetalle.evaluacion.origen',
+                                    'evaluacion.tipoEvaluacion',
+                                    'planDetalle.evaluacion.evaluacionAlumno'=> function($query) use ( $idAlumno ){
+                                        $query->where('id_alumno', $idAlumno);
+                                    },
                             ])
                             ->whereHas('materia.alumno', function ($query) use ($idAlumno) {
                                 $query->where('alumno.id', $idAlumno);
@@ -249,7 +249,6 @@ class PlanEvaluacionController extends Controller
         $calificaciones = $this->calcularCalificacionAlumno($planEvaluacion);
 
         return [ 'calificaciones' => $calificaciones, 'planEvaluacion' => $planEvaluacion ];
-                
     }
 
     public function calcularCalificacionAlumno($planesEvaluacion)
@@ -289,7 +288,7 @@ class PlanEvaluacionController extends Controller
                    }
                 }  
                 
-                $promedioNota         = $promedioNota / $nroEvaluaciones;
+                $promedioNota         =  ($nroEvaluaciones > 0)  ? $promedioNota / $nroEvaluaciones : 0;
                 
                 $porcentajeEvaluacion = $promedioNota * $porcentaje / 100;
 

@@ -13,7 +13,7 @@
              
                 <v-spacer class="my-3"></v-spacer>
 
-                <select-actividad :actividades="actividades" @showActividad="dialogActividad = true"></select-actividad>
+               <!--  <select-actividad :actividades="actividades" @showActividad="dialogActividad = true"></select-actividad>
                
                 <v-spacer class="my-3"></v-spacer>
 
@@ -24,7 +24,7 @@
                 <v-spacer class="my-3"></v-spacer>
 
                 <select-multimedia :multimedias="multimedias"></select-multimedia>
-                <select-enlace :enlaces="enlaces"></select-enlace>
+                <select-enlace :enlaces="enlaces"></select-enlace> -->
 
             </v-row>
 

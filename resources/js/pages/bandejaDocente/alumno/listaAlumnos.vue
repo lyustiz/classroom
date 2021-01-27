@@ -1,17 +1,33 @@
 <template>
 
-    <v-card flat :loading="loading" height="80vh">
+    <v-card flat :loading="loading" height="90vh">
 
         <v-card-title class="pa-0">
             <app-simple-toolbar title="Alumnos" @closeModal="$emit('closeModal', true)"></app-simple-toolbar>
         </v-card-title>
 
         <v-card-text class="pt-2">
-            <v-row justify="center"> 
+
+            <v-row justify="center" no-gutters>
+                <v-select
+                    :items="materias"
+                    item-text="nb_materia"
+                    item-value="id"
+                    v-model="materia"
+                    label="Seleccione Materia"
+                    :loading="loading"
+                    dense
+                    rounded
+                    filled
+                    return-object
+                    @change="getGrupos($event)"
+                ></v-select>
+            </v-row >
+
+            <v-row justify="center" no-gutters> 
               
               <v-expansion-panels focusable class="rounded-xl" accordion v-model="section" >
                     <v-expansion-panel v-for="grupo in grupos" :key="grupo.id">
-                        
                         <v-expansion-panel-header>
                             <template v-slot:default >
                                 <div>
@@ -19,28 +35,23 @@
                                 </div>
                             </template>
                         </v-expansion-panel-header>
-
-                        <v-expansion-panel-content class="expand-alumnos">
+                        <v-expansion-panel-content>
                             <v-list subheader two-line dense> 
-
                                 <v-list-item v-for="alumno in grupo.alumno" :key="alumno.id" > 
                                     <v-list-item-avatar>
                                         <v-img :src="alumno.foto.full_url" v-if="alumno.foto"></v-img>
                                         <v-icon v-else color="indigo" size="42">mdi-account-circle</v-icon>
                                     </v-list-item-avatar>
-
                                     <v-list-item-content>
-                                    <v-list-item-title v-text="alumno.nb_alumno"></v-list-item-title>
-                                    <v-list-item-subtitle v-text="alumno.tx_documento"></v-list-item-subtitle>
+                                        <v-list-item-title v-text="alumno.nb_alumno"></v-list-item-title>
+                                        <v-list-item-subtitle v-text="alumno.tx_documento"></v-list-item-subtitle>
                                     </v-list-item-content>
-
                                     <v-list-item-icon>
                                         <item-menu :item="alumno" iconColor="deep-purple lighten-5" :menus="itemsMenu" @onItemMenu="onItemMenu($event)" ></item-menu>
                                     </v-list-item-icon>
                                 </v-list-item>
                             </v-list>
                         </v-expansion-panel-content>
-
                     </v-expansion-panel>
                 </v-expansion-panels> 
 
@@ -60,7 +71,7 @@
         </v-dialog>
 
         <v-dialog v-model="dialogCalificaciones" max-width="600" content-class="rounded-xl">
-            <calificacion-alumno :alumno="alumno" @closeModal="closeDialog('dialogCalificaciones')"></calificacion-alumno>
+            <calificacion-alumno :alumno="alumno" :materia="materia" @closeModal="closeDialog('dialogCalificaciones')"></calificacion-alumno>
         </v-dialog>
 
     </v-card>
@@ -98,7 +109,9 @@ export default {
     data () {
         return {
             section: null,
+            materias: [],
             grupos:   [],
+            materia:  [],
             itemsMenu: [
                 { label: 'Calificaciones', icon: 'mdi-clipboard-list', action: 'showCalificaciones' },
                 { label: 'Enviar Mensaje', icon: 'mdi-mail', action: 'addMensaje' },
@@ -114,7 +127,12 @@ export default {
     {
         list()
         {
-           this.getResource( `grupo/alumnos/docente/${this.docente.id}` ).then( data => this.grupos = data )
+           this.getResource( `materia/grupo/alumno/docente/${this.docente.id}` ).then( data => this.materias = data )
+        },
+
+        getGrupos(materia)
+        {
+            this.grupos = materia.grupo;
         },
 
         showCalificaciones(alumno)
@@ -148,7 +166,8 @@ export default {
 
         resetPassword(alumno)
         {
-            this.updateResource( `usuario/${alumno.usuario_alumno.id}/resetPassword` ).then( data => {
+           let form = { id_usuario: this.idUser }
+            this.updateResource( `usuario/${alumno.usuario_alumno.id}/resetPassword`, form).then( data => {
                 this.showMessage(data.msj)
             });
         }
@@ -159,8 +178,4 @@ export default {
 
 <style scoped>
 
-.expand-alumnos{
-    max-height: 51vh !important;
-    overflow-y: scroll;
-}
 </style>

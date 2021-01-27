@@ -707,7 +707,7 @@ export default {
         eliminarItem()
         {
             
-            this.deleteResource(`${this.tipoItem}/${this.item.id}`).then( data => {
+            this.deleteResource(`evaluacion/${this.item.id}`).then( data => {
                 this.showMessage(data.msj)
                 this.dialogEliminar = false
                 this.list()

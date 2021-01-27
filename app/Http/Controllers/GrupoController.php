@@ -69,6 +69,7 @@ class GrupoController extends Controller
                     ->get();
     }
 
+
     public function grupoGrado($idGrado)
     {
         return Grupo::select('id', 'nb_grupo')

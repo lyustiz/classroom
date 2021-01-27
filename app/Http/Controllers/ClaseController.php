@@ -32,6 +32,7 @@ class ClaseController extends Controller
                              'asistencia' ,
                              'asistencia.alumno:alumno.id,nb_nombre,nb_nombre2,nb_apellido,nb_apellido2', 
                              'asistencia.alumno.foto',  
+                             'asistencia.alumno.usuarioAlumno:id,nb_usuario,id_origen',
                              'asistentes:asistencia.id,id_alumno,id_clase' 
                             ])
                     ->where('id_docente', $idDocente)

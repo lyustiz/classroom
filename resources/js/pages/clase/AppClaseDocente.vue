@@ -52,6 +52,7 @@
                             rounded
                             @change="getGrupos($event)"
                             return-object
+                            clearable
                         ></v-select>
                     </v-col>
 
@@ -69,6 +70,7 @@
                             rounded
                             @change="getMaterias($event)"
                             return-object
+                            clearable
                         ></v-select>
                     </v-col>
 
@@ -86,6 +88,7 @@
                             filled
                             rounded
                             return-object
+                            clearable
                         ></v-select>
                     </v-col>
                     </v-row>

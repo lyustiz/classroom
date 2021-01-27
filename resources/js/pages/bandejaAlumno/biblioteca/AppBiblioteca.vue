@@ -72,6 +72,7 @@
                                 </v-col>
                             </v-row>
                         </v-card>
+                        
                     </v-slide-item>
 
                     <v-overlay color="amber rounded-lg" absolute :opacity="0.3" :value="loading">

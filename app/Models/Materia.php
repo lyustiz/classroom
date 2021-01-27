@@ -76,7 +76,7 @@ class Materia extends Model
 
     public function alumno()
 	{
-        return $this->hasOneThrough(
+        return $this->hasManyThrough(
 			
 			'App\Models\Alumno', //final
             'App\Models\AlumnoMateria', //intermedia
@@ -89,7 +89,7 @@ class Materia extends Model
     
     public function grupo()
 	{
-        return $this->hasOneThrough(
+        return $this->hasManyThrough(
 			
 			'App\Models\Grupo', //final
             'App\Models\GrupoMateria', //intermedia

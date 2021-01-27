@@ -179,6 +179,7 @@ Route::apiResource('/grupoMateria',             'GrupoMateriaController', ['para
 Route::apiResource('/areaEstudio',              'AreaEstudioController');
 Route::get('/materia/areaEstudio/{area}',       'MateriaController@materiaAreaEstudio');
 Route::get('/materia/docente/alumno/{alumno}',  'MateriaController@materiaDocenteAlumno');
+Route::get('/materia/grupo/alumno/docente/{docente}',  'MateriaController@materiaGrupoAlumnoDocente');
 Route::get('/materia/grado/{grado}',            'MateriaController@materiaGrado');
 Route::get('/materia/grupo/{grupo}',            'MateriaController@materiaGrupo');
 Route::get('/materia/grupo/{grupo}/docente/{docente}',  'MateriaController@materiaGrupoDocente');
@@ -221,6 +222,7 @@ Route::apiResource('/tipoUsuario',              'TipoUsuarioController');
 Route::get('/usuario/lote/tipo/{tipo}',         'UsuarioController@usuarioLoteTipo');
 Route::put('/usuario/{usuario}/email',          'UsuarioController@updateEmail');
 Route::put('/usuario/{usuario}/password',       'UsuarioController@updatePassword');
+Route::put('/usuario/{usuario}/resetPassword',  'UsuarioController@resetPassword');
 Route::apiResource('/usuario',                  'UsuarioController');
 
 Route::apiResource('/perfil',                   'PerfilController');
@@ -276,7 +278,7 @@ Route::get('/planEvaluacion/grupo/{grupo}/periodo/{periodo}',     'PlanEvaluacio
 Route::get('/planEvaluacion/docente/{docente}/periodo/{periodo}', 'PlanEvaluacionController@planEvaluacionDocentePeriodo');
 Route::get('/planEvaluacion/alumno/{alumno}',  'PlanEvaluacionController@planEvaluacionAlumno');
 Route::get('/planEvaluacion/calificacion/alumno/{alumno}','PlanEvaluacionController@PlanEvaluacionCalificacionAlumno');
-Route::get('/planEvaluacion/calificacion/alumno/{alumno}/docente/{docente}','PlanEvaluacionController@PlanEvaluacionCalificacionAlumnoDocente');
+Route::get('/planEvaluacion/calificacion/alumno/{alumno}/materia/{materia}','PlanEvaluacionController@PlanEvaluacionCalificacionAlumnoMateria');
 Route::put('/planEvaluacion/status/{planEvaluacion}',     'PlanEvaluacionController@updateStatus');
 Route::apiResource('/planEvaluacion',           'PlanEvaluacionController');
 Route::apiResource('/tipoEvaluacion',           'TipoEvaluacionController');
@@ -364,25 +366,17 @@ Route::apiResource('/evaluacionAlumno',         'EvaluacionAlumnoController');
 
 // -- ASIGNACION -- //
 
-Route::get('/actividad/tema/{tema}',            'ActividadController@actividadTema');
-Route::apiResource('/actividad',                'ActividadController');
-Route::apiResource('/tipoActividad',            'TipoActividadController');
-
+// enlace
 Route::get('/enlace/tipoEnlace/{tipoEnlace}/tema/{tema}',               'EnlaceController@enlaceTipoEnlaceTema');
 Route::apiResource('/enlace',                   'EnlaceController');
 Route::apiResource('/tipoEnlace',               'TipoEnlaceController');
 
-/* Route::get('/asignacion/grupo/{grupo}/alumnos', 'AsignacionController@asignacionGrupoAlumnos');
-Route::get('/asignacion/grupo/{grupo}',         'AsignacionController@asignacionGrupo');
-Route::apiResource('/asignacion',               'AsignacionController');
-Route::apiResource('/tipoAsignacion',           'TipoAsignacionController');
-Route::get('/asignacionAlumno/grupo/{grupo}',   'AsignacionAlumnoController@asignacionAlumnoGrupo');
-Route::get('/asignacionAlumno/alumno/{alumno}', 'AsignacionAlumnoController@asignacionAlumnoAlumno');
-Route::apiResource('/asignacionAlumno',         'AsignacionAlumnoController'); */
-
+// actividad
+Route::get('/actividad/tema/{tema}',            'ActividadController@actividadTema');
+Route::apiResource('/actividad',                'ActividadController');
+Route::apiResource('/tipoActividad',            'TipoActividadController');
 Route::get('/actividadPregunta/actividad/{actividad}',     'ActividadPreguntaController@actividadPreguntaActividad');
 Route::apiResource('/actividadPregunta',        'ActividadPreguntaController', ['parameters' => ['actividadPregunta' => 'actividadPregunta']]);
-
 Route::put('/actividadRespuesta/{actividadRespuesta}/nombre',   'ActividadRespuestaController@updateNombre');
 Route::put('/actividadRespuesta/{actividadRespuesta}/correcta', 'ActividadRespuestaController@updateCorrecta');
 Route::get('/actividadRespuesta/pregunta/{pregunta}',     'ActividadRespuestaController@actividadRespuestaPregunta');
@@ -407,7 +401,6 @@ Route::post('meet/auth/{usuario}',              'MeetController@auth');
 Route::get('/asistente/perfil/{perfil}',        'AsistenteController@asistentePerfil');
 Route::apiResource('/asistente',                'AsistenteController');
 Route::apiResource('/asistenteDetalle',         'AsistenteDetalleController');
-
 
 // -- FOTOS / ARCHIVOS -- //
 Route::get('/foto/tipoFoto/{tipoFoto}/origen/{origenId}',  'FotoController@fotoTipoOrigen');
