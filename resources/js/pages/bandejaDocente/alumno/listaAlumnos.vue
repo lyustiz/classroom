@@ -44,7 +44,7 @@
                                     </v-list-item-avatar>
                                     <v-list-item-content>
                                         <v-list-item-title v-text="alumno.nb_alumno"></v-list-item-title>
-                                        <v-list-item-subtitle v-text="alumno.tx_documento"></v-list-item-subtitle>
+                                        <v-list-item-subtitle> {{alumno.tx_documento}} - {{alumno.usuario_alumno.nb_usuario}}</v-list-item-subtitle>
                                     </v-list-item-content>
                                     <v-list-item-icon>
                                         <item-menu :item="alumno" iconColor="deep-purple lighten-5" :menus="itemsMenu" @onItemMenu="onItemMenu($event)" ></item-menu>

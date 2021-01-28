@@ -55,23 +55,23 @@
                             :key="'sh'+item.id" 
                             v-if="hasHead(item.tx_origen, idx)"
                             >
-                            {{getHeadName(item.tx_origen)}}
+                            {{getHeadName(item.tipo_evaluacion.tx_clase)}}
                          </v-subheader>
                         
                         <v-list-item :key="item.id">
                             <v-list-item-avatar color="white" size="30">
-                                <v-icon :color="item.origen.tx_color" class="" size="25">{{item.origen.tx_icono}}</v-icon>
+                                <v-icon :color="item.tipo_evaluacion.tx_color" class="" size="25">{{item.tipo_evaluacion.tx_icono}}</v-icon>
                             </v-list-item-avatar>
                             <v-list-item-content>
                                 <v-list-item-title class="ml-5 subtitle-2">
                                     <template v-if="item.tx_origen == 'tipo_evaluacion'">
-                                      {{item.origen.nb_tipo_evaluacion}}
+                                      {{item.tipo_evaluacion.nb_tipo_evaluacion}}
                                     </template>
                                     <template v-else-if="item.tx_origen == 'tipo_asignacion'">
-                                       {{item.origen.nb_tipo_asignacion}}
+                                       {{item.tipo_evaluacion.nb_tipo_asignacion}}
                                     </template>
                                     <template v-if="item.tx_origen == 'rasgo'">
-                                      {{item.origen.nb_rasgo}}
+                                      {{item.tipo_evaluacion.nb_rasgo}}
                                     </template>
                                 </v-list-item-title>
                             </v-list-item-content>
@@ -170,7 +170,8 @@ export default {
 
     created()
     {
-        this.list()
+       this.apiUrl = this.$App.apiUrl
+       this.list()
     },
 
     computed:

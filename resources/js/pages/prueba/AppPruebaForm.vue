@@ -10,9 +10,9 @@
 
         <v-card-text class="mt-3">
 
-        <v-row dense>
+        <v-row no-gutters>
 
-        <v-col cols="8">
+        <v-col cols="12">
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.nb_prueba"
@@ -23,7 +23,7 @@
             ></v-text-field>
         </v-col>
 
-        <v-checkbox
+        <!-- <v-checkbox
             :rules="[rules.check]"
             v-model="form.bo_ver_resultado"
             label="Mostrar Resultados"
@@ -32,12 +32,12 @@
             :indeterminate="(form.bo_ver_resultado== null)"
             dense
             class="col-auto  ml-3"
-        ></v-checkbox>
+        ></v-checkbox> -->
 
                                                         
         </v-row>
 
-        <v-row>
+        <v-row no-gutters>
             <v-col>
                 <app-pregunta :prueba="prueba"></app-pregunta>
             </v-col>
@@ -49,7 +49,6 @@
             <v-spacer></v-spacer>
             <form-buttons
                 @update="update()"
-                @store="store()"
                 @clear="$emit('closeDialog')"
                 @cancel="$emit('closeDialog')"
                 action="upd"
@@ -97,8 +96,13 @@ export default {
         return {
             form: {
                 nb_prueba: null,
+                bo_ver_resultado: null,
                 id_status: null,
-                id_usuario: null
+                id_usuario: null,
+            },
+            default:{
+                id_status: 1,
+                bo_ver_resultado: 1
             },
             menuAyudaOpcional: false
         }
@@ -106,7 +110,15 @@ export default {
 
     methods:
     {
-
+        
+        update()
+        {
+           this.updateResource(`prueba/${this.prueba.id}`, this.form).then( data =>{
+               this.showMessage(data.msj)
+               this.$emit('closeDialog', true)
+           })
+        }
+        
     }
 }
 </script>

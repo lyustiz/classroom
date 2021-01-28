@@ -2,10 +2,28 @@
 <v-card width="100%" class="rounded-lg seguimiento-alumno-container">
     <v-subheader dark class="deep-purple rounded-t-lg">Alumnos</v-subheader>
     <v-card-text class="py-1">
+
+    <v-row justify="center" no-gutters class="my-2">
+        <v-select
+            :items="materias"
+            item-text="nb_materia"
+            item-value="id"
+            v-model="materia"
+            label="Seleccione Materia"
+            :loading="loading"
+            dense
+            hide-details
+            rounded
+            filled
+            return-object
+            @change="getGrupos($event)"
+        ></v-select>
+    </v-row >
+
     <v-list class="rounded-lg grey grey lighten-5">
         <v-list-group v-for="(tipos, alumno) in seguimientos" :key="alumno" color="deep-purple" class="grey lighten-5">
             <template v-slot:activator>
-                <v-list-item :input-value="true">
+                <v-list-item :input-value="true" class="rounded-lg">
                     <v-list-item-avatar color="white" size="35" >
                         <v-icon size="33" color="deep-purple">mdi-school</v-icon>
                     </v-list-item-avatar>
@@ -94,9 +112,11 @@ export default {
 
     data() {
         return {
-            seguimientos:  [],
+            materias:     [],
+            materia:      null,
+            seguimientos: [],
             asignaciones: [],
-            evaluaciones: []
+            evaluaciones: [],
         }
     },
 

@@ -7,7 +7,7 @@
 
              <v-tooltip bottom color="green">
                 <template v-slot:activator="{ on }">
-                <v-btn small icon depressed v-on="on" class="ml-1 mt-1" @click="navegateToName('planificador-docente')">
+                <v-btn small icon depressed v-on="on" class="ml-1 mt-1" @click="navegateToName('bandeja-docente')">
                     <v-icon size="34">mdi-home</v-icon>
                 </v-btn>
                 </template>

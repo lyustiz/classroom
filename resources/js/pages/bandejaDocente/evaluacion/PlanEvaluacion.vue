@@ -58,7 +58,7 @@
 
                                         <v-col class="col-1"> 
 
-                                             <v-btn fab x-small color="success" dark :loading="loading" @click="editDetallePlan(planEvaluacion)">
+                                             <v-btn fab x-small color="success" dark :loading="loading" @click="editDetallePlan(planEvaluacion, grupo)">
                                                 <v-icon>mdi-text-box-search</v-icon> 
                                             </v-btn>
                             
@@ -99,14 +99,9 @@
 
         </v-card-text>   
 
-        <v-dialog max-width="90vw" height="95vh" content-class="rounded-xl" v-model="dialogDetallePlan" scrollable>
 
-                <plan-detalle 
-                    :planEvaluacion="planEvaluacion" 
-                    @closeDialog="dialogDetallePlan=false" 
-                    v-if="dialogDetallePlan" >
-                </plan-detalle>
-
+        <v-dialog v-model="detalleDialog" content-class="rounded-xl" max-width="90vw" height="95vh" scrollable>
+            <plan-detalle v-if="detalleDialog" :planEvaluacion="planEvaluacion" :grupo="grupo" :materia="materia" @closeDialog="detalleDialog=false"></plan-detalle>
         </v-dialog>
 
     </v-card>
@@ -114,12 +109,12 @@
 </template>
 
 <script>
-import DataHelper from '@mixins/AppData';
+import AppData from '@mixins/AppData';
 import PlanDetalle  from '@pages/planDetalle/AppPlanDetalle';
 
 export default {
 
-    mixins:     [ DataHelper ],
+    mixins:     [ AppData ],
 
     components: { 
         'plan-detalle':  PlanDetalle,
@@ -143,8 +138,10 @@ export default {
            periodos: [],
            periodo:  null,
            grados:   [],
+           grupo:    null,
+           materia:  null,
            planEvaluacion: null,
-           dialogDetallePlan: false
+           detalleDialog: false
         }
     },
     methods:
@@ -166,9 +163,11 @@ export default {
             return planesEvaluacion.filter(plan => plan.id_periodo == this.periodo)
         },
 
-        editDetallePlan(planEvaluacion)
+        editDetallePlan(planEvaluacion, grupo)
         {
-            this.dialogDetallePlan = true
+            this.detalleDialog = true
+            this.grupo = grupo
+            this.materia = planEvaluacion.materia
             this.planEvaluacion = planEvaluacion
         }
 

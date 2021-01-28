@@ -20,13 +20,13 @@
             </v-list-item-content>
             <v-list-item-action>
               <v-progress-circular
-                :size="50"
+                :size="55"
                 :width="7"
                 :value="getPorcentaje(tipo)"
                 color="blue darken-4"
                 >
                 <div>
-                    <span class="dfisplay-1">{{getPorcentaje(tipo)}}%</span>
+                    <span class="caption">{{getPorcentaje(tipo)}}%</span>
                 </div>
               </v-progress-circular>
             </v-list-item-action>
@@ -130,7 +130,7 @@ export default {
       getPorcentaje(tipo)
       {
         let totales    = this[`${tipo}Total`];
-        let porcentaje = (totales.total> 0) ? totales.completada * 100 / totales.total : 0;
+        let porcentaje = (totales.total> 0) ? (totales.completada * 100 / totales.total).toFixed(1) : 0;
         
         return ( totales ) ? porcentaje : 0
       },

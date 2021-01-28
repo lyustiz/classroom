@@ -213,20 +213,14 @@ class PruebaController extends Controller
     {
         $validate = request()->validate([
             'nb_prueba'        =>  'required|string|max:100',
-            'id_grado'         =>  'required|integer|max:999999999',
-            'id_materia'       =>  'required|integer|max:999999999',
-            'id_tema'          =>  'required|integer|max:999999999',
-			'bo_ver_resultado' =>  'nullable|boolean',
-            'nu_minutos'       =>  'nullable|integer|max:999999999',
-            'nu_minutos'       =>  'nullable|integer|max:999999999',
-			'tx_observaciones' =>  'nullable|string|max:100',
+			'bo_ver_resultado' =>  'required|boolean',
 			'id_status'        =>  'required|integer|max:999999999',
 			'id_usuario'       =>  'required|integer|max:999999999',
         ]);
 
         $prueba = $prueba->update($request->all());
 
-        return [ 'msj' => 'Prueba Actualizada' , compact('prueba')];
+        return [ 'msj' => 'Cuestionario Actualizada' , compact('prueba')];
     }
 
     public function asignar(Request $request, Prueba $prueba)

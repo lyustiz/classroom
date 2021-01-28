@@ -40,7 +40,7 @@ class PlanDetalleController extends Controller
     public function planDetallePlanEvaluacion($idPlanEvaluacion)
     {
         $planDetalle = PlanDetalle::with([
-                                            'origen',
+                                            'tipoEvaluacion',
                                         ])
                                         ->where('id_plan_evaluacion', $idPlanEvaluacion)
                                         ->get();
