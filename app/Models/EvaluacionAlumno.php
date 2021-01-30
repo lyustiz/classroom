@@ -86,6 +86,11 @@ class EvaluacionAlumno extends Model
         return $this->BelongsTo('App\Models\Evaluacion', 'id_evaluacion');
     }
 
+    public function planEvaluacion()
+    {
+        return $this->BelongsTo('App\Models\PlanEvaluacion', 'id_plan_evaluacion');
+    }
+
     public function calificacion()
     {
         return $this->BelongsTo('App\Models\Calificacion',  'id_calificacion');

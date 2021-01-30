@@ -122,7 +122,7 @@
             <v-spacer></v-spacer>
             <form-buttons
                 @update="update()"
-                @cancel=" this.$emit('closeDialog', true)"
+                @cancel="$emit('closeDialog', false)"
                 :action="action"
                 :valid="valid"
                 :loading="loading"

@@ -152,7 +152,7 @@ export default {
 
     props: 
     {
-        evaluacionAlumno: {
+        evaluacion: {
             type: Object,
             default: () =>{}
         },
@@ -161,8 +161,10 @@ export default {
 
     created()
     {       
+        console.log(this.evaluacionAlumno)
+        this.evaluacionAlumno = this.evaluacion.evaluacion_alumno;
         this.alumno = this.evaluacionAlumno.alumno
-        this.prueba = this.evaluacionAlumno.evaluacion.origen
+        this.prueba = this.evaluacion.evaluacion.origen
         this.form.id_prueba = this.prueba.id
         this.form.tx_observaciones = this.evaluacionAlumno.tx_observaciones
         this.list()
@@ -170,6 +172,7 @@ export default {
 
     data() {
         return {
+            evaluacionAlumno: null,
             confirm: false,
             prueba: null,
             alumno: null,
@@ -188,7 +191,9 @@ export default {
     {
         list()
         {
-            this.getResource( `pregunta/prueba/${this.prueba.id}/alumno/${this.alumno.id}/evaluacion`).then( data => 
+           
+           
+           this.getResource( `pregunta/prueba/${this.prueba.id}/alumno/${this.alumno.id}/evaluacion`).then( data => 
             {
                 this.preguntas = data
                 this.getTotalCalificacion(data)

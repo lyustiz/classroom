@@ -37,7 +37,6 @@ class AppServiceProvider extends ServiceProvider
             'enlace'          => 'App\Models\Enlace',
             'recurso'         => 'App\Models\Recurso',
             'libro'           => 'App\Models\Libro',
-            'tipo_asignacion' => 'App\Models\TipoAsignacion',
             //Evaluaciones
             'prueba'          => 'App\Models\Prueba',
             'tarea'           => 'App\Models\Tarea',

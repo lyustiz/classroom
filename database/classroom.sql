@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2021-01-27 13:30:13
+Date: 2021-01-30 19:43:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -279,7 +279,7 @@ CREATE TABLE `agenda` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of agenda
@@ -295,6 +295,7 @@ INSERT INTO `agenda` VALUES ('13', 'Inicio 2 Periodo', '2', '1', '9', '2021-01-0
 INSERT INTO `agenda` VALUES ('14', 'Taller Convivencia', '2', '7', '4', '2021-01-04', '00:36:00', '00:30:00', '0', 'Taller con el Prof. Jose Azuaje', '1', '1', '2020-08-18 17:51:11', '2020-11-10 21:35:55');
 INSERT INTO `agenda` VALUES ('15', 'eeqeqe', '2', '1', '1', '2021-01-09', '06:06:00', '07:05:00', '0', 'eeq', '1', '1', '2020-09-02 21:27:57', '2020-09-02 21:27:57');
 INSERT INTO `agenda` VALUES ('16', 'Reunion', '2', '1', '1', '2021-01-10', '02:09:00', '01:09:00', '0', 'fdfsf', '1', '2', '2020-09-05 14:13:58', '2020-09-05 14:13:58');
+INSERT INTO `agenda` VALUES ('17', 'Taller de covi', '2', '1', '4', '2021-01-06', '01:05:00', '02:04:00', '0', 'se ditara a todo e perosnal', '1', '1', '2021-01-27 20:42:41', '2021-01-27 20:42:41');
 
 -- ----------------------------
 -- Table structure for agenda_actividad
@@ -598,7 +599,7 @@ CREATE TABLE `archivo` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of archivo
@@ -651,6 +652,8 @@ INSERT INTO `archivo` VALUES ('77', 'Funciones del dinero', '10', '40', 'Grado 5
 INSERT INTO `archivo` VALUES ('78', 'prueba', '8', '41', 'grado-8-ciclo-celular.mp3', 'Audio', 'prueba', '1', '1', '2021-01-22 21:54:37', '2021-01-22 21:54:37');
 INSERT INTO `archivo` VALUES ('79', 'yeryeyery', '13', '24', '1611410935_Documento sin título (2).pdf', 'PDF', 'gsdgsdgsg', '1', '1', '2021-01-23 14:08:55', '2021-01-23 14:08:55');
 INSERT INTO `archivo` VALUES ('80', 'tarea', '13', '12', '1611516450_Documento sin título.pdf', 'PDF', null, '1', '1', '2021-01-24 19:27:30', '2021-01-24 19:27:30');
+INSERT INTO `archivo` VALUES ('81', 'vvsdvsv', '11', '4', '1611852981_clase.png', 'Image', 'sdvsvvsdv', '1', '1', '2021-01-28 16:56:21', '2021-01-28 16:56:21');
+INSERT INTO `archivo` VALUES ('82', 'twete', '13', '66', '1611854812_cotizar.xlsx', 'Excel', 'ewtwe', '1', '1', '2021-01-28 17:26:52', '2021-01-28 17:26:52');
 
 -- ----------------------------
 -- Table structure for area_estudio
@@ -902,7 +905,7 @@ INSERT INTO `asistente` VALUES ('12', 'Horas Academicas', '22', 'Define las hora
 INSERT INTO `asistente` VALUES ('14', 'Areas de Estudio', '27', 'Departamentos o grupos de materias con que cuenta la institución', 'cyan', '13', 'secretaria', 'Se define los colores que serán los que identifiquen en Virtualin a la materias asignadas.', '1', '1', '2020-09-02 12:46:47', '2021-01-17 14:58:10');
 INSERT INTO `asistente` VALUES ('15', 'Materias', '28', 'Se definen  las materia que se imparten en la institución. Agrupadas por Area de Estudio.', 'cyan', '14', 'secretaria', 'Para los libros con que cuenta el sistema debe existir la materia para el mismo.', '1', '1', '2020-09-02 12:47:03', '2021-01-17 15:03:55');
 INSERT INTO `asistente` VALUES ('16', 'Niveles', '24', 'Define los Niveles educativos que la institución maneja', 'cyan', '15', 'secretaria', 'Requerido para la creación de los Grados', '1', '1', '2020-09-02 12:47:30', '2021-01-17 15:05:02');
-INSERT INTO `asistente` VALUES ('17', 'Grados', '25', 'Define los grados que maneja la institucion', 'cyan', '16', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:47:55', '2021-01-17 15:07:02');
+INSERT INTO `asistente` VALUES ('17', 'Grados', '25', 'Define los grados que maneja la institucion', 'cyan', '16', 'secretaria', 'Luego de crear los Grados, se deben asignar las materia a los grados para la asignación de las materias a grupos y alumnos sean de forma automática.', '1', '1', '2020-09-02 12:47:55', '2021-01-27 22:19:08');
 INSERT INTO `asistente` VALUES ('18', 'Grupos', '26', 'Descripcion de la tarea de especial cuidado para el funcionamiento del sistema\'', 'cyan', '17', 'secretaria', 'Descripcion de la funcionalidad, observaciones y advertencias', '1', '1', '2020-09-02 12:48:08', '2021-01-16 20:29:07');
 INSERT INTO `asistente` VALUES ('19', 'Docente', '37', 'Información de los docentes con que cuenta la Institución. \n- Permite cargar la foto del mismo. \n- Se asignan las materias que impartirá el docente', 'teal', '12', 'secretaria', 'Las materia asignadas permiten su asignación al plan de evaluación y en consecuencia al grupo.', '1', '1', '2020-09-02 12:48:30', '2021-01-17 14:56:46');
 INSERT INTO `asistente` VALUES ('21', 'Plan Evaluacion', '35', 'Asignación del docente y la activación del Plan Evaluación según el Periodo y Materia. Permite carga del Plan de evaluación si existe imposibilidad por parte del docente.', 'purple', '18', 'secretaria', 'Los estudiantes solo podrán ver las actividades de los planes de evaluación activos. La responsabilidad de la carga del Plan de Evaluación es del docente el cual poseerá un modulo en su bandeja para tal fin.', '1', '1', '2020-09-02 12:49:11', '2021-01-20 18:12:46');
@@ -2916,7 +2919,7 @@ CREATE TABLE `detalle_horario` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of detalle_horario
@@ -2961,6 +2964,8 @@ INSERT INTO `detalle_horario` VALUES ('97', 'H2M19D1S5I10:15F11:00', '2', '19', 
 INSERT INTO `detalle_horario` VALUES ('98', 'H2M19D10S5I10:15F11:00', '2', '19', '10', '5', '5', '10:15:00', '11:00:00', '5', '1', '1', null, '1', '1', '2020-09-23 19:41:05', '2020-09-23 19:41:05');
 INSERT INTO `detalle_horario` VALUES ('99', 'H2M16D11S3I08:00F08:45', '2', '16', '11', '3', '6', '08:00:00', '08:45:00', '2', '1', '2', null, '1', '1', '2020-09-23 19:42:27', '2020-09-23 19:42:27');
 INSERT INTO `detalle_horario` VALUES ('100', 'H2M16D11S3I08:00F08:45', '2', '16', '11', '3', '6', '08:45:00', '09:30:00', '3', '1', '0', null, '1', '1', '2020-09-23 19:42:27', '2020-09-23 19:42:27');
+INSERT INTO `detalle_horario` VALUES ('101', 'H2M7D1S4I08:00F08:45', '2', '7', '1', '4', '1', '08:00:00', '08:45:00', '2', '1', '2', null, '1', '1', '2021-01-27 20:29:22', '2021-01-27 20:29:22');
+INSERT INTO `detalle_horario` VALUES ('102', 'H2M7D1S4I08:00F08:45', '2', '7', '1', '4', '1', '08:45:00', '09:30:00', '3', '1', '0', null, '1', '1', '2021-01-27 20:29:22', '2021-01-27 20:29:22');
 
 -- ----------------------------
 -- Table structure for directiva
@@ -3510,7 +3515,7 @@ CREATE TABLE `evaluacion` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of evaluacion
@@ -3522,6 +3527,15 @@ INSERT INTO `evaluacion` VALUES ('4', '7', '37', '4', 'asignacion', '87', 'enlac
 INSERT INTO `evaluacion` VALUES ('5', '7', '38', '6', 'asignacion', '75', 'enlace', '1', '19', '7', '5', '2021-01-08', '2021-01-08', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-01-23 23:50:06', '2021-01-23 23:50:06');
 INSERT INTO `evaluacion` VALUES ('6', '7', '40', '7', 'asignacion', '31', 'recurso', '1', '19', '7', '5', '2021-01-11', '2021-01-11', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-01-23 23:50:24', '2021-01-23 23:50:24');
 INSERT INTO `evaluacion` VALUES ('9', '2', '14', '3', 'asignacion', '40', 'actividad', '1', '7', '4', '5', '2021-01-13', '2021-01-13', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-01-26 16:49:27', '2021-01-26 16:49:27');
+INSERT INTO `evaluacion` VALUES ('10', '7', '36', '3', 'asignacion', '58', 'actividad', '1', '19', '11', '5', '2021-01-12', '2021-01-12', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-01-27 22:22:23', '2021-01-27 22:22:23');
+INSERT INTO `evaluacion` VALUES ('11', '2', '13', '2', 'evaluacion', '4', 'tarea', '1', '7', '1', '5', '2021-01-14', '2021-01-14', '00:00:00', '23:59:00', '0', null, '1', '1', '2021-01-28 14:33:15', '2021-01-28 14:33:15');
+INSERT INTO `evaluacion` VALUES ('12', '2', '14', '3', 'asignacion', '39', 'actividad', '1', '7', '4', '5', '2021-01-20', '2021-01-20', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-01-29 22:44:17', '2021-01-29 22:44:17');
+INSERT INTO `evaluacion` VALUES ('13', '7', '41', '8', 'rasgo', '1', 'rasgo', '1', '19', '0', '5', '2021-01-30', '2021-01-30', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-01-30 12:45:41', '2021-01-30 12:45:41');
+INSERT INTO `evaluacion` VALUES ('16', '7', '41', '8', 'rasgo', '2', 'rasgo', '1', '19', '0', '5', '2021-01-30', '2021-01-30', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-01-30 14:07:31', '2021-01-30 14:07:31');
+INSERT INTO `evaluacion` VALUES ('20', '7', '41', '8', 'rasgo', '3', 'rasgo', '1', '19', '0', '5', '2021-01-30', '2021-01-30', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-01-30 14:59:30', '2021-01-30 14:59:30');
+INSERT INTO `evaluacion` VALUES ('22', '7', '41', '8', 'rasgo', '4', 'rasgo', '1', '19', '0', '5', '2021-01-30', '2021-01-30', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-01-30 15:02:27', '2021-01-30 15:02:27');
+INSERT INTO `evaluacion` VALUES ('23', '2', '19', '8', 'rasgo', '1', 'rasgo', '1', '7', '0', '5', '2021-01-30', '2021-01-30', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-01-30 22:02:23', '2021-01-30 22:02:23');
+INSERT INTO `evaluacion` VALUES ('24', '2', '13', '2', 'evaluacion', '3', 'tarea', '1', '7', '3', '5', '2021-01-19', '2021-01-19', '00:00:00', '23:59:00', '0', null, '1', '1', '2021-01-30 22:46:37', '2021-01-30 22:46:37');
 
 -- ----------------------------
 -- Table structure for evaluacion_alumno
@@ -3545,7 +3559,7 @@ CREATE TABLE `evaluacion_alumno` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of evaluacion_alumno
@@ -3580,18 +3594,72 @@ INSERT INTO `evaluacion_alumno` VALUES ('27', '5', '7', '15', null, null, null, 
 INSERT INTO `evaluacion_alumno` VALUES ('28', '5', '7', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-23 23:50:06', null);
 INSERT INTO `evaluacion_alumno` VALUES ('29', '5', '7', '17', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-23 23:50:06', null);
 INSERT INTO `evaluacion_alumno` VALUES ('30', '5', '7', '23', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-23 23:50:06', null);
-INSERT INTO `evaluacion_alumno` VALUES ('31', '6', '7', '1', '2021-01-24', null, null, '5.00', '4', '2021-01-24', '1', null, '5', '1', '2021-01-23 23:50:24', '2021-01-24 19:41:37');
+INSERT INTO `evaluacion_alumno` VALUES ('31', '6', '7', '1', '2021-01-24', null, null, '5.00', '4', '2021-01-28', '2', null, '5', '1', '2021-01-23 23:50:24', '2021-01-28 17:38:15');
 INSERT INTO `evaluacion_alumno` VALUES ('32', '6', '7', '2', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-23 23:50:24', null);
 INSERT INTO `evaluacion_alumno` VALUES ('33', '6', '7', '15', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-23 23:50:24', null);
 INSERT INTO `evaluacion_alumno` VALUES ('34', '6', '7', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-23 23:50:24', null);
 INSERT INTO `evaluacion_alumno` VALUES ('35', '6', '7', '17', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-23 23:50:24', null);
 INSERT INTO `evaluacion_alumno` VALUES ('36', '6', '7', '23', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-23 23:50:24', null);
-INSERT INTO `evaluacion_alumno` VALUES ('49', '9', '2', '1', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-26 16:49:27', null);
+INSERT INTO `evaluacion_alumno` VALUES ('49', '9', '2', '1', null, null, null, null, null, '2021-01-27', '3', null, '3', '1', '2021-01-26 16:49:27', '2021-01-27 23:12:07');
 INSERT INTO `evaluacion_alumno` VALUES ('50', '9', '2', '2', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-26 16:49:27', null);
 INSERT INTO `evaluacion_alumno` VALUES ('51', '9', '2', '15', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-26 16:49:27', null);
 INSERT INTO `evaluacion_alumno` VALUES ('52', '9', '2', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-26 16:49:27', null);
 INSERT INTO `evaluacion_alumno` VALUES ('53', '9', '2', '17', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-26 16:49:27', null);
 INSERT INTO `evaluacion_alumno` VALUES ('54', '9', '2', '23', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-26 16:49:27', null);
+INSERT INTO `evaluacion_alumno` VALUES ('55', '10', '7', '1', null, null, null, null, null, '2021-01-27', '1', null, '3', '1', '2021-01-27 22:22:23', '2021-01-27 22:35:12');
+INSERT INTO `evaluacion_alumno` VALUES ('56', '10', '7', '2', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-27 22:22:23', null);
+INSERT INTO `evaluacion_alumno` VALUES ('57', '10', '7', '15', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-27 22:22:23', null);
+INSERT INTO `evaluacion_alumno` VALUES ('58', '10', '7', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-27 22:22:23', null);
+INSERT INTO `evaluacion_alumno` VALUES ('59', '10', '7', '17', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-27 22:22:23', null);
+INSERT INTO `evaluacion_alumno` VALUES ('60', '10', '7', '23', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-27 22:22:23', null);
+INSERT INTO `evaluacion_alumno` VALUES ('61', '11', '2', '15', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-28 14:33:15', null);
+INSERT INTO `evaluacion_alumno` VALUES ('62', '11', '2', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-28 14:33:15', null);
+INSERT INTO `evaluacion_alumno` VALUES ('63', '11', '2', '23', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-28 14:33:15', null);
+INSERT INTO `evaluacion_alumno` VALUES ('64', '11', '2', '2', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-28 14:33:15', null);
+INSERT INTO `evaluacion_alumno` VALUES ('65', '11', '2', '17', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-28 14:33:15', null);
+INSERT INTO `evaluacion_alumno` VALUES ('66', '11', '2', '1', '2021-01-28', null, '17:27:00', null, null, null, '0', null, '5', '1', '2021-01-28 14:33:15', '2021-01-28 17:27:00');
+INSERT INTO `evaluacion_alumno` VALUES ('67', '12', '2', '1', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-29 22:44:17', null);
+INSERT INTO `evaluacion_alumno` VALUES ('68', '12', '2', '2', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-29 22:44:17', null);
+INSERT INTO `evaluacion_alumno` VALUES ('69', '12', '2', '15', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-29 22:44:17', null);
+INSERT INTO `evaluacion_alumno` VALUES ('70', '12', '2', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-29 22:44:17', null);
+INSERT INTO `evaluacion_alumno` VALUES ('71', '12', '2', '17', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-29 22:44:17', null);
+INSERT INTO `evaluacion_alumno` VALUES ('72', '12', '2', '23', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-29 22:44:17', null);
+INSERT INTO `evaluacion_alumno` VALUES ('73', '13', '7', '1', null, null, null, '2.00', '1', null, '0', null, '5', '1', '2021-01-30 12:45:41', '2021-01-30 20:50:44');
+INSERT INTO `evaluacion_alumno` VALUES ('74', '13', '7', '2', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 12:45:41', null);
+INSERT INTO `evaluacion_alumno` VALUES ('75', '13', '7', '15', null, null, null, '5.00', '4', null, '0', 'puntual', '5', '1', '2021-01-30 12:45:41', '2021-01-30 20:57:20');
+INSERT INTO `evaluacion_alumno` VALUES ('76', '13', '7', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 12:45:41', null);
+INSERT INTO `evaluacion_alumno` VALUES ('77', '13', '7', '17', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 12:45:41', null);
+INSERT INTO `evaluacion_alumno` VALUES ('78', '13', '7', '23', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 12:45:41', null);
+INSERT INTO `evaluacion_alumno` VALUES ('91', '16', '7', '1', null, null, null, '2.00', '1', null, '0', null, '5', '1', '2021-01-30 14:07:31', '2021-01-30 20:50:52');
+INSERT INTO `evaluacion_alumno` VALUES ('92', '16', '7', '2', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 14:07:31', null);
+INSERT INTO `evaluacion_alumno` VALUES ('93', '16', '7', '15', null, null, null, '4.00', '3', null, '0', 'muy responsable', '5', '1', '2021-01-30 14:07:31', '2021-01-30 20:35:23');
+INSERT INTO `evaluacion_alumno` VALUES ('94', '16', '7', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 14:07:31', null);
+INSERT INTO `evaluacion_alumno` VALUES ('95', '16', '7', '17', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 14:07:31', null);
+INSERT INTO `evaluacion_alumno` VALUES ('96', '16', '7', '23', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 14:07:31', null);
+INSERT INTO `evaluacion_alumno` VALUES ('115', '20', '7', '1', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 14:59:30', null);
+INSERT INTO `evaluacion_alumno` VALUES ('116', '20', '7', '2', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 14:59:30', null);
+INSERT INTO `evaluacion_alumno` VALUES ('117', '20', '7', '15', null, null, null, '4.00', '3', null, '0', null, '5', '1', '2021-01-30 14:59:30', '2021-01-30 20:37:23');
+INSERT INTO `evaluacion_alumno` VALUES ('118', '20', '7', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 14:59:30', null);
+INSERT INTO `evaluacion_alumno` VALUES ('119', '20', '7', '17', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 14:59:30', null);
+INSERT INTO `evaluacion_alumno` VALUES ('120', '20', '7', '23', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 14:59:30', null);
+INSERT INTO `evaluacion_alumno` VALUES ('127', '22', '7', '1', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 15:02:27', null);
+INSERT INTO `evaluacion_alumno` VALUES ('128', '22', '7', '2', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 15:02:27', null);
+INSERT INTO `evaluacion_alumno` VALUES ('129', '22', '7', '15', null, null, null, '4.00', '3', null, '0', 'ffsdfsdf', '5', '1', '2021-01-30 15:02:27', '2021-01-30 20:39:41');
+INSERT INTO `evaluacion_alumno` VALUES ('130', '22', '7', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 15:02:27', null);
+INSERT INTO `evaluacion_alumno` VALUES ('131', '22', '7', '17', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 15:02:27', null);
+INSERT INTO `evaluacion_alumno` VALUES ('132', '22', '7', '23', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 15:02:27', null);
+INSERT INTO `evaluacion_alumno` VALUES ('133', '23', '2', '1', null, null, null, '5.00', '4', null, '0', 'siempre puntual', '5', '1', '2021-01-30 22:02:23', '2021-01-30 23:33:46');
+INSERT INTO `evaluacion_alumno` VALUES ('134', '23', '2', '2', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 22:02:23', null);
+INSERT INTO `evaluacion_alumno` VALUES ('135', '23', '2', '15', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 22:02:23', null);
+INSERT INTO `evaluacion_alumno` VALUES ('136', '23', '2', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 22:02:23', null);
+INSERT INTO `evaluacion_alumno` VALUES ('137', '23', '2', '17', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 22:02:23', null);
+INSERT INTO `evaluacion_alumno` VALUES ('138', '23', '2', '23', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 22:02:23', null);
+INSERT INTO `evaluacion_alumno` VALUES ('139', '24', '2', '15', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 22:46:38', null);
+INSERT INTO `evaluacion_alumno` VALUES ('140', '24', '2', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 22:46:38', null);
+INSERT INTO `evaluacion_alumno` VALUES ('141', '24', '2', '23', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 22:46:38', null);
+INSERT INTO `evaluacion_alumno` VALUES ('142', '24', '2', '2', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 22:46:38', null);
+INSERT INTO `evaluacion_alumno` VALUES ('143', '24', '2', '17', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 22:46:38', null);
+INSERT INTO `evaluacion_alumno` VALUES ('144', '24', '2', '1', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 22:46:38', null);
 
 -- ----------------------------
 -- Table structure for evaluacion_metodo
@@ -3820,7 +3888,7 @@ CREATE TABLE `grado_materia` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of grado_materia
@@ -3972,7 +4040,7 @@ CREATE TABLE `grupo_materia` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of grupo_materia
@@ -4034,6 +4102,7 @@ INSERT INTO `grupo_materia` VALUES ('55', '27', '7', null, '1', '1', null, null)
 INSERT INTO `grupo_materia` VALUES ('56', '27', '19', null, '1', '1', null, null);
 INSERT INTO `grupo_materia` VALUES ('57', '28', '7', null, '1', '1', null, null);
 INSERT INTO `grupo_materia` VALUES ('58', '28', '19', null, '1', '1', null, null);
+INSERT INTO `grupo_materia` VALUES ('59', '2', '7', null, '1', '1', '2021-01-27 20:19:54', '2021-01-27 20:19:54');
 
 -- ----------------------------
 -- Table structure for horario
@@ -4697,7 +4766,7 @@ CREATE TABLE `notificacion` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=218 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=243 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of notificacion
@@ -4903,18 +4972,43 @@ INSERT INTO `notificacion` VALUES ('202', '3', '0', 'Nueva Tarea Materia: Cienci
 INSERT INTO `notificacion` VALUES ('203', '3', '0', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-26', null, '1', '1', '2021-01-26 16:44:35', '2021-01-26 16:44:35');
 INSERT INTO `notificacion` VALUES ('204', '3', '0', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-26', null, '1', '1', '2021-01-26 16:48:13', '2021-01-26 16:48:13');
 INSERT INTO `notificacion` VALUES ('205', '3', '0', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-26', null, '1', '1', '2021-01-26 16:49:27', '2021-01-26 16:49:27');
-INSERT INTO `notificacion` VALUES ('206', '3', '1', 'Inicio de Clase Materia: Educacion Fisica', '5', '2021-01-27', null, '1', '1', '2021-01-27 15:06:09', '2021-01-27 15:06:09');
+INSERT INTO `notificacion` VALUES ('206', '3', '1', 'Inicio de Clase Materia: Educacion Fisica', '5', '2021-01-27', '2021-01-28 13:34:52', '1', '1', '2021-01-27 15:06:09', '2021-01-28 13:34:52');
 INSERT INTO `notificacion` VALUES ('207', '3', '2', 'Inicio de Clase Materia: Educacion Fisica', '5', '2021-01-27', null, '1', '1', '2021-01-27 15:06:10', '2021-01-27 15:06:10');
 INSERT INTO `notificacion` VALUES ('208', '3', '15', 'Inicio de Clase Materia: Educacion Fisica', '5', '2021-01-27', null, '1', '1', '2021-01-27 15:06:10', '2021-01-27 15:06:10');
 INSERT INTO `notificacion` VALUES ('209', '3', '16', 'Inicio de Clase Materia: Educacion Fisica', '5', '2021-01-27', null, '1', '1', '2021-01-27 15:06:10', '2021-01-27 15:06:10');
 INSERT INTO `notificacion` VALUES ('210', '3', '17', 'Inicio de Clase Materia: Educacion Fisica', '5', '2021-01-27', null, '1', '1', '2021-01-27 15:06:10', '2021-01-27 15:06:10');
 INSERT INTO `notificacion` VALUES ('211', '3', '23', 'Inicio de Clase Materia: Educacion Fisica', '5', '2021-01-27', null, '1', '1', '2021-01-27 15:06:10', '2021-01-27 15:06:10');
-INSERT INTO `notificacion` VALUES ('212', '3', '1', 'Inglesar a mett mediante l siguiente codigo', '9', '2021-01-27', null, '1', '1', '2021-01-27 00:00:00', null);
+INSERT INTO `notificacion` VALUES ('212', '3', '1', 'Inglesar a mett mediante l siguiente codigo', '9', '2021-01-27', '2021-01-28 13:34:57', '1', '1', '2021-01-27 00:00:00', '2021-01-28 13:34:57');
 INSERT INTO `notificacion` VALUES ('213', '3', '2', 'Inglesar a mett mediante l siguiente codigo', '9', '2021-01-27', null, '1', '1', '2021-01-27 00:00:00', null);
 INSERT INTO `notificacion` VALUES ('214', '3', '15', 'Inglesar a mett mediante l siguiente codigo', '9', '2021-01-27', null, '1', '1', '2021-01-27 00:00:00', null);
 INSERT INTO `notificacion` VALUES ('215', '3', '16', 'Inglesar a mett mediante l siguiente codigo', '9', '2021-01-27', null, '1', '1', '2021-01-27 00:00:00', null);
 INSERT INTO `notificacion` VALUES ('216', '3', '17', 'Inglesar a mett mediante l siguiente codigo', '9', '2021-01-27', null, '1', '1', '2021-01-27 00:00:00', null);
 INSERT INTO `notificacion` VALUES ('217', '3', '23', 'Inglesar a mett mediante l siguiente codigo', '9', '2021-01-27', null, '1', '1', '2021-01-27 00:00:00', null);
+INSERT INTO `notificacion` VALUES ('218', '3', '0', 'Nueva Tarea Materia: Ciencias Sociales ', '8', '2021-01-27', null, '1', '1', '2021-01-27 22:22:23', '2021-01-27 22:22:23');
+INSERT INTO `notificacion` VALUES ('219', '3', '15', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-28', null, '1', '1', '2021-01-28 14:33:15', '2021-01-28 14:33:15');
+INSERT INTO `notificacion` VALUES ('220', '3', '16', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-28', null, '1', '1', '2021-01-28 14:33:15', '2021-01-28 14:33:15');
+INSERT INTO `notificacion` VALUES ('221', '3', '23', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-28', null, '1', '1', '2021-01-28 14:33:15', '2021-01-28 14:33:15');
+INSERT INTO `notificacion` VALUES ('222', '3', '2', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-28', null, '1', '1', '2021-01-28 14:33:15', '2021-01-28 14:33:15');
+INSERT INTO `notificacion` VALUES ('223', '3', '17', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-28', null, '1', '1', '2021-01-28 14:33:15', '2021-01-28 14:33:15');
+INSERT INTO `notificacion` VALUES ('224', '3', '1', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-28', null, '1', '1', '2021-01-28 14:33:15', '2021-01-28 14:33:15');
+INSERT INTO `notificacion` VALUES ('225', '3', '0', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-29', null, '1', '1', '2021-01-29 22:44:17', '2021-01-29 22:44:17');
+INSERT INTO `notificacion` VALUES ('226', '3', '0', 'Nueva Tarea Materia: Ciencias Sociales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 12:45:42', '2021-01-30 12:45:42');
+INSERT INTO `notificacion` VALUES ('227', '3', '0', 'Nueva Tarea Materia: Ciencias Sociales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 12:49:13', '2021-01-30 12:49:13');
+INSERT INTO `notificacion` VALUES ('228', '3', '0', 'Nueva Tarea Materia: Ciencias Sociales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 13:26:51', '2021-01-30 13:26:51');
+INSERT INTO `notificacion` VALUES ('229', '3', '0', 'Nueva Tarea Materia: Ciencias Sociales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 14:07:31', '2021-01-30 14:07:31');
+INSERT INTO `notificacion` VALUES ('230', '3', '0', 'Nueva Tarea Materia: Ciencias Sociales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 14:10:08', '2021-01-30 14:10:08');
+INSERT INTO `notificacion` VALUES ('231', '3', '0', 'Nueva Tarea Materia: Ciencias Sociales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 14:57:42', '2021-01-30 14:57:42');
+INSERT INTO `notificacion` VALUES ('232', '3', '0', 'Nueva Tarea Materia: Ciencias Sociales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 14:58:27', '2021-01-30 14:58:27');
+INSERT INTO `notificacion` VALUES ('233', '3', '0', 'Nueva Tarea Materia: Ciencias Sociales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 14:59:30', '2021-01-30 14:59:30');
+INSERT INTO `notificacion` VALUES ('234', '3', '0', 'Nueva Tarea Materia: Ciencias Sociales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 15:00:08', '2021-01-30 15:00:08');
+INSERT INTO `notificacion` VALUES ('235', '3', '0', 'Nueva Tarea Materia: Ciencias Sociales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 15:02:27', '2021-01-30 15:02:27');
+INSERT INTO `notificacion` VALUES ('236', '3', '0', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 22:02:23', '2021-01-30 22:02:23');
+INSERT INTO `notificacion` VALUES ('237', '3', '15', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 22:46:38', '2021-01-30 22:46:38');
+INSERT INTO `notificacion` VALUES ('238', '3', '16', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 22:46:38', '2021-01-30 22:46:38');
+INSERT INTO `notificacion` VALUES ('239', '3', '23', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 22:46:38', '2021-01-30 22:46:38');
+INSERT INTO `notificacion` VALUES ('240', '3', '2', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 22:46:38', '2021-01-30 22:46:38');
+INSERT INTO `notificacion` VALUES ('241', '3', '17', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 22:46:38', '2021-01-30 22:46:38');
+INSERT INTO `notificacion` VALUES ('242', '3', '1', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 22:46:38', '2021-01-30 22:46:38');
 
 -- ----------------------------
 -- Table structure for oauth_access_tokens
@@ -5418,8 +5512,8 @@ CREATE TABLE `periodo` (
 -- ----------------------------
 -- Records of periodo
 -- ----------------------------
-INSERT INTO `periodo` VALUES ('1', '1er PERÍODO', '1', '2', '2020-07-15', '2020-12-15', null, '1', '1', '2020-05-12 03:27:45', '2021-01-19 02:09:59');
-INSERT INTO `periodo` VALUES ('2', '2do PERÍODO', '2', '2', '2021-01-18', '2021-03-07', null, '2', '1', '2020-05-12 03:28:52', '2021-01-19 02:10:00');
+INSERT INTO `periodo` VALUES ('1', '1er PERÍODO', '1', '2', '2020-07-15', '2020-12-15', null, '1', '1', '2020-05-12 03:27:45', '2021-01-27 20:02:50');
+INSERT INTO `periodo` VALUES ('2', '2do PERÍODO', '2', '2', '2021-01-18', '2021-03-07', null, '2', '1', '2020-05-12 03:28:52', '2021-01-27 20:02:50');
 INSERT INTO `periodo` VALUES ('3', '3er PERÍODO', '3', '1', '2021-03-08', '2021-07-19', null, '2', '1', '2020-05-12 03:29:58', '2021-01-16 17:19:44');
 
 -- ----------------------------
@@ -5466,7 +5560,7 @@ CREATE TABLE `plan_detalle` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=518 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=534 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of plan_detalle
@@ -5847,6 +5941,22 @@ INSERT INTO `plan_detalle` VALUES ('511', '96', 'tipo_evaluacion', '5', '5', nul
 INSERT INTO `plan_detalle` VALUES ('512', '96', 'tipo_evaluacion', '6', '5', null, '1', '1', '2020-12-06 00:00:50', null);
 INSERT INTO `plan_detalle` VALUES ('513', '96', 'tipo_evaluacion', '7', '5', null, '1', '1', '2020-12-06 00:00:50', null);
 INSERT INTO `plan_detalle` VALUES ('514', '96', 'tipo_evaluacion', '8', '10', null, '1', '1', '2020-12-06 00:00:50', null);
+INSERT INTO `plan_detalle` VALUES ('518', '97', 'tipo_evaluacion', '1', '30', null, '1', '1', '2021-01-27 20:23:07', null);
+INSERT INTO `plan_detalle` VALUES ('519', '97', 'tipo_evaluacion', '2', '30', null, '1', '1', '2021-01-27 20:23:07', null);
+INSERT INTO `plan_detalle` VALUES ('520', '97', 'tipo_evaluacion', '3', '10', null, '1', '1', '2021-01-27 20:23:07', null);
+INSERT INTO `plan_detalle` VALUES ('521', '97', 'tipo_evaluacion', '4', '5', null, '1', '1', '2021-01-27 20:23:07', null);
+INSERT INTO `plan_detalle` VALUES ('522', '97', 'tipo_evaluacion', '5', '5', null, '1', '1', '2021-01-27 20:23:07', null);
+INSERT INTO `plan_detalle` VALUES ('523', '97', 'tipo_evaluacion', '6', '5', null, '1', '1', '2021-01-27 20:23:07', null);
+INSERT INTO `plan_detalle` VALUES ('524', '97', 'tipo_evaluacion', '7', '5', null, '1', '1', '2021-01-27 20:23:07', null);
+INSERT INTO `plan_detalle` VALUES ('525', '97', 'tipo_evaluacion', '8', '10', null, '1', '1', '2021-01-27 20:23:07', null);
+INSERT INTO `plan_detalle` VALUES ('526', '98', 'tipo_evaluacion', '1', '30', null, '1', '1', '2021-01-28 14:28:45', null);
+INSERT INTO `plan_detalle` VALUES ('527', '98', 'tipo_evaluacion', '2', '30', null, '1', '1', '2021-01-28 14:28:45', null);
+INSERT INTO `plan_detalle` VALUES ('528', '98', 'tipo_evaluacion', '3', '10', null, '1', '1', '2021-01-28 14:28:45', null);
+INSERT INTO `plan_detalle` VALUES ('529', '98', 'tipo_evaluacion', '4', '5', null, '1', '1', '2021-01-28 14:28:45', null);
+INSERT INTO `plan_detalle` VALUES ('530', '98', 'tipo_evaluacion', '5', '5', null, '1', '1', '2021-01-28 14:28:45', null);
+INSERT INTO `plan_detalle` VALUES ('531', '98', 'tipo_evaluacion', '6', '5', null, '1', '1', '2021-01-28 14:28:45', null);
+INSERT INTO `plan_detalle` VALUES ('532', '98', 'tipo_evaluacion', '7', '5', null, '1', '1', '2021-01-28 14:28:45', null);
+INSERT INTO `plan_detalle` VALUES ('533', '98', 'tipo_evaluacion', '8', '10', null, '1', '1', '2021-01-28 14:28:45', null);
 
 -- ----------------------------
 -- Table structure for plan_evaluacion
@@ -5864,7 +5974,7 @@ CREATE TABLE `plan_evaluacion` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of plan_evaluacion
@@ -5882,7 +5992,7 @@ INSERT INTO `plan_evaluacion` VALUES ('59', '2', '1', '17', '13', null, '2', '1'
 INSERT INTO `plan_evaluacion` VALUES ('60', '2', '1', '14', '14', null, '2', '1', '2020-07-14 02:42:13', '2020-11-10 16:06:02');
 INSERT INTO `plan_evaluacion` VALUES ('61', '1', '1', '15', '11', null, '1', '1', '2020-07-16 00:45:43', '2020-12-04 01:34:38');
 INSERT INTO `plan_evaluacion` VALUES ('62', '1', '1', '14', '1', null, '1', '1', '2020-07-30 13:09:11', '2020-07-30 13:09:11');
-INSERT INTO `plan_evaluacion` VALUES ('63', '1', '1', '16', '11', null, '2', '1', '2020-09-08 00:56:35', '2020-09-08 00:56:35');
+INSERT INTO `plan_evaluacion` VALUES ('63', '1', '1', '16', '11', null, '1', '1', '2020-09-08 00:56:35', '2020-09-08 00:56:35');
 INSERT INTO `plan_evaluacion` VALUES ('64', '14', '1', '7', '1', null, '2', '1', '2020-10-26 16:11:16', '2020-10-26 16:11:16');
 INSERT INTO `plan_evaluacion` VALUES ('65', '14', '1', '19', '1', null, '2', '1', '2020-10-26 16:11:22', '2020-10-26 16:11:22');
 INSERT INTO `plan_evaluacion` VALUES ('66', '14', '1', '15', '1', null, '2', '1', '2020-10-26 16:11:27', '2020-11-16 12:17:32');
@@ -5916,6 +6026,8 @@ INSERT INTO `plan_evaluacion` VALUES ('93', '27', '1', '7', '1', null, '2', '1',
 INSERT INTO `plan_evaluacion` VALUES ('94', '27', '1', '19', '1', null, '2', '1', '2020-12-06 00:00:33', '2020-12-06 00:00:33');
 INSERT INTO `plan_evaluacion` VALUES ('95', '28', '1', '7', '1', null, '2', '1', '2020-12-06 00:00:43', '2020-12-06 00:00:43');
 INSERT INTO `plan_evaluacion` VALUES ('96', '28', '1', '19', '1', null, '2', '1', '2020-12-06 00:00:50', '2020-12-06 00:00:50');
+INSERT INTO `plan_evaluacion` VALUES ('97', '8', '1', '14', '1', null, '2', '1', '2021-01-27 20:23:07', '2021-01-27 20:23:07');
+INSERT INTO `plan_evaluacion` VALUES ('98', '17', '1', '15', '11', null, '2', '1', '2021-01-28 14:28:45', '2021-01-28 14:28:45');
 
 -- ----------------------------
 -- Table structure for plan_plantilla
@@ -5961,15 +6073,16 @@ CREATE TABLE `plan_tema` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of plan_tema
 -- ----------------------------
 INSERT INTO `plan_tema` VALUES ('84', '2', '1', '2', null, '1', '1', null, null);
 INSERT INTO `plan_tema` VALUES ('85', '2', '1', '3', null, '1', '1', null, null);
-INSERT INTO `plan_tema` VALUES ('86', '7', '1', '7', null, '1', '1', null, null);
-INSERT INTO `plan_tema` VALUES ('87', '7', '1', '8', null, '1', '1', null, null);
+INSERT INTO `plan_tema` VALUES ('90', '7', '1', '7', null, '1', '1', null, null);
+INSERT INTO `plan_tema` VALUES ('91', '7', '1', '8', null, '1', '1', null, null);
+INSERT INTO `plan_tema` VALUES ('92', '98', '17', '180', null, '1', '1', null, null);
 
 -- ----------------------------
 -- Table structure for pregunta
@@ -6190,24 +6303,25 @@ CREATE TABLE `prueba_alumno` (
 DROP TABLE IF EXISTS `rasgo`;
 CREATE TABLE `rasgo` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nb_rasgo` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tx_icono` varchar(35) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `tx_color` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nb_rasgo` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'mdi-human',
+  `tx_icono` varchar(35) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `tx_color` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'blue',
   `tx_observaciones` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_status` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of rasgo
 -- ----------------------------
-INSERT INTO `rasgo` VALUES ('1', 'puntualidad', 'mdi-account-clock', 'blue', null, '1', '1', '2020-11-14 22:51:51', null);
-INSERT INTO `rasgo` VALUES ('2', 'responsabilidad', 'mdi-handshake', 'purple', null, '1', '1', '2020-11-14 22:52:24', null);
-INSERT INTO `rasgo` VALUES ('3', 'asistencia', 'mdi-account-check', 'green', null, '1', '1', '2020-11-14 22:52:20', null);
-INSERT INTO `rasgo` VALUES ('4', 'participacion', 'mdi-hand', 'orange', '', '1', '1', '2020-11-14 22:52:38', null);
+INSERT INTO `rasgo` VALUES ('1', 'Puntualidad', 'mdi-account-clock', 'indigo', null, '1', '1', '2020-11-14 22:51:51', null);
+INSERT INTO `rasgo` VALUES ('2', 'Responsabilidad', 'mdi-handshake', 'purple', null, '1', '1', '2020-11-14 22:52:24', null);
+INSERT INTO `rasgo` VALUES ('3', 'Asistencia', 'mdi-account-check', 'green', null, '1', '1', '2020-11-14 22:52:20', null);
+INSERT INTO `rasgo` VALUES ('4', 'Participacion', 'mdi-hand', 'orange', '', '1', '1', '2020-11-14 22:52:38', null);
+INSERT INTO `rasgo` VALUES ('5', 'Prueba', 'mdi-human', 'blue', null, '2', '1', '2021-01-29 11:42:35', null);
 
 -- ----------------------------
 -- Table structure for recurso
@@ -6785,13 +6899,14 @@ CREATE TABLE `tarea` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of tarea
 -- ----------------------------
 INSERT INTO `tarea` VALUES ('2', 'Mapa Mental', 'ryyey', '1', '4', '7', '1', '0.00', 'eryeryey', '2', '1', '2021-01-14 21:31:37', '2021-01-14 21:32:01');
 INSERT INTO `tarea` VALUES ('3', 'mapa mental Sol', null, null, '4', '7', '3', '0.00', null, '2', '1', '2021-01-17 17:00:15', '2021-01-17 17:00:15');
+INSERT INTO `tarea` VALUES ('4', 'prueba', 'fjjfhsjhdfskdfhsjkhdjfsdfdsfsdfsf', '3', '4', '7', '1', '11.00', 'fdsfsdfsd', '2', '1', '2021-01-28 14:32:10', '2021-01-28 14:32:47');
 
 -- ----------------------------
 -- Table structure for telefono
@@ -6884,11 +6999,12 @@ CREATE TABLE `tema` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=386 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=387 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of tema
 -- ----------------------------
+INSERT INTO `tema` VALUES ('0', 'Rasgo', '0', '', '0', '0', '1', '1', '2', '1', null, null);
 INSERT INTO `tema` VALUES ('1', 'Los Sentidos', '1', null, '7', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2021-01-25 16:06:23');
 INSERT INTO `tema` VALUES ('2', 'Luz y Sonido', '2', '', '7', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
 INSERT INTO `tema` VALUES ('3', 'EL Cuerpo Humano', '3', '', '7', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
@@ -7997,7 +8113,7 @@ CREATE TABLE `turno` (
 -- ----------------------------
 INSERT INTO `turno` VALUES ('1', 'Mañana', null, '1', '1', '2020-05-09 22:49:11', '2020-05-09 22:49:11');
 INSERT INTO `turno` VALUES ('2', 'Tarde', null, '1', '1', '2020-05-09 22:49:22', '2020-05-09 22:49:22');
-INSERT INTO `turno` VALUES ('3', 'Sabatino', null, '1', '1', '2020-05-20 03:33:10', '2020-05-20 03:33:10');
+INSERT INTO `turno` VALUES ('3', 'Sabatino', null, '2', '1', '2020-05-20 03:33:10', '2020-05-20 03:33:10');
 
 -- ----------------------------
 -- Table structure for ubicacion

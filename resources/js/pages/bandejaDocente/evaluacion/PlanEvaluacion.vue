@@ -99,7 +99,6 @@
 
         </v-card-text>   
 
-
         <v-dialog v-model="detalleDialog" content-class="rounded-xl" max-width="90vw" height="95vh" scrollable>
             <plan-detalle v-if="detalleDialog" :planEvaluacion="planEvaluacion" :grupo="grupo" :materia="materia" @closeDialog="detalleDialog=false"></plan-detalle>
         </v-dialog>

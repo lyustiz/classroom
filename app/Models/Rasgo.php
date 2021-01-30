@@ -24,9 +24,9 @@ class Rasgo extends Model
 
 
 
-    public function scopeActivo($query)
+    public function scopeActivo($query, $activo = true)
     {
-        return $query->where('id_status', 1);
+        return  ($activo) ?   $query->where('id_status', 1) : $query ;
     }
 
     public function scopeComboData($query)
@@ -42,5 +42,10 @@ class Rasgo extends Model
     public function usuario()
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
+    }
+
+    public function evaluacion()
+    {
+        return $this->Hasmany('App\Models\Evaluacion', 'id_origen')->where('tx_origen', 'rasgo');
     }
 }

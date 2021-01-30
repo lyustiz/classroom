@@ -10,7 +10,7 @@
             <v-toolbar color="grey lighten-4" dense class="elevation-0">
                     <v-row no-gutters justify="space-between">
                         <v-col cols="auto">Alumno: {{(alumno) ? alumno.nb_corto : null}}</v-col>
-                        <v-col cols="auto">Puntuacion: {{form.nu_calificacion | formatNumber}} / {{ evaluacion.nu_peso | formatNumber }}</v-col>
+                        <v-col cols="auto">Puntuacion: {{form.nu_calificacion | formatNumber}} / {{ evaluacion.evaluacion.nu_peso | formatNumber }}</v-col>
                     </v-row>
                 </v-toolbar>
         </v-card-title>
@@ -36,24 +36,24 @@
                                     <template v-slot:activator="{ on }">
                                         <v-avatar color="green" size="54" class="mx-1 white--text rounded-lg" v-on="on">
                                             <v-row no-gutters>
-                                            <v-col cols="12">{{ monthShortNameFromDate(evaluacion.fe_inicio) }}</v-col>
-                                            <v-col cols="12" class="body-1">{{ dayFromDate(evaluacion.fe_inicio) }}</v-col>
+                                            <v-col cols="12">{{ monthShortNameFromDate(evaluacion.evaluacion.fe_inicio) }}</v-col>
+                                            <v-col cols="12" class="body-1">{{ dayFromDate(evaluacion.evaluacion.fe_inicio) }}</v-col>
                                             </v-row>   
                                         </v-avatar>
                                     </template>
-                                    <span>Valido Desde: {{evaluacion.fe_inicio | formatDate }}</span>
+                                    <span>Valido Desde: {{evaluacion.evaluacion.fe_inicio | formatDate }}</span>
                                 </v-tooltip>
 
                                 <v-tooltip bottom color="amber">
                                     <template v-slot:activator="{ on }">
                                         <v-avatar color="amber" size="54" class="ml-1 mr-6 white--text rounded-lg" v-on="on">
                                             <v-row no-gutters>
-                                            <v-col cols="12">{{ monthShortNameFromDate(evaluacion.fe_fin) }}</v-col>
-                                            <v-col cols="12" class="body-1">{{ dayFromDate(evaluacion.fe_fin) }}</v-col>
+                                            <v-col cols="12">{{ monthShortNameFromDate(evaluacion.evaluacion.fe_fin) }}</v-col>
+                                            <v-col cols="12" class="body-1">{{ dayFromDate(evaluacion.evaluacion.fe_fin) }}</v-col>
                                             </v-row>   
                                         </v-avatar>
                                     </template>
-                                    <span>Valido Hasta: {{evaluacion.fe_fin | formatDate }}</span>
+                                    <span>Valido Hasta: {{evaluacion.evaluacion.fe_fin | formatDate }}</span>
                                 </v-tooltip>
                             </v-row>
                         </v-list-item-action>
@@ -82,6 +82,13 @@
                                     :size="65" 
                                     icon="mdi-file-download" 
                                     @click="download()">
+                                </list-simple-icon>
+                                <list-simple-icon 
+                                    v-else
+                                    label="No se ha cargado la Tarea" 
+                                    :size="65" 
+                                    icon="mdi-file-cancel" 
+                                    >
                                 </list-simple-icon>
                             </v-col>
                             </v-row>
@@ -160,7 +167,7 @@ export default {
 
     props: 
     {
-        evaluacionAlumno: {
+        evaluacion: {
             type: Object,
             default: () =>{}
         },
@@ -169,11 +176,11 @@ export default {
 
     created()
     {       
-        this.evaluacion = this.evaluacionAlumno.evaluacion
+        this.evaluacionAlumno = this.evaluacion.evaluacion_alumno
         this.alumno     = this.evaluacionAlumno.alumno
-        this.tarea      = this.evaluacionAlumno.evaluacion.origen
-        this.materia    = this.evaluacionAlumno.evaluacion.materia
-        this.tema       = this.evaluacionAlumno.evaluacion.tema
+        this.tarea      = this.evaluacion.evaluacion.origen
+        this.materia    = this.evaluacion.evaluacion.materia
+        this.tema       = this.evaluacion.evaluacion.tema
         this.item       = this.evaluacionAlumno
         this.mapForm()
         this.list()
@@ -181,7 +188,7 @@ export default {
 
     data() {
         return {
-            evaluacion: null,
+            evaluacionAlumno: null,
             calificacion: [],
             tarea:      null,
             alumno:     null,

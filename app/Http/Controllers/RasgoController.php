@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Rasgo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 
 class RasgoController extends Controller
 {
@@ -13,11 +14,63 @@ class RasgoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Rasgo::with([])
+        return Rasgo::activo( $request->boolean('activo') )
                     ->get();
     }
+
+    public function rasgoGrupoMateriaAsignacion($idGrupo, $idMateria)
+    {
+        $asignado = Rasgo::with([
+                                    'evaluacion' => function($query) use ( $idGrupo, $idMateria ){
+                                        $query->where('id_grupo' , $idGrupo)
+                                              ->where('id_materia' , $idMateria)
+                                              ->activo()
+                                              ->whereHas('planEvaluacion', function (Builder $query) use($idGrupo, $idMateria) {
+                                                    $query->where('id_grupo', $idGrupo)
+                                                          ->where('id_materia', $idGrupo)
+                                                          ->has('periodoActivo')
+                                                          ->activo();
+                                              });
+                                    }
+                                ])
+                                ->select('id','nb_rasgo','tx_icono', 'tx_color')
+                                ->whereHas('evaluacion', function (Builder $query) use($idGrupo, $idMateria) {
+                                    $query->where('id_grupo', $idGrupo)
+                                          ->where('id_materia' , $idMateria)
+                                          ->activo()
+                                          ->whereHas('planEvaluacion', function (Builder $query) use($idGrupo, $idMateria) {
+                                                $query->where('id_grupo', $idGrupo)
+                                                ->has('periodoActivo')
+                                                ->activo();
+                                          });
+                                })
+                                ->activo()
+                                ->get();
+
+        $rasgo      = Rasgo::whereNotIn('id', $asignado->pluck('id'))->activo()->get();
+
+        return [ 'asignado' => $asignado, 'rasgo' => $rasgo] ;
+    }
+
+
+    function formatData($data)
+    {
+        $gradoMateria = [];
+        
+        foreach ($data as $key => $row) {
+
+            $gradoMateria[] = [
+                'id'         => $row->id,
+                'id_materia' => $row->id_materia,
+                'nb_materia' => $row->materia->nb_materia,
+            ];
+        }
+
+        return $gradoMateria;
+    }
+
 
     /**
      * Store a newly created resource in storage.

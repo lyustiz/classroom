@@ -171,6 +171,25 @@ class MateriaController extends Controller
                     ->get();
     }
 
+    public function materiaEvaluacionGrupoDocente($idGrupo, $idDocente)
+    {
+      
+        return  Materia::with([
+                        'planEvaluacion' => function($query) use ( $idGrupo, $idDocente ){
+                            $query->where('id_grupo', $idGrupo)->where('id_docente', $idDocente)->has('periodoActivo')->activo();
+                        },
+                        'planEvaluacion.evaluacion',
+                        'planEvaluacion.evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion',
+                        'planEvaluacion.evaluacionAlumno',
+                    ])
+                    ->comboData()
+                    ->whereHas('planEvaluacion', function ($query) use ($idGrupo, $idDocente) {
+                        $query->where('id_grupo', $idGrupo)->where('id_docente', $idDocente)->has('periodoActivo')->activo();
+                    }) 
+                    ->orderBY('nb_materia')
+                    ->get();
+    }
+
     /**
      * Store a newly created resource in storage.
      *

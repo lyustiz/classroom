@@ -36,7 +36,7 @@
             </v-list-item>
             </v-list>
 
-            <v-row justify="center" v-show="this.items.length >= this.maxItems">
+            <v-row justify="center" v-show="this.items.length <= this.maxItems">
                 <v-col cols="12" md="6" class="text-center">
                     <v-file-input 
                         placeholder="Seleccione un archivo"
@@ -240,7 +240,12 @@ export default {
 
                     let type = this.file.split(';')[0].split(':')[1]
 
-                    this.fileType = this.fileTypes.filter(filetype => filetype.mime == type)[0]
+                    this.fileType = this.fileTypes.filter(filetype =>  type.match(filetype.mime)  )[0]
+
+                    if(!this.fileType)
+                    {
+                        this.showError(`Tipo de archivo no permitido ${type}`)
+                    }
 
                     this.fileName = this.fileUpload.name
 
@@ -267,9 +272,9 @@ export default {
 
         validSize()
         {
-            if(this.fileUpload.size/1048576 > 10)
+            if(this.fileUpload.size/1048576 > 4)
             {
-                this.showError('Tamaño de archivo excede los 10 MB ('+ file.size/1048576 + ')MB')
+                this.showError('Tamaño de archivo excede los 4 MB ('+ file.size/1048576 + ')MB')
                 this.fileUpload = null
                 return false
             }

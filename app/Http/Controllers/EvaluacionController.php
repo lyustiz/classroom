@@ -272,7 +272,7 @@ class EvaluacionController extends Controller
     {
         $evaluacionAlumnos = [];
 
-        if($evaluacion->tx_clase == 'asignacion' )
+        if($evaluacion->tx_clase != 'evaluacion' )
         {
             $alumnos = Alumno::select('id')
                              ->whereHas('grupo', function (Builder $query) use($evaluacion) {

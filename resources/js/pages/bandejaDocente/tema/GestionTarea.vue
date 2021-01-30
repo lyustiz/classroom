@@ -7,7 +7,7 @@
         <v-card-text class="px-1 my-1">
             <v-list dense class="my-">
 
-                <v-list-item color="amber" v-for="tarea in tareas" :key="tarea.id" link @click="show(tarea)">
+                <v-list-item color="amber" v-for="tarea in tareas" :key="tarea.id" link @click="updateTarea(tarea)">
                     <v-list-item-avatar color="white" size="35">
                         <v-icon size="30" color="deep-purple">mdi-notebook</v-icon>
                     </v-list-item-avatar>

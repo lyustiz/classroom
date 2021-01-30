@@ -10,6 +10,7 @@ use App\Models\Calificacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
 
 class EvaluacionAlumnoController extends Controller
 {
@@ -94,7 +95,7 @@ class EvaluacionAlumnoController extends Controller
         { 
             $alumno         = $evaluacionAlumno->alumno->nb_alumno;
             $evaluacion     = $evaluacionAlumno->evaluacion;
-            $tipoEvaluacion = $evaluacion->tipoEvaluacion->nb_tipo_evaluacion;
+            $tipoEvaluacion = strtolower($evaluacion->tipoEvaluacion->nb_tipo_evaluacion);
             $clase          = $evaluacion->tipoEvaluacion->tx_clase;
 
             $data[$alumno][$clase][$tipoEvaluacion][] = $evaluacionAlumno;
@@ -103,27 +104,12 @@ class EvaluacionAlumnoController extends Controller
         return $data;
     }
 
-
-    /*
-    public function asignacionAlumnoGrupo($idGrupo)  //TODO  Extraer Querys
+    public function evaluacionAlumnoMateriaGrupoDocente($idGrupo, $idDocente)  //TODO  Extraer Querys
     {
-        $asignaciones = AsignacionAlumno::with([
+        $evaluacionesAlumno = EvaluacionAlumno::with([
                                 'alumno:id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',
-                                'asignacion:id,id_tipo_asignacion,id_materia,id_tema,id_origen,tx_origen,fe_inicio,fe_fin',
-                                'asignacion.tipoAsignacion:id,nb_tipo_asignacion,tx_icono,tx_color,tx_criterio,nu_tiempo',
-                                'asignacion.materia:id,nb_materia',
-                                'asignacion.tema:id,nb_tema',
-                                'asignacion.origen'
-                            ])
-                            ->whereHas('alumno.grupo', function (Builder $query) use($idGrupo) {
-                                $query->where('grupo.id', $idGrupo);
-                            })
-                            ->get(); 
-
-        $evaluaciones = EvaluacionAlumno::with([
-                                'alumno:id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',
-                                'evaluacion:id,id_tipo_evaluacion,id_materia,id_tema,id_origen,tx_origen,fe_inicio,fe_fin',
-                                'evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion,tx_icono,tx_color',
+                                'evaluacion:id,id_tipo_evaluacion,tx_origen,id_origen,id_grupo,id_materia,id_tema,nu_peso,fe_inicio,fe_fin,hh_inicio,hh_fin,nu_minutos',
+                                'evaluacion.tipoEvaluacion:id,nb_tipo_evaluacion,tx_icono,tx_color,tx_clase',
                                 'evaluacion.materia:id,nb_materia',
                                 'evaluacion.tema:id,nb_tema',
                                 'evaluacion.origen'
@@ -131,37 +117,45 @@ class EvaluacionAlumnoController extends Controller
                             ->whereHas('alumno.grupo', function (Builder $query) use($idGrupo) {
                                 $query->where('grupo.id', $idGrupo);
                             })
-                            ->get();                     
-        
-        return $this->formatDataAlumnos($asignaciones, $evaluaciones);
+                            ->whereHas('planEvaluacion', function (Builder $query) use($idDocente) {
+                                $query->where('id_docente', $idDocente)->has('periodoActivo');
+                            })
+                            ->get(); 
+
+        return  $this->formatDataMateriaAlumnos($evaluacionesAlumno);
     }
 
-    public function formatDataAlumnos($asignacionesAlumno, $evaluacionesAlumno)
+    public function formatDataMateriaAlumnos($evaluacionesAlumno)
     {
         $data = [];
 
-        foreach ($evaluacionesAlumno as $evaluacionAlumno) //data[tipo][materia]
+        $evaluacionesAlumno = $evaluacionesAlumno->toArray();
+        
+        foreach ($evaluacionesAlumno as $evaluacionAlumno) //data[materia][alumno][clase][tipo]
         { 
-            $alumno         = $evaluacionAlumno->alumno->nb_alumno;
-            $evaluacion     = $evaluacionAlumno->evaluacion;
-            $tipoEvaluacion = $evaluacion->tipoEvaluacion->nb_tipo_evaluacion;
-            $data[$alumno]['evaluacion'][$tipoEvaluacion][] = $evaluacionAlumno;
-        }
+            
+            $nbMateria      = $evaluacionAlumno['evaluacion']['materia']['nb_materia'];
+            $idmateria      = $evaluacionAlumno['evaluacion']['materia']['id'];
+            $alumno         = $evaluacionAlumno['alumno'];
+            $nbAlumno       = $evaluacionAlumno['alumno']['nb_alumno'];
+            $evaluacion     = $evaluacionAlumno['evaluacion'];
+            $tipoEvaluacion = strtolower($evaluacionAlumno['evaluacion']['tipo_evaluacion']['nb_tipo_evaluacion']);
+            $clase          = $evaluacion['tipo_evaluacion']['tx_clase'];
 
-        foreach ($asignacionesAlumno as $asignacionAlumno) //data[tipo][materia]
-        { 
-            $alumno         = $asignacionAlumno->alumno->nb_alumno;
-            $asignacion     = $asignacionAlumno->asignacion;
-            $tipoAsignacion = $asignacion->tipoAsignacion->nb_tipo_asignacion;
-            $data[$alumno]['asignacion'][$tipoAsignacion][] = $asignacionAlumno;
+            
+            $data[$nbMateria][$alumno['nb_alumno']][$clase][$tipoEvaluacion][] = [  'evaluacion' => $evaluacion,
+                                                                                    'evaluacion_alumno' => Arr::except($evaluacionAlumno, ['evaluacion'])
+                                                                                ];
+            
+            $data[$nbMateria]['id']         = $idmateria;
+            $data[$nbMateria]['nb_materia'] = $nbMateria;
+            $data[$nbMateria][$nbAlumno ]['id']  = $alumno['id'];
+            $data[$nbMateria][$nbAlumno ]['nb_alumno']  = $nbAlumno ;
+
         }
 
         return $data;
-    } 
-
-
-
-     */
+    }
 
     public function evaluacionAlumnoArchivo($idEvaluacionAlumno)  
     {
@@ -182,7 +176,8 @@ class EvaluacionAlumnoController extends Controller
     {
         $validate = request()->validate([
             'id_evaluacion'     => 	'required|integer|max:999999999',
-			'id_alumno'         => 	'required|integer|max:999999999',
+            'id_alumno'         => 	'required|integer|max:999999999',
+            'nu_calificacion'   => 	'nullable|numeric|max:100',
 			'tx_observaciones'  => 	'nullable|string|max:200',
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
@@ -194,9 +189,7 @@ class EvaluacionAlumnoController extends Controller
         return [ 'msj' => 'Evaluacion Agregada Correctamente', compact('evaluacionAlumno') ];
     }
 
-    
-
-    /**
+   /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

@@ -59,14 +59,14 @@
                             </div>
                         </v-col>
                     </v-item>
-                    <v-overlay class="rounded-lg" absolute :opacity="0.1" :value="loading">
+                    <v-overlay class="rounded-lg mr-2" absolute :opacity="0.1" :value="loading">
                             <v-icon size="40" class="mdi-spin">mdi-loading</v-icon>
                         </v-overlay>
                 </v-item-group>
             </v-col>
 
             <v-col cols="11">
-                <seguimiento-alumno :grupo="grupoSelected"></seguimiento-alumno>
+                <SeguimientoAlumno :grupo="grupoSelected"></SeguimientoAlumno>
             </v-col>
         </v-row>
     

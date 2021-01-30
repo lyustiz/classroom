@@ -1,7 +1,7 @@
 <template>
 
     <v-card class="rounded-xl pb-2" >
-
+        
         <v-toolbar :color="seguimiento[0].evaluacion.tipo_evaluacion.tx_color" dense dark flat>
             <v-row>
                 <v-col cols="auto">
@@ -18,20 +18,20 @@
             <v-list dense>
             <v-list-item color="indigo" link v-for="(item) in seguimiento" :key="item.id" disabled>
                 <v-list-item-avatar color="white" size="35" >
-                    <v-icon size="30" :color="item.evaluacion.tipo_evaluacion.tx_color">
-                        {{item.evaluacion.tipo_evaluacion.tx_icono}}
+                    <v-icon size="30" :color="seguimiento[0].evaluacion.tipo_evaluacion.tx_color">
+                        {{seguimiento[0].evaluacion.tipo_evaluacion.tx_icono}}
                     </v-icon>
                 </v-list-item-avatar>
                 <v-list-item-content>
                     <v-list-item-title>{{ getNombre(item) }}</v-list-item-title>
                     <v-list-item-subtitle>
-                        <span class="font-weight-medium"> Vistas: </span>{{item.nu_acceso}}
-                        <span class="font-weight-medium ml-3" v-if="item.fe_acceso"> Acceso: </span>{{item.fe_acceso | formatDate}}
+                        <span class="font-weight-medium"> Vistas: </span>{{item.evaluacion_alumno.nu_acceso}}
+                        <span class="font-weight-medium ml-3" v-if="item.evaluacion_alumno.fe_acceso"> Acceso: </span>{{item.evaluacion_alumno.fe_acceso | formatDate}}
                     </v-list-item-subtitle>
                 </v-list-item-content>
                 <v-list-item-action>
                     <v-btn icon>
-                        <template v-if="item.id_status > 4">
+                        <template v-if="item.evaluacion_alumno.id_status > 4">
                             <v-icon size="30" color="green">mdi-checkbox-marked-circle-outline</v-icon>
                         </template>
                         <template v-else>
@@ -89,7 +89,7 @@ export default {
         {
             let completados = 0
             for (const seguimiento of seguimientos) {
-                if(seguimiento.id_status > 4)
+                if(seguimiento.evaluacion_alumno.id_status > 4)
                 {
                     completados++
                 }

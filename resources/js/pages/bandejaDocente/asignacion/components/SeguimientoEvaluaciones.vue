@@ -1,7 +1,6 @@
 <template>
 
     <v-card class="rounded-xl pb-2" >
-
         <v-toolbar :color="seguimiento[0].evaluacion.tipo_evaluacion.tx_color" dense dark flat>
             <v-row>
                 <v-col cols="auto">
@@ -18,15 +17,15 @@
             <v-list dense>
             <v-list-item color="indigo" link v-for="(item) in seguimiento" :key="item.id">
                 <v-list-item-avatar color="white" size="35" >
-                    <v-icon size="30" :color="item.evaluacion.tipo_evaluacion.tx_color">
-                        {{item.evaluacion.tipo_evaluacion.tx_icono}}
+                    <v-icon size="30" :color="seguimiento[0].evaluacion.tipo_evaluacion.tx_color">
+                        {{seguimiento[0].evaluacion.tipo_evaluacion.tx_icono}}
                     </v-icon>
                 </v-list-item-avatar>
                 <v-list-item-content>
                     <v-list-item-title>{{ getNombre(item) }}</v-list-item-title>
                     <v-list-item-subtitle>
-                        <span class="font-weight-medium" v-if="item.id_status > 4"> Completada: {{item.fe_evaluacion | formatDate}} </span>
-                        <v-icon size="15" color="green" v-if="item.id_status > 4">mdi-checkbox-marked-circle-outline</v-icon>
+                        <span class="font-weight-medium" v-if="item.evaluacion_alumno.id_status > 4"> Completada: {{item.evaluacion_alumno.fe_evaluacion | formatDate}} </span>
+                        <v-icon size="15" color="green" v-if="item.evaluacion_alumno.id_status > 4">mdi-checkbox-marked-circle-outline</v-icon>
                         <v-icon size="15" color="amber darken-2" v-else>mdi-progress-clock</v-icon>
                     </v-list-item-subtitle>
                 </v-list-item-content>
@@ -41,11 +40,11 @@
         </v-card-text>
 
         <v-dialog v-model="dialogPrueba" max-width="95vw" content-class="rounded-xl" scrollable>
-            <evaluar-prueba :evaluacionAlumno="evaluacion" v-if="dialogPrueba" @closeDialog="closeDialog('dialogPrueba', $event)"></evaluar-prueba>
+            <evaluar-prueba :evaluacion="evaluacion" v-if="dialogPrueba" @closeDialog="closeDialog('dialogPrueba', $event)"></evaluar-prueba>
         </v-dialog>
 
         <v-dialog v-model="dialogTarea" max-width="95vw" content-class="rounded-xl" scrollable>
-            <evaluar-tarea :evaluacionAlumno="evaluacion" v-if="dialogTarea" @closeDialog="closeDialog('dialogTarea', $event)"></evaluar-tarea>
+            <evaluar-tarea :evaluacion="evaluacion" v-if="dialogTarea" @closeDialog="closeDialog('dialogTarea', $event)"></evaluar-tarea>
         </v-dialog>
         
     </v-card>
@@ -103,7 +102,7 @@ export default {
         {
             let completados = 0
             for (const seg of seguimiento) {
-                if(seg.id_status > 4)
+                if(seg.evaluacion_alumno.id_status > 4)
                 {
                     completados++
                 }

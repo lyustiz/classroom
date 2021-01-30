@@ -86,6 +86,11 @@ class Materia extends Model
 			'id_alumno' // fk en intermedia
 		);
     }
+
+    public function grupoMateria()
+	{
+        return $this->HasMany('App\Models\GrupoMateria', 'id_materia');
+    }
     
     public function grupo()
 	{
@@ -105,18 +110,6 @@ class Materia extends Model
         return $this->HasMany('App\Models\Tema', 'id_materia');
     }
 
-
-
-   /*  public function grado()
-    {
-        return $this->hasManyThrough('App\Models\Grado', 'App\Models\GradoMateria', 'id_materia', 'id_grado', 'id', 'id');
-    }
-  */
-
-   /*   public function gradoMateria()
-    {
-        return $this->BelongsTo('App\Models\GradoMateria', 'id_');
-    } */
 
 
 
