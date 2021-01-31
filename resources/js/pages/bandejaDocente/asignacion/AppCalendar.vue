@@ -105,6 +105,7 @@
         :type="type"
         :weekdays="weekdays"
         :now="today"
+        :start="startDate"
         :end="endDate"
         @change="updateRange"
     > 
@@ -524,6 +525,16 @@ export default {
         {
             return this.$store.getters['getDocente'];
         },
+
+        startDate()
+        {
+            return this.$store.getters['getPeriodoActivo'].fe_inicio;
+        },
+
+        endDate()
+        {
+            return this.$store.getters['getPeriodoActivo'].fe_fin;
+        },
     },
 
     data()
@@ -541,7 +552,6 @@ export default {
                 start:      null,
                 end:        null,
                 type:       'month',
-                endDate:    '2020-07-31',
                 eventos:    null,
                 event:      {},
                 date:       {},

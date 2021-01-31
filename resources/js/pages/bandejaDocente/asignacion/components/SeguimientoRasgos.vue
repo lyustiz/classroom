@@ -206,7 +206,7 @@ export default {
 
             this.updateResource(`evaluacionAlumno/${evaluacionAlumno.id}`, this.form).then( data => {
                 this.showMessage(data.msj)
-                this.$emit('updateData', true)
+                this.$emit('onUpdateData', true)
             })
         }
 

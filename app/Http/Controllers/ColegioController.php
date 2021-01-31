@@ -24,7 +24,10 @@ class ColegioController extends Controller
 
     public function colegioUsuario($idUsuario)
     {
-        $colegio = Colegio::with(['tipoColegio:id,nb_tipo_colegio', 'calendario:id,nb_calendario,aa_escolar,fe_inicio,fe_fin' ])
+        $colegio = Colegio::with(['tipoColegio:id,nb_tipo_colegio', 
+                                  'calendario:id,nb_calendario,aa_escolar,fe_inicio,fe_fin',
+                                  'calendario.periodoActivo:periodo.id,nb_periodo,id_calendario,fe_inicio,fe_fin'
+                                ])
                           ->where('id_usuario', $idUsuario)
                           ->first();
         

@@ -32,7 +32,7 @@ export default {
             this.$store.dispatch('autenticate', data)
         }
         else
-        {
+        { 
             this.$store.dispatch('unatenticate')
             this.navegateTo('/')
         }

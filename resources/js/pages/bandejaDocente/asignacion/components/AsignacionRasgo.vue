@@ -196,7 +196,7 @@ export default {
 
             this.storeResource('evaluacion', this.form).then( data => {
                 this.showMessage(data.msj)
-                this.$emit('updateData', true)
+                this.$emit('onUpdateData', true)
                 this.list()
             }) 
         },
@@ -222,7 +222,7 @@ export default {
 
             this.deleteResource(`evaluacion/${evaluacion.id}`).then( data => {
                 this.showMessage(data.msj)
-                this.$emit('updateData', true)
+                this.$emit('onUpdateData', true)
                 this.list()
             }) 
         },

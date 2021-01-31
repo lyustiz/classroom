@@ -27,43 +27,45 @@
         </div>
     </v-row >
 
-
     <v-slide-y-transition>
-    <v-list class="rounded-xl grey grey lighten-5" subheader dense v-if="materia" >
-        <v-subheader class="">
-            <v-row>
-                <v-col><span class="ml-3">Alumnos</span></v-col>
-                <v-col cols="auto">
-                    <v-btn dark color="pink" small :loading="loading" class="mr-3" rounded @click="addRasgos()">
-                        <v-icon size="16" class="mr-2" >mdi-human-male-height-variant</v-icon> Agregar Rasgos
-                    </v-btn>
-                </v-col>
-            </v-row>
-        </v-subheader>
-        <v-list-group v-for="(alumno, nb_alumno) in alumnos" :key="nb_alumno" color="deep-purple" class="grey lighten-5">
-            <template v-slot:activator>
-                <v-list-item :input-value="true" class="rounded-lg">
-                    <v-list-item-avatar color="white" size="35" >
-                        <v-icon size="33" color="deep-purple">mdi-school</v-icon>
-                    </v-list-item-avatar>
-                    <v-list-item-title>{{ nb_alumno }}</v-list-item-title>
-                </v-list-item>
-            </template>
+    <v-expansion-panels class="rounded-xl grey grey lighten-5" subheader dense v-if="materia" flat focusable accordion >
+        <v-row>
+            <v-col ><span class="ml-6">Alumnos</span></v-col>
+            <v-col cols="auto">
+                <v-btn dark color="pink" small :loading="loading" class="mr-3" rounded @click="addRasgos()">
+                    <v-icon size="16" class="mr-2" >mdi-human-male-height-variant</v-icon> Agregar Rasgos
+                </v-btn>
+            </v-col>
+        </v-row>
+        <v-expansion-panel v-for="(alumno, nb_alumno, index) in alumnos" :key="index" color="deep-purple" class="grey lighten-5" >
+            
+            <v-expansion-panel-header ripple class="py-2">
+                <v-row no-gutters>
+                    <v-col cols="auto">
+                        <v-avatar size="34" color="white" class="mr-4">
+                            <v-icon size="33" color="deep-purple">mdi-school</v-icon>
+                        </v-avatar>
+                    </v-col>
+                    <v-col class="pt-3">{{ nb_alumno }}</v-col>
+                </v-row>
+            </v-expansion-panel-header>
 
+            <v-expansion-panel-content>
             <v-row class="white" >
                 <v-col cols="12" md="4">
-                    <SeguimientoRasgos :seguimientos="(alumno.rasgo) ? alumno.rasgo.rasgos: []" tipo="asignacion" @onUpdateData="list()"></SeguimientoRasgos> 
+                    <SeguimientoRasgos :seguimientos="(alumno.rasgo) ? alumno.rasgo.rasgos: []" tipo="asignacion" @onUpdateData="list(true)"></SeguimientoRasgos> 
                 </v-col>
                 <v-col cols="12" md="4" v-for="(evaluaciones, idx) in alumno.evaluacion" :key="idx">
-                    <SeguimientoEvaluaciones :seguimiento="evaluaciones" tipo="evaluacion" @onUpdateData="list()"></SeguimientoEvaluaciones> 
+                    <SeguimientoEvaluaciones :seguimiento="evaluaciones" tipo="evaluacion" @onUpdateData="list(true)"></SeguimientoEvaluaciones> 
                 </v-col>
                 <v-col cols="12" md="4" v-for="(asignaciones, idx) in alumno.asignacion" :key="idx">
-                    <SeguimientoActividades :seguimiento="asignaciones" tipo="asignacion" @onUpdateData="list()"></SeguimientoActividades>
+                    <SeguimientoActividades :seguimiento="asignaciones" tipo="asignacion" @onUpdateData="list(true)"></SeguimientoActividades>
                 </v-col>
             </v-row>
+            </v-expansion-panel-content>
          
-        </v-list-group>
-    </v-list>
+        </v-expansion-panel>
+    </v-expansion-panels>
     </v-slide-y-transition>
 
     <v-overlay absolute class="rounded-lg" :opacity="0.3" :value="loading">
@@ -72,7 +74,7 @@
     </v-card-text>
 
     <v-dialog v-model="dialogRasgo" width="600" scrollable content-class="rounded-xl">
-        <AsignacionRasgo v-if="dialogRasgo" :grupo="grupo" :materia="materia" @closeDialog="closeDialog($event)"></AsignacionRasgo>
+        <AsignacionRasgo v-if="dialogRasgo" :grupo="grupo" :materia="materia" @closeDialog="closeDialog($event)" @onUpdateData="list(true)"></AsignacionRasgo>
     </v-dialog>
 
     </v-card>
@@ -157,6 +159,7 @@ export default {
             materias:     [],
             materia:      null,
             alumnos:      [],
+            alumnoSelect: null,
             rasgos:       [],
             asignaciones: [],
             evaluaciones: [],
@@ -166,9 +169,8 @@ export default {
 
      methods:
     {
-        list()
+        list(reload)
         {
-            this.alumnos = [];
             this.getResource( `evaluacionAlumno/materia/grupo/${this.grupo.id}/docente/${this.docente.id}`).then( (data) => 
             {  
                this.data = data
@@ -177,6 +179,9 @@ export default {
                     materias.push(data[key])
                 }
                 this.materias = materias
+                if(reload){
+                    this.getAlumnos(this.materia)
+                }
             })
         },
         

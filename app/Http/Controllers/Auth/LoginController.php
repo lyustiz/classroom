@@ -100,7 +100,7 @@ class LoginController extends Controller
                 $user->load([ 'foto',  
                               'colegio',
                               'colegio.calendario:calendario.id,nb_calendario',
-                              'colegio.calendario.periodoActivo:periodo.id,nb_periodo,id_calendario'
+                              'colegio.calendario.periodoActivo:periodo.id,nb_periodo,id_calendario,fe_inicio,fe_fin'
                             ]);
 
                 return [ 

@@ -96,7 +96,7 @@ class EvaluacionController extends Controller
 
     public function evaluacionMateriaAlumno($idMateria, $idAlumno)
     {
-        $evaluaciones = Evaluacion::with([
+       $evaluaciones = Evaluacion::with([
                                     'tipoEvaluacion:id,nb_tipo_evaluacion,tx_icono,tx_color',
                                     'evaluacionAlumno' => function($query) use ( $idAlumno ){
                                         $query->where('id_alumno' , $idAlumno);
@@ -112,7 +112,9 @@ class EvaluacionController extends Controller
         $data = [];
 
         foreach ($evaluaciones as $evaluacion) {
-            $data[$evaluacion->tx_origen] = $evaluacion;
+            $clase = strtolower($evaluacion->tx_clase);
+            $tipo =  strtolower($evaluacion->tipoEvaluacion->nb_tipo_evaluacion);
+            $data[$clase][$tipo][] = $evaluacion;
         }
 
         return $data;
