@@ -108,13 +108,17 @@ export default {
                 case 'recurso':
                     return data.archivo.nb_archivvo
                     break;
+                case 'rasgo':
+                    return data.nb_rasgo
+                    break;
             
                 default:
                     break;
             }
-
-actividad
         }
+
+
+        
     }
 }
 </script>

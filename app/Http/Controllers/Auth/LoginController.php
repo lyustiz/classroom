@@ -85,7 +85,7 @@ class LoginController extends Controller
         {
             $user    = Auth::user();
 
-            if($user->id_status == 1)
+            if($user->id_status == 1) 
             {
                 $payload  = JWTFactory::sub($user->id_usuario)->make();
                 

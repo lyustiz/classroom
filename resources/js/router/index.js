@@ -50,7 +50,7 @@ import Departamento          from '@pages/departamento/departamento';
 import Ciudad                from '@pages/ciudad/ciudad';
 import Zona                  from '@pages/zona/zona';
 import Comuna                from '@pages/comuna/comuna';
-import Contacto              from '@pages/contacto/contacto';
+//import Contacto              from '@pages/contacto/contacto';
 //import TipoContacto          from '@pages/tipoContacto/tipoContacto';
 //import Telefono              from '@pages/telefono/telefono';
 //import TipoTelefono          from '@pages/tipoTelefono/tipoTelefono';
@@ -324,13 +324,13 @@ export default new Router({
              { 
                 path: '/',
                 name: 'admin-dashboard',
-                label: 'Configuracion General',
+                label: 'Modulos',
                 icon: 'mdi-cog',
                 profile: 'secretaria',
                 visible: true,
+                color: 'orange',
                 component: BandejaAdmin
             }, 
-
             { 
                 path: 'colegio',
                 name: 'colegio',
@@ -338,17 +338,8 @@ export default new Router({
                 icon: 'mdi-store',
                 profile: 'secretaria',
                 visible: true,
+                color: 'orange',
                 component: AppColegio
-            },
-            
-            { 
-                path: 'tipoColegio',
-                name: 'tipoColegio',
-                label: 'Tipo Colegio',
-                icon: 'mdi-bookmark-multiple',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoColegio
             },
             { 
                 path: 'cargos',
@@ -357,7 +348,18 @@ export default new Router({
                 icon: 'mdi-account-star',
                 profile: 'secretaria',
                 visible: true,
+                color: 'orange',
                 component: Cargos
+            },
+            { 
+                path: 'tipoColegio',
+                name: 'tipoColegio',
+                label: 'Tipo Institucion',
+                icon: 'mdi-bookmark-multiple',
+                profile: 'secretaria',
+                visible: true,
+                color: 'orange',
+                component: TipoColegio
             },
             { 
                 path: 'tipoDirectiva',
@@ -366,6 +368,7 @@ export default new Router({
                 icon: 'mdi-account-group-outline',
                 profile: 'secretaria',
                 visible: true,
+                color: 'orange',
                 component: TipoDirectiva
             },
             { 
@@ -375,7 +378,18 @@ export default new Router({
                 icon: 'mdi-account-group',
                 profile: 'secretaria',
                 visible: true,
+                color: 'orange',
                 component: Directiva
+            },
+            { 
+                path: 'empleado',
+                name: 'empleado',
+                label: 'Empleados',
+                icon: 'mdi-badge-account',
+                profile: 'secretaria',
+                visible: true,
+                color: 'orange',
+                component: Empleado
             },
             { 
                 path: 'estructura',
@@ -384,6 +398,7 @@ export default new Router({
                 icon: 'mdi-floor-plan',
                 profile: 'secretaria',
                 visible: true,
+                color: 'orange',
                 component: Estructura
             },
             { 
@@ -393,17 +408,10 @@ export default new Router({
                 icon: 'mdi-chair-school',
                 profile: 'secretaria',
                 visible: true,
+                color: 'orange',
                 component: Aula
             },
-            { 
-                path: 'empleado',
-                name: 'empleado',
-                label: 'Empleados',
-                icon: 'mdi-badge-account',
-                profile: 'secretaria',
-                visible: true,
-                component: Empleado
-            },
+            
             { 
                 path: 'calendario',
                 name: 'calendario',
@@ -411,6 +419,7 @@ export default new Router({
                 icon: 'mdi-calendar-blank',
                 profile: 'secretaria',
                 visible: true,
+                color: 'teal',
                 component: Calendario
             },
             { 
@@ -420,45 +429,8 @@ export default new Router({
                 icon: 'mdi-calendar-weekend',
                 profile: 'secretaria',
                 visible: true,
+                color: 'teal',
                 component: Periodo
-            },
-            { 
-                path: 'feriado',
-                name: 'feriado',
-                label: 'Feriados ',
-                icon: 'mdi-calendar-star',
-                profile: 'secretaria',
-                visible: true,
-                component: Feriado
-            }, 
-            { 
-                path: 'tipo-agenda',
-                name: 'tipo-agenda',
-                label: 'Tipo Agenda ',
-                icon: 'mdi-clipboard-text-multiple-outline',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoAgenda
-            }, 
-
-            { 
-                path: 'agenda-actividad',
-                name: 'genda-actividad',
-                label: 'Agenda Tipo Actividad ',
-                icon: 'mdi-clipboard-text-multiple-outline',
-                profile: 'secretaria',
-                visible: true,
-                component: AgendaActividad
-            }, 
-            
-            { 
-                path: 'agenda',
-                name: 'agenda',
-                label: 'Agenda',
-                icon: 'mdi-clipboard-text',
-                profile: 'secretaria',
-                visible: true,
-                component: Agenda
             },
             { 
                 path: 'turno',
@@ -467,6 +439,7 @@ export default new Router({
                 icon: 'mdi-timelapse',
                 profile: 'secretaria',
                 visible: true,
+                color: 'teal',
                 component: Turno
             },
             { 
@@ -476,34 +449,8 @@ export default new Router({
                 icon: 'mdi-clock',
                 profile: 'secretaria',
                 visible: true,
+                color: 'teal',
                 component: HoraAcademica
-            },
-            { 
-                path: 'nivel',
-                name: 'nivel',
-                label: 'Niveles',
-                icon: 'mdi-stairs-up',
-                profile: 'secretaria',
-                visible: true,
-                component: Nivel
-            },
-            { 
-                path: 'grado',
-                name: 'grado',
-                label: 'Grados',
-                icon: 'mdi-numeric',
-                profile: 'secretaria',
-                visible: true,
-                component: Grado
-            },
-            { 
-                path: 'grupo',
-                name: 'grupo',
-                label: 'Grupos',
-                icon: 'mdi-alphabetical-variant',
-                profile: 'secretaria',
-                visible: true,
-                component: Grupo
             },
             { 
                 path: 'area-estudio',
@@ -512,6 +459,7 @@ export default new Router({
                 icon: 'mdi-file-cad',
                 profile: 'secretaria',
                 visible: true,
+                color: 'teal',
                 component: AreaEstudio
             },
             { 
@@ -521,7 +469,48 @@ export default new Router({
                 icon: 'mdi-bookshelf',
                 profile: 'secretaria',
                 visible: true,
+                color: 'teal',
                 component: Materia
+            },
+            { 
+                path: 'docente',
+                name: 'docente',
+                label: 'Docente',
+                icon: 'mdi-account-tie',
+                profile: 'secretaria',
+                visible: true,
+                color: 'teal',
+                component: Docente
+            },
+            { 
+                path: 'nivel',
+                name: 'nivel',
+                label: 'Niveles',
+                icon: 'mdi-stairs-up',
+                profile: 'secretaria',
+                visible: true,
+                color: 'teal',
+                component: Nivel
+            },
+            { 
+                path: 'grado',
+                name: 'grado',
+                label: 'Grados',
+                icon: 'mdi-numeric',
+                profile: 'secretaria',
+                visible: true,
+                color: 'teal',
+                component: Grado
+            },
+            { 
+                path: 'grupo',
+                name: 'grupo',
+                label: 'Grupos',
+                icon: 'mdi-alphabetical-variant',
+                profile: 'secretaria',
+                visible: true,
+                color: 'teal',
+                component: Grupo
             },
             { 
                 path: 'nivel-calificacion',
@@ -530,6 +519,7 @@ export default new Router({
                 icon: 'mdi-check-box-multiple-outline',
                 profile: 'secretaria',
                 visible: true,
+                color: 'teal',
                 component: NivelCalificacion
             },
             { 
@@ -539,18 +529,9 @@ export default new Router({
                 icon: 'mdi-check-box-outline',
                 profile: 'secretaria',
                 visible: true,
+                color: 'teal',
                 component: GrupoCalificacion
             },
-            { 
-                path: 'tipo-evaluacion',
-                name: 'tipo-evaluacion',
-                label: 'Tipo Evaluacion',
-                icon: 'mdi-clipboard-check-multiple-outline',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoEvaluacion
-            },
-
             { 
                 path: 'plan-evaluacion',
                 name: 'plan-evaluacion',
@@ -558,6 +539,7 @@ export default new Router({
                 icon: 'mdi-table-clock',
                 profile: 'secretaria',
                 visible: true,
+                color: 'purple',
                 component: AppPlanEvaluacion
             },
             { 
@@ -567,18 +549,49 @@ export default new Router({
                 icon: 'mdi-calendar-clock',
                 profile: 'secretaria',
                 visible: true,
+                color: 'purple',
                 component: Horario
             },
             { 
-                path: 'docente',
-                name: 'docente',
-                label: 'Docente',
-                icon: 'mdi-account-tie',
+                path: 'feriado',
+                name: 'feriado',
+                label: 'Feriados ',
+                icon: 'mdi-calendar-star',
                 profile: 'secretaria',
                 visible: true,
-                component: Docente
+                color: 'purple',
+                component: Feriado
+            }, 
+            { 
+                path: 'tipo-agenda',
+                name: 'tipo-agenda',
+                label: 'Tipo Agenda ',
+                icon: 'mdi-clipboard-text-multiple-outline',
+                profile: 'secretaria',
+                visible: true,
+                color: 'purple',
+                component: TipoAgenda
+            }, 
+            { 
+                path: 'agenda-actividad',
+                name: 'genda-actividad',
+                label: 'Agenda Tipo Actividad ',
+                icon: 'mdi-clipboard-text-multiple-outline',
+                profile: 'secretaria',
+                visible: true,
+                color: 'purple',
+                component: AgendaActividad
+            }, 
+            { 
+                path: 'agenda',
+                name: 'agenda',
+                label: 'Agenda',
+                icon: 'mdi-clipboard-text',
+                profile: 'secretaria',
+                visible: true,
+                color: 'purple',
+                component: Agenda
             },
-
             { 
                 path: 'tipo-condicion',
                 name: 'tipo-condicion',
@@ -586,6 +599,7 @@ export default new Router({
                 icon: 'mdi-school-outline',
                 profile: 'secretaria',
                 visible: true,
+                color: 'red',
                 component: TipoCondicion
             },
             { 
@@ -595,6 +609,7 @@ export default new Router({
                 icon: 'mdi-school',
                 profile: 'secretaria',
                 visible: true,
+                color: 'red',
                 component: Alumno
             },
 
@@ -605,92 +620,10 @@ export default new Router({
                 icon: 'mdi-human-male-child',
                 profile: 'secretaria',
                 visible: true,
+                color: 'red',
                 component: Pariente
             },
 
-            { 
-                path: 'tipo-falta',
-                name: 'tipo-falta',
-                label: 'Tipo Faltas',
-                icon: 'mdi-account-alert-outline',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoFalta
-            },
-
-            { 
-                path: 'tipo-sancion',
-                name: 'tipo-sancion',
-                label: 'Tipo Sancion',
-                icon: 'mdi-gavel',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoSancion
-            },
-
-            { 
-                path: 'parentesco',
-                name: 'parentesco',
-                label: 'Parentesco',
-                icon: 'mdi-account-supervisor-circle',
-                profile: 'secretaria',
-                visible: true,
-                component: Parentesco
-            },
-
-            { 
-                path: 'estado-civil',
-                name: 'estado-civil',
-                label: 'Estado Civil',
-                icon: 'mdi-ring',
-                profile: 'secretaria',
-                visible: true,
-                component: EstadoCivil
-            },
-            
-            { 
-                path: 'pais',
-                name: 'pais',
-                label: 'Pais',
-                icon: 'mdi-earth',
-                profile: 'secretaria',
-                visible: true,
-                component: Pais
-            },
-            { 
-                path: 'departamento',
-                name: 'departamento',
-                label: 'Departamento',
-                icon: 'mdi-map-search',
-                profile: 'secretaria',
-                visible: true,
-                component: Departamento
-            },
-            { 
-                path: 'ciudad',
-                name: 'ciudad',
-                label: 'Ciudad',
-                icon: 'mdi-city-variant',
-                component: Ciudad
-            },
-            { 
-                path: 'zona',
-                name: 'zona',
-                label: 'Zona',
-                icon: 'mdi-select-marker',
-                profile: 'secretaria',
-                visible: true,
-                component: Zona
-            },
-            { 
-                path: 'comuna',
-                name: 'comuna',
-                label: 'Comuna',
-                icon: 'mdi-home-group',
-                profile: 'secretaria',
-                visible: true,
-                component: Comuna
-            },
 
             {
                 path: 'usuario',
@@ -699,37 +632,9 @@ export default new Router({
                 icon: 'mdi-account',
                 profile: 'secretaria',
                 visible: true,
+                color: 'green',
                 component: Usuario
             }, 
-            { 
-                path: 'modulo',
-                name: 'modulo',
-                label: 'Modulo',
-                icon: 'mdi-menu-open',
-                profile: 'secretaria',
-                visible: true,
-                component: Modulo
-            }, 
-            { 
-                path: 'menu',
-                name: 'menu',
-                label: 'Menu',
-                icon: 'mdi-menu',
-                profile: 'secretaria',
-                visible: true,
-                component: Menu
-            },
-
-            { 
-                path: 'tipoUsuario',
-                name: 'tipoUsuario',
-                label: 'Tipo Usuario',
-                icon: 'mdi-book-account',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoUsuario
-            },
-
             { 
                 path: 'perfil',
                 name: 'perfil',
@@ -737,6 +642,7 @@ export default new Router({
                 icon: 'mdi-account-details-outline',
                 profile: 'secretaria',
                 visible: true,
+                color: 'green',
                 component: Perfil
             },
             { 
@@ -746,6 +652,7 @@ export default new Router({
                 icon: 'mdi-account-details',
                 profile: 'secretaria',
                 visible: true,
+                color: 'green',
                 component: UsuarioPerfil
             },
             { 
@@ -755,193 +662,20 @@ export default new Router({
                 icon: 'mdi-account-key',
                 profile: 'secretaria',
                 visible: true,
+                color: 'green',
                 component: Permiso
             },
 
             { 
-                path: 'documento',
-                name: 'documento',
-                label: 'Documento',
-                icon: 'mdi-card-account-details',
+                path: 'tema',
+                name: 'tema',
+                label: 'Tema',
+                icon: 'mdi-card-text',
                 profile: 'secretaria',
                 visible: true,
-                component: Documento
-            },
-            { 
-                path: 'foto',
-                name: 'foto',
-                label: 'Foto',
-                icon: 'mdi-image',
-                profile: 'secretaria',
-                visible: true,
-                component: Foto
-            },
-           
-            { 
-                path: 'contacto',
-                name: 'contacto',
-                label: 'Contacto',
-                icon: 'mdi-contacts',
-                profile: 'secretaria',
-                visible: true,
-                component: Contacto
-            },
-
-            { 
-                path: 'status',
-                name: 'status',
-                label: 'Status',
-                icon: 'mdi-playlist-check',
-                profile: 'secretaria',
-                visible: true,
-                component: Status
-            },
-
-            { 
-                path: 'tipoFoto',
-                name: 'tipoFoto',
-                label: 'Tipo Foto',
-                icon: 'mdi-image-album',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoFoto
-            },           
-
-            { 
-                path: 'tipo-documento',
-                name: 'tipo-documento',
-                label: 'Tipo Documento',
-                icon: 'mdi-card-account-details',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoDocumento
-            },
-
-            { 
-                path: 'tipo-archivo',
-                name: 'tipo-archivo',
-                label: 'Tipo Archivo',
-                icon: 'mdi-file-multiple',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoArchivo
-            },
-
-            { 
-                path: 'archivo',
-                name: 'archivo',
-                label: 'Archivo',
-                icon: 'mdi-file',
-                profile: 'secretaria',
-                visible: true,
-                component: Archivo
-            },
-
-            { 
-                path: 'tipo-recurso',
-                name: 'tipo-recurso',
-                label: 'Tipo Recurso',
-                icon: 'mdi-book-open-page-variant',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoRecurso
-            },
-
-            { 
-                path: 'recurso',
-                name: 'recurso',
-                label: 'Recurso',
-                icon: 'mdi-book-open-page-variant',
-                profile: 'secretaria',
-                visible: true,
-                component: Recurso
-            },
-
-            /**  NOTIFICACIONES  */
-
-            { 
-                path: 'tipo-destinatario',
-                name: 'tipo-destinatario',
-                label: 'Tipo Destinatario',
-                icon: 'mdi-account-question',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoDestinatario
-            },
-
-            { 
-                path: 'tipo-prioridad',
-                name: 'tipo-prioridad',
-                label: 'Prioridad',
-                icon: 'mdi-alert',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoPrioridad
-            },
-
-            { 
-                path: 'tipo-notificacion',
-                name: 'tipo-notificacion',
-                label: 'Tipo Notificacion',
-                icon: 'mdi-bell-outline',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoNotificacion
-            },
-
-            { 
-                path: 'notificacion',
-                name: 'notificacion',
-                label: 'Notificaciones',
-                icon: 'mdi-bell',
-                profile: 'secretaria',
-                visible: true,
-                component: Notificacion
-            },
-
-            /**  MENSAJE  */
-
-            { 
-                path: 'tipo-mensaje',
-                name: 'tipo-mensaje',
-                label: 'Tipo Mensaje',
-                icon: 'mdi-email-multiple',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoMensaje
-            },
-
-            { 
-                path: 'mensaje',
-                name: 'mensaje',
-                label: 'Mensajes',
-                icon: 'mdi-email',
-                profile: 'secretaria',
-                visible: true,
-                component: Mensaje
-            },
-
-            { 
-                path: 'asistente',
-                name: 'asistente',
-                label: 'Asistente',
-                icon: 'mdi-head-cog',
-                profile: 'secretaria',
-                visible: true,
-                component: Asistente
-            },
-            
-
-            /** prueba **/
-            { 
-                path: 'tipo-pregunta',
-                name: 'tipo-pregunta',
-                label: 'Tipo Preguntas',
-                icon: 'mdi-order-bool-descending-variant',
-                profile: 'secretaria',
-                visible: true,
-                component: TipoPregunta
-            },
+                color: 'deep-purple',
+                component: Tema
+            }, 
             { 
                 path: 'prueba',
                 name: 'prueba',
@@ -949,7 +683,18 @@ export default new Router({
                 icon: 'mdi-order-bool-descending-variant',
                 profile: 'secretaria',
                 visible: true,
+                color: 'deep-purple',
                 component: Prueba
+            },
+            { 
+                path: 'tipo-pregunta',
+                name: 'tipo-pregunta',
+                label: 'Tipo Preguntas',
+                icon: 'mdi-order-bool-descending-variant',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: TipoPregunta
             },
             { 
                 path: 'pregunta',
@@ -958,6 +703,7 @@ export default new Router({
                 icon: 'mdi-order-bool-descending-variant',
                 profile: 'secretaria',
                 visible: true,
+                color: 'deep-purple',
                 component: Pregunta
             },
             { 
@@ -967,6 +713,7 @@ export default new Router({
                 icon: 'mdi-order-bool-descending-variant',
                 profile: 'secretaria',
                 visible: true,
+                color: 'deep-purple',
                 component: Respuesta
             },
             { 
@@ -976,6 +723,7 @@ export default new Router({
                 icon: 'mdi-order-bool-descending-variant',
                 profile: 'secretaria',
                 visible: true,
+                color: 'deep-purple',
                 component: PruebaAlumno
             },
             { 
@@ -985,22 +733,307 @@ export default new Router({
                 icon: 'mdi-order-bool-descending-variant',
                 profile: 'secretaria',
                 visible: true,
+                color: 'deep-purple',
                 component: RespuestaAlumno
             },
-
-
-            //libro
+            
             { 
-                path: 'tema',
-                name: 'tema',
-                label: 'Tema',
-                icon: 'mdi-card-text',
+                path: 'tipo-falta',
+                name: 'tipo-falta',
+                label: 'Tipo Faltas',
+                icon: 'mdi-account-alert-outline',
                 profile: 'secretaria',
                 visible: true,
-                component: Tema
+                color: 'deep-purple',
+                component: TipoFalta
+            },
+            { 
+                path: 'tipo-sancion',
+                name: 'tipo-sancion',
+                label: 'Tipo Sancion',
+                icon: 'mdi-gavel',
+                profile: 'secretaria',
+                visible: true,
+                color: 'deep-purple',
+                component: TipoSancion
+            },
+            { 
+                path: 'pais',
+                name: 'pais',
+                label: 'Pais',
+                icon: 'mdi-earth',
+                profile: 'secretaria',
+                visible: true,
+                color: 'deep-purple',
+                component: Pais
+            },
+            { 
+                path: 'departamento',
+                name: 'departamento',
+                label: 'Departamento',
+                icon: 'mdi-map-search',
+                profile: 'secretaria',
+                visible: true,
+                color: 'deep-purple',
+                component: Departamento
+            },
+            { 
+                path: 'ciudad',
+                name: 'ciudad',
+                label: 'Ciudad',
+                icon: 'mdi-city-variant',
+                color: 'deep-purple',
+                component: Ciudad
+            },
+            { 
+                path: 'zona',
+                name: 'zona',
+                label: 'Zona',
+                icon: 'mdi-select-marker',
+                profile: 'secretaria',
+                visible: true,
+                color: 'deep-purple',
+                component: Zona
+            },
+            { 
+                path: 'comuna',
+                name: 'comuna',
+                label: 'Comuna',
+                icon: 'mdi-home-group',
+                profile: 'secretaria',
+                visible: true,
+                color: 'deep-purple',
+                component: Comuna
+            },
+
+            { 
+                path: 'tipo-evaluacion',
+                name: 'tipo-evaluacion',
+                label: 'Tipo Evaluacion',
+                icon: 'mdi-clipboard-check-multiple-outline',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: TipoEvaluacion
+            },
+            { 
+                path: 'parentesco',
+                name: 'parentesco',
+                label: 'Parentesco',
+                icon: 'mdi-account-supervisor-circle',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: Parentesco
+            },
+            { 
+                path: 'estado-civil',
+                name: 'estado-civil',
+                label: 'Estado Civil',
+                icon: 'mdi-ring',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: EstadoCivil
+            },
+            { 
+                path: 'modulo',
+                name: 'modulo',
+                label: 'Modulo',
+                icon: 'mdi-menu-open',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: Modulo
             }, 
+            { 
+                path: 'menu',
+                name: 'menu',
+                label: 'Menu',
+                icon: 'mdi-menu',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: Menu
+            },
+            { 
+                path: 'tipoUsuario',
+                name: 'tipoUsuario',
+                label: 'Tipo Usuario',
+                icon: 'mdi-book-account',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: TipoUsuario
+            },
+            { 
+                path: 'tipo-documento',
+                name: 'tipo-documento',
+                label: 'Tipo Documento',
+                icon: 'mdi-card-account-details',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: TipoDocumento
+            },
+            { 
+                path: 'documento',
+                name: 'documento',
+                label: 'Documento',
+                icon: 'mdi-card-account-details',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: Documento
+            },
+            { 
+                path: 'tipoFoto',
+                name: 'tipoFoto',
+                label: 'Tipo Foto',
+                icon: 'mdi-image-album',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: TipoFoto
+            },   
+            { 
+                path: 'foto',
+                name: 'foto',
+                label: 'Foto',
+                icon: 'mdi-image',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: Foto
+            },
+            { 
+                path: 'status',
+                name: 'status',
+                label: 'Status',
+                icon: 'mdi-playlist-check',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: Status
+            },
+            { 
+                path: 'tipo-archivo',
+                name: 'tipo-archivo',
+                label: 'Tipo Archivo',
+                icon: 'mdi-file-multiple',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: TipoArchivo
+            },
+            { 
+                path: 'archivo',
+                name: 'archivo',
+                label: 'Archivo',
+                icon: 'mdi-file',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: Archivo
+            },
+            { 
+                path: 'tipo-recurso',
+                name: 'tipo-recurso',
+                label: 'Tipo Recurso',
+                icon: 'mdi-book-open-page-variant',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: TipoRecurso
+            },
+            { 
+                path: 'recurso',
+                name: 'recurso',
+                label: 'Recurso',
+                icon: 'mdi-book-open-page-variant',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: Recurso
+            },
 
+            /**  NOTIFICACIONES  */
+            { 
+                path: 'tipo-destinatario',
+                name: 'tipo-destinatario',
+                label: 'Tipo Destinatario',
+                icon: 'mdi-account-question',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: TipoDestinatario
+            },
+            { 
+                path: 'tipo-prioridad',
+                name: 'tipo-prioridad',
+                label: 'Prioridad',
+                icon: 'mdi-alert',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: TipoPrioridad
+            },
+            { 
+                path: 'tipo-notificacion',
+                name: 'tipo-notificacion',
+                label: 'Tipo Notificacion',
+                icon: 'mdi-bell-outline',
+                profile: 'secretaria',
+                visible: true,
+                color: 'brown',
+                component: TipoNotificacion
+            },
+            { 
+                path: 'notificacion',
+                name: 'notificacion',
+                label: 'Notificaciones',
+                icon: 'mdi-bell',
+                profile: 'secretaria',
+                visible: true,
+                color: 'deep-purple',
+                component: Notificacion
+            },
 
+            /**  MENSAJE  */
+            { 
+                path: 'tipo-mensaje',
+                name: 'tipo-mensaje',
+                label: 'Tipo Mensaje',
+                icon: 'mdi-email-multiple',
+                profile: 'secretaria',
+                visible: true,
+                color: 'deep-purple',
+                component: TipoMensaje
+            },
+            { 
+                path: 'mensaje',
+                name: 'mensaje',
+                label: 'Mensajes',
+                icon: 'mdi-email',
+                profile: 'secretaria',
+                visible: true,
+                color: 'deep-purple',
+                component: Mensaje
+            },
+            { 
+                path: 'asistente',
+                name: 'asistente',
+                label: 'Asistente',
+                icon: 'mdi-head-cog',
+                profile: 'secretaria',
+                visible: true,
+                color: 'deep-purple',
+                component: Asistente
+            },
+            /** prueba **/
+            
+           
+            //libro
             { 
                 path: 'tipo-enlace',
                 name: 'tipo-enlace',
@@ -1008,9 +1041,9 @@ export default new Router({
                 icon: 'mdi-link-variant-plus', 
                 profile: 'secretaria',
                 visible: true,
+                color: 'brown',
                 component: TipoEnlace
             }, 
-
             { 
                 path: 'enlace',
                 name: 'enlace',
@@ -1018,9 +1051,9 @@ export default new Router({
                 icon: 'mdi-link-variant',
                 profile: 'secretaria',
                 visible: true,
+                color: 'deep-purple',
                 component: Enlace
             }, 
-
             { 
                 path: 'libro',
                 name: 'libro',
@@ -1028,9 +1061,9 @@ export default new Router({
                 icon: 'mdi-book',
                 profile: 'secretaria',
                 visible: true,
+                color: 'brown',
                 component: Libro
             }, 
-
             { 
                 path: 'pagina',
                 name: 'pagina',
@@ -1038,9 +1071,9 @@ export default new Router({
                 icon: 'mdi-file-document',
                 profile: 'secretaria',
                 visible: true,
+                color: 'brown',
                 component: Pagina
             }, 
-
             { 
                 path: 'actividad',
                 name: 'actividad',
@@ -1048,24 +1081,22 @@ export default new Router({
                 icon: 'mdi-rocket',
                 profile: 'secretaria',
                 visible: true,
+                color: 'deep-purple',
                 component: Actividad
             }, 
 
 
             //CONFIGURACION
-
             { 
                 path: 'configuracion',
                 name: 'configuracion',
-                label: 'Variables Globales',
+                label: 'Configuracion',
                 icon: 'mdi-cogs',
                 profile: 'secretaria',
                 visible: true,
+                color: 'deep-purple',
                 component: Configuracion
             },
-
-            
-
             { 
                 path: 'meet-alumno',
                 name: 'meet-alumno',
@@ -1073,10 +1104,11 @@ export default new Router({
                 icon: 'mdi-google-classroom',
                 profile: 'secretaria',
                 visible: true,
+                color: 'brown',
                 component: MeetAlumno
             },
 
-            //reporte
+            //reportes
             /* { 
                 path: 'reporte',
                 name: 'reporte',
@@ -1084,6 +1116,7 @@ export default new Router({
                 icon: 'mdi-table-large',
                 profile: 'secretaria',
                 visible: true,
+                color: 'orange',
                 component: AppReporte
             }, */
           ]
@@ -1095,6 +1128,7 @@ export default new Router({
             icon: 'mdi-tools',
             profile: 'secretaria',
             visible: true,
+            color: 'black',
             component: Crud,
         },
         {
@@ -1104,6 +1138,7 @@ export default new Router({
             icon: 'mdi-account',
             profile: '*',
             visible: false,
+            color: 'black',
             component: Login,
         },
         {
@@ -1113,6 +1148,7 @@ export default new Router({
             icon: 'mdi-account',
             profile: '*',
             visible: false,
+            color: 'black',
             component: RecoverPassword,
         },
         { 
@@ -1121,6 +1157,7 @@ export default new Router({
             label: 'Not Found',
             profile: '*',
             visible: false,
+            color: 'black',
             component: PageNotFound 
         }
     ]

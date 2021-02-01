@@ -142,8 +142,8 @@ export default {
     data () {
         return {
             title:    'Tema',
-            grado:   null,
-            materia: null,
+            grado:   '',
+            materia: '',
             resource: 'tema',
             headers: [
                 { text: 'Nro',         value: 'nu_tema' },

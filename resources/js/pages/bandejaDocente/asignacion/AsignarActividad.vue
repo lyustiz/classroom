@@ -164,7 +164,6 @@ export default {
 
     created()
     {
-      console.log(this.tipo);
       
        this.form.id_grupo           = this.grupo.id
        this.form.id_tipo_evaluacion = this.tipo.id
@@ -243,7 +242,7 @@ export default {
             this.actividades  = []
             this.form.id_tema = null
             this.addBtn       = false
-            this.getResource( `tema/grado/${this.grupo.grado.id}/materia/${materia}` ).then( data =>  this.temas = data)
+            this.getResource( `tema/grado/${this.grupo.grado.id}/materia/${materia}/grupo/${grupo.id}` ).then( data =>  this.temas = data)
         },
 
         getItems()

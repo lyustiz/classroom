@@ -290,6 +290,7 @@ Route::put('/planDetalle/planEvaluacion/{planEvaluacion}/grupo/{grupo}', 'PlanDe
 
 Route::get('/tema/grupo/{grupo}/materia/{materia}', 'TemaController@temaGrupoMateria');
 Route::get('/tema/grado/{grado}/materia/{materia}', 'TemaController@temaGradoMateria');
+Route::get('/tema/grado/{grado}/materia/{materia}/grupo/{grupo}', 'TemaController@temaGradoMateriaGrupo');
 Route::get('/tema/{tema}/recursos',                 'TemaController@temaRecursos');
 Route::get('/tema/planEvaluacion/{planEvaluacion}', 'TemaController@temaPlanEvaluacion');
 Route::apiResource('/tema',                         'TemaController', ['parameters' => ['tema' => 'tema']]);

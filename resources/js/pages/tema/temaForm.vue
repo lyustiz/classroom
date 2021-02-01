@@ -133,9 +133,19 @@ export default {
 
     methods:
     {
+        onCreateForm()
+        {
+            this.updateMateria()
+        },
+        
         preActionForms(action)
         {
-            if(action== 'upd')
+            this.updateMateria()
+        },
+
+        updateMateria()
+        {
+            if(this.action== 'upd')
             {
                 this.getMaterias(this.form.id_grado)
             }

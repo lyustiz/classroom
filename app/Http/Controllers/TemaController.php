@@ -17,6 +17,7 @@ class TemaController extends Controller
     public function index()
     {
         return Tema::with(['grado:id,nb_grado', 'materia:id,nb_materia'])
+                    ->where('id', '<>', 0)
                     ->get();
     }
 
@@ -25,6 +26,16 @@ class TemaController extends Controller
         return Tema::comboData()
                     ->where('id_grado',   $idGrado)
                     ->where('id_materia', $idMateria)
+                    ->activo()
+                    ->get();
+    }
+
+    public function temaGradoMateriaGrupo( $idGrado, $idMateria, $idGrupo)
+    {
+        return Tema::comboData()
+                    ->where('id_grado',   $idGrado)
+                    ->where('id_materia', $idMateria)
+                    ->activo()
                     ->get();
     }
 
@@ -35,6 +46,7 @@ class TemaController extends Controller
                         $query->where('id_grupo', $idGrupo)->activo();
                     })
                     ->where('id_materia', $idMateria)
+                    ->activo()
                     ->get();
     }
 

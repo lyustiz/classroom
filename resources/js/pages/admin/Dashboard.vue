@@ -3,7 +3,22 @@
   <div id="full-container"  >
       
       <v-toolbar dark color="indigo lighten-1" class="rounded-lg" dense flat>
-          Administrador
+          <v-row>
+              <v-col class="mt-1">Administrador</v-col>
+              <v-col> 
+                   <v-text-field
+                    v-model="search"
+                    append-icon="search"
+                    label="Buscar"
+                    hide-details
+                    clearable
+                    dense
+                    solo-inverted
+                    @input="searchMenu($event)"
+                    ></v-text-field>
+              </v-col>
+          </v-row>
+          
       </v-toolbar>
       
   </div>
@@ -13,7 +28,7 @@
 
             <v-card color="transparent" class="rounded-xl pointer" flat>
                 <v-card-text class="text-center">
-                   <v-avatar size="100" color="orange" ripple>
+                   <v-avatar size="100" :color="menu.color" ripple>
                         <v-icon size="70" color="white">{{menu.icon}}</v-icon>
                     </v-avatar>
                 </v-card-text>
@@ -34,18 +49,37 @@ export default {
 
     created()
     {
-         const admin = this.$router.options.routes.filter((menu) =>  menu.path == '/admin')
-
-         this.menus = admin[0].children.filter((menu) => menu.path != '/' )
+        this.listMenu()
     },
 
     data()
     {
         return {
-           menus: []
+           admin: null,
+           menus: [],
+           search: null,
         }
     },
     methods: {
+
+        listMenu()
+        {
+            this.admin = this.$router.options.routes.filter((menu) =>  menu.path == '/admin')
+            this.menus = this.admin[0].children.filter((menu) => menu.path != '/' )
+        },
+        
+        searchMenu(search)
+        {
+            if(search)
+            {
+                this.menus = this.admin[0].children.filter((menu) => menu.path != '/' && menu.label.toLowerCase().includes(search.toLowerCase())  )
+            } 
+            else {
+                this.menus = this.admin[0].children.filter((menu) => menu.path != '/' )
+            }
+            
+        },
+
         navegateTo(routeName)
         {
             this.$router.push( {name: routeName}).catch(err => {})
