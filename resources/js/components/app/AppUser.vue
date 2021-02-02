@@ -150,22 +150,22 @@
                 
                 switch (profile) {
                     case 'docente':
-                        route = '/bandeja-docente'
+                        route = 'bandeja-docente'
                         break;
 
                     case 'alumno':
-                        route = '/bandeja-alumno'
+                        route = 'bandeja-alumno'
                         break;
                     
                     case 'acudiente':
-                        route = '/bandeja-acudiente'
+                        route = 'bandeja-acudiente'
                         break;
                     
                     case 'secretaria':
                         route = 'home'
                         break;
                 }
-                this.navegateTo(route)
+                this.navegateToName(route)
             },
             
             logout()

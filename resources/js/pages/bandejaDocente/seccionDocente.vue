@@ -75,7 +75,6 @@ import ListaAumno        from './alumno/listaAlumnos'
 import RecursoDocente    from './recurso/RecursoDocente' 
 import PlanEvaluacion    from './evaluacion/PlanEvaluacion'
 import EvaluacionDocente from './evaluacion/EvaluacionDocente'
-import ClaseAlumno       from '@pages/bandejaAlumno/clase/AppClase'
 import MenuPrueba        from './prueba/MenuPrueba.vue'
 import GestionTemas      from './tema/GestionTema'
 
@@ -85,7 +84,6 @@ export default {
         'lista-alumno':       ListaAumno,
         'plan-evaluacion':    PlanEvaluacion,
         'evaluacion-docente': EvaluacionDocente,
-        'clase-alumno':       ClaseAlumno, 
         'gestion-tema':       GestionTemas, 
     },
 

@@ -183,6 +183,7 @@ Route::get('/materia/grupo/alumno/docente/{docente}',  'MateriaController@materi
 Route::get('/materia/grado/{grado}',            'MateriaController@materiaGrado');
 Route::get('/materia/grupo/{grupo}',            'MateriaController@materiaGrupo');
 Route::get('/materia/grupo/{grupo}/docente/{docente}',  'MateriaController@materiaGrupoDocente');
+Route::get('/materia/grupo/{grupo}/docente/{docente}/activa',  'MateriaController@materiaGrupoDocenteActiva');
 Route::get('/materia/evaluacion/alumno/{alumno}',       'MateriaController@materiaEvaluacionAlumno');
 Route::get('/materia/alumno/{alumno}',          'MateriaController@materiaAlumno');
 Route::apiResource('/materia',                  'MateriaController', ['parameters' => ['materia' => 'materia']]);
@@ -336,6 +337,7 @@ Route::put('/evaluacionAlumno/{evaluacionAlumno}/evaluar',         'EvaluacionAl
 Route::get('/prueba/{prueba}/evaluacion/{evaluacion}/evaluacionAlumno/{evaluacionAlumno}', 'PruebaController@pruebaEvaluacionAlumno');
 Route::get('/prueba/docente/{docente}/grado/{grado}/materia/{materia}',  'PruebaController@pruebaDocenteGradoMateria');
 Route::get('/prueba/grado/{grado}',                    'PruebaController@pruebaGrado');
+Route::get('/prueba/tema/{tema}',                      'PruebaController@pruebaTema');
 Route::get('/prueba/grado/{grado}/materia/{materia}',  'PruebaController@pruebaGradoMateria');
 
 Route::get('/tipoPregunta/actividad',           'TipoPreguntaController@tipoPreguntaActividad');
@@ -362,6 +364,7 @@ Route::get('/evaluacionAlumno/{evaluacionAlumno}/archivos',       'EvaluacionAlu
 Route::put('/evaluacionAlumno/{evaluacionAlumno}/finalizarTarea', 'EvaluacionAlumnoController@finalizarTarea');
 Route::get('/tarea/evaluacion/{evaluacion}/evaluacionAlumno/{evaluacionAlumno}',  'TareaController@tareaEvaluacionAlumno');
 Route::get('/tarea/grado/{grado}/materia/{materia}',  'TareaController@tareaGradoMateria');
+Route::get('/tarea/tema/{tema}',                      'TareaController@tareaTema');
 Route::apiResource('/tarea',                    'TareaController');
 Route::apiResource('/tipoTarea',                'TipoTareaController');
 
@@ -424,6 +427,7 @@ Route::apiResource('/recurso',                  'RecursoController');
 
 // --  CLASE  -- //
 Route::get('/clase/docente/{docente}',          'ClaseController@claseDocente');
+Route::get('/clase/alumno/{alumno}',          'ClaseController@claseAlumno');
 Route::put('/clase/{clase}/close',              'ClaseController@close');
 Route::apiResource('/clase',                    'ClaseController');
 Route::apiResource('/asistencia',               'AsistenciaController', ['parameters' => ['asistencia' => 'asistencia']]);

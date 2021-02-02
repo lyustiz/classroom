@@ -36,6 +36,25 @@ class ClaseController extends Controller
                              'asistentes:asistencia.id,id_alumno,id_clase' 
                             ])
                     ->where('id_docente', $idDocente)
+                    ->limit(90)
+                    ->orderBy('fe_clase', 'desc')
+                    ->get();
+    }
+
+
+    public function claseAlumno($idAlumno)
+    {
+        return Clase::with([ 'materia.areaEstudio:id,tx_color', 
+                             'docente:docente.id,nb_nombre,nb_nombre2,nb_apellido,nb_apellido2',
+                             'docente.foto',  
+                             'docente.usuarioDocente:id,nb_usuario,id_origen'
+                            ])
+                    ->whereHas('grupo', function ($query) use ($idAlumno) {
+                        $query->whereHas('alumno', function ($query) use ($idAlumno){
+                            $query->where('alumno.id', $idAlumno);
+                        });
+                    })
+                    ->limit(90)
                     ->orderBy('fe_clase', 'desc')
                     ->get();
     }

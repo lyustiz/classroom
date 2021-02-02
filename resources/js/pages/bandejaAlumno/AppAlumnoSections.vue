@@ -3,7 +3,25 @@
 
         <v-card-text>
 
-            <v-tooltip top v-for="section in sections" :key="section.name" color="info">
+            <v-tooltip bottom color="orange">
+                <template v-slot:activator="{ on }">
+                <v-btn  fab dark depressed v-on="on" color="orange" class="ml-1 mx-1" @click="navegateToName('biblioteca-alumno')">
+                    <v-icon size="32">mdi-book-open-page-variant</v-icon>
+                </v-btn>
+                </template>
+                <span>Biblioteca</span>
+            </v-tooltip>
+
+            <v-tooltip bottom color="red">
+                <template v-slot:activator="{ on }">
+                <v-btn  fab dark depressed v-on="on" color="red" class="ml-1 mx-1" @click="navegateToName('asignacion-alumno')">
+                    <v-icon size="32">mdi-calendar-multiselect</v-icon>
+                </v-btn>
+                </template>
+                <span>Planificador</span>
+            </v-tooltip>
+
+            <v-tooltip bottom v-for="section in sections" :key="section.name" :color="section.color">
                 <template v-slot:activator="{ on }">
                     <v-btn 
                         fab 
@@ -19,24 +37,14 @@
                 <span v-text="section.label"></span>
             </v-tooltip>
 
-               
-                <v-tooltip top color="orange">
-                    <template v-slot:activator="{ on }">
-                    <v-btn  fab dark depressed v-on="on" color="orange" class="ml-1 mx-1" @click="navegateToName('biblioteca-alumno')">
-                        <v-icon size="32">mdi-book-open-page-variant</v-icon>
-                    </v-btn>
-                    </template>
-                    <span>Biblioteca</span>
-                </v-tooltip>
-
-                <v-tooltip top color="orange">
-                    <template v-slot:activator="{ on }">
-                    <v-btn  fab dark depressed v-on="on" color="red" class="ml-1 mx-1" @click="navegateToName('asignacion-alumno')">
-                        <v-icon size="32">mdi-calendar-multiselect</v-icon>
-                    </v-btn>
-                    </template>
-                    <span>Planificador</span>
-                </v-tooltip>
+            <v-tooltip bottom color="blue">
+                <template v-slot:activator="{ on }">
+                <v-btn fab dark depressed v-on="on" color="blue" class="ml-1 mx-1" @click="navegateToName('clase-alumno')">
+                    <v-icon size="32">mdi-google-classroom</v-icon>
+                </v-btn>
+                </template>
+                <span>Clase</span>
+            </v-tooltip>
 
 
         </v-card-text>
@@ -57,7 +65,7 @@ import HorarioAlumno       from '@pages/bandejaAlumno/horario/HorarioAlumno'
 import EvaluacionAlumno    from './evaluacion/AppEvaluacionAlumno'
 import PruebaAlumno        from './prueba/PruebaAlumno'
 import CalificacionAlumno  from './calificacion/AppCalificacion'
-import ClaseAlumno         from './clase/AppClase'
+
 import BibliotecaAlumno    from './biblioteca/AppBiblioteca'
 export default {
 
@@ -69,7 +77,7 @@ export default {
         'prueba-alumno':       PruebaAlumno,
         'calificacion-alumno': CalificacionAlumno,
         'biblioteca-alumno':   BibliotecaAlumno,
-        'clase-alumno':        ClaseAlumno,
+
     },
 
     computed:

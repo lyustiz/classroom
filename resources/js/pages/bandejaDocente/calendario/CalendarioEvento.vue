@@ -28,30 +28,11 @@
                         <v-list-item-subtitle v-html="event.description"></v-list-item-subtitle>
                     </v-list-item-content>
 
-                    <v-list-item-action>
-                        <item-menu 
-                            :menus="itemsMenu" 
-                            iconColor="grey darkend-1" 
-                            btnColor="grey lighten-4" 
-                            :item="event"
-                            @onItemMenu="onItemMenu($event)" 
-                        ></item-menu>
-                    </v-list-item-action>
                 </v-list-item>
             </v-list>
 
         </v-card-text>
 
-     <!--    <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn fab dark small color="amber" @click="$emit('update', event)">
-                <v-icon>mdi-lead-pencil</v-icon>
-            </v-btn>
-            <v-btn fab dark small color="red" @click="$emit('delete', event)">
-                <v-icon>mdi-delete</v-icon>
-            </v-btn>
-        </v-card-actions> -->
-            
     </v-card>
   
 </template>
@@ -70,9 +51,7 @@ export default {
     data()
     {
         return{
-            itemsMenu: [
-                { action: 'addNotification',   icon: 'mdi-bell-plus', label: 'Agregar Notificacion' },
-            ],
+
         }
     },
 

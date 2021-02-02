@@ -73,9 +73,9 @@
         </v-col>
 
         <v-col class="mx-2 pa-2 rounded-lg grey lighten-4 ">
-            <div>
+           <!--  <div>
                 <v-btn fab x-small color="success ml-2" v-show="addBtn && tipo.nb_tipo_evaluacion != 'Actividad'" @click="addItems()"><v-icon>mdi-plus</v-icon></v-btn>
-            </div>
+            </div> -->
             <v-list dense class="selector-container rounded-lg pa-0">
                 <v-list-item-group v-model="form.id_origen" color="deep-purple" class="rounded-lg">
                     <v-list-item v-for="(item, i) in items" :key="i" :value="item.id" >
@@ -233,7 +233,7 @@ export default {
     {
         list()
         {
-            this.getResource( `materia/grupo/${this.grupo.id}/docente/${this.docente.id}` ).then( data =>  this.materias = data)
+            this.getResource( `materia/grupo/${this.grupo.id}/docente/${this.docente.id}/activa` ).then( data =>  this.materias = data)
         },
 
         getTemas(materia)
@@ -242,7 +242,7 @@ export default {
             this.actividades  = []
             this.form.id_tema = null
             this.addBtn       = false
-            this.getResource( `tema/grado/${this.grupo.grado.id}/materia/${materia}/grupo/${grupo.id}` ).then( data =>  this.temas = data)
+            this.getResource( `tema/grado/${this.grupo.grado.id}/materia/${materia}/grupo/${this.grupo.id}` ).then( data =>  this.temas = data)
         },
 
         getItems()

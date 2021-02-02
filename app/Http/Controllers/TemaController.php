@@ -35,6 +35,15 @@ class TemaController extends Controller
         return Tema::comboData()
                     ->where('id_grado',   $idGrado)
                     ->where('id_materia', $idMateria)
+                    ->whereHas('planTema', function (Builder $query) use($idGrupo, $idMateria) {
+                        $query->where('id_grupo', $idGrupo)
+                              ->whereHas('planEvaluacion', function (Builder $query) use($idGrupo, $idMateria) {
+                                    $query->where('id_grupo', $idGrupo)
+                                          ->where('id_materia', $idMateria)
+                                          ->has('periodoActivo')
+                                          ->activo();
+                                });
+                    })
                     ->activo()
                     ->get();
     }

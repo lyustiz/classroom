@@ -43,10 +43,30 @@
                         label="Materia"
                         :loading="loading"
                         dense
-                        @change="getEvaluaciones($event)"
                         hide-details
                         filled
                         color="deep-purple"
+                        class="mb-n4"
+                        @change="getTemas($event)"
+                    ></v-select>
+                </v-col>
+
+                <v-col cols="12">
+                    <v-select
+                        :items="temas"
+                        item-text="nb_tema"
+                        item-value="id"
+                        v-model="form.id_tema"
+                        :rules="[rules.select]"
+                        label="Tema"
+                        :loading="loading"
+                        :disabled="temas.length < 1"
+                        dense
+                        hide-details
+                        filled
+                        color="deep-purple"
+                        class="mb-n4"
+                        @change="getEvaluaciones($event)"
                     ></v-select>
                 </v-col>
 
@@ -70,7 +90,7 @@
                         </v-list-item-group>
                     </v-list>
 
-                    <v-list dense class="evaluacion-container" subheader color="grey lighten-5 rounded-b-lg" v-else>
+                    <v-list dense class="evaluacion-container" subheader color="grey lighten-5 rounded-b-lg mb-n2" v-else>
                         <v-list-item-group v-model="tarea" color="info darken-3">
                             <v-list-item v-for="(tarea, i) in evaluaciones" :key="i" :value="tarea">
                                 <template v-slot:default="{ active }" >
@@ -99,10 +119,11 @@
                                 width="580px"
                                 content-class="rounded-xl"
                             >
-                           
+                             
                                 <template v-slot:activator="{ on }">
-
-                                        <v-subheader>Desde:</v-subheader>
+                                        <v-row no-gutters class="mt-n1">
+                                            <v-col class="caption px-3">Desde:</v-col>
+                                        </v-row>
                                         <v-sheet
                                             color="deep-purple"
                                             class="rounded-lg pa-2 pointer mx-auto"
@@ -186,7 +207,9 @@
                                 content-class="rounded-xl"
                             >
                                 <template v-slot:activator="{ on }">
-                                    <v-subheader>Hasta:</v-subheader>
+                                    <v-row no-gutters class="mt-n1">
+                                        <v-col class="caption px-3">Hasta:</v-col>
+                                    </v-row>
                                     <v-sheet
                                         color="deep-orange"
                                         class="rounded-lg pa-2 pointer mx-auto"
@@ -268,7 +291,9 @@
                             content-class="rounded-xl"
                         >
                             <template v-slot:activator="{ on }">
-                            <v-subheader>Tiempo Ejecucion</v-subheader>
+                            <v-row no-gutters class="mt-n1">
+                                <v-col class="caption px-3">Tiempo:</v-col>
+                            </v-row>
                             <v-sheet
                                 color="info"
                                 class="rounded-lg pa-2 pointer mx-auto"
@@ -488,6 +513,7 @@ export default {
             prueba:        null,
             tarea:        null,
             materias:      [],
+            temas:    [],
             evaluaciones:  [],
             alumnos:       [],
         }
@@ -497,18 +523,25 @@ export default {
     {
         list()
         {
-            this.getResource( `materia/grupo/${this.grupo.id}/docente/${this.docente.id}` ).then( data =>  this.materias = data)
+            this.getResource( `materia/grupo/${this.grupo.id}/docente/${this.docente.id}/activa` ).then( data =>  this.materias = data)
             this.getResource( `alumno/grupo/${this.grupo.id}` ).then( data => {
                 this.alumnos = data 
                 this.selectAll()
             })
         },
 
-        getEvaluaciones(materia)
+        getTemas(materia)
+        {
+            this.temas        = []
+            this.form.id_tema = null
+            this.getResource( `tema/grado/${this.grupo.grado.id}/materia/${materia}/grupo/${this.grupo.id}` ).then( data =>  this.temas = data)
+        },
+
+        getEvaluaciones(tema)
         {
             this.evaluaciones = []
 
-            this.getResource( `${this.tipo.tx_origen}/grado/${this.grupo.grado.id}/materia/${materia}` )
+            this.getResource( `${this.tipo.tx_origen}/tema/${tema}` )
                             .then( data =>  this.evaluaciones = data)
         },
 

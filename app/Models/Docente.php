@@ -72,6 +72,11 @@ class Docente extends Model
 	{
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
 	}
+
+	public function usuarioDocente()
+	{
+        return $this->hasOne('App\Models\Usuario', 'id_origen')->where('id_tipo_usuario', 2);
+	}
 	
 	public function estadoCivil()
 	{

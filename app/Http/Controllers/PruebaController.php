@@ -136,6 +136,13 @@ class PruebaController extends Controller
                       ->get();
     }
 
+    public function pruebaTema($idTema)
+    {
+        return  Prueba::with(['grado:id,nb_grado'])
+                      ->where('id_tema', $idTema)
+                      ->get();
+    }
+
     public function pruebaGradoImportar($idPrueba, $idGrado)
     {
         return  Prueba::with(['grado:id,nb_grado', 'grupo:id,nb_grupo'])

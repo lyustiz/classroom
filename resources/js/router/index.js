@@ -17,6 +17,7 @@ import BandejaAlumno         from '@pages/bandejaAlumno/dashboard';
 import MenuAlumno            from '@pages/bandejaAlumno/index'; 
 import AsignacionAlumno      from '@pages/bandejaAlumno/asignacion/AppAsignacionAlumno';
 import BibliotecaAlumno      from '@pages/bandejaAlumno/biblioteca/AppBiblioteca';
+import ClaseAlumno           from '@pages/clase/AppClaseAlumno';
 
 //docente
 import BandejaDocente        from '@pages/BandejaDocente/dashboard';
@@ -270,7 +271,6 @@ export default new Router({
                     visible: true,
                     component: BandejaAlumno,
                 },
-
                 {
                     path:    'asignacion-alumno',
                     name:    'asignacion-alumno',
@@ -280,7 +280,6 @@ export default new Router({
                     visible: true,
                     component: AsignacionAlumno,
                 },
-
                 {
                     path:    'biblioteca-alumno',
                     name:    'biblioteca-alumno',
@@ -290,7 +289,15 @@ export default new Router({
                     visible: true,
                     component: BibliotecaAlumno,
                 },
-                
+                {
+                    path:    'clase-alumno',
+                    name:    'clase-alumno',
+                    label:   'Clase',
+                    icon:    'mdi-google-classroom',
+                    profile: 'alumno',
+                    visible: true,
+                    component: ClaseAlumno, 
+                },
             ]
         },
         {
@@ -533,6 +540,16 @@ export default new Router({
                 component: GrupoCalificacion
             },
             { 
+                path: 'tema',
+                name: 'tema',
+                label: 'Tema',
+                icon: 'mdi-card-text',
+                profile: 'secretaria',
+                visible: true,
+                color: 'purple',
+                component: Tema
+            },
+            { 
                 path: 'plan-evaluacion',
                 name: 'plan-evaluacion',
                 label: 'Plan Evaluacion',
@@ -666,16 +683,7 @@ export default new Router({
                 component: Permiso
             },
 
-            { 
-                path: 'tema',
-                name: 'tema',
-                label: 'Tema',
-                icon: 'mdi-card-text',
-                profile: 'secretaria',
-                visible: true,
-                color: 'deep-purple',
-                component: Tema
-            }, 
+             
             { 
                 path: 'prueba',
                 name: 'prueba',

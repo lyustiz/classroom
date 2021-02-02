@@ -134,7 +134,7 @@
                                 <span >Zoom</span>
                             </v-tooltip>
 
-                        <!--     <v-tooltip bottom color="amber">
+                            <v-tooltip bottom color="amber">
                                 <template v-slot:activator="{ on }" >
                                     <v-btn v-on="on" fab dark color="amber" :loading="loading" @click="initVirtualinMeet()">
                                         <v-icon :size="30">mdi-video-check-outline</v-icon>
@@ -142,7 +142,7 @@
                                 </template>
                                 <span >Virtualin</span>
                             </v-tooltip>
- -->
+
                         </v-col>
                     </v-sheet>
                     

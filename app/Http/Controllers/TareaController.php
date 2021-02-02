@@ -39,6 +39,13 @@ class TareaController extends Controller
                             ->first();
     }
 
+    public function tareaTema($idTema)
+    {
+        return  Tarea::with(['grado:id,nb_grado', 'materia:id,nb_materia'])
+                      ->where('id_tema', $idTema)
+                      ->get();
+    }
+
     public function tareaGradoMateria($idGrado, $idMateria)
     {
         return  Tarea::with(['grado:id,nb_grado', 'materia:id,nb_materia'])

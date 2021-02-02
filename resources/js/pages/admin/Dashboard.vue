@@ -15,6 +15,7 @@
                     dense
                     solo-inverted
                     @input="searchMenu($event)"
+                    autofocus
                     ></v-text-field>
               </v-col>
           </v-row>
