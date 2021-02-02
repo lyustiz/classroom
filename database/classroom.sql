@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2021-02-01 20:44:59
+Date: 2021-02-02 13:40:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,7 @@ CREATE TABLE `actividad` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of actividad
@@ -63,6 +63,7 @@ INSERT INTO `actividad` VALUES ('63', 'Las regiones naturales de Colombia', '117
 INSERT INTO `actividad` VALUES ('64', 'Las regiones naturales del mundo', '117', '8 regiones naturales del mundo\nLas regiones naturales se clasifican en sabana, bosque, desierto, tundra, praderas o pastizales, selva, región ecuatorial y región mediterránea.\n\nSe conoce como región natural, aquel espacio que presenta características físicas muy peculiares, las cuales, lo definen conforme a la fauna, flora, clima y el propio ecosistema presente.\n\nEs de apreciar, que cada región natural presenta sus aspectos bien definidos, que lo permiten distinguirse unos de otros, haciendo de estos, unos espacios naturales con características propias:\n\nRegión ecuatorial.\nDe pastizales tropicales sabana. \nRegión de bosque tropical caducifolio.\nDesiertos Tropicales.\nRegión mediterránea.\nRegión del margen este tipo de China\nDesiertos de latitud media tierras de estepa\nMárgenes orientales o tipo St Lawrence.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
 INSERT INTO `actividad` VALUES ('65', 'El trabajo', '152', 'Como trabajo denominamos al conjunto de actividades que son realizadas con el objetivo de alcanzar una meta, solucionar un problema o producir bienes y servicios para atender las necesidades humanas.\n\nCon el paso del tiempo, el uso de la palabra se amplió para referirse a una actividad que causara dolor físico y se asoció al trabajo en el campo, pero su uso se extendió a otras actividades humanas.\n\nGracias al trabajo el ser humano comienza a conquistar su propio espacio, así como el respeto y la consideración de los demás, lo cual además contribuye a su autoestima, satisfacción personal y realización profesional, sin contar con el aporte que hace a la sociedad.\n\nEl significado de trabajo tiene enfoques en diversas áreas, como la economía, la física, la filosofía, etc.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
 INSERT INTO `actividad` VALUES ('66', 'El dinero y el intercambio económico', '152', 'El dinero juega un papel fundamental en las economías basadas en el intercambio a través de los mercados. Si se piensa en la enorme cantidad de intercambios comerciales que se realizan diariamente, se aprecia de inmediato la utilidad del dinero para que estas transacciones se hagan de manera satisfactoria.\n\nEl dinero es todo medio de cambio generalmente aceptado por la sociedad\n\nEl dinero, por tanto, es aquello que utilizamos para realizar pagos, cuando compramos, y cobros, cuando vendemos. Pero, ¿y si no existiera el dinero? En ese caso nos veríamos obligados a intercambiar unos bienes por otros, es decir, a practicar el trueque.', null, '1', '1', '2020-11-26 17:47:26', '2020-11-26 17:47:26');
+INSERT INTO `actividad` VALUES ('67', 'Vocales', '22', 'Las vocales son esos sonidos que pronunciamos con la voz sin que le acompañe ningún sonido de las consonantes.', null, '1', '1', '2021-02-02 15:54:01', '2021-02-02 15:54:10');
 
 -- ----------------------------
 -- Table structure for actividad_pregunta
@@ -83,7 +84,7 @@ CREATE TABLE `actividad_pregunta` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of actividad_pregunta
@@ -121,6 +122,7 @@ INSERT INTO `actividad_pregunta` VALUES ('138', 'Una región natural es:', null,
 INSERT INTO `actividad_pregunta` VALUES ('139', '¿Qué son los desiertos?', null, '64', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 16:37:31', '2020-12-06 16:37:31');
 INSERT INTO `actividad_pregunta` VALUES ('140', 'Este tipo de trabajo implica el uso primordial de las manos.', null, '65', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 16:55:07', '2020-12-06 16:55:07');
 INSERT INTO `actividad_pregunta` VALUES ('141', 'El dinero es', null, '66', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 16:57:37', '2020-12-06 16:57:37');
+INSERT INTO `actividad_pregunta` VALUES ('142', 'Cuales son las Vocales', null, '67', '2', '0', '0.00', '0', null, '1', '1', '2021-02-02 15:54:55', '2021-02-02 15:54:55');
 
 -- ----------------------------
 -- Table structure for actividad_respuesta
@@ -138,7 +140,7 @@ CREATE TABLE `actividad_respuesta` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=322 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=324 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of actividad_respuesta
@@ -258,6 +260,8 @@ INSERT INTO `actividad_respuesta` VALUES ('318', 'Un medio de cambio.', '141', '
 INSERT INTO `actividad_respuesta` VALUES ('319', 'Universal.', '141', '0', null, null, '1', '1', '2020-12-06 16:57:55', '2020-12-06 16:58:18');
 INSERT INTO `actividad_respuesta` VALUES ('320', 'Nos permite acceder a bienes y servicios.', '141', '0', null, null, '1', '1', '2020-12-06 16:58:02', '2020-12-06 16:58:18');
 INSERT INTO `actividad_respuesta` VALUES ('321', 'Valor asignado.', '141', '0', null, null, '1', '1', '2020-12-06 16:58:12', '2020-12-06 16:58:18');
+INSERT INTO `actividad_respuesta` VALUES ('322', 'A, E, I, O, U', '142', '1', null, null, '1', '1', '2021-02-02 15:55:17', '2021-02-02 15:55:17');
+INSERT INTO `actividad_respuesta` VALUES ('323', 'B C D E F', '142', '0', null, null, '1', '1', '2021-02-02 15:55:31', '2021-02-02 15:55:31');
 
 -- ----------------------------
 -- Table structure for agenda
@@ -599,7 +603,7 @@ CREATE TABLE `archivo` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of archivo
@@ -655,6 +659,9 @@ INSERT INTO `archivo` VALUES ('80', 'tarea', '13', '12', '1611516450_Documento s
 INSERT INTO `archivo` VALUES ('81', 'vvsdvsv', '11', '4', '1611852981_clase.png', 'Image', 'sdvsvvsdv', '1', '1', '2021-01-28 16:56:21', '2021-01-28 16:56:21');
 INSERT INTO `archivo` VALUES ('82', 'twete', '13', '66', '1611854812_cotizar.xlsx', 'Excel', 'ewtwe', '1', '1', '2021-01-28 17:26:52', '2021-01-28 17:26:52');
 INSERT INTO `archivo` VALUES ('83', 'fw', '11', '2', '1612214783_Documento sin título.pdf', 'PDF', 'wfwf', '1', '1', '2021-02-01 21:26:23', '2021-02-01 21:26:23');
+INSERT INTO `archivo` VALUES ('84', 'La Cancion  de las Vocales', '8', '42', 'La Canción de las Vocales - A E I O U.mp3', 'Audio', null, '1', '1', '2021-02-02 15:47:30', '2021-02-02 15:47:30');
+INSERT INTO `archivo` VALUES ('85', 'La letra B', '10', '43', '15 la letra B material de aprendizaje.pdf', 'PDF', null, '1', '1', '2021-02-02 15:49:41', '2021-02-02 15:49:41');
+INSERT INTO `archivo` VALUES ('86', 'prueba', '11', '5', '1612282099_Good Educativo Cotización11520.pdf', 'PDF', null, '1', '1', '2021-02-02 16:08:19', '2021-02-02 16:08:19');
 
 -- ----------------------------
 -- Table structure for area_estudio
@@ -1402,13 +1409,13 @@ CREATE TABLE `calendario` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of calendario
 -- ----------------------------
 INSERT INTO `calendario` VALUES ('1', '2019-2020', '2019', '2019-10-17', '2020-07-27', null, '2', '1', '2020-05-09 11:41:33', '2021-01-16 17:16:17');
-INSERT INTO `calendario` VALUES ('2', '2020-2021', '2020', '2020-10-14', '2021-07-13', null, '1', '1', '2020-06-10 21:06:08', '2021-01-16 17:16:17');
+INSERT INTO `calendario` VALUES ('2', '2020-2021', '2020', '2020-10-14', '2021-07-13', null, '1', '1', '2020-06-10 21:06:08', '2021-02-02 17:26:39');
 
 -- ----------------------------
 -- Table structure for calificacion
@@ -2991,7 +2998,7 @@ CREATE TABLE `directiva` (
 -- ----------------------------
 -- Records of directiva
 -- ----------------------------
-INSERT INTO `directiva` VALUES ('1', '1', '1', 'Jose Rizzo', '1', '3654656', null, '1', '1', '2020-05-09 20:39:07', '2020-05-09 20:39:07');
+INSERT INTO `directiva` VALUES ('1', '1', '2', 'Jose Rizzo', '1', '3654656', null, '1', '1', '2020-05-09 20:39:07', '2021-02-02 16:47:27');
 INSERT INTO `directiva` VALUES ('2', '1', '2', 'Luis Yustiz', '1', '2342424', null, '1', '1', '2020-05-09 20:44:46', '2020-05-31 02:41:40');
 
 -- ----------------------------
@@ -3373,15 +3380,15 @@ CREATE TABLE `enlace` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of enlace
 -- ----------------------------
-INSERT INTO `enlace` VALUES ('35', 'Ciencia Express: La célula', '2', '106', '', 'https://www.youtube.com/embed/tM2wEWk0-GQ', null, '1', '1', '2020-11-16 12:25:57', '2020-11-16 12:28:13');
-INSERT INTO `enlace` VALUES ('36', 'Tejidos animales', '2', '236', '', 'https://www.youtube.com/watch?v=9pvSA-23FYs&feature=youtu.be', null, '1', '1', '2020-11-16 12:29:31', '2020-11-16 12:29:31');
-INSERT INTO `enlace` VALUES ('37', 'Niveles de organización de los seres vivos | Biología', '2', '236', '', 'https://www.youtube.com/watch?v=B2ab1nk2xt4&feature=youtu.be', null, '1', '1', '2020-11-16 16:39:01', '2020-11-16 16:39:01');
-INSERT INTO `enlace` VALUES ('38', 'Ácidos nucleicos: ADN y ARN', '2', '238', '', 'https://www.youtube.com/watch?v=gHXMh_GPgcE&feature=youtu.be', null, '1', '1', '2020-11-16 16:39:47', '2020-11-16 16:40:33');
+INSERT INTO `enlace` VALUES ('35', 'Ciencia Express: La célula', '2', '106', '', 'tM2wEWk0-GQ', null, '1', '1', '2020-11-16 12:25:57', '2020-11-16 12:28:13');
+INSERT INTO `enlace` VALUES ('36', 'Tejidos animales', '2', '236', '', '9pvSA-23FYs', null, '1', '1', '2020-11-16 12:29:31', '2020-11-16 12:29:31');
+INSERT INTO `enlace` VALUES ('37', 'Niveles de organización de los seres vivos | Biología', '2', '236', '', 'B2ab1nk2xt4', null, '1', '1', '2020-11-16 16:39:01', '2020-11-16 16:39:01');
+INSERT INTO `enlace` VALUES ('38', 'Ácidos nucleicos: ADN y ARN', '2', '238', '', 'gHXMh_GPgcE', null, '1', '1', '2020-11-16 16:39:47', '2020-11-16 16:40:33');
 INSERT INTO `enlace` VALUES ('39', 'Significado de Estado sólido', '1', '4', '', 'https://www.significados.com/estado-solido/', null, '1', '1', null, null);
 INSERT INTO `enlace` VALUES ('40', 'Significado de Estado líquido', '1', '4', '', 'https://www.significados.com/estado-liquido/', null, '1', '1', null, null);
 INSERT INTO `enlace` VALUES ('41', 'Definición de alimentos ', '1', '41', '', 'https://www.definicion.de/alimento/', null, '1', '1', null, null);
@@ -3400,23 +3407,23 @@ INSERT INTO `enlace` VALUES ('53', 'Concepto de reproducción celular', '1', '10
 INSERT INTO `enlace` VALUES ('54', 'Reproducción asexual y sexual', '1', '106', '', 'https://www.abc.com.py/edicion-impresa/suplementos/escolar/la-reproduccion-sexual-y-asexual-446378.html', null, '1', '1', null, null);
 INSERT INTO `enlace` VALUES ('55', '¿Qué es el pH?', '1', '238', '', 'https://culturacientifica.com/2019/11/28/que-es-el-ph/', null, '1', '1', null, null);
 INSERT INTO `enlace` VALUES ('56', 'Soluciones Amortiguadoras: Características, Preparación, Ejemplos', '1', '238', '', 'https://www.lifeder.com/soluciones-amortiguadoras-buffers/', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('57', 'Estados de la materia. Estado Solido', '2', '4', '', 'https://www.youtube.com/watch?v=YeV-d0K5oPY', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('58', 'Cambios de estado de la materia', '2', '4', '', 'https://www.youtube.com/watch?v=aS7Tgj1oAy5', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('59', 'Los alimentos', '2', '41', '', 'https://www.youtube.com/watch?v=EbZhQbyJgvQ', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('60', 'CLASIFICACIÓN DE LOS ALIMENTOS SEGÚN SU FUNCIÓN /APRENDE EN CASA', '2', '41', '', 'https://www.youtube.com/watch?v=oSgqvE_1pRM', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('61', 'Las niñas y la nueva pubertad', '2', '74', '', 'https://www.youtube.com/watch?v=1Istr8enXV8', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('62', 'Etapas de la adolescencia', '2', '74', '', 'https://www.youtube.com/watch?v=dZiJp76DLe4', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('63', 'Química: Los elementos químicos', '2', '109', '', 'https://www.youtube.com/watch?v=xe1VYxUY7Ys', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('64', 'Mezclas homogéneas y heterogéneas', '2', '109', '', 'https://www.youtube.com/watch?v=gtgZPr3QhvA', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('65', '¿Qué es la energía solar?', '2', '142', '', 'https://www.youtube.com/watch?v=5cVpl1WGmJA', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('66', 'Las energías renovables', '2', '142', '', 'https://www.youtube.com/watch?v=4eEri5RivV8', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('67', 'Calentamiento global, causas y concecuencias\n', '2', '44', '', 'https://www.youtube.com/watch?v=umAGi80FsPM', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('68', 'Definición y tipos de ecosistemas', '2', '44', '¿Sabías que el estudio de los ecosistemas nos ayuda a describir cualquier rincón del planeta?', 'https://www.youtube.com/watch?v=3LeeVif_qSQ', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('69', 'Estructura del átomo', '2', '345', 'Estructura del átomo explicado gráficamente.', 'https://www.youtube.com/watch?v=P_IpfoU_4qM', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('70', 'Diferencia entre masa atómica, molecular y molar', '2', '345', 'Vídeo que enseña la diferencia entre masa atómica, molecular y molar', 'https://www.youtube.com/watch?v=KEJlFQRZh44', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('71', 'La reproducción celular', '2', '238', 'La célula está viva porqué cumple con los procesos de la vida. Se reproduce, se alimenta y también m', 'https://www.youtube.com/watch?v=edInUsufUsc', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('73', 'Escalas de pH y pOH', '2', '238', '', 'https://www.youtube.com/watch?v=lcFX76W3QLs', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('74', 'Soluciones amortiguadoras (buffer o tampón)', '2', '238', '', 'https://www.youtube.com/watch?v=_Rh3vYWCccM', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('57', 'Estados de la materia. Estado Solido', '2', '4', '', 'YeV-d0K5oPY', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('58', 'Cambios de estado de la materia', '2', '4', '', 'x2nKoFYolj8', null, '1', '1', null, '2021-02-02 14:39:30');
+INSERT INTO `enlace` VALUES ('59', 'Los alimentos', '2', '41', '', 'EbZhQbyJgvQ', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('60', 'CLASIFICACIÓN DE LOS ALIMENTOS SEGÚN SU FUNCIÓN /APRENDE EN CASA', '2', '41', '', 'oSgqvE_1pRM', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('61', 'Las niñas y la nueva pubertad', '2', '74', '', '1Istr8enXV8', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('62', 'Etapas de la adolescencia', '2', '74', '', 'dZiJp76DLe4', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('63', 'Química: Los elementos químicos', '2', '109', '', 'xe1VYxUY7Ys', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('64', 'Mezclas homogéneas y heterogéneas', '2', '109', '', 'gtgZPr3QhvA', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('65', '¿Qué es la energía solar?', '2', '142', '', '5cVpl1WGmJA', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('66', 'Las energías renovables', '2', '142', '', '4eEri5RivV8', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('67', 'Calentamiento global, causas y concecuencias\n', '2', '44', '', 'umAGi80FsPM', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('68', 'Definición y tipos de ecosistemas', '2', '44', '¿Sabías que el estudio de los ecosistemas nos ayuda a describir cualquier rincón del planeta?', '3LeeVif_qSQ', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('69', 'Estructura del átomo', '2', '345', 'Estructura del átomo explicado gráficamente.', 'P_IpfoU_4qM', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('70', 'Diferencia entre masa atómica, molecular y molar', '2', '345', 'Vídeo que enseña la diferencia entre masa atómica, molecular y molar', 'KEJlFQRZh44', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('71', 'La reproducción celular', '2', '238', 'La célula está viva porqué cumple con los procesos de la vida. Se reproduce, se alimenta y también m', 'edInUsufUsc', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('73', 'Escalas de pH y pOH', '2', '238', '', 'lcFX76W3QLs', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('74', 'Soluciones amortiguadoras (buffer o tampón)', '2', '238', '', '_Rh3vYWCccM', null, '1', '1', null, null);
 INSERT INTO `enlace` VALUES ('75', 'Yo sé cuidar mi cuerpo', '1', '7', '', 'https://securitasaldia.com.pe/yo-se-cuidar-mi-cuerpo/', null, '1', '1', null, null);
 INSERT INTO `enlace` VALUES ('76', 'Importancia de la familia', '1', '11', '', 'https://importancias.com/familia/', null, '1', '1', null, null);
 INSERT INTO `enlace` VALUES ('77', 'Paisaje geográfico', '1', '51', '', 'https://www.ecured.cu/Paisaje_geogr%C3%A1fico#:~:text=Concepto%3A,humano%2C%20presenta%20sus%20propias%20caracter%C3%ADsticas.&text=Es%20decir%20puede', null, '1', '1', null, null);
@@ -3427,16 +3434,18 @@ INSERT INTO `enlace` VALUES ('81', 'Regiones en Colombia', '1', '117', '', 'http
 INSERT INTO `enlace` VALUES ('82', 'Regiones naturales del mundo y características principales', '1', '117', '', 'https://www.noticiasvigo.es/regiones-naturales-del-mundo-y-caracteristicas-principales/', null, '1', '1', null, null);
 INSERT INTO `enlace` VALUES ('83', 'Tipos de trabajos', '1', '152', '', 'https://www.tipos.co/tipos-de-trabajos/', null, '1', '1', null, null);
 INSERT INTO `enlace` VALUES ('84', 'El medio de intercambio: El dinero', '1', '152', '', 'https://pablomartinscarpini.com/2019/08/24/el-medio-de-intercambio-el-dinero/', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('87', 'Quién soy yo', '2', '7', '', 'https://www.youtube.com/watch?v=LZ2O3cShf_w', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('88', 'La familia', '2', '11', '', 'https://www.youtube.com/watch?v=9p6DjK7NMTI', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('89', 'El paisaje', '2', '51', '', 'https://youtu.be/LxgKYT8oDTo?t=19', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('90', 'La influencia del clima en el paisaje', '2', '51', '', 'https://youtu.be/mnpwBISQ_10', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('91', '¿Qué es la CULTURA?', '2', '83', '', 'https://www.youtube.com/watch?v=RpngVL4_jFY', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('92', 'Mitos y leyendas', '2', '83', '', 'https://www.youtube.com/watch?v=sAQnrOhQt8M', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('93', 'Regiones Naturales de Colombia', '2', '117', '', 'https://www.youtube.com/watch?v=SM-Mp1t9JuU', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('94', 'Regiones Naturales del Mundo', '2', '117', '', 'https://www.youtube.com/watch?v=Bl7n36JMcEo', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('95', 'El trabajo y su clasificación El sector primario, secundario y terciario', '2', '152', '', 'https://www.youtube.com/watch?v=5ns5zI7nL5I', null, '1', '1', null, null);
-INSERT INTO `enlace` VALUES ('96', 'Qué es el dinero, funciones y tipos', '2', '152', '', 'https://www.youtube.com/watch?v=ZYcrw_62eXY', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('87', 'Quién soy yo', '2', '7', '', 'LZ2O3cShf_w', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('88', 'La familia', '2', '11', '', '9p6DjK7NMTI', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('89', 'El paisaje', '2', '51', '', 'LxgKYT8oDTo', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('90', 'La influencia del clima en el paisaje', '2', '51', '', 'mnpwBISQ_10', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('91', '¿Qué es la CULTURA?', '2', '83', '', 'RpngVL4_jFY', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('92', 'Mitos y leyendas', '2', '83', '', 'sAQnrOhQt8M', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('93', 'Regiones Naturales de Colombia', '2', '117', '', 'SM-Mp1t9JuU', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('94', 'Regiones Naturales del Mundo', '2', '117', '', 'Bl7n36JMcEo', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('95', 'El trabajo y su clasificación El sector primario, secundario y terciario', '2', '152', '', '5ns5zI7nL5I', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('96', 'Qué es el dinero, funciones y tipos', '2', '152', '', 'ZYcrw_62eXY', null, '1', '1', null, null);
+INSERT INTO `enlace` VALUES ('97', 'Las vocales para niños', '2', '22', '', 'hUmcjGvWaGc', null, '1', '1', '2021-02-02 15:43:26', '2021-02-02 15:43:26');
+INSERT INTO `enlace` VALUES ('98', 'Canción de las Vocales', '1', '22', '', 'https://arbolabc.com/canciones-infantiles/cancion-de-las-vocales', null, '1', '1', '2021-02-02 15:44:26', '2021-02-02 15:44:26');
 
 -- ----------------------------
 -- Table structure for estado_civil
@@ -3747,7 +3756,7 @@ CREATE TABLE `foto` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=200 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=204 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of foto
@@ -3797,7 +3806,6 @@ INSERT INTO `foto` VALUES ('139', 'alumno id: 87', '1605024802_87.jpg', '2', '87
 INSERT INTO `foto` VALUES ('140', 'alumno id: 105', '1605024828_105.jpg', '2', '105', null, '1', '1', '2020-11-10 16:13:48', '2020-11-10 16:13:48');
 INSERT INTO `foto` VALUES ('141', 'alumno id: 45', '1605024863_45.jpg', '2', '45', null, '1', '1', '2020-11-10 16:14:23', '2020-11-10 16:14:23');
 INSERT INTO `foto` VALUES ('142', 'alumno id: 103', '1605024907_103.jpg', '2', '103', null, '1', '1', '2020-11-10 16:15:07', '2020-11-10 16:15:07');
-INSERT INTO `foto` VALUES ('143', 'colegio id: 1', '1605026559_1.jpg', '1', '1', null, '1', '1', '2020-11-10 16:42:39', '2020-11-10 16:42:39');
 INSERT INTO `foto` VALUES ('146', 'pregunta id: 104', '1605097972_104.jpg', '7', '104', null, '1', '1', '2020-11-11 12:32:52', '2020-11-11 12:32:52');
 INSERT INTO `foto` VALUES ('151', 'actividad id: 20', '1606431555_20.jpg', '6', '20', null, '1', '1', '2020-11-26 22:59:15', '2020-11-26 22:59:15');
 INSERT INTO `foto` VALUES ('156', 'actividad id: 39', '1607209261_39.jpg', '6', '39', null, '1', '1', '2020-12-05 23:01:01', '2020-12-05 23:01:01');
@@ -3830,6 +3838,9 @@ INSERT INTO `foto` VALUES ('194', 'actividad id: 63', '1607272925_63.jpg', '6', 
 INSERT INTO `foto` VALUES ('195', 'actividad id: 64', '1607273030_64.jpg', '6', '64', null, '1', '1', '2020-12-06 16:43:50', '2020-12-06 16:43:50');
 INSERT INTO `foto` VALUES ('197', 'actividad id: 65', '1607273793_65.jpg', '6', '65', null, '1', '1', '2020-12-06 16:56:33', '2020-12-06 16:56:33');
 INSERT INTO `foto` VALUES ('198', 'actividad id: 66', '1607273835_66.jpg', '6', '66', null, '1', '1', '2020-12-06 16:57:16', '2020-12-06 16:57:16');
+INSERT INTO `foto` VALUES ('201', 'actividad id: 67', '1612281745_67.jpg', '6', '67', null, '1', '1', '2021-02-02 16:02:25', '2021-02-02 16:02:25');
+INSERT INTO `foto` VALUES ('202', 'pregunta id: 209', '1612281917_209.jpg', '7', '209', null, '1', '1', '2021-02-02 16:05:17', '2021-02-02 16:05:17');
+INSERT INTO `foto` VALUES ('203', 'colegio id: 1', '1612284361_1.jpg', '1', '1', null, '1', '1', '2021-02-02 16:46:01', '2021-02-02 16:46:01');
 
 -- ----------------------------
 -- Table structure for grado
@@ -4447,105 +4458,106 @@ CREATE TABLE `menu` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
-INSERT INTO `menu` VALUES ('1', 'Welcome', '8', 'welcome', '/', 'mdi-home', 'black', 'Welcome', '0', '1', 'Pagina Entrada', '1', '0', null, null);
-INSERT INTO `menu` VALUES ('2', 'Home', '3', 'home', '/home', 'mdi-view-dashboard', 'brown', 'Home', '1', '2', 'Home Secretaria', '1', '1', null, '2020-09-02 15:08:33');
-INSERT INTO `menu` VALUES ('3', 'Bandeja Docente', '2', 'bandeja-docente', 'bandeja-docente', 'mdi-tray-full', 'indigo', 'BandejaDocente', '1', '3', null, '1', '1', null, '2020-09-01 23:55:38');
-INSERT INTO `menu` VALUES ('4', 'Bandeja Alumno', '5', 'bandeja-alumno', 'bandeja-alumno', 'mdi-tray-full', 'amber', 'BandejaAlumno', '1', '4', null, '1', '1', null, '2020-09-01 14:24:14');
-INSERT INTO `menu` VALUES ('5', 'Bandeja Acudiente', '4', 'bandeja-acudiente', 'bandeja-acudiente', 'mdi-tray-full', 'light-green', 'BandejaAcudiente', '1', '5', null, '1', '1', null, '2020-09-01 14:25:17');
-INSERT INTO `menu` VALUES ('6', 'Configuracion General', '3', 'admin-dashboard', 'admin/', 'mdi-cog', 'brown', 'BandejaAdmin', '1', '6', null, '1', '1', null, '2020-09-01 23:54:30');
-INSERT INTO `menu` VALUES ('7', 'Institucion', '3', 'colegio', 'admin/colegio', 'mdi-store', 'orange', 'AppColegio', '1', '7', null, '1', '1', null, '2020-09-01 14:41:31');
-INSERT INTO `menu` VALUES ('8', 'Tipo Colegio', '3', 'tipoColegio', 'admin/tipoColegio', 'mdi-bookmark-multiple', 'orange', 'TipoColegio', '1', '9', null, '1', '1', null, '2020-09-01 15:27:12');
-INSERT INTO `menu` VALUES ('9', 'Cargos', '3', 'cargo', 'admin/cargos', 'mdi-account-group-outline', 'orange', 'Cargos', '1', '8', null, '1', '1', null, '2020-09-01 14:41:48');
-INSERT INTO `menu` VALUES ('10', 'Tipo Directiva', '3', 'tipo-directiva', 'admin/tipoDirectiva', 'mdi-account-group-outline', 'orange', 'TipoDirectiva', '1', '10', null, '1', '1', null, '2020-09-01 14:42:00');
-INSERT INTO `menu` VALUES ('11', 'Directiva', '3', 'directiva', 'admin/directiva', 'mdi-account-group', 'orange', 'Directiva', '1', '11', null, '1', '1', null, '2020-09-01 14:42:11');
-INSERT INTO `menu` VALUES ('12', 'Estructura', '3', 'estructura', 'admin/estructura', 'mdi-floor-plan', 'orange', 'Estructura', '1', '13', null, '1', '1', null, '2020-09-01 14:42:57');
-INSERT INTO `menu` VALUES ('13', 'Aulas', '3', 'aula', 'admin/aula', 'mdi-chair-school', 'orange', 'Aula', '1', '14', null, '1', '1', null, '2020-09-01 14:43:40');
-INSERT INTO `menu` VALUES ('14', 'Empleados', '3', 'empleado', 'admin/empleado', 'mdi-badge-account', 'orange', 'Empleado', '1', '12', null, '1', '1', null, '2020-09-01 14:42:29');
-INSERT INTO `menu` VALUES ('15', 'Calendario', '3', 'calendario', 'admin/calendario', 'mdi-calendar-blank', 'teal', 'Calendario', '1', '15', null, '1', '1', null, '2020-09-01 14:45:35');
-INSERT INTO `menu` VALUES ('16', 'Periodos', '3', 'periodo', 'admin/periodo', 'mdi-calendar-weekend', 'teal', 'Periodo', '1', '16', null, '1', '1', null, '2020-09-01 14:45:47');
-INSERT INTO `menu` VALUES ('17', 'Feriados', '3', 'feriado', 'admin/feriado', 'mdi-calendar-star', 'purple', 'Feriado', '1', '29', null, '1', '1', null, '2020-09-01 14:45:57');
-INSERT INTO `menu` VALUES ('18', 'Tipo Agenda', '3', 'tipo-agenda', 'admin/tipo-agenda', 'mdi-clipboard-text-multiple', 'purple', 'TipoAgenda', '1', '30', null, '1', '1', null, '2020-09-01 15:54:58');
-INSERT INTO `menu` VALUES ('19', 'Tipo Actividad', '3', 'tipo-actividad', 'admin/tipo-actividad', 'mdi-clipboard-text-multiple', 'purple', 'TipoActividad', '1', '31', null, '1', '1', null, '2020-09-01 15:55:09');
-INSERT INTO `menu` VALUES ('20', 'Agenda', '3', 'agenda', 'admin/agenda', 'mdi-clipboard-text', 'purple', 'Agenda', '1', '32', null, '1', '1', null, '2020-09-01 15:55:20');
-INSERT INTO `menu` VALUES ('21', 'Turnos', '3', 'turno', 'admin/turno', 'mdi-timelapse', 'teal', 'Turno', '1', '17', null, '1', '1', null, '2020-09-01 14:46:55');
-INSERT INTO `menu` VALUES ('22', 'Horas Academicas', '3', 'hora-academica', 'admin/hora-academica', 'mdi-clock', 'teal', 'HoraAcademica', '1', '18', null, '1', '1', null, '2020-09-01 14:46:19');
-INSERT INTO `menu` VALUES ('24', 'Niveles', '3', 'nivel', 'admin/nivel', 'mdi-stairs-up', 'teal', 'Nivel', '1', '22', null, '1', '1', null, '2020-09-01 14:48:29');
-INSERT INTO `menu` VALUES ('25', 'Grados', '3', 'grado', 'admin/grado', 'mdi-numeric', 'teal', 'Grado', '1', '23', null, '1', '1', null, '2020-09-01 14:48:39');
-INSERT INTO `menu` VALUES ('26', 'Grupos', '3', 'grupo', 'admin/grupo', 'mdi-alphabetical-variant', 'teal', 'Grupo', '1', '24', null, '1', '1', null, '2020-09-01 14:48:49');
-INSERT INTO `menu` VALUES ('27', 'Areas de Estudio', '3', 'area-estudio', 'admin/area-estudio', 'mdi-file-cad', 'teal', 'AreaEstudio', '1', '19', null, '1', '1', null, '2020-09-01 14:47:42');
-INSERT INTO `menu` VALUES ('28', 'Materias', '3', 'materia', 'admin/materia', 'mdi-bookshelf', 'teal', 'Materia', '1', '20', null, '1', '1', null, '2020-09-01 14:47:51');
-INSERT INTO `menu` VALUES ('29', 'Grado Materias', '3', 'grado-materia', 'admin/grado-materia', 'mdi-square-root', 'brown', 'GradoMateria', '2', '999', null, '2', '1', null, '2020-09-01 15:10:29');
-INSERT INTO `menu` VALUES ('31', 'Nivel Calificaciones', '3', 'nivel-calificacion', 'admin/nivel-calificacion', 'mdi-check-box-multiple-outline', 'teal', 'NivelCalificacion', '1', '25', null, '1', '1', null, '2020-09-01 15:10:45');
-INSERT INTO `menu` VALUES ('32', 'Calificacion', '3', 'calificacion', 'admin/calificacion', 'mdi-check-box-outline', 'teal', 'Calificacion', '1', '26', null, '1', '1', null, '2020-09-01 15:25:59');
-INSERT INTO `menu` VALUES ('33', 'Tipo Evaluacion', '3', 'tipo-evaluacion', 'admin/tipo-evaluacion', 'mdi-clipboard-check-multiple-outline', 'brown', 'TipoEvaluacion', '1', '55', null, '1', '1', null, '2020-09-01 15:26:10');
-INSERT INTO `menu` VALUES ('35', 'Plan Evaluacion', '3', 'plan-evaluacion', 'admin/plan-evaluacion', 'mdi-table-clock', 'purple', 'AppPlanEvaluacion', '1', '27', null, '1', '1', null, '2020-09-01 15:26:35');
-INSERT INTO `menu` VALUES ('36', 'Horario', '3', 'horario', 'admin/horario', 'mdi-calendar-multiselect', 'purple', 'Horario', '1', '28', null, '1', '1', null, '2020-09-01 15:27:58');
-INSERT INTO `menu` VALUES ('37', 'Docente', '3', 'docente', 'admin/docente', 'mdi-account-tie', 'teal', 'Docente', '1', '21', null, '1', '1', null, '2020-09-01 23:44:21');
-INSERT INTO `menu` VALUES ('38', 'Condicion Alumno', '3', 'tipo-condicion', 'admin/tipo-condicion', 'mdi-school-outline', 'red', 'TipoCondicion', '1', '33', null, '1', '1', null, '2020-09-01 23:46:27');
-INSERT INTO `menu` VALUES ('39', 'Alumnos', '3', 'alumno', 'admin/alumno', 'mdi-school', 'red', 'Alumno', '1', '34', null, '1', '1', null, '2020-09-01 23:46:38');
-INSERT INTO `menu` VALUES ('40', 'Acudiente', '3', 'pariente', 'admin/pariente', 'mdi-human-male-child', 'red', 'Pariente', '1', '35', null, '1', '1', null, '2020-09-01 23:46:52');
-INSERT INTO `menu` VALUES ('41', 'Tipo Faltas', '3', 'tipo-falta', 'admin/tipo-falta', 'mdi-account-alert-outline', 'deep-purple', 'TipoFalta', '1', '48', null, '1', '1', null, '2020-09-01 23:47:04');
-INSERT INTO `menu` VALUES ('42', 'Tipo Sancion', '3', 'tipo-sancion', 'admin/tipo-sancion', 'mdi-gavel', 'deep-purple', 'TipoSancion', '1', '49', null, '1', '1', null, '2020-09-01 23:47:20');
-INSERT INTO `menu` VALUES ('43', 'Asistente', '3', 'asistente', 'admin/asistente', 'mdi-head-cog', 'deep-purple', 'Asistente', '1', '75', null, '1', '1', null, '2020-09-01 23:56:06');
-INSERT INTO `menu` VALUES ('44', 'Parentesco', '3', 'parentesco', 'admin/parentesco', 'mdi-account-supervisor-circle', 'brown', 'Parentesco', '1', '56', null, '1', '1', null, '2020-09-01 23:47:46');
-INSERT INTO `menu` VALUES ('45', 'Estado Civil', '3', 'estado-civil', 'admin/estado-civil', 'mdi-ring', 'brown', 'EstadoCivil', '1', '57', null, '1', '1', null, '2020-09-01 23:47:57');
-INSERT INTO `menu` VALUES ('46', 'Tipo Telefono', '3', 'tipoTelefono', 'admin/tipoTelefono', 'mdi-phone-log', 'brown', 'TipoTelefono', '1', '998', null, '2', '1', null, '2020-09-01 23:48:21');
-INSERT INTO `menu` VALUES ('47', 'Pais', '3', 'pais', 'admin/pais', 'mdi-earth', 'deep-purple', 'Pais', '1', '50', null, '1', '1', null, '2020-09-01 23:56:33');
-INSERT INTO `menu` VALUES ('48', 'Departamento', '3', 'departamento', 'admin/departamento', 'mdi-map-search', 'deep-purple', 'Departamento', '1', '51', null, '1', '1', null, '2020-09-01 23:56:51');
-INSERT INTO `menu` VALUES ('49', 'Ciudad', '3', 'ciudad', 'admin/ciudad', 'mdi-city-variant', 'deep-purple', 'Ciudad', '1', '52', null, '1', '1', null, '2020-09-01 23:57:02');
-INSERT INTO `menu` VALUES ('50', 'Zona', '3', 'zona', 'admin/zona', 'mdi-select-marker', 'deep-purple', 'Zona', '1', '53', null, '1', '1', null, '2020-09-01 23:57:12');
-INSERT INTO `menu` VALUES ('51', 'Comuna', '3', 'comuna', 'admin/comuna', 'mdi-map-marker-radius', 'deep-purple', 'Comuna', '1', '54', null, '1', '1', null, '2020-09-01 23:57:56');
-INSERT INTO `menu` VALUES ('52', 'Usuario', '3', 'usuario', 'admin/usuario', 'mdi-account', 'green', 'Usuario', '1', '36', null, '1', '1', null, '2020-09-01 23:58:14');
-INSERT INTO `menu` VALUES ('53', 'Modulo', '3', 'modulo', 'admin/modulo', 'mdi-account-details-outline', 'brown', 'Modulo', '1', '58', null, '1', '1', null, '2020-09-01 23:48:46');
-INSERT INTO `menu` VALUES ('54', 'Menu', '3', 'menu', 'admin/menu', 'mdi-account-details', 'brown', 'Menu', '1', '59', null, '1', '1', null, '2020-09-01 23:48:58');
-INSERT INTO `menu` VALUES ('55', 'Tipo Usuario', '3', 'tipoUsuario', 'admin/tipoUsuario', 'mdi-book-account', 'brown', 'TipoUsuario', '1', '60', null, '1', '1', null, '2020-09-01 23:49:11');
-INSERT INTO `menu` VALUES ('56', 'Perfil', '3', 'perfil', 'admin/perfil', 'mdi-account-lock-outline', 'brown', 'Perfil', '1', '38', null, '1', '1', null, '2020-09-01 23:49:22');
-INSERT INTO `menu` VALUES ('57', 'Usuario Perfil', '3', 'usuario-perfil', 'admin/usuario-perfil', 'mdi-account-lock-outline', 'green', 'UsuarioPerfil', '1', '39', null, '1', '1', null, '2020-09-01 23:58:31');
-INSERT INTO `menu` VALUES ('58', 'Permiso', '3', 'permiso', 'admin/permiso', 'mdi-account-lock', 'green', 'Permiso', '1', '40', null, '1', '1', null, '2020-09-01 23:59:07');
-INSERT INTO `menu` VALUES ('59', 'Documento', '3', 'documento', 'admin/documento', 'mdi-card-account-details', 'brown', 'Documento', '1', '62', null, '1', '1', null, '2020-09-01 23:59:18');
-INSERT INTO `menu` VALUES ('60', 'Foto', '3', 'foto', 'admin/foto', 'mdi-image', 'brown', 'Foto', '1', '64', null, '1', '1', null, '2020-09-01 23:59:29');
-INSERT INTO `menu` VALUES ('61', 'Pago', '3', 'pago', 'admin/pago', 'mdi-credit-card-settings', 'brown', 'Pago', '1', '995', null, '1', '1', null, '2020-09-01 23:59:40');
-INSERT INTO `menu` VALUES ('62', 'Tipo Contacto', '3', 'tipo-contacto', 'admin/tipo-contacto', 'mdi-contacts', 'brown', 'TipoContacto', '1', '997', null, '2', '1', null, null);
-INSERT INTO `menu` VALUES ('63', 'Contacto', '3', 'contacto', 'admin/contacto', 'mdi-contacts', 'brown', 'Contacto', '1', '996', null, '1', '1', null, '2020-09-01 23:59:56');
-INSERT INTO `menu` VALUES ('64', 'Status', '3', 'status', 'admin/status', 'mdi-playlist-check', 'brown', 'Status', '1', '65', null, '1', '0', null, null);
-INSERT INTO `menu` VALUES ('65', 'Suscripcion', '3', 'suscripcion', 'admin/suscripcion', 'mdi-file-document-edit', 'brown', 'Suscripcion', '1', '65', null, '1', '1', null, '2020-09-02 00:00:09');
-INSERT INTO `menu` VALUES ('66', 'Telefono', '3', 'telefono', 'admin/telefono', 'mdi-phone', 'brown', 'Telefono', '1', '66', null, '1', '1', null, '2020-09-02 00:00:29');
-INSERT INTO `menu` VALUES ('67', 'Tipo Foto', '3', 'tipoFoto', 'admin/tipoFoto', 'mdi-image-album', 'brown', 'TipoFoto', '1', '63', null, '1', '1', null, null);
-INSERT INTO `menu` VALUES ('68', 'Tipo Pago', '3', 'tipoPago', 'admin/tipoPago', 'mdi-credit-card-multiple', 'brown', 'TipoPago', '1', '68', null, '1', '0', null, null);
-INSERT INTO `menu` VALUES ('69', 'Tipo Documento', '3', 'tipo-documento', 'admin/tipo-documento', 'mdi-card-account-details', 'brown', 'TipoDocumento', '1', '61', null, '1', '1', null, null);
-INSERT INTO `menu` VALUES ('70', 'Tipo Archivo', '3', 'tipo-archivo', 'admin/tipo-archivo', 'mdi-file-multiple', 'brown', 'TipoArchivo', '1', '66', null, '1', '0', null, null);
-INSERT INTO `menu` VALUES ('71', 'Archivo', '3', 'archivo', 'admin/archivo', 'mdi-file', 'brown', 'Archivo', '1', '67', null, '1', '1', null, '2020-09-02 00:00:41');
-INSERT INTO `menu` VALUES ('72', 'Tipo Recurso', '3', 'tipo-recurso', 'admin/tipo-recurso', 'mdi-book-open-page-variant', 'brown', 'TipoRecurso', '1', '68', null, '1', '0', null, null);
-INSERT INTO `menu` VALUES ('73', 'Recurso', '3', 'recurso', 'admin/recurso', 'mdi-book-open-page-variant', 'brown', 'Recurso', '1', '69', null, '1', '1', null, '2020-09-02 00:00:51');
-INSERT INTO `menu` VALUES ('74', 'Tipo Destinatario', '3', 'tipo-destinatario', 'admin/tipo-destinatario', 'mdi-account-question', 'brown', 'TipoDestinatario', '1', '70', null, '1', '0', null, null);
-INSERT INTO `menu` VALUES ('75', 'Prioridad', '3', 'tipo-prioridad', 'admin/tipo-prioridad', 'mdi-alert', 'brown', 'TipoPrioridad', '1', '71', null, '1', '0', null, null);
-INSERT INTO `menu` VALUES ('76', 'Tipo Notificacion', '3', 'tipo-notificacion', 'admin/tipo-notificacion', 'mdi-bell-outline', 'deep-purple', 'TipoNotificacion', '1', '72', null, '1', '0', null, null);
-INSERT INTO `menu` VALUES ('77', 'Notificaciones', '3', 'notificacion', 'admin/notificacion', 'mdi-bell', 'deep-purple', 'Notificacion', '1', '73', null, '1', '1', null, '2020-09-02 00:01:07');
-INSERT INTO `menu` VALUES ('78', 'Tipo Preguntas', '3', 'tipo-pregunta', 'admin/tipo-pregunta', 'mdi-order-bool-descending-variant', 'brown', 'TipoPregunta', '1', '43', null, '1', '1', null, '2020-09-02 00:01:21');
-INSERT INTO `menu` VALUES ('79', 'Prueba', '3', 'prueba', 'admin/prueba', 'mdi-order-bool-descending-variant', 'deep-purple', 'Prueba', '1', '42', null, '1', '1', null, '2020-09-02 00:01:32');
-INSERT INTO `menu` VALUES ('80', 'Pregunta', '3', 'pregunta', 'admin/pregunta', 'mdi-order-bool-descending-variant', 'deep-purple', 'Pregunta', '1', '44', null, '1', '1', null, '2020-09-02 00:01:42');
-INSERT INTO `menu` VALUES ('81', 'Respuesta', '3', 'respuesta', 'admin/respuesta', 'mdi-order-bool-descending-variant', 'deep-purple', 'Respuesta', '1', '45', null, '1', '1', null, '2020-09-02 00:01:53');
-INSERT INTO `menu` VALUES ('82', 'Prueba Alumno', '3', 'prueba-alumno', 'admin/prueba-alumno', 'mdi-order-bool-descending-variant', 'deep-purple', 'PruebaAlumno', '1', '46', null, '1', '1', null, '2020-09-02 00:02:04');
-INSERT INTO `menu` VALUES ('83', 'Respuesta Alumno', '3', 'respuesta-alumno', 'admin/respuesta-alumno', 'mdi-order-bool-descending-variant', 'deep-purple', 'RespuestaAlumno', '1', '47', null, '1', '1', null, '2020-09-02 00:02:15');
-INSERT INTO `menu` VALUES ('84', 'Configuracion', '2', 'configuracion', 'admin/configuracion', 'mdi-cogs', 'brown', 'Configuracion', '1', '84', null, '1', '1', null, '2020-09-01 14:23:22');
-INSERT INTO `menu` VALUES ('85', 'Clase Docente', '3', 'meet-docente', 'admin/meet-docente', 'mdi-google-classroom', 'black', 'MeetDocente', '1', '85', null, '1', '0', null, null);
-INSERT INTO `menu` VALUES ('86', 'Clase Alumno', '3', 'meet-alumno', 'admin/meet-alumno', 'mdi-google-classroom', 'black', 'MeetAlumno', '1', '86', null, '1', '0', null, null);
-INSERT INTO `menu` VALUES ('87', 'Reporte', '3', 'reporte', 'admin/reporte', 'mdi-table-large', 'black', 'AppReporte', '1', '87', null, '1', '1', null, '2020-09-02 00:02:50');
-INSERT INTO `menu` VALUES ('88', 'Generador', '2', 'crud', '/crud', 'mdi-factory', 'black', 'Crud', '1', '88', null, '1', '1', null, '2020-09-01 14:21:53');
-INSERT INTO `menu` VALUES ('89', 'Login', '8', 'login', '/login', 'mdi-account-key', 'black', 'Login', '1', '89', null, '1', '1', null, '2020-09-01 13:55:18');
-INSERT INTO `menu` VALUES ('90', 'Not Found', '8', 'notfound', '*', 'mdi-monitor-off', 'black', 'PageNotFound', '1', '1000', 'Pagina no Encontrada', '1', '1', null, '2020-09-01 13:54:16');
-INSERT INTO `menu` VALUES ('91', 'Tema', '3', 'tema', 'admin/tema', 'mdi-card-text', 'purple', 'Tema', '1', '27', null, '1', '1', null, '2021-02-01 20:34:23');
-INSERT INTO `menu` VALUES ('92', 'Mensaje', '3', 'mensaje', 'admin/mensaje', 'mdi-email', 'deep-purple', 'Mensaje', '1', '74', null, '1', '1', null, '2021-02-01 20:34:46');
-INSERT INTO `menu` VALUES ('93', 'Tipo Enlace', '3', 'tipo-enlace', 'admin/tipo-enlace', 'mdi-link-variant-plus', 'brow', 'TipoEnlace', '1', '76', null, '1', '1', null, '2021-02-01 12:50:22');
-INSERT INTO `menu` VALUES ('94', 'Enlace', '3', 'enlace', 'admin/enlace', 'mdi-link-variant', 'deep-purple', 'Enlace', '1', '77', null, '1', '1', null, '2021-02-01 12:52:42');
-INSERT INTO `menu` VALUES ('95', 'Libro', '3', 'libro', 'admin/libro', 'mdi-book', 'brow', 'Libro', '1', '78', null, '1', '1', null, '2021-02-01 12:54:36');
-INSERT INTO `menu` VALUES ('96', 'Pagina', '3', 'pagina', 'admin/pagina', 'mdi-file-document', 'brow', 'Pagina', '1', '79', null, '1', '1', null, '2021-02-01 12:55:45');
-INSERT INTO `menu` VALUES ('97', 'Actividad', '3', 'actividad', 'admin/actividad', 'mdi-rocket', 'deep-purple', 'Actividad', '1', '80', null, '1', '1', null, '2021-02-01 12:57:19');
+INSERT INTO `menu` VALUES ('1', 'Welcome', '8', 'welcome', '/', 'mdi-home', 'black', 'Welcome', '0', '1', 'Pagina Entrada', '1', '0', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('2', 'Home', '3', 'home', '/home', 'mdi-view-dashboard', 'brown', 'Home', '1', '2', 'Home Secretaria', '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('3', 'Bandeja Docente', '2', 'bandeja-docente', 'bandeja-docente', 'mdi-tray-full', 'indigo', 'BandejaDocente', '1', '3', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('4', 'Bandeja Alumno', '5', 'bandeja-alumno', 'bandeja-alumno', 'mdi-tray-full', 'amber', 'BandejaAlumno', '1', '4', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('5', 'Bandeja Acudiente', '4', 'bandeja-acudiente', 'bandeja-acudiente', 'mdi-tray-full', 'light-green', 'BandejaAcudiente', '1', '5', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('6', 'Configuracion General', '3', 'admin-dashboard', 'admin/', 'mdi-cog', 'brown', 'BandejaAdmin', '1', '6', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('7', 'Institucion', '3', 'colegio', 'admin/colegio', 'mdi-store', 'orange', 'AppColegio', '1', '7', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('8', 'Tipo Colegio', '3', 'tipoColegio', 'admin/tipoColegio', 'mdi-bookmark-multiple', 'orange', 'TipoColegio', '1', '9', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('9', 'Cargos', '3', 'cargo', 'admin/cargos', 'mdi-account-group-outline', 'orange', 'Cargos', '1', '8', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('10', 'Tipo Directiva', '3', 'tipo-directiva', 'admin/tipoDirectiva', 'mdi-account-group-outline', 'orange', 'TipoDirectiva', '1', '10', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('11', 'Directiva', '3', 'directiva', 'admin/directiva', 'mdi-account-group', 'orange', 'Directiva', '1', '11', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('12', 'Estructura', '3', 'estructura', 'admin/estructura', 'mdi-floor-plan', 'orange', 'Estructura', '1', '13', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('13', 'Aulas', '3', 'aula', 'admin/aula', 'mdi-chair-school', 'orange', 'Aula', '1', '14', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('14', 'Empleados', '3', 'empleado', 'admin/empleado', 'mdi-badge-account', 'orange', 'Empleado', '1', '12', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('15', 'Calendario', '3', 'calendario', 'admin/calendario', 'mdi-calendar-blank', 'teal', 'Calendario', '1', '15', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('16', 'Periodos', '3', 'periodo', 'admin/periodo', 'mdi-calendar-weekend', 'teal', 'Periodo', '1', '16', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('17', 'Feriados', '3', 'feriado', 'admin/feriado', 'mdi-calendar-star', 'purple', 'Feriado', '1', '29', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('18', 'Tipo Agenda', '3', 'tipo-agenda', 'admin/tipo-agenda', 'mdi-clipboard-text-multiple', 'purple', 'TipoAgenda', '1', '30', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('19', 'Tipo Actividad', '3', 'tipo-actividad', 'admin/tipo-actividad', 'mdi-clipboard-text-multiple', 'purple', 'TipoActividad', '1', '31', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('20', 'Agenda', '3', 'agenda', 'admin/agenda', 'mdi-clipboard-text', 'purple', 'Agenda', '1', '32', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('21', 'Turnos', '3', 'turno', 'admin/turno', 'mdi-timelapse', 'teal', 'Turno', '1', '17', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('22', 'Horas Academicas', '3', 'hora-academica', 'admin/hora-academica', 'mdi-clock', 'teal', 'HoraAcademica', '1', '18', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('24', 'Niveles', '3', 'nivel', 'admin/nivel', 'mdi-stairs-up', 'teal', 'Nivel', '1', '22', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('25', 'Grados', '3', 'grado', 'admin/grado', 'mdi-numeric', 'teal', 'Grado', '1', '23', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('26', 'Grupos', '3', 'grupo', 'admin/grupo', 'mdi-alphabetical-variant', 'teal', 'Grupo', '1', '24', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('27', 'Areas de Estudio', '3', 'area-estudio', 'admin/area-estudio', 'mdi-file-cad', 'teal', 'AreaEstudio', '1', '19', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('28', 'Materias', '3', 'materia', 'admin/materia', 'mdi-bookshelf', 'teal', 'Materia', '1', '20', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('29', 'Grado Materias', '3', 'grado-materia', 'admin/grado-materia', 'mdi-square-root', 'brown', 'GradoMateria', '2', '999', null, '2', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('31', 'Nivel Calificaciones', '3', 'nivel-calificacion', 'admin/nivel-calificacion', 'mdi-check-box-multiple-outline', 'teal', 'NivelCalificacion', '1', '25', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('32', 'Calificacion', '3', 'calificacion', 'admin/calificacion', 'mdi-check-box-outline', 'teal', 'Calificacion', '1', '26', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('33', 'Tipo Evaluacion', '3', 'tipo-evaluacion', 'admin/tipo-evaluacion', 'mdi-clipboard-check-multiple-outline', 'brown', 'TipoEvaluacion', '1', '55', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('35', 'Plan Evaluacion', '3', 'plan-evaluacion', 'admin/plan-evaluacion', 'mdi-table-clock', 'purple', 'AppPlanEvaluacion', '1', '27', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('36', 'Horario', '3', 'horario', 'admin/horario', 'mdi-calendar-multiselect', 'purple', 'Horario', '1', '28', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('37', 'Docente', '3', 'docente', 'admin/docente', 'mdi-account-tie', 'teal', 'Docente', '1', '21', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('38', 'Condicion Alumno', '3', 'tipo-condicion', 'admin/tipo-condicion', 'mdi-school-outline', 'red', 'TipoCondicion', '1', '33', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('39', 'Alumnos', '3', 'alumno', 'admin/alumno', 'mdi-school', 'red', 'Alumno', '1', '34', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('40', 'Acudiente', '3', 'pariente', 'admin/pariente', 'mdi-human-male-child', 'red', 'Pariente', '1', '35', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('41', 'Tipo Faltas', '3', 'tipo-falta', 'admin/tipo-falta', 'mdi-account-alert-outline', 'deep-purple', 'TipoFalta', '1', '48', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('42', 'Tipo Sancion', '3', 'tipo-sancion', 'admin/tipo-sancion', 'mdi-gavel', 'deep-purple', 'TipoSancion', '1', '49', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('43', 'Asistente', '3', 'asistente', 'admin/asistente', 'mdi-head-cog', 'deep-purple', 'Asistente', '1', '75', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('44', 'Parentesco', '3', 'parentesco', 'admin/parentesco', 'mdi-account-supervisor-circle', 'brown', 'Parentesco', '1', '56', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('45', 'Estado Civil', '3', 'estado-civil', 'admin/estado-civil', 'mdi-ring', 'brown', 'EstadoCivil', '1', '57', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('46', 'Tipo Telefono', '3', 'tipoTelefono', 'admin/tipoTelefono', 'mdi-phone-log', 'brown', 'TipoTelefono', '1', '998', null, '2', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('47', 'Pais', '3', 'pais', 'admin/pais', 'mdi-earth', 'deep-purple', 'Pais', '1', '50', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('48', 'Departamento', '3', 'departamento', 'admin/departamento', 'mdi-map-search', 'deep-purple', 'Departamento', '1', '51', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('49', 'Ciudad', '3', 'ciudad', 'admin/ciudad', 'mdi-city-variant', 'deep-purple', 'Ciudad', '1', '52', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('50', 'Zona', '3', 'zona', 'admin/zona', 'mdi-select-marker', 'deep-purple', 'Zona', '1', '53', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('51', 'Comuna', '3', 'comuna', 'admin/comuna', 'mdi-map-marker-radius', 'deep-purple', 'Comuna', '1', '54', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('52', 'Usuario', '3', 'usuario', 'admin/usuario', 'mdi-account', 'green', 'Usuario', '1', '36', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('53', 'Modulo', '3', 'modulo', 'admin/modulo', 'mdi-account-details-outline', 'brown', 'Modulo', '1', '58', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('54', 'Menu', '3', 'menu', 'admin/menu', 'mdi-account-details', 'brown', 'Menu', '1', '59', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('55', 'Tipo Usuario', '3', 'tipoUsuario', 'admin/tipoUsuario', 'mdi-book-account', 'brown', 'TipoUsuario', '1', '60', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('56', 'Perfil', '3', 'perfil', 'admin/perfil', 'mdi-account-lock-outline', 'brown', 'Perfil', '1', '38', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('57', 'Usuario Perfil', '3', 'usuario-perfil', 'admin/usuario-perfil', 'mdi-account-lock-outline', 'green', 'UsuarioPerfil', '1', '39', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('58', 'Permiso', '3', 'permiso', 'admin/permiso', 'mdi-account-lock', 'green', 'Permiso', '1', '40', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('59', 'Documento', '3', 'documento', 'admin/documento', 'mdi-card-account-details', 'brown', 'Documento', '1', '62', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('60', 'Foto', '3', 'foto', 'admin/foto', 'mdi-image', 'brown', 'Foto', '1', '64', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('61', 'Pago', '3', 'pago', 'admin/pago', 'mdi-credit-card-settings', 'brown', 'Pago', '1', '995', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('62', 'Tipo Contacto', '3', 'tipo-contacto', 'admin/tipo-contacto', 'mdi-contacts', 'brown', 'TipoContacto', '1', '997', null, '2', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('63', 'Contacto', '3', 'contacto', 'admin/contacto', 'mdi-contacts', 'brown', 'Contacto', '1', '996', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('64', 'Status', '3', 'status', 'admin/status', 'mdi-playlist-check', 'brown', 'Status', '1', '65', null, '1', '0', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('65', 'Suscripcion', '3', 'suscripcion', 'admin/suscripcion', 'mdi-file-document-edit', 'brown', 'Suscripcion', '1', '65', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('66', 'Telefono', '3', 'telefono', 'admin/telefono', 'mdi-phone', 'brown', 'Telefono', '1', '66', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('67', 'Tipo Foto', '3', 'tipoFoto', 'admin/tipoFoto', 'mdi-image-album', 'brown', 'TipoFoto', '1', '63', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('68', 'Tipo Pago', '3', 'tipoPago', 'admin/tipoPago', 'mdi-credit-card-multiple', 'brown', 'TipoPago', '1', '68', null, '1', '0', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('69', 'Tipo Documento', '3', 'tipo-documento', 'admin/tipo-documento', 'mdi-card-account-details', 'brown', 'TipoDocumento', '1', '61', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('70', 'Tipo Archivo', '3', 'tipo-archivo', 'admin/tipo-archivo', 'mdi-file-multiple', 'brown', 'TipoArchivo', '1', '66', null, '1', '0', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('71', 'Archivo', '3', 'archivo', 'admin/archivo', 'mdi-file', 'brown', 'Archivo', '1', '67', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('72', 'Tipo Recurso', '3', 'tipo-recurso', 'admin/tipo-recurso', 'mdi-book-open-page-variant', 'brown', 'TipoRecurso', '1', '68', null, '1', '0', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('73', 'Recurso', '3', 'recurso', 'admin/recurso', 'mdi-book-open-page-variant', 'brown', 'Recurso', '1', '69', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('74', 'Tipo Destinatario', '3', 'tipo-destinatario', 'admin/tipo-destinatario', 'mdi-account-question', 'brown', 'TipoDestinatario', '1', '70', null, '1', '0', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('75', 'Prioridad', '3', 'tipo-prioridad', 'admin/tipo-prioridad', 'mdi-alert', 'brown', 'TipoPrioridad', '1', '71', null, '1', '0', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('76', 'Tipo Notificacion', '3', 'tipo-notificacion', 'admin/tipo-notificacion', 'mdi-bell-outline', 'deep-purple', 'TipoNotificacion', '1', '72', null, '1', '0', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('77', 'Notificaciones', '3', 'notificacion', 'admin/notificacion', 'mdi-bell', 'deep-purple', 'Notificacion', '1', '73', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('78', 'Tipo Preguntas', '3', 'tipo-pregunta', 'admin/tipo-pregunta', 'mdi-order-bool-descending-variant', 'brown', 'TipoPregunta', '1', '43', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('79', 'Prueba', '3', 'prueba', 'admin/prueba', 'mdi-order-bool-descending-variant', 'deep-purple', 'Prueba', '1', '42', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('80', 'Pregunta', '3', 'pregunta', 'admin/pregunta', 'mdi-order-bool-descending-variant', 'deep-purple', 'Pregunta', '1', '44', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('81', 'Respuesta', '3', 'respuesta', 'admin/respuesta', 'mdi-order-bool-descending-variant', 'deep-purple', 'Respuesta', '1', '45', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('82', 'Prueba Alumno', '3', 'prueba-alumno', 'admin/prueba-alumno', 'mdi-order-bool-descending-variant', 'deep-purple', 'PruebaAlumno', '1', '46', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('83', 'Respuesta Alumno', '3', 'respuesta-alumno', 'admin/respuesta-alumno', 'mdi-order-bool-descending-variant', 'deep-purple', 'RespuestaAlumno', '1', '47', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('84', 'Configuracion', '2', 'configuracion', 'admin/configuracion', 'mdi-cogs', 'brown', 'Configuracion', '1', '84', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('85', 'Clase Docente', '3', 'meet-docente', 'admin/meet-docente', 'mdi-google-classroom', 'black', 'MeetDocente', '1', '85', null, '1', '0', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('86', 'Clase Alumno', '3', 'meet-alumno', 'admin/meet-alumno', 'mdi-google-classroom', 'black', 'MeetAlumno', '1', '86', null, '1', '0', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('87', 'Reporte', '3', 'reporte', 'admin/reporte', 'mdi-table-large', 'black', 'AppReporte', '1', '87', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('88', 'Generador', '2', 'crud', '/crud', 'mdi-factory', 'black', 'Crud', '1', '88', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('89', 'Login', '8', 'login', '/login', 'mdi-account-key', 'black', 'Login', '1', '89', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('90', 'Not Found', '8', 'notfound', '*', 'mdi-monitor-off', 'black', 'PageNotFound', '1', '1000', 'Pagina no Encontrada', '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('91', 'Tema', '3', 'tema', 'admin/tema', 'mdi-card-text', 'purple', 'Tema', '1', '27', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('92', 'Mensaje', '3', 'mensaje', 'admin/mensaje', 'mdi-email', 'deep-purple', 'Mensaje', '1', '74', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('93', 'Tipo Enlace', '3', 'tipo-enlace', 'admin/tipo-enlace', 'mdi-link-variant-plus', 'brow', 'TipoEnlace', '1', '76', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('94', 'Enlace', '3', 'enlace', 'admin/enlace', 'mdi-link-variant', 'deep-purple', 'Enlace', '1', '77', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('95', 'Libro', '3', 'libro', 'admin/libro', 'mdi-book', 'brow', 'Libro', '1', '78', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('96', 'Pagina', '3', 'pagina', 'admin/pagina', 'mdi-file-document', 'brow', 'Pagina', '1', '79', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('97', 'Actividad', '3', 'actividad', 'admin/actividad', 'mdi-rocket', 'deep-purple', 'Actividad', '1', '80', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
+INSERT INTO `menu` VALUES ('98', 'Tipo Tarea', '3', 'tipo-tarea', 'admin/tipo-tarea', 'mdi-notebook-multiple', 'deep-purple', 'TipoTarea', '1', '42', null, '1', '1', '2020-09-02 15:08:33', '2020-09-02 15:08:33');
 
 -- ----------------------------
 -- Table structure for migrations
@@ -6129,7 +6141,7 @@ CREATE TABLE `pregunta` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=210 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of pregunta
@@ -6242,6 +6254,7 @@ INSERT INTO `pregunta` VALUES ('205', 'es el tipo de trabajo que se puede desarr
 INSERT INTO `pregunta` VALUES ('206', 'Los tipos de dinero son:', '46', '3', '0', '4.00', '1', null, '1', '1', '2020-12-06 17:04:06', '2020-12-06 17:04:59');
 INSERT INTO `pregunta` VALUES ('207', 'Son la características del dinero:', '46', '3', '0', '4.00', '2', null, '1', '1', '2020-12-06 17:05:54', '2020-12-06 17:06:35');
 INSERT INTO `pregunta` VALUES ('208', 'Son tipos de impuestos:', '46', '3', '0', '4.00', '3', null, '1', '1', '2020-12-06 17:07:07', '2020-12-06 17:07:07');
+INSERT INTO `pregunta` VALUES ('209', 'Cuales son la vocales', '49', '2', '0', '7.00', '1', null, '1', '1', '2021-02-02 16:03:28', '2021-02-02 16:03:28');
 
 -- ----------------------------
 -- Table structure for prueba
@@ -6262,7 +6275,7 @@ CREATE TABLE `prueba` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of prueba
@@ -6298,6 +6311,7 @@ INSERT INTO `prueba` VALUES ('43', 'Las regiones naturales de Colombia', '7', '1
 INSERT INTO `prueba` VALUES ('44', 'Las regiones naturales del mundo', '7', '19', '117', '1', '5', '12.00', null, '1', '1', null, null);
 INSERT INTO `prueba` VALUES ('45', 'El trabajo', '8', '19', '152', '1', '5', '12.00', null, '1', '1', null, '2020-12-06 17:01:17');
 INSERT INTO `prueba` VALUES ('46', 'El dinero y el intercambio económico', '8', '19', '152', '1', '5', '12.00', null, '1', '1', null, '2020-12-06 17:07:07');
+INSERT INTO `prueba` VALUES ('49', 'Las Vocales', '4', '15', '22', '1', '0', '7.00', null, '1', '1', '2021-02-02 16:02:59', '2021-02-02 16:05:24');
 
 -- ----------------------------
 -- Table structure for prueba_alumno
@@ -6365,7 +6379,7 @@ CREATE TABLE `recurso` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of recurso
@@ -6392,6 +6406,8 @@ INSERT INTO `recurso` VALUES ('38', '3', '7', '117', null, '1', '1', '2020-12-06
 INSERT INTO `recurso` VALUES ('39', '3', '8', '152', null, '1', '1', '2020-12-06 16:54:14', '2020-12-06 16:54:14');
 INSERT INTO `recurso` VALUES ('40', '3', '8', '152', null, '1', '1', '2020-12-06 16:54:34', '2020-12-06 16:54:34');
 INSERT INTO `recurso` VALUES ('41', '1', '4', '106', 'prueba', '1', '1', '2021-01-22 21:54:37', '2021-01-22 21:54:37');
+INSERT INTO `recurso` VALUES ('42', '1', '4', '22', null, '1', '1', '2021-02-02 15:47:29', '2021-02-02 15:47:29');
+INSERT INTO `recurso` VALUES ('43', '3', '4', '22', null, '1', '1', '2021-02-02 15:49:41', '2021-02-02 15:49:41');
 
 -- ----------------------------
 -- Table structure for respuesta
@@ -6409,7 +6425,7 @@ CREATE TABLE `respuesta` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=578 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=580 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of respuesta
@@ -6806,6 +6822,8 @@ INSERT INTO `respuesta` VALUES ('574', 'Servicios públicos.', '208', '0', null,
 INSERT INTO `respuesta` VALUES ('575', 'A la renta.', '208', '1', null, null, '1', '1', '2020-12-06 17:07:40', '2020-12-06 17:07:59');
 INSERT INTO `respuesta` VALUES ('576', 'General a la venta.', '208', '1', null, null, '1', '1', '2020-12-06 17:07:48', '2020-12-06 17:08:00');
 INSERT INTO `respuesta` VALUES ('577', 'Predial', '208', '1', null, null, '1', '1', '2020-12-06 17:07:55', '2020-12-06 17:08:00');
+INSERT INTO `respuesta` VALUES ('578', 'A B C D E', '209', '0', null, null, '1', '1', '2021-02-02 16:03:47', '2021-02-02 16:03:57');
+INSERT INTO `respuesta` VALUES ('579', 'A E I O U', '209', '1', null, null, '1', '1', '2021-02-02 16:03:57', '2021-02-02 16:03:57');
 
 -- ----------------------------
 -- Table structure for respuesta_alumno
@@ -6926,7 +6944,7 @@ CREATE TABLE `tarea` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of tarea
@@ -6934,6 +6952,7 @@ CREATE TABLE `tarea` (
 INSERT INTO `tarea` VALUES ('2', 'Mapa Mental', 'ryyey', '1', '4', '7', '1', '0.00', 'eryeryey', '2', '1', '2021-01-14 21:31:37', '2021-01-14 21:32:01');
 INSERT INTO `tarea` VALUES ('3', 'mapa mental Sol', null, null, '4', '7', '3', '0.00', null, '2', '1', '2021-01-17 17:00:15', '2021-01-17 17:00:15');
 INSERT INTO `tarea` VALUES ('4', 'prueba', 'fjjfhsjhdfskdfhsjkhdjfsdfdsfsdfsf', '3', '4', '7', '1', '11.00', 'fdsfsdfsd', '2', '1', '2021-01-28 14:32:10', '2021-01-28 14:32:47');
+INSERT INTO `tarea` VALUES ('5', 'las Vocales', null, null, '4', '15', '22', '0.00', null, '2', '1', '2021-02-02 16:06:37', '2021-02-02 16:06:37');
 
 -- ----------------------------
 -- Table structure for telefono
@@ -8030,7 +8049,7 @@ DROP TABLE IF EXISTS `tipo_tarea`;
 CREATE TABLE `tipo_tarea` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nb_tipo_tarea` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tx_icono` varchar(35) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tx_icono` varchar(35) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tx_color` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tx_observaciones` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_status` int(11) NOT NULL,
@@ -8043,7 +8062,7 @@ CREATE TABLE `tipo_tarea` (
 -- ----------------------------
 -- Records of tipo_tarea
 -- ----------------------------
-INSERT INTO `tipo_tarea` VALUES ('1', 'Cuadro Comparativo', '', null, null, '1', '1', '2020-11-13 01:38:26', '2020-11-13 01:38:31');
+INSERT INTO `tipo_tarea` VALUES ('1', 'Cuadro Comparativo', null, null, null, '1', '1', '2020-11-13 01:38:26', '2021-02-02 16:38:38');
 INSERT INTO `tipo_tarea` VALUES ('2', 'Mapa Mental', '', null, null, '1', '1', '2020-11-13 01:39:55', '2020-11-13 01:39:58');
 INSERT INTO `tipo_tarea` VALUES ('3', 'Taller', '', null, null, '1', '1', '2020-11-13 01:40:40', '2020-11-13 01:40:44');
 INSERT INTO `tipo_tarea` VALUES ('4', 'Resumen', '', null, null, '1', '1', '2020-11-13 01:41:19', '2020-11-13 01:41:22');

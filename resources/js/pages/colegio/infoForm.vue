@@ -86,11 +86,11 @@
             <v-col cols="12" md="6">
                 <v-text-field
                     :rules="[rules.required]"
-                    value="form.nu_estudiantes"
+                    v-model="form.nu_estudiantes"
                     label="Cuota de Estudiantes"
                     placeholder="Indique Cuota de Estudiantes"
                     persistent-hint
-                    hint="Maxima cantidad de estudiante"
+                    hint="Dato de Solo Lectura"
                     type="number"
                     readonly
                     dense

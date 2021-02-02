@@ -92,18 +92,6 @@
             ></v-text-field>
         </v-col>
                           
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.status"
-            item-text="nb_status"
-            item-value="id"
-            v-model="form.id_status"
-            :rules="[rules.select]"
-            label="Status"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
 
         </v-row>
 
@@ -136,6 +124,15 @@ import Appform from '@mixins/Appform';
 
 export default {
     mixins: [Appform],
+
+    computed:
+    {
+        calendarioId()
+        {
+            return this.$store.getters['getCalendarioId']
+        }
+    },
+
     data() {
         return {
             resource: 'grupo',
@@ -166,8 +163,11 @@ export default {
 	 	 	 	turno: 	    [],
 	 	 	 	calendario: [],
 	 	 	 	docente: 	[],
-	 	 	 	status: 	[],
             },
+            defaultForm:
+            {
+                id_calendario : this.calendarioId
+            }
         }
     },
 

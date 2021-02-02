@@ -29,8 +29,8 @@
                 <template v-slot:item="{ item }">
                     <tr>
                         <td class="text-xs-left">{{ item.nb_tipo_tarea }}</td>
-						<td class="text-xs-left">{{ item.tx_icono }}</td>
-						<td class="text-xs-left">{{ item.tx_color }}</td>
+						<!-- <td class="text-xs-left">{{ item.tx_icono }}</td>
+						<td class="text-xs-left">{{ item.tx_color }}</td> -->
 						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">
                             <status-switch 
@@ -92,8 +92,8 @@ export default {
         resource: 'tipoTarea',
         headers: [
             { text: 'Tipo Tarea',   value: 'nb_tipo_tarea' },
-			{ text: 'Icono',   value: 'tx_icono' },
-			{ text: 'Color',   value: 'tx_color' },
+		/* 	{ text: 'Icono',   value: 'tx_icono' },
+			{ text: 'Color',   value: 'tx_color' }, */
 			{ text: 'Observaciones',   value: 'tx_observaciones' },
 			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },

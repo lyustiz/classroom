@@ -29,7 +29,7 @@ class TipoTareaController extends Controller
     {
         $validate = request()->validate([
             'nb_tipo_tarea'     => 	'required|string|max:30',
-			'tx_icono'          => 	'required|string|max:35',
+			'tx_icono'          => 	'nullable|string|max:35',
 			'tx_color'          => 	'nullable|string|max:30',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
@@ -38,7 +38,7 @@ class TipoTareaController extends Controller
 
         $tipoTarea = tipoTarea::create($request->all());
 
-        return [ 'msj' => 'TipoTarea Agregado Correctamente', compact('tipoTarea') ];
+        return [ 'msj' => 'Tipo Tarea Agregada Correctamente', compact('tipoTarea') ];
     }
 
     /**
@@ -63,7 +63,7 @@ class TipoTareaController extends Controller
     {
         $validate = request()->validate([
             'nb_tipo_tarea'     => 	'required|string|max:30',
-			'tx_icono'          => 	'required|string|max:35',
+			'tx_icono'          => 	'nullable|string|max:35',
 			'tx_color'          => 	'nullable|string|max:30',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
@@ -72,7 +72,7 @@ class TipoTareaController extends Controller
 
         $tipoTarea = $tipoTarea->update($request->all());
 
-        return [ 'msj' => 'TipoTarea Editado' , compact('tipoTarea')];
+        return [ 'msj' => 'Tipo Tarea Editada' , compact('tipoTarea')];
     }
 
     /**
@@ -85,6 +85,6 @@ class TipoTareaController extends Controller
     {
         $tipoTarea = $tipoTarea->delete();
  
-        return [ 'msj' => 'TipoTarea Eliminado' , compact('tipoTarea')];
+        return [ 'msj' => 'Tipo Tarea Eliminada' , compact('tipoTarea')];
     }
 }

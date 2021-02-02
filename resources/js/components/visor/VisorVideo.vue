@@ -1,7 +1,11 @@
 <template>
 
     <div>
-        <app-simple-toolbar :title="video.name" backgroundColor="red" dense dark @closeModal="$emit('closeDialog')" ></app-simple-toolbar>
+        <app-simple-toolbar :title="video.name" backgroundColor="red" dense dark @closeModal="$emit('closeDialog')" >
+            <template v-slot:toolbar-action>
+               <ReporteVisor :tipo="enlace" :data="video"></ReporteVisor>
+            </template>
+        </app-simple-toolbar>
         <v-card dark>
             <v-row no-gutters justify="center">
                 <div class="youtube-container mb-1">
@@ -29,8 +33,14 @@
 
 <script>
 import AppVisor   from '@mixins/AppVisor';
+import ReporteVisor from './ReporteVisor'
 
 export default {
+
+    components:
+    {
+        ReporteVisor
+    },
 
     mixins: [AppVisor],  
 
@@ -51,7 +61,7 @@ export default {
     {
         url()
         {
-            return this.video.src.replace("watch?v=", "embed/")
+            return  `https://www.youtube.com/embed/${this.video.src}`
         }
     },
     

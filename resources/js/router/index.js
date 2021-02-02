@@ -127,6 +127,9 @@ import Tema                  from  '@pages/tema/tema';
 import Libro                 from  '@pages/libro/libro';  
 import Pagina                from  '@pages/pagina/pagina'; 
 
+//tarea
+import TipoTarea             from '@pages/tipoTarea/tipoTarea'; 
+
 //prueba
 import TipoPregunta          from '@pages/tipoPregunta/tipoPregunta'; 
 import Prueba                from '@pages/prueba/prueba';
@@ -682,8 +685,16 @@ export default new Router({
                 color: 'green',
                 component: Permiso
             },
-
-             
+            { 
+                path: 'tipo-tarea',
+                name: 'tipo-tarea',
+                label: 'Tipo Tarea',
+                icon: 'mdi-notebook-multiple',
+                profile: 'secretaria',
+                visible: true,
+                color: 'deep-purple',
+                component: TipoTarea
+            },
             { 
                 path: 'prueba',
                 name: 'prueba',

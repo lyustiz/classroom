@@ -9,7 +9,7 @@
         <v-row>
 
                  
-        <v-col cols="12" md="6">
+        <v-col cols="12" >
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.nb_tipo_tarea"
@@ -19,7 +19,7 @@
             ></v-text-field>
         </v-col>
                   
-        <v-col cols="12" md="6">
+      <!--   <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.tx_icono"
@@ -38,17 +38,17 @@
                 dense
             ></v-text-field>
         </v-col>
-                  
-        <v-col cols="12" md="6">
+                   -->
+        <v-col cols="12">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[rules.max(80)]"
                 v-model="form.tx_observaciones"
                 label="Observaciones"
                 placeholder="Indique Observaciones"
                 dense
             ></v-text-field>
         </v-col>
-                          
+  <!--                         
         <v-col cols="12" md="6">
             <v-select
             :items="selects.status"
@@ -61,7 +61,7 @@
             dense
             ></v-select>
         </v-col>
-         
+          -->
 
         </v-row>
 
@@ -96,7 +96,7 @@ export default {
     mixins: [Appform],
     data() {
         return {
-            resource: 'tipo_tarea',
+            resource: 'tipoTarea',
             dates:
             {
                 

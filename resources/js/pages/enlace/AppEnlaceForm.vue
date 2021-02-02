@@ -47,12 +47,24 @@
             <v-text-field
                 :rules="[rules.required, rules.max(150)]"
                 v-model="form.tx_url"
-                label="Url"
-                placeholder="Indique Url de Youtube"
-                hint="Ej: https://www.youtube.com/abcdef"
+                label="Id de Youtube"
+                placeholder="Indique Id de Video de Youtube"
+                hint="Ej: https://www.youtube.com/watch?v=[ID DEL VIDEO]"
                 persistent-hint
                 dense
-            ></v-text-field>
+            >
+                <template v-slot:append-outer>
+                    <v-tooltip bottom left content-class="rounded-lg">
+                        <template v-slot:activator="{ on }">
+                        <v-icon v-on="on">
+                            mdi-help-circle-outline
+                        </v-icon>
+                        </template>
+                         <v-img src="/images/ayuda/idyoutube.png" class="rounded-lg"></v-img>
+                    </v-tooltip>
+                </template>
+            
+            </v-text-field>
         </v-col>
           
         <v-col cols="12">

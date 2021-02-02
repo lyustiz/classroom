@@ -74,7 +74,7 @@ class EnlaceController extends Controller
     public function update(Request $request, Enlace $enlace)
     {
         $validate = request()->validate([
-            'nb_enlace'         => 	'required|string|max:30',
+            'nb_enlace'         => 	'required|string|max:80',
             'id_tipo_enlace'    => 	'required|integer|max:999999999',
             'id_tema'           => 	'required|integer|max:999999999',
 			'tx_descripcion'    => 	'nullable|string|max:100',

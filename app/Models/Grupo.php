@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Grupo extends Model
 {
@@ -24,6 +25,13 @@ class Grupo extends Model
                             'created_at',
 	 	 	 	 	 	 	'updated_at'
                             ];
+
+    protected static function booted()
+    {
+        static::addGlobalScope('calendarioActivo', function (Builder $builder) {
+            $builder->has('calendarioActivo');
+        });
+    }
 
     public function scopeActivo($query)
     {
@@ -62,7 +70,7 @@ class Grupo extends Model
 
     public function calendarioActivo()
     {
-        return $this->BelongsTo('App\Models\Calendario', 'id_calendario')->has('colegio');
+        return $this->BelongsTo('App\Models\Calendario', 'id_calendario')->where('id_status', 1);
     }
 
     public function coordinador() 

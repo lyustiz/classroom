@@ -2,7 +2,8 @@
   <v-toolbar :color="backgroundColor" :dark="dark" flat :dense="dense">
         <v-toolbar-title :class="textColor" v-text="title"></v-toolbar-title>
         <v-spacer></v-spacer>
-            <v-btn icon x-small class="mr-2" :class="textColor" @click="closeModal()">    
+            <slot name="toolbar-action"></slot>
+            <v-btn icon x-small class="mr-2 ml-4" :class="textColor" @click="closeModal()">    
                 <v-icon>mdi-close-circle</v-icon>
             </v-btn>
     </v-toolbar>

@@ -29,6 +29,7 @@ Vue.prototype.$App = Object.freeze({
     debug:    false,
     isMobile: (isMobile.any()) ? true : false,
     device:   isMobile.any(), 
+    youtubeApi: 'AIzaSyBgTktlTrzgb9j8t_B-4G9v4RTDFb_PIw0',
     theme:{
             headApp:    'blue darken-4',
             textTitle:  'white--text',

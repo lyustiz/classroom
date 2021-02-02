@@ -30,7 +30,7 @@
                 <v-hover v-slot:default="{ hover }"  >
                 <v-expand-x-transition>
                     <v-avatar  :width="width" :height="height" tile class="rounded-lg grey lighten-4" rounded >
-                        <v-img contain :src="image.tipo_foto.tx_base_path + '/' + image.id_origen + '/' + image.tx_src">
+                        <v-img contain :src="image.full_url">
                             <v-scale-transition>
                                 <v-icon v-if="hover" color="grey lighten-4" class="pointer" size="64" @click="deleteDialog(image)">mdi-close-circle-outline</v-icon>
                             </v-scale-transition> 
