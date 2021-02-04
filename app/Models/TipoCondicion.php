@@ -40,4 +40,9 @@ class TipoCondicion extends Model
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
     }
+
+    public function matricula()
+    {
+        return $this->HasMany('App\Models\Matricula', 'id_tipo_condicion');
+    }
 }

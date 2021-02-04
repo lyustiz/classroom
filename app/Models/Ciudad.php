@@ -46,8 +46,17 @@ class Ciudad extends Model
 
     }
 
-                           
-    //
+    public function zona(){
+
+        return $this->HasMany('App\Models\Zona', 'id_ciudad');
+
+    }
+
+    public function colegio(){
+
+        return $this->HasMany('App\Models\Colegio', 'id_ciudad');
+
+    }
 
 
 }

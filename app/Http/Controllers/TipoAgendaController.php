@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TipoAgenda;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class TipoAgendaController extends Controller
 {
@@ -83,6 +84,11 @@ class TipoAgendaController extends Controller
      */
     public function destroy(TipoAgenda $tipoAgenda)
     {
+        if( count($tipoAgenda->agenda) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeAgenda' => "Posee actividad(es) en la Agenda asociada(s)"]);
+        }
+        
         $tipoAgenda = $tipoAgenda->delete();
  
         return [ 'msj' => 'TipoAgenda Eliminado' , compact('tipoAgenda')];

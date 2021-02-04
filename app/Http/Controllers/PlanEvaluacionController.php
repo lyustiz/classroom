@@ -8,6 +8,7 @@ use App\Models\Calificacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Validation\ValidationException;
 
 class PlanEvaluacionController extends Controller
 {
@@ -452,6 +453,11 @@ class PlanEvaluacionController extends Controller
      */
     public function destroy(PlanEvaluacion $planEvaluacion)
     {
+        if( count($planEvaluacion->planDetalle) > 0 )
+        {
+            throw ValidationException::withMessages(['poseePlanDetalle' => "Posee Detalle(s) del Plan asociado(s)"]);
+        }
+
         $planEvaluacion = $planEvaluacion->delete();
  
         return [ 'msj' => 'Plan de Evaluacion Eliminado' , compact('planEvaluacion')];

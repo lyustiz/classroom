@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barrio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class BarrioController extends Controller
 {
@@ -89,6 +90,16 @@ class BarrioController extends Controller
      */
     public function destroy(Barrio $barrio)
     {
+        if( count($barrio->comuna) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeComuna' => "Posee Comuna(s) asociadas"]);
+        }
+        
+        if( count($barrio->colegio) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeColegio' => "Esta Asociado al Colegio"]);
+        }
+        
         $barrio = $barrio->delete();
  
         return [ 'msj' => 'Barrio Eliminado' , compact('barrio')];

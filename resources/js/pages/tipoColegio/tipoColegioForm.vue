@@ -13,8 +13,8 @@
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.nb_tipo_colegio"
-                label="Tipo Colegio"
-                placeholder="Indique Tipo Colegio"
+                label="Tipo Institucion"
+                placeholder="Indique Tipo Institucion"
                 dense
             ></v-text-field>
         </v-col>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TipoCondicion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class TipoCondicionController extends Controller
 {
@@ -83,6 +84,11 @@ class TipoCondicionController extends Controller
      */
     public function destroy(TipoCondicion $tipoCondicion)
     {
+        if( count($tipoCondicion->matricula) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeMatricula' => "Posee alumno(s) asociado(s)"]);
+        }
+        
         $tipoCondicion = $tipoCondicion->delete();
  
         return [ 'msj' => 'TipoCondicion Eliminado' , compact('tipoCondicion')];

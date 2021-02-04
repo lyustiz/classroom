@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Nivel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class NivelController extends Controller
 {
@@ -102,6 +103,11 @@ class NivelController extends Controller
      */
     public function destroy(Nivel $nivel)
     {
+        if( count($nivel->grado) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeGrado' => "Posee Grado(s) asociado(s)"]);
+        }
+        
         $nivel = $nivel->delete();
  
         return [ 'msj' => 'Nivel Eliminado' , compact('nivel')];

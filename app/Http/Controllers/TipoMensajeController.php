@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TipoMensaje;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class TipoMensajeController extends Controller
 {
@@ -83,6 +84,11 @@ class TipoMensajeController extends Controller
      */
     public function destroy(TipoMensaje $tipoMensaje)
     {
+        if( count($tipoMensaje->mensaje) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeMensaje' => "Posee Mensaje(s) asociado(s)"]);
+        }
+        
         $tipoMensaje = $tipoMensaje->delete();
  
         return [ 'msj' => 'Tipo Mensaje Eliminado' , compact('tipoMensaje')];

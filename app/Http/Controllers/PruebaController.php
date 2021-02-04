@@ -24,9 +24,8 @@ class PruebaController extends Controller
     {
         return Prueba::with([
                                 'grado:id,nb_grado', 
-                                'grupo:id,nb_grupo', 
                                 'materia:id,nb_materia',
-                                'docente:id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2'
+                                'tema:id,nb_tema'
                             ])
                             ->get();
     }
@@ -451,11 +450,17 @@ class PruebaController extends Controller
      */
     public function destroy(Prueba $prueba)
     {
-        if($prueba->alumno->count() > 0)
+        if( count($prueba->evaluacion) > 0 )
         {
-            throw ValidationException::withMessages(['poseeAsignacion' => "Posee Alumnos asignados"]);
+            throw ValidationException::withMessages(['poseeEvaluacion' => "El cuestionario ha sido asignada a una evaluacion"]);
         }
         
+        if( count($prueba->respuesta) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeEvaluacion' => "Posee respuesta(s) asociada(s)"]);
+        }
+
+
         $prueba = $prueba->delete();
  
         return [ 'msj' => 'Prueba Eliminada' , compact('prueba')];

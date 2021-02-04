@@ -39,4 +39,14 @@ class Turno extends Model
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
     }
+
+    public function grupo()
+    {
+        return $this->HasMany('App\Models\Grupo', 'id_turno');
+    }
+
+    public function cargaHoraria()
+    {
+        return $this->HasMany('App\Models\CargaHoraria', 'id_turno');
+    }
 }

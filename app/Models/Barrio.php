@@ -53,6 +53,12 @@ class Barrio extends Model
 
     }
 
+    public function colegio(){
+
+        return $this->HasMany('App\Models\Colegio', 'id_comuna');
+
+    }
+
 
 
 }

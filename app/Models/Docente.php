@@ -108,6 +108,11 @@ class Docente extends Model
         return $this->HasMany('App\Models\DocenteMateria', 'id_docente');
 	}
 
+	public function coordinador()
+	{
+        return $this->HasMany('App\Models\Grupo', 'id_docente');
+	}
+
 	public function materia()
 	{
         return $this->hasOneThrough(
@@ -119,6 +124,11 @@ class Docente extends Model
             'id', // local en final
 			'id_materia' // fk en intermedia
 		);
+	}
+
+	public function detalleHorario()
+	{
+        return $this->HasMany('App\Models\DetalleHorario', 'id_docente');
 	}
 
 	public function foto()

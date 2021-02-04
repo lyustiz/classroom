@@ -43,4 +43,9 @@ class TipoTarea extends Model
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
     }
+
+    public function tarea()
+    {
+        return $this->HasMany('App\Models\Tarea', 'id_tipo_tarea');
+    }
 }

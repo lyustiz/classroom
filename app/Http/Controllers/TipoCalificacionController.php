@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TipoCalificacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class TipoCalificacionController extends Controller
 {
@@ -81,6 +82,11 @@ class TipoCalificacionController extends Controller
      */
     public function destroy(TipoCalificacion $tipoCalificacion)
     {
+        if( count($tipoCalificacion->calificacion) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeCalificacion' => "Posee Calificacion(es) asociada(s)"]);
+        }
+        
         $tipoCalificacion = $tipoCalificacion->delete();
  
         return [ 'msj' => 'TipoCalificacion Eliminado' , compact('tipoCalificacion')];

@@ -59,4 +59,9 @@ class Menu extends Model
     {
         return $this->BelongsTo('App\Models\Modulo', 'id_modulo');
     }
+
+    public function perfil()
+    {
+        return $this->HasMany('App\Models\Perfil', 'id_menu');
+    }
 }

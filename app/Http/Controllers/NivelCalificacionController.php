@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\NivelCalificacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class NivelCalificacionController extends Controller
 {
@@ -81,6 +82,11 @@ class NivelCalificacionController extends Controller
      */
     public function destroy(NivelCalificacion $nivelCalificacion)
     {
+        if( count($nivelCalificacion->calificacion) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeCalificacion' => "Posee Calificacion(es) asociada(s)"]);
+        }
+        
         $nivelCalificacion = $nivelCalificacion->delete();
  
         return [ 'msj' => 'NivelCalificacion Eliminado' , compact('nivelCalificacion')];

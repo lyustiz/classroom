@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Zona;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class ZonaController extends Controller
 {
@@ -89,6 +90,17 @@ class ZonaController extends Controller
      */
     public function destroy(Zona $zona)
     {
+        if( count($zona->comuna) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeComuna' => "Posee Comuna(s) asociada(s)"]);
+        }
+        
+        if( count($zona->colegio) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeColegio' => "Esta Asociado al Colegio"]);
+        }
+        
+        
         $zona = $zona->delete();
  
         return [ 'msj' => 'Zona Eliminado' , compact('zona')];

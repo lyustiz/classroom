@@ -29,6 +29,9 @@
                 <template v-slot:item="{ item }">
                     <tr>
                         <td class="text-xs-left">{{ item.nb_tipo_evaluacion }}</td>
+                        <td class="text-xs-left"><v-icon :color="item.tx_color">{{item.tx_icono}}</v-icon></td>
+						<td class="text-xs-left"><v-chip small label :color="item.tx_color"></v-chip></td>
+                        <td class="text-xs-left">{{ item.tx_clase }}</td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -86,12 +89,15 @@ export default {
     components: { 'tipo-evaluacion-form': tipoEvaluacionForm },
     data () {
     return {
-        title:    'TipoEvaluacion',
+        title:    'Tipo Evaluacion',
         resource: 'tipoEvaluacion',
         headers: [
-            { text: 'Tipo Evaluacion',   value: 'nb_tipo_evaluacion' },
-			{ text: 'Status',   value: 'id_status' },
-            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
+            { text: 'Tipo Evaluacion',  value: 'nb_tipo_evaluacion' },
+            { text: 'Icono',            value: 'tx_icono' },
+            { text: 'Color',            value: 'tx_color' },
+            { text: 'Clase',            value: 'tx_clase' },
+			{ text: 'Status',           value: 'id_status' },
+            { text: 'Acciones',         value: 'actions', sortable: false, filterable: false },
         ],
     }
     },

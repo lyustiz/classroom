@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AreaEstudio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class AreaEstudioController extends Controller
 {
@@ -83,6 +84,11 @@ class AreaEstudioController extends Controller
      */
     public function destroy(AreaEstudio $areaEstudio)
     {
+        if( count($areaEstudio->materia) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeMateria' => "Posee Materia(s) asociada(s)"]);
+        }
+        
         $areaEstudio = $areaEstudio->delete();
  
         return [ 'msj' => 'AreaEstudio Eliminado' , compact('areaEstudio')];

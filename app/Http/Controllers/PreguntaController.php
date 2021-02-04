@@ -6,6 +6,7 @@ use App\Models\Pregunta;
 use App\Models\Prueba;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class PreguntaController extends Controller
 {
@@ -226,6 +227,11 @@ class PreguntaController extends Controller
      */
     public function destroy(Pregunta $pregunta)
     {
+        if( count($pregunta->respuesta) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeRespuesta' => "Posee respuestas asociada(s)"]);
+        }
+        
         $this->updateOrden($pregunta->id_prueba, $pregunta->id, 0);
         
         $pregunta = $pregunta->delete();

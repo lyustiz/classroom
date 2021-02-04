@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TipoSancion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class TipoSancionController extends Controller
 {
@@ -81,6 +82,11 @@ class TipoSancionController extends Controller
      */
     public function destroy(TipoSancion $tipoSancion)
     {
+        if( count($tipoSancion->incidencia) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeIncidencia' => "Posee Sanciones(es) asociada(s)"]);
+        }
+        
         $tipoSancion = $tipoSancion->delete();
  
         return [ 'msj' => 'TipoSancion Eliminado' , compact('tipoSancion')];

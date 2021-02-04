@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ciudad;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class CiudadController extends Controller
 {
@@ -89,6 +90,16 @@ class CiudadController extends Controller
      */
     public function destroy(Ciudad $ciudad)
     {
+        if( count($ciudad->zona) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeZona' => "Posee Zona(s) asociada(s)"]);
+        }
+        
+        if( count($ciudad->colegio) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeColegio' => "Esta Asociado al Colegio"]);
+        }
+        
         $ciudad = $ciudad->delete();
  
         return [ 'msj' => 'Ciudad Eliminado' , compact('ciudad')];

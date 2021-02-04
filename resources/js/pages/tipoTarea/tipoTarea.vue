@@ -88,7 +88,7 @@ export default {
     components: { 'tipo-tarea-form': tipoTareaForm },
     data () {
     return {
-        title:    'TipoTarea',
+        title:    'Tipo Tarea',
         resource: 'tipoTarea',
         headers: [
             { text: 'Tipo Tarea',   value: 'nb_tipo_tarea' },

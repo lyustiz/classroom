@@ -45,7 +45,17 @@ class Zona extends Model
     }
 
                            
-    //
+    public function comuna(){
+
+        return $this->HasMany('App\Models\Comuna', 'id_zona');
+
+    }
+
+    public function colegio(){
+
+        return $this->HasMany('App\Models\Colegio', 'id_zona');
+
+    }
 
 
 }

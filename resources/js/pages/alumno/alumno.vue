@@ -102,7 +102,7 @@
 
             <v-dialog v-model="dialogMatricula" max-width="600" content-class="rounded-xl">
                 <app-simple-toolbar title="Asignar Matricula" @closeModal="closeDialog($event,'dialogMatricula')"></app-simple-toolbar>
-                <alumno-matricula :matricula="matricula" :alumno="alumno" v-if="dialogMatricula"  @closeModal="closeDialog($event)"></alumno-matricula>
+                <alumno-matricula :matricula="matricula" :alumno="alumno" v-if="dialogMatricula"  @closeModal="closeDialog($event,'dialogMatricula')"></alumno-matricula>
             </v-dialog>
 
             <v-dialog v-model="dialogAlumnoMateria" max-width="600" content-class="rounded-xl">
@@ -203,7 +203,7 @@ export default {
 
         addMatricula(alumno)
         {
-            this.matricula = alumno.matricula 
+            this.matricula = alumno.matricula[0]
             this.alumno    = alumno.id
             this.dialogMatricula = true
         },

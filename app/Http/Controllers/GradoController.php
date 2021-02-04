@@ -6,6 +6,7 @@ use App\Models\Grado;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Validation\ValidationException;
 
 class GradoController extends Controller
 {
@@ -169,23 +170,6 @@ class GradoController extends Controller
                             ->get();
     }
 
- /*    public function gradoMateriaDocente($idDocente)
-    {        
-        return Grado::with([
-                                'materia' => function ($query) use($idDocente) {
-                                    $query->select('materia.id', 'nb_materia')
-                                    ->whereHas('docente', function (Builder $query) use($idDocente) {
-                                        $query->where('docente.id', $idDocente);
-                                    });
-                                },   
-
-                            ])
-                            ->whereHas('grupo.planEvaluacion', function (Builder $query) use($idDocente) {
-                                $query->where('plan_evaluacion.id_docente', $idDocente)
-                                      ->has('periodoActivo');
-                            })
-                            ->get();
-    } */
 
     public function grupoGrado($idGrado)
     {
@@ -261,6 +245,16 @@ class GradoController extends Controller
      */
     public function destroy(Grado $grado)
     {
+        if( count($grado->grupo) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeGrupo' => "Posee Grupo(s) asociado(s)"]);
+        }
+
+        if( count($grado->materia) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeMateria' => "Posee Materia(s) asociada(s)"]);
+        }
+        
         $grado = $grado->delete();
  
         return [ 'msj' => 'Grado Eliminado' , compact('grado')];

@@ -6,6 +6,7 @@ use App\Models\Tema;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Validation\ValidationException;
 
 class TemaController extends Controller
 {
@@ -135,7 +136,7 @@ class TemaController extends Controller
         return [ 'msj' => 'Tema Editado' , compact('tema')];
     }
 
-    /**
+    /** 
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Tema  $tema
@@ -143,6 +144,36 @@ class TemaController extends Controller
      */
     public function destroy(Tema $tema)
     {
+        if( count($tema->planTema) > 0 )
+        {
+            throw ValidationException::withMessages(['poseePlanEvaluacion' => "Posee Plan de Evaluacion(es) asociado(s)"]);
+        }
+
+        if( count($tema->actividad) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeActividad' => "Posee Plan de Actividad(es) asociada(s)"]);
+        }
+
+        if( count($tema->enlace) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeEnlace' => "Posee Plan de Enlace(es) asociado(s)"]);
+        }
+
+        if( count($tema->recurso) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeRecurso' => "Posee Plan de Lectura(s) asociada(s)"]);
+        }
+
+        if( count($tema->prueba) > 0 )
+        {
+            throw ValidationException::withMessages(['poseePrueba' => "Posee Plan de Cuestionario(s) asociado(s)"]);
+        }
+
+        if( count($tema->tarea) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeTarea' => "Posee Plan de Tarea(s) asociada(s)"]);
+        }
+        
         $tema = $tema->delete();
  
         return [ 'msj' => 'Tema Eliminado' , compact('tema')];

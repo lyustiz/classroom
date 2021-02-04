@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GradoAlumno;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class GradoAlumnoController extends Controller
 {
@@ -23,8 +24,6 @@ class GradoAlumnoController extends Controller
         
         return $gradoAlumno;
     }
-
-
 
     public function gradoAlumnoAsignacion($idAlumno)
     {

@@ -43,4 +43,10 @@ class TipoArchivo extends Model
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
     }
+
+    public function archivo()
+    {
+        return $this->HasMany('App\Models\Archivo', 'id_tipo_archivo');
+    }
+
 }

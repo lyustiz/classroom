@@ -29,10 +29,10 @@
                 <template v-slot:item="{ item }">
                     <tr>
                         <td class="text-xs-left">{{ item.nb_enlace }}</td>
-                        <td class="text-xs-left">{{ item.tema.nb_tema }}</td>
 						<td class="text-xs-left">{{ item.tipo_enlace.nb_tipo_enlace }}</td>
-						<td class="text-xs-left">{{ item.descripcion }}</td>
-						<td class="text-xs-left">{{ item.url }}</td>
+                        <td class="text-xs-left">{{ item.tema.nb_tema }}</td>
+						<td class="text-xs-left">{{ item.tx_descripcion }}</td>
+						<td class="text-xs-left">{{ item.tx_url }}</td>
 						<td class="text-xs-left">
                             <list-simple-icon icon="mdi-tooltip-text-outline" color="indigo" :label="item.tx_observaciones"></list-simple-icon>
                         </td>

@@ -88,6 +88,11 @@ class Grupo extends Model
         return $this->HasMany('App\Models\PlanEvaluacion', 'id_grupo');
     }
 
+    public function horario()
+    {
+        return $this->HasMany('App\Models\Horario', 'id_grupo');
+    }
+
     public function alumno()
 	{
         return $this->hasManyThrough(

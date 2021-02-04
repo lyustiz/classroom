@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Turno;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class TurnoController extends Controller
 {
@@ -81,6 +82,16 @@ class TurnoController extends Controller
      */
     public function destroy(Turno $turno)
     {
+        if( count($turno->cargaHoraria) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeCargaHoraria' => "Posee carga(s) horaria asociada(s)"]);
+        }
+
+        if( count($turno->grupo) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeGrupo' => "Posee Grupo(s) asociado(s)"]);
+        }
+        
         $turno = $turno->delete();
  
         return [ 'msj' => 'Turno Eliminado' , compact('turno')];

@@ -39,4 +39,9 @@ class NivelCalificacion extends Model
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
     }
+
+    public function calificacion()
+    {
+        return $this->HasMany('App\Models\Calificacion', 'id_nivel_calificacion');
+    }
 }

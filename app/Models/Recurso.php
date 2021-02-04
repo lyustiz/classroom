@@ -72,4 +72,9 @@ class Recurso extends Model
     {
         return $this->BelongsTo('App\Models\Tema', 'id_tema');
     }
+
+    public function evaluacion()
+    {
+        return $this->HasMany('App\Models\Evaluacion', 'id_origen')->where('tx_origen', 'recurso');
+    }
 }

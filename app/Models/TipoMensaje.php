@@ -43,4 +43,9 @@ class TipoMensaje extends Model
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
     }
+
+    public function mensaje()
+    {
+        return $this->HasMany('App\Models\Mensaje', 'id_tipo_mensaje');
+    }
 }

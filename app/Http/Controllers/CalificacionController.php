@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Calificacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class CalificacionController extends Controller
 {
@@ -110,6 +111,12 @@ class CalificacionController extends Controller
      */
     public function destroy(Calificacion $calificacion)
     {
+        
+        if( count($calificacion->evaluacionAlumno) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeEvaluacion' => "Posee Evaluaciones asociadas"]);
+        }
+        
         $calificacion = $calificacion->delete();
  
         return [ 'msj' => 'Calificacion Eliminada' , compact('calificacion')];

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comuna;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class ComunaController extends Controller
 {
@@ -89,6 +90,16 @@ class ComunaController extends Controller
      */
     public function destroy(Comuna $comuna)
     {
+        if( count($comuna->barrio) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeBarrio' => "Posee Barrio(s) asociado(s)"]);
+        }
+        
+        if( count($comuna->colegio) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeColegio' => "Esta Asociada al Colegio"]);
+        }
+        
         $comuna = $comuna->delete();
  
         return [ 'msj' => 'Comuna Eliminado' , compact('comuna')];

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TipoTarea;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class TipoTareaController extends Controller
 {
@@ -83,6 +84,11 @@ class TipoTareaController extends Controller
      */
     public function destroy(TipoTarea $tipoTarea)
     {
+        if( count($tipoTarea->tarea) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeTarea' => "Posee Tarea(s) asociada(s)"]);
+        }
+        
         $tipoTarea = $tipoTarea->delete();
  
         return [ 'msj' => 'Tipo Tarea Eliminada' , compact('tipoTarea')];

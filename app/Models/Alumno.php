@@ -140,7 +140,7 @@ class Alumno extends Model
 
 	public function matricula()
 	{
-        return $this->hasOne('App\Models\Matricula', 'id_alumno');
+        return $this->hasMany('App\Models\Matricula', 'id_alumno');
 	}
 
 	public function foto()

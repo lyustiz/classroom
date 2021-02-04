@@ -8,6 +8,7 @@ use App\Models\GrupoMateria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Validation\ValidationException;
 
 class GrupoController extends Controller
 {
@@ -170,6 +171,21 @@ class GrupoController extends Controller
      */
     public function destroy(Grupo $grupo)
     {
+        if( count($grupo->planEvaluacion) > 0 )
+        {
+            throw ValidationException::withMessages(['poseePlanEvaluacion' => "Posee Plan(es) de Evaluacion asociada(s)"]);
+        }
+
+        if( count($grupo->horario) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeHorario' => "Posee Horario(s) asociado(s)"]);
+        }
+
+        if( count($grupo->materia) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeMateria' => "Posee Materia(s) asociada(s)"]);
+        }
+        
         $grupo = $grupo->delete();
  
         return [ 'msj' => 'Grupo Eliminado' , compact('grupo')];

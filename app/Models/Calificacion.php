@@ -69,5 +69,11 @@ class Calificacion extends Model
 
 	}
 
+	public function evaluacionAlumno(){
+
+		return $this->hasMany('App\Models\EvaluacionAlumno', 'id_calificacion');
+
+	}
+
 
 }

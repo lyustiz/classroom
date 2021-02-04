@@ -48,7 +48,7 @@ class Aula extends Model
 
     public function detalleHorario()
     {
-        return $this->BelongsTo('App\Models\DetalleHorario', 'id');
+        return $this->HasMany('App\Models\DetalleHorario', 'id_aula');
     }
 
 

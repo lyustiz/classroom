@@ -6,6 +6,7 @@ use App\Models\Materia;
 use App\Models\Periodo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class MateriaController extends Controller
 {
@@ -287,8 +288,18 @@ class MateriaController extends Controller
      */
     public function destroy(Materia $materia)
     {
+        if( count($materia->grado) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeGrado' => "Posee Grado(s) asociado(s)"]);
+        }
+
+        if( count($materia->docente) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeDocente' => "Posee Docente(s) asociado(s)"]);
+        }
+    
         $materia = $materia->delete();
  
-        return [ 'msj' => 'Materia Eliminado' , compact('materia')];
+        return [ 'msj' => 'Materia Eliminada' , compact('materia')];
     }
 }

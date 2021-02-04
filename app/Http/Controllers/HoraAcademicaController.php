@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\HoraAcademica;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class HoraAcademicaController extends Controller
 {
@@ -93,6 +94,11 @@ class HoraAcademicaController extends Controller
      */
     public function destroy(HoraAcademica $horaAcademica)
     {
+        if( count($horaAcademica->cargaHoraria) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeCargaHoraria' =>  "Posee Carga Horaria(s) asociada(s)"]);
+        }
+        
         $horaAcademica = $horaAcademica->delete();
  
         return [ 'msj' => 'Hora Academica Eliminada' , compact('horaAcademica')];

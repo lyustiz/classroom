@@ -109,8 +109,4 @@ class Materia extends Model
     {
         return $this->HasMany('App\Models\Tema', 'id_materia');
     }
-
-
-
-
 }

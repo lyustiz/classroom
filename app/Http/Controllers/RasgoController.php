@@ -6,6 +6,7 @@ use App\Models\Rasgo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Validation\ValidationException;
 
 class RasgoController extends Controller
 {
@@ -136,6 +137,11 @@ class RasgoController extends Controller
      */
     public function destroy(Rasgo $rasgo)
     {
+        if( count($rasgo->evaluacion) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeEvaluacion' => "El rasgo ha sido asignada a una evaluacion"]);
+        }
+        
         $rasgo = $rasgo->delete();
  
         return [ 'msj' => 'Rasgo Eliminado' , compact('rasgo')];

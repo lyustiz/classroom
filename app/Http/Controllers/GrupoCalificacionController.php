@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GrupoCalificacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class GrupoCalificacionController extends Controller
 {
@@ -81,6 +82,11 @@ class GrupoCalificacionController extends Controller
      */
     public function destroy(GrupoCalificacion $grupoCalificacion)
     {
+        if( count($grupoCalificacion->calificacion) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeCalificacion' => "Posee calificacion(es) asociada(s)"]);
+        }
+        
         $grupoCalificacion = $grupoCalificacion->delete();
  
         return [ 'msj' => 'GrupoCalificacion Eliminado' , compact('grupoCalificacion')];

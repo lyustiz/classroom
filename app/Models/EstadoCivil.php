@@ -41,4 +41,19 @@ class EstadoCivil extends Model
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
 
     }
+
+    public function empleado()
+    {
+        return $this->hasMany('App\Models\Empleado', 'id_padre', 'id_estado_civil');
+    }
+
+    public function pariente()
+    {
+        return $this->hasMany('App\Models\Pariente', 'id_padre', 'id_estado_civil');
+    }
+
+    public function docente()
+    {
+        return $this->hasMany('App\Models\Docente', 'id_padre', 'id_estado_civil');
+    }
 }

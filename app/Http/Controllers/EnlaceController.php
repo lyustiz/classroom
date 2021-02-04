@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Enlace;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class EnlaceController extends Controller
 {
@@ -100,6 +101,11 @@ class EnlaceController extends Controller
     public function destroy(Enlace $enlace)
     {
         $tipo = ($enlace->id_tipo_enlace == 1) ? 'Enlace' : 'Video';
+        
+        if( count($enlace->evaluacion) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeEvaluacion' => "El $tipo ha sido asignada a una evaluacion"]);
+        }
         
         $enlace = $enlace->delete();
  

@@ -41,4 +41,9 @@ class TipoNotificacion extends Model
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
     }
+
+    public function notificacion()
+    {
+        return $this->HasMany('App\Models\Notificacion', 'id_tipo_notificacion');
+    }
 }

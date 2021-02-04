@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\UsuarioTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Validation\ValidationException;
 
 
 class DocenteController extends Controller
@@ -141,6 +142,26 @@ class DocenteController extends Controller
      */
     public function destroy(Docente $docente)
     {
+        if( count($docente->docenteMateria) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeMateria' => "Posee Materia(s) asociada(s)"]);
+        }
+
+        if( count($docente->coordinador) > 0 )
+        {
+            throw ValidationException::withMessages(['esCooordinador' => "Posee Coordinacion(es) de Grupo asociada(s)"]);
+        }
+
+        if( count($docente->planEvaluacion) > 0 )
+        {
+            throw ValidationException::withMessages(['poseePlanEvaluacion' => "Posee Plan(es) de Evaluacion asociada(s)"]);
+        }
+
+        if( count($docente->detalleHorario) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeHorario' => "Posee Horario(s) asociado(s)"]);
+        }
+        
         $docente = $docente->delete();
  
         return [ 'msj' => 'Docente Eliminado' , compact('docente')];

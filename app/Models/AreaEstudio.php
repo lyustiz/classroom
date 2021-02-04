@@ -43,4 +43,10 @@ class AreaEstudio extends Model
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
 
     }
+
+    public function materia(){
+
+        return $this->HasMany('App\Models\materia', 'id_area_estudio');
+
+    }
 }

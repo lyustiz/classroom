@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Libro;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class LibroController extends Controller
 {
@@ -94,6 +95,11 @@ class LibroController extends Controller
      */
     public function destroy(Libro $libro)
     {
+        if( count($libro->pagina) > 0 )
+        {
+            throw ValidationException::withMessages(['poseePagina' => "Posee Pagina(s) asociada(s)"]);
+        }
+        
         $libro = $libro->delete();
  
         return [ 'msj' => 'Libro Eliminado' , compact('libro')];

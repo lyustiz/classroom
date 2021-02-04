@@ -662,7 +662,7 @@ export default new Router({
                 icon: 'mdi-account-details-outline',
                 profile: 'secretaria',
                 visible: true,
-                color: 'green',
+                color: 'brown',
                 component: Perfil
             },
             { 
@@ -672,7 +672,7 @@ export default new Router({
                 icon: 'mdi-account-details',
                 profile: 'secretaria',
                 visible: true,
-                color: 'green',
+                color: 'brown',
                 component: UsuarioPerfil
             },
             { 
@@ -682,7 +682,7 @@ export default new Router({
                 icon: 'mdi-account-key',
                 profile: 'secretaria',
                 visible: true,
-                color: 'green',
+                color: 'brown',
                 component: Permiso
             },
             { 
@@ -698,7 +698,7 @@ export default new Router({
             { 
                 path: 'prueba',
                 name: 'prueba',
-                label: 'Prueba',
+                label: 'Cuestionario',
                 icon: 'mdi-order-bool-descending-variant',
                 profile: 'secretaria',
                 visible: true,
@@ -735,7 +735,7 @@ export default new Router({
                 color: 'deep-purple',
                 component: Respuesta
             },
-            { 
+           /*  { 
                 path: 'prueba-alumno',
                 name: 'prueba-alumno',
                 label: 'Prueba Alumno',
@@ -744,7 +744,7 @@ export default new Router({
                 visible: true,
                 color: 'deep-purple',
                 component: PruebaAlumno
-            },
+            }, */
             { 
                 path: 'respuesta-alumno',
                 name: 'respuesta-alumno',
@@ -763,7 +763,7 @@ export default new Router({
                 icon: 'mdi-account-alert-outline',
                 profile: 'secretaria',
                 visible: true,
-                color: 'deep-purple',
+                color: 'brown',
                 component: TipoFalta
             },
             { 

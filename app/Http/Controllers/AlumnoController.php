@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\UsuarioTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Validation\ValidationException;
 
 class AlumnoController extends Controller
 {
@@ -352,6 +353,26 @@ class AlumnoController extends Controller
      */
     public function destroy(Alumno $alumno)
     {
+        if( count($alumno->matricula) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeMatricula' => "El Alumno posee Matricula"]);
+        }
+
+        if( count($alumno->materia) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeMateria' => "El Alumno posee materia(s) asociada(s)"]);
+        }
+
+        if( count($alumno->EvaluacionAlumno) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeEvaluacion' => "El Alumno posee Evaluaciones(s) asignadas(s)"]);
+        }
+        
+        if( count($alumno->pariente) > 0 )
+        {
+            throw ValidationException::withMessages(['poseePariente' => "El Alumno tiene vinculado a un Acudiente"]);
+        }
+        
         $alumno = $alumno->delete();
  
         return [ 'msj' => 'Alumno Eliminado' , compact('alumno')];

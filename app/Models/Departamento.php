@@ -46,6 +46,18 @@ class Departamento extends Model
 
     }
 
+    public function ciudad(){
+
+        return $this->HasMany('App\Models\Ciudad', 'id_departamento');
+
+    }
+
+    public function colegio(){
+
+        return $this->HasMany('App\Models\Colegio', 'id_departamento');
+
+    }
+
                            
     //
 

@@ -49,9 +49,9 @@ class Actividad extends Model
         return $this->BelongsTo('App\Models\Tema', 'id_tema');
     }
 
-    public function asignacion()
+    public function evaluacion()
     {
-        return $this->mortpMany('App\Models\Asignacion', 'tx_origen');
+        return $this->HasMany('App\Models\Evaluacion', 'id_origen')->where('tx_origen', 'actividad');
     }
 
     public function actividadPregunta()

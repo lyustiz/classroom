@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TipoNotificacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class TipoNotificacionController extends Controller
 {
@@ -85,6 +86,11 @@ class TipoNotificacionController extends Controller
      */
     public function destroy(TipoNotificacion $tipoNotificacion)
     {
+        if( count($tipoNotificacion->notificacion) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeNotificacion' => "Posee Notificacion(es) asociada(s)"]);
+        }
+        
         $tipoNotificacion = $tipoNotificacion->delete();
  
         return [ 'msj' => 'TipoNotificacion Eliminado' , compact('tipoNotificacion')];

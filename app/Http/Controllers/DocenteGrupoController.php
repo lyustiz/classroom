@@ -7,6 +7,7 @@ use App\Models\Grupo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Validation\ValidationException;
 
 class DocenteGrupoController extends Controller
 {
@@ -83,7 +84,7 @@ class DocenteGrupoController extends Controller
 
         $docenteGrupo->grupo;
 
-        return [ 'msj' => 'Grupo Agregada Correctamente', 'docenteGrupo' => $docenteGrupo ];
+        return [ 'msj' => 'Grupo Agregado Correctamente', 'docenteGrupo' => $docenteGrupo ];
     }
 
     /**
@@ -116,7 +117,7 @@ class DocenteGrupoController extends Controller
 
         $docenteGrupo = $docenteGrupo->update($request->all());
 
-        return [ 'msj' => 'DocenteGrupo Editado' , compact('docenteGrupo')];
+        return [ 'msj' => 'Grupo Editado' , compact('docenteGrupo')];
     }
 
     /**

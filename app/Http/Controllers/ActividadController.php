@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Actividad;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class ActividadController extends Controller
 {
@@ -15,7 +16,7 @@ class ActividadController extends Controller
      */
     public function index()
     {
-        return Actividad::with([])
+        return Actividad::with(['tema:id,nb_tema'])
                     ->get();
     }
 
@@ -93,6 +94,11 @@ class ActividadController extends Controller
      */
     public function destroy(Actividad $actividad)
     {
+        if( count($actividad->evaluacion) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeEvaluacion' => "La actividad ha sido asignada a una evaluacion"]);
+        }
+              
         $actividad = $actividad->delete();
  
         return [ 'msj' => 'Actividad Eliminada' , compact('actividad')];

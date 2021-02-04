@@ -40,8 +40,10 @@ class Nivel extends Model
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
     }
 
-                           
-    //
+    public function grado()
+    {
+        return $this->HasMany('App\Models\Grado', 'id_nivel');
+    }
 
 
 }

@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 use Carbon\Carbon;
 use App\Http\Controllers\Traits\NotificacionTrait;
+use Illuminate\Validation\ValidationException;
 
 class ClaseController extends Controller
 {
@@ -181,6 +182,11 @@ class ClaseController extends Controller
      */
     public function destroy(Clase $clase)
     {
+        if( count($clase->asistencia) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeAsistencia' => "Posee Asistencia(s) asociada(s)"]);
+        }
+       
         $clase = $clase->delete();
  
         return [ 'msj' => 'Clase Eliminada' , compact('clase')];

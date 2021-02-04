@@ -53,5 +53,8 @@ class Estructura extends Model
         return $this->hasMany(self::class, 'id_padre', 'id');
     }
 
-
+    public function aula()
+    {
+        return $this->HasMany('App\Models\Aula', 'id_estructura');
+    }
 }

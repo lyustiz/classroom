@@ -61,5 +61,4 @@ class HoraAcademica extends Model
         return $this->hasMany('App\Models\Horario', 'id_hora_academica');
     }
 
-
 }

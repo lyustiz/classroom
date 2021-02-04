@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ActividadPregunta;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class ActividadPreguntaController extends Controller
 {
@@ -101,6 +102,7 @@ class ActividadPreguntaController extends Controller
      */
     public function destroy(ActividadPregunta $actividadPregunta)
     {       
+        
         $respuestas = $actividadPregunta->actividadRespuesta()->delete();
         
         $actividadPregunta = $actividadPregunta->delete();

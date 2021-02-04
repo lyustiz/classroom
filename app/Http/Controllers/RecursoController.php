@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 use App\Http\Controllers\Traits\ArchivoTrait;
+use Illuminate\Validation\ValidationException;
 
 class RecursoController extends Controller
 {
@@ -186,6 +187,11 @@ class RecursoController extends Controller
      */
     public function destroy(Recurso $recurso)
     {
+        if( count($recurso->evaluacion) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeEvaluacion' => "La Lectura ha sido asignada a una evaluacion"]);
+        }
+        
         $archivo = $recurso->archivo;
         
         $tipoArchivo = TipoArchivo::where('id', $archivo->id_tipo_archivo)->first();

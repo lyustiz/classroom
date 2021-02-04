@@ -6,6 +6,7 @@ use App\Models\Respuesta;
 use App\Models\Pregunta;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class RespuestaController extends Controller
 {
@@ -156,7 +157,6 @@ class RespuestaController extends Controller
         }
     }
 
-
     /**
      * Remove the specified resource from storage.
      *
@@ -165,6 +165,11 @@ class RespuestaController extends Controller
      */
     public function destroy(Respuesta $respuesta)
     {
+        if( count($respuesta->docente) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeRespuestasAlumnos' => "Existen alumnos que seleccionaron esta respuesta"]);
+        }
+        
         $respuesta = $respuesta->delete();
  
         return [ 'msj' => 'Respuesta Eliminada' , compact('respuesta')];

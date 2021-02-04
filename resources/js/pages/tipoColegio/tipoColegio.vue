@@ -88,10 +88,10 @@ export default {
     components: { 'tipo-colegio-form': tipoColegioForm },
     data () {
     return {
-        title:    'Tipo Colegio',
+        title:    'Tipo Intitucion',
         resource: 'tipoColegio',
         headers: [
-            { text: 'Tipo Colegio',   value: 'nb_tipo_colegio' },
+            { text: 'Tipo Institucion',   value: 'nb_tipo_colegio' },
 			{ text: 'Observaciones',   value: 'tx_observaciones', sortable: false, filterable: false },
 			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },

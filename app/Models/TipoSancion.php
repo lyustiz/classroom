@@ -41,4 +41,9 @@ class TipoSancion extends Model
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
     }
+
+    public function incidencia()
+    {
+        return $this->HasMany('App\Models\Incidencia', 'id_tipo_sancion');
+    }
 }

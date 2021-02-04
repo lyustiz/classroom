@@ -40,8 +40,8 @@ class Parentesco extends Model
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
     }
 
-                           
-    //
-
-
+    public function pariente()
+    {
+        return $this->hasMany('App\Models\Pariente', 'id_padre', 'id_parentesco');
+    }
 }

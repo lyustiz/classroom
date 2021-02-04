@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2021-02-02 13:40:16
+Date: 2021-02-03 22:53:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,7 @@ CREATE TABLE `actividad` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of actividad
@@ -84,7 +84,7 @@ CREATE TABLE `actividad_pregunta` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=144 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of actividad_pregunta
@@ -123,6 +123,7 @@ INSERT INTO `actividad_pregunta` VALUES ('139', '¿Qué son los desiertos?', nul
 INSERT INTO `actividad_pregunta` VALUES ('140', 'Este tipo de trabajo implica el uso primordial de las manos.', null, '65', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 16:55:07', '2020-12-06 16:55:07');
 INSERT INTO `actividad_pregunta` VALUES ('141', 'El dinero es', null, '66', '2', '0', '0.00', '0', null, '1', '1', '2020-12-06 16:57:37', '2020-12-06 16:57:37');
 INSERT INTO `actividad_pregunta` VALUES ('142', 'Cuales son las Vocales', null, '67', '2', '0', '0.00', '0', null, '1', '1', '2021-02-02 15:54:55', '2021-02-02 15:54:55');
+INSERT INTO `actividad_pregunta` VALUES ('143', 'estado de la materia?', 'fsafasfafasfa', '68', '2', '0', '0.00', '0', null, '1', '1', '2021-02-02 22:40:21', '2021-02-02 22:40:21');
 
 -- ----------------------------
 -- Table structure for actividad_respuesta
@@ -140,7 +141,7 @@ CREATE TABLE `actividad_respuesta` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=324 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=326 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of actividad_respuesta
@@ -262,6 +263,8 @@ INSERT INTO `actividad_respuesta` VALUES ('320', 'Nos permite acceder a bienes y
 INSERT INTO `actividad_respuesta` VALUES ('321', 'Valor asignado.', '141', '0', null, null, '1', '1', '2020-12-06 16:58:12', '2020-12-06 16:58:18');
 INSERT INTO `actividad_respuesta` VALUES ('322', 'A, E, I, O, U', '142', '1', null, null, '1', '1', '2021-02-02 15:55:17', '2021-02-02 15:55:17');
 INSERT INTO `actividad_respuesta` VALUES ('323', 'B C D E F', '142', '0', null, null, '1', '1', '2021-02-02 15:55:31', '2021-02-02 15:55:31');
+INSERT INTO `actividad_respuesta` VALUES ('324', 'resp a', '143', '1', null, null, '1', '1', '2021-02-02 22:40:39', '2021-02-02 22:40:39');
+INSERT INTO `actividad_respuesta` VALUES ('325', 'resp b', '143', '0', null, null, '1', '1', '2021-02-02 22:40:48', '2021-02-02 22:40:48');
 
 -- ----------------------------
 -- Table structure for agenda
@@ -283,7 +286,7 @@ CREATE TABLE `agenda` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of agenda
@@ -300,6 +303,7 @@ INSERT INTO `agenda` VALUES ('14', 'Taller Convivencia', '2', '7', '4', '2021-02
 INSERT INTO `agenda` VALUES ('15', 'eeqeqe', '2', '1', '1', '2021-02-09', '06:06:00', '07:05:00', '0', 'eeq', '1', '1', '2020-09-02 21:27:57', '2020-09-02 21:27:57');
 INSERT INTO `agenda` VALUES ('16', 'Reunion', '2', '1', '1', '2021-02-10', '02:09:00', '01:09:00', '0', 'fdfsf', '1', '2', '2020-09-05 14:13:58', '2020-09-05 14:13:58');
 INSERT INTO `agenda` VALUES ('17', 'Taller de covi', '2', '1', '4', '2021-02-06', '01:05:00', '02:04:00', '0', 'se ditara a todo e perosnal', '1', '1', '2021-01-27 20:42:41', '2021-01-27 20:42:41');
+INSERT INTO `agenda` VALUES ('18', 'Campeonato de futbol incolegial', '2', '4', '6', '2021-02-16', '00:05:00', '00:05:00', '0', 'dgkjsdgs', '1', '1', '2021-02-02 22:01:18', '2021-02-02 22:01:18');
 
 -- ----------------------------
 -- Table structure for agenda_actividad
@@ -491,46 +495,45 @@ CREATE TABLE `alumno_materia` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=234 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=248 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of alumno_materia
 -- ----------------------------
-INSERT INTO `alumno_materia` VALUES ('165', '1', '15', '4', '14', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('167', '1', '23', '4', '14', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('168', '1', '2', '4', '14', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('169', '1', '17', '4', '14', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('170', '1', '1', '4', '14', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('173', '1', '23', '4', '7', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('174', '1', '2', '4', '7', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('175', '1', '17', '4', '7', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('177', '1', '15', '4', '19', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('178', '1', '16', '4', '19', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('179', '1', '23', '4', '19', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('180', '1', '2', '4', '19', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('181', '1', '17', '4', '19', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('182', '1', '1', '4', '19', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('183', '1', '15', '4', '17', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('185', '1', '23', '4', '17', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('186', '1', '2', '4', '17', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('187', '1', '17', '4', '17', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('188', '1', '1', '4', '17', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('189', '1', '15', '4', '15', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('191', '1', '23', '4', '15', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('192', '1', '2', '4', '15', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('193', '1', '17', '4', '15', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('194', '1', '1', '4', '15', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('197', '1', '16', '4', '7', null, '1', '1', '2020-07-21 00:59:28', '2020-07-21 00:59:28');
-INSERT INTO `alumno_materia` VALUES ('199', '1', '15', '4', '7', null, '1', '1', '2020-07-21 01:00:53', '2020-07-21 01:00:53');
-INSERT INTO `alumno_materia` VALUES ('200', '1', '16', '4', '15', null, '1', '1', '2020-07-21 19:50:26', '2020-07-21 19:50:26');
-INSERT INTO `alumno_materia` VALUES ('201', '1', '16', '4', '14', null, '1', '1', '2020-08-06 19:12:02', '2020-08-06 19:12:02');
-INSERT INTO `alumno_materia` VALUES ('203', '1', '1', '4', '7', null, '1', '1', '2020-08-17 23:57:01', '2020-08-17 23:57:01');
-INSERT INTO `alumno_materia` VALUES ('204', '1', '24', '4', '14', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('205', '1', '24', '4', '15', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('206', '1', '24', '4', '19', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('207', '1', '24', '4', '7', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('208', '1', '24', '4', '17', null, '1', '1', null, null);
-INSERT INTO `alumno_materia` VALUES ('209', '1', '24', '4', '16', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('165', '2', '15', '4', '14', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('167', '2', '23', '4', '14', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('168', '2', '2', '4', '14', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('169', '2', '17', '4', '14', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('170', '2', '1', '4', '14', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('174', '2', '2', '4', '7', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('175', '2', '17', '4', '7', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('177', '2', '15', '4', '19', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('178', '2', '16', '4', '19', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('179', '2', '23', '4', '19', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('180', '2', '2', '4', '19', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('181', '2', '17', '4', '19', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('182', '2', '1', '4', '19', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('183', '2', '15', '4', '17', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('185', '2', '23', '4', '17', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('186', '2', '2', '4', '17', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('187', '2', '17', '4', '17', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('188', '2', '1', '4', '17', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('189', '2', '15', '4', '15', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('191', '2', '23', '4', '15', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('192', '2', '2', '4', '15', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('193', '2', '17', '4', '15', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('194', '2', '1', '4', '15', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('197', '2', '16', '4', '7', null, '1', '1', '2020-07-21 00:59:28', '2020-07-21 00:59:28');
+INSERT INTO `alumno_materia` VALUES ('199', '2', '15', '4', '7', null, '1', '1', '2020-07-21 01:00:53', '2020-07-21 01:00:53');
+INSERT INTO `alumno_materia` VALUES ('200', '2', '16', '4', '15', null, '1', '1', '2020-07-21 19:50:26', '2020-07-21 19:50:26');
+INSERT INTO `alumno_materia` VALUES ('201', '2', '16', '4', '14', null, '1', '1', '2020-08-06 19:12:02', '2020-08-06 19:12:02');
+INSERT INTO `alumno_materia` VALUES ('203', '2', '1', '4', '7', null, '1', '1', '2020-08-17 23:57:01', '2020-08-17 23:57:01');
+INSERT INTO `alumno_materia` VALUES ('204', '2', '24', '4', '14', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('205', '2', '24', '4', '15', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('206', '2', '24', '4', '19', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('207', '2', '24', '4', '7', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('208', '2', '24', '4', '17', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('209', '2', '24', '4', '16', null, '1', '1', null, null);
 INSERT INTO `alumno_materia` VALUES ('210', '2', '103', '8', '19', null, '1', '1', null, null);
 INSERT INTO `alumno_materia` VALUES ('211', '2', '103', '8', '7', null, '1', '1', null, null);
 INSERT INTO `alumno_materia` VALUES ('212', '2', '103', '8', '14', null, '1', '1', null, null);
@@ -555,6 +558,13 @@ INSERT INTO `alumno_materia` VALUES ('230', '2', '45', '12', '7', null, '1', '1'
 INSERT INTO `alumno_materia` VALUES ('231', '2', '45', '12', '19', null, '1', '1', '2020-11-10 16:11:23', '2020-11-10 16:11:23');
 INSERT INTO `alumno_materia` VALUES ('232', '2', '45', '12', '15', null, '1', '1', '2020-11-10 16:11:25', '2020-11-10 16:11:25');
 INSERT INTO `alumno_materia` VALUES ('233', '2', '45', '12', '14', null, '1', '1', '2020-11-10 16:11:28', '2020-11-10 16:11:28');
+INSERT INTO `alumno_materia` VALUES ('241', '2', '15', '4', '7', null, '1', '1', '2021-02-02 22:08:28', '2021-02-02 22:08:28');
+INSERT INTO `alumno_materia` VALUES ('242', '2', '17', '4', '7', null, '1', '1', '2021-02-02 22:08:30', '2021-02-02 22:08:30');
+INSERT INTO `alumno_materia` VALUES ('243', '2', '23', '4', '7', null, '1', '1', '2021-02-04 01:03:03', '2021-02-04 01:03:03');
+INSERT INTO `alumno_materia` VALUES ('244', '2', '68', '8', '19', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('245', '2', '68', '8', '7', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('246', '2', '68', '8', '14', null, '1', '1', null, null);
+INSERT INTO `alumno_materia` VALUES ('247', '2', '68', '8', '15', null, '1', '1', null, null);
 
 -- ----------------------------
 -- Table structure for alumno_pariente
@@ -571,7 +581,7 @@ CREATE TABLE `alumno_pariente` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of alumno_pariente
@@ -584,7 +594,7 @@ INSERT INTO `alumno_pariente` VALUES ('26', '1', '1', '1', null, '1', '1', '2020
 INSERT INTO `alumno_pariente` VALUES ('28', '15', '1', '1', null, '1', '1', '2020-07-31 03:55:00', '2020-07-31 03:55:00');
 INSERT INTO `alumno_pariente` VALUES ('29', '17', '1', '1', null, '1', '1', '2020-07-31 03:56:35', '2020-07-31 03:56:35');
 INSERT INTO `alumno_pariente` VALUES ('32', '17', '7', '1', null, '1', '1', '2020-09-03 01:16:09', '2020-09-03 01:16:09');
-INSERT INTO `alumno_pariente` VALUES ('33', '29', '1', '1', null, '1', '1', '2020-11-09 01:27:34', '2020-11-09 01:27:34');
+INSERT INTO `alumno_pariente` VALUES ('35', '21', '6', '1', null, '1', '1', '2021-02-02 22:12:48', '2021-02-02 22:12:48');
 
 -- ----------------------------
 -- Table structure for archivo
@@ -603,7 +613,7 @@ CREATE TABLE `archivo` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of archivo
@@ -662,6 +672,7 @@ INSERT INTO `archivo` VALUES ('83', 'fw', '11', '2', '1612214783_Documento sin t
 INSERT INTO `archivo` VALUES ('84', 'La Cancion  de las Vocales', '8', '42', 'La Canción de las Vocales - A E I O U.mp3', 'Audio', null, '1', '1', '2021-02-02 15:47:30', '2021-02-02 15:47:30');
 INSERT INTO `archivo` VALUES ('85', 'La letra B', '10', '43', '15 la letra B material de aprendizaje.pdf', 'PDF', null, '1', '1', '2021-02-02 15:49:41', '2021-02-02 15:49:41');
 INSERT INTO `archivo` VALUES ('86', 'prueba', '11', '5', '1612282099_Good Educativo Cotización11520.pdf', 'PDF', null, '1', '1', '2021-02-02 16:08:19', '2021-02-02 16:08:19');
+INSERT INTO `archivo` VALUES ('87', 'fasfasfa', '11', '6', '1612305858_Mapa conceptual (2).pdf', 'PDF', 'xxvz', '1', '1', '2021-02-02 22:44:18', '2021-02-02 22:44:18');
 
 -- ----------------------------
 -- Table structure for area_estudio
@@ -683,7 +694,7 @@ CREATE TABLE `area_estudio` (
 -- Records of area_estudio
 -- ----------------------------
 INSERT INTO `area_estudio` VALUES ('1', 'Ciencias Sociales', 'purple', null, '1', '1', '2020-05-16 06:02:50', '2020-05-16 06:02:50');
-INSERT INTO `area_estudio` VALUES ('2', 'Ciencias Básicas', 'indigo', null, '1', '1', '2020-05-16 06:03:42', '2020-05-16 06:03:42');
+INSERT INTO `area_estudio` VALUES ('2', 'Ciencias', 'indigo', null, '1', '1', '2020-05-16 06:03:42', '2021-02-02 21:25:09');
 INSERT INTO `area_estudio` VALUES ('3', 'Ciencias Aplicadas', 'teal', null, '1', '1', '2020-05-16 06:09:28', '2020-05-16 06:09:28');
 INSERT INTO `area_estudio` VALUES ('4', 'Humanidades', 'blue-grey', null, '1', '1', '2020-05-16 06:10:31', '2020-05-23 05:44:20');
 INSERT INTO `area_estudio` VALUES ('5', 'Matemáticas', 'amber', null, '1', '1', '2020-05-16 06:06:05', '2020-05-16 06:06:05');
@@ -692,65 +703,6 @@ INSERT INTO `area_estudio` VALUES ('7', 'Educación Religiosa y Moral', 'pink', 
 INSERT INTO `area_estudio` VALUES ('8', 'Educación Física y Deporte', 'brown', null, '1', '1', '2020-05-16 16:15:28', '2020-05-16 16:15:28');
 INSERT INTO `area_estudio` VALUES ('9', 'Educación Estética y Artistica', 'blue', null, '1', '1', '2020-05-16 16:32:18', '2020-09-20 14:18:48');
 INSERT INTO `area_estudio` VALUES ('10', 'Informatica', 'red', null, '1', '1', null, null);
-
--- ----------------------------
--- Table structure for asignacion
--- ----------------------------
-DROP TABLE IF EXISTS `asignacion`;
-CREATE TABLE `asignacion` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `id_grupo` int(11) NOT NULL,
-  `id_tipo_asignacion` int(11) NOT NULL,
-  `id_materia` int(11) NOT NULL,
-  `id_tema` int(11) NOT NULL,
-  `id_origen` int(11) NOT NULL,
-  `tx_origen` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fe_inicio` date NOT NULL,
-  `fe_fin` date DEFAULT NULL,
-  `tx_observaciones` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `id_status` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- ----------------------------
--- Records of asignacion
--- ----------------------------
-INSERT INTO `asignacion` VALUES ('33', '1', '1', '7', '57', '39', 'actividad', '2020-12-08', '2020-12-08', null, '1', '1', '2020-12-06 17:10:38', '2020-12-06 17:10:38');
-INSERT INTO `asignacion` VALUES ('34', '1', '1', '19', '2', '57', 'actividad', '2020-12-15', '2020-12-15', null, '1', '1', '2020-12-06 17:10:53', '2020-12-06 17:10:53');
-INSERT INTO `asignacion` VALUES ('35', '1', '2', '7', '57', '57', 'enlace', '2020-12-09', '2020-12-09', null, '1', '1', '2020-12-06 17:11:06', '2020-12-06 17:11:06');
-INSERT INTO `asignacion` VALUES ('36', '1', '5', '19', '2', '31', 'recurso', '2020-12-16', '2020-12-16', null, '1', '1', '2020-12-06 17:11:42', '2020-12-06 17:11:42');
-INSERT INTO `asignacion` VALUES ('37', '1', '1', '7', '2', '57', 'actividad', '2021-01-06', '2021-01-06', null, '1', '1', '2021-01-13 15:26:53', '2021-01-13 15:26:53');
-INSERT INTO `asignacion` VALUES ('38', '1', '2', '7', '2', '87', 'enlace', '2021-01-07', '2021-01-07', null, '1', '1', '2021-01-17 17:02:09', '2021-01-17 17:02:09');
-INSERT INTO `asignacion` VALUES ('39', '1', '3', '7', '2', '57', 'actividad', '2021-01-12', '2021-01-12', null, '1', '1', '2021-01-22 17:35:48', '2021-01-22 17:35:48');
-
--- ----------------------------
--- Table structure for asignacion_alumno
--- ----------------------------
-DROP TABLE IF EXISTS `asignacion_alumno`;
-CREATE TABLE `asignacion_alumno` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `id_asignacion` int(11) NOT NULL,
-  `id_alumno` int(11) NOT NULL,
-  `fe_completado` timestamp NULL DEFAULT NULL,
-  `nu_calificacion` int(11) DEFAULT NULL,
-  `id_calificacion` int(11) DEFAULT NULL,
-  `fe_acceso` timestamp NULL DEFAULT NULL,
-  `nu_accesos` int(11) DEFAULT 0,
-  `nu_minutos` int(11) DEFAULT 0,
-  `tx_observaciones` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `id_status` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- ----------------------------
--- Records of asignacion_alumno
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for asistencia
@@ -768,7 +720,7 @@ CREATE TABLE `asistencia` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=218 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=224 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of asistencia
@@ -871,10 +823,16 @@ INSERT INTO `asistencia` VALUES ('210', '19', '17', '2021-01-17 17:07:51', '1', 
 INSERT INTO `asistencia` VALUES ('211', '19', '23', '2021-01-17 17:07:52', '1', null, '1', '1', '2021-01-17 17:06:57', '2021-01-17 17:07:52');
 INSERT INTO `asistencia` VALUES ('212', '20', '1', '2021-01-27 15:07:13', '1', null, '1', '1', '2021-01-27 15:06:08', '2021-01-27 15:07:13');
 INSERT INTO `asistencia` VALUES ('213', '20', '2', '2021-01-27 15:07:08', '1', null, '1', '1', '2021-01-27 15:06:08', '2021-01-27 15:07:08');
-INSERT INTO `asistencia` VALUES ('214', '20', '15', null, '0', null, '1', '1', '2021-01-27 15:06:08', null);
+INSERT INTO `asistencia` VALUES ('214', '20', '15', '2021-02-02 23:02:28', '1', null, '1', '1', '2021-01-27 15:06:08', '2021-02-02 23:02:28');
 INSERT INTO `asistencia` VALUES ('215', '20', '16', '2021-01-27 15:07:10', '1', null, '1', '1', '2021-01-27 15:06:08', '2021-01-27 15:07:10');
 INSERT INTO `asistencia` VALUES ('216', '20', '17', null, '0', null, '1', '1', '2021-01-27 15:06:08', null);
 INSERT INTO `asistencia` VALUES ('217', '20', '23', '2021-01-27 15:07:14', '1', null, '1', '1', '2021-01-27 15:06:08', '2021-01-27 15:07:14');
+INSERT INTO `asistencia` VALUES ('218', '21', '1', null, '0', null, '1', '1', '2021-02-02 23:03:11', null);
+INSERT INTO `asistencia` VALUES ('219', '21', '2', null, '0', null, '1', '1', '2021-02-02 23:03:11', null);
+INSERT INTO `asistencia` VALUES ('220', '21', '15', null, '0', null, '1', '1', '2021-02-02 23:03:11', null);
+INSERT INTO `asistencia` VALUES ('221', '21', '16', null, '0', null, '1', '1', '2021-02-02 23:03:11', null);
+INSERT INTO `asistencia` VALUES ('222', '21', '17', null, '0', null, '1', '1', '2021-02-02 23:03:11', null);
+INSERT INTO `asistencia` VALUES ('223', '21', '23', null, '0', null, '1', '1', '2021-02-02 23:03:11', null);
 
 -- ----------------------------
 -- Table structure for asistente
@@ -967,7 +925,7 @@ CREATE TABLE `aula` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of aula
@@ -978,6 +936,7 @@ INSERT INTO `aula` VALUES ('3', 'Aula 310', '4', null, '1', '1', '2020-05-13 06:
 INSERT INTO `aula` VALUES ('4', 'Laboratorio de Fisica', '6', null, '1', '1', '2020-05-13 06:14:46', '2020-05-13 18:47:07');
 INSERT INTO `aula` VALUES ('5', 'Salon Computadoras', '5', null, '1', '1', '2020-05-13 06:16:45', '2020-05-13 06:26:22');
 INSERT INTO `aula` VALUES ('6', 'Aula 111', '9', null, '1', '1', '2020-06-10 20:12:46', '2020-06-10 20:12:46');
+INSERT INTO `aula` VALUES ('7', 'aula 1a', '12', null, '1', '1', '2021-02-02 21:14:52', '2021-02-02 21:14:52');
 
 -- ----------------------------
 -- Table structure for barrio
@@ -1409,13 +1368,14 @@ CREATE TABLE `calendario` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of calendario
 -- ----------------------------
 INSERT INTO `calendario` VALUES ('1', '2019-2020', '2019', '2019-10-17', '2020-07-27', null, '2', '1', '2020-05-09 11:41:33', '2021-01-16 17:16:17');
-INSERT INTO `calendario` VALUES ('2', '2020-2021', '2020', '2020-10-14', '2021-07-13', null, '1', '1', '2020-06-10 21:06:08', '2021-02-02 17:26:39');
+INSERT INTO `calendario` VALUES ('2', '2020-2021', '2020', '2020-10-14', '2021-07-13', null, '1', '1', '2020-06-10 21:06:08', '2021-02-02 21:18:41');
+INSERT INTO `calendario` VALUES ('6', 'calendario A', '2022', '2021-02-01', '2022-02-15', null, '2', '1', '2021-02-02 21:17:13', '2021-02-02 21:18:41');
 
 -- ----------------------------
 -- Table structure for calificacion
@@ -1467,19 +1427,19 @@ CREATE TABLE `carga_horaria` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of carga_horaria
 -- ----------------------------
-INSERT INTO `carga_horaria` VALUES ('1', 'DIR. GRUPO', '1', '1', '07:00:00', '07:45:00', '1', '1', null, '1', '1', '2020-05-10 03:06:24', '2020-09-21 14:22:36');
-INSERT INTO `carga_horaria` VALUES ('2', 'Hora 1', '1', '2', '08:00:00', '08:45:00', '1', '0', null, '1', '1', '2020-05-10 04:01:07', '2020-05-20 06:42:08');
-INSERT INTO `carga_horaria` VALUES ('3', 'Hora 2', '1', '3', '08:45:00', '09:30:00', '1', '0', null, '1', '1', '2020-05-10 04:02:03', '2020-05-20 11:20:14');
-INSERT INTO `carga_horaria` VALUES ('4', 'DESCANSO', '1', '4', '09:30:00', '10:15:00', '1', '1', null, '1', '1', '2020-05-10 04:04:47', '2020-05-20 06:38:12');
-INSERT INTO `carga_horaria` VALUES ('5', 'Hora 3', '1', '5', '10:15:00', '11:00:00', '1', '0', null, '1', '1', '2020-05-10 04:06:09', '2020-05-20 11:20:24');
-INSERT INTO `carga_horaria` VALUES ('6', 'ALMUERZO', '1', '6', '11:00:00', '11:45:00', '1', '1', null, '1', '1', '2020-05-10 04:07:48', '2020-05-20 06:38:26');
-INSERT INTO `carga_horaria` VALUES ('7', 'Hora 4', '1', '7', '13:00:00', '13:45:00', '2', '0', null, '1', '1', '2020-05-10 04:09:36', '2020-05-20 11:20:31');
-INSERT INTO `carga_horaria` VALUES ('8', 'Hora 5', '1', '8', '13:45:00', '14:30:00', '2', '0', null, '1', '1', '2020-05-10 04:10:09', '2020-06-26 22:56:11');
+INSERT INTO `carga_horaria` VALUES ('1', 'DIR. GRUPO', '1', '1', '07:00:00', '07:45:00', '1', '1', null, '1', '1', '2020-05-10 10:06:24', '2020-09-21 21:22:36');
+INSERT INTO `carga_horaria` VALUES ('2', 'Hora 1', '1', '2', '08:00:00', '08:45:00', '1', '0', null, '1', '1', '2020-05-10 11:01:07', '2020-05-20 13:42:08');
+INSERT INTO `carga_horaria` VALUES ('3', 'Hora 2', '1', '3', '08:45:00', '09:30:00', '1', '0', null, '1', '1', '2020-05-10 11:02:03', '2020-05-20 18:20:14');
+INSERT INTO `carga_horaria` VALUES ('4', 'DESCANSO', '1', '4', '09:30:00', '10:15:00', '1', '1', null, '1', '1', '2020-05-10 11:04:47', '2020-05-20 13:38:12');
+INSERT INTO `carga_horaria` VALUES ('5', 'Hora 3', '1', '5', '10:15:00', '11:00:00', '1', '0', null, '1', '1', '2020-05-10 11:06:09', '2020-05-20 18:20:24');
+INSERT INTO `carga_horaria` VALUES ('6', 'ALMUERZO', '1', '6', '11:00:00', '11:45:00', '1', '1', null, '1', '1', '2020-05-10 11:07:48', '2020-05-20 13:38:26');
+INSERT INTO `carga_horaria` VALUES ('7', 'Hora 4', '1', '7', '13:00:00', '13:45:00', '2', '0', null, '1', '1', '2020-05-10 11:09:36', '2020-05-20 18:20:31');
+INSERT INTO `carga_horaria` VALUES ('8', 'Hora 5', '1', '8', '13:45:00', '14:30:00', '2', '0', null, '1', '1', '2020-05-10 11:10:09', '2020-06-27 05:56:11');
 
 -- ----------------------------
 -- Table structure for cargo
@@ -2666,7 +2626,7 @@ CREATE TABLE `clase` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of clase
@@ -2687,7 +2647,8 @@ INSERT INTO `clase` VALUES ('16', '4', '1', '7', '1', '2020-11-12 12:39:45', '20
 INSERT INTO `clase` VALUES ('17', '4', '1', '19', '1', '2020-11-12 12:40:36', '2020-11-12 16:40:36', null, '1', '1', '2020-11-12 16:39:57', '2020-11-12 16:40:36');
 INSERT INTO `clase` VALUES ('18', '4', '1', '7', '1', '2020-11-27 22:16:36', '2020-11-28 02:16:36', null, '1', '1', '2020-11-28 00:40:30', '2020-11-28 02:16:36');
 INSERT INTO `clase` VALUES ('19', '4', '1', '7', '1', '2021-01-17 13:11:22', '2021-01-17 17:11:22', 'ekdhjhfjksj nsdhsdfksfcnksnfa', '1', '1', '2021-01-17 17:06:57', '2021-01-17 17:11:22');
-INSERT INTO `clase` VALUES ('20', '4', '1', '17', '1', '2021-01-27 15:06:05', null, null, '1', '1', '2021-01-27 15:06:05', '2021-01-27 15:06:05');
+INSERT INTO `clase` VALUES ('20', '4', '1', '17', '1', '2021-02-02 19:02:57', '2021-02-02 23:02:57', null, '1', '1', '2021-01-27 15:06:05', '2021-02-02 23:02:57');
+INSERT INTO `clase` VALUES ('21', '4', '1', '15', '1', '2021-02-02 23:03:11', null, null, '1', '1', '2021-02-02 23:03:11', '2021-02-02 23:03:11');
 
 -- ----------------------------
 -- Table structure for colegio
@@ -2928,7 +2889,7 @@ CREATE TABLE `detalle_horario` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of detalle_horario
@@ -2975,6 +2936,9 @@ INSERT INTO `detalle_horario` VALUES ('99', 'H2M16D11S3I08:00F08:45', '2', '16',
 INSERT INTO `detalle_horario` VALUES ('100', 'H2M16D11S3I08:00F08:45', '2', '16', '11', '3', '6', '08:45:00', '09:30:00', '3', '1', '0', null, '1', '1', '2020-09-23 19:42:27', '2020-09-23 19:42:27');
 INSERT INTO `detalle_horario` VALUES ('101', 'H2M7D1S4I08:00F08:45', '2', '7', '1', '4', '1', '08:00:00', '08:45:00', '2', '1', '2', null, '1', '1', '2021-01-27 20:29:22', '2021-01-27 20:29:22');
 INSERT INTO `detalle_horario` VALUES ('102', 'H2M7D1S4I08:00F08:45', '2', '7', '1', '4', '1', '08:45:00', '09:30:00', '3', '1', '0', null, '1', '1', '2021-01-27 20:29:22', '2021-01-27 20:29:22');
+INSERT INTO `detalle_horario` VALUES ('103', 'H2M16D11S3I10:15F11:00', '2', '16', '11', '3', '7', '10:15:00', '11:00:00', '5', '1', '1', null, '1', '1', '2021-02-02 21:50:17', '2021-02-02 21:50:17');
+INSERT INTO `detalle_horario` VALUES ('104', 'H4M19D10S1I08:00F08:45', '4', '19', '10', '1', '6', '08:00:00', '08:45:00', '2', '1', '2', null, '1', '1', '2021-02-02 21:52:44', '2021-02-02 21:52:44');
+INSERT INTO `detalle_horario` VALUES ('105', 'H4M19D10S1I08:00F08:45', '4', '19', '10', '1', '6', '08:45:00', '09:30:00', '3', '1', '0', null, '1', '1', '2021-02-02 21:52:45', '2021-02-02 21:52:45');
 
 -- ----------------------------
 -- Table structure for directiva
@@ -2993,13 +2957,14 @@ CREATE TABLE `directiva` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of directiva
 -- ----------------------------
 INSERT INTO `directiva` VALUES ('1', '1', '2', 'Jose Rizzo', '1', '3654656', null, '1', '1', '2020-05-09 20:39:07', '2021-02-02 16:47:27');
 INSERT INTO `directiva` VALUES ('2', '1', '2', 'Luis Yustiz', '1', '2342424', null, '1', '1', '2020-05-09 20:44:46', '2020-05-31 02:41:40');
+INSERT INTO `directiva` VALUES ('3', '1', '1', 'gdsgsdgs', '3', '23313123123', null, '1', '1', '2021-02-02 20:59:45', '2021-02-02 20:59:45');
 
 -- ----------------------------
 -- Table structure for docente
@@ -3486,7 +3451,7 @@ CREATE TABLE `estructura` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of estructura
@@ -3498,6 +3463,7 @@ INSERT INTO `estructura` VALUES ('4', 'Piso 3', '1', '1', 'Colegio>Piso 3', null
 INSERT INTO `estructura` VALUES ('5', 'Edificio \"A\"', '1', '1', 'Colegio>Edificio \"A\"', null, '1', '1', '2020-05-13 05:48:49', '2020-05-13 05:49:05');
 INSERT INTO `estructura` VALUES ('6', 'Edificio \"B\"', '1', '1', 'Colegio>Edificio \"B\"', null, '1', '1', '2020-05-13 05:49:31', '2020-05-13 05:49:31');
 INSERT INTO `estructura` VALUES ('9', 'Piso A1', '1', '5', 'Colegio>Edificio \"A\">Piso A1', null, '1', '1', '2020-06-10 20:06:17', '2020-06-10 20:06:17');
+INSERT INTO `estructura` VALUES ('12', 'seccion A', '1', '2', 'Colegio>Piso 1>seccion A', 'fafs', '1', '1', '2021-02-02 21:12:31', '2021-02-02 21:12:31');
 
 -- ----------------------------
 -- Table structure for evaluacion
@@ -3526,7 +3492,7 @@ CREATE TABLE `evaluacion` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of evaluacion
@@ -3549,6 +3515,7 @@ INSERT INTO `evaluacion` VALUES ('23', '2', '19', '8', 'rasgo', '1', 'rasgo', '1
 INSERT INTO `evaluacion` VALUES ('24', '2', '13', '2', 'evaluacion', '3', 'tarea', '1', '7', '3', '5', '2021-01-19', '2021-01-19', '00:00:00', '23:59:00', '0', null, '1', '1', '2021-01-30 22:46:37', '2021-01-30 22:46:37');
 INSERT INTO `evaluacion` VALUES ('25', '2', '19', '8', 'rasgo', '3', 'rasgo', '1', '7', '0', '5', '2021-01-31', '2021-01-31', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-01-31 20:28:42', '2021-01-31 20:28:42');
 INSERT INTO `evaluacion` VALUES ('26', '2', '19', '8', 'rasgo', '4', 'rasgo', '1', '7', '0', '5', '2021-01-31', '2021-01-31', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-01-31 20:35:33', '2021-01-31 20:35:33');
+INSERT INTO `evaluacion` VALUES ('27', '7', '37', '4', 'asignacion', '87', 'enlace', '1', '19', '7', '5', '2021-02-10', '2021-02-10', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-02-02 22:46:14', '2021-02-02 22:46:14');
 
 -- ----------------------------
 -- Table structure for evaluacion_alumno
@@ -3572,7 +3539,7 @@ CREATE TABLE `evaluacion_alumno` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of evaluacion_alumno
@@ -3613,7 +3580,7 @@ INSERT INTO `evaluacion_alumno` VALUES ('33', '6', '7', '15', null, null, null, 
 INSERT INTO `evaluacion_alumno` VALUES ('34', '6', '7', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-23 23:50:24', null);
 INSERT INTO `evaluacion_alumno` VALUES ('35', '6', '7', '17', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-23 23:50:24', null);
 INSERT INTO `evaluacion_alumno` VALUES ('36', '6', '7', '23', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-23 23:50:24', null);
-INSERT INTO `evaluacion_alumno` VALUES ('49', '9', '2', '1', null, null, null, null, null, '2021-01-27', '3', null, '3', '1', '2021-01-26 16:49:27', '2021-01-27 23:12:07');
+INSERT INTO `evaluacion_alumno` VALUES ('49', '9', '2', '1', '2021-02-02', null, null, '5.00', '4', '2021-02-02', '4', null, '5', '1', '2021-01-26 16:49:27', '2021-02-02 22:53:19');
 INSERT INTO `evaluacion_alumno` VALUES ('50', '9', '2', '2', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-26 16:49:27', null);
 INSERT INTO `evaluacion_alumno` VALUES ('51', '9', '2', '15', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-26 16:49:27', null);
 INSERT INTO `evaluacion_alumno` VALUES ('52', '9', '2', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-26 16:49:27', null);
@@ -3637,7 +3604,7 @@ INSERT INTO `evaluacion_alumno` VALUES ('69', '12', '2', '15', null, null, null,
 INSERT INTO `evaluacion_alumno` VALUES ('70', '12', '2', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-29 22:44:17', null);
 INSERT INTO `evaluacion_alumno` VALUES ('71', '12', '2', '17', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-29 22:44:17', null);
 INSERT INTO `evaluacion_alumno` VALUES ('72', '12', '2', '23', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-29 22:44:17', null);
-INSERT INTO `evaluacion_alumno` VALUES ('73', '13', '7', '1', null, null, null, '2.00', '1', null, '0', null, '5', '1', '2021-01-30 12:45:41', '2021-01-30 20:50:44');
+INSERT INTO `evaluacion_alumno` VALUES ('73', '13', '7', '1', null, null, null, '5.00', '4', null, '0', 'siempre temprano', '5', '1', '2021-01-30 12:45:41', '2021-02-02 22:58:05');
 INSERT INTO `evaluacion_alumno` VALUES ('74', '13', '7', '2', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 12:45:41', null);
 INSERT INTO `evaluacion_alumno` VALUES ('75', '13', '7', '15', null, null, null, '4.00', '3', null, '0', 'puntual', '5', '1', '2021-01-30 12:45:41', '2021-01-31 21:36:54');
 INSERT INTO `evaluacion_alumno` VALUES ('76', '13', '7', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-30 12:45:41', null);
@@ -3685,6 +3652,12 @@ INSERT INTO `evaluacion_alumno` VALUES ('153', '26', '2', '15', null, null, null
 INSERT INTO `evaluacion_alumno` VALUES ('154', '26', '2', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-31 20:35:33', null);
 INSERT INTO `evaluacion_alumno` VALUES ('155', '26', '2', '17', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-31 20:35:33', null);
 INSERT INTO `evaluacion_alumno` VALUES ('156', '26', '2', '23', null, null, null, null, null, null, '0', null, '3', '1', '2021-01-31 20:35:33', null);
+INSERT INTO `evaluacion_alumno` VALUES ('157', '27', '7', '1', null, null, null, null, null, '2021-02-02', '1', null, '3', '1', '2021-02-02 22:46:14', '2021-02-02 22:48:25');
+INSERT INTO `evaluacion_alumno` VALUES ('158', '27', '7', '2', null, null, null, null, null, null, '0', null, '3', '1', '2021-02-02 22:46:14', null);
+INSERT INTO `evaluacion_alumno` VALUES ('159', '27', '7', '15', null, null, null, null, null, null, '0', null, '3', '1', '2021-02-02 22:46:14', null);
+INSERT INTO `evaluacion_alumno` VALUES ('160', '27', '7', '16', null, null, null, null, null, null, '0', null, '3', '1', '2021-02-02 22:46:14', null);
+INSERT INTO `evaluacion_alumno` VALUES ('161', '27', '7', '17', null, null, null, null, null, null, '0', null, '3', '1', '2021-02-02 22:46:14', null);
+INSERT INTO `evaluacion_alumno` VALUES ('162', '27', '7', '23', null, null, null, null, null, null, '0', null, '3', '1', '2021-02-02 22:46:14', null);
 
 -- ----------------------------
 -- Table structure for evaluacion_metodo
@@ -3756,7 +3729,7 @@ CREATE TABLE `foto` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=204 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=206 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of foto
@@ -3841,6 +3814,8 @@ INSERT INTO `foto` VALUES ('198', 'actividad id: 66', '1607273835_66.jpg', '6', 
 INSERT INTO `foto` VALUES ('201', 'actividad id: 67', '1612281745_67.jpg', '6', '67', null, '1', '1', '2021-02-02 16:02:25', '2021-02-02 16:02:25');
 INSERT INTO `foto` VALUES ('202', 'pregunta id: 209', '1612281917_209.jpg', '7', '209', null, '1', '1', '2021-02-02 16:05:17', '2021-02-02 16:05:17');
 INSERT INTO `foto` VALUES ('203', 'colegio id: 1', '1612284361_1.jpg', '1', '1', null, '1', '1', '2021-02-02 16:46:01', '2021-02-02 16:46:01');
+INSERT INTO `foto` VALUES ('204', 'empleado id: 1', '1612299816_1.jpg', '8', '1', null, '1', '1', '2021-02-02 21:03:36', '2021-02-02 21:03:36');
+INSERT INTO `foto` VALUES ('205', 'actividad id: 68', '1612305582_68.jpg', '6', '68', null, '1', '1', '2021-02-02 22:39:42', '2021-02-02 22:39:42');
 
 -- ----------------------------
 -- Table structure for grado
@@ -3857,7 +3832,7 @@ CREATE TABLE `grado` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of grado
@@ -3876,6 +3851,7 @@ INSERT INTO `grado` VALUES ('11', 'Grado 8º', '8', '3', 'G8', '1', '1', '2020-0
 INSERT INTO `grado` VALUES ('12', 'Grado 9º', '9', '3', 'G9', '1', '1', '2020-05-11 19:49:05', '2020-11-10 15:57:11');
 INSERT INTO `grado` VALUES ('13', 'Grado 10', '10', '3', 'G10', '1', '1', '2020-05-11 19:49:24', '2020-05-16 07:49:50');
 INSERT INTO `grado` VALUES ('14', 'Grado 11º', '11', '3', 'G11', '1', '1', '2020-05-11 19:49:52', '2020-05-16 07:49:57');
+INSERT INTO `grado` VALUES ('15', 'grado 1-a', '2', '2', null, '1', '1', '2021-02-02 21:34:20', '2021-02-02 21:34:20');
 
 -- ----------------------------
 -- Table structure for grado_alumno
@@ -3915,7 +3891,7 @@ CREATE TABLE `grado_materia` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of grado_materia
@@ -3960,6 +3936,8 @@ INSERT INTO `grado_materia` VALUES ('63', '13', '7', null, '1', '1', '2020-12-05
 INSERT INTO `grado_materia` VALUES ('64', '13', '19', null, '1', '1', '2020-12-05 23:54:42', '2020-12-05 23:54:42');
 INSERT INTO `grado_materia` VALUES ('65', '14', '7', null, '1', '1', '2020-12-05 23:55:00', '2020-12-05 23:55:00');
 INSERT INTO `grado_materia` VALUES ('66', '14', '19', null, '1', '1', '2020-12-05 23:55:04', '2020-12-05 23:55:04');
+INSERT INTO `grado_materia` VALUES ('68', '15', '7', null, '1', '1', '2021-02-02 21:36:01', '2021-02-02 21:36:01');
+INSERT INTO `grado_materia` VALUES ('69', '15', '19', null, '1', '1', '2021-02-02 21:36:05', '2021-02-02 21:36:05');
 
 -- ----------------------------
 -- Table structure for grupo
@@ -3979,7 +3957,7 @@ CREATE TABLE `grupo` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of grupo
@@ -4009,6 +3987,7 @@ INSERT INTO `grupo` VALUES ('25', 'Grupo 9ºA', '12', '1', '2', '13', '1', null,
 INSERT INTO `grupo` VALUES ('26', 'Grupo 9ºB', '12', '2', '2', '24', '2', null, '1', '1', '2020-11-10 15:52:31', '2020-11-10 15:52:31');
 INSERT INTO `grupo` VALUES ('27', 'Grupo 10ºA', '13', '1', '2', '1', '1', null, '1', '1', '2020-12-05 23:57:54', '2020-12-05 23:57:54');
 INSERT INTO `grupo` VALUES ('28', 'Grupo 11ºA', '14', '1', '2', '2', '1', null, '1', '1', '2020-12-05 23:58:22', '2020-12-05 23:58:22');
+INSERT INTO `grupo` VALUES ('29', 'grupo del grado 1a', '15', '1', '2', '1', '1', null, '1', '1', '2021-02-02 21:38:43', '2021-02-02 21:38:43');
 
 -- ----------------------------
 -- Table structure for grupo_alumno
@@ -4067,7 +4046,7 @@ CREATE TABLE `grupo_materia` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of grupo_materia
@@ -4130,6 +4109,8 @@ INSERT INTO `grupo_materia` VALUES ('56', '27', '19', null, '1', '1', null, null
 INSERT INTO `grupo_materia` VALUES ('57', '28', '7', null, '1', '1', null, null);
 INSERT INTO `grupo_materia` VALUES ('58', '28', '19', null, '1', '1', null, null);
 INSERT INTO `grupo_materia` VALUES ('59', '2', '7', null, '1', '1', '2021-01-27 20:19:54', '2021-01-27 20:19:54');
+INSERT INTO `grupo_materia` VALUES ('60', '29', '7', null, '1', '1', null, null);
+INSERT INTO `grupo_materia` VALUES ('61', '29', '19', null, '1', '1', null, null);
 
 -- ----------------------------
 -- Table structure for horario
@@ -4146,13 +4127,14 @@ CREATE TABLE `horario` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of horario
 -- ----------------------------
 INSERT INTO `horario` VALUES ('1', 'H1G1A', '1', '1', null, '1', '1', '2020-05-20 12:27:49', '2020-05-20 12:27:49');
 INSERT INTO `horario` VALUES ('2', 'H1GB1', '2', '1', null, '1', '1', '2020-06-22 23:16:07', '2020-06-22 23:16:18');
+INSERT INTO `horario` VALUES ('4', 'horario grupo 4b', '13', '1', null, '1', '1', '2021-02-02 21:52:04', '2021-02-02 21:52:04');
 
 -- ----------------------------
 -- Table structure for hora_academica
@@ -4193,7 +4175,7 @@ CREATE TABLE `incidencia` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of incidencia
@@ -4205,6 +4187,7 @@ INSERT INTO `incidencia` VALUES ('4', '103', '2020-09-02', '2', 'rgeger', '4', '
 INSERT INTO `incidencia` VALUES ('5', '103', '2020-11-26', '1', 'fdsfsfsf', '1', 'fdsfsd', null, '1', '1', '2020-11-27 01:19:10', '2020-11-27 01:19:10');
 INSERT INTO `incidencia` VALUES ('8', '1', '2020-11-27', '1', 'pelea', '1', '1er llamado de atencion', null, '1', '1', '2020-11-27 14:51:13', '2020-11-27 14:51:13');
 INSERT INTO `incidencia` VALUES ('9', '16', '2021-01-17', '1', 'wetgsd', '3', 'fhdfhdfh', 'hdf', '1', '1', '2021-01-17 17:08:22', '2021-01-17 17:08:22');
+INSERT INTO `incidencia` VALUES ('10', '103', '2021-02-02', '2', 'sgfaghjfagfhjahghsf', '2', 'gdgsdgsgsgsdgsgsdgsdgsgsgggsdgsdgsd', 'gddsgssdgsdgdsddgsddg', '1', '1', '2021-02-02 22:10:24', '2021-02-02 22:10:24');
 
 -- ----------------------------
 -- Table structure for jobs
@@ -4374,7 +4357,7 @@ CREATE TABLE `matricula` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of matricula
@@ -4402,6 +4385,7 @@ INSERT INTO `matricula` VALUES ('37', '2', '107', '9', '19', '2020-11-10', '1', 
 INSERT INTO `matricula` VALUES ('38', '2', '87', '10', '21', '2020-11-10', '1', null, null, '1', '1', '2020-11-10 16:09:40', '2020-11-10 16:09:40');
 INSERT INTO `matricula` VALUES ('39', '2', '105', '11', '23', '2020-11-10', '1', null, null, '1', '1', '2020-11-10 16:10:03', '2020-11-10 16:10:03');
 INSERT INTO `matricula` VALUES ('40', '2', '45', '12', '25', '2020-11-10', '1', null, null, '1', '1', '2020-11-10 16:10:27', '2020-11-10 16:11:02');
+INSERT INTO `matricula` VALUES ('41', '2', '68', '8', '14', '2021-02-03', '1', null, null, '1', '1', '2021-02-04 01:09:34', '2021-02-04 01:09:34');
 
 -- ----------------------------
 -- Table structure for mensaje
@@ -4801,7 +4785,7 @@ CREATE TABLE `notificacion` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=245 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=252 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of notificacion
@@ -5043,9 +5027,16 @@ INSERT INTO `notificacion` VALUES ('238', '3', '16', 'Nueva Tarea Materia: Cienc
 INSERT INTO `notificacion` VALUES ('239', '3', '23', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 22:46:38', '2021-01-30 22:46:38');
 INSERT INTO `notificacion` VALUES ('240', '3', '2', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 22:46:38', '2021-01-30 22:46:38');
 INSERT INTO `notificacion` VALUES ('241', '3', '17', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 22:46:38', '2021-01-30 22:46:38');
-INSERT INTO `notificacion` VALUES ('242', '3', '1', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-30', null, '1', '1', '2021-01-30 22:46:38', '2021-01-30 22:46:38');
+INSERT INTO `notificacion` VALUES ('242', '3', '1', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-30', '2021-02-02 23:21:45', '1', '1', '2021-01-30 22:46:38', '2021-02-02 23:21:45');
 INSERT INTO `notificacion` VALUES ('243', '3', '0', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-31', null, '1', '1', '2021-01-31 20:28:43', '2021-01-31 20:28:43');
 INSERT INTO `notificacion` VALUES ('244', '3', '0', 'Nueva Tarea Materia: Ciencias Naturales ', '8', '2021-01-31', null, '1', '1', '2021-01-31 20:35:33', '2021-01-31 20:35:33');
+INSERT INTO `notificacion` VALUES ('245', '3', '0', 'Nueva Tarea Materia: Ciencias Sociales ', '8', '2021-02-02', null, '1', '1', '2021-02-02 22:46:15', '2021-02-02 22:46:15');
+INSERT INTO `notificacion` VALUES ('246', '3', '1', 'Inicio de Clase Materia: Lengua Castellana', '5', '2021-02-02', null, '1', '1', '2021-02-02 23:03:11', '2021-02-02 23:03:11');
+INSERT INTO `notificacion` VALUES ('247', '3', '2', 'Inicio de Clase Materia: Lengua Castellana', '5', '2021-02-02', null, '1', '1', '2021-02-02 23:03:11', '2021-02-02 23:03:11');
+INSERT INTO `notificacion` VALUES ('248', '3', '15', 'Inicio de Clase Materia: Lengua Castellana', '5', '2021-02-02', null, '1', '1', '2021-02-02 23:03:11', '2021-02-02 23:03:11');
+INSERT INTO `notificacion` VALUES ('249', '3', '16', 'Inicio de Clase Materia: Lengua Castellana', '5', '2021-02-02', null, '1', '1', '2021-02-02 23:03:11', '2021-02-02 23:03:11');
+INSERT INTO `notificacion` VALUES ('250', '3', '17', 'Inicio de Clase Materia: Lengua Castellana', '5', '2021-02-02', null, '1', '1', '2021-02-02 23:03:11', '2021-02-02 23:03:11');
+INSERT INTO `notificacion` VALUES ('251', '3', '23', 'Inicio de Clase Materia: Lengua Castellana', '5', '2021-02-02', null, '1', '1', '2021-02-02 23:03:11', '2021-02-02 23:03:11');
 
 -- ----------------------------
 -- Table structure for oauth_access_tokens
@@ -5549,8 +5540,8 @@ CREATE TABLE `periodo` (
 -- ----------------------------
 -- Records of periodo
 -- ----------------------------
-INSERT INTO `periodo` VALUES ('1', '1er PERÍODO', '1', '2', '2020-07-15', '2020-12-15', null, '1', '1', '2020-05-12 03:27:45', '2021-01-27 20:02:50');
-INSERT INTO `periodo` VALUES ('2', '2do PERÍODO', '2', '2', '2021-01-18', '2021-03-07', null, '2', '1', '2020-05-12 03:28:52', '2021-01-27 20:02:50');
+INSERT INTO `periodo` VALUES ('1', '1er PERÍODO', '1', '2', '2020-07-15', '2020-12-15', null, '1', '1', '2020-05-12 03:27:45', '2021-02-02 21:20:45');
+INSERT INTO `periodo` VALUES ('2', '2do PERÍODO', '2', '2', '2021-01-18', '2021-03-07', null, '0', '1', '2020-05-12 03:28:52', '2021-02-02 21:20:29');
 INSERT INTO `periodo` VALUES ('3', '3er PERÍODO', '3', '1', '2021-03-08', '2021-07-19', null, '2', '1', '2020-05-12 03:29:58', '2021-01-16 17:19:44');
 
 -- ----------------------------
@@ -5597,7 +5588,7 @@ CREATE TABLE `plan_detalle` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=534 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=542 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of plan_detalle
@@ -5994,6 +5985,14 @@ INSERT INTO `plan_detalle` VALUES ('530', '98', 'tipo_evaluacion', '5', '5', nul
 INSERT INTO `plan_detalle` VALUES ('531', '98', 'tipo_evaluacion', '6', '5', null, '1', '1', '2021-01-28 14:28:45', null);
 INSERT INTO `plan_detalle` VALUES ('532', '98', 'tipo_evaluacion', '7', '5', null, '1', '1', '2021-01-28 14:28:45', null);
 INSERT INTO `plan_detalle` VALUES ('533', '98', 'tipo_evaluacion', '8', '10', null, '1', '1', '2021-01-28 14:28:45', null);
+INSERT INTO `plan_detalle` VALUES ('534', '99', 'tipo_evaluacion', '1', '30', null, '1', '1', '2021-02-02 21:45:38', null);
+INSERT INTO `plan_detalle` VALUES ('535', '99', 'tipo_evaluacion', '2', '30', null, '1', '1', '2021-02-02 21:45:38', null);
+INSERT INTO `plan_detalle` VALUES ('536', '99', 'tipo_evaluacion', '3', '10', null, '1', '1', '2021-02-02 21:45:38', null);
+INSERT INTO `plan_detalle` VALUES ('537', '99', 'tipo_evaluacion', '4', '5', null, '1', '1', '2021-02-02 21:45:38', null);
+INSERT INTO `plan_detalle` VALUES ('538', '99', 'tipo_evaluacion', '5', '5', null, '1', '1', '2021-02-02 21:45:38', null);
+INSERT INTO `plan_detalle` VALUES ('539', '99', 'tipo_evaluacion', '6', '5', null, '1', '1', '2021-02-02 21:45:38', null);
+INSERT INTO `plan_detalle` VALUES ('540', '99', 'tipo_evaluacion', '7', '5', null, '1', '1', '2021-02-02 21:45:38', null);
+INSERT INTO `plan_detalle` VALUES ('541', '99', 'tipo_evaluacion', '8', '10', null, '1', '1', '2021-02-02 21:45:38', null);
 
 -- ----------------------------
 -- Table structure for plan_evaluacion
@@ -6011,7 +6010,7 @@ CREATE TABLE `plan_evaluacion` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of plan_evaluacion
@@ -6065,6 +6064,7 @@ INSERT INTO `plan_evaluacion` VALUES ('95', '28', '1', '7', '1', null, '2', '1',
 INSERT INTO `plan_evaluacion` VALUES ('96', '28', '1', '19', '1', null, '2', '1', '2020-12-06 00:00:50', '2020-12-06 00:00:50');
 INSERT INTO `plan_evaluacion` VALUES ('97', '8', '1', '14', '1', null, '2', '1', '2021-01-27 20:23:07', '2021-01-27 20:23:07');
 INSERT INTO `plan_evaluacion` VALUES ('98', '17', '1', '15', '11', null, '2', '1', '2021-01-28 14:28:45', '2021-01-28 14:28:45');
+INSERT INTO `plan_evaluacion` VALUES ('99', '29', '1', '7', '1', null, '2', '1', '2021-02-02 21:45:38', '2021-02-02 21:45:38');
 
 -- ----------------------------
 -- Table structure for plan_plantilla
@@ -6275,7 +6275,7 @@ CREATE TABLE `prueba` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of prueba
@@ -6944,15 +6944,16 @@ CREATE TABLE `tarea` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of tarea
 -- ----------------------------
-INSERT INTO `tarea` VALUES ('2', 'Mapa Mental', 'ryyey', '1', '4', '7', '1', '0.00', 'eryeryey', '2', '1', '2021-01-14 21:31:37', '2021-01-14 21:32:01');
-INSERT INTO `tarea` VALUES ('3', 'mapa mental Sol', null, null, '4', '7', '3', '0.00', null, '2', '1', '2021-01-17 17:00:15', '2021-01-17 17:00:15');
-INSERT INTO `tarea` VALUES ('4', 'prueba', 'fjjfhsjhdfskdfhsjkhdjfsdfdsfsdfsf', '3', '4', '7', '1', '11.00', 'fdsfsdfsd', '2', '1', '2021-01-28 14:32:10', '2021-01-28 14:32:47');
-INSERT INTO `tarea` VALUES ('5', 'las Vocales', null, null, '4', '15', '22', '0.00', null, '2', '1', '2021-02-02 16:06:37', '2021-02-02 16:06:37');
+INSERT INTO `tarea` VALUES ('2', 'Mapa Mental', 'ryyey', '1', '4', '7', '1', '0.00', 'eryeryey', '1', '1', '2021-01-14 21:31:37', '2021-01-14 21:32:01');
+INSERT INTO `tarea` VALUES ('3', 'mapa mental Sol', 'sdasd', '2', '4', '7', '3', '0.00', null, '1', '1', '2021-01-17 17:00:15', '2021-01-17 17:00:15');
+INSERT INTO `tarea` VALUES ('4', 'prueba', 'fjjfhsjhdfskdfhsjkhdjfsdfdsfsdfsfad', '3', '4', '7', '1', '11.00', 'fdsfsdfsd', '1', '1', '2021-01-28 14:32:10', '2021-01-28 14:32:47');
+INSERT INTO `tarea` VALUES ('5', 'las Vocales', 'dad', '2', '4', '15', '22', '0.00', null, '1', '1', '2021-02-02 16:06:37', '2021-02-02 16:06:37');
+INSERT INTO `tarea` VALUES ('6', 'ffafsafsfaf', 'adaa', '2', '4', '7', '4', '0.00', null, '1', '1', '2021-02-02 22:43:06', '2021-02-02 22:43:06');
 
 -- ----------------------------
 -- Table structure for telefono
@@ -7045,444 +7046,394 @@ CREATE TABLE `tema` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=387 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=767 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of tema
 -- ----------------------------
 INSERT INTO `tema` VALUES ('0', 'Rasgo', '0', '', '0', '0', '1', '1', '2', '1', null, null);
-INSERT INTO `tema` VALUES ('1', 'Los Sentidos', '1', null, '7', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2021-01-25 16:06:23');
-INSERT INTO `tema` VALUES ('2', 'Luz y Sonido', '2', '', '7', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('3', 'EL Cuerpo Humano', '3', '', '7', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('4', 'La Materia', '4', '', '7', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('5', 'Los Recursos Naturales', '5', '', '7', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('6', 'Viajes por nuestro cuerpo, forma de ser, familia y región', '1', null, '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2021-01-23 19:00:40');
-INSERT INTO `tema` VALUES ('7', '¿Quíen soy yo?', '2', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('8', '¿Cómo es mi cuerpo?', '3', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('9', '¿Cómo mi cuerpo me hace único?', '4', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('10', '¿Cómo es mi forma de ser?', '5', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('11', '¿Qué es la familia?', '6', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('12', '¿Cómo es tu familia?', '7', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('13', '¿Cómo debe ser la familia?', '8', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('14', '¿Las familias son diversas?', '9', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('15', '¿Qué es el cuidado?', '10', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('16', '¿Quiénes son mis vecinos?', '11', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('17', '¿Qué hacen mis vecinos?', '12', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('18', '¿Las ocupaciones son cosas de hombes y mujeres?', '13', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('19', '¿Cómo es mi región?', '14', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('20', '¿Por qué es importante cuidar la naturaleza?', '15', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('21', '¿Cómo es la gente de mi región?', '16', '', '19', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('22', 'Las vocales', '1', '', '15', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('23', 'Las consonantes: m, p, s, 1, t, silabas y sus inversos', '2', '', '15', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('24', 'Lectura e intrepretación de textos', '3', '', '15', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('25', 'Consonantes: n, d, c, f, g, b, j, r, y sus inversos.', '4', '', '15', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('26', 'Lectura de diferentes textos narrativos: cuentos y fábulas', '5', '', '15', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('27', 'El lenguaje de los gestos', '6', '', '15', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('28', 'Letras h, ñ, v, y, z, x, w, q, k', '7', '', '15', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('29', 'La conversación', '8', '', '15', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('30', 'Hagamos cuenta con números menores', '1', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('31', 'Para contar hagamos grupos de 10', '2', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('32', 'Hagamos cuenta', '3', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('33', 'Hagamos cuenta sin dibujar pelotas y puntos', '4', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('34', 'Hacia la idea de longitud', '5', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('35', 'cálculos y escrituras hasta 99', '6', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('36', 'Introducción a la posicionalidad', '7', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('37', 'Introducción al número en rango O - 999', '8', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('38', 'Introducción a la simetría', '9', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('39', 'Algo más sobre medir', '10', '', '14', '4', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('40', 'Seres de la Naturaleza', '1', '', '7', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('41', 'Los alimentos', '2', '', '7', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('42', '¿cuáles son los ciclos de la vida?', '3', '', '7', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('43', 'Movimiento de los Seres Vivos', '4', '', '7', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('44', 'Relaciones de los Seres Vivos', '5', '', '7', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('45', 'Propiedades de la Materia', '6', '', '7', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('46', 'Recursos Naturales', '7', '', '7', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('47', 'La Tierra', '8', '', '7', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('48', '¿Quién soy yo?', '1', '', '19', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('49', '¿Quiénes son las personas con las que convivimos?', '2', '', '19', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('50', 'Nuestro entorno y el municipio', '3', '', '19', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('51', 'El paisaje geografico y la vida de las comunidades', '4', '', '19', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('52', 'Las comunidades y su historia', '5', '', '19', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('53', 'Juguemos con las palabras', '1', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('54', '¿Para qué sirven las palabras?', '2', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('55', 'Lo que nombran las palabras', '3', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('56', 'Aprender jugando', '4', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('57', 'Aprender haciendo', '5', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('58', 'Aprender creando', '6', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('59', 'El diálogo', '7', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('60', '¿mensajes sin palabras?', '8', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('61', 'La biblioteca', '9', '', '15', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('62', 'Más sobre los números hasta 999', '1', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('63', 'Algunos sólidos y figuras planas', '2', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('64', 'Más sobre medidas de longitud', '3', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('65', 'Hacia la idea de longitud', '4', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('66', 'Cálculos y escrituras hasta 99', '5', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('67', 'Introducción a la posisionalidad', '6', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('68', 'Introducción al número en rango del O - 999', '7', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('69', 'Introducción a la simetría', '8', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('70', 'Algo más sobre medir', '9', '', '14', '5', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('71', 'Clasificación de los Seres Vivos', '1', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('72', 'La Alimentación en los Seres Vivos', '2', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('73', 'Electricidad y Magnetismo', '3', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('74', 'Cambios en el Ser Humano', '4', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('75', 'Movimiento del Ser Humano', '5', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('76', 'Relación de los Organismos con el Ambiente', '6', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('77', 'Los Cambios de la Materia', '7', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('78', 'El Ciclo del Agua y la Formación del Suelo', '8', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('79', 'El Sistema Sol-Tierra-Luna', '9', '', '7', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('80', 'El rio del tiempo', '1', '', '19', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('81', '¿Cómo orientarnos y ubicarnos geograficamente?', '2', '', '19', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('82', 'Colombia y sus departamentos', '3', '', '19', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('83', 'La cultura y yo', '4', '', '19', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('84', 'Nosotros y los otros', '5', '', '19', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('85', 'Convivir juntos', '6', '', '19', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('86', 'Vamos a relactar', '1', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('87', 'Vamos a describir', '2', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('88', 'Vamos a analizar', '3', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('89', 'EL significado de las palabras', '4', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('90', 'Algunos secretos de las palabras', '5', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('91', 'Las palabras y las personas', '6', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('92', 'habitemos la escena', '7', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('93', 'habitemos la letra', '8', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('94', 'habitemos la imagen', '9', '', '15', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('95', 'Algo más sobre las operaciones en adicción y sustracción', '1', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('96', 'La operación multiplicación y relaciones multiplicativas', '2', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('97', 'Otros sistemas de ubicación', '3', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('98', 'Algo sobre clasificaciones', '4', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('99', 'Arreglos y conteos', '5', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('100', 'Nuevamente el sistema de númeración 7', '6', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('101', 'Avanzando en lo multiplicativo', '7', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('102', 'Avanzando en lo espacial', '8', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('103', 'Algo más sobre perimetros y áreas', '9', '', '14', '6', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('104', 'Los Reinos de la Naturales', '1', '', '7', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('105', 'Nutrición y Salud', '2', '', '7', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('106', 'Reproducción en los Seres Vivos', '3', '', '7', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('107', 'Especie y Reproducción', '4', '', '7', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('108', 'Movimiento de los Cuerpos', '5', '', '7', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('109', 'Elementos, Compuesto y Mezclas', '6', '', '7', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('110', 'Contaminación', '7', '', '7', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('111', 'La Tierra y el Sistema Solar', '8', '', '7', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('112', 'El largo camino de la humanidad', '1', '', '19', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('113', 'El encuentro entre dos mundos', '2', '', '19', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('114', 'Los españoles conquistaron nuestro país', '3', '', '19', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('115', 'La diversidad étnica en Colombia', '4', '', '19', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('116', 'El relieve y el clima de Colombia', '5', '', '19', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('117', 'De viajes por las regiones naturales de Colombia y el mundo', '6', '', '19', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('118', 'Los conflictos y los dilemas en nuestras vidas', '7', '', '19', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('119', 'Los ciudadanos y las instituciones', '8', '', '19', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('120', 'A divertirse en serio', '1', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('121', 'El diseño y las palabras', '2', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('122', 'Secretos de la escritura', '3', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('123', 'Las palabras y los seres humanos', '4', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('124', 'Los eventos y el significado', '5', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('125', 'Las relaciones y el significado', '6', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('126', 'Las personas se relacionan usando las palabras', '7', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('127', 'Las palabras se relacionan entre sí', '8', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('128', 'Las palabras se relacionan con las imágenes', '9', '', '15', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('129', 'Nuevamente el sistema decimal de numeración', '1', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('130', 'procedimientos de multiplicar y dividir', '2', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('131', 'Relaciones multiplicativas y fraccionarios', '3', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('132', 'Profundicemos sobre algunas propiedades de las figuras', '4', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('133', 'Usemos los decimales', '5', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('134', 'Perímetros, áreas y volúmenes', '6', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('135', 'Algo más sobre arreglos', '7', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('136', 'Algo más sobre variación de magnitudes', '8', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('137', 'Algo más sobre las figuras', '9', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('138', 'Medidas de ángulos', '10', '', '14', '7', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('139', 'Estructura de los Seres Vivos', '1', '', '7', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('140', '¿Cómo Funciona el Cuerpo Humano?', '2', '', '7', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('141', 'Los Ecosistemas', '3', '', '7', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('142', 'Energía', '4', '', '7', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('143', 'Conservación de los Recursos Naturales', '5', '', '7', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('144', 'El Universo', '6', '', '7', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('145', 'La Metodologia Cientifica', '7', '', '7', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('146', 'La colonia y la independencia en nuestro país', '1', '', '19', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('147', 'Los movimientos sociales en Colombia', '2', '', '19', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('148', 'Las normas, las leyes y la constitución', '3', '', '19', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('149', 'La diversidad étnica y cultural de Colombia', '4', '', '19', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('150', 'La Colombia que vivimos', '5', '', '19', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('151', 'El país que construimos', '6', '', '19', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('152', 'La importancia de la economía en nuestras vidas', '7', '', '19', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('153', 'Las decisiones importantes en nuestras vidas', '8', '', '19', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('154', '!Expresemonos con propiedad!', '1', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('155', 'El orden de las palabras', '2', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('156', 'El texto es más que las oraciones', '3', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('157', 'La información transforma la forma como nos comunicamos', '4', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('158', 'Entendamos y disfrutemos la literatura', '5', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('159', 'Palabras contextos y propósitos', '6', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('160', 'Escribamos cada ves mejor', '7', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('161', 'Los pictogramas', '8', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('162', 'Actividades libres', '9', '', '15', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('163', 'Nuevamente cómo varían magnitudes', '1', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('164', 'Algo más sobre fraccionarios', '2', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('165', 'Algoritmos de la multiplicacción y división', '3', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('166', 'Una nueva operación', '4', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('167', 'Conozcamos nuevas relaciones entre las figuras', '5', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('168', 'Algo más sobre los decimales', '6', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('169', 'Algo más sobre razones y proporciones', '7', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('170', 'Nuevamente sobre variacional', '8', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('171', 'Algo más sobre organización de datos y arreglos', '9', '', '14', '8', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('172', 'Relaciones consigo mismo', '1', '', '20', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('173', 'Tus relaciones con los demás', '2', '', '20', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('174', 'Ser honesto y tolerante', '3', '', '20', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('175', 'Ética ecológica, expresión y perdón', '4', '', '20', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('176', 'Aspectos generales de la educación física', '1', '', '17', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('177', 'Cuidar la vida', '2', '', '17', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('178', 'Técnicas de movimiento', '3', '', '17', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('179', 'La expresión corporal artistica', '4', '', '17', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('180', 'Entrada al mundo del lenguaje', '1', '', '15', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('181', 'Vivo mi lengua', '2', '', '15', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('182', 'Conozco mi lengua', '3', '', '15', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('183', 'Construir el mundo a través de palabras', '4', '', '15', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('184', 'Construyo Sistemas de números', '1', '', '14', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('185', 'Mido y Construyo', '2', '', '14', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('186', 'Proporcionalidad', '3', '', '14', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('187', 'Sistemas de datos', '4', '', '14', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('188', 'La Ciencia y los seres vivos', '1', '', '7', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('189', 'Conociendo los seres de la naturaleza', '2', '', '7', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('190', 'Los seres vivos y sus relaciones', '3', '', '7', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('191', 'El ambiente y los seres vivos', '4', '', '7', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('192', 'El ser humano y su entorno', '1', '', '19', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('193', '¿De qué manera el ser humano transforma el medio?', '2', '', '19', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('194', '¿Cómo se han transformado las estructuras de poder?', '3', '', '19', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('195', '¿Qué aprendemos de las sociedades de ayer y de hoy?', '4', '', '19', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('196', 'Vamos a danzar', '1', 'D', '18', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('197', 'La danza es un mundo', '2', 'D', '18', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('198', 'Descubramos el mundo de la música', '3', 'M', '18', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('199', 'Conozcamos la música del mundo', '4', 'M', '18', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('200', 'Títeres en escena', '5', 'T', '18', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('201', 'El mimo', '6', 'T', '18', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('202', 'A pintar, a crear y a jugar', '7', 'V', '18', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('203', 'Exploremos el espacio y el diseño', '8', 'V', '18', '9', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('204', 'La ciencia y la vida.', '1', '', '7', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('205', 'Los seres de la naturaleza.', '2', '', '7', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('206', 'La vida y el universo.', '3', '', '7', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('207', 'El ambiente.', '4', '', '7', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('208', 'El clima y su relación con el ser humano', '1', '', '19', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('209', 'Geografía física y humana de Europa América', '2', '', '19', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('210', 'Imperios en Europa', '3', '', '19', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('211', 'Imperios en América', '4', '', '19', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('212', 'Vamos a danzar', '1', 'D', '18', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('213', 'La danza es un mundo', '2', 'D', '18', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('214', 'Descubramos el mundo de la música', '3', 'M', '18', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('215', 'Conozcamos la música del mundo', '4', 'M', '18', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('216', 'Títeres en escena', '5', 'T', '18', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('217', 'El mimo', '6', 'T', '18', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('218', 'A pintar, a crear y a jugar', '7', 'V', '18', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('219', 'Exploremos el espacio y el diseño', '8', 'V', '18', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('220', 'Participación e inclusión social', '1', '', '20', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('221', 'Mediación, desarrollo y territorios para la articipación', '2', '', '20', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('222', 'Prevención de adicciones, Ley de Infancia y Adolescencia, y participación', '3', '', '20', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('223', 'Comunicación y concertación, mecanismos de participación, y la paz', '4', '', '20', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('224', 'Cómo responde mi cuerpo al ejercicio', '1', '', '17', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('225', 'El ser humano y su entorno Técnicas de movimiento en equipo: juegos', '2', '', '17', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('226', 'predeportivos de pelota', '3', '', '17', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('227', 'Influencia de la danza en la sociedad', '4', '', '17', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('228', 'Alistando el equipaje para recorrer mi lengua', '1', '', '15', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('229', 'Viajando hacia el mundo de la lengua y la literatura', '2', '', '15', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('230', 'Viviendo las estaciones de mi viaje por la lengua', '3', '', '15', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('231', 'Me bajo en esta estación, pero el viaje por la lengua continu28', '4', '', '15', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('232', 'El sistema de los números enteros', '1', '', '14', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('233', 'Construyo y Compruebo', '2', '', '14', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('234', 'Introducción al Álgebra', '3', '', '14', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('235', 'Estadística Descriptiva y Probabilidad', '4', '', '14', '10', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('236', 'Los seres vivos como organismos dinámicos', '1', '', '7', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('237', 'Cambios químicos en la materia, salud sexual y reproductiva', '2', '', '7', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('238', 'Los procesos físicos, químicos y biológicos y los seres vivos', '3', '', '7', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('239', 'La defensa de los organismos', '4', '', '7', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('240', 'Geografía', '1', '', '19', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('241', 'América Colonial', '2', '', '19', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('242', 'La época de las revoluciones', '3', '', '19', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('243', 'Colombia en el siglo XIX', '4', '', '19', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('244', 'Vamos a danzar', '1', 'D', '18', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('245', 'La danza es un mundo', '2', 'D', '18', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('246', 'Descubramos el mundo de la música', '3', 'M', '18', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('247', 'Conozcamos la música del mundo', '4', 'M', '18', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('248', 'Títeres en escena', '5', 'T', '18', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('249', 'El mimo', '6', 'T', '18', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('250', 'A pintar, a crear y a jugar', '7', 'V', '18', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('251', 'Exploremos el espacio y el diseño', '8', 'V', '18', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('252', 'Yo soy, teres, todos juntos somos', '1', '', '20', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('253', 'Viviendo y conviviendo', '2', '', '20', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('254', 'Me esfuerzo por comprender y comunicarme bien', '3', '', '20', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('255', 'Tengo derechos y asumo deberes', '4', '', '20', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('256', 'Actividad física en la vida cotidiana grado 8º', '1', '', '17', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('257', 'La gimnasia', '2', '', '17', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('258', 'Actividades deportivas de conjunto', '3', '', '17', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('259', 'La danza folclórica', '4', '', '17', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('260', 'La palabra hablada', '1', '', '15', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('261', 'La palabra narrada', '2', '', '15', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('262', 'Exponiendo se aprende', '3', '', '15', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('263', 'La palabra argumentada', '4', '', '15', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('264', 'Sistemas de los números racionales', '1', '', '14', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('265', 'Geometría', '2', '', '14', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('266', 'Álgebra', '3', '', '14', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('267', 'Estadística y probabilidad', '4', '', '14', '11', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('268', 'Características genéticas de los seres vivos', '1', '', '7', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('269', 'Los procesos de la evolución', '2', '', '7', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('270', 'Aspectos básicos de taxonomía', '3', '', '7', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('271', 'La energía del planeta y los procesos de adaptación', '4', '', '7', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('272', 'Imperialismo', '1', '', '19', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('273', 'Un mundo conflictivo entre 1930 y 1950', '2', '', '19', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('274', 'La tensión entre capitalismo y socialismo hasta la década de los 80', '3', '', '19', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('275', 'Transformaciones desde la década de los años 80', '4', '', '19', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('276', 'Vamos a danzar', '1', 'D', '18', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('277', 'La danza es un mundo', '2', 'D', '18', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('278', 'Descubramos el mundo de la música', '3', 'M', '18', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('279', 'Conozcamos la música del mundo', '4', 'M', '18', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('280', 'Títeres en escena', '5', 'T', '18', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('281', 'El mimo', '6', 'T', '18', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('282', 'A pintar, a crear y a jugar', '7', 'V', '18', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('283', 'Exploremos el espacio y el diseño', '8', 'V', '18', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('284', 'Me comunico responsablemente', '1', '', '20', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('285', 'Contribuyo en la construcción de una sociedad pacífica', '2', '', '20', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('286', 'Tomo decisiones responsables', '3', '', '20', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('287', 'Reclamo mis derechos y cumplo con mis deberes', '4', '', '20', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('288', 'Actividad física y salud', '1', '', '17', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('289', 'Deportes de conjunto', '2', '', '17', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('290', 'Manifestaciones recreativas', '3', '', '17', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('291', 'Coreografías de danza folclórica', '4', '', '17', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('292', 'Expresamos lo que somos', '1', '', '15', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('293', 'Expresamos ideas, saberes y sentimientos', '2', '', '15', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('294', 'Aprendemos hablando y escribiendo', '3', '', '15', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('295', 'Convencemos y nos convencen con buenos argumentos', '4', '', '15', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('296', 'Conjunto de los números reales', '1', '', '14', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('297', 'Geometría', '2', '', '14', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('298', 'Funciones: Lineal, cuadrática, exponencial y logarítmica, y sistemas lineales', '3', '', '14', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('299', 'Estadística', '4', '', '14', '12', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('300', 'El poder judicial', '1', null, '21', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2021-01-25 18:27:23');
-INSERT INTO `tema` VALUES ('301', 'El ministerio público', '2', '', '21', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('302', 'Administración de justicia', '3', '', '21', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('303', 'El debido proceso', '4', '', '21', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('304', 'Relaciones de masas en las reacciones químicas', '1', '', '10', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('305', 'Reacciones acuosas', '2', '', '10', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('306', 'Gases y sus leyes', '3', '', '10', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('307', 'Mundo físico', '1', '', '9', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('308', 'Magnitudes física', '2', '', '9', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('309', 'Cinematica del movimiento retilineo', '3', '', '9', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('310', 'Cinematica del movimiento en el plano', '4', '', '9', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('311', 'Dinamica', '5', '', '9', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('312', 'Trabajo y energía', '6', '', '9', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('313', 'Estatica', '7', '', '9', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('314', 'Ángulos', '1', '', '14', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('315', 'Triángulos', '2', '', '14', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('316', 'Solución de Triángulos rectángulos', '3', '', '14', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('317', 'Concepto de: Lenguaje, lengua, dialecto', '1', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('318', 'Origen y evolución de la lengua española.', '2', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('319', 'Literatura española del medioevo.', '3', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('320', 'Tipología textual.', '4', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('321', 'Literatura del siglo de oro', '5', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('322', 'El informe escrito, la reseña, el ensayo', '6', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('323', 'Novela de la posguerra, autores en el exilio,', '7', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('324', 'Novela contemporánea', '8', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('325', 'Figuras literarias', '9', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('326', 'Arcaísmos, neologismos, Regionalismos', '10', '', '15', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('327', 'Nociones preliminares de filosofia', '1', '', '22', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('328', 'Filosofia universal', '2', '', '22', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('329', 'Cosmologia', '3', '', '22', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('330', 'La psicologia', '4', '', '22', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('331', 'Antropologia', '5', '', '22', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('332', 'Epistemologia', '6', '', '22', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('333', 'Gnoseologia Qg Unidad: La politica', '7', '', '22', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('334', 'lntrodución a las marcas de diseño grafico', '1', '', '23', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('335', 'Imagen corporativa', '2', '', '23', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('336', 'Historia del diseño de marcas', '3', '', '23', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('337', 'lntrodución al CorelDraw', '4', '', '23', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('338', 'lntrodución a adobe lllustrator', '5', '', '23', '13', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('339', 'El derecho', '1', '', '21', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('340', 'Derechos humanos', '2', '', '21', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('341', 'Derecho internacional humanitario', '3', '', '21', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('342', 'La paz armada', '4', '', '21', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('343', 'Los tratados de paz', '5', '', '21', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('344', 'verificación y evaluacion de los tratados de paz', '6', '', '21', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('345', 'El Átomo de carbono', '1', '', '10', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('346', 'Formulas químicas en alcanos', '2', '', '10', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('347', 'Formulas químicas en alquenos', '3', '', '10', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('348', 'Formulas químicas en aluinos', '4', '', '10', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('349', 'Isomería', '5', '', '10', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('350', 'Aromaticos', '6', '', '10', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('351', 'Alcoholes y fenoles', '7', '', '10', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('352', 'Calor y temperatura', '1', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('353', 'Mecanica de fluidos', '2', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('354', 'Carga electrica y Campo electrico', '3', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('355', 'Corriente electrica', '4', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('356', 'Magnetismo', '5', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('357', 'Optica y sonido', '6', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('358', 'Movimiento ondulatorio', '7', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('359', 'Optica y radiación electromagnetica', '8', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('360', 'Épocas literarias', '1', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('361', 'Características de la comunicación humana', '2', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('362', 'Medios de comunicación y otros medios simbólicos', '3', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('363', 'Literatura del barroco, neoclasicismo, romanticismo y realismo.', '4', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('364', 'Texto científico-técnico', '5', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('365', 'Escritura de palabras compuestas, derivadas y acrónimos', '6', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('366', 'Literatura simbolismo y vanguardias', '7', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('367', 'Lengua materna y segundas lenguas', '8', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('368', 'El ensayo', '9', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('369', 'La literatura contemporánea.', '10', '', '15', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('370', 'Folosofia medieval y del renacimiento', '1', '', '22', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('371', 'Filosofia moderna', '2', '', '22', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('372', 'Filosofia contemporanea', '3', '', '22', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('373', 'lntrodución a Photoshop', '1', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('374', 'Conceptos básicos de Photoshop', '2', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('375', 'Retoque fotografico', '3', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('376', 'Creación de animaciones en photoshop', '4', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('377', 'Conceptos básicos y entorno de flash', '5', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('378', 'Clip de película. Trabajar con filtros', '6', '', '9', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('379', 'Desigualdades e Inecuaciones e Intervalos', '1', '', '14', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('380', 'Teoría de Funciones', '2', '', '14', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('381', 'Limite y Continuidad', '3', '', '14', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-INSERT INTO `tema` VALUES ('382', 'Sucesiones y sumatoria', '4', '', '14', '14', '1', '1', '1', '1', '2020-12-22 10:40:14', '2020-12-22 10:40:14');
-
--- ----------------------------
--- Table structure for tipo_accion
--- ----------------------------
-DROP TABLE IF EXISTS `tipo_accion`;
-CREATE TABLE `tipo_accion` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nb_tipo_accion` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tx_icono` varchar(35) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tx_color` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tx_observaciones` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `id_status` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- ----------------------------
--- Records of tipo_accion
--- ----------------------------
-INSERT INTO `tipo_accion` VALUES ('1', 'Video', 'mdi-play-circle', 'pink', null, '1', '1', '2020-10-05 17:02:32', '2020-10-05 17:06:56');
-INSERT INTO `tipo_accion` VALUES ('2', 'Audio', 'mdi-music-circle', 'deep-orange', null, '1', '1', '2020-10-05 17:04:55', '2020-10-05 17:07:23');
-INSERT INTO `tipo_accion` VALUES ('3', 'Enlace', 'mdi-earth', 'blue', null, '1', '1', '2020-10-05 17:05:53', '2020-10-05 17:05:53');
-INSERT INTO `tipo_accion` VALUES ('4', 'Lectura', 'mdi-library', 'indigo', null, '1', '1', '2020-10-05 17:08:37', '2020-10-05 17:24:26');
-
--- ----------------------------
--- Table structure for tipo_actividad
--- ----------------------------
-DROP TABLE IF EXISTS `tipo_actividad`;
-CREATE TABLE `tipo_actividad` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nb_tipo_actividad` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tx_icono` varchar(35) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tx_color` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tx_observaciones` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `id_status` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- ----------------------------
--- Records of tipo_actividad
--- ----------------------------
-INSERT INTO `tipo_actividad` VALUES ('1', 'Actividad', 'mdi-rocket-launch', 'amber', null, '1', '1', '2020-10-05 17:36:08', '2020-10-05 17:36:08');
-INSERT INTO `tipo_actividad` VALUES ('2', 'Video', 'mdi-play-box-multiple', 'red', null, '1', '1', '2020-10-05 17:37:04', '2020-10-05 17:37:04');
-INSERT INTO `tipo_actividad` VALUES ('3', 'Audio', 'mdi-music-box-multiple', 'orange', null, '1', '1', '2020-10-05 17:37:46', '2020-10-05 17:37:46');
-INSERT INTO `tipo_actividad` VALUES ('4', 'Enlace', 'mdi-earth', 'blue', null, '1', '1', '2020-10-13 10:03:20', '2020-10-13 10:03:23');
+INSERT INTO `tema` VALUES ('1', 'Los Sentidos', '1', null, '7', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2021-01-25 23:06:23');
+INSERT INTO `tema` VALUES ('2', 'Luz y Sonido', '2', '', '7', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('3', 'EL Cuerpo Humano', '3', '', '7', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('4', 'La Materia', '4', '', '7', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('5', 'Los Recursos Naturales', '5', '', '7', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('6', 'Viajes por nuestro cuerpo, forma de ser, familia y región', '1', null, '19', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2021-01-24 02:00:40');
+INSERT INTO `tema` VALUES ('7', '¿Quíen soy yo?', '2', '', '19', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('8', '¿Cómo es mi cuerpo?', '3', '', '19', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('9', '¿Cómo mi cuerpo me hace único?', '4', '', '19', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('10', '¿Cómo es mi forma de ser?', '5', '', '19', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('11', '¿Qué es la familia?', '6', '', '19', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('12', '¿Cómo es tu familia?', '7', '', '19', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('13', '¿Cómo debe ser la familia?', '8', '', '19', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('14', '¿Las familias son diversas?', '9', '', '19', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('15', '¿Qué es el cuidado?', '10', '', '19', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('16', '¿Quiénes son mis vecinos?', '11', '', '19', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('17', '¿Qué hacen mis vecinos?', '12', '', '19', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('18', '¿Las ocupaciones son cosas de hombes y mujeres?', '13', '', '19', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('19', '¿Cómo es mi región?', '14', '', '19', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('20', '¿Por qué es importante cuidar la naturaleza?', '15', '', '19', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('21', '¿Cómo es la gente de mi región?', '16', '', '19', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('22', 'Las vocales', '1', '', '15', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('23', 'Las consonantes: m, p, s, 1, t, silabas y sus inversos', '2', '', '15', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('24', 'Lectura e intrepretación de textos', '3', '', '15', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('25', 'Consonantes: n, d, c, f, g, b, j, r, y sus inversos.', '4', '', '15', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('26', 'Lectura de diferentes textos narrativos: cuentos y fábulas', '5', '', '15', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('27', 'El lenguaje de los gestos', '6', '', '15', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('28', 'Letras h, ñ, v, y, z, x, w, q, k', '7', '', '15', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('29', 'La conversación', '8', '', '15', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('30', 'Hagamos cuenta con números menores', '1', '', '14', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('31', 'Para contar hagamos grupos de 10', '2', '', '14', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('32', 'Hagamos cuenta', '3', '', '14', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('33', 'Hagamos cuenta sin dibujar pelotas y puntos', '4', '', '14', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('34', 'Hacia la idea de longitud', '5', '', '14', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('35', 'cálculos y escrituras hasta 99', '6', '', '14', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('36', 'Introducción a la posicionalidad', '7', '', '14', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('37', 'Introducción al número en rango O - 999', '8', '', '14', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('38', 'Introducción a la simetría', '9', '', '14', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('39', 'Algo más sobre medir', '10', '', '14', '4', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('40', 'Seres de la Naturaleza', '1', '', '7', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('41', 'Los alimentos', '2', '', '7', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('42', '¿cuáles son los ciclos de la vida?', '3', '', '7', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('43', 'Movimiento de los Seres Vivos', '4', '', '7', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('44', 'Relaciones de los Seres Vivos', '5', '', '7', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('45', 'Propiedades de la Materia', '6', '', '7', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('46', 'Recursos Naturales', '7', '', '7', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('47', 'La Tierra', '8', '', '7', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('48', '¿Quién soy yo?', '1', '', '19', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('49', '¿Quiénes son las personas con las que convivimos?', '2', '', '19', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('50', 'Nuestro entorno y el municipio', '3', '', '19', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('51', 'El paisaje geografico y la vida de las comunidades', '4', '', '19', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('52', 'Las comunidades y su historia', '5', '', '19', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('53', 'Juguemos con las palabras', '1', '', '15', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('54', '¿Para qué sirven las palabras?', '2', '', '15', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('55', 'Lo que nombran las palabras', '3', '', '15', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('56', 'Aprender jugando', '4', '', '15', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('57', 'Aprender haciendo', '5', '', '15', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('58', 'Aprender creando', '6', '', '15', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('59', 'El diálogo', '7', '', '15', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('60', '¿mensajes sin palabras?', '8', '', '15', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('61', 'La biblioteca', '9', '', '15', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('62', 'Más sobre los números hasta 999', '1', '', '14', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('63', 'Algunos sólidos y figuras planas', '2', '', '14', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('64', 'Más sobre medidas de longitud', '3', '', '14', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('65', 'Hacia la idea de longitud', '4', '', '14', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('66', 'Cálculos y escrituras hasta 99', '5', '', '14', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('67', 'Introducción a la posisionalidad', '6', '', '14', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('68', 'Introducción al número en rango del O - 999', '7', '', '14', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('69', 'Introducción a la simetría', '8', '', '14', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('70', 'Algo más sobre medir', '9', '', '14', '5', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('71', 'Clasificación de los Seres Vivos', '1', '', '7', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('72', 'La Alimentación en los Seres Vivos', '2', '', '7', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('73', 'Electricidad y Magnetismo', '3', '', '7', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('74', 'Cambios en el Ser Humano', '4', '', '7', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('75', 'Movimiento del Ser Humano', '5', '', '7', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('76', 'Relación de los Organismos con el Ambiente', '6', '', '7', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('77', 'Los Cambios de la Materia', '7', '', '7', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('78', 'El Ciclo del Agua y la Formación del Suelo', '8', '', '7', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('79', 'El Sistema Sol-Tierra-Luna', '9', '', '7', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('80', 'El rio del tiempo', '1', '', '19', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('81', '¿Cómo orientarnos y ubicarnos geograficamente?', '2', '', '19', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('82', 'Colombia y sus departamentos', '3', '', '19', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('83', 'La cultura y yo', '4', '', '19', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('84', 'Nosotros y los otros', '5', '', '19', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('85', 'Convivir juntos', '6', '', '19', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('86', 'Vamos a relactar', '1', '', '15', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('87', 'Vamos a describir', '2', '', '15', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('88', 'Vamos a analizar', '3', '', '15', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('89', 'EL significado de las palabras', '4', '', '15', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('90', 'Algunos secretos de las palabras', '5', '', '15', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('91', 'Las palabras y las personas', '6', '', '15', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('92', 'habitemos la escena', '7', '', '15', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('93', 'habitemos la letra', '8', '', '15', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('94', 'habitemos la imagen', '9', '', '15', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('95', 'Algo más sobre las operaciones en adicción y sustracción', '1', '', '14', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('96', 'La operación multiplicación y relaciones multiplicativas', '2', '', '14', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('97', 'Otros sistemas de ubicación', '3', '', '14', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('98', 'Algo sobre clasificaciones', '4', '', '14', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('99', 'Arreglos y conteos', '5', '', '14', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('100', 'Nuevamente el sistema de númeración 7', '6', '', '14', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('101', 'Avanzando en lo multiplicativo', '7', '', '14', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('102', 'Avanzando en lo espacial', '8', '', '14', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('103', 'Algo más sobre perimetros y áreas', '9', '', '14', '6', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('104', 'Los Reinos de la Naturales', '1', '', '7', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('105', 'Nutrición y Salud', '2', '', '7', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('106', 'Reproducción en los Seres Vivos', '3', '', '7', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('107', 'Especie y Reproducción', '4', '', '7', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('108', 'Movimiento de los Cuerpos', '5', '', '7', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('109', 'Elementos, Compuesto y Mezclas', '6', '', '7', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('110', 'Contaminación', '7', '', '7', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('111', 'La Tierra y el Sistema Solar', '8', '', '7', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('112', 'El largo camino de la humanidad', '1', '', '19', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('113', 'El encuentro entre dos mundos', '2', '', '19', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('114', 'Los españoles conquistaron nuestro país', '3', '', '19', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('115', 'La diversidad étnica en Colombia', '4', '', '19', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('116', 'El relieve y el clima de Colombia', '5', '', '19', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('117', 'De viajes por las regiones naturales de Colombia y el mundo', '6', '', '19', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('118', 'Los conflictos y los dilemas en nuestras vidas', '7', '', '19', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('119', 'Los ciudadanos y las instituciones', '8', '', '19', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('120', 'A divertirse en serio', '1', '', '15', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('121', 'El diseño y las palabras', '2', '', '15', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('122', 'Secretos de la escritura', '3', '', '15', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('123', 'Las palabras y los seres humanos', '4', '', '15', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('124', 'Los eventos y el significado', '5', '', '15', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('125', 'Las relaciones y el significado', '6', '', '15', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('126', 'Las personas se relacionan usando las palabras', '7', '', '15', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('127', 'Las palabras se relacionan entre sí', '8', '', '15', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('128', 'Las palabras se relacionan con las imágenes', '9', '', '15', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('129', 'Nuevamente el sistema decimal de numeración', '1', '', '14', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('130', 'procedimientos de multiplicar y dividir', '2', '', '14', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('131', 'Relaciones multiplicativas y fraccionarios', '3', '', '14', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('132', 'Profundicemos sobre algunas propiedades de las figuras', '4', '', '14', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('133', 'Usemos los decimales', '5', '', '14', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('134', 'Perímetros, áreas y volúmenes', '6', '', '14', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('135', 'Algo más sobre arreglos', '7', '', '14', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('136', 'Algo más sobre variación de magnitudes', '8', '', '14', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('137', 'Algo más sobre las figuras', '9', '', '14', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('138', 'Medidas de ángulos', '10', '', '14', '7', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('139', 'Estructura de los Seres Vivos', '1', '', '7', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('140', '¿Cómo Funciona el Cuerpo Humano?', '2', '', '7', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('141', 'Los Ecosistemas', '3', '', '7', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('142', 'Energía', '4', '', '7', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('143', 'Conservación de los Recursos Naturales', '5', '', '7', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('144', 'El Universo', '6', '', '7', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('145', 'La Metodologia Cientifica', '7', '', '7', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('146', 'La colonia y la independencia en nuestro país', '1', '', '19', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('147', 'Los movimientos sociales en Colombia', '2', '', '19', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('148', 'Las normas, las leyes y la constitución', '3', '', '19', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('149', 'La diversidad étnica y cultural de Colombia', '4', '', '19', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('150', 'La Colombia que vivimos', '5', '', '19', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('151', 'El país que construimos', '6', '', '19', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('152', 'La importancia de la economía en nuestras vidas', '7', '', '19', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('153', 'Las decisiones importantes en nuestras vidas', '8', '', '19', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('154', '!Expresemonos con propiedad!', '1', '', '15', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('155', 'El orden de las palabras', '2', '', '15', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('156', 'El texto es más que las oraciones', '3', '', '15', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('157', 'La información transforma la forma como nos comunicamos', '4', '', '15', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('158', 'Entendamos y disfrutemos la literatura', '5', '', '15', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('159', 'Palabras contextos y propósitos', '6', '', '15', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('160', 'Escribamos cada ves mejor', '7', '', '15', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('161', 'Los pictogramas', '8', '', '15', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('162', 'Actividades libres', '9', '', '15', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('163', 'Nuevamente cómo varían magnitudes', '1', '', '14', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('164', 'Algo más sobre fraccionarios', '2', '', '14', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('165', 'Algoritmos de la multiplicacción y división', '3', '', '14', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('166', 'Una nueva operación', '4', '', '14', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('167', 'Conozcamos nuevas relaciones entre las figuras', '5', '', '14', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('168', 'Algo más sobre los decimales', '6', '', '14', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('169', 'Algo más sobre razones y proporciones', '7', '', '14', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('170', 'Nuevamente sobre variacional', '8', '', '14', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('171', 'Algo más sobre organización de datos y arreglos', '9', '', '14', '8', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('172', 'Relaciones consigo mismo', '1', '', '20', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('173', 'Tus relaciones con los demás', '2', '', '20', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('174', 'Ser honesto y tolerante', '3', '', '20', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('175', 'Ética ecológica, expresión y perdón', '4', '', '20', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('176', 'Aspectos generales de la educación física', '1', '', '17', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('177', 'Cuidar la vida', '2', '', '17', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('178', 'Técnicas de movimiento', '3', '', '17', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('179', 'La expresión corporal artistica', '4', '', '17', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('180', 'Entrada al mundo del lenguaje', '1', '', '15', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('181', 'Vivo mi lengua', '2', '', '15', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('182', 'Conozco mi lengua', '3', '', '15', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('183', 'Construir el mundo a través de palabras', '4', '', '15', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('184', 'Construyo Sistemas de números', '1', '', '14', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('185', 'Mido y Construyo', '2', '', '14', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('186', 'Proporcionalidad', '3', '', '14', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('187', 'Sistemas de datos', '4', '', '14', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('188', 'La Ciencia y los seres vivos', '1', '', '7', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('189', 'Conociendo los seres de la naturaleza', '2', '', '7', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('190', 'Los seres vivos y sus relaciones', '3', '', '7', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('191', 'El ambiente y los seres vivos', '4', '', '7', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('192', 'El ser humano y su entorno', '1', '', '19', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('193', '¿De qué manera el ser humano transforma el medio?', '2', '', '19', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('194', '¿Cómo se han transformado las estructuras de poder?', '3', '', '19', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('195', '¿Qué aprendemos de las sociedades de ayer y de hoy?', '4', '', '19', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('196', 'Vamos a danzar', '1', 'D', '18', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('197', 'La danza es un mundo', '2', 'D', '18', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('198', 'Descubramos el mundo de la música', '3', 'M', '18', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('199', 'Conozcamos la música del mundo', '4', 'M', '18', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('200', 'Títeres en escena', '5', 'T', '18', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('201', 'El mimo', '6', 'T', '18', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('202', 'A pintar, a crear y a jugar', '7', 'V', '18', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('203', 'Exploremos el espacio y el diseño', '8', 'V', '18', '9', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('204', 'La ciencia y la vida.', '1', '', '7', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('205', 'Los seres de la naturaleza.', '2', '', '7', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('206', 'La vida y el universo.', '3', '', '7', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('207', 'El ambiente.', '4', '', '7', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('208', 'El clima y su relación con el ser humano', '1', '', '19', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('209', 'Geografía física y humana de Europa América', '2', '', '19', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('210', 'Imperios en Europa', '3', '', '19', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('211', 'Imperios en América', '4', '', '19', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('212', 'Vamos a danzar', '1', 'D', '18', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('213', 'La danza es un mundo', '2', 'D', '18', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('214', 'Descubramos el mundo de la música', '3', 'M', '18', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('215', 'Conozcamos la música del mundo', '4', 'M', '18', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('216', 'Títeres en escena', '5', 'T', '18', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('217', 'El mimo', '6', 'T', '18', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('218', 'A pintar, a crear y a jugar', '7', 'V', '18', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('219', 'Exploremos el espacio y el diseño', '8', 'V', '18', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('220', 'Participación e inclusión social', '1', '', '20', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('221', 'Mediación, desarrollo y territorios para la articipación', '2', '', '20', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('222', 'Prevención de adicciones, Ley de Infancia y Adolescencia, y participación', '3', '', '20', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('223', 'Comunicación y concertación, mecanismos de participación, y la paz', '4', '', '20', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('224', 'Cómo responde mi cuerpo al ejercicio', '1', '', '17', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('225', 'El ser humano y su entorno Técnicas de movimiento en equipo: juegos', '2', '', '17', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('226', 'predeportivos de pelota', '3', '', '17', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('227', 'Influencia de la danza en la sociedad', '4', '', '17', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('228', 'Alistando el equipaje para recorrer mi lengua', '1', '', '15', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('229', 'Viajando hacia el mundo de la lengua y la literatura', '2', '', '15', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('230', 'Viviendo las estaciones de mi viaje por la lengua', '3', '', '15', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('231', 'Me bajo en esta estación, pero el viaje por la lengua continu28', '4', '', '15', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('232', 'El sistema de los números enteros', '1', '', '14', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('233', 'Construyo y Compruebo', '2', '', '14', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('234', 'Introducción al Álgebra', '3', '', '14', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('235', 'Estadística Descriptiva y Probabilidad', '4', '', '14', '10', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('236', 'Los seres vivos como organismos dinámicos', '1', '', '7', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('237', 'Cambios químicos en la materia, salud sexual y reproductiva', '2', '', '7', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('238', 'Los procesos físicos, químicos y biológicos y los seres vivos', '3', '', '7', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('239', 'La defensa de los organismos', '4', '', '7', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('240', 'Geografía', '1', '', '19', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('241', 'América Colonial', '2', '', '19', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('242', 'La época de las revoluciones', '3', '', '19', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('243', 'Colombia en el siglo XIX', '4', '', '19', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('244', 'Vamos a danzar', '1', 'D', '18', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('245', 'La danza es un mundo', '2', 'D', '18', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('246', 'Descubramos el mundo de la música', '3', 'M', '18', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('247', 'Conozcamos la música del mundo', '4', 'M', '18', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('248', 'Títeres en escena', '5', 'T', '18', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('249', 'El mimo', '6', 'T', '18', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('250', 'A pintar, a crear y a jugar', '7', 'V', '18', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('251', 'Exploremos el espacio y el diseño', '8', 'V', '18', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('252', 'Yo soy, teres, todos juntos somos', '1', '', '20', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('253', 'Viviendo y conviviendo', '2', '', '20', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('254', 'Me esfuerzo por comprender y comunicarme bien', '3', '', '20', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('255', 'Tengo derechos y asumo deberes', '4', '', '20', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('256', 'Actividad física en la vida cotidiana grado 8º', '1', '', '17', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('257', 'La gimnasia', '2', '', '17', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('258', 'Actividades deportivas de conjunto', '3', '', '17', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('259', 'La danza folclórica', '4', '', '17', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('260', 'La palabra hablada', '1', '', '15', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('261', 'La palabra narrada', '2', '', '15', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('262', 'Exponiendo se aprende', '3', '', '15', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('263', 'La palabra argumentada', '4', '', '15', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('264', 'Sistemas de los números racionales', '1', '', '14', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('265', 'Geometría', '2', '', '14', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('266', 'Álgebra', '3', '', '14', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('267', 'Estadística y probabilidad', '4', '', '14', '11', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('268', 'Características genéticas de los seres vivos', '1', '', '7', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('269', 'Los procesos de la evolución', '2', '', '7', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('270', 'Aspectos básicos de taxonomía', '3', '', '7', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('271', 'La energía del planeta y los procesos de adaptación', '4', '', '7', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('272', 'Imperialismo', '1', '', '19', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('273', 'Un mundo conflictivo entre 1930 y 1950', '2', '', '19', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('274', 'La tensión entre capitalismo y socialismo hasta la década de los 80', '3', '', '19', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('275', 'Transformaciones desde la década de los años 80', '4', '', '19', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('276', 'Vamos a danzar', '1', 'D', '18', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('277', 'La danza es un mundo', '2', 'D', '18', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('278', 'Descubramos el mundo de la música', '3', 'M', '18', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('279', 'Conozcamos la música del mundo', '4', 'M', '18', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('280', 'Títeres en escena', '5', 'T', '18', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('281', 'El mimo', '6', 'T', '18', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('282', 'A pintar, a crear y a jugar', '7', 'V', '18', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('283', 'Exploremos el espacio y el diseño', '8', 'V', '18', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('284', 'Me comunico responsablemente', '1', '', '20', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('285', 'Contribuyo en la construcción de una sociedad pacífica', '2', '', '20', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('286', 'Tomo decisiones responsables', '3', '', '20', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('287', 'Reclamo mis derechos y cumplo con mis deberes', '4', '', '20', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('288', 'Actividad física y salud', '1', '', '17', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('289', 'Deportes de conjunto', '2', '', '17', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('290', 'Manifestaciones recreativas', '3', '', '17', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('291', 'Coreografías de danza folclórica', '4', '', '17', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('292', 'Expresamos lo que somos', '1', '', '15', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('293', 'Expresamos ideas, saberes y sentimientos', '2', '', '15', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('294', 'Aprendemos hablando y escribiendo', '3', '', '15', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('295', 'Convencemos y nos convencen con buenos argumentos', '4', '', '15', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('296', 'Conjunto de los números reales', '1', '', '14', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('297', 'Geometría', '2', '', '14', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('298', 'Funciones: Lineal, cuadrática, exponencial y logarítmica, y sistemas lineales', '3', '', '14', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('299', 'Estadística', '4', '', '14', '12', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('300', 'El poder judicial', '1', null, '21', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2021-01-26 01:27:23');
+INSERT INTO `tema` VALUES ('301', 'El ministerio público', '2', '', '21', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('302', 'Administración de justicia', '3', '', '21', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('303', 'El debido proceso', '4', '', '21', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('304', 'Relaciones de masas en las reacciones químicas', '1', '', '10', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('305', 'Reacciones acuosas', '2', '', '10', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('306', 'Gases y sus leyes', '3', '', '10', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('307', 'Mundo físico', '1', '', '9', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('308', 'Magnitudes física', '2', '', '9', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('309', 'Cinematica del movimiento retilineo', '3', '', '9', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('310', 'Cinematica del movimiento en el plano', '4', '', '9', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('311', 'Dinamica', '5', '', '9', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('312', 'Trabajo y energía', '6', '', '9', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('313', 'Estatica', '7', '', '9', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('314', 'Ángulos', '1', '', '14', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('315', 'Triángulos', '2', '', '14', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('316', 'Solución de Triángulos rectángulos', '3', '', '14', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('317', 'Concepto de: Lenguaje, lengua, dialecto', '1', '', '15', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('318', 'Origen y evolución de la lengua española.', '2', '', '15', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('319', 'Literatura española del medioevo.', '3', '', '15', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('320', 'Tipología textual.', '4', '', '15', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('321', 'Literatura del siglo de oro', '5', '', '15', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('322', 'El informe escrito, la reseña, el ensayo', '6', '', '15', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('323', 'Novela de la posguerra, autores en el exilio,', '7', '', '15', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('324', 'Novela contemporánea', '8', '', '15', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('325', 'Figuras literarias', '9', '', '15', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('326', 'Arcaísmos, neologismos, Regionalismos', '10', '', '15', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('327', 'Nociones preliminares de filosofia', '1', '', '22', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('328', 'Filosofia universal', '2', '', '22', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('329', 'Cosmologia', '3', '', '22', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('330', 'La psicologia', '4', '', '22', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('331', 'Antropologia', '5', '', '22', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('332', 'Epistemologia', '6', '', '22', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('333', 'Gnoseologia Qg Unidad: La politica', '7', '', '22', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('334', 'lntrodución a las marcas de diseño grafico', '1', '', '23', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('335', 'Imagen corporativa', '2', '', '23', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('336', 'Historia del diseño de marcas', '3', '', '23', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('337', 'lntrodución al CorelDraw', '4', '', '23', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('338', 'lntrodución a adobe lllustrator', '5', '', '23', '13', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('339', 'El derecho', '1', '', '21', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('340', 'Derechos humanos', '2', '', '21', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('341', 'Derecho internacional humanitario', '3', '', '21', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('342', 'La paz armada', '4', '', '21', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('343', 'Los tratados de paz', '5', '', '21', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('344', 'verificación y evaluacion de los tratados de paz', '6', '', '21', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('345', 'El Átomo de carbono', '1', '', '10', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('346', 'Formulas químicas en alcanos', '2', '', '10', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('347', 'Formulas químicas en alquenos', '3', '', '10', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('348', 'Formulas químicas en aluinos', '4', '', '10', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('349', 'Isomería', '5', '', '10', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('350', 'Aromaticos', '6', '', '10', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('351', 'Alcoholes y fenoles', '7', '', '10', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('352', 'Calor y temperatura', '1', '', '9', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('353', 'Mecanica de fluidos', '2', '', '9', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('354', 'Carga electrica y Campo electrico', '3', '', '9', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('355', 'Corriente electrica', '4', '', '9', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('356', 'Magnetismo', '5', '', '9', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('357', 'Optica y sonido', '6', '', '9', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('358', 'Movimiento ondulatorio', '7', '', '9', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('359', 'Optica y radiación electromagnetica', '8', '', '9', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('360', 'Épocas literarias', '1', '', '15', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('361', 'Características de la comunicación humana', '2', '', '15', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('362', 'Medios de comunicación y otros medios simbólicos', '3', '', '15', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('363', 'Literatura del barroco, neoclasicismo, romanticismo y realismo.', '4', '', '15', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('364', 'Texto científico-técnico', '5', '', '15', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('365', 'Escritura de palabras compuestas, derivadas y acrónimos', '6', '', '15', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('366', 'Literatura simbolismo y vanguardias', '7', '', '15', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('367', 'Lengua materna y segundas lenguas', '8', '', '15', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('368', 'El ensayo', '9', '', '15', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('369', 'La literatura contemporánea.', '10', '', '15', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('370', 'Folosofia medieval y del renacimiento', '1', '', '22', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('371', 'Filosofia moderna', '2', '', '22', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('372', 'Filosofia contemporanea', '3', '', '22', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('373', 'lntrodución a Photoshop', '1', '', '9', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('374', 'Conceptos básicos de Photoshop', '2', '', '9', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('375', 'Retoque fotografico', '3', '', '9', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('376', 'Creación de animaciones en photoshop', '4', '', '9', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('377', 'Conceptos básicos y entorno de flash', '5', '', '9', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('378', 'Clip de película. Trabajar con filtros', '6', '', '9', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('379', 'Desigualdades e Inecuaciones e Intervalos', '1', '', '14', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('380', 'Teoría de Funciones', '2', '', '14', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('381', 'Limite y Continuidad', '3', '', '14', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
+INSERT INTO `tema` VALUES ('382', 'Sucesiones y sumatoria', '4', '', '14', '14', '1', '1', '1', '1', '2020-12-22 17:40:14', '2020-12-22 17:40:14');
 
 -- ----------------------------
 -- Table structure for tipo_agenda
@@ -7546,35 +7497,6 @@ INSERT INTO `tipo_archivo` VALUES ('10', 'Recurso-Guias', 'recurso', 'recurso-gu
 INSERT INTO `tipo_archivo` VALUES ('11', 'Tarea', 'tarea', 'tarea', '/storage/tarea/', 'tarea', null, '1', '1', '2020-09-07 09:30:13', '2020-09-07 09:30:16');
 INSERT INTO `tipo_archivo` VALUES ('12', 'Libro', 'libro', 'libro', '/storage/libro/', 'libro', null, '1', '1', '2020-10-06 09:52:31', '2020-10-06 09:52:35');
 INSERT INTO `tipo_archivo` VALUES ('13', 'Tarea-Alumno', 'evaluacion_alumno', 'tarea-alumno', '/storage/tarea/alumno/', 'tarea', null, '1', '1', '2020-11-13 21:52:59', '2020-11-13 21:53:05');
-
--- ----------------------------
--- Table structure for tipo_asignacion
--- ----------------------------
-DROP TABLE IF EXISTS `tipo_asignacion`;
-CREATE TABLE `tipo_asignacion` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nb_tipo_asignacion` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tx_icono` varchar(35) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tx_color` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tx_origen` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tx_criterio` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `nu_tiempo` int(4) DEFAULT 0,
-  `tx_observaciones` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `id_status` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- ----------------------------
--- Records of tipo_asignacion
--- ----------------------------
-INSERT INTO `tipo_asignacion` VALUES ('1', 'actividad', 'mdi-rocket-launch', 'amber', 'actividad', 'competar', '0', null, '1', '1', '2020-10-05 17:36:08', '2020-10-05 17:36:08');
-INSERT INTO `tipo_asignacion` VALUES ('2', 'video', 'mdi-play-box-multiple', 'red', 'enlace', 'tiempo', '10', null, '1', '1', '2020-10-05 17:37:04', '2020-10-05 17:37:04');
-INSERT INTO `tipo_asignacion` VALUES ('3', 'audio', 'mdi-music-box-multiple', 'orange', 'recurso', 'tiempo', '10', null, '1', '1', '2020-10-05 17:37:46', '2020-10-05 17:37:46');
-INSERT INTO `tipo_asignacion` VALUES ('4', 'enlace', 'mdi-earth', 'blue', 'enlace', 'tiempo', '10', null, '1', '1', '2020-10-13 10:03:20', '2020-10-13 10:03:23');
-INSERT INTO `tipo_asignacion` VALUES ('5', 'lectura', 'mdi-library', 'purple', 'recurso', 'tiempo', '10', null, '1', '1', '2020-10-13 16:08:36', '2020-10-13 16:08:39');
 
 -- ----------------------------
 -- Table structure for tipo_calificacion
@@ -7704,7 +7626,7 @@ CREATE TABLE `tipo_directiva` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of tipo_directiva
@@ -7713,6 +7635,7 @@ INSERT INTO `tipo_directiva` VALUES ('1', 'Junta Directiva', null, '1', '1', '20
 INSERT INTO `tipo_directiva` VALUES ('2', 'Asociacion de Padres', null, '1', '1', '2020-05-08 19:02:44', '2020-05-08 19:02:44');
 INSERT INTO `tipo_directiva` VALUES ('3', 'Administrativo', null, '1', '1', '2020-05-08 19:03:04', '2020-05-08 19:03:04');
 INSERT INTO `tipo_directiva` VALUES ('4', 'Otros', null, '1', '1', '2020-05-08 19:03:14', '2020-05-08 19:03:14');
+INSERT INTO `tipo_directiva` VALUES ('5', 'Otra  info', 'fdsfsf', '1', '1', '2021-02-02 21:01:10', '2021-02-02 21:01:10');
 
 -- ----------------------------
 -- Table structure for tipo_documento
@@ -8062,11 +7985,11 @@ CREATE TABLE `tipo_tarea` (
 -- ----------------------------
 -- Records of tipo_tarea
 -- ----------------------------
-INSERT INTO `tipo_tarea` VALUES ('1', 'Cuadro Comparativo', null, null, null, '1', '1', '2020-11-13 01:38:26', '2021-02-02 16:38:38');
-INSERT INTO `tipo_tarea` VALUES ('2', 'Mapa Mental', '', null, null, '1', '1', '2020-11-13 01:39:55', '2020-11-13 01:39:58');
-INSERT INTO `tipo_tarea` VALUES ('3', 'Taller', '', null, null, '1', '1', '2020-11-13 01:40:40', '2020-11-13 01:40:44');
-INSERT INTO `tipo_tarea` VALUES ('4', 'Resumen', '', null, null, '1', '1', '2020-11-13 01:41:19', '2020-11-13 01:41:22');
-INSERT INTO `tipo_tarea` VALUES ('5', 'Triptico', '', null, null, '1', '1', '2020-11-13 01:43:50', '2020-11-13 01:43:56');
+INSERT INTO `tipo_tarea` VALUES ('1', 'Cuadro Comparativo', null, null, null, '1', '1', '2020-11-13 08:38:26', '2021-02-02 23:38:38');
+INSERT INTO `tipo_tarea` VALUES ('2', 'Mapa Mental', '', null, null, '1', '1', '2020-11-13 08:39:55', '2020-11-13 08:39:58');
+INSERT INTO `tipo_tarea` VALUES ('3', 'Taller', '', null, null, '1', '1', '2020-11-13 08:40:40', '2020-11-13 08:40:44');
+INSERT INTO `tipo_tarea` VALUES ('4', 'Resumen', '', null, null, '1', '1', '2020-11-13 08:41:19', '2020-11-13 08:41:22');
+INSERT INTO `tipo_tarea` VALUES ('5', 'Triptico', '', null, null, '1', '1', '2020-11-13 08:43:50', '2020-11-13 08:43:56');
 
 -- ----------------------------
 -- Table structure for tipo_telefono

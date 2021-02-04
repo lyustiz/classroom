@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\EstadoCivil;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class EstadoCivilController extends Controller
 {
@@ -81,6 +82,22 @@ class EstadoCivilController extends Controller
      */
     public function destroy(EstadoCivil $estadoCivil)
     {
+        if( count($departamento->empleado) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeEmpleado' => "Se ha asignado a Empleado(s)"]);
+        }
+
+        if( count($departamento->pariente) > 0 )
+        {
+            throw ValidationException::withMessages(['poseePariente' => "Se ha asignado a Acudiente(s)"]);
+        }
+
+        if( count($departamento->docente) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeDocente' => "Se ha asignado a Docente(s)"]);
+        }
+        
+        
         $estadoCivil = $estadoCivil->delete();
  
         return [ 'msj' => 'EstadoCivil Eliminado' , compact('estadoCivil')];

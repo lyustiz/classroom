@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class MenuController extends Controller
 {
@@ -102,6 +103,11 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
+        if( count($menu->perfil) > 0 )
+        {
+            throw ValidationException::withMessages(['poseePerfil' => "Posee Perfil(es) asociado(s)"]);
+        }
+        
         $menu = $menu->delete();
  
         return [ 'msj' => 'Menu Eliminado' , compact('menu')];

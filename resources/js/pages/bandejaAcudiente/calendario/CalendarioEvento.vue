@@ -28,38 +28,11 @@
                         <v-list-item-subtitle v-html="event.description"></v-list-item-subtitle>
                     </v-list-item-content>
 
-                    <v-list-item-action>
-                        <item-menu 
-                            :item="event" 
-                            iconColor="grey darkend-1" 
-                            btnColor="grey lighten-4" 
-                            :menus="itemsMenu" 
-                            @onItemMenu="onItemMenu($event)" >
-                        </item-menu>
-                    </v-list-item-action>
                 </v-list-item>
             </v-list>
 
         </v-card-text>
 
-        <v-dialog v-model="dialogNotificacion" max-width="600" content-class="rounded-xl">
-            <app-notificacion 
-                :tipo-destinatario="notificacion.tipoDestinatario"
-                :tipo-notificacion="notificacion.tipoNotificacion"
-                :tipo-prioridad="notificacion.tipoPrioridad"
-                :id-destinatario="notificacion.idDestinatario"
-                :asunto="notificacion.asunto"
-                :mensaje="notificacion.mensaje"
-                :lugar="notificacion.lugar"
-                :fecha="notificacion.fecha"
-                :inicio="notificacion.inicio"
-                :fin="notificacion.fin"
-                :readonly="true"
-                v-if="dialogNotificacion" 
-                @closeModal="closeDialog('dialogNotificacion')">
-            </app-notificacion>
-        </v-dialog>
-            
     </v-card>
   
 </template>
@@ -87,10 +60,6 @@ export default {
     data()
     {
         return{
-            itemsMenu: [
-                { action: 'addNotificacion',   icon: 'mdi-bell-plus', label: 'Agregar Notificacion' },
-            ],
-            dialogNotificacion: false,
             notificacion:       {}
         }
     },
@@ -112,7 +81,6 @@ export default {
                 fin:              this.hourFromDate(event.end)
             }
             
-            this.dialogNotificacion = true
         },
 
         closeDialog(dialog)

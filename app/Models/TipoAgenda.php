@@ -40,4 +40,9 @@ class TipoAgenda extends Model
     {
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
     }
+
+    public function agenda()
+    {
+        return $this->HasMany('App\Models\Agenda', 'id_tipo_agenda');
+    }
 }

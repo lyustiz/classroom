@@ -27,8 +27,11 @@ class TipoEvaluacionController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = request()->validate([
+        $validate = request()->validate([ 
             'nb_tipo_evaluacion'=> 	'required|string|max:30',
+            'tx_icono'          => 	'required|string|max:30',
+            'tx_color'          => 	'required|string|max:30',
+            'tx_clase'          => 	'required|string|max:30',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
@@ -61,6 +64,9 @@ class TipoEvaluacionController extends Controller
     {
         $validate = request()->validate([
             'nb_tipo_evaluacion'=> 	'required|string|max:30',
+            'tx_icono'          => 	'required|string|max:30',
+            'tx_color'          => 	'required|string|max:30',
+            'tx_clase'          => 	'required|string|max:30',
 			'tx_observaciones'  => 	'nullable|string|max:100',
 			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',

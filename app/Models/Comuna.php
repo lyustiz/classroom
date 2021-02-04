@@ -45,9 +45,18 @@ class Comuna extends Model
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
 
     }
+                      
+    public function barrio(){
 
-                           
-    //
+        return $this->HasMany('App\Models\Barrio', 'id_comuna');
+
+    }
+
+    public function colegio(){
+
+        return $this->HasMany('App\Models\Colegio', 'id_comuna');
+
+    }
 
 
 }

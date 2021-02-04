@@ -6,6 +6,7 @@ use App\Models\CargaHoraria;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class CargaHorariaController extends Controller
 {
@@ -143,7 +144,7 @@ class CargaHorariaController extends Controller
 
         $cargaHoraria = $cargaHoraria->update($request->all());
 
-        return [ 'msj' => 'Carga Horaria Editado' , compact('cargaHoraria')];
+        return [ 'msj' => 'Carga Horaria Editada' , compact('cargaHoraria')];
     }
 
     /**
@@ -154,8 +155,13 @@ class CargaHorariaController extends Controller
      */
     public function destroy(CargaHoraria $cargaHoraria)
     {
+        if( count($cargaHoraria->detalleHorario) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeHorario' => "Posee Horarios asociados"]);
+        }
+        
         $cargaHoraria = $cargaHoraria->delete();
  
-        return [ 'msj' => 'CargaHoraria Eliminado' , compact('cargaHoraria')];
+        return [ 'msj' => 'Carga Horaria Eliminada' , compact('cargaHoraria')];
     }
 }

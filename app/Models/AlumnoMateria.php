@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class AlumnoMateria extends Model
 {
@@ -24,6 +25,23 @@ class AlumnoMateria extends Model
                             ];
 
     
+    protected static function booted()
+    {
+        static::addGlobalScope('calendarioActivo', function (Builder $builder) {
+            $builder->has('calendarioActivo');
+        });
+    }
+
+    public function calendario()
+    {
+        return $this->BelongsTo('App\Models\Calendario', 'id_calendario');
+    }
+
+    public function calendarioActivo()
+    {
+        return $this->BelongsTo('App\Models\Calendario', 'id_calendario')->where('id_status', 1);
+    }
+
     public function scopeActivo($query)
     {
         return $query->where('id_status', 1);

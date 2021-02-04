@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Departamento;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class DepartamentoController extends Controller
 {
@@ -89,6 +90,16 @@ class DepartamentoController extends Controller
      */
     public function destroy(Departamento $departamento)
     {
+        if( count($departamento->ciudad) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeCiudad' => "Posee Ciudad(es) asociada(s)"]);
+        }
+        
+        if( count($departamento->colegio) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeColegio' => "Esta Asociado al Colegio"]);
+        }
+        
         $departamento = $departamento->delete();
  
         return [ 'msj' => 'Departamento Eliminado' , compact('departamento')];

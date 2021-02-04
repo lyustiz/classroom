@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
 
-
 class EstructuraController extends Controller
 {
     /**
@@ -103,6 +102,11 @@ class EstructuraController extends Controller
         if( count($estructura->estructuraHijo) > 0 )
         {
             throw ValidationException::withMessages(['poseeHijo' => "Posee Estructura asociadas"]);
+        }
+
+        if( count($estructura->aula) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeAula' => "Posee Aula(s) asociada(s)"]);
         }
         
         $estructura = $estructura->delete();

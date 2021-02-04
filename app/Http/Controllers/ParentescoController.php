@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Parentesco;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class ParentescoController extends Controller
 {
@@ -81,6 +82,11 @@ class ParentescoController extends Controller
      */
     public function destroy(Parentesco $parentesco)
     {
+        if( count($parentesco->pariente) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeAcudiente' => "Posee Acudiente(s) asociado(s)"]);
+        }
+        
         $parentesco = $parentesco->delete();
  
         return [ 'msj' => 'Parentesco Eliminado' , compact('parentesco')];

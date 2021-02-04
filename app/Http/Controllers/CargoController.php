@@ -92,7 +92,7 @@ class CargoController extends Controller
         
         if( count($cargo->directiva) > 0 )
         {
-            throw ValidationException::withMessages(['poseeDirectiva' => "Posee Directiva asignado"]);
+            throw ValidationException::withMessages(['poseeDirectiva' => "Posee Directiva asignada"]);
         }
 
         if( count($cargo->empleado) > 0 )

@@ -29,7 +29,7 @@
                 <template v-slot:item="{ item }">
                     <tr>
                         <td class="text-xs-left">{{ item.nb_actividad }}</td>
-						<td class="text-xs-left">{{ item.id_tema }}</td>
+						<td class="text-xs-left">{{ item.tema.nb_tema }}</td>
 						<td class="text-xs-left">{{ item.tx_descripcion }}</td>
 						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">

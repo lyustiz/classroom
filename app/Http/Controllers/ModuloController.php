@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Modulo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class ModuloController extends Controller
 {
@@ -85,6 +86,11 @@ class ModuloController extends Controller
      */
     public function destroy(Modulo $modulo)
     {
+        if( count($modulo->menu) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeMenu' => "Posee Menu(s) asociado(s)"]);
+        }
+        
         $modulo = $modulo->delete();
  
         return [ 'msj' => 'Modulo Eliminado' , compact('modulo')];

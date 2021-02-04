@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AgendaActividad;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class AgendaActividadController extends Controller
 {
@@ -83,6 +84,11 @@ class AgendaActividadController extends Controller
      */
     public function destroy(AgendaActividad $agendaActividad)
     {
+        if( count($agendaActividad->agenda) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeAgenda' => "Ha sido asignada a una agenda"]);
+        }
+        
         $agendaActividad = $agendaActividad->delete();
  
         return [ 'msj' => 'AgendaActividad Eliminado' , compact('agendaActividad')];

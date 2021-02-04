@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tarea;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class TareaController extends Controller
 {
@@ -43,6 +44,7 @@ class TareaController extends Controller
     {
         return  Tarea::with(['grado:id,nb_grado', 'materia:id,nb_materia'])
                       ->where('id_tema', $idTema)
+                      ->activo()
                       ->get();
     }
 
@@ -109,9 +111,10 @@ class TareaController extends Controller
 			'id_tema'           => 	'required|integer|max:999999999',
 			'nu_peso'           => 	'nullable|numeric|max:11',
 			'tx_observaciones'  => 	'nullable|string|max:2000',
-			'id_status'         => 	'required|integer|max:999999999',
 			'id_usuario'        => 	'required|integer|max:999999999',
         ]);
+
+        $request->merge(['id_status' => 1]);
 
         $tarea = $tarea->update($request->all());
 
@@ -126,6 +129,11 @@ class TareaController extends Controller
      */
     public function destroy(Tarea $tarea)
     {
+        if( count($tarea->evaluacion) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeEvaluacion' => "La Tarea ha sido asignada a una evaluacion"]);
+        }
+        
         $tarea = $tarea->delete();
  
         return [ 'msj' => 'Tarea Eliminada' , compact('tarea')];
