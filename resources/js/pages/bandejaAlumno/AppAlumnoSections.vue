@@ -46,6 +46,18 @@
                 <span>Clase</span>
             </v-tooltip>
 
+            <!-- <v-tooltip bottom color="blue">
+                <template v-slot:activator="{ on }">
+                <v-btn fab dark depressed v-on="on" color="blue" class="ml-1 mx-1" @click="bot()">
+                    <v-icon size="32">mdi-robot</v-icon>
+                </v-btn>
+                </template>
+                <span>Clase</span>
+            </v-tooltip> -->
+
+
+            
+
 
         </v-card-text>
     
@@ -53,11 +65,15 @@
             <component v-if="dialog" :alumno="alumno" :is="component" inDialog @closeModal="closeSection('dialog', $event)"></component>
         </v-dialog> 
 
+        <app-botman></app-botman>
+
     </v-card>
 
 </template>
 
 <script>
+import DataHelper from '@mixins/AppData';
+    
 
 import TareaAlumno         from './tarea/AppTarea'
 import RecursoAlumno       from './recurso/Apprecurso'
@@ -68,6 +84,8 @@ import CalificacionAlumno  from './calificacion/AppCalificacion'
 
 import BibliotecaAlumno    from './biblioteca/AppBiblioteca'
 export default {
+
+    mixins:     [ DataHelper ],
 
     components: {
         'tarea-alumno':        TareaAlumno,
@@ -129,7 +147,21 @@ export default {
 
                 this.showSection(section)
             }
+        },
+
+        bot()
+        {
+            let message = {
+                        "driver": "web",
+                        "userId": "1234",
+                        "message": "hi"
+                    }
+            
+            this.postResource('botman', message).then( data =>{
+                console.log(data)
+            })
         }
+
     }
 }
 </script>

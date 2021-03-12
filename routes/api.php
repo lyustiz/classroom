@@ -247,7 +247,10 @@ Route::get('/notificacion/combos',                                           'No
 Route::get('/notificacion/destinatario/{tipoDestinatario}',                  'NotificacionController@destinatario');
 Route::get('/notificacion/destinatario/{tipoDestinatario}/{idDestinatario}', 'NotificacionController@destinatarioById');
 
+Route::post('/notificacion/reportarEvaluacion', 'NotificacionController@reportarEvaluacion');
+
 Route::post('/notificacion/grupo/{grupo}',      'NotificacionController@notificarGrupo');
+
 
 Route::apiResource('/notificacion',             'NotificacionController');
 Route::apiResource('/tipoNotificacion',         'TipoNotificacionController');
@@ -408,6 +411,9 @@ Route::post('meet/auth/{usuario}',              'MeetController@auth');
 Route::get('/asistente/perfil/{perfil}',        'AsistenteController@asistentePerfil');
 Route::apiResource('/asistente',                'AsistenteController');
 Route::apiResource('/asistenteDetalle',         'AsistenteDetalleController');
+//BOOT
+Route::post('/botman',                    'BotmanController@talk');
+
 
 // -- FOTOS / ARCHIVOS -- //
 Route::get('/foto/tipoFoto/{tipoFoto}/origen/{origenId}',  'FotoController@fotoTipoOrigen');

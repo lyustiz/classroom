@@ -24,6 +24,7 @@
                 item-key="id"
                 :loading="loading"
                 sort-by=""
+                dense
             >
 
                 <template v-slot:item="{ item }">

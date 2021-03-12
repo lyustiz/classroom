@@ -3,7 +3,7 @@
     <div>
         <app-simple-toolbar :title="video.name" backgroundColor="red" dense dark @closeModal="$emit('closeDialog')" >
             <template v-slot:toolbar-action>
-               <ReporteVisor :tipo="enlace" :data="video"></ReporteVisor>
+               <ReporteVisor tipo="enlace" :data="video" :evaluacion="evaluacion" v-if="evaluacion"></ReporteVisor>
             </template>
         </app-simple-toolbar>
         <v-card dark>
@@ -11,7 +11,7 @@
                 <div class="youtube-container mb-1">
                     <iframe 
                         class="responsive-iframe rounded-lg" 
-                        @load="loading = false" 
+                        @load="loading = false"
                         :src="url" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -77,7 +77,7 @@ export default {
 <style>
 .youtube-container
 {
-   position: relative;
+  position: relative;
   overflow: hidden;
   width: 90%;
   padding-top: 47%; /* 4:3 Aspect Ratio */

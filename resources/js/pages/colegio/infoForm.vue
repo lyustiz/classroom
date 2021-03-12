@@ -45,7 +45,7 @@
                 ></v-text-field>
             </v-col>
                             
-            <v-col cols="12" md="6">
+            <v-col cols="12" md="12">
                 <v-select
                 :items="selects.tipoColegio"
                 item-text="nb_tipo_colegio"
@@ -58,7 +58,7 @@
                 ></v-select>
             </v-col>
 
-            <v-col cols="12" md="6">
+  <!--           <v-col cols="12" md="6">
                 <v-select
                 :items="selects.calendario"
                 item-text="nb_calendario"
@@ -70,7 +70,7 @@
                 dense
                 ></v-select>
             </v-col>
-
+ -->
             <v-col cols="12" md="6">
                 <v-text-field
                     :rules="[rules.required, rules.max(80)]"
@@ -178,7 +178,8 @@ export default {
             },
             default: {
                 id_status:      1,
-                id_jornada:     1
+                id_jornada:     1,
+                id_calendario:  1
             }
         }
     },

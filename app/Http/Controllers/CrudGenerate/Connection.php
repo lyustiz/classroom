@@ -23,12 +23,10 @@ class Connection
     public function setConnection($connectionName)
     {
         return $this->connection = \DB::connection($connectionName);
-
     }
 
     public function getSchema()
     {
-         
         return $this->schemaName;
     }
 

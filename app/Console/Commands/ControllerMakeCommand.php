@@ -26,7 +26,7 @@ class ControllerMakeCommand extends DefaultControllerMakeCommand
 
         } elseif ($this->option('resource'))
         {
-            return resource_path("templates/controllercontroller.template");
+            return resource_path("templates/controller/controller.template");
         }
 
         return resource_path("templates/controller/controller.plain.template");

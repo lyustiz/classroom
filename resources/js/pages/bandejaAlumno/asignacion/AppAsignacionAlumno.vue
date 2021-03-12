@@ -680,14 +680,18 @@ export default {
                     break;
                 
                 case 'audio':
-                    this.audio  =   {   name: asignacion.origen.archivo.nb_archivo,
+                    this.audio  =   {   
+                                        id:   asignacion.origen.id,
+                                        name: asignacion.origen.archivo.nb_archivo,
                                         src: `${asignacion.origen.archivo.tipo_archivo.tx_base_path}${asignacion.origen.id}/${asignacion.origen.archivo.tx_path}` 
                                     }
                     this.dialogAudio  = true                   
                     break;
 
                 case 'video':
-                    this.video  =   {   name: asignacion.origen.nb_enlace,
+                    this.video  =   {   
+                                        id:   asignacion.origen.id,
+                                        name: asignacion.origen.nb_enlace,
                                         src: `${asignacion.origen.tx_url}` 
                                     } 
 
@@ -695,15 +699,19 @@ export default {
                     break;
 
                 case 'enlace':
-                    this.enlace        = {   name: asignacion.origen.nb_enlace,
-                                             src: `${asignacion.origen.tx_url}` 
+                    this.enlace        = {   
+                                            id:   asignacion.origen.id,
+                                            name: asignacion.origen.nb_enlace,
+                                            src: `${asignacion.origen.tx_url}` 
                                          }  
                     this.dialogEnlace  = true 
                     break;
                 
                 case 'lectura':
-                    this.lectura  =   {   name: asignacion.origen.archivo.nb_archivo,
-                                          src: `${asignacion.origen.archivo.tipo_archivo.tx_base_path}${asignacion.origen.id}/${asignacion.origen.archivo.tx_path}` 
+                    this.lectura  = {   
+                                        id:   asignacion.origen.id,
+                                        name: asignacion.origen.archivo.nb_archivo,
+                                        src: `${asignacion.origen.archivo.tipo_archivo.tx_base_path}${asignacion.origen.id}/${asignacion.origen.archivo.tx_path}` 
                                     }
                     this.dialogLectura = true 
                     break;

@@ -482,7 +482,9 @@ export default {
                     break;
                 
                 case 'audio':
-                    this.audioSelected  =   {   name: asignacion.origen.archivo.nb_archivo,
+                    this.audioSelected  =   {   
+                                                id:   asignacion.origen.id,
+                                                name: asignacion.origen.archivo.nb_archivo,
                                                 src: `${asignacion.origen.archivo.tipo_archivo.tx_base_path}${asignacion.origen.id}/${asignacion.origen.archivo.tx_path}` 
                                             }
                     this.dialogAudio    = true                   
@@ -490,21 +492,27 @@ export default {
 
                 case 'video':
                     
-                    this.videoSelected  =   {   name: asignacion.origen.nb_enlace,
+                    this.videoSelected  =   {   
+                                                id:   asignacion.origen.id,
+                                                name: asignacion.origen.nb_enlace,
                                                 src: `${asignacion.origen.tx_url.replace("watch?v=", "embed/")}` 
                                             } 
                     this.dialogVideo    = true 
                     break;
 
                 case 'enlace':
-                    this.enlaceSelected =   {   name: asignacion.origen.nb_enlace,
+                    this.enlaceSelected =   {   
+                                                id:   asignacion.origen.id,
+                                                name: asignacion.origen.nb_enlace,
                                                 src: `${asignacion.origen.tx_url}` 
                                             }  
                     this.dialogEnlace   = true 
                     break;
                 
                 case 'lectura':
-                    this.lecturaSelected  = {   name: asignacion.origen.archivo.nb_archivo,
+                    this.lecturaSelected  = {   
+                                                id:   asignacion.origen.id,
+                                                name: asignacion.origen.archivo.nb_archivo,
                                                 src: `${asignacion.origen.archivo.tipo_archivo.tx_base_path}${asignacion.id_origen}/${asignacion.origen.archivo.tx_path}` 
                                             }
                     this.dialogLectura  = true 

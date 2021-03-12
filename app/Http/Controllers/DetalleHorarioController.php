@@ -89,7 +89,6 @@ class DetalleHorarioController extends Controller
                                     ->where('id_status', 1)
                                     ->orderBy('nu_orden', 'asc')
                                     ->get();
-        
         $detalleHorario = [];
                                     
         $nu_carga_horaria =  ( $request->nu_carga_horaria > count($cargaHoraria) ) ? count($cargaHoraria) : $request->nu_carga_horaria;
@@ -106,7 +105,6 @@ class DetalleHorarioController extends Controller
         
 
         foreach ($cargaHoraria as $key => $row) {
-            
             
             $this->comprobarDisponibilidad($request, $row->hh_inicio, $row->hh_fin);
 

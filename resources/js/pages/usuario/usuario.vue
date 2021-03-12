@@ -4,7 +4,7 @@
 
         <template slot="HeadTools">
             <v-col cols="auto">
-                <add-button @insItem="insertForm()"></add-button>
+                <!-- <add-button @insItem="insertForm()"></add-button> -->
             </v-col>
             <v-col cols="auto">
                 <report-menu :reports="reports" @onReport="onReport($event)"></report-menu>

@@ -14,7 +14,7 @@
 
         <v-card-text>
 
-            <v-row align="center">
+            <v-row dense align="center">
                 <v-col>
                     <v-row no-gutters>
                         <v-col cols="12">
@@ -54,14 +54,23 @@
             
         </v-card-text>
 
+        <v-dialog v-model="dialogChat" max-width="600" content-class="rounded-xl" scrollable>
+            <AppChat class="rounded-lg elevation-3" :messages="chatMsg" :active="dialogChat" @send-chat="sendChat($event)" @closeDialog="dialogChat = false"></AppChat>
+        </v-dialog>
+
     </v-card>
 
 </template>
 
 <script>
 import AppData       from '@mixins/AppData';
+import AppChat       from './ClaseChat';
 
 export default {
+
+    components: {
+        AppChat
+    },
 
     mixins: [AppData],
 
@@ -89,7 +98,12 @@ export default {
             title:    'Clase',
             resource: 'clase',
             asistencia: null,
-            dialogChat: false
+            dialogChat: false,
+            chatMsg:    [
+                            { nb_usuario: 'lyustiz', message: 'Prueba de Chat' },
+                            { nb_usuario: 'ljyustiz', message: 'Prueba de Chat2' },
+                            { nb_usuario: 'ljyustiz', message: 'Prueba de Chat2' }
+                        ]
         }
     },
 
@@ -102,6 +116,11 @@ export default {
         },
 
         starChat(){
+            this.dialogChat = true
+        },
+
+        sendChat()
+        {
 
         }
     }

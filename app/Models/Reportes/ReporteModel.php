@@ -19,10 +19,10 @@ class ReporteModel extends Model
 	{
                 
         $this->query = \DB::connection('mysqlviews')->table($tabla)->distinct();   
-        
-        foreach ($campos as $key => $campo) {
+		
+		foreach ($campos as $key => $campo) {
 
-            $this->query->addSelect($campo)->get();
+            $this->query->addSelect($campo);
 
         }
 
@@ -68,9 +68,9 @@ class ReporteModel extends Model
 		
 		try {
             
-            $result = $this->query->get()->toArray();
+			$result = $this->query->get()->toArray();
 
-		} catch (Exception $e) {
+		} catch (Illuminate\Database\QueryException $e) {
 			
 			$result = [ "error en la consulta",  $e->getMessage() ];
 		}

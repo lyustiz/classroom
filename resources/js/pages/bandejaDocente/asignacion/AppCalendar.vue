@@ -736,6 +736,7 @@ export default {
                 
                 case 'audio':
                     this.audio  =   {   
+                                        id:   asignacion.origen.id,
                                         name: asignacion.origen.archivo.nb_archivo,
                                         src: `${asignacion.origen.archivo.tipo_archivo.tx_base_path}${asignacion.origen.id}/${asignacion.origen.archivo.tx_path}` 
                                     }
@@ -745,6 +746,7 @@ export default {
                 case 'video':
                     
                     this.video    = {   
+                                        id:   asignacion.origen.id,
                                         name: asignacion.origen.nb_enlace,
                                         src: `${asignacion.origen.tx_url}` 
                                     } 
@@ -754,7 +756,8 @@ export default {
 
                 case 'enlace':
                     this.enlace   = {   
-                                        name: asignacion.origen.nb_enlace,
+                                       id:   asignacion.origen.id,
+                                       name: asignacion.origen.nb_enlace,
                                         src: `${asignacion.origen.tx_url}` 
                                     }  
                     this.dialogEnlace  = true 
@@ -764,6 +767,7 @@ export default {
 
                     console.log(asignacion)
                     this.lectura  =  {   
+                                        id:   asignacion.origen.id,
                                         name: asignacion.origen.archivo.nb_archivo,
                                         src: `${asignacion.origen.archivo.tipo_archivo.tx_base_path}${asignacion.origen.id}/${asignacion.origen.archivo.tx_path}` 
                                     }

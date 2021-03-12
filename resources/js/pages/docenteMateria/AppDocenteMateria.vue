@@ -138,6 +138,8 @@ export default {
                 })
                 
                 this.form.id_materia = null;
+
+                this.$emit('onUpdateData')
             })
         },
 
@@ -153,6 +155,8 @@ export default {
                     id: item.id_materia , 
                     nb_materia: item.nb_materia
                 })
+
+                this.$emit('onUpdateData')
             })
         }
 

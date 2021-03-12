@@ -24,6 +24,7 @@ class DocenteController extends Controller
         $docente = Docente::with([
                                     'foto:id,tx_src,id_tipo_foto,id_origen',
                                     'foto.tipoFoto:id,tx_base_path',
+                                    'materia:materia.id,nb_materia'
                                 ])
                                 ->get();
         

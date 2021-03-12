@@ -115,3 +115,6 @@ Vue.component('visor-pdf'   , VisorPdf);
 
 Vue.component('visor-google-meet'   , VisorGoogle);
 
+//Bot
+import AppBotman  from '@components/botman/AppBotman'
+Vue.component('app-botman'   , AppBotman);

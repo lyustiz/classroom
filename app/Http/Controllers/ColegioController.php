@@ -64,7 +64,6 @@ class ColegioController extends Controller
         $calendario = $colegio->calendario;
 
         \Cache::put('colegio', $colegio );
-        \Cache::put('calendario', $calendario);
 
         return [ 'msj' => 'Colegio Agregado Correctamente', compact('colegio') ];
     }
@@ -104,7 +103,6 @@ class ColegioController extends Controller
         $colegio = tap($colegio)->update($request->all());
 
         \Cache::put('colegio', $colegio );
-        \Cache::put('calendario', $colegio->calendario);
 
         return [ 'msj' => 'Colegio Actualizado' , compact('colegio')];
     }

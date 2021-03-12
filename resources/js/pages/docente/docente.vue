@@ -49,6 +49,9 @@
                             <list-icon :data="sexoIcons" :value="item.tx_sexo"></list-icon>
                         </td>
 						<td class="text-xs-left">{{ item.tx_documento }}</td>
+                        <td class="text-xs-left">
+                            <item-detail icon="mdi-bookshelf" :items="item.materia" item-text="nb_materia" v-if="item.materia.length> 0"></item-detail>
+                        </td>
 						<td class="text-xs-left">
                             <status-switch 
                                 :loading="loading" 
@@ -93,7 +96,7 @@
             </app-modal>
 
             <v-dialog v-model="addMateriaDialog" max-width="400" content-class="rounded-xl">
-                <docente-materia :idDocente="idDocente" v-if="addMateriaDialog"></docente-materia>
+                <docente-materia :idDocente="idDocente" v-if="addMateriaDialog" @onUpdateData="list()"></docente-materia>
             </v-dialog>
 
             <form-delete
@@ -132,6 +135,7 @@ export default {
                 { text: 'Apellidos y Nombres', value: 'nb_docente' },
                 { text: 'Sexo',                value: 'tx_sexo' },
                 { text: 'Documento',           value: 'tx_documento' },
+                { text: 'Materias',            value: '', sortable: false, filterable: false},
                 { text: 'Status',              value: 'id_status' },
                 { text: 'Acciones',            value: 'actions', sortable: false, filterable: false },
             ],

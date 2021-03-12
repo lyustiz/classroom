@@ -231,7 +231,7 @@ class MateriaController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-            'nb_materia'        => 	'required|string|max:40',
+            'nb_materia'        => 	'required|string|max:80',
 			'co_materia'        => 	'nullable|string|max:20',
 			'id_area_estudio'   => 	'required|integer|max:999999999',
 			'tx_icono'          => 	'nullable|string|max:20',
@@ -266,7 +266,7 @@ class MateriaController extends Controller
     public function update(Request $request, Materia $materia)
     {
         $validate = request()->validate([
-            'nb_materia'        => 	'required|string|max:40',
+            'nb_materia'        => 	'required|string|max:80',
 			'co_materia'        => 	'nullable|string|max:20',
 			'id_area_estudio'   => 	'required|integer|max:999999999',
 			'tx_icono'          => 	'nullable|string|max:20',

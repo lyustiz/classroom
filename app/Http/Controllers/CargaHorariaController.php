@@ -52,6 +52,9 @@ class CargaHorariaController extends Controller
                                         'detalleHorario.docente:id,nb_nombre,nb_apellido',
                                         'detalleHorario.aula:id,nb_aula'
                                     ])
+                                    ->whereHas('horaAcademica.horario', function ($query)  use ($idHorario){
+                                        $query->where('horario.id', $idHorario);
+                                    })
                                     ->get();
 
         return $cargaHoraria;

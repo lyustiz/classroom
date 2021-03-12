@@ -8,10 +8,13 @@ use App\Models\TipoDestinatario;
 use Illuminate\Support\Facades\Mail;
 
 use App\Models\Alumno;
+use App\Models\Evaluacion;
 use App\Models\TipoEvaluacion;
 use App\Models\TipoAsignacion;
+use App\Models\Docente;
 use App\Models\Materia;
-use App\Models\Grupo;
+
+use Illuminate\Database\Eloquent\Builder;
 
 class NotificacionTrait
 {
@@ -118,6 +121,41 @@ class NotificacionTrait
             ]);
         }
         return $notificacion;
+    }
+
+    static public function reportar($data)
+    {
+        $evaluacion  =  Evaluacion::with([
+                            'materia:id,nb_materia',
+                            'grupo:id,nb_grupo,id_grado',
+                            'grupo.grado:id,nb_grado',
+                            'planEvaluacion:id,id_docente',
+                            'planEvaluacion.docente:id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2'
+                        ])->find($data['id_evaluacion']);
+
+        $grado      = $evaluacion->grupo->grado;
+
+        $materia    = $evaluacion->materia;
+
+        $docente    = $evaluacion->planEvaluacion->docente;
+    
+        $mensaje    =  'Se reportó el(la) ' 
+                     . $data['nb_tipo'] . ' ' 
+                     . $data['nb_asignacion'] . ' ('
+                     . $grado->nb_grado . ' - ' 
+                     . $materia->nb_materia
+                     . ') motivo: ' 
+                     . $data['nb_tipo_reporte'] . ' - obs: '
+                     . $data['tx_observaciones'];
+
+        return self::notificar([
+                    'id_tipo_destinatario' => 2,
+                    'id_destinatario'      => $docente->id,
+                    'tx_mensaje'           => $mensaje,
+                    'id_tipo_notificacion' => 10,
+                    'id_usuario'           => $data['id_usuario'],
+                ]);
+
     }
 
     static public function sendMail()

@@ -13,6 +13,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 
+use App\Http\Controllers\Traits\NotificacionTrait;
+
 class NotificacionController extends Controller
 {
     /**
@@ -226,6 +228,25 @@ class NotificacionController extends Controller
 
         return [ 'msj' => 'Leida' , compact('notificacion')];
     }
+
+
+    /*NOTIFICACIONES DIRECTAS*/
+    public function reportarEvaluacion(Request $request)
+    {
+        $validate = request()->validate([
+            'nb_tipo'          => 'required|string|max:100',
+            'id_evaluacion'    => 'required|integer|max:999999999',
+            'nb_asignacion'    => 'required|string|max:100',
+            'nb_tipo_reporte'  => 'required|string|max:100',
+            'tx_observaciones' => 'required|string|max:100',
+			'id_usuario'       => 'required|integer|max:999999999',
+        ]);
+
+        $notificacion = NotificacionTrait::reportar($validate);
+
+         return [ 'msj' => 'Notificacion enviada' , compact('notificacion')];
+    }
+
 
     /**
      * Remove the specified resource from storage.

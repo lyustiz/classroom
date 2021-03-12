@@ -115,7 +115,7 @@ class Docente extends Model
 
 	public function materia()
 	{
-        return $this->hasOneThrough(
+        return $this->hasManyThrough(
 			
 			'App\Models\Materia', //final
             'App\Models\DocenteMateria', //intermedia
