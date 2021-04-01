@@ -32,6 +32,9 @@
         <v-row>
             <v-col ><span class="ml-6">Alumnos</span></v-col>
             <v-col cols="auto">
+                <v-btn dark color="teal" small :loading="loading" class="mr-3" rounded @click="editCertificado()">
+                    <v-icon size="16" class="mr-2" >mdi-certificate</v-icon> Certificado
+                </v-btn>
                 <v-btn dark color="pink" small :loading="loading" class="mr-3" rounded @click="addRasgos()">
                     <v-icon size="16" class="mr-2" >mdi-human-male-height-variant</v-icon> Agregar Rasgos
                 </v-btn>
@@ -77,6 +80,10 @@
         <AsignacionRasgo v-if="dialogRasgo" :grupo="grupo" :materia="materia" @closeDialog="closeDialog($event)" @onUpdateData="list(true)"></AsignacionRasgo>
     </v-dialog>
 
+    <v-dialog v-model="dialogCertificado" width="80vw" scrollable content-class="rounded-xl">
+        <AdminCertificado v-if="dialogCertificado" :grupo="grupo" :materia="materia" :alumnos="alumnos" @closeDialog="closeDialog($event)"></AdminCertificado>
+    </v-dialog>
+
     </v-card>
 </template>
 
@@ -86,6 +93,7 @@ import AsignacionRasgo  from './AsignacionRasgo'
 import SeguimientoActividades  from './SeguimientoActividades'
 import SeguimientoEvaluaciones from './SeguimientoEvaluaciones'
 import SeguimientoRasgos from './SeguimientoRasgos'
+import AdminCertificado from './AdminCertificado'
 
 export default {
 
@@ -93,7 +101,8 @@ export default {
         SeguimientoActividades,
         SeguimientoEvaluaciones,
         SeguimientoRasgos,
-        AsignacionRasgo
+        AsignacionRasgo,
+        AdminCertificado
     },
 
     mixins:     [ DataHelper ],
@@ -163,7 +172,8 @@ export default {
             rasgos:       [],
             asignaciones: [],
             evaluaciones: [],
-            dialogRasgo:  false
+            dialogRasgo:  false,
+            dialogCertificado: false
         }
     },
 
@@ -199,9 +209,15 @@ export default {
             this.dialogRasgo = true
         },
 
+        editCertificado()
+        {
+           this.dialogCertificado = true
+        },
+
         closeDialog()
         {
             this.dialogRasgo = false
+            this.dialogCertificado = false
         }
     }
 }

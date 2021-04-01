@@ -13,45 +13,12 @@
                   <AppItinerario></AppItinerario>
                </v-col>
                <v-col cols="12" md="5">
-                  <AppAlumnoSections></AppAlumnoSections>
+                  <AppAlumnoSections/>
                   <AppMateria></AppMateria>
                   <AppAgenda></AppAgenda>
                </v-col>
            </v-row>
         </v-container>
-
-        <!-- 
-        <v-row class="mt-n16" justify="center"></v-row>
-        <v-sheet width="100%" color="transparent">   
-            <v-slide-group
-                v-model="notificacition"
-                class="py-4 mx-auto"
-                show-arrows="always"
-                >
-                <v-slide-item>
-                    <v-card class="rounded-xl elevation-6 ma-4" width="300">
-                    <v-card-text>
-                        <v-list-item > 
-                                <v-list-item-avatar color="teal lighten-5" size="43">
-                                <v-icon  color="teal lighten-2" size="28">mdi-bell</v-icon>
-                            </v-list-item-avatar>
-                            <v-list-item-content>
-                                <v-list-item-subtitle>Tarea</v-list-item-subtitle>
-                                <v-list-item-title>Los Sentidos</v-list-item-title>
-                            </v-list-item-content>
-                                <v-list-item-avatar>
-                                <v-icon  color="indigo" size="42">mdi-account-circle</v-icon>
-                            </v-list-item-avatar>
-                        </v-list-item>
-                        <p>
-                            Prueba de Notificacion de una nueva tarea. Materia: Lenguaje activa desde 01/01/2021
-                        </p>
-                    </v-card-text>
-                    </v-card>
-                </v-slide-item>
-            </v-slide-group>
-        </v-sheet>
-        -->
             
     </div>
 

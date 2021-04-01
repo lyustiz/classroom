@@ -7,7 +7,7 @@
             <v-img v-on="on" v-bind="attrs" src="/images/bot.gif"></v-img>
         </template>
         <v-chip dark color="amber">
-            En qué te puedo ayudar?
+            ¿En qué te puedo ayudar?
             <v-icon right>
                 mdi-help
             </v-icon></v-chip>
@@ -46,7 +46,7 @@
                 </v-list-item> 
             ->
             
-           <!--  <v-img src="/images/bot.gif"></v-img> -->
+          <v-img src="/images/bot.gif"></v-img> -->
         </v-card-text>
         <v-card-actions>
             <v-row dense>
@@ -86,7 +86,7 @@ export default {
     {
         return {
             component:    null,
-            chat: true,
+            chat: false,
             messages: [ { user: 'virtualin', text: 'Hola, me llamo Virtualin ¿Cómo puedo ayudarte?'}],
             message:{
                 driver: 'web',

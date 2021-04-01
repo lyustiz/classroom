@@ -214,7 +214,7 @@ Route::apiResource('/tipoFeriado',              'TipoFeriadoController');
 Route::apiResource('/feriado',                  'FeriadoController');
 Route::apiResource('/tipoAgenda',               'TipoAgendaController');
 Route::apiResource('/agenda',                   'AgendaController');
-Route::apiResource('/tipoActividad',            'TipoActividadController');
+/* Route::apiResource('/tipoActividad',            'TipoActividadController'); */
 Route::apiResource('/agendaActividad',          'AgendaActividadController');
 
 // -- GESTION USUARIO -- //
@@ -384,7 +384,7 @@ Route::apiResource('/tipoEnlace',               'TipoEnlaceController');
 // actividad
 Route::get('/actividad/tema/{tema}',            'ActividadController@actividadTema');
 Route::apiResource('/actividad',                'ActividadController');
-Route::apiResource('/tipoActividad',            'TipoActividadController');
+/* Route::apiResource('/tipoActividad',            'TipoActividadController'); */
 Route::get('/actividadPregunta/actividad/{actividad}',     'ActividadPreguntaController@actividadPreguntaActividad');
 Route::apiResource('/actividadPregunta',        'ActividadPreguntaController', ['parameters' => ['actividadPregunta' => 'actividadPregunta']]);
 Route::put('/actividadRespuesta/{actividadRespuesta}/nombre',   'ActividadRespuestaController@updateNombre');
@@ -433,13 +433,17 @@ Route::apiResource('/recurso',                  'RecursoController');
 
 // --  CLASE  -- //
 Route::get('/clase/docente/{docente}',          'ClaseController@claseDocente');
-Route::get('/clase/alumno/{alumno}',          'ClaseController@claseAlumno');
+Route::get('/clase/alumno/{alumno}',            'ClaseController@claseAlumno');
 Route::put('/clase/{clase}/close',              'ClaseController@close');
 Route::apiResource('/clase',                    'ClaseController');
 Route::apiResource('/asistencia',               'AsistenciaController', ['parameters' => ['asistencia' => 'asistencia']]);
 
 
-Route::apiResource('/sede',     'SedeController');
+Route::get('/certificado/grupo/{grupo}/materia/{materia}',     'CertificadoController@certificadoGrupoMateria');
+Route::apiResource('/certificado',              'CertificadoController');
+Route::get('/certificadoAlumno/alumno/{alumno}/materia/{materia}',     'CertificadoAlumnoController@certificadoAlumnoMateria');
+Route::apiResource('/certificadoAlumno',        'CertificadoAlumnoController');
+Route::apiResource('/certificadoPlantilla',     'CertificadoPlantillaController');
 //newRoutes
 
 Route::fallback(function () {

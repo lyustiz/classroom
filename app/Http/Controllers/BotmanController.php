@@ -27,7 +27,7 @@ class BotmanController extends Controller
                 break;
                 
                 default:
-                    $botman->reply("No entiendo la pregunta escribe opciones");
+                    $botman->reply('No entiendo la pregunta escribe "opciones" sin comillas');
                     break;
             }
             

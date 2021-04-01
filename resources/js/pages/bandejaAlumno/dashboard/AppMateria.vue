@@ -36,19 +36,25 @@
   <v-dialog v-model="dialogDetalle" max-width="500px" content-class="rounded-xl" scrollable>
     <AppDetalleMateria :materia="materia" @closeDialog="dialogDetalle=false"></AppDetalleMateria>
   </v-dialog>
+
+  <v-dialog v-model="dialogRecurso" max-width="600px" content-class="rounded-xl" scrollable>
+    <AppRecursoMateria v-if="dialogRecurso" :materia="materia" @closeDialog="dialogRecurso=false"></AppRecursoMateria>
+  </v-dialog>
 </v-card>
 
 </template>
 
 <script>
 import AppDetalleMateria from './AppDetalleMateria'
+import AppRecursoMateria from './AppRecursoMateria'
 import AppData from '@mixins/AppData';
 export default {
 
     mixins: [ AppData ],
 
     components: {
-      AppDetalleMateria
+      AppDetalleMateria,
+      AppRecursoMateria
     },
 
     created()
@@ -63,8 +69,10 @@ export default {
         materiaSelected: null,
         materia:         null,
         dialogDetalle:   false,
+        dialogRecurso:   false,
         itemsMenu: [
             { action: 'showDetalle',     icon: 'mdi-text-box-search',  label: 'Detalle Asignaciones' },
+            { action: 'showRecursos',     icon: 'mdi-printer-check',   label: 'Recursos' },
         ],
       }
     },
@@ -91,6 +99,12 @@ export default {
       {
         this.materia       = materia
         this.dialogDetalle = true
+      },
+
+      showRecursos(materia)
+      {
+        this.materia       = materia
+        this.dialogRecurso = true
       }
     }
 
