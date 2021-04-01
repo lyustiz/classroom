@@ -131,9 +131,7 @@ export default
             this.setDefaults()
 			
             this.loading = true;
-
-            this.form.id_usuario = this.idUser 
-				
+            			
             axios.post(this.fullUrl, this.form)
             .then(response => 
             {
@@ -160,8 +158,6 @@ export default
             this.setDefaults()
 
             this.loading = true;
-
-            this.form.id_usuario = this.idUser
             
             axios.put(this.fullUrlId, this.form)
             .then(response => 

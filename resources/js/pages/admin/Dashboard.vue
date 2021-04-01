@@ -27,7 +27,7 @@
       <v-row>
           <v-col v-for="(menu, idx) in menus" :key="idx" cols="6" sm="4" md="3" lg="2" @click="navegateTo(menu.name)">
 
-            <v-card color="transparent" class="rounded-xl pointer" flat>
+            <v-card color="transparent" class="rounded-xl pointer" flat >
                 <v-card-text class="text-center">
                    <v-avatar size="100" :color="menu.color" ripple>
                         <v-icon size="70" color="white">{{menu.icon}}</v-icon>
@@ -66,7 +66,7 @@ export default {
         listMenu()
         {
             this.admin = this.$router.options.routes.filter((menu) =>  menu.path == '/admin')
-            this.menus = this.admin[0].children.filter((menu) => menu.path != '/' )
+            this.menus = this.admin[0].children.filter((menu) => menu.path != '/' && menu.visible )
         },
         
         searchMenu(search)

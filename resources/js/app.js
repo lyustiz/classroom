@@ -5,7 +5,6 @@ import store    from './store';
 /** Plugins **/
 import './plugins/axios';
 import vuetify from './plugins/vuetify';
-window._ = require('lodash');
 
 let isMobile = {
     Android:    () => navigator.userAgent.match(/Android/i),
@@ -15,7 +14,6 @@ let isMobile = {
     Windows:    () => navigator.userAgent.match(/IEMobile/i),
     any:        () => (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows())
 }
-
 /** Componente Ppal   **/
 import App from './App.vue'
 Vue.component('app', App)

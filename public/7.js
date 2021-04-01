@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{D9av:function(t,n,e){"use strict";e.r(n);var a={},s=e("KHd+"),i=Object(s.a)(a,(function(){var t=this.$createElement,n=this._self._c||t;return n("div",{staticClass:"alumno"},[n("transition",{attrs:{name:"fade",mode:"out-in"}},[n("router-view")],1)],1)}),[],!1,null,null,null);n.default=i.exports}}]);

@@ -9,27 +9,28 @@ import Welcome               from '@pages/welcome/Welcome';
 import Home                  from '@pages/home/home';
 
 //acudiente
-import BandejaAcudiente      from '@pages/bandejaAcudiente/dashboard';
-import MenuAcudiente         from '@pages/bandejaAcudiente/index'; 
+const BandejaAcudiente       =  () => import('@pages/bandejaAcudiente/dashboard');
+const MenuAcudiente          =  () => import('@pages/bandejaAcudiente/index');
 
 //alumno
-import BandejaAlumno         from '@pages/bandejaAlumno/dashboard';
-import MenuAlumno            from '@pages/bandejaAlumno/index'; 
+
+const BandejaAlumno          =  () => import('@pages/bandejaAlumno/dashboard');
+const MenuAlumno             =  () => import('@pages/bandejaAlumno/index'); 
 import AsignacionAlumno      from '@pages/bandejaAlumno/asignacion/AppAsignacionAlumno';
 import BibliotecaAlumno      from '@pages/bandejaAlumno/biblioteca/AppBiblioteca';
 import ClaseAlumno           from '@pages/clase/AppClaseAlumno';
 
 //docente
-import BandejaDocente        from '@pages/BandejaDocente/dashboard';
-import MenuProfesor          from '@pages/bandejaDocente/index'; 
+const BandejaDocente         =  () => import('@pages/BandejaDocente/dashboard');
+const MenuProfesor           =  () => import('@pages/bandejaDocente/index');
 import Clase                 from '@pages/clase/AppClase';
 import GestionTema           from '@pages/BandejaDocente/tema/GestionTema';
 import AppPlanificador       from '@pages/BandejaDocente/asignacion/AppPlanificador';
 import AsignacionSeguimiento from '@pages/BandejaDocente/asignacion/AsignacionSeguimiento';
 
 //admin
-import BandejaAdmin          from '@pages/admin/dashboard';
-import MenuAdmin             from '@pages/admin/index'; 
+const BandejaAdmin           =  () => import('@pages/admin/dashboard');
+const MenuAdmin              =  () => import('@pages/admin/index');
 
 //colegio
 import AppColegio            from '@pages/colegio/AppColegio';
@@ -661,7 +662,7 @@ export default new Router({
                 label: 'Perfil',
                 icon: 'mdi-account-details-outline',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: Perfil
             },
@@ -681,7 +682,7 @@ export default new Router({
                 label: 'Permiso',
                 icon: 'mdi-account-key',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: Permiso
             },
@@ -711,7 +712,7 @@ export default new Router({
                 label: 'Tipo Preguntas',
                 icon: 'mdi-order-bool-descending-variant',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: TipoPregunta
             },
@@ -831,7 +832,7 @@ export default new Router({
                 label: 'Tipo Evaluacion',
                 icon: 'mdi-clipboard-check-multiple-outline',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: TipoEvaluacion
             },
@@ -841,7 +842,7 @@ export default new Router({
                 label: 'Parentesco',
                 icon: 'mdi-account-supervisor-circle',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: Parentesco
             },
@@ -851,7 +852,7 @@ export default new Router({
                 label: 'Estado Civil',
                 icon: 'mdi-ring',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: EstadoCivil
             },
@@ -861,7 +862,7 @@ export default new Router({
                 label: 'Modulo',
                 icon: 'mdi-menu-open',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: Modulo
             }, 
@@ -871,7 +872,7 @@ export default new Router({
                 label: 'Menu',
                 icon: 'mdi-menu',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: Menu
             },
@@ -881,7 +882,7 @@ export default new Router({
                 label: 'Tipo Usuario',
                 icon: 'mdi-book-account',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: TipoUsuario
             },
@@ -891,7 +892,7 @@ export default new Router({
                 label: 'Tipo Documento',
                 icon: 'mdi-card-account-details',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: TipoDocumento
             },
@@ -901,7 +902,7 @@ export default new Router({
                 label: 'Documento',
                 icon: 'mdi-card-account-details',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: Documento
             },
@@ -911,7 +912,7 @@ export default new Router({
                 label: 'Tipo Foto',
                 icon: 'mdi-image-album',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: TipoFoto
             },   
@@ -931,7 +932,7 @@ export default new Router({
                 label: 'Status',
                 icon: 'mdi-playlist-check',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: Status
             },
@@ -941,7 +942,7 @@ export default new Router({
                 label: 'Tipo Archivo',
                 icon: 'mdi-file-multiple',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: TipoArchivo
             },
@@ -961,7 +962,7 @@ export default new Router({
                 label: 'Tipo Recurso',
                 icon: 'mdi-book-open-page-variant',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: TipoRecurso
             },
@@ -983,7 +984,7 @@ export default new Router({
                 label: 'Tipo Destinatario',
                 icon: 'mdi-account-question',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: TipoDestinatario
             },
@@ -993,7 +994,7 @@ export default new Router({
                 label: 'Prioridad',
                 icon: 'mdi-alert',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: TipoPrioridad
             },
@@ -1045,7 +1046,7 @@ export default new Router({
                 label: 'Asistente',
                 icon: 'mdi-head-cog',
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'deep-purple',
                 component: Asistente
             },
@@ -1059,7 +1060,7 @@ export default new Router({
                 label: 'Tipo Enlace',
                 icon: 'mdi-link-variant-plus', 
                 profile: 'secretaria',
-                visible: true,
+                visible: false,
                 color: 'brown',
                 component: TipoEnlace
             }, 
@@ -1146,7 +1147,7 @@ export default new Router({
             label: 'Generador',
             icon: 'mdi-tools',
             profile: 'secretaria',
-            visible: true,
+            visible: false,
             color: 'black',
             component: Crud,
         },
