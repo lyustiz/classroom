@@ -131,6 +131,17 @@ class EmpleadoController extends Controller
      */
     public function destroy(Empleado $empleado)
     {
+        
+        $usuario = $empleado->usuarioEmpleado;
+
+        $perfiles = $usuario->usuarioPerfil;
+
+        foreach ($perfiles as $perfil) {
+            $perfil->delete();
+        }
+
+        $usuario->update(['id_status' => 2]);
+        
         $empleado = $empleado->delete();
  
         return [ 'msj' => 'Empleado Eliminado' , compact('empleado')];

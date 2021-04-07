@@ -39,7 +39,7 @@
  
         <v-col cols="12" md="4">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[rules.required, rules.minNum(1)]"
                 v-model="form.nu_valor"
                 label="Valor"
                 placeholder="Indique Valor"

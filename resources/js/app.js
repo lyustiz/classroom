@@ -4,6 +4,7 @@ import store    from './store';
 
 /** Plugins **/
 import './plugins/axios';
+import './plugins/echo';
 import vuetify from './plugins/vuetify';
 
 let isMobile = {

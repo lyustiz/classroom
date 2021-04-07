@@ -49,7 +49,8 @@
 
 <script>
 import AppData     from '@mixins/AppData';
-import Pusher      from 'pusher-js';
+
+
 import Peer        from 'simple-peer';
 import Chat        from '../ChatRoom';
 import LocalVideo  from '../LocalVideo'
@@ -70,10 +71,10 @@ export default {
     created()
     {
         this.list()
-        this.members.push({ id: 1, nb_nombres: "luis yustiz", nb_usuario: "lyustiz" })
+/*         this.members.push({ id: 1, nb_nombres: "luis yustiz", nb_usuario: "lyustiz" })
         this.members.push({ id: 2, nb_nombres: "luisa tovar", nb_usuario: "ltovar" })
         this.members.push({ id: 3, nb_nombres: "luisa tovar", nb_usuario: "ltovar" })
-        this.members.push({ id: 4, nb_nombres: "luisa tovar", nb_usuario: "ltovar" })
+        this.members.push({ id: 4, nb_nombres: "luisa tovar", nb_usuario: "ltovar" }) */
     },
 
     computed:
@@ -96,6 +97,7 @@ export default {
     },
 
     data: () => ({
+        echo:        null,
         instance:    null,
         channel:     null,
         members:     [],
@@ -119,24 +121,68 @@ export default {
     {
         async list()
         {
-           /*  await this.getInstance();
+           await this.getInstance();
 
-            Pusher.logToConsole = true;
+            //Pusher.logToConsole = true;
 
-            if(!this.chanel)
+           /*  if(!this.chanel)
             {
                 this.setChanels()
-            } */
-
-            this.setupVideoChat()
+            }  */
+            //this.setupVideoChat()
         },
 
-        async getInstance()
+        getInstance()
         {
-            if(!this.credentials)
+           /*   let app ={
+                    "id":"1056882",
+                    "key":process.env.MIX_PUSHER_APP_KEY,
+                    "secret":"3901ce8a3bc42b72b6d7",
+                    "host":null,
+                    "path":null,
+                    "capacity":null,
+                    "clientMessagesEnabled":true,
+                    "statisticsEnabled":true};
+
+            let pusher = new window.Pusher(app.key, {
+                    wsHost: window.location.hostname,
+                    wsPort: 6001,
+                    wssPort: 6001,
+                    wsPath: app.path === null ? '' : app.path,
+                    disableStats: true,
+                    // authEndpoint: 'http://127.0.0.1:8000/laravel-websockets/auth',
+                    /* auth: {
+                        headers: {
+                            'X-CSRF-Token': "lLUwRCDIS5K4eKkPTfVhjT9icxiL5TnL7qrWCTaM",
+                            'X-App-ID': app.id
+                        }
+                    }, 
+                    enabledTransports: ['ws', 'flash']
+                });*/
+                      
+        /*              
+    key: process.env.MIX_PUSHER_APP_KEY,
+    wsHost: window.location.hostname,
+    wsPort: 6001,
+    disableStats: true,
+    forceTLS: false,
+    enabledTransports: ['ws', 'wss'] */
+             
+              window.Echo.channel('notificacion-creada')
+                       .listen('NotificacionEvent', (data)=>{
+                           console.log('ecuschndo evento', data)
+                       })
+               console.log( window.Echo) 
+            //notificacion-creada
+
+
+            
+            /* if(!this.credentials)
             {
+               
+               
                 await this.$store.dispatch('credentials', this.idUser).then(users => {
-                    console.log('credenciales obtenidad')
+                    console.log('credenciales obtenidad', users)
                 }).catch(error => 
 				{
 					console.log('Error en Credentiasls')
@@ -146,14 +192,14 @@ export default {
             if(!this.instance)
             {
 
-                await this.$store.dispatch('instance', this.idUser).then(pusher => {
+             /   await this.$store.dispatch('instance', this.idUser).then(pusher => {
                     this.instance = pusher
                     console.log('Creada Instancia de Pusher')
                 }).catch(error => 
                 {
                     console.log('Error al iniciar de Pusher', error)
-                })
-            }
+                }) 
+            }*/
         },
 
         setChanels()

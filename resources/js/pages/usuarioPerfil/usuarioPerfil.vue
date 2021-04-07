@@ -28,8 +28,8 @@
 
                 <template v-slot:item="{ item }">
                     <tr>
-                        <td class="text-xs-left">{{ item.usuario.nb_usuario }}</td>
-                        <td class="text-xs-left">{{ item.usuario.nb_nombres }}</td>
+                        <td class="text-xs-left">{{ (item.usuario) ? item.usuario.nb_usuario : null }}</td>
+                        <td class="text-xs-left">{{ (item.usuario) ? item.usuario.nb_nombres : null }}</td>
                         <td class="text-xs-left">
                               <list-simple-icon :label="item.perfil.nb_perfil" color="success" :icon="item.perfil.tx_icono"></list-simple-icon>
                         </td>

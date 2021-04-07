@@ -35,7 +35,7 @@
 
                 <v-tooltip bottom>
                     <template v-slot:activator="{ on }">
-                        <v-btn fab x-small class="warning mx-1" :loadin="loading" v-on="on" @click="$emit('deleteCancel')">
+                        <v-btn fab x-small class="warning mx-1" :loading="loading" v-on="on" @click="$emit('deleteCancel')">
                             <v-icon>reply</v-icon>
                         </v-btn>
                     </template>
@@ -44,7 +44,7 @@
                 
                 <v-tooltip bottom>
                     <template v-slot:activator="{ on }">
-                        <v-btn fab small class="error mx-1" :loadin="loading" v-on="on" @click="$emit('deleteItem')" >
+                        <v-btn fab small class="error mx-1" :loading="loading" v-on="on" @click="$emit('deleteItem')" >
                             <v-icon>delete</v-icon>
                         </v-btn>
                     </template>

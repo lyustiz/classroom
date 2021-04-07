@@ -54,21 +54,7 @@
                 dense
             ></v-text-field>
         </v-col>
-                          
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.status"
-            item-text="nb_status"
-            item-value="id"
-            v-model="form.id_status"
-            :rules="[rules.select]"
-            label="Status"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
-         
-
+  
         </v-row>
 
         </v-card-text>
@@ -103,14 +89,6 @@ export default {
     data() {
         return {
             resource: 'horario',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
             form:
             {
                 id: 	           null,
@@ -125,7 +103,6 @@ export default {
             {
                 grupo: 	        [],
 	 	 	 	horaAcademica: 	[],
-	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

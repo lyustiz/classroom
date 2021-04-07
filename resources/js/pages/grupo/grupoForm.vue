@@ -82,7 +82,7 @@
             ></v-text-field>
         </v-col>
                   
-        <v-col cols="12" md="6">
+        <v-col cols="12">
             <v-text-field
                 :rules="[rules.max(100)]"
                 v-model="form.tx_observaciones"

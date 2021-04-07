@@ -162,7 +162,17 @@ class DocenteController extends Controller
         {
             throw ValidationException::withMessages(['poseeHorario' => "Posee Horario(s) asociado(s)"]);
         }
-        
+
+        $usuario = $docente->usuarioDocente;
+
+        $perfiles = $usuario->usuarioPerfil;
+
+        foreach ($perfiles as $perfil) {
+            $perfil->delete();
+        }
+
+        $docente->usuarioDocente->update(['id_status' => 2]);
+         
         $docente = $docente->delete();
  
         return [ 'msj' => 'Docente Eliminado' , compact('docente')];

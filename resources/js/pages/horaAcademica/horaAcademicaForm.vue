@@ -12,14 +12,15 @@
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.nb_hora_academica"
-                label="Hora Academica"
-                placeholder="Indique Hora Academica"
+                label="Descripcion"
+                placeholder="Indique Descripcion"
                 dense
             ></v-text-field>
         </v-col>
 
         <v-col cols="12" md="6">
             <v-select
+            :rules="[rules.select]"
             :items="selects.nivel"
             item-text="nb_nivel"
             item-value="id"
@@ -30,23 +31,10 @@
             clearable
             ></v-select>
         </v-col>
-
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.status"
-            item-text="nb_status"
-            item-value="id"
-            v-model="form.id_status"
-            :rules="[rules.select]"
-            label="Status"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
         
         <v-col cols="12" md="12">
             <v-text-field
-                :rules="[]"
+                :rules="[rules.max(80)]"
                 v-model="form.tx_observaciones"
                 label="Observaciones"
                 placeholder="Indique Observaciones"
@@ -116,8 +104,10 @@ export default {
             selects:
             {
                 nivel: 	[],
-	 	 	 	status: ['/grupo/GRAL'],
             },
+            default:{
+                id_status: 1
+            }
             
         }
     },

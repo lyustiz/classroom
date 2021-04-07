@@ -47,7 +47,7 @@
                 :loading="loading"
                 dense
                 filled
-                    rounded
+                rounded
                 ></v-select>
             </v-col>
 
@@ -81,7 +81,7 @@
                     
             <v-col cols="12">
                 <v-textarea
-                    :rules="[rules.required]"
+                    :rules="[rules.max(200)]"
                     v-model="form.tx_observaciones"
                     label="Observaciones"
                     placeholder="Indique Observaciones Adicionales"

@@ -105,6 +105,11 @@ class Usuario extends Authenticatable implements MustVerifyEmail, JWTSubject
 	{
         return $this->belongsTo('App\Models\Colegio', 'id_colegio');
 	}
+
+	public function usuarioPerfil()
+	{
+        return $this->hasMany('App\Models\UsuarioPerfil', 'id_usuario');
+	}
 	
 	public function perfil()
 	{

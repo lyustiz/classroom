@@ -118,7 +118,7 @@ class ParienteController extends Controller
                                 'id_usuario'        => $pariente->id_usuario
                             ]);
 
-        return [ 'msj' => 'Pariente Agregado Correctamente', compact('pariente', 'alumnoPariente') ];
+        return [ 'msj' => 'Acudiente Agregado Correctamente', compact('pariente', 'alumnoPariente') ];
     }
 
     /**
@@ -171,7 +171,7 @@ class ParienteController extends Controller
 
         $pariente = $pariente->update($request->all());
 
-        return [ 'msj' => 'Pariente Editado' , compact('pariente')];
+        return [ 'msj' => 'Acudiente Editado' , compact('pariente')];
     }
 
     /**
@@ -182,9 +182,23 @@ class ParienteController extends Controller
      */
     public function destroy(Pariente $pariente)
     {
+        
+        if( count($pariente->alumnoPariente) > 0 )
+        {
+            throw ValidationException::withMessages(['poseeAlumnos' => "El Acudiente posee Alumnos vinculados"]);
+        }
+        
+        $usuario = $pariente->usuarioPariente;
+
+        $perfiles = $usuario->usuarioPerfil;
+
+        foreach ($perfiles as $perfil) {
+            $perfil->delete();
+        }
+        
         $pariente = $pariente->delete();
  
-        return [ 'msj' => 'Pariente Eliminado' , compact('pariente')];
+        return [ 'msj' => 'Acudiente Eliminado' , compact('pariente')];
     }
 
     /**
@@ -199,6 +213,6 @@ class ParienteController extends Controller
                     ->where('id_pariente', $idPariente)
                     ->delete();
         
-        return [ 'msj' => 'Pariente Desvinculado' , compact('pariente')]; 
+        return [ 'msj' => 'Acudiente Desvinculado' , compact('pariente')]; 
     }
 }

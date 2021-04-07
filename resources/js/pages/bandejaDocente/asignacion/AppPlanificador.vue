@@ -67,7 +67,7 @@ export default {
         list()
         {
             this.getResource( `grupo/docente/${this.docente.id}` ).then( data =>  this.grupos = data)
-            this.getResource( `tipoEvaluacion` ).then( data => this.tipoEvaluacion = data)
+            this.getResource( `tipoEvaluacion?asignable="true"` ).then( data => this.tipoEvaluacion = data)
         },
     }
 }

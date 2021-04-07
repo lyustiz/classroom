@@ -145,7 +145,7 @@ class UsuarioController extends Controller
             'id_usuario'      => 'required',
         ]);
 
-        if($usuario->id_tipo_usuario = 1)
+        if($usuario->id_tipo_usuario == 1)
         {
             throw ValidationException::withMessages(['adminNotEdit' => "No es posible editar al usuario Administrador"]);
         }

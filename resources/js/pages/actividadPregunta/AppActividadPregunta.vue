@@ -6,7 +6,7 @@
 
             <v-tooltip bottom color="green">
                 <template v-slot:activator="{ on }">   
-                    <v-btn fab color="success" x-small v-on="on" @click="insertForm()" :loading="loading" absolute top right>
+                    <v-btn fab color="success" x-small v-on="on" :disabled="items.length>0" @click="insertForm()" :loading="loading" absolute top right>
                         <v-icon size="25"  >mdi-plus</v-icon>
                     </v-btn>         
                 </template>

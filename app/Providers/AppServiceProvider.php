@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use App\Observers\NotificacionObserver;
+use App\Models\Notificacion;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -43,5 +45,8 @@ class AppServiceProvider extends ServiceProvider
             'rasgo'           => 'App\Models\Rasgo',
             'tipo_evaluacion' => 'App\Models\TipoEvaluacion',
         ]);
+
+        Notificacion::observe(NotificacionObserver::class);
+        
     }
 }

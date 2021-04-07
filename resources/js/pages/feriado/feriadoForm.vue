@@ -12,8 +12,8 @@
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.nb_feriado"
-                label="Descripcion del Feriado"
-                placeholder="Descripcion del Feriado"
+                label="Nombre del Feriado"
+                placeholder="Nombre del Feriado"
                 dense
             ></v-text-field>
         </v-col>
@@ -56,20 +56,7 @@
             </v-menu>
         </v-col>
         
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.status"
-            item-text="nb_status"
-            item-value="id"
-            v-model="form.id_status"
-            :rules="[rules.select]"
-            label="Status"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
-
-        <v-col cols="12" md="6" >
+        <v-col cols="12">
             <v-text-field
                 :rules="[rules.max(100)]"
                 v-model="form.tx_observaciones"
@@ -79,7 +66,6 @@
             ></v-text-field>
         </v-col>
          
-
         </v-row>
 
         </v-card-text>
@@ -152,7 +138,6 @@ export default {
             selects:
             {
                 tipoFeriado: 	 [],
-	 	 	 	status: 	     ['/grupo/GRAL'],
             },
         }
     },

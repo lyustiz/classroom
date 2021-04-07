@@ -20,41 +20,29 @@
                 
         <v-col cols="12" md="6">
             <v-select
-            :items="selects.estructura"
-            item-text="tx_path"
-            item-value="id"
-            v-model="form.id_padre"
-            :rules="[]"
-            label="Ubicacion Padre"
-            :loading="loading"
-            dense
+                :items="selects.estructura"
+                item-text="tx_path"
+                item-value="id"
+                v-model="form.id_padre"
+                :rules="[rules.select]"
+                label="Ubicacion Padre"
+                :loading="loading"
+                dense
+                append-outer-icon="mdi-refresh"
+                @click:append-outer="fetchEstructura()"
             ></v-select>
         </v-col>
           
-        <v-col cols="12" md="6">
+        <v-col cols="12">
             <v-text-field
-                :rules="[]"
+                :rules="[this.rules.max(80)]"
                 v-model="form.tx_observaciones"
                 label="Observaciones"
                 placeholder="Indique Observaciones"
                 dense
             ></v-text-field>
         </v-col>
-                          
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.status"
-            item-text="nb_status"
-            item-value="id"
-            v-model="form.id_status"
-            :rules="[rules.select]"
-            label="Status"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
          
-
         </v-row>
 
         </v-card-text>
@@ -86,17 +74,14 @@ import Appform from '@mixins/Appform';
 
 export default {
     mixins: [Appform],
+    watch: {
+        action() {
+            this.fetchEstructura()
+        }
+    },
     data() {
         return {
             resource: 'estructura',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
             form:
             {
                 id: 	          null,
@@ -110,7 +95,6 @@ export default {
             selects:
             {
 	 	 	 	estructura: 	 [],
-	 	 	 	status: 	     ['/grupo/GRAL'],
             },
             default:
             {
@@ -121,7 +105,11 @@ export default {
 
     methods:
     {
-
+        fetchEstructura() {
+            this.getResource('estructura').then( data => {
+                this.selects.estructura = data
+            })
+        }
     }
 }
 </script>

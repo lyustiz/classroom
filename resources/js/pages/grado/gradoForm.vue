@@ -8,7 +8,6 @@
 
         <v-row>
 
-                 
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
@@ -51,21 +50,7 @@
                 dense
             ></v-text-field>
         </v-col>
-                          
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.status"
-            item-text="nb_status"
-            item-value="id"
-            v-model="form.id_status"
-            :rules="[rules.select]"
-            label="Status"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
-         
-
+                        
         </v-row>
 
         </v-card-text>
@@ -100,28 +85,19 @@ export default {
     data() {
         return {
             resource: 'grado',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
             form:
             {
-                id: 	null,
-				nb_grado: 	null,
-				nu_grado: 	null,
-				id_nivel: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
+                id: 	          null,
+				nb_grado: 	      null,
+				nu_grado: 	      null,
+				id_nivel: 	      null,
+				tx_observaciones: null,
+				id_status: 	      null,
+				id_usuario: 	  null,
             },
             selects:
             {
                 nivel: 	 [],
-	 	 	 	status:  ['/grupo/GRAL'],
             },
         }
     },

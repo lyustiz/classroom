@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c31e2560d1543920c3c3c45ebc2601a5",
+    "content-hash": "3be3e68e0511a63ccc87e3dc51a1d7eb",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -64,16 +64,16 @@
         },
         {
             "name": "beyondcode/laravel-websockets",
-            "version": "1.9.0",
+            "version": "1.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/beyondcode/laravel-websockets.git",
-                "reference": "f08e4f287a6f097a83cc78ad764d6084ec625c09"
+                "reference": "583022a11d217caf5fbf5b8f1ae8837f473c41f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/beyondcode/laravel-websockets/zipball/f08e4f287a6f097a83cc78ad764d6084ec625c09",
-                "reference": "f08e4f287a6f097a83cc78ad764d6084ec625c09",
+                "url": "https://api.github.com/repos/beyondcode/laravel-websockets/zipball/583022a11d217caf5fbf5b8f1ae8837f473c41f9",
+                "reference": "583022a11d217caf5fbf5b8f1ae8837f473c41f9",
                 "shasum": ""
             },
             "require": {
@@ -86,15 +86,15 @@
                 "illuminate/http": "^6.0|^7.0|^8.0",
                 "illuminate/routing": "^6.0|^7.0|^8.0",
                 "illuminate/support": "^6.0|^7.0|^8.0",
-                "php": "^7.2",
-                "pusher/pusher-php-server": "^3.0|^4.0",
+                "php": "^7.2|^8.0",
+                "pusher/pusher-php-server": "^3.0|^4.0|^5.0",
                 "react/dns": "^1.1",
                 "react/http": "^1.1",
                 "symfony/http-kernel": "^4.0|^5.0",
                 "symfony/psr-http-message-bridge": "^1.1|^2.0"
             },
             "require-dev": {
-                "mockery/mockery": "^1.3",
+                "mockery/mockery": "^1.3.3",
                 "orchestra/testbench": "^4.0|^5.0|^6.0",
                 "phpunit/phpunit": "^8.0|^9.0"
             },
@@ -140,9 +140,9 @@
             ],
             "support": {
                 "issues": "https://github.com/beyondcode/laravel-websockets/issues",
-                "source": "https://github.com/beyondcode/laravel-websockets/tree/1.9.0"
+                "source": "https://github.com/beyondcode/laravel-websockets/tree/1.11.1"
             },
-            "time": "2020-10-18T07:20:20+00:00"
+            "time": "2021-03-02T18:04:58+00:00"
         },
         {
             "name": "botman/botman",
@@ -4565,26 +4565,26 @@
         },
         {
             "name": "pusher/pusher-php-server",
-            "version": "v4.1.5",
+            "version": "v3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pusher/pusher-http-php.git",
-                "reference": "251f22602320c1b1aff84798fe74f3f7ee0504a9"
+                "reference": "a5fcdc65efd8d9a8291efbe01d326ec7ef5d5cee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/251f22602320c1b1aff84798fe74f3f7ee0504a9",
-                "reference": "251f22602320c1b1aff84798fe74f3f7ee0504a9",
+                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/a5fcdc65efd8d9a8291efbe01d326ec7ef5d5cee",
+                "reference": "a5fcdc65efd8d9a8291efbe01d326ec7ef5d5cee",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
                 "paragonie/sodium_compat": "^1.6",
-                "php": "^7.1|^8.0",
+                "php": ">=5.4 <7.4",
                 "psr/log": "^1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7.2|^8.5|^9.3"
+                "phpunit/phpunit": "^4.8.35 || ^5.7"
             },
             "type": "library",
             "extra": {
@@ -4617,9 +4617,9 @@
             ],
             "support": {
                 "issues": "https://github.com/pusher/pusher-http-php/issues",
-                "source": "https://github.com/pusher/pusher-http-php/tree/v4.1.5"
+                "source": "https://github.com/pusher/pusher-http-php/tree/master"
             },
-            "time": "2020-12-09T09:38:19+00:00"
+            "time": "2019-03-19T11:19:11+00:00"
         },
         {
             "name": "ralouphie/getallheaders",

@@ -91,6 +91,11 @@ class Pariente extends Model
 	{
         return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
 	}
+
+	public function usuarioPariente()
+	{
+        return $this->hasOne('App\Models\Usuario', 'id_origen')->where('id_tipo_usuario', 4);
+	}
 	
 	public function parentesco()
 	{

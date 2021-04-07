@@ -9,7 +9,7 @@
         <v-row>
 
                  
-        <v-col cols="12" md="6">
+        <v-col cols="12">
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.nb_cargo"
@@ -19,16 +19,16 @@
             ></v-text-field>
         </v-col>
                   
-        <v-col cols="12" md="6">
+        <v-col cols="12" >
             <v-text-field
-                :rules="[]"
+                :rules="[rules.max(80)]"
                 v-model="form.tx_observaciones"
                 label="Observaciones"
                 placeholder="Indique Observaciones"
                 dense
             ></v-text-field>
         </v-col>
-                          
+<!--                           
         <v-col cols="12" md="6">
             <v-select
             :items="selects.status"
@@ -40,7 +40,7 @@
             :loading="loading"
             dense
             ></v-select>
-        </v-col>
+        </v-col> -->
          
 
         </v-row>
@@ -77,33 +77,16 @@ export default {
     data() {
         return {
             resource: 'cargo',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
             form:
             {
-                id: 	null,
-				nb_cargo: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
-            },
-            selects:
-            {
-                status: 	     ['/grupo/GRAL'],
+                id: 	          null,
+				nb_cargo: 	      null,
+				tx_observaciones: null,
+				id_status: 	      null,
+				id_usuario: 	  null,
             },
         }
     },
-
-    methods:
-    {
-
-    }
 }
 </script>
 

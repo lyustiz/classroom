@@ -123,7 +123,7 @@ class CalendarioController extends Controller
 			'id_usuario'        => 	'required|integer',
         ]);
 
-        $calendario = $calendario->update($request->all());
+        $calendario = tap($calendario)->update($request->all());
 
         $calendarioActivo = $this->setCalendarioActivo($calendario, 'upd');
 

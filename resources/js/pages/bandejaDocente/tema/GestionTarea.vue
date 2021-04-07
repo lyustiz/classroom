@@ -12,7 +12,14 @@
                         <v-icon size="30" color="deep-purple">mdi-notebook</v-icon>
                     </v-list-item-avatar>
                     <v-list-item-content>
-                        <v-list-item-title>{{ tarea.nb_tarea }}</v-list-item-title>
+                        <v-list-item-title>
+                            <v-row dense>
+                                <v-col cols="auto">{{ tarea.nb_tarea }}</v-col>
+                                <v-col cols="auto">
+                                    <list-simple-icon color="red" label="incompleto" :size="16" icon="mdi-alert-circle-outline" v-if="tarea.id_status == 2"></list-simple-icon>
+                                </v-col>
+                            </v-row>
+                        </v-list-item-title>
                     </v-list-item-content>
                     <v-list-item-action>
                         <v-btn icon :loading="loading">

@@ -226,7 +226,7 @@ class PruebaController extends Controller
 
         $prueba = $prueba->update($request->all());
 
-        return [ 'msj' => 'Cuestionario Actualizada' , compact('prueba')];
+        return [ 'msj' => 'Cuestionario Actualizado' , compact('prueba')];
     }
 
     public function asignar(Request $request, Prueba $prueba)
@@ -248,7 +248,7 @@ class PruebaController extends Controller
             throw ValidationException::withMessages(['noAsignable' => "La evaluacion seleccionada, tiene todos los alumnos asignados"]);
         }
 
-        return [ 'msj' => 'Prueba Asignada' , compact('update')];
+        return [ 'msj' => 'Cuestionario Asignada' , compact('update')];
     }
 
     public function asignarAlumnos($prueba, $idEvaluacion)
@@ -297,7 +297,7 @@ class PruebaController extends Controller
 
         $update = $prueba->update($request->all());
 
-        return [ 'msj' => 'Prueba pendiente por Asignacion' , compact('update', 'delete')];
+        return [ 'msj' => 'Cuestionario pendiente por Asignacion' , compact('update', 'delete')];
     }
 
     public function ejecutar(Request $request, Prueba $prueba)
@@ -320,7 +320,7 @@ class PruebaController extends Controller
 
         $prueba = $prueba->update($request->all());
 
-        return [ 'msj' => 'Prueba en Ejecucion' , compact('prueba')];
+        return [ 'msj' => 'Cuestionario en Ejecucion' , compact('prueba')];
     }
 
     public function cancelar(Request $request, Prueba $prueba)
@@ -339,7 +339,7 @@ class PruebaController extends Controller
 
         $prueba = $prueba->update($request->all());
 
-        return [ 'msj' => 'Prueba Cancelada' , compact('prueba')];
+        return [ 'msj' => 'Cuestionario Cancelado' , compact('prueba')];
     }
 
     public function reiniciar(Request $request, Prueba $prueba)
@@ -358,7 +358,7 @@ class PruebaController extends Controller
 
         $prueba = $prueba->update($request->all());
 
-        return [ 'msj' => 'Prueba Reiniciada' , compact('prueba')];
+        return [ 'msj' => 'Cuestionario Reiniciado' , compact('prueba')];
     }
 
     public function cerrar(Request $request, Prueba $prueba)
@@ -384,7 +384,7 @@ class PruebaController extends Controller
 
         $update = $prueba->update($request->all());
 
-        return [ 'msj' => 'Prueba Cerrada' , compact('update')];
+        return [ 'msj' => 'Cuestionario Cerrado' , compact('update')];
     }
 
 
@@ -454,15 +454,14 @@ class PruebaController extends Controller
         {
             throw ValidationException::withMessages(['poseeEvaluacion' => "El cuestionario ha sido asignada a una evaluacion"]);
         }
-        
-        if( count($prueba->respuesta) > 0 )
+
+        if( count($prueba->pregunta) > 0 )
         {
             throw ValidationException::withMessages(['poseeEvaluacion' => "Posee respuesta(s) asociada(s)"]);
         }
 
-
         $prueba = $prueba->delete();
  
-        return [ 'msj' => 'Prueba Eliminada' , compact('prueba')];
+        return [ 'msj' => 'Cuestionario Eliminado' , compact('prueba')];
     }
 }

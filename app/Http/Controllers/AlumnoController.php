@@ -372,6 +372,16 @@ class AlumnoController extends Controller
         {
             throw ValidationException::withMessages(['poseePariente' => "El Alumno tiene vinculado a un Acudiente"]);
         }
+
+        $usuario = $alumno->usuarioAlumno;
+
+        $perfiles = $usuario->usuarioPerfil;
+
+        foreach ($perfiles as $perfil) {
+            $perfil->delete();
+        }
+
+        $usuario->update(['id_status' => 2]);
         
         $alumno = $alumno->delete();
  

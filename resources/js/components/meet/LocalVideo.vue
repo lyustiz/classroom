@@ -99,6 +99,7 @@ export default {
         tools:  false,
         player: null,
         media:  { audio: false,  video: false, muted: true },
+        dialogDevices: false
     }),
 
     methods: {

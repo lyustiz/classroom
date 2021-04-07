@@ -25,6 +25,11 @@ class TipoEvaluacion extends Model
         return $query->where('id_status', 1);
 	}
 
+    public function scopeAsignable($query, $asignable = false)
+    {
+        return ($asignable) ? $query->where('id', '<>', 8) : $query;
+	}
+
 	public function scopeComboData($query)
     {
         return $query->addSelect('id', 'nb_tipo_evaluacion', 'tx_icono', 'tx_color');

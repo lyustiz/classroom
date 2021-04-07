@@ -165,7 +165,7 @@ class RespuestaController extends Controller
      */
     public function destroy(Respuesta $respuesta)
     {
-        if( count($respuesta->docente) > 0 )
+        if( count($respuesta->alumno) > 0 )
         {
             throw ValidationException::withMessages(['poseeRespuestasAlumnos' => "Existen alumnos que seleccionaron esta respuesta"]);
         }

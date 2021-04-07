@@ -172,10 +172,13 @@ export default {
 
      watch:
     {
-        pregunta()
+        pregunta(oldPregunta, newdPregunta)
         {
-            this.respuestas = []
-            this.list()
+            if(oldPregunta.id != newdPregunta.id)
+            {
+                this.respuestas = []
+                this.list()
+            }
         }
     },
 
@@ -221,6 +224,7 @@ export default {
                 this.menu = false
                 this.clearForm()
                 this.respuestas = data.respuestas
+                this.$emit('onUpdateData')
             })
         },
 
@@ -228,6 +232,7 @@ export default {
         {
             this.deleteResource(`respuesta/${respuesta.id}`).then( data =>{
                 this.showMessage(data.msj)
+                this.$emit('onUpdateData')
                 this.list()
             })
         },

@@ -111,8 +111,6 @@ class Alumno extends Model
         return $this->BelongsTo('App\Models\Ciudad', 'id_ciudad');
 	}
 
-
-
 	public function grado()
 	{
 		return $this->hasOneThrough(

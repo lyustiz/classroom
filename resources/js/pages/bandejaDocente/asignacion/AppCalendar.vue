@@ -688,6 +688,7 @@ export default {
 
         asignarEvaluacion(dia, tipo)
         {            
+            
             if(tipo.tx_clase == 'evaluacion')
             {
                 this.dialogEvaluacion = true;

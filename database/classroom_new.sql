@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2021-04-01 15:33:38
+Date: 2021-04-06 23:30:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,11 +36,12 @@ CREATE TABLE `actividad` (
   CONSTRAINT `fk_actividad_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_actividad_tema` FOREIGN KEY (`id_tema`) REFERENCES `tema` (`id`),
   CONSTRAINT `fk_actividad_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of actividad
 -- ----------------------------
+INSERT INTO `actividad` VALUES ('1', 'actividad 1', '1', 'dxvzxvzvx     gdfgdfggfdg', null, '1', '1', '2021-04-06 17:45:40', '2021-04-06 17:49:56');
 
 -- ----------------------------
 -- Table structure for actividad_pregunta
@@ -69,11 +70,12 @@ CREATE TABLE `actividad_pregunta` (
   CONSTRAINT `fk_actividad_pregunta_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_actividad_pregunta_tipo_pregunta` FOREIGN KEY (`id_tipo_pregunta`) REFERENCES `tipo_pregunta` (`id`),
   CONSTRAINT `fk_actividad_pregunta_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of actividad_pregunta
 -- ----------------------------
+INSERT INTO `actividad_pregunta` VALUES ('1', 'preg 1', 'gs', '1', '2', '0', '0.00', '0', null, '1', '1', '2021-04-06 17:46:13', '2021-04-06 17:46:13');
 
 -- ----------------------------
 -- Table structure for actividad_respuesta
@@ -97,11 +99,14 @@ CREATE TABLE `actividad_respuesta` (
   CONSTRAINT `fk_actividad_respuesta_actividad_pregunta` FOREIGN KEY (`id_actividad_pregunta`) REFERENCES `actividad_pregunta` (`id`),
   CONSTRAINT `fk_actividad_respuesta_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_actividad_respuesta_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of actividad_respuesta
 -- ----------------------------
+INSERT INTO `actividad_respuesta` VALUES ('1', 'sfsafaf', '1', '0', null, null, '1', '1', '2021-04-06 17:46:24', '2021-04-06 17:48:56');
+INSERT INTO `actividad_respuesta` VALUES ('2', 'dsfsfsfs', '1', '1', null, null, '1', '1', '2021-04-06 17:48:53', '2021-04-06 17:48:56');
+INSERT INTO `actividad_respuesta` VALUES ('3', 'fzfzfzxfzf', '1', '0', null, null, '1', '1', '2021-04-06 17:49:01', '2021-04-06 17:49:01');
 
 -- ----------------------------
 -- Table structure for agenda
@@ -133,7 +138,7 @@ CREATE TABLE `agenda` (
   CONSTRAINT `fk_agenda_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_agenda_tipo_agenda` FOREIGN KEY (`id_tipo_agenda`) REFERENCES `tipo_agenda` (`id`),
   CONSTRAINT `fk_agenda_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of agenda
@@ -158,11 +163,12 @@ CREATE TABLE `agenda_actividad` (
   KEY `fk_agenda_actividad_usuario` (`id_usuario`),
   CONSTRAINT `fk_agenda_actividad_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_agenda_actividad_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of agenda_actividad
 -- ----------------------------
+INSERT INTO `agenda_actividad` VALUES ('1', 'Deporte', 'mdi-volleyball', 'amber', null, '1', '1', '2021-04-07 03:11:55', '2021-04-07 03:12:09');
 
 -- ----------------------------
 -- Table structure for alumno
@@ -203,7 +209,7 @@ CREATE TABLE `alumno` (
   CONSTRAINT `fk_alumno_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_alumno_tipo_documento` FOREIGN KEY (`id_tipo_documento`) REFERENCES `tipo_documento` (`id`),
   CONSTRAINT `fk_alumno_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of alumno
@@ -238,7 +244,7 @@ CREATE TABLE `alumno_materia` (
   CONSTRAINT `fk_alumno_materia_materia` FOREIGN KEY (`id_materia`) REFERENCES `materia` (`id`),
   CONSTRAINT `fk_alumno_materia_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_alumno_materia_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of alumno_materia
@@ -270,7 +276,7 @@ CREATE TABLE `alumno_pariente` (
   CONSTRAINT `fk_alumno_pariente_pariente` FOREIGN KEY (`id_pariente`) REFERENCES `pariente` (`id`),
   CONSTRAINT `fk_alumno_pariente_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_alumno_pariente_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of alumno_pariente
@@ -300,11 +306,15 @@ CREATE TABLE `archivo` (
   CONSTRAINT `fk_archivo_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_archivo_tipo_archivo` FOREIGN KEY (`id_tipo_archivo`) REFERENCES `tipo_archivo` (`id`),
   CONSTRAINT `fk_archivo_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of archivo
 -- ----------------------------
+INSERT INTO `archivo` VALUES ('1', 'fuendamentos', '8', '1', 'fundamentos_macroeconomia.mp3', 'Audio', null, '1', '1', '2021-04-06 17:44:27', '2021-04-06 17:44:27');
+INSERT INTO `archivo` VALUES ('2', 'lectura', '10', '2', 'grado 3_Los cambios en los niños_Causas de la rebeldía en los niños.pdf', 'PDF', null, '1', '1', '2021-04-06 17:45:26', '2021-04-06 17:45:26');
+INSERT INTO `archivo` VALUES ('4', 'fsafs', '11', '1', '1617734796_alumnos.txt', 'Texto', 'fafaf', '1', '1', '2021-04-06 18:46:36', '2021-04-06 18:46:36');
+INSERT INTO `archivo` VALUES ('5', 'ag', '13', '3', '1617746686_clase (3).png', 'Image', 'gdag', '1', '1', '2021-04-06 22:04:46', '2021-04-06 22:04:46');
 
 -- ----------------------------
 -- Table structure for area_estudio
@@ -324,7 +334,7 @@ CREATE TABLE `area_estudio` (
   KEY `fk_area_estudio_usuario` (`id_usuario`),
   CONSTRAINT `fk_area_estudio_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_area_estudio_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of area_estudio
@@ -360,12 +370,16 @@ CREATE TABLE `asistencia` (
   CONSTRAINT `fk_asistencia_clase` FOREIGN KEY (`id_clase`) REFERENCES `clase` (`id`),
   CONSTRAINT `fk_asistencia_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_asistencia_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of asistencia
 -- ----------------------------
-INSERT INTO `asistencia` VALUES ('1', '1', '1', null, '0', null, '1', '1', '2021-03-12 19:31:24', null);
+INSERT INTO `asistencia` VALUES ('1', '6', '1', null, '0', null, '1', '1', '2021-04-02 17:08:04', null);
+INSERT INTO `asistencia` VALUES ('2', '7', '1', null, '0', null, '1', '1', '2021-04-02 17:32:58', null);
+INSERT INTO `asistencia` VALUES ('3', '8', '1', null, '0', null, '1', '1', '2021-04-02 17:35:36', null);
+INSERT INTO `asistencia` VALUES ('4', '9', '1', null, '0', null, '1', '1', '2021-04-06 15:26:20', null);
+INSERT INTO `asistencia` VALUES ('5', '10', '1', '2021-04-06 22:51:35', '1', null, '1', '1', '2021-04-06 22:51:27', '2021-04-06 22:51:35');
 
 -- ----------------------------
 -- Table structure for asistente
@@ -474,7 +488,7 @@ CREATE TABLE `aula` (
   CONSTRAINT `fk_aula_estructura` FOREIGN KEY (`id_estructura`) REFERENCES `estructura` (`id`),
   CONSTRAINT `fk_aula_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_aula_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of aula
@@ -923,13 +937,13 @@ CREATE TABLE `calendario` (
   KEY `fk_calendario_usuario` (`id_usuario`),
   CONSTRAINT `fk_calendario_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_calendario_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of calendario
 -- ----------------------------
-INSERT INTO `calendario` VALUES ('1', 'Calendario 2021', '2021', '2021-04-05', '2021-12-17', null, '1', '1', '2021-03-12 00:42:55', '2021-03-12 00:44:06');
-INSERT INTO `calendario` VALUES ('2', 'Calendario 2022', '2022', '2022-03-28', '2022-12-23', null, '2', '1', '2021-03-12 00:44:00', '2021-03-12 00:44:06');
+INSERT INTO `calendario` VALUES ('1', 'Calendario 2021', '2021', '2021-04-05', '2021-12-17', null, '1', '1', '2021-03-12 00:42:55', '2021-04-07 00:39:14');
+INSERT INTO `calendario` VALUES ('2', 'Calendario 2022', '2022', '2022-03-28', '2022-12-23', null, '2', '1', '2021-03-12 00:44:00', '2021-04-07 00:39:14');
 
 -- ----------------------------
 -- Table structure for calificacion
@@ -962,7 +976,7 @@ CREATE TABLE `calificacion` (
   CONSTRAINT `fk_calificacion_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_calificacion_tipo_calificacion` FOREIGN KEY (`id_tipo_calificacion`) REFERENCES `tipo_calificacion` (`id`),
   CONSTRAINT `fk_calificacion_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of calificacion
@@ -999,7 +1013,7 @@ CREATE TABLE `carga_horaria` (
   CONSTRAINT `fk_carga_horaria_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_carga_horaria_turno` FOREIGN KEY (`id_turno`) REFERENCES `turno` (`id`),
   CONSTRAINT `fk_carga_horaria_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of carga_horaria
@@ -1037,7 +1051,7 @@ CREATE TABLE `cargo` (
   KEY `fk_cargo_usuario` (`id_usuario`),
   CONSTRAINT `fk_cargo_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_cargo_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of cargo
@@ -2321,12 +2335,16 @@ CREATE TABLE `clase` (
   CONSTRAINT `fk_clase_materia` FOREIGN KEY (`id_materia`) REFERENCES `materia` (`id`),
   CONSTRAINT `fk_clase_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_clase_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of clase
 -- ----------------------------
-INSERT INTO `clase` VALUES ('1', '4', '1', '1', '1', '2021-03-12 19:31:24', null, null, '1', '1', '2021-03-12 19:31:24', '2021-03-12 19:31:24');
+INSERT INTO `clase` VALUES ('6', '4', '1', '1', '1', '2021-04-02 13:32:45', '2021-04-02 17:32:45', null, '1', '1', '2021-04-02 17:08:04', '2021-04-02 17:32:45');
+INSERT INTO `clase` VALUES ('7', '4', '1', '1', '1', '2021-04-02 13:35:27', '2021-04-02 17:35:27', null, '1', '1', '2021-04-02 17:32:58', '2021-04-02 17:35:27');
+INSERT INTO `clase` VALUES ('8', '4', '1', '1', '1', '2021-04-06 11:25:59', '2021-04-06 15:25:59', null, '1', '1', '2021-04-02 17:35:36', '2021-04-06 15:25:59');
+INSERT INTO `clase` VALUES ('9', '4', '1', '1', '1', '2021-04-06 18:51:14', '2021-04-06 22:51:14', null, '1', '1', '2021-04-06 15:26:20', '2021-04-06 22:51:14');
+INSERT INTO `clase` VALUES ('10', '4', '1', '4', '1', '2021-04-06 18:53:12', '2021-04-06 22:53:12', null, '1', '1', '2021-04-06 22:51:27', '2021-04-06 22:53:12');
 
 -- ----------------------------
 -- Table structure for colegio
@@ -2634,7 +2652,7 @@ CREATE TABLE `detalle_horario` (
   CONSTRAINT `fk_detalle_horario_materia` FOREIGN KEY (`id_materia`) REFERENCES `materia` (`id`),
   CONSTRAINT `fk_detalle_horario_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_detalle_horario_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of detalle_horario
@@ -2671,7 +2689,7 @@ CREATE TABLE `directiva` (
   CONSTRAINT `fk_directiva_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_directiva_tipo_directiva` FOREIGN KEY (`id_tipo_directiva`) REFERENCES `tipo_directiva` (`id`),
   CONSTRAINT `fk_directiva_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of directiva
@@ -2718,7 +2736,7 @@ CREATE TABLE `docente` (
   CONSTRAINT `fk_docente_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_docente_tipo_documento` FOREIGN KEY (`id_tipo_documento`) REFERENCES `tipo_documento` (`id`),
   CONSTRAINT `fk_docente_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of docente
@@ -2775,7 +2793,7 @@ CREATE TABLE `docente_materia` (
   CONSTRAINT `fk_docente_materia_materia` FOREIGN KEY (`id_materia`) REFERENCES `materia` (`id`),
   CONSTRAINT `fk_docente_materia_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_docente_materia_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of docente_materia
@@ -2857,7 +2875,7 @@ CREATE TABLE `empleado` (
   CONSTRAINT `fk_empleado_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_empleado_tipo_documento` FOREIGN KEY (`id_tipo_documento`) REFERENCES `tipo_documento` (`id`),
   CONSTRAINT `fk_empleado_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of empleado
@@ -2889,12 +2907,14 @@ CREATE TABLE `enlace` (
   CONSTRAINT `fk_enlace_tema` FOREIGN KEY (`id_tema`) REFERENCES `tema` (`id`),
   CONSTRAINT `fk_enlace_tipo_enlace` FOREIGN KEY (`id_tipo_enlace`) REFERENCES `tipo_enlace` (`id`),
   CONSTRAINT `fk_enlace_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of enlace
 -- ----------------------------
 INSERT INTO `enlace` VALUES ('1', 'Curso Ingles', '2', '1', '', '99FY4YcOUPE', null, '1', '1', '2021-03-12 02:27:48', '2021-03-12 02:27:48');
+INSERT INTO `enlace` VALUES ('2', 'bilinguismo', '2', '1', '', 'XCjMpEnhYg0', null, '1', '1', '2021-04-06 17:40:07', '2021-04-06 17:40:07');
+INSERT INTO `enlace` VALUES ('4', 'ingles', '1', '1', '', 'https://es.wikipedia.org/wiki/Idioma_ingl%C3%A9s', null, '1', '1', '2021-04-06 18:47:58', '2021-04-06 18:47:58');
 
 -- ----------------------------
 -- Table structure for estado_civil
@@ -2945,7 +2965,7 @@ CREATE TABLE `estructura` (
   CONSTRAINT `fk_estructura_colegio` FOREIGN KEY (`id_colegio`) REFERENCES `colegio` (`id`),
   CONSTRAINT `fk_estructura_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_estructura_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of estructura
@@ -2995,11 +3015,19 @@ CREATE TABLE `evaluacion` (
   CONSTRAINT `fk_evaluacion_tema` FOREIGN KEY (`id_tema`) REFERENCES `tema` (`id`),
   CONSTRAINT `fk_evaluacion_tipo_evaluacion` FOREIGN KEY (`id_tipo_evaluacion`) REFERENCES `tipo_evaluacion` (`id`),
   CONSTRAINT `fk_evaluacion_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of evaluacion
 -- ----------------------------
+INSERT INTO `evaluacion` VALUES ('3', '1', '1', '1', 'evaluacion', '1', 'prueba', '1', '1', '1', '5', '2021-03-31', '2021-03-31', '00:00:00', '23:59:00', '10', null, '1', '1', '2021-04-06 19:18:02', '2021-04-06 19:18:02');
+INSERT INTO `evaluacion` VALUES ('4', '1', '2', '2', 'evaluacion', '2', 'tarea', '1', '1', '1', '5', '2021-03-30', '2021-03-30', '00:00:00', '23:59:00', '0', null, '1', '1', '2021-04-06 20:36:01', '2021-04-06 20:36:01');
+INSERT INTO `evaluacion` VALUES ('6', '1', '3', '3', 'asignacion', '1', 'actividad', '1', '1', '1', '5', '2021-04-01', '2021-04-01', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-04-06 20:38:15', '2021-04-06 20:38:15');
+INSERT INTO `evaluacion` VALUES ('7', '1', '4', '4', 'asignacion', '1', 'enlace', '1', '1', '1', '5', '2021-04-02', '2021-04-02', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-04-06 20:38:41', '2021-04-06 20:38:41');
+INSERT INTO `evaluacion` VALUES ('8', '1', '5', '5', 'asignacion', '1', 'recurso', '1', '1', '1', '5', '2021-04-05', '2021-04-05', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-04-06 20:42:21', '2021-04-06 20:42:21');
+INSERT INTO `evaluacion` VALUES ('9', '1', '6', '6', 'asignacion', '4', 'enlace', '1', '1', '1', '5', '2021-04-06', '2021-04-06', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-04-06 20:42:57', '2021-04-06 20:42:57');
+INSERT INTO `evaluacion` VALUES ('12', '1', '8', '8', 'rasgo', '1', 'rasgo', '1', '1', '0', '5', '2021-04-06', '2021-04-06', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-04-06 21:51:25', '2021-04-06 21:51:25');
+INSERT INTO `evaluacion` VALUES ('13', '1', '8', '8', 'rasgo', '3', 'rasgo', '1', '1', '0', '5', '2021-04-06', '2021-04-06', '00:00:00', '00:00:00', '0', null, '1', '1', '2021-04-06 21:51:35', '2021-04-06 21:51:35');
 
 -- ----------------------------
 -- Table structure for evaluacion_alumno
@@ -3014,7 +3042,7 @@ CREATE TABLE `evaluacion_alumno` (
   `hh_inicio` time DEFAULT NULL,
   `hh_fin` time DEFAULT NULL,
   `nu_calificacion` decimal(4,2) DEFAULT NULL,
-  `id_calificacion` int(11) unsigned NOT NULL,
+  `id_calificacion` int(11) unsigned DEFAULT NULL,
   `fe_acceso` date DEFAULT NULL,
   `nu_acceso` int(11) DEFAULT 0,
   `tx_observaciones` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -3035,11 +3063,19 @@ CREATE TABLE `evaluacion_alumno` (
   CONSTRAINT `fk_evaluacion_alumno_plan_evaluacion` FOREIGN KEY (`id_plan_evaluacion`) REFERENCES `plan_evaluacion` (`id`),
   CONSTRAINT `fk_evaluacion_alumno_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_evaluacion_alumno_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of evaluacion_alumno
 -- ----------------------------
+INSERT INTO `evaluacion_alumno` VALUES ('2', '3', '1', '1', '2021-04-06', '22:06:35', '22:35:13', null, null, null, '0', null, '5', '1', '2021-04-06 19:18:02', '2021-04-06 22:35:13');
+INSERT INTO `evaluacion_alumno` VALUES ('3', '4', '1', '1', '2021-04-06', null, '22:04:53', '2.00', '1', null, '0', 'sgsdsg', '5', '1', '2021-04-06 20:36:01', '2021-04-06 22:04:53');
+INSERT INTO `evaluacion_alumno` VALUES ('5', '6', '1', '1', '2021-04-06', null, null, '5.00', '4', '2021-04-06', '1', null, '5', '1', '2021-04-06 20:38:15', '2021-04-06 22:05:09');
+INSERT INTO `evaluacion_alumno` VALUES ('6', '7', '1', '1', '2021-04-06', null, null, '5.00', '4', '2021-04-06', '3', null, '5', '1', '2021-04-06 20:38:41', '2021-04-06 22:43:54');
+INSERT INTO `evaluacion_alumno` VALUES ('7', '8', '1', '1', '2021-04-06', null, null, '5.00', '4', '2021-04-06', '4', null, '5', '1', '2021-04-06 20:42:21', '2021-04-06 22:43:49');
+INSERT INTO `evaluacion_alumno` VALUES ('8', '9', '1', '1', null, null, null, null, null, '2021-04-06', '5', null, '3', '1', '2021-04-06 20:42:58', '2021-04-06 22:45:01');
+INSERT INTO `evaluacion_alumno` VALUES ('9', '12', '1', '1', null, null, null, '1.00', '1', null, '0', 'hdhd', '5', '1', '2021-04-06 21:51:25', '2021-04-06 21:59:35');
+INSERT INTO `evaluacion_alumno` VALUES ('10', '13', '1', '1', null, null, null, null, null, null, '0', null, '3', '1', '2021-04-06 21:51:36', null);
 
 -- ----------------------------
 -- Table structure for evaluacion_metodo
@@ -3091,7 +3127,7 @@ CREATE TABLE `feriado` (
   CONSTRAINT `fk_feriado_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_feriado_tipo_feriado` FOREIGN KEY (`id_tipo_feriado`) REFERENCES `tipo_feriado` (`id`),
   CONSTRAINT `fk_feriado_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of feriado
@@ -3127,7 +3163,7 @@ CREATE TABLE `foto` (
   CONSTRAINT `fk_foto_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_foto_tipo_foto` FOREIGN KEY (`id_tipo_foto`) REFERENCES `tipo_foto` (`id`),
   CONSTRAINT `fk_foto_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=207 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=210 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of foto
@@ -3137,8 +3173,10 @@ INSERT INTO `foto` VALUES ('32', 'docente id: 1', '1594312119_1.jpg', '3', '1', 
 INSERT INTO `foto` VALUES ('60', 'alumno id: 1', '1594946193_1.jpg', '2', '1', null, '1', '1', '2020-07-17 00:36:33', '2020-07-17 00:36:33');
 INSERT INTO `foto` VALUES ('71', 'pariente id: 1', '1595721572_1.jpg', '5', '1', null, '1', '1', '2020-07-25 23:59:32', '2020-07-25 23:59:32');
 INSERT INTO `foto` VALUES ('136', 'cuenta id: 1', '1604884778_1.jpg', '4', '1', null, '1', '1', '2020-11-09 01:19:38', '2020-11-09 01:19:38');
-INSERT INTO `foto` VALUES ('203', 'colegio id: 1', '1612284361_1.jpg', '1', '1', null, '1', '1', '2021-02-02 16:46:01', '2021-02-02 16:46:01');
 INSERT INTO `foto` VALUES ('204', 'empleado id: 1', '1612299816_1.jpg', '8', '1', null, '1', '1', '2021-02-02 21:03:36', '2021-02-02 21:03:36');
+INSERT INTO `foto` VALUES ('207', 'colegio id: 1', '1617729371_1.jpg', '1', '1', null, '1', '1', '2021-04-06 17:16:11', '2021-04-06 17:16:11');
+INSERT INTO `foto` VALUES ('208', 'actividad id: 1', '1617731386_1.jpg', '6', '1', null, '1', '1', '2021-04-06 17:49:46', '2021-04-06 17:49:46');
+INSERT INTO `foto` VALUES ('209', 'pregunta id: 1', '1617731807_1.jpg', '7', '1', null, '1', '1', '2021-04-06 17:56:47', '2021-04-06 17:56:47');
 
 -- ----------------------------
 -- Table structure for grado
@@ -3161,7 +3199,7 @@ CREATE TABLE `grado` (
   CONSTRAINT `fk_grado_nivel` FOREIGN KEY (`id_nivel`) REFERENCES `nivel` (`id`),
   CONSTRAINT `fk_grado_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_grado_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of grado
@@ -3203,7 +3241,7 @@ CREATE TABLE `grado_materia` (
   CONSTRAINT `fk_grado_materia_materia` FOREIGN KEY (`id_materia`) REFERENCES `materia` (`id`),
   CONSTRAINT `fk_grado_materia_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_grado_materia_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of grado_materia
@@ -3242,7 +3280,7 @@ CREATE TABLE `grupo` (
   CONSTRAINT `fk_grupo_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_grupo_turno` FOREIGN KEY (`id_turno`) REFERENCES `turno` (`id`),
   CONSTRAINT `fk_grupo_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of grupo
@@ -3270,7 +3308,7 @@ CREATE TABLE `grupo_calificacion` (
   KEY `fk_grupo_calificacion_usuario` (`id_usuario`),
   CONSTRAINT `fk_grupo_calificacion_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_grupo_calificacion_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of grupo_calificacion
@@ -3343,7 +3381,7 @@ CREATE TABLE `horario` (
   CONSTRAINT `fk_horario_hora_academica` FOREIGN KEY (`id_hora_academica`) REFERENCES `hora_academica` (`id`),
   CONSTRAINT `fk_horario_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_horario_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of horario
@@ -3368,7 +3406,7 @@ CREATE TABLE `hora_academica` (
   KEY `fk_hora_academica_usuario` (`id_usuario`),
   CONSTRAINT `fk_hora_academica_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_hora_academica_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of hora_academica
@@ -3406,7 +3444,7 @@ CREATE TABLE `incidencia` (
   CONSTRAINT `fk_incidencia_tipo_falta` FOREIGN KEY (`id_tipo_falta`) REFERENCES `tipo_falta` (`id`),
   CONSTRAINT `fk_incidencia_tipo_sancion` FOREIGN KEY (`id_tipo_sancion`) REFERENCES `tipo_sancion` (`id`),
   CONSTRAINT `fk_incidencia_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of incidencia
@@ -3514,7 +3552,7 @@ CREATE TABLE `materia` (
   CONSTRAINT `fk_materia_area_estudio` FOREIGN KEY (`id_area_estudio`) REFERENCES `area_estudio` (`id`),
   CONSTRAINT `fk_materia_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_materia_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of materia
@@ -3537,7 +3575,7 @@ CREATE TABLE `matricula` (
   `id_grupo` int(11) unsigned NOT NULL,
   `fe_matricula` date NOT NULL,
   `id_tipo_condicion` int(11) unsigned NOT NULL,
-  `id_colegio_origen` int(11) unsigned NOT NULL,
+  `id_colegio_origen` int(11) unsigned DEFAULT NULL,
   `tx_observaciones` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_status` int(11) unsigned NOT NULL,
   `id_usuario` int(11) unsigned NOT NULL,
@@ -3558,7 +3596,7 @@ CREATE TABLE `matricula` (
   CONSTRAINT `fk_matricula_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_matricula_tipo_condicion` FOREIGN KEY (`id_tipo_condicion`) REFERENCES `tipo_condicion` (`id`),
   CONSTRAINT `fk_matricula_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of matricula
@@ -3582,7 +3620,7 @@ CREATE TABLE `mensaje` (
   `fe_mensaje` date NOT NULL,
   `hh_inicio` time DEFAULT NULL,
   `hh_fin` time DEFAULT NULL,
-  `id_origen` int(11) unsigned NOT NULL,
+  `id_origen` int(11) unsigned DEFAULT NULL,
   `fe_lectura` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `tx_observaciones` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_status` int(11) unsigned NOT NULL,
@@ -3602,11 +3640,13 @@ CREATE TABLE `mensaje` (
   CONSTRAINT `fk_mensaje_tipo_mensaje` FOREIGN KEY (`id_tipo_mensaje`) REFERENCES `tipo_mensaje` (`id`),
   CONSTRAINT `fk_mensaje_tipo_prioridad` FOREIGN KEY (`id_tipo_prioridad`) REFERENCES `tipo_prioridad` (`id`),
   CONSTRAINT `fk_mensaje_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of mensaje
 -- ----------------------------
+INSERT INTO `mensaje` VALUES ('1', 'I6S-QIU-XZW-NXJ', '3', '1', 'sdgsdg', 'gdgs', 'gsggs', '1', '1', '2021-04-06', null, null, null, null, null, '1', '1', '2021-04-06 22:50:53', '2021-04-06 22:50:53');
+INSERT INTO `mensaje` VALUES ('2', '7MX-UZC-8XR-6LM', '3', '1', 'gdgd', 'gg', 'gdg', '1', '1', '2021-04-06', null, null, null, null, null, '1', '1', '2021-04-06 22:51:49', '2021-04-06 22:51:49');
 
 -- ----------------------------
 -- Table structure for menu
@@ -3745,7 +3785,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=183 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of migrations
@@ -3865,6 +3905,7 @@ INSERT INTO `migrations` VALUES ('177', '2020_09_01_151514_create_asistente_tabl
 INSERT INTO `migrations` VALUES ('178', '2020_09_01_151554_create_asistente_detalle_table', '82');
 INSERT INTO `migrations` VALUES ('179', '2020_09_04_212003_create_notifications_table', '83');
 INSERT INTO `migrations` VALUES ('181', '2020_11_26_232639_create_jobs_table', '84');
+INSERT INTO `migrations` VALUES ('182', '0000_00_00_000000_create_websockets_statistics_entries_table', '85');
 
 -- ----------------------------
 -- Table structure for modulo
@@ -3947,7 +3988,7 @@ CREATE TABLE `nivel` (
   KEY `fk_nivel_usuario` (`id_usuario`),
   CONSTRAINT `fk_nivel_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_nivel_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of nivel
@@ -3975,7 +4016,7 @@ CREATE TABLE `nivel_calificacion` (
   KEY `fk_nivel_calificacion_usuario` (`id_usuario`),
   CONSTRAINT `fk_nivel_calificacion_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_nivel_calificacion_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of nivel_calificacion
@@ -4007,16 +4048,32 @@ CREATE TABLE `notificacion` (
   KEY `fk_notificacion_tipo_notificacion` (`id_tipo_notificacion`),
   KEY `fk_notificacion_status` (`id_status`),
   KEY `fk_notificacion_usuario` (`id_usuario`),
-  CONSTRAINT `fk_notificacion_destinatario` FOREIGN KEY (`id_destinatario`) REFERENCES `usuario` (`id`),
   CONSTRAINT `fk_notificacion_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_notificacion_tipo_destinatario` FOREIGN KEY (`id_tipo_destinatario`) REFERENCES `tipo_destinatario` (`id`),
   CONSTRAINT `fk_notificacion_tipo_notificacion` FOREIGN KEY (`id_tipo_notificacion`) REFERENCES `tipo_notificacion` (`id`),
   CONSTRAINT `fk_notificacion_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of notificacion
 -- ----------------------------
+INSERT INTO `notificacion` VALUES ('1', '3', '1', 'Inicio de Clase Materia: Bilingüismo Social', '5', '2021-04-02', null, '1', '1', '2021-04-02 17:08:04', '2021-04-02 17:08:04');
+INSERT INTO `notificacion` VALUES ('2', '3', '1', 'Inicio de Clase Materia: Bilingüismo Social', '5', '2021-04-02', null, '1', '1', '2021-04-02 17:32:59', '2021-04-02 17:32:59');
+INSERT INTO `notificacion` VALUES ('3', '3', '1', 'Inicio de Clase Materia: Bilingüismo Social', '5', '2021-04-02', null, '1', '1', '2021-04-02 17:35:36', '2021-04-02 17:35:36');
+INSERT INTO `notificacion` VALUES ('4', '3', '1', 'Inicio de Clase Materia: Bilingüismo Social', '5', '2021-04-06', null, '1', '1', '2021-04-06 15:26:20', '2021-04-06 15:26:20');
+INSERT INTO `notificacion` VALUES ('5', '3', '1', 'Nuevo Cuestionario  Materia: Bilingüismo Social', '7', '2021-04-06', null, '1', '1', '2021-04-06 19:17:11', '2021-04-06 19:17:11');
+INSERT INTO `notificacion` VALUES ('6', '3', '1', 'Nuevo Cuestionario  Materia: Bilingüismo Social', '7', '2021-04-06', null, '1', '1', '2021-04-06 19:18:02', '2021-04-06 19:18:02');
+INSERT INTO `notificacion` VALUES ('7', '3', '1', 'Nueva Tarea Materia: Bilingüismo Social ', '8', '2021-04-06', null, '1', '1', '2021-04-06 20:36:01', '2021-04-06 20:36:01');
+INSERT INTO `notificacion` VALUES ('9', '3', '0', 'Nueva Tarea Materia: Bilingüismo Social ', '8', '2021-04-06', null, '1', '1', '2021-04-06 20:38:15', '2021-04-06 20:38:15');
+INSERT INTO `notificacion` VALUES ('10', '3', '0', 'Nueva Tarea Materia: Bilingüismo Social ', '8', '2021-04-06', null, '1', '1', '2021-04-06 20:38:41', '2021-04-06 20:38:41');
+INSERT INTO `notificacion` VALUES ('11', '3', '0', 'Nueva Tarea Materia: Bilingüismo Social ', '8', '2021-04-06', null, '1', '1', '2021-04-06 20:42:21', '2021-04-06 20:42:21');
+INSERT INTO `notificacion` VALUES ('12', '3', '0', 'Nueva Tarea Materia: Bilingüismo Social ', '8', '2021-04-06', null, '1', '1', '2021-04-06 20:42:58', '2021-04-06 20:42:58');
+INSERT INTO `notificacion` VALUES ('13', '3', '0', 'Nueva Tarea Materia: Bilingüismo Social ', '8', '2021-04-06', null, '1', '1', '2021-04-06 21:51:25', '2021-04-06 21:51:25');
+INSERT INTO `notificacion` VALUES ('14', '3', '0', 'Nueva Tarea Materia: Bilingüismo Social ', '8', '2021-04-06', null, '1', '1', '2021-04-06 21:51:36', '2021-04-06 21:51:36');
+INSERT INTO `notificacion` VALUES ('15', '3', '1', 'Inicio de Clase Materia: Inmersión Ingles', '5', '2021-04-06', null, '1', '1', '2021-04-06 22:51:27', '2021-04-06 22:51:27');
+INSERT INTO `notificacion` VALUES ('16', '4', '1', 'Se ha levantado una sancional al alumno Yustiz T. Jean P.', '4', '2021-04-06', null, '1', '1', '2021-04-06 22:52:10', '2021-04-06 22:52:10');
+INSERT INTO `notificacion` VALUES ('17', '4', '1', 'Se ha levantado una sancional al alumno Yustiz T. Jean P.', '4', '2021-04-06', null, '1', '1', '2021-04-06 22:52:33', '2021-04-06 22:52:33');
+INSERT INTO `notificacion` VALUES ('18', '3', '1', 'fdfsfsdf', '9', '2021-04-06', null, '1', '1', '2021-04-06 00:00:00', null);
 
 -- ----------------------------
 -- Table structure for oauth_access_tokens
@@ -4289,7 +4346,7 @@ CREATE TABLE `pariente` (
   CONSTRAINT `fk_pariente_parentesco` FOREIGN KEY (`id_parentesco`) REFERENCES `parentesco` (`id`),
   CONSTRAINT `fk_pariente_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_pariente_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of pariente
@@ -4350,19 +4407,19 @@ CREATE TABLE `periodo` (
   CONSTRAINT `fk_periodo_calendario` FOREIGN KEY (`id_calendario`) REFERENCES `calendario` (`id`),
   CONSTRAINT `fk_periodo_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_periodo_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of periodo
 -- ----------------------------
-INSERT INTO `periodo` VALUES ('1', '2021 I', '1', '1', '2021-03-11', '2021-05-01', null, '1', '1', '2021-03-12 00:45:36', '2021-03-12 01:02:16');
+INSERT INTO `periodo` VALUES ('1', '2021 I', '1', '1', '2021-03-11', '2021-05-01', null, '1', '1', '2021-03-12 00:45:36', '2021-04-07 00:40:50');
 INSERT INTO `periodo` VALUES ('2', '2021 II', '2', '1', '2021-05-02', '2021-07-01', null, '2', '1', '2021-03-12 00:46:11', '2021-03-12 01:00:18');
 INSERT INTO `periodo` VALUES ('3', '2021 III', '3', '1', '2021-07-02', '2021-09-01', null, '2', '1', '2021-03-12 00:46:48', '2021-03-12 01:00:45');
 INSERT INTO `periodo` VALUES ('4', '2021 IV', '4', '1', '2021-09-02', '2021-11-30', null, '2', '1', '2021-03-12 00:47:47', '2021-03-12 01:01:10');
 INSERT INTO `periodo` VALUES ('5', '2022 I', '1', '2', '2022-01-01', '2022-03-01', null, '2', '1', '2021-03-12 00:56:15', '2021-03-12 00:56:56');
 INSERT INTO `periodo` VALUES ('6', '2022 II', '2', '2', '2022-03-02', '2022-06-01', null, '2', '1', '2021-03-12 00:56:56', '2021-03-12 00:58:02');
 INSERT INTO `periodo` VALUES ('7', '2022 III', '3', '2', '2022-06-02', '2022-09-01', null, '2', '1', '2021-03-12 00:58:01', '2021-03-12 00:58:36');
-INSERT INTO `periodo` VALUES ('8', '2022 IV', '4', '2', '2022-09-02', '2022-12-01', null, '2', '1', '2021-03-12 00:58:36', '2021-03-12 00:59:07');
+INSERT INTO `periodo` VALUES ('8', '2022 IV', '4', '2', '2022-09-02', '2022-12-01', null, '2', '1', '2021-03-12 00:58:36', '2021-04-07 00:40:50');
 
 -- ----------------------------
 -- Table structure for permiso
@@ -4422,7 +4479,7 @@ CREATE TABLE `plan_detalle` (
   CONSTRAINT `fk_plan_detalle_plan_evaluacion` FOREIGN KEY (`id_plan_evaluacion`) REFERENCES `plan_evaluacion` (`id`),
   CONSTRAINT `fk_plan_detalle_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_plan_detalle_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of plan_detalle
@@ -4464,7 +4521,7 @@ CREATE TABLE `plan_evaluacion` (
   CONSTRAINT `fk_plan_evaluacion_periodo` FOREIGN KEY (`id_periodo`) REFERENCES `periodo` (`id`),
   CONSTRAINT `fk_plan_evaluacion_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_plan_evaluacion_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of plan_evaluacion
@@ -4529,13 +4586,13 @@ CREATE TABLE `plan_tema` (
   CONSTRAINT `fk_plan_tema_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_plan_tema_tema` FOREIGN KEY (`id_tema`) REFERENCES `tema` (`id`),
   CONSTRAINT `fk_plan_tema_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of plan_tema
 -- ----------------------------
-INSERT INTO `plan_tema` VALUES ('1', '1', '1', '1', null, '1', '1', null, null);
-INSERT INTO `plan_tema` VALUES ('2', '1', '1', '2', null, '1', '1', null, null);
+INSERT INTO `plan_tema` VALUES ('5', '1', '1', '1', null, '1', '1', null, null);
+INSERT INTO `plan_tema` VALUES ('6', '1', '1', '2', null, '1', '1', null, null);
 
 -- ----------------------------
 -- Table structure for pregunta
@@ -4563,11 +4620,14 @@ CREATE TABLE `pregunta` (
   CONSTRAINT `fk_pregunta_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_pregunta_tipo_pregunta` FOREIGN KEY (`id_tipo_pregunta`) REFERENCES `tipo_pregunta` (`id`),
   CONSTRAINT `fk_pregunta_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of pregunta
 -- ----------------------------
+INSERT INTO `pregunta` VALUES ('1', 'dgsgsg', '1', '1', '0', '1.00', '1', null, '1', '1', '2021-04-06 17:55:56', '2021-04-06 17:55:56');
+INSERT INTO `pregunta` VALUES ('2', 'ffddfsfds', '1', '2', '0', '4.00', '2', null, '1', '1', '2021-04-06 17:57:00', '2021-04-06 18:18:49');
+INSERT INTO `pregunta` VALUES ('3', 'ewgwgw', '1', '3', '0', '4.00', '3', null, '1', '1', '2021-04-06 18:20:06', '2021-04-06 18:20:06');
 
 -- ----------------------------
 -- Table structure for prueba
@@ -4598,11 +4658,12 @@ CREATE TABLE `prueba` (
   CONSTRAINT `fk_prueba_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_prueba_tema` FOREIGN KEY (`id_tema`) REFERENCES `tema` (`id`),
   CONSTRAINT `fk_prueba_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of prueba
 -- ----------------------------
+INSERT INTO `prueba` VALUES ('1', 'dsfsfsfsf', '4', '1', '1', '1', '0', '9.00', null, '1', '1', '2021-04-06 17:50:10', '2021-04-06 18:23:33');
 
 -- ----------------------------
 -- Table structure for prueba_alumno
@@ -4693,11 +4754,13 @@ CREATE TABLE `recurso` (
   CONSTRAINT `fk_recurso_tema` FOREIGN KEY (`id_tema`) REFERENCES `tema` (`id`),
   CONSTRAINT `fk_recurso_tipo_recurso` FOREIGN KEY (`id_tipo_recurso`) REFERENCES `tipo_recurso` (`id`),
   CONSTRAINT `fk_recurso_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of recurso
 -- ----------------------------
+INSERT INTO `recurso` VALUES ('1', '1', '4', '1', null, '1', '1', '2021-04-06 17:44:27', '2021-04-06 17:44:27');
+INSERT INTO `recurso` VALUES ('2', '3', '4', '1', null, '1', '1', '2021-04-06 17:45:26', '2021-04-06 17:45:26');
 
 -- ----------------------------
 -- Table structure for respuesta
@@ -4721,11 +4784,15 @@ CREATE TABLE `respuesta` (
   CONSTRAINT `fk_respuesta_pregunta` FOREIGN KEY (`id_pregunta`) REFERENCES `pregunta` (`id`),
   CONSTRAINT `fk_respuesta_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_respuesta_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of respuesta
 -- ----------------------------
+INSERT INTO `respuesta` VALUES ('3', 'fsfsdf', '2', '0', null, null, '1', '1', '2021-04-06 18:01:08', '2021-04-06 18:17:45');
+INSERT INTO `respuesta` VALUES ('9', 'dgssg', '2', '1', null, null, '1', '1', '2021-04-06 18:17:45', '2021-04-06 18:17:45');
+INSERT INTO `respuesta` VALUES ('10', 'fsdfdsfsf', '3', '1', null, null, '1', '1', '2021-04-06 18:20:16', '2021-04-06 18:20:24');
+INSERT INTO `respuesta` VALUES ('11', 'fdfsfs', '3', '0', null, null, '1', '1', '2021-04-06 18:20:20', '2021-04-06 18:20:20');
 
 -- ----------------------------
 -- Table structure for respuesta_alumno
@@ -4736,7 +4803,7 @@ CREATE TABLE `respuesta_alumno` (
   `id_prueba` int(11) unsigned NOT NULL,
   `id_evaluacion_alumno` int(11) unsigned NOT NULL,
   `id_pregunta` int(11) unsigned NOT NULL,
-  `id_respuesta` int(11) unsigned NOT NULL,
+  `id_respuesta` int(11) unsigned DEFAULT NULL,
   `id_alumno` int(11) unsigned NOT NULL,
   `tx_respuesta` varchar(600) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `bo_correcta` tinyint(1) NOT NULL,
@@ -4761,11 +4828,14 @@ CREATE TABLE `respuesta_alumno` (
   CONSTRAINT `fk_respuesta_alumno_respuesta` FOREIGN KEY (`id_respuesta`) REFERENCES `respuesta` (`id`),
   CONSTRAINT `fk_respuesta_alumno_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_respuesta_alumno_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of respuesta_alumno
 -- ----------------------------
+INSERT INTO `respuesta_alumno` VALUES ('1', '1', '2', '1', null, '1', 'q3tqttwtq', '0', null, null, '1', '1', '2021-04-06 22:34:40', '2021-04-06 22:34:40');
+INSERT INTO `respuesta_alumno` VALUES ('2', '1', '2', '2', '3', '1', null, '0', '0.00', null, '1', '1', '2021-04-06 22:34:57', '2021-04-06 22:34:57');
+INSERT INTO `respuesta_alumno` VALUES ('3', '1', '2', '3', '11', '1', null, '0', '0.00', null, '1', '1', null, null);
 
 -- ----------------------------
 -- Table structure for status
@@ -4841,7 +4911,7 @@ CREATE TABLE `tarea` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nb_tarea` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tx_descripcion` varchar(3000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `id_tipo_tarea` int(11) unsigned NOT NULL,
+  `id_tipo_tarea` int(11) unsigned DEFAULT NULL,
   `id_grado` int(11) unsigned NOT NULL,
   `id_materia` int(11) unsigned NOT NULL,
   `id_tema` int(11) unsigned NOT NULL,
@@ -4864,11 +4934,12 @@ CREATE TABLE `tarea` (
   CONSTRAINT `fk_tarea_tema` FOREIGN KEY (`id_tema`) REFERENCES `tema` (`id`),
   CONSTRAINT `fk_tarea_tipo_tarea` FOREIGN KEY (`id_tipo_tarea`) REFERENCES `tipo_tarea` (`id`),
   CONSTRAINT `fk_tarea_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of tarea
 -- ----------------------------
+INSERT INTO `tarea` VALUES ('2', 'gssdsd', 'dfhsfh', '2', '4', '1', '1', '0.00', 'frter', '1', '1', '2021-04-06 18:47:09', '2021-04-06 20:35:25');
 
 -- ----------------------------
 -- Table structure for telefono
@@ -4975,11 +5046,12 @@ CREATE TABLE `tema` (
   CONSTRAINT `fk_tema_materia` FOREIGN KEY (`id_materia`) REFERENCES `materia` (`id`),
   CONSTRAINT `fk_tema_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_tema_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of tema
 -- ----------------------------
+INSERT INTO `tema` VALUES ('0', '-', '0', '', '1', '1', '1', '1', '2', '1', '2021-03-12 02:02:49', '2021-03-12 02:02:49');
 INSERT INTO `tema` VALUES ('1', 'Ingles A1', '1', 'Ingles A1', '1', '4', '1', '1', '1', '1', '2021-03-12 01:59:53', '2021-03-12 01:59:53');
 INSERT INTO `tema` VALUES ('2', 'Ingles A2', '2', '', '1', '4', '1', '1', '1', '1', '2021-03-12 02:00:20', '2021-03-12 02:00:20');
 INSERT INTO `tema` VALUES ('3', 'Ingles B1', '3', null, '1', '4', '1', '1', '1', '1', '2021-03-12 02:01:38', '2021-03-12 02:01:50');
@@ -5005,7 +5077,7 @@ CREATE TABLE `tipo_agenda` (
   KEY `fk_tipo_agenda_usuario` (`id_usuario`),
   CONSTRAINT `fk_tipo_agenda_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_tipo_agenda_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of tipo_agenda
@@ -5128,7 +5200,7 @@ CREATE TABLE `tipo_condicion` (
   KEY `fk_tipo_condicion_usuario` (`id_usuario`),
   CONSTRAINT `fk_tipo_condicion_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_tipo_condicion_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of tipo_condicion
@@ -5735,7 +5807,7 @@ CREATE TABLE `turno` (
   KEY `fk_turno_usuario` (`id_usuario`),
   CONSTRAINT `fk_turno_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_turno_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of turno
@@ -5805,7 +5877,7 @@ CREATE TABLE `usuario` (
   CONSTRAINT `fk_usuario_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_usuario_tipo_usuario` FOREIGN KEY (`id_tipo_usuario`) REFERENCES `tipo_usuario` (`id`),
   CONSTRAINT `fk_usuario_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=316 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=325 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of usuario
@@ -5836,7 +5908,7 @@ CREATE TABLE `usuario_perfil` (
   CONSTRAINT `fk_usuario_perfil_perfil` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id`),
   CONSTRAINT `fk_usuario_perfil_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_usuario_perfil_usuario_ed` FOREIGN KEY (`id_usuario_ed`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=320 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=331 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of usuario_perfil
@@ -5845,9 +5917,262 @@ INSERT INTO `usuario_perfil` VALUES ('1', '1', '1', null, '1', '1', '2020-06-06 
 INSERT INTO `usuario_perfil` VALUES ('2', '1', '2', null, '1', '1', '2020-06-06 20:31:23', '2020-06-06 20:31:23');
 INSERT INTO `usuario_perfil` VALUES ('3', '1', '3', null, '1', '1', '2020-06-06 20:31:35', '2020-06-06 20:31:35');
 INSERT INTO `usuario_perfil` VALUES ('5', '1', '4', null, '1', '1', '2020-07-24 18:15:27', '2020-07-24 18:15:27');
-INSERT INTO `usuario_perfil` VALUES ('104', '104', '3', null, '1', '1', '2020-08-21 00:57:19', '2020-08-21 00:57:19');
-INSERT INTO `usuario_perfil` VALUES ('206', '206', '1', null, '1', '1', '2020-08-21 01:48:32', '2020-08-21 01:48:32');
-INSERT INTO `usuario_perfil` VALUES ('313', '2', '3', null, '1', '1', '2020-08-21 00:41:06', '2020-08-21 00:41:08');
+INSERT INTO `usuario_perfil` VALUES ('104', '3', '3', null, '1', '1', '2020-08-21 00:57:19', '2020-08-21 00:57:19');
+INSERT INTO `usuario_perfil` VALUES ('206', '4', '5', null, '1', '1', '2020-08-21 01:48:32', '2020-08-21 01:48:32');
+INSERT INTO `usuario_perfil` VALUES ('313', '5', '4', null, '1', '1', '2020-08-21 00:41:06', '2021-04-01 21:39:36');
+
+-- ----------------------------
+-- Table structure for websockets_statistics_entries
+-- ----------------------------
+DROP TABLE IF EXISTS `websockets_statistics_entries`;
+CREATE TABLE `websockets_statistics_entries` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `app_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `peak_connection_count` int(11) NOT NULL,
+  `websocket_message_count` int(11) NOT NULL,
+  `api_message_count` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=235 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of websockets_statistics_entries
+-- ----------------------------
+INSERT INTO `websockets_statistics_entries` VALUES ('1', '1056882', '1', '0', '0', '2021-04-02 15:45:56', '2021-04-02 15:45:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('2', '1056882', '1', '9', '1', '2021-04-02 15:46:56', '2021-04-02 15:46:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('3', '1056882', '1', '3', '1', '2021-04-02 15:47:56', '2021-04-02 15:47:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('4', '1056882', '1', '2', '1', '2021-04-02 15:48:56', '2021-04-02 15:48:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('5', '1056882', '0', '2', '1', '2021-04-02 15:49:56', '2021-04-02 15:49:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('6', '1056882', '0', '2', '1', '2021-04-02 15:50:56', '2021-04-02 15:50:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('7', '1056882', '0', '2', '1', '2021-04-02 15:51:56', '2021-04-02 15:51:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('8', '1056882', '0', '2', '1', '2021-04-02 15:52:56', '2021-04-02 15:52:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('9', '1056882', '1', '10', '1', '2021-04-02 15:53:56', '2021-04-02 15:53:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('10', '1056882', '0', '2', '1', '2021-04-02 15:54:56', '2021-04-02 15:54:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('11', '1056882', '0', '2', '1', '2021-04-02 15:55:56', '2021-04-02 15:55:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('12', '1056882', '0', '2', '1', '2021-04-02 15:56:56', '2021-04-02 15:56:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('13', '1056882', '0', '2', '1', '2021-04-02 15:57:56', '2021-04-02 15:57:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('14', '1056882', '0', '2', '1', '2021-04-02 15:58:56', '2021-04-02 15:58:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('15', '1056882', '0', '2', '1', '2021-04-02 15:59:56', '2021-04-02 15:59:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('16', '1056882', '0', '2', '1', '2021-04-02 16:00:56', '2021-04-02 16:00:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('17', '1056882', '0', '2', '1', '2021-04-02 16:01:56', '2021-04-02 16:01:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('18', '1056882', '0', '2', '1', '2021-04-02 16:02:56', '2021-04-02 16:02:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('19', '1056882', '0', '2', '1', '2021-04-02 16:03:56', '2021-04-02 16:03:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('20', '1056882', '0', '2', '1', '2021-04-02 16:04:56', '2021-04-02 16:04:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('21', '1056882', '0', '2', '1', '2021-04-02 16:05:56', '2021-04-02 16:05:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('22', '1056882', '0', '2', '1', '2021-04-02 16:06:56', '2021-04-02 16:06:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('23', '1056882', '0', '2', '1', '2021-04-02 16:07:56', '2021-04-02 16:07:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('24', '1056882', '0', '2', '1', '2021-04-02 16:08:56', '2021-04-02 16:08:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('25', '1056882', '0', '1', '1', '2021-04-02 16:09:56', '2021-04-02 16:09:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('26', '1056882', '0', '2', '1', '2021-04-02 16:10:56', '2021-04-02 16:10:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('27', '1056882', '0', '2', '1', '2021-04-02 16:11:56', '2021-04-02 16:11:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('28', '1056882', '0', '2', '1', '2021-04-02 16:12:56', '2021-04-02 16:12:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('29', '1056882', '0', '2', '1', '2021-04-02 16:13:56', '2021-04-02 16:13:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('30', '1056882', '0', '2', '1', '2021-04-02 16:14:56', '2021-04-02 16:14:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('31', '1056882', '0', '2', '1', '2021-04-02 16:15:56', '2021-04-02 16:15:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('32', '1056882', '0', '2', '1', '2021-04-02 16:16:56', '2021-04-02 16:16:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('33', '1056882', '0', '2', '1', '2021-04-02 16:17:56', '2021-04-02 16:17:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('34', '1056882', '0', '2', '1', '2021-04-02 16:18:56', '2021-04-02 16:18:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('35', '1056882', '0', '2', '1', '2021-04-02 16:19:56', '2021-04-02 16:19:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('36', '1056882', '0', '2', '1', '2021-04-02 16:20:56', '2021-04-02 16:20:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('37', '1056882', '0', '2', '1', '2021-04-02 16:21:56', '2021-04-02 16:21:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('38', '1056882', '0', '2', '1', '2021-04-02 16:22:56', '2021-04-02 16:22:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('39', '1056882', '1', '0', '0', '2021-04-02 16:44:56', '2021-04-02 16:44:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('40', '1056882', '0', '1', '1', '2021-04-02 16:45:57', '2021-04-02 16:45:57');
+INSERT INTO `websockets_statistics_entries` VALUES ('41', '1056882', '0', '2', '1', '2021-04-02 16:46:56', '2021-04-02 16:46:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('42', '1056882', '0', '2', '1', '2021-04-02 16:47:56', '2021-04-02 16:47:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('43', '1056882', '0', '2', '1', '2021-04-02 16:48:56', '2021-04-02 16:48:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('44', '1056882', '0', '2', '1', '2021-04-02 16:49:56', '2021-04-02 16:49:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('45', '1056882', '0', '2', '1', '2021-04-02 16:50:56', '2021-04-02 16:50:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('46', '1056882', '0', '1', '1', '2021-04-02 16:51:56', '2021-04-02 16:51:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('47', '1056882', '0', '2', '1', '2021-04-02 16:52:56', '2021-04-02 16:52:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('48', '1056882', '0', '2', '1', '2021-04-02 16:53:56', '2021-04-02 16:53:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('49', '1056882', '0', '3', '1', '2021-04-02 16:54:56', '2021-04-02 16:54:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('50', '1056882', '2', '4', '1', '2021-04-02 16:55:56', '2021-04-02 16:55:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('51', '1056882', '2', '4', '1', '2021-04-02 16:56:56', '2021-04-02 16:56:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('52', '1056882', '2', '4', '1', '2021-04-02 16:57:56', '2021-04-02 16:57:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('53', '1056882', '2', '3', '1', '2021-04-02 16:58:56', '2021-04-02 16:58:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('54', '1056882', '2', '4', '1', '2021-04-02 16:59:56', '2021-04-02 16:59:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('55', '1056882', '2', '4', '1', '2021-04-02 17:00:56', '2021-04-02 17:00:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('56', '1056882', '2', '4', '1', '2021-04-02 17:01:56', '2021-04-02 17:01:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('57', '1056882', '2', '1', '1', '2021-04-02 17:02:56', '2021-04-02 17:02:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('58', '1056882', '0', '5', '1', '2021-04-02 17:03:56', '2021-04-02 17:03:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('59', '1056882', '2', '4', '1', '2021-04-02 17:04:56', '2021-04-02 17:04:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('60', '1056882', '1', '4', '1', '2021-04-02 17:05:56', '2021-04-02 17:05:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('61', '1056882', '1', '3', '1', '2021-04-02 17:06:56', '2021-04-02 17:06:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('62', '1056882', '1', '4', '1', '2021-04-02 17:07:56', '2021-04-02 17:07:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('63', '1056882', '2', '4', '1', '2021-04-02 17:08:56', '2021-04-02 17:08:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('64', '1056882', '2', '11', '1', '2021-04-02 17:09:56', '2021-04-02 17:09:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('65', '1056882', '2', '3', '1', '2021-04-02 17:10:56', '2021-04-02 17:10:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('66', '1056882', '2', '2', '2', '2021-04-02 17:11:56', '2021-04-02 17:11:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('67', '1056882', '2', '3', '2', '2021-04-02 17:12:56', '2021-04-02 17:12:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('68', '1056882', '2', '3', '1', '2021-04-02 17:13:56', '2021-04-02 17:13:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('69', '1056882', '2', '3', '1', '2021-04-02 17:14:56', '2021-04-02 17:14:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('70', '1056882', '2', '2', '1', '2021-04-02 17:15:56', '2021-04-02 17:15:56');
+INSERT INTO `websockets_statistics_entries` VALUES ('71', '1056882', '2', '12', '0', '2021-04-02 17:17:41', '2021-04-02 17:17:41');
+INSERT INTO `websockets_statistics_entries` VALUES ('72', '1056882', '2', '9', '2', '2021-04-02 17:18:41', '2021-04-02 17:18:41');
+INSERT INTO `websockets_statistics_entries` VALUES ('73', '1056882', '2', '8', '0', '2021-04-02 17:20:52', '2021-04-02 17:20:52');
+INSERT INTO `websockets_statistics_entries` VALUES ('74', '1056882', '2', '5', '2', '2021-04-02 17:21:50', '2021-04-02 17:21:50');
+INSERT INTO `websockets_statistics_entries` VALUES ('75', '1056882', '2', '3', '1', '2021-04-02 17:22:50', '2021-04-02 17:22:50');
+INSERT INTO `websockets_statistics_entries` VALUES ('76', '1056882', '2', '3', '1', '2021-04-02 17:23:50', '2021-04-02 17:23:50');
+INSERT INTO `websockets_statistics_entries` VALUES ('77', '1056882', '2', '3', '1', '2021-04-02 17:24:50', '2021-04-02 17:24:50');
+INSERT INTO `websockets_statistics_entries` VALUES ('78', '1056882', '2', '2', '1', '2021-04-02 17:25:50', '2021-04-02 17:25:50');
+INSERT INTO `websockets_statistics_entries` VALUES ('79', '1056882', '2', '3', '1', '2021-04-02 17:26:50', '2021-04-02 17:26:50');
+INSERT INTO `websockets_statistics_entries` VALUES ('80', '1056882', '2', '4', '1', '2021-04-02 17:27:52', '2021-04-02 17:27:52');
+INSERT INTO `websockets_statistics_entries` VALUES ('81', '1056882', '2', '3', '1', '2021-04-02 17:28:50', '2021-04-02 17:28:50');
+INSERT INTO `websockets_statistics_entries` VALUES ('82', '1056882', '2', '2', '1', '2021-04-02 17:29:50', '2021-04-02 17:29:50');
+INSERT INTO `websockets_statistics_entries` VALUES ('83', '1056882', '2', '3', '1', '2021-04-02 17:30:50', '2021-04-02 17:30:50');
+INSERT INTO `websockets_statistics_entries` VALUES ('84', '1056882', '2', '3', '3', '2021-04-02 17:31:50', '2021-04-02 17:31:50');
+INSERT INTO `websockets_statistics_entries` VALUES ('85', '1056882', '2', '2', '2', '2021-04-02 17:32:50', '2021-04-02 17:32:50');
+INSERT INTO `websockets_statistics_entries` VALUES ('86', '1056882', '2', '3', '1', '2021-04-02 17:33:50', '2021-04-02 17:33:50');
+INSERT INTO `websockets_statistics_entries` VALUES ('87', '1056882', '2', '11', '0', '2021-04-02 17:35:06', '2021-04-02 17:35:06');
+INSERT INTO `websockets_statistics_entries` VALUES ('88', '1056882', '2', '3', '2', '2021-04-02 17:36:06', '2021-04-02 17:36:06');
+INSERT INTO `websockets_statistics_entries` VALUES ('89', '1056882', '2', '3', '1', '2021-04-02 17:37:06', '2021-04-02 17:37:06');
+INSERT INTO `websockets_statistics_entries` VALUES ('90', '1056882', '2', '3', '1', '2021-04-02 17:38:06', '2021-04-02 17:38:06');
+INSERT INTO `websockets_statistics_entries` VALUES ('91', '1056882', '2', '11', '0', '2021-04-02 17:40:07', '2021-04-02 17:40:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('92', '1056882', '2', '3', '1', '2021-04-02 17:41:07', '2021-04-02 17:41:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('93', '1056882', '2', '3', '1', '2021-04-02 17:42:07', '2021-04-02 17:42:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('94', '1056882', '2', '3', '1', '2021-04-02 17:43:07', '2021-04-02 17:43:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('95', '1056882', '2', '3', '1', '2021-04-02 17:44:07', '2021-04-02 17:44:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('96', '1056882', '2', '3', '1', '2021-04-02 17:45:07', '2021-04-02 17:45:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('97', '1056882', '2', '3', '1', '2021-04-02 17:46:07', '2021-04-02 17:46:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('98', '1056882', '2', '9', '2', '2021-04-02 17:47:07', '2021-04-02 17:47:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('99', '1056882', '2', '3', '1', '2021-04-02 17:48:07', '2021-04-02 17:48:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('100', '1056882', '2', '1', '3', '2021-04-02 17:49:07', '2021-04-02 17:49:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('101', '1056882', '2', '3', '1', '2021-04-02 17:50:07', '2021-04-02 17:50:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('102', '1056882', '2', '3', '1', '2021-04-02 17:51:07', '2021-04-02 17:51:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('103', '1056882', '2', '3', '1', '2021-04-02 17:52:07', '2021-04-02 17:52:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('104', '1056882', '2', '3', '1', '2021-04-02 17:53:07', '2021-04-02 17:53:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('105', '1056882', '2', '3', '1', '2021-04-02 17:54:07', '2021-04-02 17:54:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('106', '1056882', '2', '3', '1', '2021-04-02 17:55:07', '2021-04-02 17:55:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('107', '1056882', '2', '3', '1', '2021-04-02 17:56:07', '2021-04-02 17:56:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('108', '1056882', '2', '3', '1', '2021-04-02 17:57:07', '2021-04-02 17:57:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('109', '1056882', '2', '4', '1', '2021-04-02 17:58:07', '2021-04-02 17:58:07');
+INSERT INTO `websockets_statistics_entries` VALUES ('110', '1056882', '2', '9', '1', '2021-04-02 17:59:40', '2021-04-02 17:59:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('111', '1056882', '2', '3', '1', '2021-04-02 18:00:40', '2021-04-02 18:00:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('112', '1056882', '2', '11', '1', '2021-04-02 18:01:40', '2021-04-02 18:01:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('113', '1056882', '2', '3', '1', '2021-04-02 18:02:40', '2021-04-02 18:02:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('114', '1056882', '2', '3', '1', '2021-04-02 18:03:40', '2021-04-02 18:03:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('115', '1056882', '2', '3', '1', '2021-04-02 18:04:40', '2021-04-02 18:04:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('116', '1056882', '2', '3', '1', '2021-04-02 18:05:40', '2021-04-02 18:05:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('117', '1056882', '2', '3', '1', '2021-04-02 18:06:40', '2021-04-02 18:06:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('118', '1056882', '2', '3', '1', '2021-04-02 18:07:40', '2021-04-02 18:07:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('119', '1056882', '2', '3', '1', '2021-04-02 18:08:40', '2021-04-02 18:08:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('120', '1056882', '2', '3', '1', '2021-04-02 18:09:40', '2021-04-02 18:09:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('121', '1056882', '2', '2', '1', '2021-04-02 18:10:40', '2021-04-02 18:10:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('122', '1056882', '1', '2', '1', '2021-04-02 18:11:40', '2021-04-02 18:11:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('123', '1056882', '1', '3', '1', '2021-04-02 18:12:40', '2021-04-02 18:12:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('124', '1056882', '1', '2', '1', '2021-04-02 18:13:40', '2021-04-02 18:13:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('125', '1056882', '2', '1', '1', '2021-04-02 18:14:40', '2021-04-02 18:14:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('126', '1056882', '2', '0', '1', '2021-04-02 18:15:40', '2021-04-02 18:15:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('127', '1056882', '2', '0', '1', '2021-04-02 18:16:40', '2021-04-02 18:16:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('128', '1056882', '2', '0', '1', '2021-04-02 18:17:40', '2021-04-02 18:17:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('129', '1056882', '1', '3', '1', '2021-04-02 18:18:40', '2021-04-02 18:18:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('130', '1056882', '1', '3', '1', '2021-04-02 18:19:40', '2021-04-02 18:19:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('131', '1056882', '1', '3', '1', '2021-04-02 18:20:40', '2021-04-02 18:20:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('132', '1056882', '1', '3', '1', '2021-04-02 18:21:40', '2021-04-02 18:21:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('133', '1056882', '1', '3', '1', '2021-04-02 18:22:40', '2021-04-02 18:22:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('134', '1056882', '1', '3', '1', '2021-04-02 18:23:40', '2021-04-02 18:23:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('135', '1056882', '1', '3', '1', '2021-04-02 18:24:40', '2021-04-02 18:24:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('136', '1056882', '1', '3', '1', '2021-04-02 18:25:40', '2021-04-02 18:25:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('137', '1056882', '1', '3', '1', '2021-04-02 18:26:40', '2021-04-02 18:26:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('138', '1056882', '1', '3', '1', '2021-04-02 18:27:40', '2021-04-02 18:27:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('139', '1056882', '1', '3', '1', '2021-04-02 18:28:40', '2021-04-02 18:28:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('140', '1056882', '1', '3', '1', '2021-04-02 18:29:40', '2021-04-02 18:29:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('141', '1056882', '1', '3', '1', '2021-04-02 18:30:40', '2021-04-02 18:30:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('142', '1056882', '1', '3', '1', '2021-04-02 18:31:40', '2021-04-02 18:31:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('143', '1056882', '1', '3', '1', '2021-04-02 18:32:40', '2021-04-02 18:32:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('144', '1056882', '1', '3', '1', '2021-04-02 18:33:40', '2021-04-02 18:33:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('145', '1056882', '1', '3', '1', '2021-04-02 18:34:40', '2021-04-02 18:34:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('146', '1056882', '1', '3', '1', '2021-04-02 18:35:40', '2021-04-02 18:35:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('147', '1056882', '1', '3', '1', '2021-04-02 18:36:40', '2021-04-02 18:36:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('148', '1056882', '1', '3', '1', '2021-04-02 18:37:40', '2021-04-02 18:37:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('149', '1056882', '1', '3', '1', '2021-04-02 18:38:40', '2021-04-02 18:38:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('150', '1056882', '1', '3', '1', '2021-04-02 18:39:40', '2021-04-02 18:39:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('151', '1056882', '1', '3', '1', '2021-04-02 18:40:40', '2021-04-02 18:40:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('152', '1056882', '1', '3', '1', '2021-04-02 18:41:40', '2021-04-02 18:41:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('153', '1056882', '1', '3', '1', '2021-04-02 18:42:40', '2021-04-02 18:42:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('154', '1056882', '1', '3', '1', '2021-04-02 18:43:40', '2021-04-02 18:43:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('155', '1056882', '1', '3', '1', '2021-04-02 18:44:40', '2021-04-02 18:44:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('156', '1056882', '1', '3', '1', '2021-04-02 18:45:40', '2021-04-02 18:45:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('157', '1056882', '1', '3', '1', '2021-04-02 18:46:40', '2021-04-02 18:46:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('158', '1056882', '1', '3', '1', '2021-04-02 18:47:40', '2021-04-02 18:47:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('159', '1056882', '1', '3', '1', '2021-04-02 18:48:40', '2021-04-02 18:48:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('160', '1056882', '1', '3', '1', '2021-04-02 18:49:40', '2021-04-02 18:49:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('161', '1056882', '1', '3', '1', '2021-04-02 18:50:40', '2021-04-02 18:50:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('162', '1056882', '1', '3', '1', '2021-04-02 18:51:40', '2021-04-02 18:51:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('163', '1056882', '1', '3', '1', '2021-04-02 18:52:40', '2021-04-02 18:52:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('164', '1056882', '1', '2', '1', '2021-04-02 18:53:40', '2021-04-02 18:53:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('165', '1056882', '1', '3', '1', '2021-04-02 18:54:40', '2021-04-02 18:54:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('166', '1056882', '1', '3', '1', '2021-04-02 18:55:40', '2021-04-02 18:55:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('167', '1056882', '1', '3', '1', '2021-04-02 18:56:40', '2021-04-02 18:56:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('168', '1056882', '1', '3', '1', '2021-04-02 18:57:40', '2021-04-02 18:57:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('169', '1056882', '1', '3', '1', '2021-04-02 18:58:40', '2021-04-02 18:58:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('170', '1056882', '3', '5', '2', '2021-04-02 18:59:40', '2021-04-02 18:59:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('171', '1056882', '3', '4', '3', '2021-04-02 19:00:40', '2021-04-02 19:00:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('172', '1056882', '3', '5', '1', '2021-04-02 19:01:40', '2021-04-02 19:01:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('173', '1056882', '3', '5', '1', '2021-04-02 19:02:40', '2021-04-02 19:02:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('174', '1056882', '3', '5', '1', '2021-04-02 19:03:40', '2021-04-02 19:03:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('175', '1056882', '3', '5', '1', '2021-04-02 19:04:40', '2021-04-02 19:04:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('176', '1056882', '3', '5', '1', '2021-04-02 19:05:40', '2021-04-02 19:05:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('177', '1056882', '3', '5', '1', '2021-04-02 19:06:40', '2021-04-02 19:06:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('178', '1056882', '3', '5', '1', '2021-04-02 19:07:40', '2021-04-02 19:07:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('179', '1056882', '3', '5', '1', '2021-04-02 19:08:40', '2021-04-02 19:08:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('180', '1056882', '3', '4', '1', '2021-04-02 19:09:40', '2021-04-02 19:09:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('181', '1056882', '3', '5', '1', '2021-04-02 19:10:40', '2021-04-02 19:10:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('182', '1056882', '3', '5', '1', '2021-04-02 19:11:40', '2021-04-02 19:11:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('183', '1056882', '3', '5', '1', '2021-04-02 19:12:40', '2021-04-02 19:12:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('184', '1056882', '3', '5', '1', '2021-04-02 19:13:40', '2021-04-02 19:13:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('185', '1056882', '3', '5', '1', '2021-04-02 19:14:40', '2021-04-02 19:14:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('186', '1056882', '3', '5', '1', '2021-04-02 19:15:40', '2021-04-02 19:15:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('187', '1056882', '3', '5', '1', '2021-04-02 19:16:40', '2021-04-02 19:16:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('188', '1056882', '3', '5', '1', '2021-04-02 19:17:40', '2021-04-02 19:17:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('189', '1056882', '3', '5', '1', '2021-04-02 19:18:40', '2021-04-02 19:18:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('190', '1056882', '3', '5', '1', '2021-04-02 19:19:40', '2021-04-02 19:19:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('191', '1056882', '3', '5', '1', '2021-04-02 19:20:40', '2021-04-02 19:20:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('192', '1056882', '3', '5', '1', '2021-04-02 19:21:40', '2021-04-02 19:21:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('193', '1056882', '3', '5', '1', '2021-04-02 19:22:40', '2021-04-02 19:22:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('194', '1056882', '3', '5', '1', '2021-04-02 19:23:40', '2021-04-02 19:23:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('195', '1056882', '3', '5', '1', '2021-04-02 19:24:40', '2021-04-02 19:24:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('196', '1056882', '3', '4', '1', '2021-04-02 19:25:40', '2021-04-02 19:25:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('197', '1056882', '3', '5', '1', '2021-04-02 19:26:40', '2021-04-02 19:26:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('198', '1056882', '3', '5', '1', '2021-04-02 19:27:40', '2021-04-02 19:27:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('199', '1056882', '3', '5', '1', '2021-04-02 19:28:40', '2021-04-02 19:28:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('200', '1056882', '3', '5', '1', '2021-04-02 19:29:40', '2021-04-02 19:29:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('201', '1056882', '3', '5', '1', '2021-04-02 19:30:40', '2021-04-02 19:30:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('202', '1056882', '3', '5', '1', '2021-04-02 19:31:40', '2021-04-02 19:31:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('203', '1056882', '3', '5', '1', '2021-04-02 19:32:40', '2021-04-02 19:32:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('204', '1056882', '3', '5', '1', '2021-04-02 19:33:40', '2021-04-02 19:33:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('205', '1056882', '3', '5', '1', '2021-04-02 19:34:40', '2021-04-02 19:34:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('206', '1056882', '3', '5', '1', '2021-04-02 19:35:40', '2021-04-02 19:35:40');
+INSERT INTO `websockets_statistics_entries` VALUES ('207', '1056882', '1', '4', '0', '2021-04-02 19:37:21', '2021-04-02 19:37:21');
+INSERT INTO `websockets_statistics_entries` VALUES ('208', '1056882', '1', '2', '1', '2021-04-02 19:38:21', '2021-04-02 19:38:21');
+INSERT INTO `websockets_statistics_entries` VALUES ('209', '1056882', '3', '19', '1', '2021-04-02 19:39:21', '2021-04-02 19:39:21');
+INSERT INTO `websockets_statistics_entries` VALUES ('210', '1056882', '2', '6', '0', '2021-04-06 15:22:45', '2021-04-06 15:22:45');
+INSERT INTO `websockets_statistics_entries` VALUES ('211', '1056882', '2', '6', '1', '2021-04-06 15:23:41', '2021-04-06 15:23:41');
+INSERT INTO `websockets_statistics_entries` VALUES ('212', '1056882', '2', '3', '1', '2021-04-06 15:24:42', '2021-04-06 15:24:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('213', '1056882', '2', '3', '2', '2021-04-06 15:25:42', '2021-04-06 15:25:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('214', '1056882', '2', '3', '1', '2021-04-06 15:26:42', '2021-04-06 15:26:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('215', '1056882', '2', '2', '2', '2021-04-06 15:27:42', '2021-04-06 15:27:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('216', '1056882', '2', '3', '1', '2021-04-06 15:28:42', '2021-04-06 15:28:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('217', '1056882', '2', '3', '1', '2021-04-06 15:29:42', '2021-04-06 15:29:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('218', '1056882', '2', '3', '1', '2021-04-06 15:30:41', '2021-04-06 15:30:41');
+INSERT INTO `websockets_statistics_entries` VALUES ('219', '1056882', '2', '3', '1', '2021-04-06 15:31:42', '2021-04-06 15:31:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('220', '1056882', '2', '3', '1', '2021-04-06 15:32:42', '2021-04-06 15:32:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('221', '1056882', '2', '3', '1', '2021-04-06 15:33:42', '2021-04-06 15:33:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('222', '1056882', '2', '3', '1', '2021-04-06 15:34:42', '2021-04-06 15:34:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('223', '1056882', '2', '3', '1', '2021-04-06 15:35:42', '2021-04-06 15:35:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('224', '1056882', '2', '3', '1', '2021-04-06 15:36:42', '2021-04-06 15:36:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('225', '1056882', '2', '3', '1', '2021-04-06 15:37:42', '2021-04-06 15:37:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('226', '1056882', '2', '3', '1', '2021-04-06 15:38:42', '2021-04-06 15:38:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('227', '1056882', '2', '3', '1', '2021-04-06 15:39:42', '2021-04-06 15:39:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('228', '1056882', '2', '2', '2', '2021-04-06 15:40:42', '2021-04-06 15:40:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('229', '1056882', '2', '3', '1', '2021-04-06 15:41:42', '2021-04-06 15:41:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('230', '1056882', '2', '3', '1', '2021-04-06 15:42:42', '2021-04-06 15:42:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('231', '1056882', '2', '3', '1', '2021-04-06 15:43:42', '2021-04-06 15:43:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('232', '1056882', '2', '3', '1', '2021-04-06 15:44:42', '2021-04-06 15:44:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('233', '1056882', '2', '3', '1', '2021-04-06 15:45:42', '2021-04-06 15:45:42');
+INSERT INTO `websockets_statistics_entries` VALUES ('234', '1056882', '2', '3', '1', '2021-04-06 15:46:42', '2021-04-06 15:46:42');
 
 -- ----------------------------
 -- Table structure for zona
