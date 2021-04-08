@@ -8,7 +8,6 @@
 
         <v-row>
 
-                  
         <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
@@ -31,17 +30,17 @@
         </v-col>
                   
         <v-col cols="12" md="12">
-             <v-text-field
-                    prepend-inner-icon="mdi-lock"
-                    :append-icon="show ? 'visibility_off' : 'visibility'"
-                    @click:append="show = !show"
-                    label="Password"
-                    hint="Debe contener letras y numeros y una longitud minima de 8 caracteres"
-                    :type="show ? 'text' : 'password'"
-                    v-model="form.tx_password"
-                    :rules="rules.password"
-                    >
-                </v-text-field>
+            <v-text-field
+                prepend-inner-icon="mdi-lock"
+                :append-icon="show ? 'visibility_off' : 'visibility'"
+                @click:append="show = !show"
+                label="Password"
+                hint="Debe contener letras y numeros y una longitud minima de 8 caracteres"
+                :type="show ? 'text' : 'password'"
+                v-model="form.tx_password"
+                :rules="rules.password"
+                >
+            </v-text-field>
         </v-col>
 
         </v-row>
@@ -80,10 +79,10 @@ export default {
             resource: 'usuario',
             form:
             {
-                id: 	         null,
-				password: 	     null,
-                tx_email: 	     null,
-				id_usuario: 	 null,
+                id: 	    null,
+				password:   null,
+                tx_email:   null,
+				id_usuario: null,
             },
             show: false,  
         }

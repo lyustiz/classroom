@@ -1,10 +1,12 @@
 <template>
 
-<v-dialog v-model="modal" persistent :width="width" :min-width="minWidt" content-class="rounded-xl">
+<v-dialog v-model="modal" persistent :width="width" :min-width="minWidt" content-class="rounded-xl" scrollable>
 
     <v-card content-class="rounded-xl">
 
-        <v-toolbar dark flat :color="(HeadColor) ? HeadColor : $App.theme.headModal">
+        <v-card-title class="pa-0">
+
+        <v-toolbar dark flat :color="(HeadColor) ? HeadColor : $App.theme.headModal" height="54">
 
             <v-btn icon x-small dark class="mx-1" @click.native="$emit('closeModal')">
                 <v-icon>mdi-close-circle</v-icon>
@@ -19,6 +21,8 @@
             </v-btn>
         
         </v-toolbar>
+
+        </v-card-title>
 
         <v-card-text class="py-1 px-1">
 

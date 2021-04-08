@@ -154,12 +154,13 @@
             label="Departamento"
             :loading="loading"
             dense
+            @change="getCiudades($event)"
             ></v-select>
         </v-col>
                   
         <v-col cols="6" md="3">
             <v-select
-            :items="selects.ciudad"
+            :items="ciudad"
             item-text="nb_ciudad"
             item-value="id"
             v-model="form.id_ciudad"
@@ -167,6 +168,7 @@
             label="Ciudad"
             :loading="loading"
             dense
+            :readonly="ciudad.length < 1"
             ></v-select>
         </v-col>
           
@@ -304,18 +306,32 @@ export default {
                 estadoCivil: 	[],
 	 	 	 	tipoDocumento: 	[],
 	 	 	 	departamento: 	[],
-	 	 	 	ciudad: 	    [],
 	 	 	 	cargo: 	        [],
             },
             sexos: [ 'M', 'F' ],
             defaultForm:{
                 bo_profesor: 0
-            }
+            },
+            ciudad:[],
         }
     },
 
     methods:
     {
+        preActionForms(action)
+        {
+            if(action == 'upd'){
+                this.getCiudades(this.item.id_departamento)
+            } else {
+                this.ciudad = []
+            }
+        },
+        
+        getCiudades(idDepartamento){
+            this.getResource(`ciudad/departamento/${idDepartamento}`).then(ciudades=>{
+                this.ciudad = ciudades
+            })
+        }
 
     }
 }

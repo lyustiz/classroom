@@ -1,8 +1,13 @@
 google catcha
-https://mega.nz/#!KYMV1AJL!DpN7W8RTaBxy4r92r69Z8jrRaoRYG2eQstbtp86nWL8
+
+git reset --hard
 
 php artisan storage:link
 php artisan confi:cache
+
+/vendor/tecnickcom/tcpdf/fonts
+yellowtail.z
+yellowtail.php
 
 configuracion
 calendario 
@@ -15,8 +20,6 @@ thema:
 autenticacion 
 
     probar apitoken
-
-    periodo -> calendario activo
 
 usuario tipo secretaria tipo 6
 

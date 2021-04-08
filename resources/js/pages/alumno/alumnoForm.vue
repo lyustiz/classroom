@@ -5,8 +5,7 @@
     <v-card :loading="loading" flat >
 
         <v-card-text>
-            <v-subheader>Datos Personales</v-subheader>
-        <v-row>
+s        <v-row>
                   
         <v-col cols="6" md="3">
             <v-text-field
@@ -138,19 +137,21 @@
             :rules="[rules.select]"
             label="Departamento"
             :loading="loading"
+            @change="getCiudades($event)"
             dense
             ></v-select>
         </v-col>
                   
         <v-col cols="6" md="3">
             <v-select
-            :items="selects.ciudad"
+            :items="ciudad"
             item-text="nb_ciudad"
             item-value="id"
             v-model="form.id_ciudad"
             :rules="[rules.select]"
             label="Ciudad"
             :loading="loading"
+            :readonly="ciudad.length < 1"
             dense
             ></v-select>
         </v-col>
@@ -287,14 +288,28 @@ export default {
             {
                 tipoDocumento: [],
 	 	 	 	departamento:  [],
-	 	 	 	ciudad: 	   [],
             },
             sexos: [ 'M', 'F' ],
+            ciudad:[],
         }
     },
 
     methods:
     {
+        preActionForms(action)
+        {
+            if(action == 'upd'){
+                this.getCiudades(this.item.id_departamento)
+            } else {
+                this.ciudad = []
+            }
+        },
+        
+        getCiudades(idDepartamento){
+            this.getResource(`ciudad/departamento/${idDepartamento}`).then(ciudades=>{
+                this.ciudad = ciudades
+            })
+        }
 
     }
 }

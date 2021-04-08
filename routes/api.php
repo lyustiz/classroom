@@ -214,7 +214,6 @@ Route::apiResource('/tipoFeriado',              'TipoFeriadoController');
 Route::apiResource('/feriado',                  'FeriadoController');
 Route::apiResource('/tipoAgenda',               'TipoAgendaController');
 Route::apiResource('/agenda',                   'AgendaController');
-/* Route::apiResource('/tipoActividad',            'TipoActividadController'); */
 Route::apiResource('/agendaActividad',          'AgendaActividadController');
 
 // -- GESTION USUARIO -- //
@@ -310,6 +309,8 @@ Route::apiResource('/rasgo',                        'RasgoController');
 
 //TOOLS//
 // Route::get('/fixPlanes',   'PlanEvaluacionController@fixPlanDetalles');
+//Route::get('/createUserLote/{tipoUsuario}', 'UsuarioController@usuarioLoteTipo');
+
 
 // -- EVALUACION -- //
 
@@ -322,6 +323,7 @@ Route::get('/evaluacion/alumno/{alumno}',                   'EvaluacionControlle
 Route::get('/evaluacion/docente/{docente}',                 'EvaluacionController@evaluacionDocente');
 Route::put('/evaluacion/asignar/{evaluacion}',              'EvaluacionController@asignar');
 Route::put('/evaluacion/cerrar/{evaluacion}',               'EvaluacionController@cerrar');
+Route::put('/evaluacion/reiniciar/{evaluacion}',            'EvaluacionController@reiniciar');
 
 Route::get('/evaluacionAlumno/alumno/{alumno}',             'EvaluacionAlumnoController@evaluacionAlumnoAlumno');
 Route::get('/evaluacionAlumno/evaluacion/{evaluacion}',     'EvaluacionAlumnoController@evaluacionAlumnoEvaluacion');
@@ -384,13 +386,13 @@ Route::apiResource('/tipoEnlace',               'TipoEnlaceController');
 // actividad
 Route::get('/actividad/tema/{tema}',            'ActividadController@actividadTema');
 Route::apiResource('/actividad',                'ActividadController');
-/* Route::apiResource('/tipoActividad',            'TipoActividadController'); */
-Route::get('/actividadPregunta/actividad/{actividad}',     'ActividadPreguntaController@actividadPreguntaActividad');
-Route::apiResource('/actividadPregunta',        'ActividadPreguntaController', ['parameters' => ['actividadPregunta' => 'actividadPregunta']]);
+
+Route::get('/actividadPregunta/actividad/{actividad}',          'ActividadPreguntaController@actividadPreguntaActividad');
+Route::apiResource('/actividadPregunta',                        'ActividadPreguntaController', ['parameters' => ['actividadPregunta' => 'actividadPregunta']]);
 Route::put('/actividadRespuesta/{actividadRespuesta}/nombre',   'ActividadRespuestaController@updateNombre');
 Route::put('/actividadRespuesta/{actividadRespuesta}/correcta', 'ActividadRespuestaController@updateCorrecta');
-Route::get('/actividadRespuesta/pregunta/{pregunta}',     'ActividadRespuestaController@actividadRespuestaPregunta');
-Route::apiResource('/actividadRespuesta',       'ActividadRespuestaController', ['parameters' => ['actividadRespuesta' => 'actividadRespuesta']]);
+Route::get('/actividadRespuesta/pregunta/{pregunta}',           'ActividadRespuestaController@actividadRespuestaPregunta');
+Route::apiResource('/actividadRespuesta',                       'ActividadRespuestaController', ['parameters' => ['actividadRespuesta' => 'actividadRespuesta']]);
 
 // -- LIBRO -- //
 
@@ -411,7 +413,8 @@ Route::post('meet/auth/{usuario}',              'MeetController@auth');
 Route::get('/asistente/perfil/{perfil}',        'AsistenteController@asistentePerfil');
 Route::apiResource('/asistente',                'AsistenteController');
 Route::apiResource('/asistenteDetalle',         'AsistenteDetalleController');
-//BOOT
+
+// -- BOOT -- //
 Route::post('/botman',                    'BotmanController@talk');
 
 

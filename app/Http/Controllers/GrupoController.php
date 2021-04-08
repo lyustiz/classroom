@@ -89,7 +89,7 @@ class GrupoController extends Controller
     public function store(Request $request)
     {
         $validate = request()->validate([
-            'nb_grupo'          => 	'nullable|string|max:30',
+            'nb_grupo'          => 	'nullable|string|max:120',
 			'id_grado'          => 	'required|integer|max:999999999',
             'id_turno'          => 	'required|integer|max:999999999',
             'id_calendario'     => 	'required|integer|max:999999999',
@@ -147,7 +147,7 @@ class GrupoController extends Controller
     public function update(Request $request, Grupo $grupo)
     {
         $validate = request()->validate([
-            'nb_grupo'          => 	'nullable|string|max:30',
+            'nb_grupo'          => 	'nullable|string|max:120',
 			'id_grado'          => 	'required|integer|max:999999999',
             'id_turno'          => 	'required|integer|max:999999999',
             'id_calendario'     => 	'required|integer|max:999999999',

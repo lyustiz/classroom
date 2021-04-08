@@ -7,7 +7,7 @@
                 <v-col cols="auto">
                     <v-icon size="30">{{seguimiento[0].evaluacion.tipo_evaluacion.tx_icono}}</v-icon>
                 </v-col>
-                <v-col class="headline text-left">{{ seguimiento[0].evaluacion.tipo_evaluacion.nb_tipo_evaluacion }}</v-col>
+                <v-col class="title text-left">{{ seguimiento[0].evaluacion.tipo_evaluacion.nb_tipo_evaluacion }}</v-col>
                 <v-col cols="auto" class="title">
                     {{ totalSeguimientos(seguimiento) }}
                 </v-col>

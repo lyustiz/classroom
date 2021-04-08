@@ -22,6 +22,14 @@ class CiudadController extends Controller
         return $ciudad;
     }
 
+    public function ciudadDepartamento($idDepartamento)
+    {
+        return Ciudad::where('id_departamento', $idDepartamento)
+                    ->get();
+        
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *

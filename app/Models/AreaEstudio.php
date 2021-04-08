@@ -46,7 +46,7 @@ class AreaEstudio extends Model
 
     public function materia(){
 
-        return $this->HasMany('App\Models\materia', 'id_area_estudio');
+        return $this->HasMany('App\Models\Materia', 'id_area_estudio');
 
     }
 }

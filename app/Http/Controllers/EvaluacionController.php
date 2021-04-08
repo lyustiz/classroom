@@ -377,6 +377,25 @@ class EvaluacionController extends Controller
         return [ 'msj' => 'Evaluacion Cerrada' , compact('evaluacion')];
     }
 
+    public function reiniciar(Request $request, Evaluacion $evaluacion)
+    {
+        $validate = request()->validate([
+			'id_usuario'        => 	  'required|integer|max:999999999',
+        ]);
+        
+        $request->merge([
+            'fe_prueba'       => null,
+            'hh_inicio'       => null,
+            'hh_fin'          => null,
+            'nu_valor_total'  => null,
+            'id_status'       => $prueba->asignada()
+        ]);
+
+        $update = $evaluacion->update($request->all());
+
+        return [ 'msj' => 'Evaluacion Reiniciada' , compact('update')];
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -385,6 +404,15 @@ class EvaluacionController extends Controller
      */
     public function destroy(Evaluacion $evaluacion)
     {
+        $evaluacionesAlumno = $evaluacion->evaluacionAlumno;
+
+        foreach ($evaluacionesAlumno as $evaluacionAlumno) {
+            if($evaluacionAlumno->id_status > 3)
+            {
+                throw ValidationException::withMessages(['poseeRespuestas' => "Existen Alumnos que ya relizaron la evaluacion"]);
+            }
+        }
+        
         $evaluacionAlumno = EvaluacionAlumno::where('id_evaluacion', $evaluacion->id)->delete();
         
         $delete = $evaluacion->delete();

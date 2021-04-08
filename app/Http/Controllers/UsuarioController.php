@@ -95,7 +95,7 @@ class UsuarioController extends Controller
 
             $dataUsuario = [
                 'nb_usuario'      => $nbUsuario,
-                'nb_nombres'      => strtolower($data->nb_nombre) . ' ' . strtolower($data->nb_apellido),
+                'nb_nombres'      => strtolower(UsuarioTrait::clean_string($data->nb_nombre)) . ' ' . strtolower(UsuarioTrait::clean_string($data->nb_apellido)),
                 'id_colegio'      => $idColegio,
                 'tx_email'        => $data->tx_email,
                 'id_tipo_usuario' => $idTipoUsuario,
@@ -152,10 +152,9 @@ class UsuarioController extends Controller
 
         $usuario  = $usuario->update([
             'tx_email'      => $request->tx_email,
-            'tx_password'   => Hash::make($request->tx_password),
+            'password'   => Hash::make($request->tx_password),
             'id_usuario'    => $request->id_usuario,
         ]);
-        
 
         return [ 'msj' => 'Usuario Actualizado' , compact('usuario')];
     }

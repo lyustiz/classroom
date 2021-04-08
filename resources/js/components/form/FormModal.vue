@@ -4,7 +4,8 @@
 
     <v-card class="rounded-xl" flat height="85vh">
 
-        <v-toolbar dark flat dense :color="(HeadColor) ? HeadColor : $App.theme.headModal">
+        <v-card-title class="pa-0">
+            <v-toolbar dark flat dense :color="(HeadColor) ? HeadColor : $App.theme.headModal">
 
             <v-btn icon x-small dark class="mx-1" @click.native="$emit('closeModal')">
                 <v-icon>mdi-close-circle</v-icon>
@@ -18,7 +19,9 @@
                 <v-icon>mdi-dots-vertical</v-icon>
             </v-btn>
         
-        </v-toolbar>
+            </v-toolbar>
+            
+        </v-card-title>
 
         <v-card-text class="py-1 px-1">
 

@@ -7,7 +7,7 @@
                 <v-col cols="auto">
                     <v-icon size="30">mdi-human-male-height-variant</v-icon>
                 </v-col>
-                <v-col class="headline text-left">Rasgos</v-col>
+                <v-col class="title text-left">Rasgos</v-col>
                 <v-spacer></v-spacer>
                 <v-col cols="auto" class="title">
                    {{ totalSeguimientos() }}

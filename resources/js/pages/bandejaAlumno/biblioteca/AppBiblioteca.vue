@@ -267,15 +267,15 @@
 
         </v-card-text>
 
-         <v-dialog v-model="libroDialog" fullscreen  content-class="amber lighten-2">
+         <v-dialog v-model="libroDialog" fullscreen  content-class="amber lighten-2" >
             <visor-libros :libro="libro" @closeModal="closeDialog('libroDialog')" v-if="libro"></visor-libros>
         </v-dialog>  
 
-        <v-dialog v-model="dialogPrueba" fullscreen scrollable>
+        <v-dialog v-model="dialogPrueba" fullscreen persistent no-click-animation>
             <app-prueba v-if="dialogPrueba" :evaluacion-alumno="evaluacion" @closeDialog="closeDialog('dialogPrueba')" ></app-prueba>
         </v-dialog>
 
-         <v-dialog v-model="dialogTarea" fullscreen scrollable>
+         <v-dialog v-model="dialogTarea" fullscreen persistent no-click-animation>
             <app-tarea v-if="dialogTarea" :evaluacion-alumno="evaluacion" @closeDialog="closeDialog('dialogTarea')" @onClomplete="getEvaluaciones()" ></app-tarea>
         </v-dialog>
 

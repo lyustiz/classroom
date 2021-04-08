@@ -105,7 +105,7 @@ export default {
         title:    'Empleado',
         resource: 'empleado',
         headers: [
-            { text: 'Foto',                value: 'id', sortable: false, filterable: false },
+            { text: 'Foto',   value: 'id', sortable: false, filterable: false },
             { text: 'Apellidos y Nombres',   value: 'nb_empleado' },
 			{ text: 'Sexo',   value: 'tx_sexo' },
 			{ text: 'Documento',   value: 'tx_documento' },
