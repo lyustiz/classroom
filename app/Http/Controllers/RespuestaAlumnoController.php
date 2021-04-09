@@ -218,8 +218,6 @@ class RespuestaAlumnoController extends Controller
             'id_respuesta'  => 	'required|array',
         ]);
         
-        $respuestasAlumno = [];
-
         RespuestaAlumno::where('id_prueba',   $request->id_prueba)
                        ->where('id_pregunta', $request->id_pregunta)
                        ->where('id_alumno',   $request->id_alumno)
@@ -227,7 +225,7 @@ class RespuestaAlumnoController extends Controller
 
         $respuestasAlumno = [];
 
-        $data = $request->only(['id_prueba', 'id_pregunta', 'id_alumno', 'id_usuario']);
+        $data = $request->only([ 'id_evaluacion_alumno', 'id_prueba', 'id_pregunta', 'id_alumno', 'id_usuario']);
 
         $pregunta->load('respuesta');
 

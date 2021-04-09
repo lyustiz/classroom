@@ -9,6 +9,11 @@ php artisan confi:cache
 yellowtail.z
 yellowtail.php
 
+
+al iniciar una prueba por alumno restringir su edicion por parte del docente
+
+
+
 configuracion
 calendario 
     inicio dia  / fin dia

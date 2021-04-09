@@ -33,6 +33,6 @@ class NotificacionEvent
      */
     public function broadcastOn()
     {
-        return new Channel('notificacion-creada');
+        return new PrivateChannel('notificacion-creada');
     }
 }
