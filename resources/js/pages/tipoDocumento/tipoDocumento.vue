@@ -30,9 +30,9 @@
                 <template v-slot:item="{ item }">
                     <tr>
                         <td class="text-xs-left">{{ item.nb_tipo_documento }}</td>
-						<td class="text-xs-left">{{ item.tx_icono }}</td>
+					<!-- 	<td class="text-xs-left">{{ item.tx_icono }}</td>
 						<td class="text-xs-left">{{ item.tx_path }}</td>
-						<td class="text-xs-left">{{ item.tx_grupo }}</td>
+						<td class="text-xs-left">{{ item.tx_grupo }}</td> -->
 						<td class="text-xs-left">{{ item.tx_observaciones }}</td>
 						<td class="text-xs-left">
                             <status-switch 
@@ -91,16 +91,16 @@ export default {
     components: { 'tipo-documento-form': tipoDocumentoForm },
     data () {
     return {
-        title:    'TipoDocumento',
+        title:    'Tipo Documento',
         resource: 'tipoDocumento',
         headers: [
-            { text: 'Tipo Documento',   value: 'nb_tipo_documento' },
-			{ text: 'Icono',   value: 'tx_icono' },
-			{ text: 'Path',   value: 'tx_path' },
-			{ text: 'Grupo',   value: 'tx_grupo' },
-			{ text: 'Observaciones',   value: 'tx_observaciones' },
-			{ text: 'Status',   value: 'id_status' },
-            { text: 'Acciones', value: 'actions', sortable: false, filterable: false },
+            { text: 'Tipo Documento', value: 'nb_tipo_documento' },
+			/* { text: 'Icono',          value: 'tx_icono' },
+			{ text: 'Path',           value: 'tx_path' },
+			{ text: 'Grupo',          value: 'tx_grupo' }, */
+			{ text: 'Observaciones',  value: 'tx_observaciones' },
+			{ text: 'Status',         value: 'id_status' },
+            { text: 'Acciones',       value: 'actions', sortable: false, filterable: false },
         ],
     }
     },

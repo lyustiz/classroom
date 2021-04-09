@@ -9,7 +9,7 @@
         <v-row>
 
                  
-        <v-col cols="12" md="6">
+        <v-col cols="12">
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.nb_tipo_documento"
@@ -19,9 +19,9 @@
             ></v-text-field>
         </v-col>
                   
-        <v-col cols="12" md="6">
+      <!--   <v-col cols="12" md="6">
             <v-text-field
-                :rules="[rules.required, max(30)]"
+                :rules="[rules.required, rules.max(30)]"
                 v-model="form.tx_icono"
                 label="Icono"
                 placeholder="Indique Icono"
@@ -40,9 +40,9 @@
                 placeholder="Indique Path"
                 dense
             ></v-text-field>
-        </v-col>
+        </v-col> -->
                   
-        <v-col cols="12" md="6">
+      <!--   <v-col cols="12" md="6">
             <v-text-field
                 :rules="[rules.required]"
                 v-model="form.tx_grupo"
@@ -50,32 +50,18 @@
                 placeholder="Indique Grupo"
                 dense
             ></v-text-field>
-        </v-col>
+        </v-col> -->
                   
-        <v-col cols="12" md="6">
+        <v-col cols="12">
             <v-text-field
-                :rules="[rules.required]"
+                :rules="[rules.max(80)]"
                 v-model="form.tx_observaciones"
                 label="Observaciones"
                 placeholder="Indique Observaciones"
                 dense
             ></v-text-field>
         </v-col>
-                          
-        <v-col cols="12" md="6">
-            <v-select
-            :items="selects.status"
-            item-text="nb_status"
-            item-value="id"
-            v-model="form.id_status"
-            :rules="[rules.select]"
-            label="Status"
-            :loading="loading"
-            dense
-            ></v-select>
-        </v-col>
-         
-
+                        
         </v-row>
 
         </v-card-text>
@@ -109,29 +95,16 @@ export default {
     mixins: [Appform],
     data() {
         return {
-            resource: 'tipo_documento',
-            dates:
-            {
-                
-            },
-            pickers:
-            {
-                
-            },
+            resource: 'tipoDocumento',
+
             form:
             {
-                id: 	null,
-				nb_tipo_documento: 	null,
-				tx_icono: 	null,
-				tx_path: 	null,
-				tx_grupo: 	null,
-				tx_observaciones: 	null,
-				id_status: 	null,
-				id_usuario: 	null,
-            },
-            selects:
-            {
-                status: 	     ['/grupo/GRAL'],
+                id: 	           null,
+				nb_tipo_documento: null,
+				tx_icono: 	       null,
+				tx_observaciones:  null,
+				id_status: 	       null,
+				id_usuario: 	   null,
             },
         }
     },
