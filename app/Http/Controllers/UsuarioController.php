@@ -191,8 +191,8 @@ class UsuarioController extends Controller
         if (\Hash::check($request->input('tx_password'), $usuario->password)) {
             
             $usuario  = $usuario->update([
-                'tx_password'   => Hash::make($request->tx_new_pass),
-                'id_usuario'    => $request->input('id_usuario'),
+                'password'   => Hash::make($request->tx_new_pass),
+                'id_usuario'    => $request->id_usuario,
             ]);
 
             return [ 'msj' => 'Password Actualizado' , compact('usuario')];
