@@ -191,6 +191,9 @@ export default {
                 case 4:
                     this.navegateTo('/bandeja-acudiente');
                     break;
+                case 5:
+                    this.navegateTo('/home');
+                    break;
                 default:
                     this.showError('Usuario no Autorizado')
                     break;
