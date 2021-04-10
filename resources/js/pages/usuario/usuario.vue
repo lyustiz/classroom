@@ -47,6 +47,8 @@
 
 						<td class="text-xs-left">{{ item.nb_usuario }}</td>
 
+                        <td class="text-xs-left">{{ item.nb_nombres }}</td>
+
                         <td class="text-xs-left">
                               <v-tooltip bottom :key="perfil.id" v-for="perfil in item.perfil">
                                 <template v-slot:activator="{ on }">
@@ -120,6 +122,7 @@ export default {
         headers: [
             { text: 'Foto',     value: 'id', sortable: false, filterable: false },
 			{ text: 'Usuario',  value: 'nb_usuario' },
+            { text: 'Nombre',  value: 'nb_nombres' },
             { text: 'Perfil',   value: 'perfil' },
 			{ text: 'Status',   value: 'id_status' },
             { text: 'Acciones', value: 'actions', sortable: false, filterable: false },

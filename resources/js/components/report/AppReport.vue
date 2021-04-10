@@ -5,7 +5,7 @@
     <v-card flat class="report-container">
 
          <v-card-title class="pa-0">
-            <app-simple-toolbar :title="title" @closeModal="$emit('onCloseReport')"></app-simple-toolbar>
+            <app-simple-toolbar dense :title="title" @closeModal="$emit('onCloseReport')"></app-simple-toolbar>
         </v-card-title>
         
         <v-form ref="form" v-model="valid" lazy-validation>

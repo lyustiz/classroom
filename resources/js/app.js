@@ -30,7 +30,7 @@ Vue.prototype.$App = Object.freeze({
     device:   isMobile.any(), 
     youtubeApi: 'AIzaSyBgTktlTrzgb9j8t_B-4G9v4RTDFb_PIw0',
     theme:{
-            headApp:    'blue darken-4',
+            headApp:     process.env.MIX_APP_COLOR || 'blue darken-4',
             textTitle:  'white--text',
             headForm:   'blue darken-4',
             titleForm:  'red lighten-4',
