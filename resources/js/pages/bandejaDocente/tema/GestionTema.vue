@@ -115,7 +115,7 @@
                         ></v-select>
                     </v-col>
                     <v-col cols="auto" class="px-2 py-1">
-                        <v-btn fab small color="success" :disabled="temas.length < 1" @click="dialogTema=true"><v-icon>mdi-plus</v-icon></v-btn>
+                        <v-btn fab small color="success" :disabled="!grado || !materia" @click="dialogTema=true"><v-icon>mdi-plus</v-icon></v-btn>
                     </v-col>
                 </v-row>
             </v-col>

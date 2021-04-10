@@ -60,6 +60,7 @@ class GradoController extends Controller
                         'materia:materia.id,nb_materia',
                         'materia.docente:docente.id,nb_apellido,nb_apellido2,nb_nombre,nb_nombre2',                            
                         ])
+                        ->activo()
                         ->get();
     }
 
