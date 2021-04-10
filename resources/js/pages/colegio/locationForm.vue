@@ -26,6 +26,7 @@
             label="Departamento"
             :loading="loading"
             dense
+            @change="getCiudad($event)"
             ></v-select>
         </v-col>
                   
@@ -129,9 +130,18 @@ export default {
     mixins: [ AppData, AppSelect ],
     created()
     {
+        
+        if(this.colegio)
+        {
+            this.selects.ciudad = ( this.colegio.id_departamento ) ? [`?departamento=${this.colegio.id_departamento}`] : []
+            this.selects.zona   = ( this.colegio.id_comuna ) ? [`?comuna=${this.colegio.id_comuna}`] : []
+            this.selects.comuna = ( this.colegio.id_ciudad ) ? [`?ciudad=${this.colegio.id_ciudad}`] : []
+            this.selects.barrio = ( this.colegio.id_zona ) ? [`?zona=${this.colegio.id_zona}`] : []
+        }
+        
         this.fillSelects()
         this.mapData(this.colegio)
-        this.loading = true;
+        this.loading = true
     },
     watch:
     {
@@ -194,6 +204,13 @@ export default {
             {
             this.loading = false
             });
+        },
+
+        getCiudad(departamento)
+        {
+            this.getResource(`ciudad?departamento=${departamento}`).then(data =>{
+                this.selects.ciudad = data
+            })
         }
     }
 }

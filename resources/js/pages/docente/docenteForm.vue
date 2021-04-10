@@ -308,9 +308,9 @@ export default {
 
     methods:
     {
-        preActionForms(action)
+         onCreateForm()
         {
-            if(action == 'upd'){
+            if(this.action == 'upd'){
                 this.getCiudades(this.item.id_departamento)
             } else {
                 this.ciudad = []

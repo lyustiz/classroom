@@ -14,9 +14,11 @@ class ComunaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $comuna = Comuna::with([])
+                    ->zona($request->input('zona', null))
+                    ->orderBy('nb_comuna', 'ASC')
                     ->get();
         
         return $comuna;

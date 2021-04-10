@@ -72,14 +72,20 @@ export default {
         {
             this.menus = this.$router.options.routes.filter((menu) =>  {
 
-                if(this.profile)
-                {
+                if(this.profile) {
                     return  (menu.visible === true) && ( (menu.profile == this.profile.nb_perfil)  ||  (menu.profile == '*') )
                 }
 
                 return false
-                
+
             })
+
+            for (const menus of this.menus) {
+                if(menus.children)
+                {
+                    menus.children = menus.children.filter(menu =>  menu.visible )
+                }
+            }
         }
     },
     watch:

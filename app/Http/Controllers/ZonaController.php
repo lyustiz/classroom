@@ -14,9 +14,11 @@ class ZonaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $zona = Zona::with([])
+                    ->ciudad($request->input('ciudad', null))
+                    ->orderBy('nb_zona', 'ASC')
                     ->get();
         
         return $zona;

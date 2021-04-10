@@ -53,6 +53,14 @@ export default {
         this.listMenu()
     },
 
+    computed: 
+    {
+        profile()
+        {
+            return this.$store.getters['getProfile'] 
+        }
+    },
+
     data()
     {
         return {
@@ -65,8 +73,14 @@ export default {
 
         listMenu()
         {
+            if(this.profile.id != 1) {
+                this.navegateToName('login')
+            }
             this.admin = this.$router.options.routes.filter((menu) =>  menu.path == '/admin')
+
             this.menus = this.admin[0].children.filter((menu) => menu.path != '/' && menu.visible )
+
+            this.menus = this.menus.filter((menu) => menu.visible )
         },
         
         searchMenu(search)

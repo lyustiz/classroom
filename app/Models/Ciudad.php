@@ -32,7 +32,12 @@ class Ciudad extends Model
 	public function scopeComboData($query)
     {
         return $query->addSelect('id', 'nb_ciudad');
-    }       
+    }   
+    
+    public function scopeDepartamento($query, $departamento = null)
+    {
+        return ($departamento != null) ? $query->where('id_departamento', $departamento) : $query;
+	}
 
     public function status(){
 

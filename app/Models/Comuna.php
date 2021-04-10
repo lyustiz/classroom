@@ -33,6 +33,11 @@ class Comuna extends Model
     {
         return $query->addSelect('id', 'nb_comuna', 'id_zona');
     }
+
+    public function scopeZona($query, $zona = null)
+    {
+        return ($zona != null) ? $query->where('id_zona', $zona) : $query;
+	}
     
     public function status(){
 

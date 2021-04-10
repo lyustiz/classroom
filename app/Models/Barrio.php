@@ -35,6 +35,11 @@ class Barrio extends Model
         return $query->addSelect('id', 'nb_barrio', 'id_comuna');
     }
 
+    public function scopeComuna($query, $comuna = null)
+    {
+        return ($comuna != null) ? $query->where('id_comuna', $comuna) : $query;
+	}
+
     public function status(){
 
         return $this->BelongsTo('App\Models\Status', 'id_status')->where('co_grupo', 'GRAL');

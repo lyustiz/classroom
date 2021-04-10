@@ -5,7 +5,7 @@
     <v-card :loading="loading" flat >
 
         <v-card-text>
-s        <v-row>
+       <v-row>
                   
         <v-col cols="6" md="3">
             <v-text-field
@@ -296,9 +296,9 @@ export default {
 
     methods:
     {
-        preActionForms(action)
+        onCreateForm()
         {
-            if(action == 'upd'){
+            if(this.action == 'upd'){
                 this.getCiudades(this.item.id_departamento)
             } else {
                 this.ciudad = []

@@ -14,9 +14,12 @@ class CiudadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
         $ciudad = Ciudad::with([])
+                    ->departamento($request->input('departamento', null))
+                    ->orderBy('nb_ciudad', 'ASC')
                     ->get();
         
         return $ciudad;

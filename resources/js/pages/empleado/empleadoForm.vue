@@ -11,6 +11,26 @@
         <v-col cols="6" md="3">
             <v-text-field
                 :rules="[rules.required]"
+                v-model="form.nb_nombre"
+                label="Nombre"
+                placeholder="Indique Nombre"
+                dense
+            ></v-text-field>
+        </v-col>
+                  
+        <v-col cols="6" md="3">
+            <v-text-field
+                :rules="[rules.max(100)]"
+                v-model="form.nb_nombre2"
+                label="Nombre2"
+                placeholder="Indique Nombre2"
+                dense
+            ></v-text-field>
+        </v-col>
+
+        <v-col cols="6" md="3">
+            <v-text-field
+                :rules="[rules.required]"
                 v-model="form.nb_apellido"
                 label="Apellido"
                 placeholder="Indique Apellido"
@@ -28,25 +48,7 @@
             ></v-text-field>
         </v-col>
                   
-        <v-col cols="6" md="3">
-            <v-text-field
-                :rules="[rules.required]"
-                v-model="form.nb_nombre"
-                label="Nombre"
-                placeholder="Indique Nombre"
-                dense
-            ></v-text-field>
-        </v-col>
-                  
-        <v-col cols="6" md="3">
-            <v-text-field
-                :rules="[rules.max(100)]"
-                v-model="form.nb_nombre2"
-                label="Nombre2"
-                placeholder="Indique Nombre2"
-                dense
-            ></v-text-field>
-        </v-col>
+        
                           
         <v-col cols="6" md="3">
             <v-select
@@ -318,9 +320,9 @@ export default {
 
     methods:
     {
-        preActionForms(action)
+        onCreateForm()
         {
-            if(action == 'upd'){
+            if(this.action == 'upd'){
                 this.getCiudades(this.item.id_departamento)
             } else {
                 this.ciudad = []

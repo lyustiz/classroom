@@ -14,9 +14,11 @@ class BarrioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $barrio = Barrio::with([])
+                    ->comuna($request->input('comuna', null))
+                    ->orderBy('nb_barrio', 'ASC')
                     ->get();
         
         return $barrio;

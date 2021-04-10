@@ -33,6 +33,11 @@ class Zona extends Model
     {
         return $query->addSelect('id', 'nb_zona', 'id_ciudad');
     }
+
+    public function scopeCiudad($query, $ciudad = null)
+    {
+        return ($ciudad != null) ? $query->where('id_ciudad', $ciudad) : $query;
+	}
     
     public function status()
     {

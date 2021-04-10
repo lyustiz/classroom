@@ -673,7 +673,7 @@ export default new Router({
                 icon: 'mdi-account-details',
                 profile: 'secretaria',
                 visible: true,
-                color: 'brown',
+                color: 'green',
                 component: UsuarioPerfil
             },
             { 
