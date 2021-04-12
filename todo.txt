@@ -12,6 +12,9 @@ yellowtail.php
 alias php='/opt/cpanel/ea-php73/root/usr/bin/php'
 export PATH="/opt/cpanel/ea-php73/root/usr/bin:$PATH"
 
+/opt/cpanel/ea-php73/root/usr/bin/php artisan websocket:serve
+
+
 al iniciar una prueba por alumno restringir su edicion por parte del docente
 
 

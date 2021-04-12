@@ -4,6 +4,8 @@
     </IfModule>
 
     RewriteEngine On
+	
+	RewriteRule /(.*)           ws://localhost:6001/$1 [P,L]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .

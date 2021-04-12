@@ -6,8 +6,8 @@ window.Echo = new Echo({
     broadcaster: 'pusher',
     key: process.env.MIX_PUSHER_APP_KEY,
     wsHost: window.location.hostname,
-    wsPort: 6001,
+    wsPort: process.env.MIX_PUSHER_APP_PORT,
     disableStats: true,
-    forceTLS: false,
-    enabledTransports: ['ws','wss','websocket']
+    forceTLS: true,
+    enabledTransports: ['ws','wss']
 })
