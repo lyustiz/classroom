@@ -65,8 +65,7 @@
             item-text="nb_docente"
             item-value="id"
             v-model="form.id_docente"
-            :rules="[rules.select]"
-            label="Coordinador"
+            label="Docente a Cargo"
             :loading="loading"
             dense
             ></v-select>

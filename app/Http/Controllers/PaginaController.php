@@ -16,8 +16,8 @@ class PaginaController extends Controller
     public function index()
     {
         return Pagina::with(['libro:id,nb_libro', 'tema:id,nb_tema'])
-                    ->get()
-                    ->orderBy('nu_pagina', 'asc');
+                    ->orderBy('nu_pagina', 'asc')
+                    ->get();
     }
 
 

@@ -152,7 +152,7 @@ class DetalleHorarioController extends Controller
        
         foreach ($horarios as $key => $horario) 
         {
-            if( $detalleHorario->id_docente == $horario->id_docente )
+           /*  if( $detalleHorario->id_docente == $horario->id_docente )
             {
                 throw ValidationException::withMessages(['docenteAsignado' => "El docente ya tiene asignacion para esa Hora/Dia"]);
             }
@@ -160,7 +160,7 @@ class DetalleHorarioController extends Controller
             if( $detalleHorario->id_aula == $horario->id_aula )
             {
                 throw ValidationException::withMessages(['aulaAsignada' => "El aula ya tiene asignacion para esa Hora/Dia"]);
-            }
+            } */
         }
     }
 

@@ -146,7 +146,7 @@ export default {
                 { text: 'Grado',       value: 'grado.nb_grado' },
                 { text: 'Turno',       value: 'turno.nb_turno' },
                 { text: 'Calendario',  value: 'calendario.nb_calendario' },
-                { text: 'Coordinador', value: 'coordinador.nb_docente' },
+                { text: 'Docente a Cargo', value: 'coordinador.nb_docente' },
                 { text: 'Materias',    value: 'materias' },
                 { text: 'Orden',       value: 'nu_orden' },
                 { text: 'Status',      value: 'id_status' },
