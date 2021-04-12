@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Reportes\PDf;
+namespace App\Http\Controllers\Reportes\PDF;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
