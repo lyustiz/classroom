@@ -23,7 +23,7 @@
         "laravel/ui": "^2.0",
         "laraveles/spanish": "^1.4",
         "maatwebsite/excel": "^3.1",
-        "pusher/pusher-php-server": "~3.0",
+        "pusher/pusher-php-server": "4.0",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
