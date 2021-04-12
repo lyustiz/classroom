@@ -110,7 +110,7 @@ class LoginController extends Controller
                     'expires_in' => JWTFactory::getTTL() * 60
                 ]; 
             }
-            throw ValidationException::withMessages(['userInactive' => "Usuario Inactivo consulte al Administrador"]);
+            throw ValidationException::withMessages(['userInactive' => "Usuario Inactivo consulte con el Administrador"]);
             /* 
             $hash = Crypt::encryptString($user->nb_usuario) . '|' . $user->verification;
             return response(['verification' => $hash], 403); 

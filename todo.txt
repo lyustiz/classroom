@@ -9,6 +9,8 @@ php artisan confi:cache
 yellowtail.z
 yellowtail.php
 
+alias php='/opt/cpanel/ea-php73/root/usr/bin/php'
+export PATH="/opt/cpanel/ea-php73/root/usr/bin:$PATH"
 
 al iniciar una prueba por alumno restringir su edicion por parte del docente
 

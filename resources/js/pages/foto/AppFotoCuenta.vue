@@ -232,6 +232,7 @@ export default {
         
         deleteDialog()
         {
+            this.loading = false
             this.delDialog = true
         },
 
