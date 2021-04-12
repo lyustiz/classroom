@@ -7,6 +7,11 @@
                     <v-icon >notification_important</v-icon>
                 </v-badge>
             </v-btn>
+            
+            <audio ref="audioNotificacion" id="audioNotificacion">
+                <source type="audio/wav" src="/notificacion.wav">
+                <source type="audio/mp3" src="/notificacion.mp3">
+            </audio>
         </template>
 
         <v-card :loading="loading" class="rounded-xl" height="410">
@@ -67,6 +72,7 @@
             </v-card>
         </v-dialog>
 
+
     </v-dialog>
 </template>
 
@@ -93,11 +99,35 @@ export default {
             return this.notificaciones.filter((notificacion) => !notificacion.fe_lectura).length
         },
 
+        destinatario()
+        {
+            return this.user.id_origen
+        },
+
+        tipoDestinatario()
+        {
+            return this.profile.id
+        }
+
     },
 
     mounted()
     {
         this.getAll()
+
+        window.Echo.channel('notificacion-creada')
+        .listen('NotificacionEvent', ({notificacion}) => {
+            console.log(notificacion)
+            if(notificacion.id_destinatario == this.destinatario && notificacion.id_tipo_destinatario == this.tipoDestinatario)
+            {
+                this.$refs.audioNotificacion.play();
+                this.notificaciones.unshift(notificacion)
+            }
+        });
+    },
+
+    beforeDestroy(){
+       window.Echo.leaveChannel('notificacion-creada');
     },
 
     watch:
@@ -188,3 +218,9 @@ export default {
     }
 }
 </script>
+
+<style>
+#audioNotificacion {
+    display: none;
+}
+</style>

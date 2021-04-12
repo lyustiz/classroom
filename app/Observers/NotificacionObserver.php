@@ -15,7 +15,7 @@ class NotificacionObserver
      */
     public function created(Notificacion $notificacion)
     {
-        event(new NotificacionEvent($notificacion));
+        event(new NotificacionEvent($notificacion->load('tipoNotificacion')));
     }
 
 }

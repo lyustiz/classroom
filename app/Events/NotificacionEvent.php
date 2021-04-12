@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class NotificacionEvent
+class NotificacionEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -33,6 +33,6 @@ class NotificacionEvent
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('notificacion-creada');
+        return new Channel('notificacion-creada');
     }
 }

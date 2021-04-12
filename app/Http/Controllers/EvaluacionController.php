@@ -261,7 +261,7 @@ class EvaluacionController extends Controller
 
         $notificacion = NotificacionTrait::evaluacion([ 
             'id_tipo_evaluacion' => $request->id_tipo_evaluacion, 
-            'alumnos'            => $request->alumnos,
+            'alumnos'            => $evaluacionAlumno['alumnos'],
             'id_materia'         => $request->id_materia,
             'fe_inicio'          => $request->fe_inicio,
             'id_usuario'         => $request->id_usuario 
@@ -296,7 +296,7 @@ class EvaluacionController extends Controller
                                 ];
         }
 
-        return EvaluacionAlumno::insert($evaluacionAlumnos);
+        return [ 'insert' => EvaluacionAlumno::insert($evaluacionAlumnos), 'alumnos' => $alumnos];
     }
 
     /**

@@ -61,9 +61,22 @@ class NotificacionTrait
     {
         $tipoEvaluacion = TipoEvaluacion::find($data['id_tipo_evaluacion']);
         $materia        = Materia::find($data['id_materia']);
-        $tipo           = ($tipoEvaluacion->id == 1) ? 7 : 8;
 
-        $mensaje        = str_replace( '{{materia}}', $materia->nb_materia, TipoNotificacion::find($tipo)->tx_observaciones);
+
+        if($tipoEvaluacion->id > 2) {
+            
+            $tipo     = 6;
+            $mensaje  = str_replace(  
+                            [ '{{tipo}}', '{{materia}}' ], 
+                            [$tipoEvaluacion->nb_tipo_evaluacion,  $materia->nb_materia], 
+                            TipoNotificacion::find($tipo)->tx_observaciones 
+                        );
+        } else {
+
+            $tipo     = ($tipoEvaluacion->id == 1) ? 7 : 8 ;
+            $mensaje  = str_replace( '{{materia}}', $materia->nb_materia, TipoNotificacion::find($tipo)->tx_observaciones);
+        }
+ 
         $notificacion   = [];
         
         foreach ($data['alumnos'] as $IdAlumnoid) 

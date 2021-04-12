@@ -26,7 +26,6 @@ Route::group(['middleware' => 'guest:api'], function () {
 
 });
 
-
 Route::get('/crud/schemas',   'Crud@schemas');
 Route::post('/crud/tables',   'Crud@tables');
 Route::post('/crud/generate', 'Crud@generate');

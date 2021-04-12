@@ -167,7 +167,7 @@
         title="Iniciar Clase"
     >
         <clase-form
-            :dia="dia"
+            dia="1"
             :docente="docente"
             :grados="grados"
             :grado="grado"
@@ -180,8 +180,6 @@
         ></clase-form>
 
     </app-modal>
-
-    
 
  </v-card>
 

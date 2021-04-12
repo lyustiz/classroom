@@ -37,7 +37,7 @@ class NotificacionController extends Controller
                                    ])
                            ->where( 'id_destinatario', $idDestinatario )
                            ->where( 'id_tipo_destinatario', $idTipoDestinatario )
-                           ->latest()
+                           ->orderBy('created_at', 'DESC')
                            ->limit(20)
                            ->get();
     }
@@ -146,11 +146,12 @@ class NotificacionController extends Controller
         ]);
 
         $alumnos      = Grupo::find($IdGrupo)->alumno;
-        $notificacion = [];
+
+        $notificaciones = [];
 
         foreach ($alumnos as $alumno) 
         {
-            $notificacion[] = [
+            $data = [
                 'id_tipo_destinatario' => 3,
                 'id_destinatario'      => $alumno->id,
                 'tx_mensaje'           => $request->tx_mensaje,
@@ -158,13 +159,13 @@ class NotificacionController extends Controller
                 'fe_notificacion'      => date('Y-m-d'), 
                 'id_status'            => 1, 
                 'id_usuario'           => $request->id_usuario,
-                'created_at'           => date('Y-m-d'),
             ];
+
+            $notificaciones[] = Notificacion::create($data);
         }
 
-        $notificacion = Notificacion::insert($notificacion);
 
-        return [ 'msj' => 'Notificacion enviada', compact('notificacion') ];
+        return [ 'msj' => 'Notificaciones enviadas', compact('notificaciones') ];
     }
 
     /**

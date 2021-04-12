@@ -168,11 +168,7 @@ export default {
     forceTLS: false,
     enabledTransports: ['ws', 'wss'] */
              
-              window.Echo.channel('notificacion-creada')
-                       .listen('NotificacionEvent', (data)=>{
-                           console.log('ecuschndo evento', data)
-                       })
-               console.log( window.Echo) 
+              
             //notificacion-creada
 
 
