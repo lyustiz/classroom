@@ -29,7 +29,7 @@ class WelcomeEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject("Bienvenidos a " . env('APP_NAME'))
+        return $this->subject("Bienvenidos a " . config('app.name'))
                     ->view('auth.mail.mail_welcome');
     }
 }
