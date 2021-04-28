@@ -99,6 +99,7 @@ Route::get('/alumno/{alumno}/materias/docentes',      'AlumnoController@alumnoMa
 Route::get('/alumno/grupo/{grupo}/materia/{materia}', 'AlumnoController@alumnoGrupoMateria');
 
 Route::get('/alumno/grupo/{grupo}',             'AlumnoController@alumnoGrupo');
+Route::get('/alumno/detalle/grupo/{grupo}',     'AlumnoController@alumnoDetalleGrupo');
 Route::get('/alumno/sinGrado',                  'AlumnoController@alumnoSinGrado');
 Route::get('/alumno/sinGrupo',                  'AlumnoController@alumnoSinGrupo');
 Route::get('/alumno/pariente/{pariente}',       'AlumnoController@alumnoPariente');
@@ -232,6 +233,8 @@ Route::apiResource('/modulo',                   'ModuloController');
 Route::get('/menu/combo',                       'MenuController@combo');
 Route::apiResource('/menu',                     'MenuController');
 
+Route::post('/welcomeAlumnos', 'UsuarioController@sendWelcomeAlumnos');
+
 // -- Notificaciones -- //
 Route::get('/notificacion/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/all',        'NotificacionController@all');
 Route::get('/notificacion/destinatario/{destinatario}/tipoDestinatario/{tipoDestinatario}/read',        'NotificacionController@read');
@@ -309,6 +312,8 @@ Route::apiResource('/rasgo',                        'RasgoController');
 //TOOLS//
 // Route::get('/fixPlanes',   'PlanEvaluacionController@fixPlanDetalles');
 //Route::get('/createUserLote/{tipoUsuario}', 'UsuarioController@usuarioLoteTipo');
+//Route::get('/welcomeAlumnoLote', 'UsuarioController@sendAllWelcomeMail');
+
 
 
 // -- EVALUACION -- //

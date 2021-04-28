@@ -29,8 +29,8 @@
                 <table class="content" width="100%" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
                     <tr>
     <td class="header" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; padding: 25px 0; text-align: center;">
-        <a href="http://desdecasaweb.com" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #bbbfc3; font-size: 19px; font-weight: bold; text-decoration: none; text-shadow: 0 1px 0 white;">
-            DESDECASAWEB.COM
+        <a href="{{env('APP_URL')}}" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #bbbfc3; font-size: 19px; font-weight: bold; text-decoration: none; text-shadow: 0 1px 0 white;">
+           {{env('APP_NAME')}} - Software Educativo
         </a>
     </td>
 </tr>
@@ -42,8 +42,8 @@
                                 <!-- Body content -->
                                 <tr>
                                     <td class="content-cell" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; padding: 35px;">
-                                        <h1 style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #2F3133; font-size: 19px; font-weight: bold; margin-top: 0; text-align: left;">Hola: {{ $nb_usuario }}</h1>
-<p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #74787E; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Recibes este Correo porque has solicitado recuperacion de contraseña de "DESDECASAWEB.COM". Copia el siguiente codigo y copialo en el formulario de recuperacion:</p>
+                                        <h1 style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #2F3133; font-size: 19px; font-weight: bold; margin-top: 0; text-align: left;">Bienvenido: {{ $detail['nombre'] }}</h1>
+<p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #74787E; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Recibes este correo porque estas inscrito en la plataforma VirtuaLin-ESGLONE:</p>
 <table class="action" align="center" width="100%" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; margin: 30px auto; padding: 0; text-align: center; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
     <tr>
         <td align="center" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
@@ -52,9 +52,20 @@
                     <td align="center" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
                         <table border="0" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
                             <tr>
-                                <td style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
-                                    <h3 align="center">{{$verification}}</h3>
-                                </td>
+                                  <p>  <a href="{{env('APP_URL')}}" class="button button-blue" target="_blank" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; border-radius: 3px; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16); color: #FFF; display: inline-block; text-decoration: none; -webkit-text-size-adjust: none; background-color: #3097D1; border-top: 10px solid #3097D1; border-right: 18px solid #3097D1; border-bottom: 10px solid #3097D1; border-left: 18px solid #3097D1;">Ir a {{env('APP_NAME')}}</a></p>
+                            </tr>
+                       
+                            <tr>
+                                <td></td>
+                                <td>Usuario:</td>
+                                <td>{{ $detail['usuario'] }}</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Contraseña:</td>
+                                <td>12345678</td>
+                                <td></td>
                             </tr>
                         </table>
                     </td>
@@ -63,7 +74,8 @@
         </td>
     </tr>
 </table>
-<p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #74787E; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Si no realizaste esta solicitud, puedes ignorar este correo.</p>
+<p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #74787E; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Te recomendamos que al ingresar cambies la contraseña para asegurar tu cuenta.</p>
+<p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #74787E; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Si tienes problemas con la contraseña contacta con tu docente o intitucion.</p>
 <p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #74787E; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">¡Saludos Cordiales!</p>
                                         
                                     </td>
@@ -77,7 +89,7 @@
         <table class="footer" align="center" width="570" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; margin: 0 auto; padding: 0; text-align: center; width: 570px; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 570px;">
             <tr>
                 <td class="content-cell" align="center" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; padding: 35px;">
-                    <p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; line-height: 1.5em; margin-top: 0; color: #AEAEAE; font-size: 12px; text-align: center;">© 2020 DESDECASAWEB. All rights reserved.</p>
+                    <p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; line-height: 1.5em; margin-top: 0; color: #AEAEAE; font-size: 12px; text-align: center;">© 2021 VIRTUALIN. All rights reserved.</p>
                 </td>
             </tr>
         </table>

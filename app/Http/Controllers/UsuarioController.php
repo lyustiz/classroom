@@ -13,6 +13,7 @@ use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use App\Jobs\SendWelcomeEmail;
 
 class UsuarioController extends Controller
 {
@@ -373,6 +374,52 @@ class UsuarioController extends Controller
 
         return compact('msj', 'tipo', 'resend');
     }
+
+    public function sendAllWelcomeMail()
+    {
+        $usuarios =  Usuario::whereNull('welcome_at')
+                            ->where('id_tipo_usuario', 3)
+                            ->where('id_status', 1)
+                            ->get();
+
+        foreach ($usuarios as $usuario) {
+            $detail =   [ 'mail' => $usuario->tx_email, 'usuario' => $usuario->nb_usuario, 'nombre' => $usuario->nb_nombres ];
+            SendWelcomeEmail::dispatch($detail);
+        }
+
+        Usuario::whereNull('welcome_at')
+                ->where('id_tipo_usuario', 3)
+                ->where('id_status', 1)
+                ->update(['welcome_at' => date('Y-m-d H:i:s')]);
+    }
+
+    public function sendWelcomeAlumnos(Request $request)
+    {
+        
+        $validate = request()->validate([
+            
+            'id_usuarios'   => 'required|array',
+            'id_usuario'    => 'required',
+        ],
+        [
+            'id_usuarios.required' => 'No se envio candidatos arecibir correo de bienvenida'
+        ]);
+
+        $usuarios =  Usuario::whereIn('id',$request->id_usuarios)->get();
+
+        foreach ($usuarios as $usuario) {
+            $detail =   [ 'mail' => $usuario->tx_email, 'usuario' => $usuario->nb_usuario, 'nombre' => $usuario->nb_nombres ];
+            SendWelcomeEmail::dispatch($detail);
+        }
+
+        Usuario::whereIn('id', $request->id_usuarios)
+                ->update([
+                            'welcome_at' => date('Y-m-d H:i:s'), 
+                            'id_usuario' => $request->id_usuario 
+                        ]);
+                
+    }
+
 
    /*  public function resetPassword(Request $request)
     {

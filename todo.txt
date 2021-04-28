@@ -14,6 +14,9 @@ export PATH="/opt/cpanel/ea-php73/root/usr/bin:$PATH"
 
 /opt/cpanel/ea-php73/root/usr/bin/php artisan websocket:serve
 
+ALTER TABLE `usuario`
+ADD COLUMN `welcome_at`  timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP AFTER `api_token`;
+
 
 al iniciar una prueba por alumno restringir su edicion por parte del docente
 

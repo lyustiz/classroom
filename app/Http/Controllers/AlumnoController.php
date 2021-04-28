@@ -39,7 +39,25 @@ class AlumnoController extends Controller
     public function alumnoGrupo($idGrupo)
     {
         $alumno = Alumno::select('id','nb_apellido','nb_apellido2','nb_nombre','nb_nombre2','tx_documento','fe_nacimiento')
-                        ->where('id_status', 1)
+                        ->whereHas('matricula', function (Builder $query) use($idGrupo) {
+                            $query->where('id_grupo', $idGrupo)->activo();
+                        })
+                        ->ordenApellido()
+                        ->activo()
+                        ->get();
+        
+        return $alumno;
+    }
+
+    public function alumnoDetalleGrupo($idGrupo)
+    {
+        $alumno = Alumno::with([
+                                'matricula:id,id_alumno,id_grado,id_grupo,fe_matricula,id_tipo_condicion,id_colegio_origen,tx_observaciones',
+                                'foto:id,tx_src,id_tipo_foto,id_origen',
+                                'foto.tipoFoto:id,tx_base_path',
+                                'usuarioAlumno:id,nb_nombres,nb_usuario,tx_email,welcome_at,id_origen'
+                            ])
+                        ->select('id','nb_apellido','nb_apellido2','nb_nombre','nb_nombre2','tx_documento','fe_nacimiento')
                         ->whereHas('matricula', function (Builder $query) use($idGrupo) {
                             $query->where('id_grupo', $idGrupo)->activo();
                         })

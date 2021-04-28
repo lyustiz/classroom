@@ -121,6 +121,10 @@
                 <alumno-incidencia :alumno="alumno" v-if="dialogIncidencia" @closeModal="closeDialog($event,'dialogIncidencia')"></alumno-incidencia>
             </v-dialog>
 
+            <v-dialog v-model="dialogBienvenida" max-width="600" content-class="rounded-xl">
+                <alumno-bienvenida v-if="dialogBienvenida" @closeModal="closeDialog($event,'dialogBienvenida')"></alumno-bienvenida>
+            </v-dialog>
+
             <form-delete
                 :dialog="dialog"
                 :loading="loading"
@@ -143,6 +147,7 @@ import AppAlumnoMateria    from '@pages/alumnoMateria/AppAlumnoMateria';
 import AppAlumnosMateria   from '@pages/alumnoMateria/AppAlumnosMateria';
 import AppAlumnoPariente   from '@pages/alumnoPariente/AppAlumnoPariente';
 import AppAlumnoIncidencia from '@pages/incidencia/AppIncidencia';
+import AppAlumnoBienvenida from './AppAlumnoBienvenida';
 
 export default {
     
@@ -155,6 +160,7 @@ export default {
                     'alumnos-materia'   : AppAlumnosMateria,
                     'alumno-pariente'   : AppAlumnoPariente,
                     'alumno-incidencia' : AppAlumnoIncidencia,
+                    'alumno-bienvenida' : AppAlumnoBienvenida
                 },
 
     data () {
@@ -180,6 +186,7 @@ export default {
             listMenu:[
                 { action: 'list',   icon: 'mdi-table-refresh', label: 'Refrescar' },
                 { action: 'addMateriasAlumnos',   icon: 'mdi-bookshelf', label: 'Agregar Materias Alumnos' },
+                { action: 'mailBienvenida',   icon: 'mdi-email-send', label: 'Enviar Correo Bienvenida' },
             ],
             reports:[
                 { table: 'vw_alumno',               title: 'Alumnos (Datos Personales)' },
@@ -192,6 +199,7 @@ export default {
             dialogAlumnosMateria: false,
             dialogPariente:       false,
             dialogIncidencia:     false,
+            dialogBienvenida:     false,
             matricula:       null,
             alumno:          null,
             grado:           null
@@ -222,6 +230,11 @@ export default {
         addMateriasAlumnos()
         {
             this.dialogAlumnosMateria = true
+        },
+
+        mailBienvenida()
+        {
+            this.dialogBienvenida = true
         },
 
         addIncidencia(alumno)

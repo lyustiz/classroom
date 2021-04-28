@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Matricula;
+use App\Models\Usuario;
 use App\Models\AlumnoMateria;
 use App\Models\GradoMateria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendWelcomeEmail;
 
 
 class MatriculaController extends Controller
@@ -48,6 +50,8 @@ class MatriculaController extends Controller
 
         $matricula = Matricula::create($request->all());
 
+        $this->sendWelcomeMail($matricula);
+
         $materias  = $this->storeMateriasAlumno($matricula);
 
         return [ 'msj' => 'Matricula Agregada Correctamente', compact( 'matricula', 'materias' ) ];
@@ -71,6 +75,8 @@ class MatriculaController extends Controller
                                     'id_usuario'    => $matricula->id_usuario
                                 ];
         }
+
+        
 
         return AlumnoMateria::insert($storeMaterias);
     }
@@ -126,5 +132,30 @@ class MatriculaController extends Controller
         $matricula = $matricula->delete();
  
         return [ 'msj' => 'Matricula Eliminada' , compact('matricula')];
+    }
+
+    public function prepareMail(Matricula $matricula)
+    {
+        
+        $usuario =  $matricula->alumno->usuarioAlumno;
+
+        return   [
+                  'usuario' => $usuario,
+                  'detail' =>  [ 'mail' => $usuario->tx_email, 'usuario' => $usuario->nb_usuario, 'nombre' => $usuario->nb_nombres ]
+        ];
+
+    }
+
+    public function sendWelcomeMail(Matricula $matricula)
+    {
+        $data   = $this->prepareMail($matricula);
+
+        SendWelcomeEmail::dispatch($data['detail']);
+
+        $usuario =  $data['usuario'];
+
+        $usuario->welcome_at = date('Y-m-d H:i:s');
+
+        $usuario->save();
     }
 }
