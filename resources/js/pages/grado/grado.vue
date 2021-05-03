@@ -46,6 +46,7 @@
                         </td>
 						<td class="text-xs-left">
                             <status-switch 
+                                :key="item.id"
                                 :loading="loading" 
                                 :item="item"
                                 :resource="resource"

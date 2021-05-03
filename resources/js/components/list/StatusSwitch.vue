@@ -7,11 +7,13 @@
             hide-details
             :readonly="readOnly"
             :loading="loading" 
+            :color="color"
             :true-value="trueValue"
             :false-value="falseValue"
-            :color="color"
-            :input-value="item.id_status"
-            @change="changeStatus($event)">
+            :input-value="isActive"
+            :value="isActive"
+            @change="changeStatus($event)"
+            >
         </v-switch>
 
 </template>
@@ -49,6 +51,11 @@ export default {
         readOnly()
         {
             return this.loading
+        },
+
+        isActive()
+        {
+            return this.item.id_status == 1 ? 1 : 2 //fix update item value
         }
     },
 
@@ -63,8 +70,8 @@ export default {
                 id_status:  null,
                 id_usuario: null
             },
-            trueValue:  1,
-            falseValue: 2,
+            trueValue: 1,
+            falseValue: 2
         }
     },
 
@@ -96,6 +103,7 @@ export default {
             {
                 this.showError(error)
                 this.status = (this.status == 1) ? 2 : 1;
+                this.$emit('onStatusChanged', false)
             })
 
         }

@@ -6,6 +6,7 @@ use App\Models\Status;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class StatusController extends Controller
 {
@@ -130,7 +131,7 @@ class StatusController extends Controller
 
         } else {
 
-            return  [ 'msj' => "Error al Actualizar el estatus de $resourceName" , 'updated' => $updated];
+            throw ValidationException::withMessages(['statusInvalido' => "Error al Actualizar el estatus de $resourceName"]);
         }                    
                             
     }
