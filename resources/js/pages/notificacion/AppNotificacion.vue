@@ -73,10 +73,10 @@
 
         <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn fab depressed x-small color="error" @click="$emit('closeModal')">
+            <v-btn fab depressed x-small color="error" @click="$emit('closeModal')" :loading="loading">
                <v-icon>mdi-reply</v-icon>
             </v-btn>
-            <v-btn fab depressed small color="success" :disabled="!valid" @click="store()">
+            <v-btn fab depressed small color="success" :disabled="!valid" @click="store()" :loading="loading">
                 <v-icon>mdi-send</v-icon>
             </v-btn>
         </v-card-actions>

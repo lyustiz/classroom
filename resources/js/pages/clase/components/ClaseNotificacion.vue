@@ -36,10 +36,10 @@
             
         <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn fab depressed x-small color="error" @click="$emit('closeDialog')">
+            <v-btn fab depressed x-small color="error" @click="$emit('closeDialog')" :loading="loading">
                <v-icon>mdi-reply</v-icon>
             </v-btn>
-            <v-btn fab depressed small color="success" :disabled="!valid" @click="send()">
+            <v-btn fab depressed small color="success" :disabled="!valid" @click="send()" :loading="loading">
                 <v-icon>mdi-send</v-icon>
             </v-btn>
             

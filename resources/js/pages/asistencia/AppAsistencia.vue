@@ -3,27 +3,18 @@
    <v-card width="100%" flat  class="rounded-xl" height="88vh">
 
         <v-card-title class="deep-purple white--text py-0">
-            <v-row >
-                <v-col>
-                    <v-row align="center">
-                        <v-col class="headline ml-4">
-                            Asistencia
-                        </v-col>
-                    </v-row>
+            <v-row dense>
+                <v-col class="pt-4">
+                    Asistencia
                 </v-col>
                 <v-col cols="auto">
-                    <v-row no-gutters  align="center">
-                        <v-col class="text-center  mx-3">
-                            <span class="display-2">{{alumnosSelected.length}}</span> / <span class="headline">{{asistencias.length}}</span>
-                        </v-col>
-                        <v-col class="text-center mx-3">
-                            <v-icon size="60" color="amber">mdi-school</v-icon>
-                        </v-col>
-                    </v-row>
+                    <span class="display-2">{{alumnosSelected.length}}</span> / <span class="headline">{{asistencias.length}}</span>
                 </v-col>
-
+                 <v-col cols="auto">
+                    <v-icon size="55" class="mr-5" color="amber">mdi-school</v-icon>
+                </v-col>
                 <v-col cols="auto" class="my-3">
-                       <v-btn icon dark><v-icon @click="$emit('closeDialog')">mdi-close-circle-outline</v-icon></v-btn>
+                    <v-btn icon dark><v-icon @click="$emit('closeDialog')">mdi-close-circle-outline</v-icon></v-btn>
                 </v-col>
             </v-row>
         </v-card-title>

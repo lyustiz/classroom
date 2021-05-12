@@ -235,6 +235,7 @@ export default {
         deleteDialog()
         {
             this.delDialog = true
+            this.loading = false
         },
 
         deleteCancel()

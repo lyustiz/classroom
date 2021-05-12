@@ -224,7 +224,8 @@ export default {
         deleteDialog(image)
         {
            this.image  = image
-            this.delDialog = true
+           this.delDialog = true
+           this.loading = false
         },
 
         deleteCancel()
